@@ -37,23 +37,6 @@ ipch/
 *.opensdf
 AppPackages/
 
-#for tests project
-tests/win8_metro/Assets/
-!tests/win8_metro/Assets/Logo.png
-!tests/win8_metro/Assets/SmallLogo.png
-!tests/win8_metro/Assets/SplashScreen.png
-!tests/win8_metro/Assets/StoreLogo.png
-!tests/win8_metro/Assets/WideLogo.png
-
-#for HelloWorld project
-HelloWorld/win8_metro/Assets/
-!HelloWorld/win8_metro/Assets/Logo.png
-!HelloWorld/win8_metro/Assets/SmallLogo.png
-!HelloWorld/win8_metro/Assets/SplashScreen.png
-!HelloWorld/win8_metro/Assets/StoreLogo.png
-!HelloWorld/win8_metro/Assets/WideLogo.png
-
-
 # Ignore f/les build by ndk and eclipse
 NUL
 android/*/libs/
