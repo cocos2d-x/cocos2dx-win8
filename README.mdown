@@ -12,7 +12,7 @@ Document
 Contact us
 ---------------------
 
-    * Forum: http://forum.cocos2d-x.org
+   * Forum: http://forum.cocos2d-x.org
    
 [1]: http://www.cocos2d-x.org "cocos2d-x"
 [2]: http://www.cocos2d-x.org/embedded/cocos2d-x/classes.html "API References"
