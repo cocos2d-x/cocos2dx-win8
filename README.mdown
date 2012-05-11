@@ -1,7 +1,7 @@
 cocos2dx-win8
 =====================
 
-cocos2dx-win8 is a 2D game engine in c++/cx, based on [cocos2d-x][1] and licensed under MIT. It allows you create or port cocos2d Windows8 metro style games easily and quickly.
+cocos2dx-win8 is a branch of [cocos2d-x][1] and licensed under MIT. It allows you create or port cocos2d Windows8 metro style games easily and quickly.
 
 Document
 ---------------------
