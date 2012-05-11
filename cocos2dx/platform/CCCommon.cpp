@@ -344,7 +344,7 @@ void CCLog(const char * pszFormat, ...)
     WCHAR wszBuf[MAX_LEN] = {0};
     MultiByteToWideChar(CP_UTF8, 0, szBuf, -1, wszBuf, sizeof(wszBuf));
     OutputDebugStringW(wszBuf);
-    OutputDebugStringA("\n");
+    OutputDebugStringW(L"\n");
 }
 
 void CCMessageBox(const char * pszMsg, const char * pszTitle)
