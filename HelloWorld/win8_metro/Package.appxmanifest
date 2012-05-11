@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="b1ee2ff4-bd9c-48b3-9c8f-f4856abdfba1" Publisher="CN=豆腐" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>cocos2dmetro-HelloWorld</DisplayName>
+    <PublisherDisplayName>文生</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <Description>FishingJoy_win8_metro</Description>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="cocos2dmetro-HelloWorld.App">
+      <VisualElements DisplayName="cocos2dmetro-HelloWorld" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="cocos2dmetro-HelloWorld" ForegroundText="light" BackgroundColor="#FFFFFF">
+        <DefaultTile ShowName="wideLogoOnly" WideLogo="Assets\WideLogo.png" ShortName="helloworld" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="documentsLibrary" />
+  </Capabilities>
+</Package>

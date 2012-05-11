@@ -1,0 +1,2569 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>e75228d0-cd6d-4207-b657-3aca3bfc15a1</UniqueIdentifier>
+      <Extensions>ico;bmp;dlg;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;resw;resjson</Extensions>
+    </Filter>
+    <Filter Include="win8_metro">
+      <UniqueIdentifier>{e9a51eb9-5c54-48b5-8e80-2ad5c01a1509}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx">
+      <UniqueIdentifier>{ff68264e-478e-4efd-941a-54425df5e034}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\platform">
+      <UniqueIdentifier>{23a0adb0-88ee-434f-a5a0-0c51a5fe6b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\platform\win8_metro">
+      <UniqueIdentifier>{73c5e8ea-dc10-48cc-bbb1-4e505ae20fa9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\cocoa">
+      <UniqueIdentifier>{382396f7-623b-4eb9-9575-0e93a9ac8027}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\exception">
+      <UniqueIdentifier>{a3381d85-5d6d-4556-98ec-6ccd30ec1983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\include">
+      <UniqueIdentifier>{4cdd6670-ca16-4981-b6cb-d33da0db9bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support">
+      <UniqueIdentifier>{354f6d7f-9d3e-4b6d-9583-8883dd189918}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support\zip_support">
+      <UniqueIdentifier>{0c34d254-9a56-462b-a358-d4f62962f76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\base_nodes">
+      <UniqueIdentifier>{123c04b6-5613-489a-b013-466e209683ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\textures">
+      <UniqueIdentifier>{27a8401b-7277-4710-b0e9-6abab00e61f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\actions">
+      <UniqueIdentifier>{897c2cdc-5684-4c82-ad6b-809f2b00dd35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\effects">
+      <UniqueIdentifier>{6f049c85-0fc2-4755-b0b5-50c4ffcf7467}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\keypad_dispatcher">
+      <UniqueIdentifier>{ef725c66-d3b8-4e4a-a1c3-8ce604317c6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\label_nodes">
+      <UniqueIdentifier>{23584c51-d57c-425c-b046-f43507a1863a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\layers_scenes_transitions_nodes">
+      <UniqueIdentifier>{1e830114-a67c-4cb0-94b6-2196115fe9ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\menu_nodes">
+      <UniqueIdentifier>{091cd7a3-44b9-46ca-82ab-a74bbfcecfb6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\misc_nodes">
+      <UniqueIdentifier>{08ef6088-e3c8-4e05-88c6-4bb0665b75c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\particle_nodes">
+      <UniqueIdentifier>{fa75479e-d316-4489-80fb-7854244ed530}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\sprite_nodes">
+      <UniqueIdentifier>{e6a5b24d-2de1-45a3-9439-abd1a3622d7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\touch_dispatcher">
+      <UniqueIdentifier>{f03c109f-f8f7-4d3f-9a42-68f343c3b685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support\data_support">
+      <UniqueIdentifier>{bba37ee5-2bcb-402f-bb2a-f3b1335bcd53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\script_support">
+      <UniqueIdentifier>{bf84aa68-5854-4b68-b5de-5406074664a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\hlsl">
+      <UniqueIdentifier>{e5c4e661-e587-4dee-b869-1ba6a10e579a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\text_input_node">
+      <UniqueIdentifier>{e2b56fd0-9060-492b-8747-639347e0b605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CocosDenshion">
+      <UniqueIdentifier>{d7f22da2-6ed2-480e-bf89-650c7b2d2c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CocosDenshion\include">
+      <UniqueIdentifier>{727f8f4c-1cd8-4364-b897-57a11c4a441e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CocosDenshion\win8_metro">
+      <UniqueIdentifier>{dec289fb-e343-4e07-a3eb-ab79ad844aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{f6974078-ce3b-4b7f-b387-06a4c909a2ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests">
+      <UniqueIdentifier>{ad1b118c-01b8-42c6-9c67-e9dd4d7fea25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\AccelerometerTest">
+      <UniqueIdentifier>{789cbaf9-de78-4c1c-8fbb-2bb1c5a94463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ActionManagerTest">
+      <UniqueIdentifier>{0bab931b-f4c9-4d08-8ae3-c9a5a0a006f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ActionsTest">
+      <UniqueIdentifier>{3bc45e0d-e913-4916-9ce8-1540335ffda2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\Box2DTest">
+      <UniqueIdentifier>{8139c7dd-7c6e-46bb-a560-47852f750222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\Box2DTestBed">
+      <UniqueIdentifier>{6a998d2d-5cad-436a-b04a-ae7db76124dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\BugsTest">
+      <UniqueIdentifier>{2cdaf0ca-f542-457a-8a40-bac1274aecb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ChipmunkTest">
+      <UniqueIdentifier>{0b17696e-03e6-46b2-8ff5-e9045ef8cb24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ClickAndMoveTest">
+      <UniqueIdentifier>{9ca14106-dd09-4c6c-8899-6e84b2361f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\CocosDenshionTest">
+      <UniqueIdentifier>{207411b3-6323-497f-aa97-2146330e5999}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\CocosNodeTest">
+      <UniqueIdentifier>{37765596-f216-40ed-84d5-c8c986bac272}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\CurlTest">
+      <UniqueIdentifier>{44ca0b0d-85fc-4fc0-89e1-ccdce5adb217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\CurrentLanguageTest">
+      <UniqueIdentifier>{21339f35-cc26-4208-983e-4db068edb578}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\DirectorTest">
+      <UniqueIdentifier>{be0649c7-0473-474c-a423-b6fd460477f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\DrawPrimitivesTest">
+      <UniqueIdentifier>{116570f9-b3e0-4f2a-8456-2d5013c4fadf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\EaseActionsTest">
+      <UniqueIdentifier>{2a5e9b03-044c-4e8b-95ce-b4376cf08de4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\EffectsAdvancedTest">
+      <UniqueIdentifier>{af8bfcb6-0e35-4223-a5dd-a7c65c2b6e62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\EffectsTest">
+      <UniqueIdentifier>{f20daca2-3808-4e98-adde-9ca4cda72636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\FontTest">
+      <UniqueIdentifier>{e5df2ce1-bc7d-4106-b078-366f8d0c0cdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\HiResTest">
+      <UniqueIdentifier>{77b1aa43-68fc-4546-b977-bd65510e49d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\IntervalTest">
+      <UniqueIdentifier>{bf607df2-d541-4679-ace0-5df66207a837}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\KeypadTest">
+      <UniqueIdentifier>{b992b4b3-f768-4eec-9f8b-bbdd2e3d8006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\LabelTest">
+      <UniqueIdentifier>{4e0a5ccb-fbd0-4431-a5e0-f9f13840ce34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\LayerTest">
+      <UniqueIdentifier>{99b38959-9304-4833-ae30-d54abf4079d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\MenuTest">
+      <UniqueIdentifier>{2130a2d7-24ac-462b-baad-7f847b61618a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\MotionStreakTest">
+      <UniqueIdentifier>{4c03205e-18ae-473a-81d6-5acf0ffa041a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ParallaxTest">
+      <UniqueIdentifier>{5dfd4a0c-b5c5-409c-a97e-9d837461393b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ParticleTest">
+      <UniqueIdentifier>{32832517-6df7-4f44-ba40-367d9df5e330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\PerformanceTest">
+      <UniqueIdentifier>{60147f1d-2908-4d27-ab53-20061807c632}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ProgressActionsTest">
+      <UniqueIdentifier>{17f0f52c-39bf-4573-bf1d-0add9ff377d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\RenderTextureTest">
+      <UniqueIdentifier>{7a25d8d5-a969-4134-a9fc-b452a8882d31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\RotateWorldTest">
+      <UniqueIdentifier>{e001d48e-b5fa-4162-bd91-8ea4aec6fe2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\SceneTest">
+      <UniqueIdentifier>{48bba32e-0b7a-4ac4-9d2f-7734b0bb468c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\SchedulerTest">
+      <UniqueIdentifier>{aacfb5b5-6597-401e-aed2-180e483e66c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\TextInputTest">
+      <UniqueIdentifier>{413fce55-bde6-4b45-9e93-34518933d656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\Texture2dTest">
+      <UniqueIdentifier>{a9f7288b-4463-4b67-9c8f-bf4a76614023}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\TextureCacheTest">
+      <UniqueIdentifier>{bebeec14-a451-4838-b8c3-1d1503bb5864}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\TileMapTest">
+      <UniqueIdentifier>{367cc65b-a433-4510-8d36-53df404ae648}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\TouchesTest">
+      <UniqueIdentifier>{f0be32cd-dd5a-4de0-b6b8-39e86a7fd762}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\TransitionsTest">
+      <UniqueIdentifier>{0b227841-e235-423e-9625-777793d00652}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\UserDefaultTest">
+      <UniqueIdentifier>{bb638f03-e72c-487d-b14a-b3aa639a243c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\ZwoptexTest">
+      <UniqueIdentifier>{eba18f29-956d-4ff1-8d8e-cb0271e5f7b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\SpriteTest">
+      <UniqueIdentifier>{6b394bfb-3096-40fc-ac8c-da76f1df7ce7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\animations">
+      <UniqueIdentifier>{2cd85d84-f420-4614-9906-489a269cca16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\fonts">
+      <UniqueIdentifier>{da852f33-7bd6-49b9-8305-c9c86a635a57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Images">
+      <UniqueIdentifier>{7a6cdfcd-e9c4-4e22-94c7-e9e10380dbdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Images\bugs">
+      <UniqueIdentifier>{e514c9ca-fb4f-4524-a6e1-8d7a4253d1bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Images\sprites_test">
+      <UniqueIdentifier>{1554a930-ee92-450a-8aa3-e0f6e1876f2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\TileMaps">
+      <UniqueIdentifier>{d04c871e-5f9e-48c1-89bb-bc49c61b5602}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\zwoptex">
+      <UniqueIdentifier>{f8b92c12-628f-40b4-a2d0-d52d78befd38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\tileMap_parallax_nodes">
+      <UniqueIdentifier>{eb54ae72-db38-4e3b-b60e-86993ec34d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support\image_support">
+      <UniqueIdentifier>{bf357230-4cd0-47fa-9e83-c1c9d52a73f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\tests\BugsTest\Bug-458">
+      <UniqueIdentifier>{c5fb631e-fa56-4ffe-9e30-2ec63b078693}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d">
+      <UniqueIdentifier>{4b297f47-4fba-407c-a6e5-298797e7e5b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chipmunk">
+      <UniqueIdentifier>{5cb2e814-3815-40ff-bf1b-786cde1e5a0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Collision">
+      <UniqueIdentifier>{e8b42964-960b-4d4b-96de-c3fdfa7886df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Shapes">
+      <UniqueIdentifier>{f66a5ed9-9f9e-4602-bfeb-886bd1e36fd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Common">
+      <UniqueIdentifier>{4eef9e6e-fb2b-43b1-b84f-3f42f6e8fe9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Dynamics">
+      <UniqueIdentifier>{82850973-2cdd-4262-abf8-0c6491833dfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Dynamics\Joints">
+      <UniqueIdentifier>{3fc36784-fd92-49a2-a7a1-e8cfc303ed70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Dynamics\Contacts">
+      <UniqueIdentifier>{fa8b0c79-e5ce-4f83-bceb-cefe47189e47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Box2d\Rope">
+      <UniqueIdentifier>{4396915b-3f65-4d34-a33f-612d925d6f9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chipmunk\include">
+      <UniqueIdentifier>{18827876-0b48-41f2-9dea-00fa1cdc293e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chipmunk\include\chipmunk">
+      <UniqueIdentifier>{7d2c0147-6079-41d0-a589-73022de4525c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chipmunk\include\constraints">
+      <UniqueIdentifier>{e4e0c7c1-3f87-47ad-ac41-d47e819a2994}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chipmunk\src">
+      <UniqueIdentifier>{b42001e8-4bba-4846-a98e-17217e3660cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="chipmunk\src\constraints">
+      <UniqueIdentifier>{310e3458-e7f9-403a-965b-15129c21b381}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\animations\ghosts.plist">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.plist">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.ztp">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_blue.plist">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_family.plist">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_gray.plist">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini-aliases.plist">
+      <Filter>Resources\animations</Filter>
+    </None>
+    <None Include="Assets\fonts\arial16.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest2.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest3.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest4.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest5.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\futura-48.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\konqa32.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\konqa32-hd.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\Images\bitmapFontTest3.fnt">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\BoilingFoam.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\BurstPipe.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\Comet.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\debian.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\ExplodingRing.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\Flower.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\Galaxy.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_128x256_mipmap.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba4444.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba8888.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossinis_sister1-testalpha.ppng">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\LavaFlow.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\logo-mipmap.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\logo-nomipmap.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\Phoenix.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\SpinningPeas.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\Spiral.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\SpookyPeas.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image.pvrraw">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_a8.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_ai88.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_i8.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.ccz">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.gz">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_mipmap.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image-bad_encoding.pvr">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\Upsidedown.plist">
+      <Filter>Resources\Images</Filter>
+    </None>
+    <None Include="Assets\Images\bugs\circle.plist">
+      <Filter>Resources\Images\bugs</Filter>
+    </None>
+    <None Include="Assets\Images\bugs\circle-hd.plist">
+      <Filter>Resources\Images\bugs</Filter>
+    </None>
+    <None Include="Assets\TileMaps\hexa-test.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test1.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2-uncompressed.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-bug787.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-movelayer.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-objectgroup.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-vertexz.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-zorder.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\levelmap.tga">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tsx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test2.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test3.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4-hd.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test5.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6-hd.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-movelayer.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-vertexz.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-zorder.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\ortho-objects.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\TileMaps\test-object-layer.tmx">
+      <Filter>Resources\TileMaps</Filter>
+    </None>
+    <None Include="Assets\zwoptex\grossini.plist">
+      <Filter>Resources\zwoptex</Filter>
+    </None>
+    <None Include="Assets\zwoptex\grossini-generic.plist">
+      <Filter>Resources\zwoptex</Filter>
+    </None>
+    <None Include="Assets\effect1.raw">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Assets\music.mid">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Assets\effect1.wav">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Assets\background.mp3">
+      <Filter>Resources</Filter>
+    </None>
+    <None Include="Cocos2d_win8_metro_TemporaryKey.pfx" />
+    <None Include="tests_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h">
+      <Filter>win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCApplication_platform.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCPlatformConfig.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCPlatformMacros.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCCommon.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DirectXRender.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\cocoa\CCNS.h">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCFileUtils.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCLibxml2.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCSAXParser.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCStdC.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\exception\CCException.h">
+      <Filter>cocos2dx\exception</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAccelerometer.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAccelerometerDelegate.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAction.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionCamera.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionEase.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionGrid.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionGrid3D.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionInstant.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionInterval.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionManager.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionPageTurn3D.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionProgressTimer.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCActionTiledGrid.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAffineTransform.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAnimation.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAnimationCache.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCApplication.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCArray.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAtlasNode.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCAutoreleasePool.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCCamera.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\ccConfig.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCData.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCDirector.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCDrawingPrimitives.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCEGLView.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCGeometry.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCIMEDelegate.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCIMEDispatcher.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCKeypadDelegate.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCKeypadDispatcher.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCLabelAtlas.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCLabelBMFont.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCLabelTTF.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCLayer.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\ccMacros.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCMenu.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCMenuItem.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCMotionStreak.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCMutableArray.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCMutableDictionary.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCNode.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCObject.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCParallaxNode.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleExamples.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleSystem.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleSystemPoint.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleSystemQuad.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCPointExtension.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCProgressTimer.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCProtocols.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCRenderTexture.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCRibbon.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCScene.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCScheduler.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCScriptSupport.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCSet.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCSprite.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCSpriteBatchNode.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCSpriteFrame.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCSpriteFrameCache.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCString.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTextFieldTTF.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTexture2D.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTextureAtlas.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTextureCache.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTexturePVR.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTileMapAtlas.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXLayer.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXObjectGroup.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXTiledMap.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXXMLParser.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTouch.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTouchDelegateProtocol.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTouchDispatcher.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTouchHandler.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTransition.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTransitionPageTurn.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCTransitionRadial.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\ccTypes.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCUserDefault.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCZone.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\cocos2d.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\selector_protocol.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\zip_support\ioapi.h">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\zip_support\unzip.h">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\zip_support\ZipUtils.h">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\base64.h">
+      <Filter>cocos2dx\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\CCProfiling.h">
+      <Filter>cocos2dx\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\ccUtils.h">
+      <Filter>cocos2dx\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\TransformUtils.h">
+      <Filter>cocos2dx\support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCImage.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\effects\CCGrabber.h">
+      <Filter>cocos2dx\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\effects\CCGrid.h">
+      <Filter>cocos2dx\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\include\CCGL.h">
+      <Filter>cocos2dx\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\data_support\ccCArray.h">
+      <Filter>cocos2dx\support\data_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\data_support\uthash.h">
+      <Filter>cocos2dx\support\data_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\data_support\utlist.h">
+      <Filter>cocos2dx\support\data_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\CCConfiguration.h">
+      <Filter>cocos2dx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\platform.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\CCGL.h">
+      <Filter>cocos2dx\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CocosDenshion\include\Export.h">
+      <Filter>CocosDenshion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CocosDenshion\include\SimpleAudioEngine.h">
+      <Filter>CocosDenshion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CocosDenshion\win8_metro\Audio.h">
+      <Filter>CocosDenshion\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\CocosDenshion\win8_metro\MediaStreamer.h">
+      <Filter>CocosDenshion\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DXTextPainter.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\BasicLoader.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\BasicReaderWriter.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DirectXHelper.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\controller.h">
+      <Filter>Classes\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\testBasic.h">
+      <Filter>Classes\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\testResource.h">
+      <Filter>Classes\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\tests.h">
+      <Filter>Classes\tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\AccelerometerTest\AccelerometerTest.h">
+      <Filter>Classes\tests\AccelerometerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ActionManagerTest\ActionManagerTest.h">
+      <Filter>Classes\tests\ActionManagerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ActionsTest\ActionsTest.h">
+      <Filter>Classes\tests\ActionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ProgressActionsTest\ProgressActionsTest.h">
+      <Filter>Classes\tests\ProgressActionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\PerformanceTest\PerformanceNodeChildrenTest.h">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\PerformanceTest\PerformanceParticleTest.h">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\PerformanceTest\PerformanceSpriteTest.h">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\PerformanceTest\PerformanceTest.h">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\PerformanceTest\PerformanceTextureTest.h">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\PerformanceTest\PerformanceTouchesTest.h">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\SchedulerTest\SchedulerTest.h">
+      <Filter>Classes\tests\SchedulerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\SceneTest\SceneTest.h">
+      <Filter>Classes\tests\SceneTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\RotateWorldTest\RotateWorldTest.h">
+      <Filter>Classes\tests\RotateWorldTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\TransitionsTest\TransitionsTest.h">
+      <Filter>Classes\tests\TransitionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ClickAndMoveTest\ClickAndMoveTest.h">
+      <Filter>Classes\tests\ClickAndMoveTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\CocosDenshionTest\CocosDenshionTest.h">
+      <Filter>Classes\tests\CocosDenshionTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\CocosNodeTest\CocosNodeTest.h">
+      <Filter>Classes\tests\CocosNodeTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\CurrentLanguageTest\CurrentLanguageTest.h">
+      <Filter>Classes\tests\CurrentLanguageTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\DirectorTest\DirectorTest.h">
+      <Filter>Classes\tests\DirectorTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\EaseActionsTest\EaseActionsTest.h">
+      <Filter>Classes\tests\EaseActionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\EffectsTest\EffectsTest.h">
+      <Filter>Classes\tests\EffectsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\FontTest\FontTest.h">
+      <Filter>Classes\tests\FontTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\HiResTest\HiResTest.h">
+      <Filter>Classes\tests\HiResTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\IntervalTest\IntervalTest.h">
+      <Filter>Classes\tests\IntervalTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\LabelTest\LabelTest.h">
+      <Filter>Classes\tests\LabelTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\MotionStreakTest\MotionStreakTest.h">
+      <Filter>Classes\tests\MotionStreakTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\TouchesTest\Ball.h">
+      <Filter>Classes\tests\TouchesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\TouchesTest\Paddle.h">
+      <Filter>Classes\tests\TouchesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\TouchesTest\TouchesTest.h">
+      <Filter>Classes\tests\TouchesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\UserDefaultTest\UserDefaultTest.h">
+      <Filter>Classes\tests\UserDefaultTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ZwoptexTest\ZwoptexTest.h">
+      <Filter>Classes\tests\ZwoptexTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ParticleTest\ParticleTest.h">
+      <Filter>Classes\tests\ParticleTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\ParallaxTest\ParallaxTest.h">
+      <Filter>Classes\tests\ParallaxTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\support\image_support\TGAlib.h">
+      <Filter>cocos2dx\support\image_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\DrawPrimitivesTest\DrawPrimitivesTest.h">
+      <Filter>Classes\tests\DrawPrimitivesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\MenuTest\MenuTest.h">
+      <Filter>Classes\tests\MenuTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\LayerTest\LayerTest.h">
+      <Filter>Classes\tests\LayerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\TileMapTest\TileMapTest.h">
+      <Filter>Classes\tests\TileMapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\SpriteTest\SpriteTest.h">
+      <Filter>Classes\tests\SpriteTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\RenderTextureTest\RenderTextureTest.h">
+      <Filter>Classes\tests\RenderTextureTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\Texture2dTest\Texture2dTest.h">
+      <Filter>Classes\tests\Texture2dTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\EffectsAdvancedTest\EffectsAdvancedTest.h">
+      <Filter>Classes\tests\EffectsAdvancedTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-350.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-422.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-624.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-886.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-899.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-914.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-1159.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-1174.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\BugsTest.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-458\Bug-458.h">
+      <Filter>Classes\tests\BugsTest\Bug-458</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\Bug-458\QuestionContainerSprite.h">
+      <Filter>Classes\tests\BugsTest\Bug-458</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\KeypadTest\KeypadTest.h">
+      <Filter>Classes\tests\KeypadTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\b2BroadPhase.h">
+      <Filter>Box2d\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\b2Collision.h">
+      <Filter>Box2d\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\b2Distance.h">
+      <Filter>Box2d\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\b2DynamicTree.h">
+      <Filter>Box2d\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\b2TimeOfImpact.h">
+      <Filter>Box2d\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2ChainShape.h">
+      <Filter>Box2d\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2CircleShape.h">
+      <Filter>Box2d\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2EdgeShape.h">
+      <Filter>Box2d\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2PolygonShape.h">
+      <Filter>Box2d\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2Shape.h">
+      <Filter>Box2d\Shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2BlockAllocator.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2Draw.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2GrowableStack.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2Math.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2Settings.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2StackAllocator.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Common\b2Timer.h">
+      <Filter>Box2d\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2Body.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2ContactManager.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2Fixture.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2Island.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2TimeStep.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2World.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\b2WorldCallbacks.h">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2DistanceJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2FrictionJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2GearJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2Joint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2MouseJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2PrismaticJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2PulleyJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2RevoluteJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2RopeJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2WeldJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2WheelJoint.h">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2CircleContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2Contact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2ContactSolver.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2PolygonContact.h">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Rope\b2Rope.h">
+      <Filter>Box2d\Rope</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Box2D\Box2D.h">
+      <Filter>Box2d</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tests\tests\Box2DTest\Box2dTest.h">
+      <Filter>Classes\tests\Box2DTest</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\CCCommon.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\DirectXRender.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCGeometry.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCAffineTransform.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCAutoreleasePool.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCData.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCNS.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCObject.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCSet.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCZone.cpp">
+      <Filter>cocos2dx\cocoa</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\CCFileUtils.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\CCSAXParser.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\CCStdC.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\zip_support\ioapi.cpp">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\zip_support\unzip.cpp">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\zip_support\ZipUtils.cpp">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\base64.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\CCArray.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\CCPointExtension.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\CCProfiling.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\CCUserDefault.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\ccUtils.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\CCImage.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\base_nodes\CCAtlasNode.cpp">
+      <Filter>cocos2dx\base_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\base_nodes\CCNode.cpp">
+      <Filter>cocos2dx\base_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\textures\CCTexture2D.cpp">
+      <Filter>cocos2dx\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\textures\CCTextureAtlas.cpp">
+      <Filter>cocos2dx\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\textures\CCTextureCache.cpp">
+      <Filter>cocos2dx\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\textures\CCTexturePVR.cpp">
+      <Filter>cocos2dx\textures</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCAction.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionCamera.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionEase.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionGrid.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionGrid3D.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionInstant.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionInterval.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionManager.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionPageTurn3D.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionProgressTimer.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionTiledGrid.cpp">
+      <Filter>cocos2dx\actions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDelegate.cpp">
+      <Filter>cocos2dx\keypad_dispatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDispatcher.cpp">
+      <Filter>cocos2dx\keypad_dispatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelAtlas.cpp">
+      <Filter>cocos2dx\label_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelBMFont.cpp">
+      <Filter>cocos2dx\label_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelTTF.cpp">
+      <Filter>cocos2dx\label_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCLayer.cpp">
+      <Filter>cocos2dx\layers_scenes_transitions_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCScene.cpp">
+      <Filter>cocos2dx\layers_scenes_transitions_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCTransition.cpp">
+      <Filter>cocos2dx\layers_scenes_transitions_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionPageTurn.cpp">
+      <Filter>cocos2dx\layers_scenes_transitions_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionRadial.cpp">
+      <Filter>cocos2dx\layers_scenes_transitions_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\menu_nodes\CCMenu.cpp">
+      <Filter>cocos2dx\menu_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\menu_nodes\CCMenuItem.cpp">
+      <Filter>cocos2dx\menu_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCMotionStreak.cpp">
+      <Filter>cocos2dx\misc_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCProgressTimer.cpp">
+      <Filter>cocos2dx\misc_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCRenderTexture.cpp">
+      <Filter>cocos2dx\misc_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCRibbon.cpp">
+      <Filter>cocos2dx\misc_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleExamples.cpp">
+      <Filter>cocos2dx\particle_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleSystem.cpp">
+      <Filter>cocos2dx\particle_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleSystemPoint.cpp">
+      <Filter>cocos2dx\particle_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleSystemQuad.cpp">
+      <Filter>cocos2dx\particle_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCAnimation.cpp">
+      <Filter>cocos2dx\sprite_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCAnimationCache.cpp">
+      <Filter>cocos2dx\sprite_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSprite.cpp">
+      <Filter>cocos2dx\sprite_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSpriteBatchNode.cpp">
+      <Filter>cocos2dx\sprite_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSpriteFrame.cpp">
+      <Filter>cocos2dx\sprite_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSpriteFrameCache.cpp">
+      <Filter>cocos2dx\sprite_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\touch_dispatcher\CCTouchDispatcher.cpp">
+      <Filter>cocos2dx\touch_dispatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\touch_dispatcher\CCTouchHandler.cpp">
+      <Filter>cocos2dx\touch_dispatcher</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\CCConfiguration.cpp">
+      <Filter>cocos2dx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\CCDirector.cpp">
+      <Filter>cocos2dx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\CCScheduler.cpp">
+      <Filter>cocos2dx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\cocos2d.cpp">
+      <Filter>cocos2dx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\script_support\CCScriptSupport.cpp">
+      <Filter>cocos2dx\script_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\TransformUtils.cpp">
+      <Filter>cocos2dx\support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\platform.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\CCGL.cpp">
+      <Filter>cocos2dx\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\CCCamera.cpp">
+      <Filter>cocos2dx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\effects\CCGrid.cpp">
+      <Filter>cocos2dx\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\effects\CCGrabber.cpp">
+      <Filter>cocos2dx\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\text_input_node\CCIMEDispatcher.cpp">
+      <Filter>cocos2dx\text_input_node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\text_input_node\CCTextFieldTTF.cpp">
+      <Filter>cocos2dx\text_input_node</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CocosDenshion\win8_metro\SimpleAudioEngine.cpp">
+      <Filter>CocosDenshion\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CocosDenshion\win8_metro\MediaStreamer.cpp">
+      <Filter>CocosDenshion\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\DXTextPainter.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\BasicLoader.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\BasicReaderWriter.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\controller.cpp">
+      <Filter>Classes\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\testBasic.cpp">
+      <Filter>Classes\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\AccelerometerTest\AccelerometerTest.cpp">
+      <Filter>Classes\tests\AccelerometerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ActionManagerTest\ActionManagerTest.cpp">
+      <Filter>Classes\tests\ActionManagerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ActionsTest\ActionsTest.cpp">
+      <Filter>Classes\tests\ActionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ProgressActionsTest\ProgressActionsTest.cpp">
+      <Filter>Classes\tests\ProgressActionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\PerformanceTest\PerformanceNodeChildrenTest.cpp">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\PerformanceTest\PerformanceParticleTest.cpp">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\PerformanceTest\PerformanceSpriteTest.cpp">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\PerformanceTest\PerformanceTest.cpp">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\PerformanceTest\PerformanceTextureTest.cpp">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\PerformanceTest\PerformanceTouchesTest.cpp">
+      <Filter>Classes\tests\PerformanceTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\SchedulerTest\SchedulerTest.cpp">
+      <Filter>Classes\tests\SchedulerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\SceneTest\SceneTest.cpp">
+      <Filter>Classes\tests\SceneTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\RotateWorldTest\RotateWorldTest.cpp">
+      <Filter>Classes\tests\RotateWorldTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\TransitionsTest\TransitionsTest.cpp">
+      <Filter>Classes\tests\TransitionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ClickAndMoveTest\ClickAndMoveTest.cpp">
+      <Filter>Classes\tests\ClickAndMoveTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\CocosDenshionTest\CocosDenshionTest.cpp">
+      <Filter>Classes\tests\CocosDenshionTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\CocosNodeTest\CocosNodeTest.cpp">
+      <Filter>Classes\tests\CocosNodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\CurrentLanguageTest\CurrentLanguageTest.cpp">
+      <Filter>Classes\tests\CurrentLanguageTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\DirectorTest\DirectorTest.cpp">
+      <Filter>Classes\tests\DirectorTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\EaseActionsTest\EaseActionsTest.cpp">
+      <Filter>Classes\tests\EaseActionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\EffectsTest\EffectsTest.cpp">
+      <Filter>Classes\tests\EffectsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\FontTest\FontTest.cpp">
+      <Filter>Classes\tests\FontTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\HiResTest\HiResTest.cpp">
+      <Filter>Classes\tests\HiResTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\IntervalTest\IntervalTest.cpp">
+      <Filter>Classes\tests\IntervalTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\LabelTest\LabelTest.cpp">
+      <Filter>Classes\tests\LabelTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\MotionStreakTest\MotionStreakTest.cpp">
+      <Filter>Classes\tests\MotionStreakTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\TouchesTest\Ball.cpp">
+      <Filter>Classes\tests\TouchesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\TouchesTest\Paddle.cpp">
+      <Filter>Classes\tests\TouchesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\TouchesTest\TouchesTest.cpp">
+      <Filter>Classes\tests\TouchesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\UserDefaultTest\UserDefaultTest.cpp">
+      <Filter>Classes\tests\UserDefaultTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ZwoptexTest\ZwoptexTest.cpp">
+      <Filter>Classes\tests\ZwoptexTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ParticleTest\ParticleTest.cpp">
+      <Filter>Classes\tests\ParticleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\ParallaxTest\ParallaxTest.cpp">
+      <Filter>Classes\tests\ParallaxTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCParallaxNode.cpp">
+      <Filter>cocos2dx\tileMap_parallax_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTileMapAtlas.cpp">
+      <Filter>cocos2dx\tileMap_parallax_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXLayer.cpp">
+      <Filter>cocos2dx\tileMap_parallax_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXObjectGroup.cpp">
+      <Filter>cocos2dx\tileMap_parallax_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXTiledMap.cpp">
+      <Filter>cocos2dx\tileMap_parallax_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXXMLParser.cpp">
+      <Filter>cocos2dx\tileMap_parallax_nodes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\support\image_support\TGAlib.cpp">
+      <Filter>cocos2dx\support\image_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\DrawPrimitivesTest\DrawPrimitivesTest.cpp">
+      <Filter>Classes\tests\DrawPrimitivesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\CCDrawingPrimitives.cpp">
+      <Filter>cocos2dx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\MenuTest\MenuTest.cpp">
+      <Filter>Classes\tests\MenuTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\LayerTest\LayerTest.cpp">
+      <Filter>Classes\tests\LayerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\TileMapTest\TileMapTest.cpp">
+      <Filter>Classes\tests\TileMapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\SpriteTest\SpriteTest.cpp">
+      <Filter>Classes\tests\SpriteTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\RenderTextureTest\RenderTextureTest.cpp">
+      <Filter>Classes\tests\RenderTextureTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\Texture2dTest\Texture2dTest.cpp">
+      <Filter>Classes\tests\Texture2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\EffectsAdvancedTest\EffectsAdvancedTest.cpp">
+      <Filter>Classes\tests\EffectsAdvancedTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-350.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-422.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-624.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-886.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-899.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-914.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-1159.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-1174.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\BugsTest.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-458\Bug-458.cpp">
+      <Filter>Classes\tests\BugsTest\Bug-458</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\Bug-458\QuestionContainerSprite.cpp">
+      <Filter>Classes\tests\BugsTest\Bug-458</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\KeypadTest\KeypadTest.cpp">
+      <Filter>Classes\tests\KeypadTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\CocosDenshion\win8_metro\Audio.cpp">
+      <Filter>CocosDenshion\win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2CollideCircle.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2CollideEdge.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2CollidePolygon.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2Collision.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2Distance.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2DynamicTree.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2TimeOfImpact.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2ChainShape.cpp">
+      <Filter>Box2d\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2CircleShape.cpp">
+      <Filter>Box2d\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2EdgeShape.cpp">
+      <Filter>Box2d\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2PolygonShape.cpp">
+      <Filter>Box2d\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Common\b2BlockAllocator.cpp">
+      <Filter>Box2d\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Common\b2Draw.cpp">
+      <Filter>Box2d\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Common\b2Math.cpp">
+      <Filter>Box2d\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Common\b2Settings.cpp">
+      <Filter>Box2d\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Common\b2StackAllocator.cpp">
+      <Filter>Box2d\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Common\b2Timer.cpp">
+      <Filter>Box2d\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\b2Body.cpp">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\b2ContactManager.cpp">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\b2Fixture.cpp">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\b2Island.cpp">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\b2World.cpp">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\b2WorldCallbacks.cpp">
+      <Filter>Box2d\Dynamics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2DistanceJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2FrictionJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2GearJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2Joint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2MouseJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2PulleyJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2RopeJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2WeldJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2WheelJoint.cpp">
+      <Filter>Box2d\Dynamics\Joints</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2CircleContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2Contact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2ContactSolver.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2PolygonContact.cpp">
+      <Filter>Box2d\Dynamics\Contacts</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Rope\b2Rope.cpp">
+      <Filter>Box2d\Rope</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\Box2DTest\Box2dTest.cpp">
+      <Filter>Classes\tests\Box2DTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Box2D\Collision\b2BroadPhase.cpp">
+      <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCDrawingPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCDrawingVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCGridPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCGridVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCLayerColorPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCLayerColorVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCParticlePixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCParticleVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCProgressTimerPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCProgressTimerVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCRibbonSegmentPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCRibbonSegmentVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCSpritePixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCSpriteVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTexture2DPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTexture2DVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTextureAtlasPixelShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTextureAtlasVertexShader.hlsl">
+      <Filter>cocos2dx\hlsl</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Logo.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Assets\animations\dragon_animation.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\dragon_animation-hd.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\ghosts.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_blue.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_family.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_gray.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini-aliases.png">
+      <Filter>Resources\animations</Filter>
+    </Image>
+    <Image Include="Assets\fonts\arial16.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest3.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest4.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest5.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\fps_images.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\fps_images-hd.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\futura-48.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\konqa32.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\konqa32-hd.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\larabie-16.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\larabie-16-hd.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap-hd.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\Images\atlastest.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\b1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\b1-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\b2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\b2-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background1-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background2-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background3.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background3-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\ball.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\ball-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\bitmapFontTest3.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\blocks.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\blocks-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-about-normal.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-about-selected.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-normal.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-selected.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-play-normal.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-play-selected.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\close.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\close-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Comet.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\f1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\f1-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\f2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\f2-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fire.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fire-grayscale.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Fog.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fps_images.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_01.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_02.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_03.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_04.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_05.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_06.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_07.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_08.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_09.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_10.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_11.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_12.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_13.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_14.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas_nomipmap.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas-mono.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1-testalpha.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister2-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\HelloWorld.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Icon.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\landscape-1024x1024.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\menuitemsprite.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\paddle.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\paddle-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\particles.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\particles-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\pattern1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Pea.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\piece.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\PlanetCute-1024x1024.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\powered.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\r1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\r1-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\r2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\r2-hd.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButton.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButtonPressed.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\snow.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SpinningPeas.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SpookyPeas.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\spritesheet1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars2.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars2-grayscale.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars-grayscale.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\streak.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_blend.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.jpeg">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test-rgba1.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture512x512.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture1024x1024.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture2048x2048.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\bug886.jpg">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\bug886.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\circle.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\circle-hd.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\corner.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\edge.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\fill.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\picture.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\picture-hd.png">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\RetinaDisplay.jpg">
+      <Filter>Resources\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-0.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-1.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-2.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-3.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-4.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-5.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-6.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-7.png">
+      <Filter>Resources\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\fixed-ortho-test2.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\hexa-tiles.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\iso.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\iso-test.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\iso-test2.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test1.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test1_bw.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\ortho-test2.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tiles.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tiles-hd.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tmw_desert_spacing.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\TileMaps\tmw_desert_spacing-hd.png">
+      <Filter>Resources\TileMaps</Filter>
+    </Image>
+    <Image Include="Assets\zwoptex\grossini.png">
+      <Filter>Resources\zwoptex</Filter>
+    </Image>
+    <Image Include="Assets\zwoptex\grossini-generic.png">
+      <Filter>Resources\zwoptex</Filter>
+    </Image>
+    <Image Include="Assets\WideLogo.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Assets\Hello.png">
+      <Filter>Resources</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\fonts\A Damn Mess.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Abberancy.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Abduction.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Paint Boy.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Schwarzwald Regular.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Scissor Cuts.ttf">
+      <Filter>Resources\fonts</Filter>
+    </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Assets\animations\grossini.plist.xml">
+      <Filter>Resources\animations</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

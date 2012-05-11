@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="eaedb828-071a-4971-b2de-3be5a9ba7a67" Publisher="CN=cocos2d-x.org" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>cocos2d-x-win8-metro</DisplayName>
+    <PublisherDisplayName>文生</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+    <Description>FishingJoy_win8_metro</Description>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2</OSMinVersion>
+    <OSMaxVersionTested>6.2</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="cocos2d-x-win8-metro.App">
+      <VisualElements DisplayName="cocos2d-x-win8-metro" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="cocos2d-x-win8-metro" ForegroundText="light" BackgroundColor="#FFFFFF">
+        <DefaultTile ShowName="wideLogoOnly" WideLogo="Assets\WideLogo.png" ShortName="cocos2d-x" />
+        <SplashScreen Image="Assets\SplashScreen.png" />
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name="test">
+            <SupportedFileTypes>
+              <FileType>.txt</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="documentsLibrary" />
+  </Capabilities>
+</Package>

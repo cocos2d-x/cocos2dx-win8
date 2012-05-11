@@ -1,0 +1,16 @@
+cocos2dx-win8 authors 
+
+(ordered by the join in time)
+
+Core developers:
+    Fengsheng Yang
+    Hexuan Li (lihex)
+    WenSheng Yang
+    Honghui Zhang
+
+Developers:
+    Bin Zhang
+        fix a viwport issue
+    Zhuoshi Sun
+        fix a compile issue
+

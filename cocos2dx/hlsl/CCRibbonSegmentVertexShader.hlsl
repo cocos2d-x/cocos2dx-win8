@@ -1,0 +1,54 @@
+////////////////////////////////////////////////////////////////////////////////
+// Filename: CCTexture2D.vs
+////////////////////////////////////////////////////////////////////////////////
+
+
+/////////////
+// GLOBALS //
+/////////////
+cbuffer MatrixBuffer
+{
+	matrix viewMatrix;
+	matrix projectionMatrix;
+};
+
+
+//////////////
+// TYPEDEFS //
+//////////////
+struct VertexInputType
+{
+	float4 vertices : POSITION;
+	float4 color : COLOR;
+	float2 texCoords : TEXCOORD;
+};
+
+struct PixelInputType
+{
+	float4 vertices : SV_POSITION;
+    float4 color : COLOR;
+	float2 texCoords : TEXCOORD;
+};
+
+
+////////////////////////////////////////////////////////////////////////////////
+// Vertex Shader
+////////////////////////////////////////////////////////////////////////////////
+PixelInputType main(VertexInputType input)
+{
+    PixelInputType output;
+    
+
+	// Change the position vector to be 4 units for proper matrix calculations.
+    input.vertices.w = 1.0f;
+
+	// Calculate the position of the vertex against the world, view, and projection matrices.
+    output.vertices = mul(input.vertices, viewMatrix);
+    output.vertices = mul(output.vertices, projectionMatrix);
+
+	// Store the texture coordinates for the pixel shader.
+	output.texCoords = input.texCoords;
+    output.color = input.color;
+
+    return output;
+}

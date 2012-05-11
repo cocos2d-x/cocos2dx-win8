@@ -1,0 +1,541 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{285C09C8-3417-49D1-B538-7F52A605820A}</ProjectGuid>
+    <RootNamespace>FishingJoy_win8_metro</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ProjectName>HelloWorld</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Platform)'=='Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Platform)'=='ARM'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Platform)'=='x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <IncludePath>$(SolutionDir)CocosDenshion;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\platform;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
+    <PackageCertificateKeyFile>HelloWorld_TemporaryKey.pfx</PackageCertificateKeyFile>
+    <PackageCertificateThumbprint>A5E332F47D0FF12D42A01268CBEDEC6D09EDD862</PackageCertificateThumbprint>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LibraryPath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>d2d1.lib;d3d11.lib;dxgi.lib;dwrite.lib;dxguid.lib;xaudio2.lib;xinput.lib;mfcore.lib;mfplat.lib;mfreadwrite.lib;mfuuid.lib;libpng.lib;libxml2.lib;libjpeg.lib;zlib.lib;windowscodecs.lib;shcore.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <ClCompile>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);$(ProjectDir)..\..\cocos2dx\include;$(ProjectDir)..\..\cocos2dx;$(ProjectDir)..\..\cocos2dx\platform;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libxml2;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libpng;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\zlib;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libjpeg;$(ProjectDir)..\..\tests\extern;$(ProjectDir)..\..\cocos2dx\platform\win8_metro;$(ProjectDir)..\..\tests;$(ProjectDir)..\..\;$(ProjectDir)..\..\chipmunk\include\chipmunk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE</PreprocessorDefinitions>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4018;4819</DisableSpecificWarnings>
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4018;4819</DisableSpecificWarnings>
+      <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+    </PostBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">copy_res $(ProjectDir)Assets</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">copy_res $(ProjectDir)Assets</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Box2D\Box2D.h" />
+    <ClInclude Include="..\..\Box2D\Collision\b2BroadPhase.h" />
+    <ClInclude Include="..\..\Box2D\Collision\b2Collision.h" />
+    <ClInclude Include="..\..\Box2D\Collision\b2Distance.h" />
+    <ClInclude Include="..\..\Box2D\Collision\b2DynamicTree.h" />
+    <ClInclude Include="..\..\Box2D\Collision\b2TimeOfImpact.h" />
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2ChainShape.h" />
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2CircleShape.h" />
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2EdgeShape.h" />
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2PolygonShape.h" />
+    <ClInclude Include="..\..\Box2D\Collision\Shapes\b2Shape.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2BlockAllocator.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2Draw.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2GrowableStack.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2Math.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2Settings.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2StackAllocator.h" />
+    <ClInclude Include="..\..\Box2D\Common\b2Timer.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2Body.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2ContactManager.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2Fixture.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2Island.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2TimeStep.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2World.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\b2WorldCallbacks.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2CircleContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2Contact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2ContactSolver.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Contacts\b2PolygonContact.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2DistanceJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2FrictionJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2GearJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2Joint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2MouseJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2PrismaticJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2PulleyJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2RevoluteJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2RopeJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2WeldJoint.h" />
+    <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2WheelJoint.h" />
+    <ClInclude Include="..\..\Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="..\..\cocos2dx\support\image_support\TGAlib.h" />
+    <ClInclude Include="..\..\cocos2dx\CCConfiguration.h" />
+    <ClInclude Include="..\..\cocos2dx\effects\CCGrabber.h" />
+    <ClInclude Include="..\..\cocos2dx\effects\CCGrid.h" />
+    <ClInclude Include="..\..\cocos2dx\exception\CCException.h" />
+    <ClInclude Include="..\..\cocos2dx\cocoa\CCNS.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAccelerometer.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAccelerometerDelegate.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAction.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionCamera.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionEase.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionGrid.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionGrid3D.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionInstant.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionInterval.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionManager.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionPageTurn3D.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionProgressTimer.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCActionTiledGrid.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAffineTransform.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAnimation.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAnimationCache.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCApplication.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCArray.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAtlasNode.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCAutoreleasePool.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCCamera.h" />
+    <ClInclude Include="..\..\cocos2dx\include\ccConfig.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCData.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCDirector.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCDrawingPrimitives.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCEGLView.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCGeometry.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCGL.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCIMEDelegate.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCIMEDispatcher.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCKeypadDelegate.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCKeypadDispatcher.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCLabelAtlas.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCLabelBMFont.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCLabelTTF.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCLayer.h" />
+    <ClInclude Include="..\..\cocos2dx\include\ccMacros.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCMenu.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCMenuItem.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCMotionStreak.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCMutableArray.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCMutableDictionary.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCNode.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCObject.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCParallaxNode.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleExamples.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleSystem.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleSystemPoint.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCParticleSystemQuad.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCPointExtension.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCProgressTimer.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCProtocols.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCRenderTexture.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCRibbon.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCScene.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCScheduler.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCScriptSupport.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCSet.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCSprite.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCSpriteBatchNode.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCSpriteFrame.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCSpriteFrameCache.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCString.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTextFieldTTF.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTexture2D.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTextureAtlas.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTextureCache.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTexturePVR.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTileMapAtlas.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXLayer.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXObjectGroup.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXTiledMap.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTMXXMLParser.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTouch.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTouchDelegateProtocol.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTouchDispatcher.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTouchHandler.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTransition.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTransitionPageTurn.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCTransitionRadial.h" />
+    <ClInclude Include="..\..\cocos2dx\include\ccTypes.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCUserDefault.h" />
+    <ClInclude Include="..\..\cocos2dx\include\CCZone.h" />
+    <ClInclude Include="..\..\cocos2dx\include\cocos2d.h" />
+    <ClInclude Include="..\..\cocos2dx\include\selector_protocol.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCApplication_platform.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCCommon.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCFileUtils.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCGL.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCImage.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCLibxml2.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCPlatformConfig.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCPlatformMacros.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCSAXParser.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\CCStdC.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\platform.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\BasicLoader.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\BasicReaderWriter.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DirectXHelper.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DirectXRender.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DXTextPainter.h" />
+    <ClInclude Include="..\..\cocos2dx\support\base64.h" />
+    <ClInclude Include="..\..\cocos2dx\support\CCProfiling.h" />
+    <ClInclude Include="..\..\cocos2dx\support\ccUtils.h" />
+    <ClInclude Include="..\..\cocos2dx\support\data_support\ccCArray.h" />
+    <ClInclude Include="..\..\cocos2dx\support\data_support\uthash.h" />
+    <ClInclude Include="..\..\cocos2dx\support\data_support\utlist.h" />
+    <ClInclude Include="..\..\cocos2dx\support\TransformUtils.h" />
+    <ClInclude Include="..\..\cocos2dx\support\zip_support\ioapi.h" />
+    <ClInclude Include="..\..\cocos2dx\support\zip_support\unzip.h" />
+    <ClInclude Include="..\..\cocos2dx\support\zip_support\ZipUtils.h" />
+    <ClInclude Include="..\..\CocosDenshion\include\Export.h" />
+    <ClInclude Include="..\..\CocosDenshion\include\SimpleAudioEngine.h" />
+    <ClInclude Include="..\..\CocosDenshion\win8_metro\Audio.h" />
+    <ClInclude Include="..\..\CocosDenshion\win8_metro\MediaStreamer.h" />
+    <ClInclude Include="..\AppDelegate.h" />
+    <ClInclude Include="..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Box2D\Collision\b2BroadPhase.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2CollideCircle.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2CollideEdge.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2CollidePolygon.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2Collision.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2Distance.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2DynamicTree.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\b2TimeOfImpact.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2ChainShape.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2CircleShape.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2EdgeShape.cpp" />
+    <ClCompile Include="..\..\Box2D\Collision\Shapes\b2PolygonShape.cpp" />
+    <ClCompile Include="..\..\Box2D\Common\b2BlockAllocator.cpp" />
+    <ClCompile Include="..\..\Box2D\Common\b2Draw.cpp" />
+    <ClCompile Include="..\..\Box2D\Common\b2Math.cpp" />
+    <ClCompile Include="..\..\Box2D\Common\b2Settings.cpp" />
+    <ClCompile Include="..\..\Box2D\Common\b2StackAllocator.cpp" />
+    <ClCompile Include="..\..\Box2D\Common\b2Timer.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\b2Body.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\b2ContactManager.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\b2Fixture.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\b2Island.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\b2World.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\b2WorldCallbacks.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2CircleContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2Contact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2ContactSolver.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Contacts\b2PolygonContact.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2DistanceJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2FrictionJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2GearJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2Joint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2MouseJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2PulleyJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2RopeJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
+    <ClCompile Include="..\..\Box2D\Rope\b2Rope.cpp" />
+    <ClCompile Include="..\..\cocos2dx\CCDrawingPrimitives.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\image_support\TGAlib.cpp" />
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCParallaxNode.cpp" />
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTileMapAtlas.cpp" />
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXLayer.cpp" />
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXObjectGroup.cpp" />
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXTiledMap.cpp" />
+    <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
+    <ClCompile Include="..\..\CocosDenshion\win8_metro\Audio.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCAction.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionCamera.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionEase.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionGrid.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionGrid3D.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionInstant.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionInterval.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionManager.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionPageTurn3D.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionProgressTimer.cpp" />
+    <ClCompile Include="..\..\cocos2dx\actions\CCActionTiledGrid.cpp" />
+    <ClCompile Include="..\..\cocos2dx\base_nodes\CCAtlasNode.cpp" />
+    <ClCompile Include="..\..\cocos2dx\base_nodes\CCNode.cpp" />
+    <ClCompile Include="..\..\cocos2dx\CCCamera.cpp" />
+    <ClCompile Include="..\..\cocos2dx\CCConfiguration.cpp" />
+    <ClCompile Include="..\..\cocos2dx\CCDirector.cpp" />
+    <ClCompile Include="..\..\cocos2dx\CCScheduler.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCAffineTransform.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCAutoreleasePool.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCData.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCGeometry.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCNS.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCObject.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCSet.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocoa\CCZone.cpp" />
+    <ClCompile Include="..\..\cocos2dx\cocos2d.cpp" />
+    <ClCompile Include="..\..\cocos2dx\effects\CCGrabber.cpp" />
+    <ClCompile Include="..\..\cocos2dx\effects\CCGrid.cpp" />
+    <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDelegate.cpp" />
+    <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDispatcher.cpp" />
+    <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelAtlas.cpp" />
+    <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelBMFont.cpp" />
+    <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelTTF.cpp" />
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCLayer.cpp" />
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCScene.cpp" />
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCTransition.cpp" />
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionPageTurn.cpp" />
+    <ClCompile Include="..\..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionRadial.cpp" />
+    <ClCompile Include="..\..\cocos2dx\menu_nodes\CCMenu.cpp" />
+    <ClCompile Include="..\..\cocos2dx\menu_nodes\CCMenuItem.cpp" />
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCMotionStreak.cpp" />
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCProgressTimer.cpp" />
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCRenderTexture.cpp" />
+    <ClCompile Include="..\..\cocos2dx\misc_nodes\CCRibbon.cpp" />
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleExamples.cpp" />
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleSystem.cpp" />
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleSystemPoint.cpp" />
+    <ClCompile Include="..\..\cocos2dx\particle_nodes\CCParticleSystemQuad.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\CCCommon.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\CCFileUtils.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\CCGL.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\CCImage.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\CCSAXParser.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\CCStdC.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\platform.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\BasicLoader.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\BasicReaderWriter.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\DirectXRender.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\DXTextPainter.cpp" />
+    <ClCompile Include="..\..\cocos2dx\script_support\CCScriptSupport.cpp" />
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCAnimation.cpp" />
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCAnimationCache.cpp" />
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSprite.cpp" />
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSpriteBatchNode.cpp" />
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSpriteFrame.cpp" />
+    <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCSpriteFrameCache.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\base64.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\CCArray.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\CCPointExtension.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\CCProfiling.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\CCUserDefault.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\ccUtils.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\TransformUtils.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\zip_support\ioapi.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\zip_support\unzip.cpp" />
+    <ClCompile Include="..\..\cocos2dx\support\zip_support\ZipUtils.cpp" />
+    <ClCompile Include="..\..\cocos2dx\textures\CCTexture2D.cpp" />
+    <ClCompile Include="..\..\cocos2dx\textures\CCTextureAtlas.cpp" />
+    <ClCompile Include="..\..\cocos2dx\textures\CCTextureCache.cpp" />
+    <ClCompile Include="..\..\cocos2dx\textures\CCTexturePVR.cpp" />
+    <ClCompile Include="..\..\cocos2dx\text_input_node\CCIMEDispatcher.cpp" />
+    <ClCompile Include="..\..\cocos2dx\text_input_node\CCTextFieldTTF.cpp" />
+    <ClCompile Include="..\..\cocos2dx\touch_dispatcher\CCTouchDispatcher.cpp" />
+    <ClCompile Include="..\..\cocos2dx\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="..\..\CocosDenshion\win8_metro\MediaStreamer.cpp" />
+    <ClCompile Include="..\..\CocosDenshion\win8_metro\SimpleAudioEngine.cpp" />
+    <ClCompile Include="..\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="HelloWorld_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCDrawingPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCDrawingVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCGridPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCGridVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCLayerColorPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCLayerColorVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCParticlePixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCParticleVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCProgressTimerPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCProgressTimerVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCRibbonSegmentPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCRibbonSegmentVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCSpritePixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCSpriteVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTexture2DPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTexture2DVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTextureAtlasPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\cocos2dx\hlsl\CCTextureAtlasVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\CloseNormal.png">
+      <FileType>Document</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\CloseSelected.png">
+      <FileType>Document</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\HelloWorld.png">
+      <FileType>Document</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\Icon.png">
+      <FileType>Document</FileType>
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <Image Include="Assets\Logo.png" />
+    <Image Include="Assets\SmallLogo.png" />
+    <Image Include="Assets\SplashScreen.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="Assets\WideLogo.png" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
