@@ -1264,10 +1264,10 @@ bool CCDXSprite::InitializeShader()
 
 	D3D11_BUFFER_DESC textureColorBufferDesc;
 	ZeroMemory( &textureColorBufferDesc, sizeof( D3D11_BUFFER_DESC ) );
-	textureColorBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
+	textureColorBufferDesc.Usage = D3D11_USAGE_DEFAULT;
 	textureColorBufferDesc.ByteWidth = sizeof(TextureColorType);
 	textureColorBufferDesc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
-	textureColorBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+	//textureColorBufferDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 	textureColorBufferDesc.MiscFlags = 0;
 	textureColorBufferDesc.StructureByteStride = 0;
 	result = CCID3D11Device->CreateBuffer(&textureColorBufferDesc, NULL, &m_textureColorBuffer);
@@ -1331,12 +1331,10 @@ bool CCDXSprite::SetShaderParameters( XMMATRIX &viewMatrix, XMMATRIX &projection
 	bufferNumber = 0;
 	CCID3D11DeviceContext->VSSetConstantBuffers(bufferNumber, 1, &m_matrixBuffer);
 
-	TextureColorType* dataPtr2;
-	memset(&mappedResource,0,sizeof(D3D11_MAPPED_SUBRESOURCE));
-	if(FAILED(CCID3D11DeviceContext->Map(m_textureColorBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource))){return false;}
-	dataPtr2 = (TextureColorType*)mappedResource.pData;
-	dataPtr2->istexture[0] = (texture ? TRUE : FALSE);
-	CCID3D11DeviceContext->Unmap(m_textureColorBuffer, 0);
+	TextureColorType tc;
+	ZeroMemory(&tc, sizeof(tc));
+	tc.istexture[0] = (texture ? TRUE : FALSE);
+	CCID3D11DeviceContext->UpdateSubresource(m_textureColorBuffer, 0, 0, &tc, 0, 0);
 	bufferNumber = 0;
 	CCID3D11DeviceContext->PSSetConstantBuffers(bufferNumber, 1, &m_textureColorBuffer);
 
