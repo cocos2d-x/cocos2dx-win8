@@ -394,18 +394,18 @@ protected:
 class CC_DLL CCDXSprite
 {
 private:
-	struct MatrixBufferType
+	_declspec(align(16)) struct MatrixBufferType
 	{
 		DirectX::XMMATRIX view;
 		DirectX::XMMATRIX projection;
 	};
-	struct VertexType
+	_declspec(align(16)) struct VertexType
 	{
 		DirectX::XMFLOAT3 position;
 		DirectX::XMFLOAT4 color;
 		DirectX::XMFLOAT2 texture;
 	};
-	struct TextureColorType
+	_declspec(align(16)) struct TextureColorType
 	{
 		bool istexture[16];
 	};
