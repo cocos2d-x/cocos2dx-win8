@@ -59,7 +59,7 @@ namespace cocos2d{
 
 	CCMenu * CCMenu::menuWithItems(CCMenuItem* item, ...)
 	{
-		va_list args;
+		va_list args = NULL;
 		va_start(args,item);
 		CCMenu *pRet = new CCMenu();
 		if (pRet && pRet->initWithItems(item, args))

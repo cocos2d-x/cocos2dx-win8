@@ -11,10 +11,10 @@ namespace cocos2d
     extern Windows::ApplicationModel::Core::IFrameworkView^ getSharedCCApplicationFrameworkView();
 }
 
-ref class CCApplicationFrameworkViewSource : Windows::ApplicationModel::Core::IFrameworkViewSource 
+ref class CCApplicationFrameworkViewSource sealed : Windows::ApplicationModel::Core::IFrameworkViewSource 
 {
 public:
-    Windows::ApplicationModel::Core::IFrameworkView^ CreateView()
+	virtual Windows::ApplicationModel::Core::IFrameworkView^ CreateView()
     {
         return cocos2d::getSharedCCApplicationFrameworkView();
     }
