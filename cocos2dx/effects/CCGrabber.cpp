@@ -40,16 +40,14 @@ namespace cocos2d
 	void CCGrabber::grab(CCTexture2D *pTexture)
 	{
 		Initialize(CCDirector::sharedDirector()->getOpenGLView()->GetDevice(), pTexture);
-
 	}
 	
 	void CCGrabber::beforeRender(CCTexture2D *pTexture)
 	{
-		CCEGLView* eglView = CCDirector::sharedDirector()->getOpenGLView();
-		SetRenderTarget(eglView->GetDeviceContext(), eglView->GetDepthStencilView());
-
+		CCID3D11DeviceContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView);
 		CCD3DCLASS->D3DClearColor(0.0f,0.0f,0.0f,1.0f);
-		ClearRenderTarget(eglView->GetDeviceContext(), eglView->GetDepthStencilView());
+		CCD3DCLASS->clearRender(m_renderTargetView);
+		CCID3D11DeviceContext->ClearDepthStencilView(m_depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 	}
 
 	void CCGrabber::afterRender(cocos2d::CCTexture2D *pTexture)
@@ -60,13 +58,19 @@ namespace cocos2d
 
 	CCGrabber::~CCGrabber()
 	{
-
 		if(m_renderTargetView)
 		{
 			m_renderTargetView->Release();
 			m_renderTargetView = 0;
 		}
-
+		if (m_depthStencil) {
+			m_depthStencil->Release();
+			m_depthStencil = 0;
+		}
+		if (m_depthStencilView) {
+			m_depthStencilView->Release();
+			m_renderTargetView = 0;
+		}
 		CCLOGINFO("cocos2d: deallocing %p", this);
 	}
 
@@ -93,26 +97,28 @@ namespace cocos2d
 		{
 			return false;
 		}
-
+		CD3D11_TEXTURE2D_DESC depthStencilDesc(
+			DXGI_FORMAT_D24_UNORM_S8_UINT,
+			pDesc.Width,
+			pDesc.Height,
+			1,
+			1,
+			D3D11_BIND_DEPTH_STENCIL
+        );
+		result = device->CreateTexture2D(
+            &depthStencilDesc,
+            nullptr,
+            &m_depthStencil
+            );
+		if (FAILED(result)) {
+			return false;
+        }
+		result = device->CreateDepthStencilView(m_depthStencil, 
+				&CD3D11_DEPTH_STENCIL_VIEW_DESC(D3D11_DSV_DIMENSION_TEXTURE2D), 
+				&m_depthStencilView );
+		if(FAILED(result)) {
+			return false;
+		}
 		return true;
 	}
-
-	void CCGrabber::SetRenderTarget(ID3D11DeviceContext* deviceContext, ID3D11DepthStencilView* depthStencilView)
-	{
-
-		// Bind the render target view and depth stencil buffer to the output render pipeline.
-		deviceContext->OMSetRenderTargets(1, &m_renderTargetView, depthStencilView);
-
-		return;
-	}
-
-	void CCGrabber::ClearRenderTarget(ID3D11DeviceContext* deviceContext, ID3D11DepthStencilView* depthStencilView)
-	{
-		CCD3DCLASS->clearRender(m_renderTargetView);
-		// Clear the depth buffer.
-		deviceContext->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
-
-		return;
-	}
-
 } // end of namespace cocos2d
