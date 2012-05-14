@@ -48,13 +48,11 @@ namespace cocos2d
 		CCuint m_fbo;
 		CCint m_oldFBO;
 		CCGlesVersion m_eGlesVersion;
-
-	public:
 		ID3D11RenderTargetView* m_renderTargetView;
-
+		ID3D11DepthStencilView* m_depthStencilView;
+		ID3D11Texture2D* m_depthStencil;
+	public:
 		bool Initialize(ID3D11Device*, CCTexture2D *);
-		void SetRenderTarget(ID3D11DeviceContext*, ID3D11DepthStencilView*);
-		void ClearRenderTarget(ID3D11DeviceContext*, ID3D11DepthStencilView*);
 	};
 
 } // end of namespace cocos2d
