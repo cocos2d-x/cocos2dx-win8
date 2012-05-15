@@ -81,30 +81,34 @@ bool DXTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 
 Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, Windows::Foundation::Size* tSize, TextAlignment alignment)
 {
-	//set text alignment
+	//set text alignment and paragraph alignment
 	switch (alignment)
 	{
 	case TextAlignment::TextAlignmentLeft: // left
 		DX::ThrowIfFailed(
 			m_TextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_LEADING)
 			);
+		DX::ThrowIfFailed(
+			m_TextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_NEAR)
+			);
 		break;
 	case TextAlignment::TextAlignmentRight: // right
 		DX::ThrowIfFailed(
 			m_TextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_TRAILING)
+			);
+		DX::ThrowIfFailed(
+			m_TextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_NEAR)
 			);
 		break;
 	case TextAlignment::TextAlignmentCenter: // center
 		DX::ThrowIfFailed(
 			m_TextFormat->SetTextAlignment(DWRITE_TEXT_ALIGNMENT_CENTER)
 			);
+		DX::ThrowIfFailed(
+			m_TextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_CENTER)
+			);
 		break;
 	}
-
-	//set paragraph alignment
-	DX::ThrowIfFailed(
-		m_TextFormat->SetParagraphAlignment(DWRITE_PARAGRAPH_ALIGNMENT_NEAR)
-		);
 
 	bool isShouldAdjustBounds = false;
 	if(tSize->Width <= 0)
