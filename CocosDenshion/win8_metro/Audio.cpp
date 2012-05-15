@@ -11,7 +11,6 @@
 #include "MediaStreamer.h"
 #include "CCCommon.h"
 
-
 void AudioEngineCallbacks::Initialize(Audio *audio)
 {
     m_audio = audio;
@@ -464,6 +463,8 @@ void Audio::PreloadSoundEffect(const char* pszFilePath, bool isMusic)
 	    m_musicEngine->CreateSourceVoice(&m_soundEffects[sound].m_soundEffectSourceVoice,
             &(mediaStreamer.GetOutputWaveFormatEx()), 0, 1.0f, &m_voiceContext, &sends)
 	    );
+		//fix bug: set a initial volume
+		m_soundEffects[sound].m_soundEffectSourceVoice->SetVolume(m_backgroundMusicVolume);
     } else
     {
         XAUDIO2_SEND_DESCRIPTOR descriptors[1];
@@ -477,6 +478,8 @@ void Audio::PreloadSoundEffect(const char* pszFilePath, bool isMusic)
 	    m_soundEffectEngine->CreateSourceVoice(&m_soundEffects[sound].m_soundEffectSourceVoice,
             &(mediaStreamer.GetOutputWaveFormatEx()), 0, 1.0f, &m_voiceContext, &sends, nullptr)
         );
+		//fix bug: set a initial volume
+		m_soundEffects[sound].m_soundEffectSourceVoice->SetVolume(m_soundEffctVolume);
     }
 
 	m_soundEffects[sound].m_soundEffectSampleRate = mediaStreamer.GetOutputWaveFormatEx().nSamplesPerSec;
