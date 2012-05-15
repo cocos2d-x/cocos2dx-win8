@@ -164,7 +164,7 @@ float SimpleAudioEngine::getBackgroundMusicVolume()
 
 void SimpleAudioEngine::setBackgroundMusicVolume(float volume)
 {
-    sharedAudioController()->SetBackgroundVolume(volume);
+	sharedAudioController()->SetBackgroundVolume((volume<=0.0f)? 0.0f : volume);
 }
 
 float SimpleAudioEngine::getEffectsVolume()
@@ -174,7 +174,7 @@ float SimpleAudioEngine::getEffectsVolume()
 
 void SimpleAudioEngine::setEffectsVolume(float volume)
 {
-    sharedAudioController()->SetSoundEffectVolume(volume);
+    sharedAudioController()->SetSoundEffectVolume((volume<=0.0f)? 0.0f : volume);
 }
 
 } // end of namespace CocosDenshion
