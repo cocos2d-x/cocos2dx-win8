@@ -3,6 +3,11 @@ cocos2dx-win8
 
 cocos2dx-win8 is a branch of [cocos2d-x][1] and licensed under MIT. It allows you create or port cocos2d Windows8 metro style games easily and quickly.
 
+SimpleGame
+--------------------
+
+Here is a [simpleGame][3] on github.
+
 Document
 ---------------------
 
@@ -16,3 +21,4 @@ Contact us
    
 [1]: http://www.cocos2d-x.org "cocos2d-x"
 [2]: http://www.cocos2d-x.org/embedded/cocos2d-x/classes.html "API References"
+[3]: https://github.com/lihex/SimpleGameCocos2dxWin8 "SimpleGame"
