@@ -9,6 +9,7 @@
 #include "CCCommon.h"
 #include "CCGeometry.h"
 #include <stack>
+#include <vector>
 #include <map>
 
 NS_CC_BEGIN;
@@ -16,6 +17,87 @@ NS_CC_BEGIN;
 class CCSet;
 class CCTouch;
 class EGLTouchDelegate;
+
+template<typename T, size_t TALIGN=16, size_t TBLOCK=8>
+class aligned_allocator
+{
+public:
+	typedef T * pointer;
+	typedef const T * const_pointer;
+	typedef T& reference;
+	typedef const T& const_reference;
+	typedef T value_type;
+	typedef size_t size_type;
+	typedef ptrdiff_t difference_type;
+	T * address(T& r) const 
+	{
+		return &r;
+	}
+	const T * address(const T& s) const 
+	{
+		return &s;
+	}
+	size_t max_size() const 
+	{
+		return (static_cast<size_t>(0) - static_cast<size_t>(1)) / sizeof(T);
+	}
+	template <typename U> struct rebind 
+	{
+		typedef aligned_allocator<U> other;
+	};
+	bool operator!=(const aligned_allocator& other) const 
+	{
+		return !(*this == other);
+	}
+	bool operator==(const aligned_allocator& other) const 
+	{
+		return true;
+	}
+	void construct(pointer p, const T &val) 
+	{
+		new (p) T(val);
+	}
+	void destroy(pointer p) 
+	{
+		p->~T();
+	}
+	aligned_allocator() 
+	{
+	}
+	aligned_allocator(const aligned_allocator &) 
+	{
+	}
+	template<typename U> aligned_allocator(const aligned_allocator<U>&) 
+	{
+	}
+	~aligned_allocator() 
+	{
+	}
+	pointer allocate(size_t n) 
+	{
+		return allocate(n, NULL);
+	}
+	pointer allocate(size_t n, const void *hint) 
+	{
+		pointer p = NULL;
+		size_t count = sizeof(T) * n;
+		size_t count_left = count % TBLOCK;
+		if (0 != count_left) {
+			count += TBLOCK - count_left;
+		}
+		if (!hint) {
+			p = reinterpret_cast<pointer>(_aligned_malloc(count, TALIGN));
+		}
+		else {
+			p = reinterpret_cast<pointer>(_aligned_realloc((void *)hint, count, TALIGN));
+		}
+		return p;
+	}
+	void deallocate(pointer p, size_t) 
+	{
+		_aligned_free(p);
+	}
+};
 
 class CC_DLL CCEGLView
 {
@@ -122,8 +204,11 @@ private:
 		DirectX::XMMATRIX view;
 		DirectX::XMMATRIX projection;
 	};
+#if defined(_XM_SSE_INTRINSICS_) && !defined(_XM_NO_INTRINSICS_)
+	std::stack<MatrixStruct, std::deque<MatrixStruct, aligned_allocator<MatrixStruct> > > m_MatrixStack;
+#else 
 	std::stack<MatrixStruct> m_MatrixStack;
-    
+#endif
     int m_oldViewState;
 };
 
