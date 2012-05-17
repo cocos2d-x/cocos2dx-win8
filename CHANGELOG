@@ -1,3 +1,21 @@
+cocos2d-x for win8-metro 0.1.1 @ May.17,2012
+
+Bugs:
+- Fixed blink issue when creating sprite with colors
+- Fix compile error for which chinese is not supported system
+- Fixed depth buffer issue
+- Fix for Crash on release compile
+- CCLabelTTF: Fix paragraph alignment
+- CocosDesion: Set a initial volume on PreloadSoundEffect
+- CocosDesion: Negative volume is not allowed
+
+Feature:
+- Add Visul studio tempelate 
+- Add How to creaete HelloWorld project document
+- Support win8 (8370build)
+
+
+
 cocos2d-x for win8-metro 0.1.0 @ May.11,2012
 
 * this is the first preview version
