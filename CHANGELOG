@@ -14,6 +14,9 @@ Feature:
 - Add How to creaete HelloWorld project document
 - Support win8 (8370build)
 
+TODO:
+- Chipmunk is not supported yet
+
 
 
 cocos2d-x for win8-metro 0.1.0 @ May.11,2012
