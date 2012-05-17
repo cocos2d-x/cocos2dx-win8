@@ -28,9 +28,10 @@ namespace cocos2d
 #pragma warning (disable: 4449) // warns that class is not consumable by JS because it is not sealed
 
 // Helper class that initializes the DirectX APIs in the sample apps.
-public ref class DirectXRender
+public ref class DirectXRender 
 {
 public:
+	internal:
     DirectXRender();
 
     void Initialize(Windows::UI::Core::CoreWindow^ window, float dpi);
@@ -47,13 +48,17 @@ public:
     static DirectXRender^ SharedDXRender();
 
 private:
+	    Windows::UI::Core::CoreWindow^                  m_window;
+		DXTextPainter^									m_textPainter;
+
+private:
     bool SetRasterState();
 
-protected:
+private:
     friend class cocos2d::CCEGLView;
 	friend class cocos2d::CCImage;
 
-    Windows::UI::Core::CoreWindow^                  m_window;
+
 
     // Declare Direct2D Objects
     Microsoft::WRL::ComPtr<ID2D1Factory1>           m_d2dFactory;
@@ -76,7 +81,7 @@ protected:
     Windows::Foundation::Size                       m_renderTargetSize;
     Windows::Foundation::Rect                       m_windowBounds;
     float                                           m_dpi;
-	DXTextPainter^									m_textPainter;
+
 
     bool m_windowClosed;
 

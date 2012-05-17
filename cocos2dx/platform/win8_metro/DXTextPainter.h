@@ -20,6 +20,7 @@ enum class TextAlignment
 ref class DXTextPainter
 {
 public:
+	internal:
 	DXTextPainter(){};
 
 	void Initialize(
@@ -31,7 +32,7 @@ public:
 	bool				    SetFont(Platform::String^ fontName, UINT nSize);
 	Platform::Array<byte>^  DrawTextToImage(Platform::String ^text, Windows::Foundation::Size* tSize, TextAlignment alignment);
 
-protected:
+private:
 	// Direct2D Objects
 	Microsoft::WRL::ComPtr<ID2D1DeviceContext>				m_d2dContext;
 	Microsoft::WRL::ComPtr<IDWriteFactory1>					m_dwriteFactory;

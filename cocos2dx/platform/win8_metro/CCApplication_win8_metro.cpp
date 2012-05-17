@@ -6,17 +6,17 @@
 
 NS_CC_BEGIN;
 
-ref class CCFrameworkView : public Windows::ApplicationModel::Core::IFrameworkView
+ref class CCFrameworkView sealed : public Windows::ApplicationModel::Core::IFrameworkView
 {
 public:
     CCFrameworkView();
     
     // IFrameworkView Methods
-    void Initialize(_In_ Windows::ApplicationModel::Core::CoreApplicationView^ applicationView);
-    void SetWindow(_In_ Windows::UI::Core::CoreWindow^ window);
-    void Load(_In_ Platform::String^ entryPoint);
-    void Run();
-    void Uninitialize();
+    virtual void Initialize( Windows::ApplicationModel::Core::CoreApplicationView^ applicationView);
+    virtual void SetWindow( Windows::UI::Core::CoreWindow^ window);
+    virtual void Load(Platform::String^ entryPoint);
+    virtual void Run();
+    virtual void Uninitialize();
 
     // Event Handlers
     void OnActivated(
@@ -44,8 +44,10 @@ public:
         );
 
 private:
+	
     DirectXRender^ m_renderer;
     Windows::ApplicationModel::Core::CoreApplicationView^ m_applicationView;
+	Windows::UI::Core::CoreWindow^ m_window;
 };
 
 using namespace Windows::ApplicationModel;
@@ -64,7 +66,7 @@ CCFrameworkView::CCFrameworkView()
 }
 
 void CCFrameworkView::Initialize(
-    _In_ CoreApplicationView^ applicationView
+     CoreApplicationView^ applicationView
     )
 {
     CCLog("CCFrameworkView::+Initialize()");
@@ -86,6 +88,7 @@ void CCFrameworkView::SetWindow(
     )
 {
     CCLog("CCFrameworkView::+SetWindow()");
+	m_window = window;
     window->PointerCursor = ref new CoreCursor(CoreCursorType::Arrow, 0);
 
     DisplayProperties::LogicalDpiChanged +=
@@ -109,10 +112,26 @@ void CCFrameworkView::Run()
     CCLog("CCFrameworkView::+Run()");
 
     // if applicationDidFinishLaunching return false, exist.
-    bool inited = (CCApplication::sharedApplication().applicationDidFinishLaunching());
+    bool inited = false;
 
-    while (inited)
+    while (1)
     {
+		if (nullptr == m_window)
+		{
+			// sleep
+			continue;
+		}
+
+		if (false == inited)
+		{
+			inited = (CCApplication::sharedApplication().applicationDidFinishLaunching());
+			if (false == inited)
+			{
+				// init falied
+				break;
+			}
+		}
+
         // if windows closed exit app
         if (true == m_renderer->GetWindowsClosedState())
         {
@@ -271,7 +290,7 @@ ccLanguageType CCApplication::getCurrentLanguage()
         
         if (wcscmp(primary, L"zh") == 0)
         {
-            // Chinese, Simplified Chinese and Traditional Chinese
+            // 中文，简体和繁体
             if (wcscmp(sub, L"TW") == 0 ||
                 wcscmp(sub, L"HK") == 0 ||
                 wcscmp(sub, L"MO") == 0)

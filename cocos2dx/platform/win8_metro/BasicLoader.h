@@ -12,6 +12,7 @@
 ref class BasicLoader
 {
 public:
+	internal:
     BasicLoader(
         _In_ ID3D11Device* d3dDevice
         );

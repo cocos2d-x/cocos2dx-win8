@@ -18,7 +18,9 @@ private:
     Platform::String^ m_locationPath;
 
 public:
+	internal:
     BasicReaderWriter();
+	internal:
     BasicReaderWriter(
         _In_ Windows::Storage::StorageFolder^ folder
         );
