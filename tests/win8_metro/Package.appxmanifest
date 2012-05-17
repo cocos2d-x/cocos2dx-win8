@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="cocos2d-x-win8-metro.App">
-      <VisualElements DisplayName="cocos2d-x-win8-metro" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="cocos2d-x-win8-metro" ForegroundText="light" BackgroundColor="#FFFFFF">
+      <VisualElements DisplayName="cocos2d-x-win8-metro" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="cocos2d-x-win8-metro" ForegroundText="dark" BackgroundColor="#FFFFFF">
         <DefaultTile ShowName="wideLogoOnly" WideLogo="Assets\WideLogo.png" ShortName="cocos2d-x" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>

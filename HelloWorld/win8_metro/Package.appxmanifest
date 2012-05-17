@@ -16,7 +16,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="cocos2dmetro-HelloWorld.App">
-      <VisualElements DisplayName="cocos2dmetro-HelloWorld" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="cocos2dmetro-HelloWorld" ForegroundText="light" BackgroundColor="#FFFFFF">
+      <VisualElements DisplayName="cocos2dmetro-HelloWorld" Logo="Assets\Logo.png" SmallLogo="Assets\SmallLogo.png" Description="cocos2dmetro-HelloWorld" ForegroundText="dark" BackgroundColor="#FFFFFF">
         <DefaultTile ShowName="wideLogoOnly" WideLogo="Assets\WideLogo.png" ShortName="helloworld" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>
