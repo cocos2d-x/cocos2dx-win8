@@ -38,20 +38,6 @@ THE SOFTWARE.
 #include "jpeglib.h"
 #undef   QGLOBAL_H
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
-//only use in win8_metro
-#include <wrl.h>
-#include <wincodec.h>
-#include <mmreg.h>
-#include <mfidl.h>
-#include <mfapi.h>
-#include <mfreadwrite.h>
-#include <mfmediaengine.h>
-#include <io.h>
-#include <fcntl.h>
-
-#endif//end of (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
-
 #define CC_RGB_PREMULTIPLY_APLHA(vr, vg, vb, va) \
     (unsigned)(((unsigned)((unsigned char)(vr) * ((unsigned char)(va) + 1)) >> 8) | \
     ((unsigned)((unsigned char)(vg) * ((unsigned char)(va) + 1) >> 8) << 8) | \
@@ -394,38 +380,7 @@ bool CCImage::_saveImageToPNG(const char * pszFilePath, bool bIsToRGB)
 		png_colorp palette;
 		png_bytep *row_pointers;
 
-		FILE_STANDARD_INFO fileStandardInfo = { 0 };
-		HANDLE hFile;
-		std::wstring path = CCUtf8ToUnicode(pszFilePath);
-
-		CREATEFILE2_EXTENDED_PARAMETERS extendedParams = {0};
-		extendedParams.dwSize = sizeof(CREATEFILE2_EXTENDED_PARAMETERS);
-		extendedParams.dwFileAttributes = FILE_ATTRIBUTE_NORMAL;
-		extendedParams.dwFileFlags = FILE_FLAG_SEQUENTIAL_SCAN;
-		extendedParams.dwSecurityQosFlags = SECURITY_ANONYMOUS;
-		extendedParams.lpSecurityAttributes = nullptr;
-		extendedParams.hTemplateFile = nullptr;
-
-		// read the file from hardware
-		hFile = ::CreateFile2(path.c_str(), GENERIC_WRITE, 0, CREATE_ALWAYS, &extendedParams);
-		if (INVALID_HANDLE_VALUE == hFile)
-		{
-			break;
-		}
-
-		int CrtFileHandle;
-		/* convert OS file handle to CRT file pointer */ 
-		if ( (CrtFileHandle=_open_osfhandle ((long)hFile,_O_RDONLY))==-1){ 
-			//printf( "_open_osfhandle Failed "); 
-			break;
-		} 
-		/* Change handle access to stream access. */ 
-		if( (fp = _fdopen( CrtFileHandle, "wb")) == NULL ) { 
-			//printf( "_fdopen Failed "); 
-			break;
-		} 
-
-
+		fp = fopen(pszFilePath, "wb");
 		CC_BREAK_IF(NULL == fp);
 
 		png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
@@ -566,41 +521,11 @@ bool CCImage::_saveImageToJPG(const char * pszFilePath)
 		JSAMPROW row_pointer[1];        /* pointer to JSAMPLE row[s] */
 		int     row_stride;          /* physical row width in image buffer */
 
-		FILE_STANDARD_INFO fileStandardInfo = { 0 };
-		HANDLE hFile;
-		std::wstring path = CCUtf8ToUnicode(pszFilePath);
-
-		CREATEFILE2_EXTENDED_PARAMETERS extendedParams = {0};
-		extendedParams.dwSize = sizeof(CREATEFILE2_EXTENDED_PARAMETERS);
-		extendedParams.dwFileAttributes = FILE_ATTRIBUTE_NORMAL;
-		extendedParams.dwFileFlags = FILE_FLAG_SEQUENTIAL_SCAN;
-		extendedParams.dwSecurityQosFlags = SECURITY_ANONYMOUS;
-		extendedParams.lpSecurityAttributes = nullptr;
-		extendedParams.hTemplateFile = nullptr;
-
-		// read the file from hardware
-		hFile = ::CreateFile2(path.c_str(), GENERIC_WRITE, 0, CREATE_ALWAYS, &extendedParams);
-		if (INVALID_HANDLE_VALUE == hFile)
-		{
-			break;
-		}
-
-		int CrtFileHandle;
-		/* convert OS file handle to CRT file pointer */ 
-		if ((CrtFileHandle=_open_osfhandle ((long)hFile,_O_RDONLY))==-1){ 
-			//printf( "_open_osfhandle Failed "); 
-			break;
-		} 
-		/* Change handle access to stream access. */ 
-		if( (outfile = _fdopen( CrtFileHandle, "wb")) == NULL ) { 
-			//printf( "_fdopen Failed "); 
-			break;
-		} 
-
-
 		cinfo.err = jpeg_std_error(&jerr);
 		/* Now we can initialize the JPEG compression object. */
 		jpeg_create_compress(&cinfo);
+
+		CC_BREAK_IF((outfile = fopen(pszFilePath, "wb")) == NULL);
 		
 		jpeg_stdio_dest(&cinfo, outfile);
 
