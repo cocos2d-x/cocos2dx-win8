@@ -290,7 +290,7 @@ ccLanguageType CCApplication::getCurrentLanguage()
         
         if (wcscmp(primary, L"zh") == 0)
         {
-            // 中文，简体和繁体
+            //Chinese, Simplified Chinese and Traditional Chinese
             if (wcscmp(sub, L"TW") == 0 ||
                 wcscmp(sub, L"HK") == 0 ||
                 wcscmp(sub, L"MO") == 0)
