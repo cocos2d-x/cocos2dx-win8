@@ -1,4 +1,4 @@
-cocos2d-x for win8-metro 0.1.1 @ May.17,2012
+cocos2d-x for win8-metro 0.9.1 @ May.17,2012
 
 Bugs:
 - Fixed blink issue when creating sprite with colors
@@ -19,7 +19,7 @@ TODO:
 
 
 
-cocos2d-x for win8-metro 0.1.0 @ May.11,2012
+cocos2d-x for win8-metro 0.9.0 @ May.11,2012
 
 * this is the first preview version
 * develop in Windows 8 Consumer preview Build 8250 
