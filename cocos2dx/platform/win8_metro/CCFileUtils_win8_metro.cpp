@@ -149,73 +149,32 @@ const char *CCFileUtils::fullPathFromRelativeFile(const char *pszFilename, const
 
 unsigned char* CCFileUtils::getFileDataPlatform(const char* pszFileName, const char* pszMode, unsigned long * pSize)
 {
-    const char *pszPath = fullPathFromRelativePath(pszFileName);
+	const char *pszPath = fullPathFromRelativePath(pszFileName);
+    unsigned char * pBuffer = NULL;
 
-	FILE_STANDARD_INFO fileStandardInfo = { 0 };
-	HANDLE hFile;
-	DWORD bytesRead = 0;
-	uint32 dwFileSize = 0;
-	BYTE* pBuffer = 0;
-	
-	std::wstring path = CCUtf8ToUnicode(pszPath);
+    do 
+    {
+        // read the file from hardware
+        FILE *fp = fopen(pszPath, pszMode);
+        CC_BREAK_IF(!fp);
 
+        fseek(fp,0,SEEK_END);
+        *pSize = ftell(fp);
+        fseek(fp,0,SEEK_SET);
+        pBuffer = new unsigned char[*pSize];
+        *pSize = fread(pBuffer,sizeof(unsigned char), *pSize,fp);
+        fclose(fp);
+    } while (0);
 
-	do 
-	{
-		CREATEFILE2_EXTENDED_PARAMETERS extendedParams = {0};
-		extendedParams.dwSize = sizeof(CREATEFILE2_EXTENDED_PARAMETERS);
-		extendedParams.dwFileAttributes = FILE_ATTRIBUTE_NORMAL;
-		extendedParams.dwFileFlags = FILE_FLAG_SEQUENTIAL_SCAN;
-		extendedParams.dwSecurityQosFlags = SECURITY_ANONYMOUS;
-		extendedParams.lpSecurityAttributes = nullptr;
-		extendedParams.hTemplateFile = nullptr;
+    if (! pBuffer && getIsPopupNotify())
+    {
+        std::string title = "Notification";
+        std::string msg = "Get data from file(";
+        msg.append(pszPath).append(") failed!");
 
-		// read the file from hardware
-		hFile = ::CreateFile2(path.c_str(), GENERIC_READ, 0, OPEN_EXISTING, &extendedParams);
-		if (INVALID_HANDLE_VALUE == hFile)
-		{
-			break;
-		}
-
-
-		BOOL result = ::GetFileInformationByHandleEx(
-			hFile,
-			FileStandardInfo,
-			&fileStandardInfo,
-			sizeof(fileStandardInfo)
-			);
-
-		//Read error
-		if ((result == 0) || (fileStandardInfo.EndOfFile.HighPart != 0))
-		{
-			break;
-		}
-
-		dwFileSize = fileStandardInfo.EndOfFile.LowPart;
-		pBuffer = new BYTE[dwFileSize];
-
-		if (!ReadFile(hFile, pBuffer, dwFileSize, &bytesRead, nullptr))
-		{
-			break;
-		}
-		*pSize = bytesRead;
-
-	} while (0);
-
-	if (! pBuffer && getIsPopupNotify())
-	{
-		std::string title = "Notification";
-		std::string msg = "Get data from file(";
-		msg.append(pszPath).append(") failed!");
-
-		//CCMessageBox(msg.c_str(), title.c_str());
-		OutputDebugString(L"CCFileUtils_win8_metro.cpp: Get data from file failed!\n");
-	}
-
-    if (hFile != INVALID_HANDLE_VALUE)
-        CloseHandle(hFile);
-
-	return pBuffer;
+        CCMessageBox(msg.c_str(), title.c_str());
+    }
+    return pBuffer;
 }
 
 void CCFileUtils::setResource(const char* pszZipFileName)
