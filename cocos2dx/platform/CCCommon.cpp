@@ -361,19 +361,21 @@ void CCMessageBox(const char * pszMsg, const char * pszTitle)
     msg->ShowAsync();
 }
 
-std::wstring CCUtf8ToUnicode(const char * pszUtf8Str)
+std::wstring CCUtf8ToUnicode(const char * pszUtf8Str, unsigned len/* = -1*/)
 {
     std::wstring ret;
     do
     {
         if (! pszUtf8Str) break;
-        size_t len = strlen(pszUtf8Str);
+		if (-1 == len)
+		{
+			len = strlen(pszUtf8Str);
+		}
         if (len <= 0) break;
-		++len;
-        wchar_t * pwszStr = new wchar_t[len];
+        wchar_t * pwszStr = new wchar_t[len + 1];
         if (! pwszStr) break;
-        pwszStr[len - 1] = 0;
-        MultiByteToWideChar(CP_UTF8, 0, pszUtf8Str, len, pwszStr, len);
+        pwszStr[len] = 0;
+        MultiByteToWideChar(CP_UTF8, 0, pszUtf8Str, len, pwszStr, len + 1);
         ret = pwszStr;
         CC_SAFE_DELETE_ARRAY(pwszStr);
     } while (0);
