@@ -28,8 +28,63 @@
 #include <libxml/xmlmemory.h>
 #include "CCLibxml2.h"
 #include "CCFileUtils.h"
+#include "tinyxml\tinyxml.h"
+
 
 NS_CC_BEGIN;
+
+class CC_DLL XmlSaxHander : public TiXmlVisitor
+{
+public:
+	XmlSaxHander():m_ccsaxParserImp(0){};
+
+	virtual bool VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute );
+	virtual bool VisitExit( const TiXmlElement& element );
+	virtual bool Visit( const TiXmlText& text );
+	virtual bool Visit( const TiXmlUnknown&){ return false; }
+
+	void setCCSAXParserImp(CCSAXParser* parser)
+	{
+		m_ccsaxParserImp = parser;
+	}
+
+private:
+	CCSAXParser *m_ccsaxParserImp;
+};
+
+
+bool XmlSaxHander::VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute )
+{
+	//CCLog(" VisitEnter %s",element.Value());
+
+	std::vector<const char*> attsVector;
+	for( const TiXmlAttribute* attrib = firstAttribute; attrib; attrib = attrib->Next() )
+	{
+		//CCLog("%s", attrib->Name());
+		attsVector.push_back(attrib->Name());
+		//CCLog("%s",attrib->Value());
+		attsVector.push_back(attrib->Value());
+	}
+	attsVector.push_back(nullptr);
+
+	CCSAXParser::startElement(m_ccsaxParserImp, (const CC_XML_CHAR *)element.Value(), (const CC_XML_CHAR **)(&attsVector[0]));
+	return true;
+}
+bool XmlSaxHander::VisitExit( const TiXmlElement& element )
+{
+	//CCLog("VisitExit %s",element.Value());
+
+	CCSAXParser::endElement(m_ccsaxParserImp, (const CC_XML_CHAR *)element.Value());
+	return true;
+}
+
+bool XmlSaxHander::Visit( const TiXmlText& text )
+{
+	//CCLog("Visit %s",text.Value());
+	CCSAXParser::textHandler(m_ccsaxParserImp, (const CC_XML_CHAR *)text.Value(), text.ValueTStr().size());
+	return true;
+}
+
 
 CCSAXParser::CCSAXParser()
 {
@@ -59,37 +114,11 @@ bool CCSAXParser::parse(const char *pszFile)
 		return false;
 	}
 		
-	/*
-	 * this initialize the library and check potential ABI mismatches
-	 * between the version it was compiled for and the actual shared
-	 * library used.
-	 */
-	LIBXML_TEST_VERSION
-	xmlSAXHandler saxHandler;
-	memset( &saxHandler, 0, sizeof(saxHandler) );
-	// Using xmlSAXVersion( &saxHandler, 2 ) generate crash as it sets plenty of other pointers...
-	saxHandler.initialized = XML_SAX2_MAGIC;  // so we do this to force parsing as SAX2.
-	saxHandler.startElement = &CCSAXParser::startElement;
-	saxHandler.endElement = &CCSAXParser::endElement;
-	saxHandler.characters = &CCSAXParser::textHandler;
-	
-	int result = xmlSAXUserParseMemory( &saxHandler, this, pBuffer, size );
-	if ( result != 0 )
-	{
-		return false;
-	}
-	/*
-	 * Cleanup function for the XML library.
-	 */
-	xmlCleanupParser();
-	/*
-	 * this is to debug memory for regression tests
-	 */
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-	xmlMemoryDump();
-#endif
-	
-	return true;
+	TiXmlDocument tinyDoc;
+	tinyDoc.Parse(pBuffer);
+	XmlSaxHander printer;
+	printer.setCCSAXParserImp(this);
+	return tinyDoc.Accept( &printer );	
 }
 
 void CCSAXParser::startElement(void *ctx, const CC_XML_CHAR *name, const CC_XML_CHAR **atts)

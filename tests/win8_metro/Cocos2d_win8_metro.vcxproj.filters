@@ -293,6 +293,9 @@
     <Filter Include="chipmunk\src\constraints">
       <UniqueIdentifier>{310e3458-e7f9-403a-965b-15129c21b381}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{0ed081b3-9ca6-4066-b688-2a905ba0af6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -555,6 +558,7 @@
     </None>
     <None Include="Cocos2d_win8_metro_TemporaryKey.pfx" />
     <None Include="tests_TemporaryKey.pfx" />
+    <None Include="Assets\animations\grossini.plist.xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -1244,6 +1248,12 @@
     <ClInclude Include="..\..\tests\tests\Box2DTest\Box2dTest.h">
       <Filter>Classes\tests\Box2DTest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -1848,6 +1858,18 @@
     </ClCompile>
     <ClCompile Include="..\..\Box2D\Collision\b2BroadPhase.cpp">
       <Filter>Box2d\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tinyxml\tinystr.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tinyxml\tinyxml.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tinyxml\tinyxmlerror.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tinyxml\tinyxmlparser.cpp">
+      <Filter>tinyxml</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2560,10 +2582,5 @@
     <Font Include="Assets\fonts\Scissor Cuts.ttf">
       <Filter>Resources\fonts</Filter>
     </Font>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="Assets\animations\grossini.plist.xml">
-      <Filter>Resources\animations</Filter>
-    </Xml>
   </ItemGroup>
 </Project>

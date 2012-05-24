@@ -56,6 +56,7 @@ public:
 	static void endElement(void *ctx, const CC_XML_CHAR *name);
 	static void textHandler(void *ctx, const CC_XML_CHAR *name, int len);
 };
+
 NS_CC_END;
 
 #endif //__CCSAXPARSER_H__

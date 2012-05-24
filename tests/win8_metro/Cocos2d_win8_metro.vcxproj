@@ -63,7 +63,7 @@
   <PropertyGroup>
     <IncludePath>$(SolutionDir)CocosDenshion;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\platform;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
     <PackageCertificateKeyFile>tests_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>2636F8E3523C7429C330DF7D179DE25C367D2D46</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>511FE870AFE3A9BEA85FC33CD44E15210DBBF16E</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -85,7 +85,7 @@
       <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);$(ProjectDir)..\..\cocos2dx\include;$(ProjectDir)..\..\cocos2dx;$(ProjectDir)..\..\cocos2dx\platform;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libxml2;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libpng;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\zlib;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libjpeg;$(ProjectDir)..\..\tests\extern;$(ProjectDir)..\..\cocos2dx\platform\win8_metro;$(ProjectDir)..\..\tests;$(ProjectDir)..\..\;$(ProjectDir)..\..\chipmunk\include\chipmunk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE;TIXML_USE_STL</PreprocessorDefinitions>
       <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE</PreprocessorDefinitions>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4018;4819</DisableSpecificWarnings>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4018;4819</DisableSpecificWarnings>
@@ -335,6 +335,8 @@
     <ClInclude Include="..\..\tests\tests\TransitionsTest\TransitionsTest.h" />
     <ClInclude Include="..\..\tests\tests\UserDefaultTest\UserDefaultTest.h" />
     <ClInclude Include="..\..\tests\tests\ZwoptexTest\ZwoptexTest.h" />
+    <ClInclude Include="..\..\tinyxml\tinystr.h" />
+    <ClInclude Include="..\..\tinyxml\tinyxml.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -537,6 +539,10 @@
     <ClCompile Include="..\..\tests\tests\TransitionsTest\TransitionsTest.cpp" />
     <ClCompile Include="..\..\tests\tests\UserDefaultTest\UserDefaultTest.cpp" />
     <ClCompile Include="..\..\tests\tests\ZwoptexTest\ZwoptexTest.cpp" />
+    <ClCompile Include="..\..\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\..\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\..\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
