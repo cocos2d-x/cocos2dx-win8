@@ -1417,6 +1417,8 @@ public:
 	bool SaveFile() const;
 	/// Load a file using the given filename. Returns true if successful.
 	bool LoadFile( const char * filename, TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING );
+
+	bool SaveFile( const wchar_t* filename) const;
 	/// Save a file using the given filename. Returns true if successful.
 	bool SaveFile( const char * filename ) const;
 	/** Load a file using the given FILE*. Returns true if successful. Note that this method
@@ -1432,6 +1434,10 @@ public:
 	bool LoadFile( const std::string& filename, TiXmlEncoding encoding = TIXML_DEFAULT_ENCODING )			///< STL std::string version.
 	{
 		return LoadFile( filename.c_str(), encoding );
+	}
+	bool SaveFile( const std::wstring& filename) const
+	{
+		return SaveFile(filename.c_str());
 	}
 	bool SaveFile( const std::string& filename ) const		///< STL std::string version.
 	{

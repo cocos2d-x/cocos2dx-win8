@@ -23,34 +23,22 @@ THE SOFTWARE.
 ****************************************************************************/
 #include "CCUserDefault.h"
 #include "platform/CCFileUtils.h"
-
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_LINUX)
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-//#else
-//#include <libxml/parser.h>
-//#include <libxml/tree.h>
-//#endif
+#include "tinyxml\tinyxml.h"
 
 
 // root name of xml
 #define USERDEFAULT_ROOT_NAME	"userDefaultRoot"
 
 #define XML_FILE_NAME "UserDefault.xml"
+#define WSTR_XML_FILE_NAME L"UserDefault.xml"
 
 using namespace std;
 
 NS_CC_BEGIN;
 
-/**
- * define the functions here because we don't want to
- * export xmlNodePtr and other types in "CCUserDefault.h"
- */
-
-static xmlNodePtr getXMLNodeForKey(const char* pKey, xmlNodePtr *rootNode, xmlDocPtr *doc)
+static TiXmlElement* getXMLNodeForKey(const char* pKey, TiXmlElement** rootNode, TiXmlDocument **doc)
 {
-	xmlNodePtr curNode = NULL;
-
+	TiXmlElement* curNode = NULL;
 	// check the key value
 	if (! pKey)
 	{
@@ -59,98 +47,77 @@ static xmlNodePtr getXMLNodeForKey(const char* pKey, xmlNodePtr *rootNode, xmlDo
 
 	do 
 	{
-		// read doc
-		*doc = xmlReadFile(CCUserDefault::sharedUserDefault()->getXMLFilePath().c_str(), "utf-8", XML_PARSE_RECOVER);
-		if (NULL == *doc)
+		TiXmlDocument* xmlDoc = new TiXmlDocument();
+		*doc = xmlDoc;
+		CCFileData data(CCUserDefault::sharedUserDefault()->getXMLFilePath().c_str(),"rt");
+		const char* pXmlBuffer = (const char*)data.getBuffer();
+		if(NULL == pXmlBuffer)
 		{
 			CCLOG("can not read xml file");
 			break;
 		}
-
+		xmlDoc->Parse(pXmlBuffer);
 		// get root node
-		*rootNode = xmlDocGetRootElement(*doc);
+		*rootNode = xmlDoc->RootElement();
 		if (NULL == *rootNode)
 		{
 			CCLOG("read root node error");
 			break;
 		}
-
 		// find the node
-		curNode = (*rootNode)->xmlChildrenNode;
+		curNode = (*rootNode)->FirstChildElement();
 		while (NULL != curNode)
 		{
-			if (! xmlStrcmp(curNode->name, BAD_CAST pKey))
+			const char* nodeName = curNode->Value();
+			if (!strcmp(nodeName, pKey))
 			{
 				break;
 			}
 
-			curNode = curNode->next;
+			curNode = curNode->NextSiblingElement();
 		}
 	} while (0);
 
 	return curNode;
-}
 
-static inline const char* getValueForKey(const char* pKey)
-{
-	const char* ret = NULL;
-	xmlNodePtr rootNode;
-	xmlDocPtr doc;
-	xmlNodePtr node = getXMLNodeForKey(pKey, &rootNode, &doc);
-
-	// find the node
-	if (node)
-	{
-		ret = (const char*)xmlNodeGetContent(node);
-	}
-
-	// free doc
-	if (doc)
-	{
-		xmlFreeDoc(doc);
-	}
-
-	return ret;
+	
 }
 
 static void setValueForKey(const char* pKey, const char* pValue)
 {
-	xmlNodePtr rootNode;
-	xmlDocPtr doc;
-	xmlNodePtr node;
-
+	TiXmlElement* rootNode;
+	TiXmlDocument* doc;
+	TiXmlElement* node;
 	// check the params
 	if (! pKey || ! pValue)
 	{
 		return;
 	}
-
 	// find the node
 	node = getXMLNodeForKey(pKey, &rootNode, &doc);
-
 	// if node exist, change the content
 	if (node)
 	{
-		xmlNodeSetContent(node, BAD_CAST pValue);
+		node->FirstChild()->SetValue(pValue);
 	}
 	else
 	{
 		if (rootNode)
 		{
-			// the node doesn't exist, add a new one
-			// libxml in android donesn't support xmlNewTextChild, so use this approach
-			xmlNodePtr tmpNode = xmlNewNode(NULL, BAD_CAST pKey);
-			xmlNodePtr content = xmlNewText(BAD_CAST pValue);
-			xmlAddChild(rootNode, tmpNode);
-			xmlAddChild(tmpNode, content);
+			TiXmlElement* tmpNode = new TiXmlElement(pKey);
+			rootNode->LinkEndChild(tmpNode);
+
+			TiXmlText* content = new TiXmlText(pValue);
+			tmpNode->LinkEndChild(content);
+			
 		}	
 	}
 
-	// save file and free doc
+		// save file and free doc
 	if (doc)
 	{
-		xmlSaveFile(CCUserDefault::sharedUserDefault()->getXMLFilePath().c_str(),doc);
-		xmlFreeDoc(doc);
+		doc->SaveFile(CCUserDefault::sharedUserDefault()->getWStrXMLFilePath().c_str());
+		delete doc;
 	}
 }
 
@@ -160,6 +127,7 @@ static void setValueForKey(const char* pKey, const char* pValue)
 
 CCUserDefault* CCUserDefault::m_spUserDefault = 0;
 string CCUserDefault::m_sFilePath = string("");
+wstring CCUserDefault::m_wsFilePath = wstring(L"");
 bool CCUserDefault::m_sbIsFilePathInitialized = false;
 
 /**
@@ -179,28 +147,54 @@ void CCUserDefault::purgeSharedUserDefault()
 
 bool CCUserDefault::getBoolForKey(const char* pKey, bool defaultValue)
 {
-	const char* value = getValueForKey(pKey);
+    const char* value = NULL;
+	TiXmlElement* rootNode;
+	TiXmlDocument* doc;
+	TiXmlElement* node;
+	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
+	// find the node
+	if (node)
+	{
+        value = (const char*)(node->FirstChild()->Value());
+	}
+
 	bool ret = defaultValue;
 
 	if (value)
 	{
 		ret = (! strcmp(value, "true"));
-		xmlFree((void*)value);
 	}
+
+    if (doc) delete doc;
 
 	return ret;
 }
 
 int CCUserDefault::getIntegerForKey(const char* pKey, int defaultValue)
 {
-	const char* value = getValueForKey(pKey);
+	const char* value = NULL;
+	TiXmlElement* rootNode;
+	TiXmlDocument* doc;
+	TiXmlElement* node;
+	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
+	// find the node
+	if (node)
+	{
+        value = (const char*)(node->FirstChild()->Value());
+	}
+
 	int ret = defaultValue;
 
 	if (value)
 	{
 		ret = atoi(value);
-		xmlFree((void*)value);
 	}
+
+	if(doc)
+	{
+		delete doc;
+	}
+
 
 	return ret;
 }
@@ -214,28 +208,50 @@ float CCUserDefault::getFloatForKey(const char* pKey, float defaultValue)
 
 double CCUserDefault::getDoubleForKey(const char* pKey, double defaultValue)
 {
-	const char* value = getValueForKey(pKey);
+    const char* value = NULL;
+	TiXmlElement* rootNode;
+	TiXmlDocument* doc;
+	TiXmlElement* node;
+	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
+	// find the node
+	if (node)
+	{
+        value = (const char*)(node->FirstChild()->Value());
+	}
+
 	double ret = defaultValue;
 
 	if (value)
 	{
 		ret = atof(value);
-		xmlFree((void*)value);
 	}
+
+    if (doc) delete doc;
 
 	return ret;
 }
 
 string CCUserDefault::getStringForKey(const char* pKey, const std::string & defaultValue)
 {
-	const char* value = getValueForKey(pKey);
+    const char* value = NULL;
+	TiXmlElement* rootNode;
+	TiXmlDocument* doc;
+	TiXmlElement* node;
+	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
+	// find the node
+	if (node)
+	{
+        value = (const char*)(node->FirstChild()->Value());
+	}
+
 	string ret = defaultValue;
 
 	if (value)
 	{
 		ret = string(value);
-		xmlFree((void*)value);
 	}
+
+    if (doc) delete doc;
 
 	return ret;
 }
@@ -323,7 +339,8 @@ CCUserDefault* CCUserDefault::sharedUserDefault()
 
 bool CCUserDefault::isXMLFileExist()
 {
-	FILE *fp = fopen(m_sFilePath.c_str(), "r");
+	wstring filepath = m_wsFilePath.c_str();
+	FILE *fp = _wfopen(filepath.c_str(), L"r");
 	bool bRet = false;
 
 	if (fp)
@@ -340,6 +357,7 @@ void CCUserDefault::initXMLFilePath()
 	if (! m_sbIsFilePathInitialized)
 	{
 		m_sFilePath += CCFileUtils::getWriteablePath() + XML_FILE_NAME;
+		m_wsFilePath += CCUtf8ToUnicode(CCFileUtils::getWriteablePath().c_str()) + WSTR_XML_FILE_NAME;
 		m_sbIsFilePathInitialized = true;
 	}	
 }
@@ -348,39 +366,30 @@ void CCUserDefault::initXMLFilePath()
 bool CCUserDefault::createXMLFile()
 {
 	bool bRet = false;
-    xmlDocPtr doc = NULL;
+	// 定义一个TiXmlDocument类指针   
+    TiXmlDocument *pDoc = new TiXmlDocument;  
+    if (NULL==pDoc)  
+    {  
+        return false;  
+    }  
+	TiXmlDeclaration *pDeclaration = new TiXmlDeclaration("1.0","","");  
+	if (NULL==pDeclaration)  
+	{  
+		return false;  
+	}  
+	pDoc->LinkEndChild(pDeclaration); 
+	// 生成一个根节点：MyApp  
+	TiXmlElement *pRootEle = new TiXmlElement(USERDEFAULT_ROOT_NAME);  
+	if (NULL==pRootEle)  
+	{  
+		return false;  
+	}  
+	pDoc->LinkEndChild(pRootEle);  
+	bRet = pDoc->SaveFile(m_wsFilePath.c_str());
 
-	do 
+	if(pDoc)
 	{
-		// new doc
-		doc = xmlNewDoc(BAD_CAST"1.0");
-		if (doc == NULL)
-		{
-			CCLOG("can not create xml doc");
-			break;
-		}
-
-		// new root node
-		xmlNodePtr rootNode = xmlNewNode(NULL, BAD_CAST USERDEFAULT_ROOT_NAME);
-		if (rootNode == NULL)
-		{
-			CCLOG("can not create root node");
-			break;
-		}
-
-		// set root node
-		xmlDocSetRootElement(doc, rootNode);
-
-		// save xml file
-		xmlSaveFile(m_sFilePath.c_str(), doc);
-
-		bRet = true;
-	} while (0);
-
-	// if doc is not null, free it
-	if (doc)
-	{
-		xmlFreeDoc(doc);
+		delete pDoc;
 	}
 
 	return bRet;
@@ -390,5 +399,11 @@ const string& CCUserDefault::getXMLFilePath()
 {
 	return m_sFilePath;
 }
+
+const wstring& CCUserDefault::getWStrXMLFilePath()
+{
+	return m_wsFilePath;
+}
+
 
 NS_CC_END;

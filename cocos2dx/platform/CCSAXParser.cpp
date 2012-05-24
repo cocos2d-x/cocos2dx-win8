@@ -23,10 +23,6 @@
 
 #include "CCSAXParser.h"
 #include "CCMutableDictionary.h"
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-#include <libxml/xmlmemory.h>
-#include "CCLibxml2.h"
 #include "CCFileUtils.h"
 #include "tinyxml\tinyxml.h"
 
@@ -41,7 +37,7 @@ public:
 	virtual bool VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute );
 	virtual bool VisitExit( const TiXmlElement& element );
 	virtual bool Visit( const TiXmlText& text );
-	virtual bool Visit( const TiXmlUnknown&){ return false; }
+	virtual bool Visit( const TiXmlUnknown&){ return true; }
 
 	void setCCSAXParserImp(CCSAXParser* parser)
 	{
@@ -115,7 +111,7 @@ bool CCSAXParser::parse(const char *pszFile)
 	}
 		
 	TiXmlDocument tinyDoc;
-	tinyDoc.Parse(pBuffer);
+	tinyDoc.Parse(pBuffer,0,TIXML_ENCODING_UTF8);
 	XmlSaxHander printer;
 	printer.setCCSAXParserImp(this);
 	return tinyDoc.Accept( &printer );	

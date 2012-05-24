@@ -98,6 +98,7 @@ public:
 	static CCUserDefault* sharedUserDefault();
 	static void purgeSharedUserDefault();
 	const static std::string& getXMLFilePath();
+	const static std::wstring& getWStrXMLFilePath();
 
 private:
 	CCUserDefault() {}
@@ -107,6 +108,7 @@ private:
 	
 	static CCUserDefault* m_spUserDefault;
 	static std::string m_sFilePath;
+	static std::wstring m_wsFilePath;
 	static bool m_sbIsFilePathInitialized;
 };
 

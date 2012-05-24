@@ -1080,6 +1080,18 @@ bool TiXmlDocument::LoadFile( FILE* file, TiXmlEncoding encoding )
 	return !Error();
 }
 
+bool TiXmlDocument::SaveFile(const wchar_t* filename) const
+{
+	FILE* fp = 0;
+	errno_t err = _wfopen_s( &fp, filename, L"w" );
+	if ( !err && fp )
+	{
+		bool result = SaveFile( fp );
+		fclose( fp );
+		return result;
+	}
+	return false;
+}
 
 bool TiXmlDocument::SaveFile( const char * filename ) const
 {

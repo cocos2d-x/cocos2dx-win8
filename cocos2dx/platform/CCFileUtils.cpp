@@ -28,10 +28,6 @@ THE SOFTWARE.
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
 
 #include <stack>
-#include <libxml/parser.h>
-#include <libxml/tree.h>
-#include <libxml/xmlmemory.h>
-#include "CCLibxml2.h"
 #include "CCString.h"
 #include "CCSAXParser.h"
 #include "support/zip_support/unzip.h"
