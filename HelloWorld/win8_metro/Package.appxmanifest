@@ -22,7 +22,4 @@
       </VisualElements>
     </Application>
   </Applications>
-  <Capabilities>
-    <Capability Name="documentsLibrary" />
-  </Capabilities>
 </Package>
