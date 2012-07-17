@@ -29,7 +29,7 @@
 #include "SchedulerTest/SchedulerTest.h"
 #include "RenderTextureTest/RenderTextureTest.h"
 #include "Box2DTest/Box2dTest.h"
-//TODO #include "Box2DTestBed/Box2dView.h"
+#include "Box2DTestBed/Box2dView.h"
 #include "EffectsAdvancedTest/EffectsAdvancedTest.h"
 #include "HiResTest/HiResTest.h"
 #include "AccelerometerTest/AccelerometerTest.h"
