@@ -63,7 +63,7 @@
   <PropertyGroup>
     <IncludePath>$(SolutionDir)CocosDenshion;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx\platform;$(VCInstallDir)include;$(VCInstallDir)atlmfc\include;$(WindowsSDK_IncludePath)</IncludePath>
     <PackageCertificateKeyFile>tests_TemporaryKey.pfx</PackageCertificateKeyFile>
-    <PackageCertificateThumbprint>511FE870AFE3A9BEA85FC33CD44E15210DBBF16E</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>5B8DE65D09BB60E24463768F90164A1EB580468E</PackageCertificateThumbprint>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -85,8 +85,8 @@
       <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);$(ProjectDir)..\..\cocos2dx\include;$(ProjectDir)..\..\cocos2dx;$(ProjectDir)..\..\cocos2dx\platform;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libxml2;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libpng;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\zlib;$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libjpeg;$(ProjectDir)..\..\tests\extern;$(ProjectDir)..\..\cocos2dx\platform\win8_metro;$(ProjectDir)..\..\tests;$(ProjectDir)..\..\;$(ProjectDir)..\..\chipmunk\include\chipmunk;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE;TIXML_USE_STL</PreprocessorDefinitions>
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);USE_BATCH_NODE;TIXML_USE_STL</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);TIXML_USE_STL</PreprocessorDefinitions>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);TIXML_USE_STL</PreprocessorDefinitions>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4018;4819</DisableSpecificWarnings>
       <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4018;4819</DisableSpecificWarnings>
       <RuntimeLibrary Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">MultiThreadedDebugDLL</RuntimeLibrary>
@@ -852,7 +852,6 @@
     <None Include="Assets\zwoptex\grossini.plist">
       <DeploymentContent>true</DeploymentContent>
     </None>
-    <None Include="Cocos2d_win8_metro_TemporaryKey.pfx" />
     <None Include="tests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
