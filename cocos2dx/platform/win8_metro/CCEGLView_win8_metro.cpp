@@ -110,7 +110,6 @@ void CCEGLView::release()
     m_pTouches.clear();
 
     CC_SAFE_DELETE(m_pDelegate);
-    DirectXRender::SharedDXRender()->CloseWindow();
 }
 
 void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate)

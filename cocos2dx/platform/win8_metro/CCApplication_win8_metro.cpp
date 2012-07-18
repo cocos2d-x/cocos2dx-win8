@@ -43,11 +43,20 @@ public:
         _In_ Platform::Object^ sender
         );
 
+	void OnVisibilityChanged(
+		_In_ Windows::UI::Core::CoreWindow^ sender,
+		_In_ Windows::UI::Core::VisibilityChangedEventArgs^ args
+		);
+
+	void OnWindowClosed(
+    _In_ Windows::UI::Core::CoreWindow^ sender,
+    _In_ Windows::UI::Core::CoreWindowEventArgs^ args
+    );
+
 private:
-	
     DirectXRender^ m_renderer;
-    Windows::ApplicationModel::Core::CoreApplicationView^ m_applicationView;
-	Windows::UI::Core::CoreWindow^ m_window;
+	bool m_windowVisible;
+	bool m_windowClosed;
 };
 
 using namespace Windows::ApplicationModel;
@@ -60,6 +69,8 @@ using namespace Windows::Graphics::Display;
 using namespace Windows::UI::ViewManagement;
 
 CCFrameworkView::CCFrameworkView()
+	:m_windowVisible(false)
+	,m_windowClosed(false)
 {
     CCLog("CCFrameworkView::+CCFrameworkView()");
     CCLog("CCFrameworkView::-CCFrameworkView()");
@@ -87,16 +98,20 @@ void CCFrameworkView::SetWindow(
     _In_ CoreWindow^ window
     )
 {
-    CCLog("CCFrameworkView::+SetWindow()");
-	m_window = window;
-    window->PointerCursor = ref new CoreCursor(CoreCursorType::Arrow, 0);
+	CCLog("CCFrameworkView::+SetWindow()");
+	window->PointerCursor = ref new CoreCursor(CoreCursorType::Arrow, 0);
+	window->VisibilityChanged +=
+		ref new TypedEventHandler<CoreWindow^, VisibilityChangedEventArgs^>(this, &CCFrameworkView::OnVisibilityChanged);
 
-    DisplayProperties::LogicalDpiChanged +=
-        ref new DisplayPropertiesEventHandler(this, &CCFrameworkView::OnLogicalDpiChanged);
+	window->Closed +=
+		ref new TypedEventHandler<CoreWindow^, CoreWindowEventArgs^>(this, &CCFrameworkView::OnWindowClosed);
 
-    m_renderer->Initialize(window, DisplayProperties::LogicalDpi);
-    CCApplication::sharedApplication().initInstance();
-    CCLog("CCFrameworkView::-SetWindow()");
+	DisplayProperties::LogicalDpiChanged +=
+		ref new DisplayPropertiesEventHandler(this, &CCFrameworkView::OnLogicalDpiChanged);
+
+	m_renderer->Initialize(window, DisplayProperties::LogicalDpi);
+	CCApplication::sharedApplication().initInstance();
+	CCLog("CCFrameworkView::-SetWindow()");
 }
 
 void CCFrameworkView::Load(
@@ -112,36 +127,20 @@ void CCFrameworkView::Run()
     CCLog("CCFrameworkView::+Run()");
 
     // if applicationDidFinishLaunching return false, exist.
-    bool inited = false;
+	if(!CCApplication::sharedApplication().applicationDidFinishLaunching())
+		return;
 
-    while (1)
+    while (!m_windowClosed)
     {
-		if (nullptr == m_window)
-		{
-			// sleep
-			continue;
-		}
-
-		if (false == inited)
-		{
-			inited = (CCApplication::sharedApplication().applicationDidFinishLaunching());
-			if (false == inited)
-			{
-				// init falied
-				break;
-			}
-		}
-
-        // if windows closed exit app
-        if (true == m_renderer->GetWindowsClosedState())
+		if (m_windowVisible)
         {
-            break;
-        }
-
-        CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
-
-        CCDirector::sharedDirector()->mainLoop();
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->render();
+			CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
+			CCDirector::sharedDirector()->mainLoop();
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->render();
+		}else{
+			// The window is not visible, so just wait for next event and respond to it.
+			CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessOneAndAllPending);
+		}
     }
 //    m_renderer->OnSuspending();  // the app is exiting so do the same thing as would if app was being suspended.
     CCLog("CCFrameworkView::-Run()");
@@ -163,6 +162,7 @@ void CCFrameworkView::OnActivated(
     CoreWindow::GetForCurrentThread()->Activated += 
         ref new TypedEventHandler<CoreWindow^, WindowActivatedEventArgs^>(this, &CCFrameworkView::OnWindowActivationChanged);
     CoreWindow::GetForCurrentThread()->Activate();
+	m_windowVisible = true;
     CCLog("CCFrameworkView::-OnActivated()");
 }
 
@@ -221,6 +221,32 @@ void CCFrameworkView::OnLogicalDpiChanged(
     m_renderer->SetDpi(DisplayProperties::LogicalDpi);
     CCLog("CCFrameworkView::-OnLogicalDpiChanged()");
 }
+
+void CCFrameworkView::OnVisibilityChanged(
+    _In_ CoreWindow^ sender,
+    _In_ VisibilityChangedEventArgs^ args
+    )
+{
+    m_windowVisible = args->Visible;
+	if (m_windowVisible)
+	{
+		CCApplication::sharedApplication().applicationWillEnterForeground();
+	} 
+	else
+	{
+		CCApplication::sharedApplication().applicationDidEnterBackground();
+	}
+}
+
+void CCFrameworkView::OnWindowClosed(
+    _In_ CoreWindow^ sender,
+    _In_ CoreWindowEventArgs^ args
+    )
+{
+    m_windowClosed = true;
+	CCLog("CCFrameworkView::OnWindowClosed");
+}
+
 
 Windows::ApplicationModel::Core::IFrameworkView^ getSharedCCApplicationFrameworkView()
 {

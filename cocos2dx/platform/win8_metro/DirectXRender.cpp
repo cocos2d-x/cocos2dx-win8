@@ -34,7 +34,6 @@ static DirectXRender^ s_pDXRender;
 // Constructor.
 DirectXRender::DirectXRender()
     : m_dpi(-1.0f)
-    , m_windowClosed(true)
 {
     s_pDXRender = this;
 }
@@ -43,14 +42,8 @@ DirectXRender::DirectXRender()
 void DirectXRender::Initialize(CoreWindow^ window, float dpi)
 {
     m_window = window;
-    m_windowClosed = false;
 	m_textPainter = ref new DXTextPainter();
 
-    window->Closed += 
-        ref new TypedEventHandler<CoreWindow^, CoreWindowEventArgs^>(this, &DirectXRender::OnWindowClosed);
-
-    window->VisibilityChanged +=
-        ref new TypedEventHandler<CoreWindow^, VisibilityChangedEventArgs^>(this, &DirectXRender::OnWindowVisibilityChanged);
 
     window->SizeChanged += 
         ref new TypedEventHandler<CoreWindow^, WindowSizeChangedEventArgs^>(this, &DirectXRender::OnWindowSizeChanged);
@@ -300,10 +293,11 @@ void DirectXRender::CreateWindowSizeDependentResources()
             );
 
         // Obtain the final swap chain for this window from the DXGI factory.
+		 CoreWindow^ window = m_window.Get();
         DX::ThrowIfFailed(
             dxgiFactory->CreateSwapChainForCoreWindow(
                 m_d3dDevice.Get(),
-                reinterpret_cast<IUnknown*>(m_window),
+                reinterpret_cast<IUnknown*>(window),
                 &swapChainDesc,
                 nullptr,    // allow on all displays
                 &m_swapChain
@@ -441,7 +435,7 @@ void DirectXRender::Present()
     // must completely reinitialize the renderer.
     if (hr == DXGI_ERROR_DEVICE_REMOVED || hr == DXGI_ERROR_DEVICE_RESET)
     {
-        Initialize(m_window, m_dpi);
+		Initialize(m_window.Get(), m_dpi);
     }
     else
     {
@@ -454,20 +448,6 @@ void DirectXRender::SetBackBufferRenderTarget()
 	m_d3dContext->OMSetRenderTargets(1, &m_renderTargetView, m_depthStencilView.Get());
 }
 
-void DirectXRender::CloseWindow()
-{
-    if (nullptr != m_window)
-    {
-        m_window->Close();
-        m_window = nullptr;
-    }
-    m_windowClosed = true;
-}
-
-bool DirectXRender::GetWindowsClosedState()
-{
-    return m_windowClosed;
-}
 
 DirectXRender^ DirectXRender::SharedDXRender()
 {
@@ -513,7 +493,6 @@ void DirectXRender::OnWindowClosed(
     _In_ CoreWindowEventArgs^ args
     )
 {
-    m_window = nullptr;
     m_windowClosed = true;
 }
 
@@ -522,14 +501,15 @@ void DirectXRender::OnWindowVisibilityChanged(
         _In_ Windows::UI::Core::VisibilityChangedEventArgs^ args
         )
 {
-    if (args->Visible)
-    {
-        CCApplication::sharedApplication().applicationWillEnterForeground();
-    } 
-    else
-    {
-        CCApplication::sharedApplication().applicationDidEnterBackground();
-    }
+	//m_windowVisible = args->Visible;
+ //   if (m_windowVisible)
+ //   {
+ //       CCApplication::sharedApplication().applicationWillEnterForeground();
+ //   } 
+ //   else
+ //   {
+ //       CCApplication::sharedApplication().applicationDidEnterBackground();
+ //   }
 }
 
 void DirectXRender::OnWindowSizeChanged(

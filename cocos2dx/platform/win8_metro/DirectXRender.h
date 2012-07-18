@@ -43,12 +43,12 @@ public:
     void Render();
     void Present();
 	void SetBackBufferRenderTarget();
-    void CloseWindow();
     bool GetWindowsClosedState();
+	bool GetWindowIsVisible();
     static DirectXRender^ SharedDXRender();
 
 private:
-	    Windows::UI::Core::CoreWindow^                  m_window;
+	    Platform::Agile<Windows::UI::Core::CoreWindow>  m_window;
 		DXTextPainter^									m_textPainter;
 
 private:
