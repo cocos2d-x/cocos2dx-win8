@@ -12,7 +12,6 @@ public:
     ~TestController();
 
     void menuCallback(CCObject * pSender);
-    void closeCallback(CCObject * pSender);
 
     virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
     virtual void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);

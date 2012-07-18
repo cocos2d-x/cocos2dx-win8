@@ -130,14 +130,7 @@ static TestScene* CreateTestScene(int nIdx)
 TestController::TestController()
 : m_tBeginPos(CCPointZero)
 {
-    // add close menu
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::itemFromNormalImage(s_pPathClose, s_pPathClose, this, menu_selector(TestController::closeCallback) );
-    CCMenu* pMenu =CCMenu::menuWithItems(pCloseItem, NULL);
     CCSize s = CCDirector::sharedDirector()->getWinSize();
-
-    pMenu->setPosition( CCPointZero );
-    pCloseItem->setPosition(CCPointMake( s.width - 30, s.height - 30));
-
     // add menu items for tests
     m_pItmeMenu = CCMenu::menuWithItems(NULL);
 	for (int i = 0; i < TESTS_COUNT; ++i)
@@ -158,8 +151,6 @@ TestController::TestController()
     addChild(m_pItmeMenu);
 
     setIsTouchEnabled(true);
-
-    addChild(pMenu, 1);
 }
 
 TestController::~TestController()
@@ -179,11 +170,6 @@ void TestController::menuCallback(CCObject * pSender)
         pScene->runThisTest();
         pScene->release();
     }
-}
-
-void TestController::closeCallback(CCObject * pSender)
-{
-    CCDirector::sharedDirector()->end();
 }
 
 void TestController::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
