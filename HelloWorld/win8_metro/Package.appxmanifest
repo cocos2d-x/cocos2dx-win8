@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
-  <Identity Name="b1ee2ff4-bd9c-48b3-9c8f-f4856abdfba1" Publisher="CN=豆腐" Version="1.0.0.0" />
+  <Identity Name="b1ee2ff4-bd9c-48b3-9c8f-f4856abdfba1" Publisher="CN=cocos2d-x" Version="1.0.0.0" />
   <Properties>
     <DisplayName>cocos2dmetro-HelloWorld</DisplayName>
-    <PublisherDisplayName>文生</PublisherDisplayName>
+    <PublisherDisplayName>cocos2d-x</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
     <Description>FishingJoy_win8_metro</Description>
   </Properties>
@@ -22,7 +22,4 @@
       </VisualElements>
     </Application>
   </Applications>
-  <Capabilities>
-    <Capability Name="documentsLibrary" />
-  </Capabilities>
 </Package>

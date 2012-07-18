@@ -559,9 +559,8 @@
     <None Include="Assets\background.mp3">
       <Filter>Resources</Filter>
     </None>
-    <None Include="Cocos2d_win8_metro_TemporaryKey.pfx" />
-    <None Include="tests_TemporaryKey.pfx" />
     <None Include="Assets\animations\grossini.plist.xml" />
+    <None Include="tests_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
