@@ -13,9 +13,6 @@ public:
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
 	static cocos2d::CCScene* scene();
 	
-	// a selector callback
-	virtual void menuCloseCallback(cocos2d::CCObject* pSender);
-
 	// implement the "static node()" method manually
 	LAYER_NODE_FUNC(HelloWorld);
 

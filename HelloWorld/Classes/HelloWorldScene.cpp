@@ -35,22 +35,7 @@ bool HelloWorld::init()
 	CCSize size = CCDirector::sharedDirector()->getWinSize();
 
 
-	/////////////////////////////
-	// 2. add a menu item with "X" image, which is clicked to quit the program
-	//    you may modify it.
-	// add a "close" icon to exit the progress. it's an autorelease object
-	CCMenuItemImage *pCloseItem = CCMenuItemImage::itemFromNormalImage(
-										"CloseNormal.png",
-										"CloseSelected.png",
-										this,
-										menu_selector(HelloWorld::menuCloseCallback) );
-	pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
 
-
-	// create menu, it's an autorelease object
-	CCMenu* pMenu = CCMenu::menuWithItems(pCloseItem, NULL);
-	pMenu->setPosition( CCPointZero );
-	this->addChild(pMenu, 1);
 
 
 	/////////////////////////////
@@ -85,10 +70,4 @@ bool HelloWorld::init()
 
 
 	return true;
-}
-
-
-void HelloWorld::menuCloseCallback(CCObject* pSender)
-{
-	CCDirector::sharedDirector()->end();
 }
