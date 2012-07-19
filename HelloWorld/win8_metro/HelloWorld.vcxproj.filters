@@ -101,9 +101,6 @@
     <Filter Include="Box2d">
       <UniqueIdentifier>{4b297f47-4fba-407c-a6e5-298797e7e5b9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="chipmunk">
-      <UniqueIdentifier>{5cb2e814-3815-40ff-bf1b-786cde1e5a0f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Box2d\Collision">
       <UniqueIdentifier>{e8b42964-960b-4d4b-96de-c3fdfa7886df}</UniqueIdentifier>
     </Filter>
@@ -124,21 +121,6 @@
     </Filter>
     <Filter Include="Box2d\Rope">
       <UniqueIdentifier>{4396915b-3f65-4d34-a33f-612d925d6f9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="chipmunk\include">
-      <UniqueIdentifier>{18827876-0b48-41f2-9dea-00fa1cdc293e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="chipmunk\include\chipmunk">
-      <UniqueIdentifier>{7d2c0147-6079-41d0-a589-73022de4525c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="chipmunk\include\constraints">
-      <UniqueIdentifier>{e4e0c7c1-3f87-47ad-ac41-d47e819a2994}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="chipmunk\src">
-      <UniqueIdentifier>{b42001e8-4bba-4846-a98e-17217e3660cc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="chipmunk\src\constraints">
-      <UniqueIdentifier>{310e3458-e7f9-403a-965b-15129c21b381}</UniqueIdentifier>
     </Filter>
     <Filter Include="tinyxml">
       <UniqueIdentifier>{791b0a03-e974-4765-aea5-1b596ea71892}</UniqueIdentifier>
