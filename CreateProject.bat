@@ -1,10 +1,12 @@
 ::Please Modify the variables into a suitable
 ::More Info visit: http:://www.cocos2d-x.org
 @echo on
-set PROJECT_NAME=helloworld-cocos2d
-set COCOS2D_DIR=C:\Users\hexuan\Documents\cocos2dx-win8
-set PROJECT_DIR=C:\Users\hexuan\Documents\Visual Studio 11\Projects\helloworld-cocos2d
 
+set PROJECT_NAME=helloworld-cocos2d
+set COCOS2D_DIR=d:\cocos2dx-win8
+set PROJECT_DIR=d:\Projects\helloworld-cocos2d
+
+xcopy /S  "%COCOS2D_DIR%\tinyxml" "%PROJECT_DIR%\tinyxml\"
 xcopy /S  "%COCOS2D_DIR%\Box2D" "%PROJECT_DIR%\Box2D\"
 xcopy /S  "%COCOS2D_DIR%\chipmunk" "%PROJECT_DIR%\chipmunk\"
 xcopy /S  "%COCOS2D_DIR%\cocos2dx" "%PROJECT_DIR%\cocos2dx\"
