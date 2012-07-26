@@ -1,0 +1,64 @@
+<link href="./markdown.css" rel="stylesheet"></link>
+
+<h1>How to Add a sprite</h1>
+<hr />
+<p>The source code of these tutorials is here: <a href="https://github.com/lihex/Cocos2dxSimpleGame">https://github.com/lihex/Cocos2dxSimpleGame</a>. You can follow the articles to finish the game by yourself step by step, or download the finally source, simply build and run it.</p>
+<h2>1.Add image resources</h2>
+<p>Here¡¯re three images made by Ray Wenderlich ¡¯s wife , which would be used in SimpleGame. </p>
+<p><img alt="Alt text" src="./images/Player.png" />
+<img alt="Alt text" src="./images/Target.png" />
+<img alt="Alt text" src="./images/Projectile.png" /></p>
+<p>After <a href="./create_simplegame_project.html">Create SimpleGame project</a> , you must have SimpleGame folder now. Please download these images and copy them to SimpleGame/SimpleGame/Assets folder.<br />
+</p>
+<p>Right click Resources --&gt; Add Existing Items.. --&gt; Add the 3 images from Assets folder.</p>
+<h2>2.Add a sprite</h2>
+<p>Open HelloWorldScene.cpp, replace the init method with following.</p>
+<pre><code>     bool HelloWorld::init()
+     {
+         bool bRet = false;
+         do 
+         {
+             //////////////////////////////////////////////////////////////////////////
+             // super init first
+             //////////////////////////////////////////////////////////////////////////
+
+             CC_BREAK_IF(! CCLayer::init());
+
+             //////////////////////////////////////////////////////////////////////////
+             // add your codes below...
+             //////////////////////////////////////////////////////////////////////////
+
+             /////////////////////////////
+             // 1. add your codes below...
+
+             CCSize winSize = CCDirector::sharedDirector()-&gt;getWinSize();
+             CCSprite *player = CCSprite::spriteWithFile("Player.png", 
+                                                                 CCRectMake(0, 0, 27, 40) );
+             player-&gt;setPosition( ccp(player-&gt;getContentSize().width/2, winSize.height/2) );
+             this-&gt;addChild(player);
+
+             bRet = true;
+         } while (0);
+
+         return bRet;
+     }
+</code></pre>
+<p>Well, we can build and run the code. Now the ninja is dressed in black, hidden in the black background with red eyes. For the gameplay, we had to change the background to white. It¡¯s so easy, modify HelloWorld to inherit from CCLayerColor instead of CCLayer.</p>
+<p>At first, modify the declaration in HelloWorldScene.h</p>
+<pre><code>     // cpp with cocos2d-x
+     class HelloWorld : public cocos2d::CCLayerColor
+</code></pre>
+<p>Then modity the very beginning of HelloWorld::init() from</p>
+<pre><code>     if ( !CCLayer::init() )
+     {
+         return false;
+     }
+</code></pre>
+<p>to </p>
+<pre><code>     if ( !CCLayerColor::initWithColor( ccc4(255,255,255,255) ) )
+     {
+         return false;
+     }
+</code></pre>
+<p>Build and run, then you can see the hero standing lonely in the white background.</p>
+<p><img alt="Alt text" src="./images/simplegame_add_sprite.png" /></p>

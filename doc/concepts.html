@@ -1,0 +1,29 @@
+<link href="./markdown.css" rel="stylesheet"></link>
+
+<h1>Cocos2d Basic Concepts</h1>
+<hr />
+<p><strong>Note:</strong> This is a brief of <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts">cocos2d Basic Concepts</a> on <a href="http://www.cocos2d-iphone.org">cocos2d-iphone</a>.</p>
+<p>There are some basic concepts introduced in this library that you will need to know when developing a cocos2d application:</p>
+<p>A regular hierarchy chart may look like this:</p>
+<p><img alt="Alt text" src="./images/concepts.png" /></p>
+<h2>Scenes</h2>
+<p>A scene (implemented with the CCScene object) is more or less an independent piece of the app workflow. Some people may call them ¡°screens¡± or ¡°stages¡±. Your app can have many scenes, but only one of them is active at a given time.</p>
+<p>A cocos2d CCScene is composed of one or more layers (implemented with the CCLayer object), all of them piled up. Layers give the scene an appearance and behavior; the normal use case is to just make instances of Scene with the layers that you want.</p>
+<p>There is also a family of CCScene classes called transitions (implemented with the CCTransitionScene object) which allow you to make transitions between two scenes (fade out/in, slide from a side, etc).</p>
+<p>Since scenes are subclasses of <a href="http://www.cocos2d-x.org/reference/native-cpp/d0/ded/classcocos2d_1_1_c_c_node.html">CCNode</a>, they can be transformed manually or by using actions. See <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:actions">Actions</a> for more detail about actions.</p>
+<h2>Director</h2>
+<p>The CCDirector is the component which takes care of going back and forth between scenes.</p>
+<p>The CCDirector is a shared (singleton) object. It knows which scene is currently active, and it handles a stack of scenes to allow things like ¡°scene calls¡± (pausing a Scene and putting it on hold while another enters, and then returning to the original). The CCDirector is the one who will actually change the CCScene, after a CCLayer has asked for push, replacement or end of the current scene.</p>
+<h2>Layers</h2>
+<p>A CCLayer has a size of the whole drawable area, and knows how to draw itself. It can be semi transparent (having holes and/or partial transparency in some/all places), allowing to see other layers behind it. Layers are the ones defining appearance and behavior, so most of your programming time will be spent coding CCLayer subclasses that do what you need.</p>
+<p><img alt="Alt text" src="./images/layers.png" /></p>
+<h2>Sprites</h2>
+<p>A cocos2d' sprite is like any other computer sprite. It is a 2D image that can be moved, rotated, scaled, animated, etc.</p>
+<p>Sprites (implemented using the CCSprite class) can have other sprites as children. When a parent is transformed, all its children are transformed as well.</p>
+<p>Since sprites are subclass of CCNode, they can be transformed manually or by using actions. See <a href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:actions">Actions</a> for more detail about actions.</p>
+<h2>Actions</h2>
+<p>Actions are like orders given to any CCNode object. These actions usually modify some of the object's attributes like position, rotation, scale, etc. If these attributes are modified during a period of time, they are CCIntervalAction actions, otherwise they are CCInstantAction actions.</p>
+<p>For example, the CCMoveBy action modifies the position property during a period of time, hence, it is a subclass of CCIntervalAction.</p>
+<p>Example:</p>
+<pre><code>    sprite-&gt;runAction(CCMoveBy::actionWithDuration(2, ccp(50,10)));
+</code></pre>

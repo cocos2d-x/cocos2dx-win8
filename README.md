@@ -1,7 +1,20 @@
 cocos2dx-win8
-=====================
+---------------------
 
 cocos2dx-win8 is a branch of [cocos2d-x][1] and licensed under MIT. It allows you create or port cocos2d Windows8 metro style games easily and quickly.
+
+
+System requirments
+---------------------
+
+**Supported operating systems:** 
+
+Windows 8 RP Build 8400 x86/x64, **ARM** is not supported now.
+
+**Visual Studio:** 
+
+Visual Studio 2012 RC
+
 
 SimpleGame
 --------------------

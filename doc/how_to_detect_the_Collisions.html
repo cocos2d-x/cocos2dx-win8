@@ -1,0 +1,146 @@
+<link href="./markdown.css" rel="stylesheet"></link>
+
+<h1>How to Detect the Collisions</h1>
+<hr />
+<p>Our hero could fire bullets now, but the bullets are only visually there, how could they kill the enemies?</p>
+<p>In this chapter, we will introduce Collision Detection to implement it.</p>
+<p>Firstly, it¡¯s necessary to track the enemies and the bullets.</p>
+<p>In the game, we add a tag for these two kinds of sprites to identify them. tag = 1 stands for a enemy, and tag = 2 means a bullet. Because there is already a member named m_nTag of CCNode, and the methods setTag() and getTag() also exist, CCSprite has inherited them, which we could utilize.</p>
+<p>Add the two member variabls below to HelloWorld in HelloWorldScene.h, these two member variables are used to store the existing enemies and bullets.</p>
+<pre><code>     // cpp with cocos2d-x
+     protected:
+       cocos2d::CCMutableArray&lt;cocos2d::CCSprite*&gt; *_targets;
+       cocos2d::CCMutableArray&lt;cocos2d::CCSprite*&gt; *_projectiles;
+</code></pre>
+<p>Then initialize the two variables in the construct function, new them in init(), and release them in the destruct function.</p>
+<pre><code>     // cpp with cocos2d-x
+
+     // in init()
+     // Initialize arrays
+     _targets = new CCMutableArray&lt;CCSprite*&gt;;
+     _projectiles = new CCMutableArray&lt;CCSprite*&gt;;
+
+     HelloWorld::~HelloWorld()
+     {
+       if (_targets)
+       {
+         _targets-&gt;release();
+         _targets = NULL;
+       }
+
+       if (_projectiles)
+       {
+         _projectiles-&gt;release();
+         _projectiles = NULL;
+       }
+
+       // cpp don't need to call super dealloc
+       // virtual destructor will do this
+     }
+
+     HelloWorld::HelloWorld()
+     :_targets(NULL)
+     ,_projectiles(NULL)
+     {
+     }
+</code></pre>
+<p>Now modify addTarget() to add a new target to targets array, and set its tag to be 1.</p>
+<pre><code>     // cpp with cocos2d-x
+     // Add to targets array
+     target-&gt;setTag(1);
+     _targets-&gt;addObject(target);
+</code></pre>
+<p>Modify ccTouchesEnded() to add a new bullet to bullets array, and set its tag to be 2.</p>
+<pre><code>     // cpp with cocos2d-x
+     // Add to projectiles array
+     projectile-&gt;setTag(2);
+     _projectiles-&gt;addObject(projectile);
+</code></pre>
+<p>Then, modify spriteMoveFinished() as follows. Here we remove the sprites from their corresponding arrays. <br />
+</p>
+<pre><code>     // cpp with cocos2d-x
+     void HelloWorld::spriteMoveFinished(CCNode* sender)
+     {
+       CCSprite *sprite = (CCSprite *)sender;
+       this-&gt;removeChild(sprite, true);
+
+       if (sprite-&gt;getTag() == 1)  // target
+       {
+         _targets-&gt;removeObject(sprite);
+       }
+       else if (sprite-&gt;getTag() == 2) // projectile
+       {
+         _projectiles-&gt;removeObject(sprite);
+       }
+     }
+</code></pre>
+<p>The function update() below is used to detect collisions every frame, remove the collided bullet and enemy from the scene. 
+Declare it in HelloWorldScene.h and Define it in HelloWorldScene.cpp.</p>
+<pre><code>     // cpp with cocos2d-x
+     void HelloWorld::update(ccTime dt)
+     {
+       CCMutableArray&lt;CCSprite*&gt; *projectilesToDelete =        
+                                      new CCMutableArray&lt;CCSprite*&gt;;
+       CCMutableArray&lt;CCSprite*&gt;::CCMutableArrayIterator it, jt;
+
+       for (it = _projectiles-&gt;begin(); it != _projectiles-&gt;end(); it++)
+       {
+         CCSprite *projectile =*it;
+         CCRect projectileRect = CCRectMake(
+             projectile-&gt;getPosition().x 
+                               - (projectile-&gt;getContentSize().width/2),
+             projectile-&gt;getPosition().y 
+                               - (projectile-&gt;getContentSize().height/2),
+             projectile-&gt;getContentSize().width,
+             projectile-&gt;getContentSize().height);
+
+         CCMutableArray&lt;CCSprite*&gt;*targetsToDelete 
+                               = new CCMutableArray&lt;CCSprite*&gt;;
+
+         for (jt = _targets-&gt;begin(); jt != _targets-&gt;end(); jt++)
+         {
+           CCSprite *target =*jt;
+           CCRect targetRect = CCRectMake(
+             target-&gt;getPosition().x - (target-&gt;getContentSize().width/2),
+             target-&gt;getPosition().y - (target-&gt;getContentSize().height/2),
+             target-&gt;getContentSize().width,
+             target-&gt;getContentSize().height);
+
+           if (CCRect::CCRectIntersectsRect(projectileRect, targetRect))
+           {
+             targetsToDelete-&gt;addObject(target);
+           }
+         }
+
+         for (jt = targetsToDelete-&gt;begin(); 
+               jt != targetsToDelete-&gt;end(); 
+               jt++)
+         {
+           CCSprite *target =*jt;
+           _targets-&gt;removeObject(target);
+           this-&gt;removeChild(target, true);
+         }
+
+         if (targetsToDelete-&gt;count() &gt;0)
+         {
+           projectilesToDelete-&gt;addObject(projectile);
+         }
+         targetsToDelete-&gt;release();
+       }
+
+       for (it = projectilesToDelete-&gt;begin(); 
+              it != projectilesToDelete-&gt;end(); 
+              it++)
+       {
+         CCSprite* projectile =*it;
+         _projectiles-&gt;removeObject(projectile);
+         this-&gt;removeChild(projectile, true);
+       }
+       projectilesToDelete-&gt;release();
+     }
+</code></pre>
+<p>Ok, the last thing we should do is adding update() to the schedule to let it be called every frame.</p>
+<pre><code>     // cpp with cocos2d-x
+     this-&gt;schedule( schedule_selector(HelloWorld::update) );
+</code></pre>
+<p>Compile and run the project, fire the bullets as you like, then: AH..AH.., the enemies are killed one by one.</p>

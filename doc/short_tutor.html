@@ -1,0 +1,139 @@
+<link href="./markdown.css" rel="stylesheet"></link>
+
+<h1>A Short Tuturial</h1>
+<hr />
+<p>After <a href="./create_helloworld.html">Create Project</a> we have a HelloWorld cocos2dx project now. Let's take a brief tour of it.</p>
+<h2>Project structure</h2>
+<p><img alt="Alt text" src="./images/hello_world_project_filters.png" />
+<img alt="Alt text" src="./images/after_copy_resources.png" /></p>
+<ul>
+<li>Box2d: Box2d physics engine.</li>
+<li>chipmunk: chipmunk physics engine.</li>
+<li>cocos2dx: cocos2dx-win8 engine.</li>
+<li>CocosDenshion: CocosDenshion Audio engine</li>
+<li>helloworld-cocos2d\helloworld-cocos2d\Assets: Put your Game resources here. </li>
+<li>helloworld-cocos2d\helloworld-cocos2d\Classes: Put your Game src code files here.</li>
+<li>tinyxml: xml parse lib</li>
+</ul>
+<h2>About Resources</h2>
+<p>The 5 pictures is need by metro style app.</p>
+<pre><code>    Logo.png
+    SmallLogo.png
+    SplashScreen.png
+    StoreLogo.png
+    WideLogo.png
+</code></pre>
+<h2>Game Start</h2>
+<p>In essence, we are writing a metro applications, so in accordance with the metro app development standards, our program is to start from the main function in main.cpp.</p>
+<pre><code>    [Platform::MTAThread]
+    int main(Platform::Array&lt;Platform::String^&gt;^)
+    {
+        try
+        {
+            AppDelegate app;
+            auto frameworkViewSource = ref new CCApplicationFrameworkViewSource();
+            Windows::ApplicationModel::Core::CoreApplication::Run(frameworkViewSource);
+        }
+        catch(COMException^ e)
+        {
+            switch (e-&gt;HResult)
+            {
+            case kCCExceptionNoSupportDX11:
+                // no video card support DirectX 11
+                CCMessageBox("You don't have any video card support DirectX 11.", "Error");
+                break;
+            default:
+                break;
+            }
+        }
+        return 0;
+    }
+</code></pre>
+<p>The AppDelegate is a subclass of CCApplication. In cocos2dx, a instance of CCApplication responses to initialize some global resources and manage application life circle.</p>
+<pre><code>    virtual bool initInstance();
+
+    /**
+    @brief  Implement CCDirector and CCScene init code here.
+    @return true    Initialize success, app continue.
+    @return false   Initialize failed, app terminate.
+    */
+    virtual bool applicationDidFinishLaunching();
+
+    /**
+    @brief  The function be called when the application enter background
+    @param  the pointer of the application
+    */
+    virtual void applicationDidEnterBackground();
+
+    /**
+    @brief  The function be called when the application enter foreground
+    @param  the pointer of the application
+    */
+    virtual void applicationWillEnterForeground();
+</code></pre>
+<p>In <strong>AppDelegate::initInstance()</strong> we create view and set the design resolution.</p>
+<pre><code>        mainView-&gt;setDesignResolution(480, 320);
+</code></pre>
+<p>In <strong>AppDelegate::applicationDidFinishLaunching()</strong>, we get the CCDirector and start run our first Scene(HelloWorldScene).
+So the AppDelegate is the real enter point of the game.</p>
+<pre><code>    bool AppDelegate::applicationDidFinishLaunching()
+    {
+        // initialize director
+        CCDirector *pDirector = CCDirector::sharedDirector();
+
+        pDirector-&gt;setOpenGLView(&amp;CCEGLView::sharedOpenGLView());
+
+        // turn on display FPS
+        pDirector-&gt;setDisplayFPS(false);
+
+         //pDirector-&gt;setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
+
+        // set FPS. the default value is 1.0/60 if you don't call this
+        pDirector-&gt;setAnimationInterval(1.0 / 60);
+
+        // create a scene. it's an autorelease object
+        CCScene *pScene = HelloWorld::scene();
+
+        // run
+        pDirector-&gt;runWithScene(pScene);
+
+        return true;
+
+    }
+</code></pre>
+<p>Now, let's talk HelloWorldScene.</p>
+<p>HelloWorldScene key method is <strong>init()</strong>, is to build the various elements in the scene. Each time you create the element will use the <strong>this-&gt;addChild()</strong> function to insert, that is placed the element in this scene, the second parameter is the draw order.</p>
+<pre><code>    bool HelloWorld::init()
+    {
+        //////////////////////////////
+        // 1. super init first
+        if ( !CCLayer::init() )
+        {
+            return false;
+        }
+        CCSize size = CCDirector::sharedDirector()-&gt;getWinSize();
+
+        // 2. add a label shows "Hello World"
+        // create and initialize a label
+        CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Hello World", "Arial", 24);
+        // ask director the window size
+
+        // position the label on the center of the screen
+        pLabel-&gt;setPosition( ccp(size.width / 2, size.height - 50) );
+
+        // add the label as a child to this layer
+        this-&gt;addChild(pLabel, 1);
+
+        // 3. add "HelloWorld" splash screen"
+        CCSprite* pSprite = CCSprite::spriteWithFile("HelloWorld.png");
+
+        // position the sprite on the center of the screen
+        pSprite-&gt;setPosition( ccp(0, 0));
+        pSprite-&gt;setAnchorPoint(ccp(0,0));
+
+        // add the sprite as a child to this layer
+        this-&gt;addChild(pSprite, 0);
+
+        return true;
+    }
+</code></pre>
