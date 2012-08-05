@@ -1163,10 +1163,8 @@ void CCDXSprite::initVertexBuffer()
 
 void CCDXSprite::RenderVertexBuffer(ccV3F_C4B_T2F_Quad quad)
 {
-
-	VertexType* verticesTmp;
 	// Create the vertex array.
-	verticesTmp = new VertexType[4];
+	VertexType verticesTmp[4];
 	if(!verticesTmp)
 	{
 		return ;
@@ -1193,12 +1191,6 @@ void CCDXSprite::RenderVertexBuffer(ccV3F_C4B_T2F_Quad quad)
 	verticesPtr = (VertexType*)mappedResource.pData;
 	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * 4));
 	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
-
-	if ( verticesTmp )
-	{
-		delete[] verticesTmp;
-		verticesTmp = 0;
-	}
 
 	////////////////////////
 	unsigned int stride;

@@ -20,18 +20,6 @@
         <DefaultTile ShowName="wideLogoOnly" WideLogo="Assets\WideLogo.png" ShortName="cocos2d-x" />
         <SplashScreen Image="Assets\SplashScreen.png" />
       </VisualElements>
-      <Extensions>
-        <Extension Category="windows.fileTypeAssociation">
-          <FileTypeAssociation Name="test">
-            <SupportedFileTypes>
-              <FileType>.txt</FileType>
-            </SupportedFileTypes>
-          </FileTypeAssociation>
-        </Extension>
-      </Extensions>
     </Application>
   </Applications>
-  <Capabilities>
-    <Capability Name="documentsLibrary" />
-  </Capabilities>
 </Package>
