@@ -1165,10 +1165,6 @@ void CCDXSprite::RenderVertexBuffer(ccV3F_C4B_T2F_Quad quad)
 {
 	// Create the vertex array.
 	VertexType verticesTmp[4];
-	if(!verticesTmp)
-	{
-		return ;
-	}
 
 	verticesTmp[0].position = XMFLOAT3(quad.tl.vertices.x, quad.tl.vertices.y, quad.tl.vertices.z);
 	verticesTmp[1].position = XMFLOAT3(quad.tr.vertices.x, quad.tr.vertices.y, quad.tr.vertices.z);

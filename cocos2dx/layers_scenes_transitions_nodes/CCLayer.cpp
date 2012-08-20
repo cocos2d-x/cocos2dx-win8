@@ -508,10 +508,6 @@ void CCDXLayerColor::RenderVertexBuffer(ccVertex2F* squareVertices,ccColor4B* sq
 {
 	// Create the vertex array.
 	VertexType verticesTmp[4];
-	if(!verticesTmp)
-	{
-		return ;
-	}
 	
 	verticesTmp[0].position = DirectX::XMFLOAT3(squareVertices[0].x, squareVertices[0].y, 0);
 	verticesTmp[1].position = DirectX::XMFLOAT3(squareVertices[1].x, squareVertices[1].y, 0);
@@ -532,6 +528,7 @@ void CCDXLayerColor::RenderVertexBuffer(ccVertex2F* squareVertices,ccColor4B* sq
 	verticesPtr = (VertexType*)mappedResource.pData;
 	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * 4));
 	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
+
 
 	////////////////////////
 	unsigned int stride;

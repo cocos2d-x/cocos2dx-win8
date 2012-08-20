@@ -1,0 +1,73 @@
+<link href="./markdown.css" rel="stylesheet"></link>
+
+<h1>How to Move sprite</h1>
+<hr />
+<p>We have added a hero to the scene in the last chapter Chapter 2 - How to Add a sprite. But the hero is so lonely that we should add some enemies to let him beat down.
+The function void addTarget() will complete the work, the enemies will be added into the scene from right to left at random speed.</p>
+<p>Declare void addTarget() in HelloWorldScene.h and add the following code to HelloWorldScene.cpp, (and don't forget to add <em>using namespace cocos2d;</em> at the start of HelloWorldScene.cpp)</p>
+<pre><code>     // cpp with cocos2d-x
+     void HelloWorld::addTarget()
+     {
+         CCSprite *target = CCSprite::spriteWithFile("Target.png", 
+             CCRectMake(0,0,27,40) );
+
+         // Determine where to spawn the target along the Y axis
+         CCSize winSize = CCDirector::sharedDirector()-&gt;getWinSize();
+         int minY = target-&gt;getContentSize().height/2;
+         int maxY = winSize.height
+                               -  target-&gt;getContentSize().height/2;
+         int rangeY = maxY - minY;
+         // srand( TimGetTicks() );
+         int actualY = ( rand() % rangeY ) + minY;
+
+         // Create the target slightly off-screen along the right edge,
+         // and along a random position along the Y axis as calculated
+         target-&gt;setPosition( 
+             ccp(winSize.width + (target-&gt;getContentSize().width/2), 
+             actualY) );
+         this-&gt;addChild(target);
+
+         // Determine speed of the target
+         int minDuration = (int)2.0;
+         int maxDuration = (int)4.0;
+         int rangeDuration = maxDuration - minDuration;
+         // srand( TimGetTicks() );
+         int actualDuration = ( rand() % rangeDuration )
+                                             + minDuration;
+
+         // Create the actions
+         CCFiniteTimeAction* actionMove = 
+             CCMoveTo::actionWithDuration( (ccTime)actualDuration, 
+             ccp(0 - target-&gt;getContentSize().width/2, actualY) );
+         CCFiniteTimeAction* actionMoveDone = 
+             CCCallFuncN::actionWithTarget( this, 
+             callfuncN_selector(HelloWorld::spriteMoveFinished));
+         target-&gt;runAction( CCSequence::actions(actionMove, 
+             actionMoveDone, NULL) );
+     }
+</code></pre>
+<p>Here, callfuncN_selector(HelloWorld::spriteMoveFinished) backcalls the function spriteMoveFinished(), we need to declare it in the HelloWorldScene.h and define it as follows,</p>
+<pre><code>     // cpp with cocos2d-x
+     void HelloWorld::spriteMoveFinished(CCNode* sender)
+     {
+       CCSprite *sprite = (CCSprite *)sender;
+       this-&gt;removeChild(sprite, true);
+     }
+</code></pre>
+<p>Tips</p>
+<p>The callback function  but it is a little complicated to implement in cpp, you could refer to the declarations in cocos2dx\include\selector\_protocol.h. There are five different callback types:</p>
+<ul>
+<li>schedule_selector</li>
+<li>callfunc_selector</li>
+<li>callfuncN_selector</li>
+<li>callfuncND_selector</li>
+<li>menu_selector</li>
+</ul>
+<p>How to use them is according to the callback function definition. For example, when use the function CCTimer::initWithTarget whose second parameter is a type of SEL_SCHEDULE, we could find its macro-definition schedule_selector(_SELECTOR) in selector_protocol.h, then we declare a callback function void MyClass::MyCallbackFuncName(ccTime), and transform it as the second parameter of CCTimer::initWithTarget.</p>
+<p>Then, we should put the enemies into the scene at intervals, add the codes before init() function returns.</p>
+<pre><code>     // cpp with cocos2d-x
+     // Call game logic about every second
+     this-&gt;schedule( schedule_selector(HelloWorld::gameLogic), 1.0 );
+</code></pre>
+<p>Ok, everything is done, build and run, and enjoy your fruit.</p>
+<p><img alt="Alt text" src="./images/move_sprite.jpg" /></p>

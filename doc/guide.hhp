@@ -1,0 +1,26 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=guide.chm
+Contents file=guide.hhc
+Default topic=index.html
+Display compile progress=No
+Language=0x409 Ó¢Óï(ÃÀ¹ú)
+
+
+[FILES]
+about.html
+concepts.html
+create_helloworld.html
+create_simplegame_project.html
+faq.html
+how_to_add_a_sprite.html
+how_to_detect_the_Collisions.html
+how_to_fire_some_bullets.html
+how_to_move_sprite.html
+how_to_play_music_and_sund_effect.html
+index.html
+Installation.html
+short_tutor.html
+
+[INFOTYPES]
+

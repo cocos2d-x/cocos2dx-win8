@@ -127,7 +127,7 @@ void DirectXRender::CreateDeviceResources()
     // This flag adds support for surfaces with a different color channel ordering than the API default.
     // It is recommended usage, and is required for compatibility with Direct2D.
     UINT creationFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
-    ComPtr<IDXGIDevice> dxgiDevice;
+    ComPtr<IDXGIDevice1> dxgiDevice;
 
 #if defined(_DEBUG)
     // If the project is in a debug build, enable debugging via SDK Layers with this flag.
@@ -153,36 +153,20 @@ void DirectXRender::CreateDeviceResources()
     ComPtr<ID3D11Device> device;
     ComPtr<ID3D11DeviceContext> context;
 
-	ComPtr<IDXGIFactory> factory;
-	DX::ThrowIfFailed(CreateDXGIFactory1(__uuidof(IDXGIFactory2), (void**)(&factory)));
-
-	// find a video card support the feature we need
-	UINT i = 0;
-	ComPtr<IDXGIAdapter> adapter;
-	
-	while (factory->EnumAdapters(i, &adapter) != DXGI_ERROR_NOT_FOUND)
-	{
-		DX::ThrowIfFailed(D3D11CreateDevice(
-			adapter.Get(),                   // specify null to use the default adapter
-            D3D_DRIVER_TYPE_UNKNOWN,
-            0,                          // leave as 0 unless software device
+	DX::ThrowIfFailed(
+        D3D11CreateDevice(
+            nullptr,                    // specify null to use the default adapter
+            D3D_DRIVER_TYPE_HARDWARE,
+            nullptr,                    // leave as nullptr unless software device
             creationFlags,              // optionally set debug and Direct2D compatibility flags
             featureLevels,              // list of feature levels this app can support
             ARRAYSIZE(featureLevels),   // number of entries in above list
-            D3D11_SDK_VERSION,          // always set this to D3D11_SDK_VERSION for Metro style apps
+            D3D11_SDK_VERSION,          // always set this to D3D11_SDK_VERSION
             &device,                    // returns the Direct3D device created
             &m_featureLevel,            // returns feature level of device created
             &context                    // returns the device immediate context
-			));
-		// if this video card is supported by dx11, use this one
-		if (m_featureLevel >= D3D_FEATURE_LEVEL_11_0)
-			break;
-
-		++i;
-	}
-
-	if (m_featureLevel < D3D_FEATURE_LEVEL_11_0)
-		throw ref new Platform::COMException(kCCExceptionNoSupportDX11);
+            )
+        );
 
     // Get the DirectX11.1 device by QI off the DirectX11 one.
     DX::ThrowIfFailed(
@@ -247,6 +231,12 @@ void DirectXRender::SetDpi(float dpi)
 // This routine is called in the event handler for the view SizeChanged event.
 void DirectXRender::UpdateForWindowSizeChange()
 {
+	   // Only handle window size changed if there is no pending DPI change.
+    if (m_dpi != DisplayProperties::LogicalDpi)
+    {
+        return;
+    }
+
     if (m_window->Bounds.Width  != m_windowBounds.Width ||
         m_window->Bounds.Height != m_windowBounds.Height)
     {
@@ -310,7 +300,7 @@ void DirectXRender::CreateWindowSizeDependentResources()
             );
 
         // Obtain the final swap chain for this window from the DXGI factory.
-		 CoreWindow^ window = m_window.Get();
+		CoreWindow^ window = m_window.Get();
         DX::ThrowIfFailed(
             dxgiFactory->CreateSwapChainForCoreWindow(
                 m_d3dDevice.Get(),
@@ -452,7 +442,7 @@ void DirectXRender::Present()
     // must completely reinitialize the renderer.
     if (hr == DXGI_ERROR_DEVICE_REMOVED || hr == DXGI_ERROR_DEVICE_RESET)
     {
-		Initialize(m_window.Get(), m_dpi);
+        Initialize(m_window.Get(), m_dpi);
     }
     else
     {

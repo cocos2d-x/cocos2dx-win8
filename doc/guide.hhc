@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="index">
+			<param name="Local" value="index.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Beginner's Guide">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Overiew">
+			<param name="Local" value="about.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Installation ">
+			<param name="Local" value="Installation.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Create Project ">
+			<param name="Local" value="create_helloworld.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Basic Concepts ">
+			<param name="Local" value="concepts.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="A Short Tour ">
+			<param name="Local" value="short_tutor.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Faq">
+			<param name="Local" value="faq.html">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Create A Simple Game Step By Step">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Create SimpleGame project">
+			<param name="Local" value="create_simplegame_project.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to Add a sprite">
+			<param name="Local" value="how_to_add_a_sprite.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to Move a sprite">
+			<param name="Local" value="how_to_move_sprite.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to Fire some Bullets">
+			<param name="Local" value="how_to_fire_some_bullets.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to Detect the Collisions">
+			<param name="Local" value="how_to_detect_the_Collisions.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="How to Play Music and Sound Effect">
+			<param name="Local" value="how_to_play_music_and_sund_effect.html">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

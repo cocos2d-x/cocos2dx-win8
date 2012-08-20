@@ -45,7 +45,7 @@ namespace cocos2d
 #pragma warning (disable: 4449) // warns that class is not consumable by JS because it is not sealed
 
 // Helper class that initializes the DirectX APIs in the sample apps.
-public ref class DirectXRender 
+ref class DirectXRender 
 {
 public:
 	internal:

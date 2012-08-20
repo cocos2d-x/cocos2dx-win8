@@ -1,0 +1,53 @@
+<link href="./markdown.css" rel="stylesheet"></link>
+
+<h1>Create Project</h1>
+<hr />
+<p>Here we start to create a simple cocos2dx-win8 project. 
+Before we start you should to read <a href="./Installation.html">Installation</a></p>
+<h2>Create Project</h2>
+<ol>
+<li>
+<p>Open vs2011, Click menu: File-&gt;New-&gt;Project..</p>
+</li>
+<li>
+<p>Choose Templates-&gt;Visual C++-&gt; Windows Metro style, select the Cocos2d template to create project like followed snapshot:<br/> 
+Here,we create at <strong>"d:\Projects\"</strong> <br/>
+<img alt="Alt text" src="./images/new.png" /> </p>
+</li>
+<li>
+<p>Click Ok, then you may see followed snapshot, this seems a bug of visual studio, so we just ignore them and click OK.  After all close Visual Studio.<br/> 
+<img alt="Alt text" src="./images/op_OK.png" /> 
+<img alt="Alt text" src="./images/new_project_bug2.png" /> <br/></p>
+</li>
+<li>
+<p>Copy "d:\cocos2dx-win8\CreateProject.bat" to "d:\Projects\helloworld-cocos2d"</p>
+</li>
+<li>
+<p>Edit CreateProject.bat,set appropriate variable</p>
+<pre><code>set PROJECT_NAME=helloworld-cocos2d
+set COCOS2D_DIR=d:\cocos2dx-win8
+set PROJECT_DIR=d:\Projects\helloworld-cocos2d
+</code></pre>
+</li>
+<li>
+<p>Run CreateProject.bat, it will copy some src code files and some resources into "d:Projectshelloworld-cocos2d". After this, your will see dir below <br/>
+<img alt="Alt text" src="./images/after_copy_resources.png" /></p>
+</li>
+<li>
+<p>Open "d:\Projects\helloworld-cocos2d\helloworld-cocos2d.sln" and add "d:\Projects\helloworld-cocos2d\helloworld-cocos2d\helloworld-cocos2d.vcxproj" into.<br/> <img alt="Alt text" src="./images/add_project_into.png" /> <br/> </p>
+</li>
+<li>
+<p>Done!</p>
+</li>
+</ol>
+<p><img alt="Alt text" src="./images/final.png" /></p>
+<h2>Configure Project</h2>
+<p>If you encounter a problem that can not be deployed, can be set as follows</p>
+<ul>
+<li>Open Package.appxmanifest -&gt; Packageing -&gt; Choose Certificate -&gt; Configure Certificate.. -&gt; Create test Certificate.. -&gt; Click Ok</li>
+</ul>
+<h2>Build and Run</h2>
+<p>Set Local Debugger, Native Only, Debug/Release Win32</p>
+<p><img alt="Alt text" src="./images/build_and_run.PNG" /></p>
+<p>Snapshot On 1366*768 screen:</p>
+<p><img alt="Alt text" src="./images/hello_world_run.png" /></p>

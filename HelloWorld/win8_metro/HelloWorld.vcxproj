@@ -28,7 +28,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{285C09C8-3417-49D1-B538-7F52A605820A}</ProjectGuid>
-    <RootNamespace>FishingJoy_win8_metro</RootNamespace>
+    <RootNamespace>HelloWorld</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
@@ -75,7 +75,7 @@
   <ItemDefinitionGroup>
     <Link>
       <AdditionalDependencies>d2d1.lib;d3d11.lib;dxgi.lib;dwrite.lib;dxguid.lib;xaudio2.lib;xinput.lib;mfcore.lib;mfplat.lib;mfreadwrite.lib;mfuuid.lib;libpng.lib;libxml2.lib;libjpeg.lib;zlib.lib;windowscodecs.lib;shcore.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
       <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalLibraryDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(ProjectDir)..\..\cocos2dx\platform\third_party\win8_metro\libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
