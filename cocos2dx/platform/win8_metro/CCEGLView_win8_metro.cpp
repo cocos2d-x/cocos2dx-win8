@@ -151,8 +151,8 @@ void CCEGLView::setViewPortInPoints(float x, float y, float w, float h)
 	float factor = m_fScreenScaleFactor / CC_CONTENT_SCALE_FACTOR();
 	
     D3DViewport(
-        (int)(x * factor * m_fWinScaleX) + m_rcViewPort.left,
-		(int)(y * factor * m_fWinScaleY) + m_rcViewPort.top,
+		(int)((x * factor + m_rcViewPort.left) * m_fWinScaleX),
+		(int)((y * factor + m_rcViewPort.top) * m_fWinScaleY),
 		(int)(w * factor * m_fWinScaleX),
 		(int)(h * factor * m_fWinScaleY));
 }
@@ -163,8 +163,8 @@ void CCEGLView::setScissorInPoints(float x, float y, float w, float h)
     // Switch coordinate system's origin from bottomleft(OpenGL) to topleft(DirectX)
     y = m_sizeInPoints.height - (y + h); 
     D3DScissor(
-        (int)(x * factor * m_fWinScaleX) + m_rcViewPort.left,
-		(int)(y * factor * m_fWinScaleY) + m_rcViewPort.top,
+		(int)((x * factor + m_rcViewPort.left) * m_fWinScaleX),
+		(int)((y * factor + m_rcViewPort.top) * m_fWinScaleY),
 		(int)(w * factor * m_fWinScaleX),
 		(int)(h * factor * m_fWinScaleY));
 }
@@ -705,7 +705,8 @@ void CCEGLView::OnPointerPressed(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-    pTouch->SetTouchInfo(0, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
+	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
+    pTouch->SetTouchInfo(0, (point.x / m_fWinScaleX - m_rcViewPort.left) *factor, 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
     pSet->addObject(pTouch);
 
@@ -720,7 +721,9 @@ void CCEGLView::OnPointerReleased(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-    pTouch->SetTouchInfo(0, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
+	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
+
+	pTouch->SetTouchInfo(0, (point.x / m_fWinScaleX - m_rcViewPort.left) *factor , 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
 
     m_pDelegate->touchesEnded(pSet, NULL);
@@ -738,7 +741,8 @@ void CCEGLView::OnPointerMoved(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-    pTouch->SetTouchInfo(0, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
+	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
+    pTouch->SetTouchInfo(0, (point.x / m_fWinScaleX - m_rcViewPort.left) *factor, 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
     m_pDelegate->touchesMoved(pSet, NULL);
 }
