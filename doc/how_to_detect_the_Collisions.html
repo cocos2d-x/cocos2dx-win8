@@ -4,7 +4,7 @@
 <hr />
 <p>Our hero could fire bullets now, but the bullets are only visually there, how could they kill the enemies?</p>
 <p>In this chapter, we will introduce Collision Detection to implement it.</p>
-<p>Firstly, it¡¯s necessary to track the enemies and the bullets.</p>
+<p>Firstly, it's necessary to track the enemies and the bullets.</p>
 <p>In the game, we add a tag for these two kinds of sprites to identify them. tag = 1 stands for a enemy, and tag = 2 means a bullet. Because there is already a member named m_nTag of CCNode, and the methods setTag() and getTag() also exist, CCSprite has inherited them, which we could utilize.</p>
 <p>Add the two member variabls below to HelloWorld in HelloWorldScene.h, these two member variables are used to store the existing enemies and bullets.</p>
 <pre><code>     // cpp with cocos2d-x
