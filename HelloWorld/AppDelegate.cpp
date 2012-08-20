@@ -27,7 +27,7 @@ bool AppDelegate::initInstance()
 	void* buff=_aligned_malloc(sizeof(CCEGLView),16);
 	CCEGLView* mainView = new (buff) CCEGLView();
 	mainView->Create();
-	mainView->setDesignResolution(1920, 1080);
+	mainView->setDesignResolution(480, 320);
 
 #endif // CC_PLATFORM_WIN8_METRO
 
