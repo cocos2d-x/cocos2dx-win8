@@ -32,6 +32,7 @@ using namespace Windows::UI::Core;
 using namespace Windows::Foundation;
 using namespace Microsoft::WRL;
 using namespace D2D1;
+using namespace Windows::Graphics::Display;
 
 USING_NS_CC;
 

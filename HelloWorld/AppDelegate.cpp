@@ -27,7 +27,7 @@ bool AppDelegate::initInstance()
 	void* buff=_aligned_malloc(sizeof(CCEGLView),16);
 	CCEGLView* mainView = new (buff) CCEGLView();
 	mainView->Create();
-	mainView->setDesignResolution(480, 320);
+	mainView->setDesignResolution(1920, 1080);
 
 #endif // CC_PLATFORM_WIN8_METRO
 
@@ -45,7 +45,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
 
 	// turn on display FPS
-	pDirector->setDisplayFPS(false);
+	pDirector->setDisplayFPS(true);
 
 	 //pDirector->setDeviceOrientation(kCCDeviceOrientationLandscapeLeft);
 
