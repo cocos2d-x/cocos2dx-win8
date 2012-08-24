@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include <shcore.h>
 #include "DirectXHelper.h"
 
+class  CustomFontContext;
 
 enum class TextAlignment
 {
@@ -43,7 +44,7 @@ ref class DXTextPainter
 {
 public:
 	internal:
-	DXTextPainter(){};
+		DXTextPainter(){};
 
 	void Initialize(
 		_In_ ID2D1DeviceContext*  d2dContext,
@@ -80,4 +81,6 @@ private:
 		IStream* stream
 		);
 	bool PrepareBitmap(UINT nWidth, UINT nHeight);
+
+	CustomFontContext* m_CustomFontContext;
 };

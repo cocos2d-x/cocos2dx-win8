@@ -153,6 +153,9 @@
     <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="..\..\Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="..\..\Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DXFontCommon.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\FontFileStream.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\FontLoader.h" />
     <ClInclude Include="..\..\cocos2dx\support\image_support\TGAlib.h" />
     <ClInclude Include="..\..\tests\AppDelegate.h" />
     <ClInclude Include="..\..\cocos2dx\CCConfiguration.h" />
@@ -434,6 +437,8 @@
     <ClCompile Include="..\..\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="..\..\Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="..\..\cocos2dx\CCDrawingPrimitives.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\FontFileStream.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\FontLoader.cpp" />
     <ClCompile Include="..\..\cocos2dx\support\image_support\TGAlib.cpp" />
     <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCParallaxNode.cpp" />
     <ClCompile Include="..\..\cocos2dx\tileMap_parallax_nodes\CCTileMapAtlas.cpp" />

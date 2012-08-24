@@ -21,8 +21,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
+#include <ppltasks.h>
 #include "DXTextPainter.h"
+#include "FontLoader.h"
+#include "../CCCommon.h"
 
 using namespace Microsoft::WRL;
 using namespace Windows::UI::Core;
@@ -32,7 +34,7 @@ using namespace Platform;
 using namespace Windows::Storage;
 using namespace Windows::System;
 using namespace Windows::Storage::Streams;
-
+using namespace Concurrency;
 
 void DXTextPainter:: Initialize(
 	_In_ ID2D1DeviceContext*  d2dContext,
@@ -50,6 +52,9 @@ void DXTextPainter:: Initialize(
 	GetUserDefaultLocaleName(localeName, LOCALE_NAME_MAX_LENGTH);
 	m_locale = ref new Platform::String(localeName);
 
+	m_CustomFontContext = new CustomFontContext(dwriteFactory);
+
+	m_CustomFontContext->LoadFont( std::wstring(m_fontName->Data()) );
 }
 
 
@@ -79,12 +84,19 @@ bool DXTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 		//release old one
 		m_TextFormat = nullptr;
 	}
+	
+	m_CustomFontContext->LoadFont( std::wstring(fontName->Data()) );
 
+	std::wstring wfontNameTmp( fontName->Data() ); 
+	int pos = wfontNameTmp.find_last_of(L'/')+1;
+	std::wstring wfontName(wfontNameTmp.substr(pos,wfontNameTmp.length()-pos-4));
+	m_fontName = fontName = ref new String(wfontName.c_str());
+	
 	if(m_TextFormat == nullptr)
 	{
 		DX::ThrowIfFailed(
 			m_dwriteFactory->CreateTextFormat(
-			fontName->Data(), // fontName
+			fontName->Data(), // 
 			nullptr,
 			DWRITE_FONT_WEIGHT_LIGHT,
 			DWRITE_FONT_STYLE_NORMAL,
@@ -146,6 +158,23 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 		m_textLayout = nullptr;
 	}
 
+	IDWriteFontCollection* fontCollection = NULL;
+	m_CustomFontContext->GetFontCollection(&fontCollection);
+	
+
+// 	DX::ThrowIfFailed(
+// 		m_dwriteFactory->CreateTextFormat(
+// 		m_fontName->Data(), // 
+// 		fontCollection,
+// 		DWRITE_FONT_WEIGHT_LIGHT,
+// 		DWRITE_FONT_STYLE_NORMAL,
+// 		DWRITE_FONT_STRETCH_NORMAL,
+// 		m_fontSize,   //fntSize
+// 		m_locale->Data(),//L"en-US",
+// 		&m_TextFormat
+// 		)
+// 		);
+
 	DX::ThrowIfFailed(
 		m_dwriteFactory->CreateTextLayout(
 		text->Data(),
@@ -156,6 +185,10 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 		&m_textLayout
 		)
 		);
+	//Here invalid!
+	DWRITE_TEXT_RANGE fullRange = {0, text->Length()};
+	m_textLayout->SetFontFamilyName(m_fontName->Data(),fullRange);
+	m_textLayout->SetFontCollection(fontCollection,fullRange);
 
 	DWRITE_TEXT_METRICS metrics;
 	m_textLayout->GetMetrics(&metrics);
