@@ -70,3 +70,6 @@ proj.bada/sdk1.0/lib/
 proj.bada/sdk2.0/lib/
 *.htb
 signature.xml
+
+/tests/win8_metro/Assets/
+/HelloWorld/win8_metro/Assets/

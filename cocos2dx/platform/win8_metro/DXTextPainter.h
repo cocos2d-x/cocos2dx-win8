@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include <shcore.h>
 #include "DirectXHelper.h"
 
+class FontLoader;
 
 enum class TextAlignment
 {
@@ -43,7 +44,8 @@ ref class DXTextPainter
 {
 public:
 	internal:
-	DXTextPainter(){};
+		DXTextPainter();
+		~DXTextPainter();
 
 	void Initialize(
 		_In_ ID2D1DeviceContext*  d2dContext,
@@ -58,6 +60,10 @@ private:
 	// Direct2D Objects
 	Microsoft::WRL::ComPtr<ID2D1DeviceContext>				m_d2dContext;
 	Microsoft::WRL::ComPtr<IDWriteFactory1>					m_dwriteFactory;
+	// Loader of font files accessible within this document
+    Microsoft::WRL::ComPtr<FontLoader>						m_fontLoader;
+	// Collection of all document fonts
+	Microsoft::WRL::ComPtr<IDWriteFontCollection>			m_fontCollection;
 	Microsoft::WRL::ComPtr<IWICImagingFactory2>				m_wicFactory;
 	// DirectWrite & Windows Imaging Component Objects
 
@@ -69,6 +75,8 @@ private:
 	Platform::String^										m_fontName;
 	Platform::String^										m_locale;
 	UINT													m_fontSize;
+	bool													m_bUseCustomFont;
+	bool													m_bIsFontChanged;
 
 private:
 	// Save render target bitmap to a stream using WIC.
