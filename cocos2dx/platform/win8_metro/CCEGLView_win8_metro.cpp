@@ -586,7 +586,7 @@ void CCEGLView::D3DBlendFunc(int sfactor, int dfactor)
 
 void CCEGLView::clearRender(ID3D11RenderTargetView* renderTargetView)
 {
-	float color[4]={0.f,0.f,0.f,1.f};
+	float color[4]={m_color[0],m_color[1],m_color[2],m_color[3]};
 	if ( !renderTargetView )
 	{
         m_d3dContext->ClearRenderTargetView(m_renderTargetView, color);
