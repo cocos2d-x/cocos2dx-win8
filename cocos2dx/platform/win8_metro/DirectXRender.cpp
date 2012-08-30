@@ -107,7 +107,7 @@ void DirectXRender::CreateDeviceIndependentResources()
     DX::ThrowIfFailed(
         DWriteCreateFactory(
             DWRITE_FACTORY_TYPE_SHARED,
-            __uuidof(IDWriteFactory),
+            __uuidof(IDWriteFactory1),
             &m_dwriteFactory
             )
         );
