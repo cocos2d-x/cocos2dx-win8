@@ -358,6 +358,7 @@ namespace cocos2d
 		// Now create the vertex buffer.
 		if(FAILED(CCID3D11Device->CreateBuffer(&vertexBufferDesc, NULL, &m_vertexBuffer)))
 		{
+			delete[] indices;
 			return ;
 		}
 

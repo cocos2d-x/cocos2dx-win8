@@ -476,7 +476,11 @@ void CCDXRibbonSegment::RenderVertexBuffer(CCfloat* verts,CCfloat* coords,CCubyt
 
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
 	VertexType* verticesPtr;
-	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource))){return ;}
+	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource)))
+	{
+		delete[] verticesTmp;
+		return;
+	}
 	verticesPtr = (VertexType*)mappedResource.pData;
 	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * 100));
 	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);

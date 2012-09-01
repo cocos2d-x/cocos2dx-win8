@@ -8,6 +8,7 @@
 #include "Bug-914.h"
 #include "Bug-1159.h"
 #include "Bug-1174.h"
+#include "ParticleBufOverflow.h"
 
 #define TEST_BUG(bugNO)                                 \
 {                                                       \
@@ -21,7 +22,7 @@ pLayer->autorelease();                                  \
 
 enum
 {
-    MAX_COUNT = 9,
+    MAX_COUNT = 10,
     LINE_SPACE = 40,
     kItemTagBasic = 5432,
 };
@@ -38,7 +39,8 @@ const std::string testsName[MAX_COUNT] =
     "Bug-899",
     "Bug-914",
     "Bug-1159",
-    "Bug-1174"
+    "Bug-1174",
+    "Particle Buffer Overflow"
 };
 
 ////////////////////////////////////////////////////////
@@ -100,6 +102,9 @@ void BugsTestMainLayer::menuCallback(CCObject* pSender)
         break;
     case 8:
         TEST_BUG(1174);
+        break;
+    case 9:
+        TEST_BUG(ParticleBufOverflow);
         break;
     default:
         break;
