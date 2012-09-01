@@ -278,7 +278,7 @@ void CCDrawingPrimitive::initVertexBuffer(unsigned int numberOfPoints)
 	VertexType* verticesT = new VertexType[numberOfPoints];
 	if ( !verticesT )
 	{
-		//
+		return;
 	}
 	memset(verticesT, 0, (sizeof(VertexType) * numberOfPoints));
 	/*
@@ -309,6 +309,8 @@ void CCDrawingPrimitive::initVertexBuffer(unsigned int numberOfPoints)
 	result = CCID3D11Device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);
 	if(FAILED(result))
 	{
+		// clean up allocated resources
+		delete[] verticesT;
 		return ;
 	}
 
@@ -375,7 +377,12 @@ void CCDrawingPrimitive::RenderVertexBuffer()
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
 	VertexType* verticesPtr;
 	HRESULT result;
-	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource))){return ;}
+	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource)))
+	{
+		// clean up allocated resources
+		delete[] verticesTmp;
+		return;
+	}
 	verticesPtr = (VertexType*)mappedResource.pData;
 	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * m_vertexAmount));
 	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
@@ -444,7 +451,12 @@ void CCDrawingPrimitive::RenderVertexBuffer3D()
 
 	D3D11_MAPPED_SUBRESOURCE mappedResource;
 	VertexType* verticesPtr;
-	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource))){return ;}
+	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource)))
+	{
+		// clean up allocated resources
+		delete[] verticesTmp;
+		return;
+	}
 	verticesPtr = (VertexType*)mappedResource.pData;
 	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * m_vertexAmount));
 	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
