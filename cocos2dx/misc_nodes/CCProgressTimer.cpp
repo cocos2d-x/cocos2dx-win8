@@ -676,6 +676,10 @@ void CCDXProgressTimer::initVertexBuffer(ccV2F_C4B_T2F *vertexData,int& vertexDa
 
 	
 	VertexType* vertices = new VertexType[tmpVertexDataCount];
+	if (!vertices)
+	{
+		return;
+	}
 	memset(vertices, 0, (sizeof(VertexType) * tmpVertexDataCount));
 	if(eType == kCCProgressTimerTypeRadialCCW || eType == kCCProgressTimerTypeRadialCW)
 	{

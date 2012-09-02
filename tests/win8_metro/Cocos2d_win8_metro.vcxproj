@@ -295,6 +295,7 @@
     <ClInclude Include="..\..\tests\tests\BugsTest\Bug-899.h" />
     <ClInclude Include="..\..\tests\tests\BugsTest\Bug-914.h" />
     <ClInclude Include="..\..\tests\tests\BugsTest\BugsTest.h" />
+    <ClInclude Include="..\..\tests\tests\BugsTest\ParticleBufOverflow.h" />
     <ClInclude Include="..\..\tests\tests\ClickAndMoveTest\ClickAndMoveTest.h" />
     <ClInclude Include="..\..\tests\tests\CocosDenshionTest\CocosDenshionTest.h" />
     <ClInclude Include="..\..\tests\tests\CocosNodeTest\CocosNodeTest.h" />
@@ -551,6 +552,7 @@
     <ClCompile Include="..\..\tests\tests\BugsTest\Bug-899.cpp" />
     <ClCompile Include="..\..\tests\tests\BugsTest\Bug-914.cpp" />
     <ClCompile Include="..\..\tests\tests\BugsTest\BugsTest.cpp" />
+    <ClCompile Include="..\..\tests\tests\BugsTest\ParticleBufOverflow.cpp" />
     <ClCompile Include="..\..\tests\tests\ClickAndMoveTest\ClickAndMoveTest.cpp" />
     <ClCompile Include="..\..\tests\tests\CocosDenshionTest\CocosDenshionTest.cpp" />
     <ClCompile Include="..\..\tests\tests\CocosNodeTest\CocosNodeTest.cpp" />

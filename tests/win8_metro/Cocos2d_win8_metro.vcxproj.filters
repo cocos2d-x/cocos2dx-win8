@@ -1100,6 +1100,9 @@
     <ClInclude Include="..\..\tests\tests\BugsTest\BugsTest.h">
       <Filter>Classes\tests\BugsTest</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\tests\tests\BugsTest\ParticleBufOverflow.h">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\tests\tests\BugsTest\Bug-458\Bug-458.h">
       <Filter>Classes\tests\BugsTest\Bug-458</Filter>
     </ClInclude>
@@ -1862,6 +1865,9 @@
       <Filter>Classes\tests\BugsTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tests\tests\BugsTest\BugsTest.cpp">
+      <Filter>Classes\tests\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\tests\tests\BugsTest\ParticleBufOverflow.cpp">
       <Filter>Classes\tests\BugsTest</Filter>
     </ClCompile>
     <ClCompile Include="..\..\tests\tests\BugsTest\Bug-458\Bug-458.cpp">
