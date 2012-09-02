@@ -358,6 +358,9 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 
 	UINT uiWidth = (UINT)tSize->Width;
 	UINT uiHeight = (UINT)tSize->Height;
+	DX::ThrowIfFailed(
+		wicFormatConverter->GetSize(&uiWidth, &uiHeight)
+		);
 
 	UINT cbStride = uiWidth * 4;
 	UINT cbBufferSize = cbStride * uiHeight;
@@ -374,6 +377,11 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 		DX::ThrowIfFailed(
 			wicFormatConverter->CopyPixels(&rc, cbStride, cbBufferSize,pixelBuffer->Data)
 			);
+
+		// ensure that last bottom/right lines will not be lost - return the same size
+		// (which is used to draw text)
+		tSize->Width = (float)rc.Width;
+		tSize->Height = (float)rc.Height;
 	}
 
 	return pixelBuffer;
