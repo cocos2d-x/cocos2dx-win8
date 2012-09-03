@@ -684,6 +684,13 @@ void CCEGLView::OnCharacterReceived(unsigned int keyCode)
     }
 }
 
+void CCEGLView::ConvertPointerCoords(float &x, float &y)
+{
+	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
+	x = (x / m_fWinScaleX - m_rcViewPort.left) * factor;
+	y = (y / m_fWinScaleY - m_rcViewPort.top) * factor;
+}
+
 void CCEGLView::OnPointerPressed(int id, const CCPoint& point)
 {
     // prepare CCTouch
@@ -705,9 +712,10 @@ void CCEGLView::OnPointerPressed(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
-    pTouch->SetTouchInfo(0, (point.x / m_fWinScaleX - m_rcViewPort.left) *factor, 
-        (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
+    float x = point.x;
+    float y = point.y;
+    ConvertPointerCoords(x, y);
+    pTouch->SetTouchInfo(0, x, y);
     pSet->addObject(pTouch);
 
     m_pDelegate->touchesBegan(pSet, NULL);
@@ -721,10 +729,10 @@ void CCEGLView::OnPointerReleased(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
-
-	pTouch->SetTouchInfo(0, (point.x / m_fWinScaleX - m_rcViewPort.left) *factor , 
-        (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
+    float x = point.x;
+    float y = point.y;
+    ConvertPointerCoords(x, y);
+    pTouch->SetTouchInfo(0, x, y);
 
     m_pDelegate->touchesEnded(pSet, NULL);
     pSet->removeObject(pTouch);
@@ -741,9 +749,11 @@ void CCEGLView::OnPointerMoved(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
-    pTouch->SetTouchInfo(0, (point.x / m_fWinScaleX - m_rcViewPort.left) *factor, 
-        (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
+    float x = point.x;
+    float y = point.y;
+    ConvertPointerCoords(x, y);
+    pTouch->SetTouchInfo(0, x, y);
+
     m_pDelegate->touchesMoved(pSet, NULL);
 }
 
