@@ -41,6 +41,19 @@ NS_CC_BEGIN;
 
 static CCEGLView * s_pMainWindow;
 
+// helper function to get the proper resolution scale
+// (even if invalid value is received)
+static float GetResolutionScale()
+{
+    float ret = 1.0;
+    int resolutionScale = (int)Windows::Graphics::Display::DisplayProperties::ResolutionScale;
+    if (resolutionScale && resolutionScale != 100)
+    {
+        ret = (float)resolutionScale / 100;
+    }
+    return ret;
+}
+
 CCEGLView::CCEGLView()
 : m_pDelegate(NULL)
 , m_fScreenScaleFactor(1.0f)
@@ -209,6 +222,10 @@ void CCEGLView::setDesignResolution(int dx, int dy)
     DirectXRender^ render = DirectXRender::SharedDXRender();
     float winWidth = render->m_window->Bounds.Width;
     float winHeight = render->m_window->Bounds.Height;
+
+    // m_window size might be less than its real size due to ResolutionScale
+    winWidth *= GetResolutionScale();
+    winHeight *= GetResolutionScale();
 
     m_fScreenScaleFactor = min(winWidth / dx, winHeight / dy);
     m_fScreenScaleFactor *= CCDirector::sharedDirector()->getContentScaleFactor();
@@ -687,6 +704,9 @@ void CCEGLView::OnCharacterReceived(unsigned int keyCode)
 void CCEGLView::ConvertPointerCoords(float &x, float &y)
 {
 	float factor = CC_CONTENT_SCALE_FACTOR()/m_fScreenScaleFactor;
+	// received coord are calculated within original window (ResolutionScale)
+	x *= GetResolutionScale();
+	y *= GetResolutionScale();
 	x = (x / m_fWinScaleX - m_rcViewPort.left) * factor;
 	y = (y / m_fWinScaleY - m_rcViewPort.top) * factor;
 }
