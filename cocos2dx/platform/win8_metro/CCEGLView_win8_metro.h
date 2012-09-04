@@ -193,6 +193,7 @@ public:
     void OnPointerReleased(int id, const CCPoint& point);
     void OnPointerMoved(int id, const CCPoint& point);
 protected:
+    void ConvertPointerCoords(float &x, float &y);
 
 private:
     ID3D11Device1*           m_d3dDevice;
