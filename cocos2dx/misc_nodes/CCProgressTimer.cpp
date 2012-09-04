@@ -781,6 +781,7 @@ void CCDXProgressTimer::initVertexBuffer(ccV2F_C4B_T2F *vertexData,int& vertexDa
 	result = CCID3D11Device->CreateBuffer(&vertexBufferDesc, &vertexDataTmp, &m_vertexBuffer);
 	if(FAILED(result))
 	{
+		CC_SAFE_DELETE_ARRAY(vertices);
 		return ;
 	}
 
