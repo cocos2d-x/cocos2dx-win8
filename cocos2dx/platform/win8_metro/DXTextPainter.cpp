@@ -34,6 +34,22 @@ using namespace Windows::Storage;
 using namespace Windows::System;
 using namespace Windows::Storage::Streams;
 
+// helper functions to get the proper resolution scale
+// (even if invalid value is received)
+static int GetResolutionScaleInt()
+{
+    int resolutionScale = (int)Windows::Graphics::Display::DisplayProperties::ResolutionScale;
+	// if <= - consider as 100%
+	if (resolutionScale <= 0)
+		resolutionScale = 100;
+	return resolutionScale;
+}
+
+static float GetResolutionScale()
+{
+	return (float)GetResolutionScaleInt() / 100.0;
+}
+
 DXTextPainter::DXTextPainter()
 : m_fontLoader()
 , m_dwriteFactory()
@@ -79,6 +95,7 @@ bool DXTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 	}
 
 	FLOAT fntSize = (FLOAT)m_fontSize;
+	fntSize /= GetResolutionScale();
 
     wchar_t localeName[LOCALE_NAME_MAX_LENGTH] = {0};
     GetUserDefaultLocaleName(localeName, LOCALE_NAME_MAX_LENGTH);
@@ -184,7 +201,6 @@ bool DXTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 	return true;
 }
 
-
 Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, Windows::Foundation::Size* tSize, TextAlignment alignment)
 {
 	if(text->Length() == 0){
@@ -264,6 +280,10 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 	m_textLayout->GetMetrics(&metrics);
 	Windows::Foundation::Size newSize(metrics.width, metrics.height);
 
+	// allow resolution scale usage
+	newSize.Width *= GetResolutionScale();
+	newSize.Height *= GetResolutionScale();
+
 	if(isShouldAdjustBounds)
 	{
 		tSize->Width = newSize.Width;
@@ -275,8 +295,8 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 		tSize->Height =  newSize.Height;
 	}
 
-	m_textLayout->SetMaxWidth(tSize->Width);
-	m_textLayout->SetMaxHeight(tSize->Height);
+	m_textLayout->SetMaxWidth(tSize->Width / GetResolutionScale());
+	m_textLayout->SetMaxHeight(tSize->Height / GetResolutionScale());
 
 	if(m_whiteBrush == nullptr){
 		DX::ThrowIfFailed(
