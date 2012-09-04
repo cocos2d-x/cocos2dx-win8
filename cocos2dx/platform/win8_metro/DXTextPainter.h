@@ -42,10 +42,10 @@ enum class TextAlignment
 
 ref class DXTextPainter
 {
+	~DXTextPainter();
 public:
 	internal:
 		DXTextPainter();
-		~DXTextPainter();
 
 	void Initialize(
 		_In_ ID2D1DeviceContext*  d2dContext,
