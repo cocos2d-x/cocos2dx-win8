@@ -76,7 +76,7 @@ bool CCImage::initWithString(
 			break;
 		}
 
-		pImageData = new unsigned char[(UINT)size.Width * (UINT)size.Height * 4];
+		pImageData = new unsigned char[pixelData->Length];
 		memcpy(pImageData,pixelData->Data,pixelData->Length);
 
 		CC_BREAK_IF(! pImageData);

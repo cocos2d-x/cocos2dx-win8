@@ -262,6 +262,8 @@
     <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DirectXHelper.h" />
     <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DirectXRender.h" />
     <ClInclude Include="..\..\cocos2dx\platform\win8_metro\DXTextPainter.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\FontFileStream.h" />
+    <ClInclude Include="..\..\cocos2dx\platform\win8_metro\FontLoader.h" />
     <ClInclude Include="..\..\cocos2dx\support\base64.h" />
     <ClInclude Include="..\..\cocos2dx\support\CCProfiling.h" />
     <ClInclude Include="..\..\cocos2dx\support\ccUtils.h" />
@@ -398,6 +400,8 @@
     <ClCompile Include="..\..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.cpp" />
     <ClCompile Include="..\..\cocos2dx\platform\win8_metro\DirectXRender.cpp" />
     <ClCompile Include="..\..\cocos2dx\platform\win8_metro\DXTextPainter.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\FontFileStream.cpp" />
+    <ClCompile Include="..\..\cocos2dx\platform\win8_metro\FontLoader.cpp" />
     <ClCompile Include="..\..\cocos2dx\script_support\CCScriptSupport.cpp" />
     <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCAnimation.cpp" />
     <ClCompile Include="..\..\cocos2dx\sprite_nodes\CCAnimationCache.cpp" />
