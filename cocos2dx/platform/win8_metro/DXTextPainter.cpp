@@ -279,6 +279,11 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 	DWRITE_TEXT_METRICS metrics;
 	m_textLayout->GetMetrics(&metrics);
 	Windows::Foundation::Size newSize(metrics.width, metrics.height);
+	// layoutTextSize is used to contain text size without ResolutionScale
+	// otherwise it is possible that due to floating point accuracy problem
+	// the provided size to the layout will be less than required
+	// and the text will be divided in 2 lines instead 1, for example.
+	Windows::Foundation::Size layoutTextSize(metrics.width, metrics.height);
 
 	// allow resolution scale usage
 	newSize.Width *= GetResolutionScale();
@@ -289,14 +294,25 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 		tSize->Width = newSize.Width;
 		tSize->Height =  newSize.Height;
 	}
+	else
+	{
+		// Originally provided tSize (provided with an original resolution)
+		// will be used - so layoutTextSize should be calculated.
+		layoutTextSize.Width = tSize->Width / GetResolutionScale();
+		layoutTextSize.Height = tSize->Height / GetResolutionScale();
+	}
 
 	if(tSize->Height <=0)
 	{
 		tSize->Height =  newSize.Height;
 	}
+	else
+	{
+		layoutTextSize.Height = tSize->Height / GetResolutionScale();
+	}
 
-	m_textLayout->SetMaxWidth(tSize->Width / GetResolutionScale());
-	m_textLayout->SetMaxHeight(tSize->Height / GetResolutionScale());
+	m_textLayout->SetMaxWidth(layoutTextSize.Width);
+	m_textLayout->SetMaxHeight(layoutTextSize.Height);
 
 	if(m_whiteBrush == nullptr){
 		DX::ThrowIfFailed(
