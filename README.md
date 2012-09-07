@@ -38,6 +38,10 @@ Make sure you already have the path named "Visual C++ Project" in your computer 
 See more [#issue3][4].
 I am sorry for this template installer is very pool, all imporovements for this are welcome.
 
+2. What's the C++/CX ?
+
+See the [C++/CX Part 0 of [n]: An Introduction][5] on [Visual C++ Team Blog][6]
+
 Document
 ---------------------
 
@@ -53,3 +57,5 @@ Contact us
 [2]: http://www.cocos2d-x.org/embedded/cocos2d-x/classes.html "API References"
 [3]: https://ggasiluithub.com/lihex/SimpleGameCocos2dxWin8 "SimpleGame"
 [4]: https://github.com/cocos2d-x/cocos2dx-win8/issues/3
+[5]: http://blogs.msdn.com/b/vcblog/archive/2012/08/29/cxxcxpart00anintroduction.aspx
+[6]: http://blogs.msdn.com/b/vcblog/
