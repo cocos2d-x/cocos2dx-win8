@@ -155,6 +155,16 @@ CCfloat CCTexture2D::getMaxT()
 	return m_fMaxT;
 }
 
+ccResolutionType CCTexture2D::getResolutionType()
+{
+    return m_eResolutionType; 
+}
+
+void CCTexture2D::setResolutionType(ccResolutionType resolution)
+{
+    m_eResolutionType = resolution;
+}
+
 void CCTexture2D::setMaxT(CCfloat maxT)
 {
 	m_fMaxT = maxT;
@@ -294,6 +304,8 @@ bool CCTexture2D::initWithData(const void *data, CCTexture2DPixelFormat pixelFor
 
 	m_bHasPremultipliedAlpha = false;
 
+	m_eResolutionType = kCCResolutionUnknown;
+
 	return true;
 }
 
@@ -308,6 +320,11 @@ char * CCTexture2D::description(void)
 // implementation CCTexture2D (Image)
 
 bool CCTexture2D::initWithImage(CCImage * uiImage)
+{
+	return initWithImage(uiImage, kCCResolutionUnknown);
+}
+
+bool CCTexture2D::initWithImage(CCImage * uiImage, ccResolutionType resolution)
 {
 	unsigned int POTWide, POTHigh;
 
@@ -340,6 +357,8 @@ bool CCTexture2D::initWithImage(CCImage * uiImage)
 		this->release();
 		return NULL;
 	}
+
+	m_eResolutionType = resolution;
 
 	// always load premultiplied images
 	return initPremultipliedATextureWithImage(uiImage, POTWide, POTHigh);
@@ -463,16 +482,32 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
 		{
 			*outPixel16++ = 
-				((((*inPixel32 >> 16) & 0xFF) >> 3) << 0) |  // B
-				((((*inPixel32 >> 8) & 0xFF) >> 2) << 5) |  // G
-				((((*inPixel32 >> 0) & 0xFF) >> 3) << 11); //
+				((((*inPixel32 >> 0) & 0xFF) >> 3) << 11) |  // R
+				((((*inPixel32 >> 8) & 0xFF) >> 2) << 5) |   // G
+				((((*inPixel32 >> 16) & 0xFF) >> 3) << 0);   // B
 		}
 
 		delete [] data;
 		data = tempData;
 	}
 	else if (pixelFormat == kCCTexture2DPixelFormat_RGBA4444) {
-		//TODO
+		//Convert "RRRRRRRRRGGGGGGGGBBBBBBBBAAAAAAAA" to "RRRRGGGGBBBBAAAA"
+		tempData = new unsigned char[POTHigh * POTWide * 2];
+		inPixel32 = (unsigned int*)data;
+		outPixel16 = (unsigned short*)tempData;
+
+		unsigned int length = POTWide * POTHigh;
+		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
+		{
+			*outPixel16++ = 
+			((((*inPixel32 >> 0) & 0xFF) >> 4) << 12) | // R
+			((((*inPixel32 >> 8) & 0xFF) >> 4) << 8) | // G
+			((((*inPixel32 >> 16) & 0xFF) >> 4) << 4) | // B
+			((((*inPixel32 >> 24) & 0xFF) >> 4) << 0); // A
+		}
+
+		delete [] data;
+		data = tempData;
 	}
 	else if (pixelFormat == kCCTexture2DPixelFormat_RGB5A1) {
 		//Convert "RRRRRRRRRGGGGGGGGBBBBBBBBAAAAAAAA" to "RRRRRGGGGGBBBBBA"
@@ -484,10 +519,10 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
 		{
  			*outPixel16++ = 
-				((((*inPixel32 >> 16) & 0xFF) >> 3) << 1) | // B
-				((((*inPixel32 >> 8) & 0xFF) >> 3) << 6) | // G
-				((((*inPixel32 >> 0) & 0xFF) >> 3) << 11) | // R
-				((((*inPixel32 >> 24) & 0xFF) >> 7) << 0); //
+			((((*inPixel32 >> 0) & 0xFF) >> 3) << 11) | // R
+			((((*inPixel32 >> 8) & 0xFF) >> 3) << 6) | // G
+			((((*inPixel32 >> 16) & 0xFF) >> 3) << 1) | // B
+			((((*inPixel32 >> 24) & 0xFF) >> 7) << 0); // A
 		}
 
 		delete []data;
@@ -497,7 +532,23 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 	{
 		// fix me, how to convert to A8
 		pixelFormat = kCCTexture2DPixelFormat_RGBA8888;
-		//TODO
+
+		/*
+		 * The code can not work, how to convert to A8?
+		 *
+		tempData = new unsigned char[POTHigh * POTWide];
+		inPixel32 = (unsigned int*)data;
+		outPixel8 = tempData;
+
+		unsigned int length = POTWide * POTHigh;
+		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
+		{
+			*outPixel8++ = (*inPixel32 >> 24) & 0xFF;
+		}
+
+		delete []data;
+		data = tempData;
+		*/
 	}
 
 	if (data)
@@ -507,6 +558,7 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 		// should be after calling super init
 		m_bHasPremultipliedAlpha = image->isPremultipliedAlpha();
 
+		//CGContextRelease(context);
 		delete [] data;
 	}
 	return true;
@@ -554,6 +606,11 @@ void CCTexture2D::drawAtPoint(const CCPoint& point)
 		width + point.x,	point.y,	0.0f,
 		point.x,			height  + point.y,	0.0f,
 		width + point.x,	height  + point.y,	0.0f };
+
+	//glBindTexture(GL_TEXTURE_2D, m_uName);
+	//glVertexPointer(3, GL_FLOAT, 0, vertices);
+	//glTexCoordPointer(2, GL_FLOAT, 0, coordinates);
+	//glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 void CCTexture2D::drawInRect(const CCRect& rect)
@@ -569,6 +626,10 @@ void CCTexture2D::drawInRect(const CCRect& rect)
 		rect.origin.x,							rect.origin.y + rect.size.height,		/*0.0f,*/
 		rect.origin.x + rect.size.width,		rect.origin.y + rect.size.height,		/*0.0f*/ };
 
+	//glBindTexture(GL_TEXTURE_2D, m_uName);
+	//glVertexPointer(2, GL_FLOAT, 0, vertices);
+	//glTexCoordPointer(2, GL_FLOAT, 0, coordinates);
+	//glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
 }
 
 #ifdef CC_SUPPORT_PVRTC
@@ -657,6 +718,9 @@ void CCTexture2D::PVRImagesHavePremultipliedAlpha(bool haveAlphaPremultiplied)
 void CCTexture2D::generateMipmap()
 {
 
+	CCAssert( m_uPixelsWide == ccNextPOT(m_uPixelsWide) && m_uPixelsHigh == ccNextPOT(m_uPixelsHigh), "Mimpap texture only works in POT textures");
+	//glBindTexture( GL_TEXTURE_2D, this->m_uName );
+	//ccglGenerateMipmap(GL_TEXTURE_2D);
 }
 
 void CCTexture2D::setTexParameters(ccTexParams *texParams)

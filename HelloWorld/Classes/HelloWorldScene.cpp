@@ -32,7 +32,6 @@ bool HelloWorld::init()
 	{
 		return false;
 	}
-	CCSize size = CCDirector::sharedDirector()->getWinSize();
 
 
 
@@ -46,7 +45,7 @@ bool HelloWorld::init()
 	// create and initialize a label
     CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Hello World", "Arial", 24);
 	// ask director the window size
-
+	CCSize size = CCDirector::sharedDirector()->getWinSize();
 
 	// position the label on the center of the screen
 	pLabel->setPosition( ccp(size.width / 2, size.height - 50) );
@@ -61,8 +60,7 @@ bool HelloWorld::init()
 
 
 	// position the sprite on the center of the screen
-	pSprite->setPosition( ccp(0, 0));
-	pSprite->setAnchorPoint(ccp(0,0));
+	pSprite->setPosition( ccp(size.width/2, size.height/2) );
 
 
 	// add the sprite as a child to this layer

@@ -44,6 +44,9 @@
     <Filter Include="cocos2dx\effects">
       <UniqueIdentifier>{6f049c85-0fc2-4755-b0b5-50c4ffcf7467}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cocos2dx\extensions">
+      <UniqueIdentifier>{6f049c85-0fc2-4755-b0b5-61c4ffcf7467}</UniqueIdentifier>
+    </Filter>
     <Filter Include="cocos2dx\keypad_dispatcher">
       <UniqueIdentifier>{ef725c66-d3b8-4e4a-a1c3-8ce604317c6c}</UniqueIdentifier>
     </Filter>
@@ -299,6 +302,9 @@
     <Filter Include="Classes\tests\Box2DTestBed\Tests">
       <UniqueIdentifier>{bebe3580-5aa2-4916-b0cb-44911c2efd91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\tests\ExtensionsTest">
+      <UniqueIdentifier>{fd68dc40-a791-4f00-b5a7-6bcc00c41a2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest" />
@@ -326,6 +332,9 @@
       <Filter>Resources\animations</Filter>
     </None>
     <None Include="Assets\fonts\arial16.fnt">
+      <Filter>Resources\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontChinese.fnt">
       <Filter>Resources\fonts</Filter>
     </None>
     <None Include="Assets\fonts\bitmapFontTest.fnt">
@@ -887,6 +896,9 @@
     <ClInclude Include="..\..\cocos2dx\effects\CCGrid.h">
       <Filter>cocos2dx\effects</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\extensions\CCNotificationCenter.h">
+      <Filter>cocos2dx\extensions</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\cocos2dx\include\CCGL.h">
       <Filter>cocos2dx\include</Filter>
     </ClInclude>
@@ -1412,6 +1424,12 @@
     <ClInclude Include="..\..\cocos2dx\platform\win8_metro\FontLoader.h">
       <Filter>cocos2dx\platform\win8_metro</Filter>
     </ClInclude>
+    <ClInclude Include="..\tests\ExtensionsTest\ExtensionsTest.h">
+      <Filter>Classes\tests\ExtensionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tests\ExtensionsTest\NotificationCenterTest.h">
+      <Filter>Classes\tests\ExtensionsTest</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -1662,6 +1680,9 @@
     </ClCompile>
     <ClCompile Include="..\..\cocos2dx\effects\CCGrabber.cpp">
       <Filter>cocos2dx\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\extensions\CCNotificationCenter.cpp">
+      <Filter>cocos2dx\extensions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cocos2dx\text_input_node\CCIMEDispatcher.cpp">
       <Filter>cocos2dx\text_input_node</Filter>
@@ -2050,6 +2071,12 @@
     <ClCompile Include="..\..\cocos2dx\platform\win8_metro\FontLoader.cpp">
       <Filter>cocos2dx\platform\win8_metro</Filter>
     </ClCompile>
+    <ClCompile Include="..\tests\ExtensionsTest\ExtensionsTest.cpp">
+      <Filter>Classes\tests\ExtensionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tests\ExtensionsTest\NotificationCenterTest.cpp">
+      <Filter>Classes\tests\ExtensionsTest</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="..\..\cocos2dx\hlsl\CCDrawingPixelShader.hlsl">
@@ -2145,6 +2172,9 @@
       <Filter>Resources\animations</Filter>
     </Image>
     <Image Include="Assets\fonts\arial16.png">
+      <Filter>Resources\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontChinese.png">
       <Filter>Resources\fonts</Filter>
     </Image>
     <Image Include="Assets\fonts\bitmapFontTest.png">

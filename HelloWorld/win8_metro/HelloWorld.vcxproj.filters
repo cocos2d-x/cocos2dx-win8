@@ -44,6 +44,9 @@
     <Filter Include="cocos2dx\effects">
       <UniqueIdentifier>{6f049c85-0fc2-4755-b0b5-50c4ffcf7467}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cocos2dx\extensions">
+      <UniqueIdentifier>{6f049c85-0fc2-4755-b0b5-60c4ffcf7467}</UniqueIdentifier>
+    </Filter>
     <Filter Include="cocos2dx\keypad_dispatcher">
       <UniqueIdentifier>{ef725c66-d3b8-4e4a-a1c3-8ce604317c6c}</UniqueIdentifier>
     </Filter>
@@ -468,6 +471,9 @@
     </ClInclude>
     <ClInclude Include="..\..\cocos2dx\effects\CCGrid.h">
       <Filter>cocos2dx\effects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cocos2dx\extensions\CCNotificationCenter.h">
+      <Filter>cocos2dx\extensions</Filter>
     </ClInclude>
     <ClInclude Include="..\..\cocos2dx\include\CCGL.h">
       <Filter>cocos2dx\include</Filter>
@@ -923,6 +929,9 @@
     </ClCompile>
     <ClCompile Include="..\..\cocos2dx\effects\CCGrabber.cpp">
       <Filter>cocos2dx\effects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cocos2dx\extensions\CCNotificationCenter.cpp">
+      <Filter>cocos2dx\extensions</Filter>
     </ClCompile>
     <ClCompile Include="..\..\cocos2dx\text_input_node\CCIMEDispatcher.cpp">
       <Filter>cocos2dx\text_input_node</Filter>

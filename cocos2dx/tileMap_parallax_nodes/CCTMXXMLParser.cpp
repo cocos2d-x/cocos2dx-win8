@@ -35,8 +35,6 @@ THE SOFTWARE.
 #include "support/base64.h"
 #include "platform/platform.h"
 
-using namespace std;
-
 /*
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
 	#include "expat.h"
@@ -260,7 +258,7 @@ namespace cocos2d {
 			std::string version = valueForKey("version", attributeDict);
 			if ( version != "1.0")
 			{
-				CCLOG("cocos2d: TMXFormat: Unsupported TMX version: %@", version.c_str());
+				CCLOG("cocos2d: TMXFormat: Unsupported TMX version: %s", version.c_str());
 			}
 			std::string orientationStr = valueForKey("orientation", attributeDict);
 			if( orientationStr == "orthogonal")

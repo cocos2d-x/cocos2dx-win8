@@ -85,13 +85,11 @@ CCRect CCRectApplyAffineTransform(const CCRect& rect, const CCAffineTransform& a
 CCAffineTransform CCAffineTransformTranslate(const CCAffineTransform& t, float tx, float ty)
 {
 	return __CCAffineTransformMake(t.a, t.b, t.c, t.d, t.tx + t.a * tx + t.c * ty, t.ty + t.b * tx + t.d * ty);
-	//return __CCAffineTransformMake(t.a, t.b, t.c, t.d, t.tx + tx , t.ty + ty);
 }
 
 CCAffineTransform CCAffineTransformScale(const CCAffineTransform& t, CGFloat sx, CGFloat sy)
 {
 	return __CCAffineTransformMake(t.a * sx, t.b * sx, t.c * sy, t.d * sy, t.tx, t.ty);
-	//return __CCAffineTransformMake(t.a * sx, t.b * sy, t.c * sx, t.d * sy, t.tx * sx, t.ty*sy);
 }
 
 CCAffineTransform CCAffineTransformRotate(const CCAffineTransform& t, CGFloat anAngle)
@@ -105,13 +103,6 @@ CCAffineTransform CCAffineTransformRotate(const CCAffineTransform& t, CGFloat an
 									t.d * fCos - t.b * fSin,
 									t.tx,
 									t.ty);
-
-//	return __CCAffineTransformMake(	t.a * fCos - t.b * fSin,
-//									t.a * fSin + t.b * fCos,
-//									t.c * fCos - t.b * fSin,
-//									t.c * fSin + t.d * fCos,
-//									t.tx*fCos - t.ty*fSin,
-//									t.tx*fSin + t.ty*fCos);
 }
 
 /* Concatenate `t2' to `t1' and return the result:

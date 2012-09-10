@@ -5,8 +5,6 @@
 #include "stdio.h"
 #include "stdlib.h"
 
-using namespace std;
-
 UserDefaultTest::UserDefaultTest()
 {
 	CCSize s = CCDirector::sharedDirector()->getWinSize();
@@ -62,6 +60,8 @@ void UserDefaultTest::doTest()
 	CCUserDefault::sharedUserDefault()->setFloatForKey("float", 2.5f);
 	CCUserDefault::sharedUserDefault()->setDoubleForKey("double", 2.6);
 	CCUserDefault::sharedUserDefault()->setBoolForKey("bool", false);
+
+	CCUserDefault::sharedUserDefault()->flush();
 
 	// print value
 

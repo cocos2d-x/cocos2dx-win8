@@ -735,7 +735,7 @@ void CCEGLView::OnPointerPressed(int id, const CCPoint& point)
     float x = point.x;
     float y = point.y;
     ConvertPointerCoords(x, y);
-    pTouch->SetTouchInfo(0, x, y);
+    pTouch->SetTouchInfo(x, y);
     pSet->addObject(pTouch);
 
     m_pDelegate->touchesBegan(pSet, NULL);
@@ -752,7 +752,7 @@ void CCEGLView::OnPointerReleased(int id, const CCPoint& point)
     float x = point.x;
     float y = point.y;
     ConvertPointerCoords(x, y);
-    pTouch->SetTouchInfo(0, x, y);
+    pTouch->SetTouchInfo(x, y);
 
     m_pDelegate->touchesEnded(pSet, NULL);
     pSet->removeObject(pTouch);
@@ -772,7 +772,7 @@ void CCEGLView::OnPointerMoved(int id, const CCPoint& point)
     float x = point.x;
     float y = point.y;
     ConvertPointerCoords(x, y);
-    pTouch->SetTouchInfo(0, x, y);
+    pTouch->SetTouchInfo(x, y);
 
     m_pDelegate->touchesMoved(pSet, NULL);
 }
