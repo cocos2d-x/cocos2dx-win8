@@ -10,13 +10,17 @@ Core developers:
     Honghui Zhang
     Zhihua Dang (EricCartman)
 
-Contibutors:
+Contributors:
     Bin Zhang
         fix a viwport issue
     Zhuoshi Sun
         add a 16byte aligned_allocator
         fix blink bug of ccsprite with colors
         fix bug of 3D turn page 
+    Denis Mingulov
+         upgrade cocos2dx release to 0.13.0-beta
+         a fix with active ResolutionScale
+         buffer overflow and potential leak fixes
 
 Thanks to all developers and contibutors who spend time a lot for it.
 Special thanks to Ricardo Quesada who created cocos2d laid the foundation for our work.
