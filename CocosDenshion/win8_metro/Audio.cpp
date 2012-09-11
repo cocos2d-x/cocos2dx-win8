@@ -436,17 +436,37 @@ bool Audio::IsSoundEffectStarted(unsigned int sound)
 
 void Audio::PreloadSoundEffect(const char* pszFilePath, bool isMusic)
 {
+
     if (m_engineExperiencedCriticalError) {
         return;
     }
 
     int sound = Hash(pszFilePath);
 
+	if (m_soundEffects.end() != m_soundEffects.find(sound))
+    {
+       return;
+    }
+
 	MediaStreamer mediaStreamer;
 	mediaStreamer.Initialize(cocos2d::CCUtf8ToUnicode(pszFilePath).c_str());
 	m_soundEffects[sound].m_soundID = sound;	
 	
 	uint32 bufferLength = mediaStreamer.GetMaxStreamLengthInBytes();
+
+	if (m_soundEffects.find(sound) != m_soundEffects.end())
+	{
+		if (m_soundEffects[sound].m_soundEffectBufferData)
+		{
+			delete m_soundEffects[sound].m_soundEffectBufferData;
+			m_soundEffects[sound].m_soundEffectBufferData = NULL;
+		}
+	}
+	else
+	{
+		m_soundEffects[sound].m_soundEffectBufferData = NULL;
+	}
+
 	m_soundEffects[sound].m_soundEffectBufferData = new byte[bufferLength];
 	mediaStreamer.ReadAll(m_soundEffects[sound].m_soundEffectBufferData, bufferLength, &m_soundEffects[sound].m_soundEffectBufferLength);
 
@@ -512,7 +532,12 @@ void Audio::UnloadSoundEffect(unsigned int sound)
 
     m_soundEffects[sound].m_soundEffectSourceVoice->DestroyVoice();
 
-    m_soundEffects[sound].m_soundEffectBufferData = nullptr;
+	if (m_soundEffects[sound].m_soundEffectBufferData)
+	{
+		delete[] m_soundEffects[sound].m_soundEffectBufferData;
+		m_soundEffects[sound].m_soundEffectBufferData = NULL;
+	}
+
 	m_soundEffects[sound].m_soundEffectSourceVoice = nullptr;
 	m_soundEffects[sound].m_soundEffectStarted = false;
     ZeroMemory(&m_soundEffects[sound].m_audioBuffer, sizeof(m_soundEffects[sound].m_audioBuffer));
