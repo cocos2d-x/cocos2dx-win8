@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include "CCMutableArray.h"
 #include "ccMacros.h"
 
+using namespace std;
 namespace   cocos2d {
 class CCString;
 
@@ -42,7 +43,7 @@ public:
 	typedef typename CCObjectMap::iterator	CCObjectMapIter;
 
 protected:
-	typedef std::pair<_KeyT, _ValueT> Int_Pair;
+	typedef pair<_KeyT, _ValueT> Int_Pair;
 	CCObjectMap		m_Map;
 	bool			m_bBegin;
 	CCObjectMapIter m_MapIter;
@@ -112,7 +113,7 @@ public:
 
 	bool setObject(_ValueT pObject, const _KeyT& key)
 	{
-		std::pair<CCObjectMapIter, bool > pr;
+		pair<CCObjectMapIter, bool > pr;
 
 		pr = m_Map.insert( Int_Pair(key, pObject) );
 

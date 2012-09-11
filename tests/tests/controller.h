@@ -18,7 +18,7 @@ public:
 
 private:
     CCPoint m_tBeginPos;
-    CCMenu* m_pItmeMenu;
+    CCMenu* m_pItemMenu;
 };
 
 #endif

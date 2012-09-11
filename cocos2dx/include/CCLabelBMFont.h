@@ -32,7 +32,11 @@ Use any of these editors to generate BMFonts:
 ****************************************************************************/
 #ifndef __CCBITMAP_FONT_ATLAS_H__
 #define __CCBITMAP_FONT_ATLAS_H__
+
 #include "CCSpriteBatchNode.h"
+#include <map>
+#include <vector>
+
 namespace cocos2d{
 
 	struct _KerningHashElement;
@@ -69,10 +73,6 @@ namespace cocos2d{
 		int bottom;
 	} ccBMFontPadding;
 
-	enum {
-		// how many characters are supported
-		kCCBMFontMaxChars = 2048, //256,
-	};
 
 	/** @brief CCBMFontConfiguration has parsed configuration of the the .fnt file
 	@since v0.8
@@ -82,7 +82,8 @@ namespace cocos2d{
 		// XXX: Creating a public interface so that the bitmapFontArray[] is accesible
 	public://@public
 		//! The characters building up the font
-		ccBMFontDef	m_pBitmapFontArray[kCCBMFontMaxChars];
+        std::map<unsigned int, ccBMFontDef>* m_pBitmapFontArray;
+
 		//! FNTConfig: Common Height
 		unsigned int m_uCommonHeight;
 		//! Padding
@@ -92,10 +93,7 @@ namespace cocos2d{
 		//! values for kerning
 		struct _KerningHashElement	*m_pKerningDictionary;
 	public:
-		CCBMFontConfiguration()
-			: m_uCommonHeight(0)
-            , m_pKerningDictionary(NULL)
-		{}
+		CCBMFontConfiguration();
 		virtual ~CCBMFontConfiguration();
 		char * description();
 		/** allocates a CCBMFontConfiguration with a FNT file */
@@ -153,14 +151,18 @@ namespace cocos2d{
 		CC_PROPERTY(bool, m_bIsOpacityModifyRGB, IsOpacityModifyRGB)
 	protected:
 		// string to render
-		std::string m_sString;
+		unsigned short* m_sString;
+		std::string m_sString_initial;
 		CCBMFontConfiguration *m_pConfiguration;
+		CCTextAlignment m_pAlignment;
+		float m_fWidth;
+		bool m_bLineBreakWithoutSpaces;
 	public:
 		CCLabelBMFont()
 			: m_cOpacity(0)           
 			, m_bIsOpacityModifyRGB(false)
-			, m_sString("")
-             , m_pConfiguration(NULL)
+            , m_pConfiguration(NULL)
+			, m_bLineBreakWithoutSpaces(false)
 		{}
 		virtual ~CCLabelBMFont();
 		/** Purges the cached data.
@@ -170,16 +172,24 @@ namespace cocos2d{
 		static void purgeCachedData();
 		/** creates a bitmap font altas with an initial string and the FNT file */
 		static CCLabelBMFont * labelWithString(const char *str, const char *fntFile);
+		static CCLabelBMFont * labelWithString(const char *str, const char *fntFile, CCTextAlignment alignment, float width);
 
 		/** init a bitmap font altas with an initial string and the FNT file */
+		bool initWithString(const char *str, const char *fntFile, CCTextAlignment alignment, float width);
 		bool initWithString(const char *str, const char *fntFile);
 		/** updates the font chars based on the string to render */
 		void createFontChars();
 		// super method
 		virtual void setString(const char *label);
+		virtual void setString(const char *label, bool fromUpdate);
+		virtual void updateString(bool fromUpdate);
 		virtual const char* getString(void);
         virtual void setCString(const char *label);
 		virtual void setAnchorPoint(const CCPoint& var);
+		virtual void updateLabel();
+		virtual void setAlignment(CCTextAlignment alignment);
+		virtual void setWidth(float width);
+		virtual void setLineBreakWithoutSpace(bool breakWithoutSpace);
 
 #if CC_LABELBMFONT_DEBUG_DRAW
 		virtual void draw();

@@ -3,7 +3,6 @@
 #include "cocos2d.h"
 #include "tests/controller.h"
 #include "SimpleAudioEngine.h"
-#include "HelloWorldScene.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -133,7 +132,6 @@ bool AppDelegate::applicationDidFinishLaunching()
     pLayer->autorelease();
 	pScene->addChild(pLayer);
 
-	//pDirector->runWithScene(HelloWorld::scene());
 	pDirector->runWithScene(pScene);
 
     return true;

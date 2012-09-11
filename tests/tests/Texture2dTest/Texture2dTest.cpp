@@ -2,8 +2,6 @@
 #include "Texture2dTest.h"
 #include "../testResource.h"
 
-using namespace std;
-
 enum {
 	kTagLabel = 1,
 	kTagSprite1 = 2,
@@ -942,7 +940,7 @@ void TexturePixelFormat::onEnter()
 	
 	CCSize s = CCDirector::sharedDirector()->getWinSize();
 
-    CCLayerColor *background = CCLayerColor::layerWithColorWidthHeight(ccc4(128,128,128,255), s.width, s.height);
+    CCLayerColor *background = CCLayerColor::layerWithColorWidthHeight(ccc4f(128,128,128,255), s.width, s.height);
 	addChild(background, -1);
 	
 	// RGBA 8888 image (32-bit)

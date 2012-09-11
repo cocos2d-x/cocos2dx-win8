@@ -405,5 +405,8 @@ const wstring& CCUserDefault::getWStrXMLFilePath()
 	return m_wsFilePath;
 }
 
+void CCUserDefault::flush()
+{
+}
 
 NS_CC_END;

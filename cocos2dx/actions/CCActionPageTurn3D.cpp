@@ -23,7 +23,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
 #include "CCActionPageTurn3D.h"
-#include "../effects/CCGrid.h"
+
 namespace cocos2d 
 {
 	CCPageTurn3D* CCPageTurn3D::actionWithSize(const ccGridSize& gridSize, ccTime time)
@@ -35,7 +35,6 @@ namespace cocos2d
 			if (pAction->initWithSize(gridSize, time))
 			{
 				pAction->autorelease();
-				//pAction->getGrid()->setIsDepthTest(true);
 			}
 			else
 			{
@@ -103,7 +102,7 @@ namespace cocos2d
 				
 				// Set new coords
 				setVertex(ccg(i, j), p);
-
+				
 			}
 		}
 	}

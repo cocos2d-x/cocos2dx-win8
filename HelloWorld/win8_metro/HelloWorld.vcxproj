@@ -158,6 +158,7 @@
     <ClInclude Include="..\..\cocos2dx\effects\CCGrabber.h" />
     <ClInclude Include="..\..\cocos2dx\effects\CCGrid.h" />
     <ClInclude Include="..\..\cocos2dx\exception\CCException.h" />
+    <ClInclude Include="..\..\cocos2dx\extensions\CCNotificationCenter.h" />
     <ClInclude Include="..\..\cocos2dx\cocoa\CCNS.h" />
     <ClInclude Include="..\..\cocos2dx\include\CCAccelerometer.h" />
     <ClInclude Include="..\..\cocos2dx\include\CCAccelerometerDelegate.h" />
@@ -367,6 +368,7 @@
     <ClCompile Include="..\..\cocos2dx\cocos2d.cpp" />
     <ClCompile Include="..\..\cocos2dx\effects\CCGrabber.cpp" />
     <ClCompile Include="..\..\cocos2dx\effects\CCGrid.cpp" />
+    <ClCompile Include="..\..\cocos2dx\extensions\CCNotificationCenter.cpp" />
     <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDelegate.cpp" />
     <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDispatcher.cpp" />
     <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelAtlas.cpp" />

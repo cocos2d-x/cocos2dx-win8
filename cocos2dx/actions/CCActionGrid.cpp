@@ -133,9 +133,7 @@ namespace cocos2d
 
 	CCGridBase* CCGrid3DAction::getGrid(void)
 	{
-		CCGrid3D* tmp = CCGrid3D::gridWithSize(m_sGridSize);
-		//tmp->setIsDepthTest(true);
-		return tmp;
+		return CCGrid3D::gridWithSize(m_sGridSize);
 	}
 
 	ccVertex3F CCGrid3DAction::vertex(const ccGridSize& pos)

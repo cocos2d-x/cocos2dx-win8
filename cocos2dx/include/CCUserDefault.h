@@ -94,6 +94,10 @@ public:
 	@brief Set string value by key.
 	*/
 	void	setStringForKey(const char* pKey, const std::string & value);
+	/**
+	 @brief Save content to xml file
+	 */
+	void    flush();
 
 	static CCUserDefault* sharedUserDefault();
 	static void purgeSharedUserDefault();

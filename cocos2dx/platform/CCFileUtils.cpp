@@ -34,6 +34,10 @@ THE SOFTWARE.
 
 NS_CC_BEGIN;
 
+static const char *__suffixiPhoneRetinaDisplay = "-hd";
+static const char *__suffixiPad = "-ipad";
+static const char *__suffixiPadRetinaDisplay = "-ipadhd";
+
 typedef enum 
 {
     SAX_NONE = 0,
@@ -279,13 +283,14 @@ public:
         case SAX_REAL:
         case SAX_STRING:
             {
+                CCAssert(!m_sCurKey.empty(), "not found key : <integet/real>");
+
                 if (SAX_ARRAY == curState)
                 {
                     m_pArray->addObject(pText);
                 }
                 else if (SAX_DICT == curState)
                 {
-                    CCAssert(!m_sCurKey.empty(), "not found key : <integet/real>");
                     m_pCurDict->setObject(pText, m_sCurKey);
                 }
                 break;
@@ -297,24 +302,23 @@ public:
     }
 };
 
-std::string& CCFileUtils::ccRemoveHDSuffixFromFile(std::string& path)
+std::string& CCFileUtils::removeSuffixFromFile(std::string& path)
 {
-#if CC_IS_RETINA_DISPLAY_SUPPORTED
-
+	// XXX win32 now can only support iphone retina, because 
+	// we don't know it is ipad retina or iphone retina.
+	// fixe me later
     if( CC_CONTENT_SCALE_FACTOR() == 2 )
     {
         std::string::size_type pos = path.rfind("/") + 1; // the begin index of last part of path
 
-        std::string::size_type suffixPos = path.rfind(CC_RETINA_DISPLAY_FILENAME_SUFFIX);
+        std::string::size_type suffixPos = path.rfind(__suffixiPhoneRetinaDisplay);
         if (std::string::npos != suffixPos && suffixPos > pos)
         {
             CCLog("cocos2d: FilePath(%s) contains suffix(%s), remove it.", path.c_str(),
-                CC_RETINA_DISPLAY_FILENAME_SUFFIX);
-            path.replace(suffixPos, strlen(CC_RETINA_DISPLAY_FILENAME_SUFFIX), "");
+                __suffixiPhoneRetinaDisplay);
+            path.replace(suffixPos, strlen(__suffixiPhoneRetinaDisplay), "");
         }
     }
-
-#endif // CC_IS_RETINA_DISPLAY_SUPPORTED
 
     return path;
 }
@@ -509,6 +513,35 @@ unsigned char* CCFileUtils::getFileDataFromZip(const char* pszZipFilePath, const
     }
 
     return pBuffer;
+}
+
+
+/// functions iOS specific
+void CCFileUtils::setiPhoneRetinaDisplaySuffix(const char *suffix)
+{
+}
+
+void CCFileUtils::setiPadSuffix(const char *suffix)
+{
+}
+
+void CCFileUtils::setiPadRetinaDisplaySuffix(const char *suffix)
+{
+}
+
+bool CCFileUtils::iPadFileExistsAtPath(const char *filename)
+{
+	return false;
+}
+
+bool CCFileUtils::iPadRetinaDisplayFileExistsAtPath(const char *filename)
+{
+	return false;
+}
+
+bool CCFileUtils::iPhoneRetinaDisplayFileExistsAtPath(const char *filename)
+{
+	return false;
 }
 
 //////////////////////////////////////////////////////////////////////////
