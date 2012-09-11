@@ -162,6 +162,7 @@
     <ClInclude Include="..\..\cocos2dx\effects\CCGrabber.h" />
     <ClInclude Include="..\..\cocos2dx\effects\CCGrid.h" />
     <ClInclude Include="..\..\cocos2dx\exception\CCException.h" />
+    <ClInclude Include="..\..\cocos2dx\extensions\CCNotificationCenter.h" />
     <ClInclude Include="..\..\cocos2dx\cocoa\CCNS.h" />
     <ClInclude Include="..\..\cocos2dx\include\CCAccelerometer.h" />
     <ClInclude Include="..\..\cocos2dx\include\CCAccelerometerDelegate.h" />
@@ -389,6 +390,8 @@
     <ClInclude Include="..\tests\Box2DTestBed\Tests\VaryingRestitution.h" />
     <ClInclude Include="..\tests\Box2DTestBed\Tests\VerticalStack.h" />
     <ClInclude Include="..\tests\Box2DTestBed\Tests\Web.h" />
+    <ClInclude Include="..\tests\ExtensionsTest\ExtensionsTest.h" />
+    <ClInclude Include="..\tests\ExtensionsTest\NotificationCenterTest.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -477,6 +480,7 @@
     <ClCompile Include="..\..\cocos2dx\cocos2d.cpp" />
     <ClCompile Include="..\..\cocos2dx\effects\CCGrabber.cpp" />
     <ClCompile Include="..\..\cocos2dx\effects\CCGrid.cpp" />
+    <ClCompile Include="..\..\cocos2dx\extensions\CCNotificationCenter.cpp" />
     <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDelegate.cpp" />
     <ClCompile Include="..\..\cocos2dx\keypad_dispatcher\CCKeypadDispatcher.cpp" />
     <ClCompile Include="..\..\cocos2dx\label_nodes\CCLabelAtlas.cpp" />
@@ -602,6 +606,8 @@
     <ClCompile Include="..\tests\Box2DTestBed\GLES-Render.cpp" />
     <ClCompile Include="..\tests\Box2DTestBed\Test.cpp" />
     <ClCompile Include="..\tests\Box2DTestBed\TestEntries.cpp" />
+    <ClCompile Include="..\tests\ExtensionsTest\ExtensionsTest.cpp" />
+    <ClCompile Include="..\tests\ExtensionsTest\NotificationCenterTest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -638,6 +644,9 @@
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="Assets\fonts\arial16.fnt">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontChinese.fnt">
       <DeploymentContent>true</DeploymentContent>
     </None>
     <None Include="Assets\fonts\bitmapFontTest.fnt">
@@ -945,6 +954,7 @@
     <Image Include="Assets\animations\grossini_family.png" />
     <Image Include="Assets\animations\grossini_gray.png" />
     <Image Include="Assets\fonts\arial16.png" />
+    <Image Include="Assets\fonts\bitmapFontChinese.png" />
     <Image Include="Assets\fonts\bitmapFontTest.png" />
     <Image Include="Assets\fonts\bitmapFontTest2.png" />
     <Image Include="Assets\fonts\bitmapFontTest3.png" />

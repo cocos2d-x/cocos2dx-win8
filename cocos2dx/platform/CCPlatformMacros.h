@@ -101,11 +101,11 @@ public: virtual void set##funName(const varType& var);
  */
 #define CC_SYNTHESIZE_READONLY(varType, varName, funName)\
 protected: varType varName;\
-public: inline varType get##funName(void) const { return varName; }
+public: virtual varType get##funName(void) const { return varName; }
 
 #define CC_SYNTHESIZE_READONLY_PASS_BY_REF(varType, varName, funName)\
 protected: varType varName;\
-public: inline const varType& get##funName(void) const { return varName; }
+public: virtual const varType& get##funName(void) const { return varName; }
 
 /** CC_SYNTHESIZE is used to declare a protected variable.
  We can use getter to read the variable, and use the setter to change the variable.
@@ -119,13 +119,13 @@ public: inline const varType& get##funName(void) const { return varName; }
  */
 #define CC_SYNTHESIZE(varType, varName, funName)\
 protected: varType varName;\
-public: inline varType get##funName(void) const { return varName; }\
-public: inline void set##funName(varType var){ varName = var; }
+public: virtual varType get##funName(void) const { return varName; }\
+public: virtual void set##funName(varType var){ varName = var; }
 
 #define CC_SYNTHESIZE_PASS_BY_REF(varType, varName, funName)\
 protected: varType varName;\
-public: inline const varType& get##funName(void) const { return varName; }\
-public: inline void set##funName(const varType& var){ varName = var; }
+public: virtual const varType& get##funName(void) const { return varName; }\
+public: virtual void set##funName(const varType& var){ varName = var; }
 
 #define CC_SYNTHESIZE_RETAIN(varType, varName, funName)    \
 protected: varType varName; \
@@ -163,6 +163,13 @@ public: virtual void set##funName(varType var)   \
 #define CCLOGERROR(format,...)  cocos2d::CCLog(format, ##__VA_ARGS__)
 #define CCLOGINFO(format,...)   cocos2d::CCLog(format, ##__VA_ARGS__)
 #endif // COCOS2D_DEBUG
+
+// Lua engine debug
+#if !defined(COCOS2D_DEBUG) || COCOS2D_DEBUG == 0 || CC_LUA_ENGINE_DEBUG == 0
+#define LUALOG(...)
+#else
+#define LUALOG(format, ...)     cocos2d::CCLog(format, ##__VA_ARGS__)
+#endif // Lua engine debug
 
 // shared library declartor
 #define CC_DLL 

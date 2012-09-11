@@ -1,8 +1,6 @@
 #include "LabelTest.h"
 #include "../testResource.h"
 
-using namespace std;
-
 enum {
 	kTagTileMap = 1,
 	kTagSpriteManager = 1,
@@ -42,7 +40,7 @@ CCLayer* restartAtlasAction();
 
 static int sceneIdx = -1; 
 
-#define MAX_LAYER	17
+#define MAX_LAYER	18
 
 CCLayer* createAtlasLayer(int nIndex)
 {
@@ -67,6 +65,7 @@ CCLayer* createAtlasLayer(int nIndex)
 		case 14: return new LabelTTFTest();
 		case 15: return new LabelTTFMultiline();
 		case 16: return new LabelTTFChinese();
+        case 17: return new LabelBMFontChinese();
 	}
 
 	return NULL;
@@ -198,23 +197,23 @@ Atlas1::Atlas1()
 	ccV3F_C4B_T2F_Quad quads[] = 
 	{
 		{
-			{{0,0,0},ccc4(0,0,255,255),{0.0f,1.0f},},				// bottom left
-			{{s.width,0,0},ccc4(0,0,255,0),{1.0f,1.0f},},			// bottom right
-			{{0,s.height,0},ccc4(0,0,255,0),{0.0f,0.0f},},			// top left
+			{{0,0,0},ccc4f(0,0,255,255),{0.0f,1.0f},},				// bottom left
+			{{s.width,0,0},ccc4f(0,0,255,0),{1.0f,1.0f},},			// bottom right
+			{{0,s.height,0},ccc4f(0,0,255,0),{0.0f,0.0f},},			// top left
 			{{s.width,s.height,0},{0,0,255,255},{1.0f,0.0f},},	// top right
 		},		
 		{
-			{{40,40,0},ccc4(255,255,255,255),{0.0f,0.2f},},			// bottom left
-			{{120,80,0},ccc4(255,0,0,255),{0.5f,0.2f},},			// bottom right
-			{{40,160,0},ccc4(255,255,255,255),{0.0f,0.0f},},		// top left
-			{{160,160,0},ccc4(0,255,0,255),{0.5f,0.0f},},			// top right
+			{{40,40,0},ccc4f(255,255,255,255),{0.0f,0.2f},},			// bottom left
+			{{120,80,0},ccc4f(255,0,0,255),{0.5f,0.2f},},			// bottom right
+			{{40,160,0},ccc4f(255,255,255,255),{0.0f,0.0f},},		// top left
+			{{160,160,0},ccc4f(0,255,0,255),{0.5f,0.0f},},			// top right
 		},
 
 		{
-			{{s.width/2,40,0},ccc4(255,0,0,255),{0.0f,1.0f},},		// bottom left
-			{{s.width,40,0},ccc4(0,255,0,255),{1.0f,1.0f},},		// bottom right
-			{{s.width/2-50,200,0},ccc4(0,0,255,255),{0.0f,0.0f},},		// top left
-			{{s.width,100,0},ccc4(255,255,0,255),{1.0f,0.0f},},		// top right
+			{{s.width/2,40,0},ccc4f(255,0,0,255),{0.0f,1.0f},},		// bottom left
+			{{s.width,40,0},ccc4f(0,255,0,255),{1.0f,1.0f},},		// bottom right
+			{{s.width/2-50,200,0},ccc4f(0,0,255,255),{0.0f,0.0f},},		// top left
+			{{s.width,100,0},ccc4f(255,255,0,255),{1.0f,0.0f},},		// top right
 		},
 		
 	};
@@ -370,7 +369,7 @@ Atlas3::Atlas3()
 {
 	m_time = 0;
 
-	CCLayerColor* col = CCLayerColor::layerWithColor( ccc4(128,128,128,255) );
+	CCLayerColor* col = CCLayerColor::layerWithColor( ccc4f(128,128,128,255) );
 	addChild(col, -10);
 	
 	CCLabelBMFont* label1 = CCLabelBMFont::labelWithString("Test",  "fonts/bitmapFontTest2.fnt");
@@ -580,10 +579,12 @@ Atlas6::Atlas6()
 	CCSize s = CCDirector::sharedDirector()->getWinSize();
 
 	CCLabelBMFont* label = NULL;
-	label = CCLabelBMFont::labelWithString("FaFeFiFoFu", "fonts/bitmapFontTest5.fnt");
+	//中国
+	label = CCLabelBMFont::labelWithString("中国", "fonts/bitmapFontChinese.fnt", 
+		CCTextAlignmentRight, 200);
 	addChild(label);
-	label->setPosition( ccp(s.width/2, s.height/2+50) );
-	label->setAnchorPoint( ccp(0.5f, 0.5f) ) ;
+	label->setPosition( ccp(s.width / 2.0f, s.height / 2.0f + 50) );
+	label->setAnchorPoint( ccp(1.0f, 0.5f) ) ;
 	
 	label = CCLabelBMFont::labelWithString("fafefifofu", "fonts/bitmapFontTest5.fnt");
 	addChild(label);
@@ -872,7 +873,7 @@ LabelGlyphDesigner::LabelGlyphDesigner()
 {
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 
-    CCLayerColor *layer = CCLayerColor::layerWithColor(ccc4(128,128,128,255));
+    CCLayerColor *layer = CCLayerColor::layerWithColor(ccc4f(128,128,128,255));
     addChild(layer, -10);
 
     // CCLabelBMFont
@@ -965,4 +966,18 @@ LabelTTFChinese::LabelTTFChinese()
 string LabelTTFChinese::title()
 {
 	return "Testing CCLabelTTF with Chinese character";
+}
+
+LabelBMFontChinese::LabelBMFontChinese()
+{
+    CCSize size = CCDirector::sharedDirector()->getWinSize();
+    CCLabelBMFont* pLable = CCLabelBMFont::labelWithString("abc中国中国efghi中国中国JKLMn中国", "fonts/bitmapFontChinese.fnt", CCTextAlignmentRight, 300);
+    pLable->setLineBreakWithoutSpace(true);
+	pLable->setPosition(ccp(size.width / 2, size.height /2));
+    this->addChild(pLable);
+}
+
+string LabelBMFontChinese::title()
+{
+    return "Testing CCLabelBMFont with Chinese character";
 }

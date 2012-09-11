@@ -1,8 +1,6 @@
 #include "SpriteTest.h"
 #include "../testResource.h"
 
-using namespace std;
-
 enum 
 {
     kTagTileMap = 1,
@@ -271,7 +269,7 @@ void Sprite1::ccTouchesEnded(CCSet* touches, CCEvent* event)
         if(!touch)
             break;
 
-        CCPoint location = touch->locationInView(touch->view());
+        CCPoint location = touch->locationInView();
         
         location = CCDirector::sharedDirector()->convertToGL(location);
     
@@ -347,7 +345,7 @@ void SpriteBatchNode1::ccTouchesEnded(CCSet* touches, CCEvent* event)
         if(!touch)
             break;
 
-        CCPoint location = touch->locationInView(touch->view());
+        CCPoint location = touch->locationInView();
         
         location = CCDirector::sharedDirector()->convertToGL(location);
     

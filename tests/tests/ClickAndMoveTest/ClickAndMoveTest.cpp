@@ -21,7 +21,7 @@ MainLayer::MainLayer()
 	
 	CCSprite* sprite = CCSprite::spriteWithFile(s_pPathGrossini);
 	
-	CCLayer* layer = CCLayerColor::layerWithColor(ccc4(255,255,0,255));
+	CCLayer* layer = CCLayerColor::layerWithColor(ccc4f(255,255,0,255));
 	addChild(layer, -1);
 		
 	addChild(sprite, 0, kTagSprite);
@@ -42,7 +42,7 @@ void MainLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
     CCSetIterator it = pTouches->begin();
 	CCTouch* touch = (CCTouch*)(*it);
 	
-	CCPoint location = touch->locationInView( touch->view() );
+	CCPoint location = touch->locationInView();
 	CCPoint convertedLocation = CCDirector::sharedDirector()->convertToGL(location);
 
 	CCNode* s = getChildByTag(kTagSprite);
