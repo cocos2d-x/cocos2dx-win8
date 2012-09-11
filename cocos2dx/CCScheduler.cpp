@@ -229,7 +229,7 @@ void CCScheduler::removeHashElement(_hashSelectorEntry *pElement)
 	free(pElement);
 }
 
-void CCScheduler::scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, bool bPaused)
+void CCScheduler::scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, ccTime fInterval, bool bPaused)
 {
 	CCAssert(pfnSelector, "");
 	CCAssert(pTarget, "");
