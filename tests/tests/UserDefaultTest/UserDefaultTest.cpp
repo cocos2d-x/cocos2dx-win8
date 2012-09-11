@@ -5,6 +5,8 @@
 #include "stdio.h"
 #include "stdlib.h"
 
+using namespace std;
+
 UserDefaultTest::UserDefaultTest()
 {
 	CCSize s = CCDirector::sharedDirector()->getWinSize();

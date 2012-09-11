@@ -1,6 +1,8 @@
 #include "TileMapTest.h"
 #include "../testResource.h"
 
+using namespace std;
+
 enum 
 {
 	kTagTileMap = 1,

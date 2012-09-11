@@ -26,6 +26,8 @@ THE SOFTWARE.
 
 #include "CCNotificationCenter.h"
 
+using namespace std;
+
 NS_CC_BEGIN;
 
 static CCNotificationCenter *s_sharedNotifCenter = NULL;

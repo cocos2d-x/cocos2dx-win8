@@ -1,6 +1,8 @@
 #include "ActionsTest.h"
 #include "../testResource.h"
 
+using namespace std;
+
 CCLayer* NextAction();
 CCLayer* BackAction();
 CCLayer* RestartAction();

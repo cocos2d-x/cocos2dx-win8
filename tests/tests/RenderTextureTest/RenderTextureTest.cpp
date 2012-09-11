@@ -1,6 +1,8 @@
 #include "CCConfiguration.h"
 #include "RenderTextureTest.h"
 
+using namespace std;
+
 // Test #1 by Jason Booth (slipster216)
 // Test #3 by David Deaco (ddeaco)
 

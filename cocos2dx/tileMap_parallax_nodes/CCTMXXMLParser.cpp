@@ -46,6 +46,8 @@ THE SOFTWARE.
 #endf
 */
 
+using namespace std;
+
 namespace cocos2d {
 
 	/*

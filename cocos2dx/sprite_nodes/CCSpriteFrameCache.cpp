@@ -36,6 +36,8 @@ THE SOFTWARE.
 #include "CCFileUtils.h"
 #include "CCString.h"
 
+using namespace std;
+
 namespace   cocos2d {
 
 static CCSpriteFrameCache *pSharedSpriteFrameCache = NULL;

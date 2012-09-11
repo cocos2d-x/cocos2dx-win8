@@ -1,6 +1,8 @@
 #include "LabelTest.h"
 #include "../testResource.h"
 
+using namespace std;
+
 enum {
 	kTagTileMap = 1,
 	kTagSpriteManager = 1,

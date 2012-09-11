@@ -1,6 +1,8 @@
 #include "LayerTest.h"
 #include "../testResource.h"
 
+using namespace std;
+
 enum 
 {
 	kTagLayer = 1,

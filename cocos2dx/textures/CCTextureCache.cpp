@@ -42,6 +42,8 @@ THE SOFTWARE.
 #include "CCThread.h"
 //#include "semaphore.h"
 
+using namespace std;
+
 namespace   cocos2d {
 
 typedef struct _AsyncStruct
