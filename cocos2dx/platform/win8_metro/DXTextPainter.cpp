@@ -299,7 +299,11 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 		// Originally provided tSize (provided with an original resolution)
 		// will be used - so layoutTextSize should be calculated.
 		layoutTextSize.Width = tSize->Width / GetResolutionScale();
-		layoutTextSize.Height = tSize->Height / GetResolutionScale();
+		// adjust height just in case if it is provided
+		if (tSize->Height > 0)
+		{
+			layoutTextSize.Height = tSize->Height / GetResolutionScale();
+		}
 	}
 
 	if(tSize->Height <=0)
