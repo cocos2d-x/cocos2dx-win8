@@ -458,7 +458,7 @@ void Audio::PreloadSoundEffect(const char* pszFilePath, bool isMusic)
 	{
 		if (m_soundEffects[sound].m_soundEffectBufferData)
 		{
-			delete m_soundEffects[sound].m_soundEffectBufferData;
+			delete[] m_soundEffects[sound].m_soundEffectBufferData;
 			m_soundEffects[sound].m_soundEffectBufferData = NULL;
 		}
 	}

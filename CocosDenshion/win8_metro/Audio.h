@@ -85,7 +85,6 @@ private:
     StreamingVoiceContext       m_voiceContext;
 
     typedef std::map<unsigned int, SoundEffectData> EffectList;
-    typedef std::pair<unsigned int, SoundEffectData> Effect;
 	EffectList				    m_soundEffects;         // “Ù–ß¡–±Ì
 
     unsigned int                m_backgroundID;         // ±≥æ∞“Ù¿÷
