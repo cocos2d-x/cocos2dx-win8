@@ -9,13 +9,18 @@ using namespace std;
 namespace CocosDenshion {
 
 Audio* s_audioController = NULL;
+// a flag that if the s_audioController should be re-initialiezed
+// see also in SimpleAudioEngine::end() in this file
+bool s_bAudioControllerNeedReInitialize = true;
+
 static Audio* sharedAudioController()
 {
-    if (! s_audioController)
+    if ((! s_audioController) || s_bAudioControllerNeedReInitialize)
     {
         s_audioController = new Audio;
         s_audioController->Initialize();
         s_audioController->CreateResources();
+		s_bAudioControllerNeedReInitialize = false;
     }
 
     return s_audioController;
@@ -41,6 +46,8 @@ void SimpleAudioEngine::end()
     sharedAudioController()->StopBackgroundMusic(true);
     sharedAudioController()->StopAllSoundEffects();
     sharedAudioController()->ReleaseResources();
+	//set here to tell the s_bAudioControllerNeedReInitialize should be re-initialized
+	s_bAudioControllerNeedReInitialize = true;
 }
 
 void SimpleAudioEngine::setResource(const char* pszZipFileName)
