@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cocos2d", "cocos2d.vcxproj", "{1A0D24B4-1DE0-400B-BC35-92A51351477F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|Win32 = Debug|Win32
+		Release|ARM = Release|ARM
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Debug|ARM.Build.0 = Debug|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Debug|Win32.Build.0 = Debug|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Debug|Win32.Deploy.0 = Debug|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Release|ARM.ActiveCfg = Release|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Release|ARM.Build.0 = Release|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Release|ARM.Deploy.0 = Release|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Release|Win32.ActiveCfg = Release|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Release|Win32.Build.0 = Release|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351477F}.Release|Win32.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
