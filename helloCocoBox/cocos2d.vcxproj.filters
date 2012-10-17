@@ -698,14 +698,9 @@
     <ClCompile Include="Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include=".\d3dcompiler.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
-    <ClInclude Include="d3d11shader.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
     <ClInclude Include="..\cocos2dx\cocoa\CCNS.h">
       <Filter>cocos2dx\cocoa</Filter>
     </ClInclude>
@@ -791,28 +786,11 @@
     <ClInclude Include="..\cocos2dx\platform\win8_metro\DXTextPainter.h">
       <Filter>cocos2dx\platform\win8_metro</Filter>
     </ClInclude>
-    <ClInclude Include="corewrappers.h" />
-    <ClInclude Include="xinput.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
-    <ClInclude Include="shcore.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
-    <ClInclude Include="SimpleAudioEngine.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\include\ppltasks.h" />
     <ClInclude Include="Classes\GameOverScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="crtdefs.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
-    <ClInclude Include="concrt.h">
-      <Filter>ExtraCocos</Filter>
     </ClInclude>
     <ClInclude Include="DDSTextureLoader.h">
       <Filter>ExtraCocos</Filter>
@@ -978,6 +956,7 @@
     <ClInclude Include="Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />

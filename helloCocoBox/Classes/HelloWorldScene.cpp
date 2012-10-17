@@ -1,4 +1,4 @@
-/*
+﻿/*
 * cocos2d-x   http://www.cocos2d-x.org
 *
 * Copyright (c) 2010-2011 - cocos2d-x community
@@ -43,7 +43,7 @@ b2RevoluteJoint *armJoint;
 b2MouseJoint *mouseJoint;
 b2Body *groundBody;
 vector<b2Body*> *bullets;
-int currentBullet;
+UINT currentBullet;
 b2Body *bulletBody;
 b2WeldJoint *bulletJoint;
 bool releasingArm;
@@ -120,9 +120,9 @@ CCScene* HelloWorld::scene()
 bool HelloWorld::init()
 {
 	bool bRet = false;
+
 	do 
 	{
-
 		if ( !CCLayer::init() )
 		{
 			break;
@@ -335,9 +335,7 @@ bool HelloWorld::init()
 		world = new b2World(gravity);
 		world->SetContinuousPhysics(true);
 
-
 		CCSize screenSize = CCDirector::sharedDirector()->getWinSize();
-
 
 		CCSprite *sprite = CCSprite::spriteWithFile("bg.png" );
 		sprite->setAnchorPoint(CCPointZero);
@@ -367,14 +365,23 @@ bool HelloWorld::init()
 		sprite->setAnchorPoint(CCPointZero);
 		this->addChild(sprite, 10);
 
+
+		CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Angry Squirrels !!!", "Comic Sans MS", 12);
+		//CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Angry Squirrels !!!", "Times New Roman", 12);
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		pLabel->setPosition( ccp(size.width / 3, size.height - 50) );
+		pLabel->setColor(ccc3(160, 80, 5));
+		this->addChild(pLabel, 0);
+
 		b2BodyDef groundBodyDef;
 		groundBodyDef.position.Set(0,0);
 		groundBody = world->CreateBody(&groundBodyDef);
 		b2EdgeShape groundBox;
 		b2FixtureDef boxShapeDef;
 		boxShapeDef.shape = &groundBox;
+
 		//bottom
-		groundBox.Set(b2Vec2(0,FLOOR_HEIGHT/PTM_RATIO), b2Vec2(screenSize.width*10.0/PTM_RATIO,FLOOR_HEIGHT/PTM_RATIO));
+		groundBox.Set(b2Vec2(0,FLOOR_HEIGHT/PTM_RATIO), b2Vec2(screenSize.width*10.0f/PTM_RATIO,FLOOR_HEIGHT/PTM_RATIO));
 		groundBody->CreateFixture(&boxShapeDef);
 
 		//top
@@ -424,10 +431,8 @@ bool HelloWorld::init()
 		targets = new vector<b2Body*>;
 		enemies = new vector<b2Body*>;
 
-
 		contactListener = new MyContactListener();
 		world->SetContactListener(contactListener);
-		
 		//this->setPosition(ccp(-480,0));
 
 		this->schedule( schedule_selector(HelloWorld::tick) );
@@ -438,8 +443,10 @@ bool HelloWorld::init()
 		//start = true;
 		bRet = true;
 	} while (0);
+
 	return bRet;
 }
+
 void HelloWorld::resetGame(ccTime dt)
 {
 	this->unschedule(schedule_selector(HelloWorld::resetGame));
@@ -447,6 +454,7 @@ void HelloWorld::resetGame(ccTime dt)
 	this->attachBullet();
 	this->createTargets();
 }
+
 void HelloWorld::resetBullet(ccTime dt)
 {
 	this->unschedule(schedule_selector(HelloWorld::resetBullet));
@@ -459,6 +467,7 @@ void HelloWorld::resetBullet(ccTime dt)
 		this->runAction(CCMoveTo::actionWithDuration(2.0f, CCPointZero));
 	}
 }
+
 bool HelloWorld::attachBullet()
 {
 	if(currentBullet < bullets->size())
@@ -539,6 +548,7 @@ void HelloWorld::createTarget(const char *imageName, CCPoint position, float rot
 		boxDef.userData = (void*)1;
 		enemies->push_back(body);
 	}
+
 	boxDef.density = 0.5f;
 	body->CreateFixture(&boxDef);
 	printf("asdf");
@@ -608,7 +618,7 @@ void HelloWorld::tick(ccTime dt)
 	}
 
 	//Bullet is moving
-	if (bulletBody != nullptr & bulletJoint == NULL)
+	if (bulletBody != nullptr && bulletJoint == NULL)
 	{
 		b2Vec2 position = bulletBody->GetPosition();
 		CCPoint myPosition = this->getPosition();
@@ -684,13 +694,9 @@ void HelloWorld::tick(ccTime dt)
 		explosion->setTexture(tex);
 		this->addChild(explosion, 11);
 		explosion->release();
-
 	}
 
-
-
 	contactListener->contacts.clear();
-
 }
 
 void HelloWorld::spriteMoveFinished(CCNode* sender)
@@ -739,7 +745,7 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent *event)
 
 void HelloWorld::ccTouchesMoved(CCSet* touches, CCEvent* event)
 {
-	
+
 	if(mouseJoint == nullptr)
 		return;
 	CCTouch* touch = (CCTouch*)(touches->anyObject());
@@ -779,12 +785,12 @@ void HelloWorld::updateBox2D(ccTime dt)
 	world->ClearForces();
 	CCMutableArray<CCSprite*>::CCMutableArrayIterator it, jt;
 
-	for(long index = 0; index < _b2Boxes.size(); ++index)
+	for(UINT index = 0; index < _b2Boxes.size(); ++index)
 	{
 		try {
 			b2Body *body = _b2Boxes.at(index);
 			b2Vec2 position = body->GetPosition();
-			float32 angle = body->GetAngle() *-1.0;
+			float32 angle = body->GetAngle() *-1.0f;
 			CCSprite *box = _CCBoxes.at(index);
 			float ccspriteangle = box->getRotation();
 			box->setPosition(ccp(position.x * MET_TO_PIX, position.y * MET_TO_PIX));
@@ -815,7 +821,6 @@ void HelloWorld::updateGame(ccTime dt)
 {
 
 }
-
 
 void HelloWorld::registerWithTouchDispatcher()
 {

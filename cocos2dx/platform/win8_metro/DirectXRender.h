@@ -22,16 +22,19 @@
 #include <wrl.h>
 #include <agile.h>
 #include <d3d11_1.h>
+
 #if WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
+#include "FTTextPainter.h"
 #else
 #include <d2d1_1.h>
 #include <d2d1effects.h>
 #include <dwrite_1.h>
 #include <wincodec.h>
+#include "DXTextPainter.h"
 #endif
+
 #include <XInput.h>
 #include "DirectXHelper.h"
-#include "DXTextPainter.h"
 
 // forward declare
 namespace cocos2d
@@ -64,7 +67,6 @@ public:
 
 private:
 	    Platform::Agile<Windows::UI::Core::CoreWindow>                  m_window;
-		DXTextPainter^									m_textPainter;
 
 private:
     bool SetRasterState();
@@ -75,7 +77,9 @@ private:
 
 
 #if WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
+	FTTextPainter^									m_textPainter;
 #else
+	DXTextPainter^									m_textPainter;
     //// Declare Direct2D Objects
     Microsoft::WRL::ComPtr<ID2D1Factory1>           m_d2dFactory;
     Microsoft::WRL::ComPtr<ID2D1Device>             m_d2dDevice;

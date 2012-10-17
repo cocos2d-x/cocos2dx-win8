@@ -58,16 +58,22 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SolutionDir);$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IncludePath>$(SolutionDir)LibPNG;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)LibPNG;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
@@ -83,7 +89,7 @@
       <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -153,7 +159,6 @@
     <Xml Include="WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 11.0\VC\WPSDK\WP80\include\ppltasks.h" />
     <ClInclude Include="..\Box2D\Box2D.h" />
     <ClInclude Include="..\Box2D\Collision\b2BroadPhase.h" />
     <ClInclude Include="..\Box2D\Collision\b2Collision.h" />
@@ -226,6 +231,7 @@
     <ClInclude Include="..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.h" />
     <ClInclude Include="..\cocos2dx\platform\win8_metro\DirectXRender.h" />
     <ClInclude Include="..\cocos2dx\platform\win8_metro\DXTextPainter.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
     <ClInclude Include="..\cocos2dx\support\base64.h" />
     <ClInclude Include="..\cocos2dx\support\CCProfiling.h" />
     <ClInclude Include="..\cocos2dx\support\ccUtils.h" />
@@ -238,17 +244,9 @@
     <ClInclude Include=".\cocos2dorig.h" />
     <ClInclude Include="Classes\GameOverScene.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
-    <ClInclude Include="concrt.h" />
-    <ClInclude Include="corewrappers.h" />
-    <ClInclude Include="crtdefs.h" />
-    <ClInclude Include="d3d11shader.h" />
     <ClInclude Include="DDSTextureLoader.h" />
-    <ClInclude Include=".\d3dcompiler.h" />
     <ClInclude Include="Classes\MyContactListener.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="shcore.h" />
-    <ClInclude Include="SimpleAudioEngine.h" />
-    <ClInclude Include="xinput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Box2D\Collision\b2BroadPhase.cpp" />
@@ -361,6 +359,7 @@
     <ClCompile Include="..\cocos2dx\platform\win8_metro\CCImage_win8_metro.cpp" />
     <ClCompile Include="..\cocos2dx\platform\win8_metro\DirectXRender.cpp" />
     <ClCompile Include="..\cocos2dx\platform\win8_metro\DXTextPainter.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp" />
     <ClCompile Include="..\cocos2dx\script_support\CCScriptSupport.cpp" />
     <ClCompile Include="..\cocos2dx\sprite_nodes\CCAnimation.cpp" />
     <ClCompile Include="..\cocos2dx\sprite_nodes\CCAnimationCache.cpp" />

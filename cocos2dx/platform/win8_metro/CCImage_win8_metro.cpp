@@ -25,6 +25,12 @@
 
 NS_CC_BEGIN;
 
+#if WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
+typedef FTTextPainter TextPainter;
+#else
+typedef DXTextPainter TextPainter;
+#endif
+
 bool CCImage::initWithString(
 	const char *    pText, 
 	int             nWidth/* = 0*/, 
@@ -35,64 +41,65 @@ bool CCImage::initWithString(
 {
 	bool bRet = false;
 	unsigned char * pImageData = 0;
-	
+
 	do{
-		//CC_BREAK_IF(! pText);  
+		CC_BREAK_IF(! pText);  
 
-		////D2DWraper& wraper = sharedD2DWraper();
-		//DXTextPainter^ painter = DirectXRender::SharedDXRender()->m_textPainter;
-		//std::wstring wStrFontName = CCUtf8ToUnicode(pFontName);
-		//bool isSuccess = painter->SetFont(ref new Platform::String(wStrFontName.c_str()), nSize);
-		//if (! isSuccess)
-  //      {
-  //          CCLog("Can't found font(%s), use system default", pFontName);
-  //      }
+		TextPainter^ painter = DirectXRender::SharedDXRender()->m_textPainter;
 
-		//
-		//Windows::Foundation::Size size((float)nWidth, (float)nHeight);
+		std::wstring wStrFontName = CCUtf8ToUnicode(pFontName);
+		bool isSuccess = painter->SetFont(ref new Platform::String(wStrFontName.c_str()), nSize);
+		
+		if (!isSuccess)
+		{
+			CCLog("Can't find font(%s), using system default", pFontName);
+		}
 
-		//TextAlignment alignmet = TextAlignment::TextAlignmentCenter;
-		//DWORD dwHoriFlag = eAlignMask & 0x0f;
-		////set text alignment
-		//switch (dwHoriFlag)
-		//{
-		//case 1: // left
-		//		alignmet = TextAlignment::TextAlignmentLeft;
-		//	break;
-		//case 2: // right
-		//	alignmet = TextAlignment::TextAlignmentRight;
-		//	break;
-		//case 3: // center
-		//	alignmet = TextAlignment::TextAlignmentCenter;
-		//	break;
-		//}
+		Windows::Foundation::Size size((float)nWidth, (float)nHeight);
 
-		//Platform::Array<byte>^ pixelData;
-		//std::wstring wStrText = CCUtf8ToUnicode(pText);
-		//pixelData = painter->DrawTextToImage(ref new Platform::String(wStrText.c_str()), &size, alignmet);
-		//if(pixelData == nullptr)
-		//{
-		//	break;
-		//}
+		TextAlignment alignment = TextAlignment::TextAlignmentCenter;
+		DWORD dwHoriFlag = eAlignMask & 0x0f;
+		//set text alignment
+		switch (dwHoriFlag)
+		{
+		case 1: // left
+			alignment = TextAlignment::TextAlignmentLeft;
+			break;
+		case 2: // right
+			alignment = TextAlignment::TextAlignmentRight;
+			break;
+		case 3: // center
+			alignment = TextAlignment::TextAlignmentCenter;
+			break;
+		}
 
-		//pImageData = new unsigned char[(UINT)size.Width * (UINT)size.Height * 4];
-		//memcpy(pImageData,pixelData->Data,pixelData->Length);
+		Platform::Array<byte>^ pixelData;
+		std::wstring wStrText = CCUtf8ToUnicode(pText);
+		pixelData = painter->DrawTextToImage(ref new Platform::String(wStrText.c_str()), &size, alignment);
 
-		//CC_BREAK_IF(! pImageData);
+		if(pixelData == nullptr)
+		{
+			break;
+		}
 
-		//m_nWidth    = (short)size.Width;
-		//m_nHeight   = (short)size.Height;
-		//m_bHasAlpha = true;
-		//m_bPreMulti = false;
-		//m_pData     = pImageData;
-		//pImageData  = 0;
-		//m_nBitsPerComponent = 8;
+		pImageData = new unsigned char[(UINT)size.Width * (UINT)size.Height * 4];
+		memcpy(pImageData, pixelData->Data, pixelData->Length);
+
+		CC_BREAK_IF(! pImageData);
+
+		m_nWidth    = (short)size.Width;
+		m_nHeight   = (short)size.Height;
+		m_bHasAlpha = true;
+		m_bPreMulti = false;
+		m_pData     = pImageData;
+		pImageData  = 0;
+		m_nBitsPerComponent = 8;
 
 		bRet = true;
+
 	}while(0);
 
 	return bRet;
 }
-
 
 NS_CC_END;
