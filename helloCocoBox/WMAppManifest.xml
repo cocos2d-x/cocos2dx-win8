@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en" />
-  <App xmlns="" ProductID="{1a0d24b4-1de0-400b-bc35-92a51351477f}" Title="cocos2d" RuntimeType="Modern Native" Version="1.0.0.0" Genre="apps.normal" Author="Tanooj Luthra" Description="Simple Direct3D application" Publisher="cocos2d" PublisherID="{048c03f7-6bfc-475c-86f9-820fd100ea20}">
+  <App xmlns="" ProductID="{1a0d24b4-1de0-400b-bc35-92a51351477f}" Title="cocos2d" RuntimeType="Modern Native" Version="1.0.0.0" Genre="apps.normal" Author="cocos2d" Description="Simple Direct3D application" Publisher="cocos2d" PublisherID="{048c03f7-6bfc-475c-86f9-820fd100ea20}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_SENSORS" />
@@ -31,8 +31,7 @@
           </LargeBackBackgroundImageURI>
           <DeviceLockImageURI>
           </DeviceLockImageURI>
-          <HasLarge>
-          </HasLarge>
+          <HasLarge>True</HasLarge>
         </TemplateFlip>
       </PrimaryToken>
     </Tokens>

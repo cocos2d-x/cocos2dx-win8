@@ -1,6 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Phone Debug|ARM">
+      <Configuration>Phone Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Phone Debug|Win32">
+      <Configuration>Phone Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Phone Release|ARM">
+      <Configuration>Phone Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Phone Release|Win32">
+      <Configuration>Phone Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -22,34 +38,45 @@
     <ProjectGuid>{1a0d24b4-1de0-400b-bc35-92a51351477f}</ProjectGuid>
     <RootNamespace>cocos2d</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
+    <ProjectName>cocos2d</ProjectName>
     <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Desktop Globals">
+    <WindowsSDKDesktopARMSupport>true</WindowsSDKDesktopARMSupport>
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <AppContainerApplication>true</AppContainerApplication>
+    <TargetPlatformSdkPath>$(ProgramFiles)\Windows Kits\8.0</TargetPlatformSdkPath>
+    <Immersive>true</Immersive>
+    <WindowsAppContainer>true</WindowsAppContainer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Desktop Globals">
+    <WindowsSDKDesktopARMSupport>true</WindowsSDKDesktopARMSupport>
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <AppContainerApplication>true</AppContainerApplication>
+    <TargetPlatformSdkPath>$(ProgramFiles)\Windows Kits\8.0</TargetPlatformSdkPath>
+    <Immersive>true</Immersive>
+    <WindowsAppContainer>true</WindowsAppContainer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Phone Debug'" Label="Phone Globals">
     <XapOutputs>true</XapOutputs>
     <XapFilename>cocos2d_$(Configuration)_$(Platform).xap</XapFilename>
     <WinMDAssembly>true</WinMDAssembly>
-    <ProjectName>cocos2d</ProjectName>
-  </PropertyGroup>
-  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110_wp80</PlatformToolset>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v110_wp80</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+  <PropertyGroup Condition="'$(Configuration)'=='Phone Release'" Label="Phone Globals">
+    <XapOutputs>true</XapOutputs>
+    <XapFilename>cocos2d_$(Configuration)_$(Platform).xap</XapFilename>
+    <WinMDAssembly>true</WinMDAssembly>
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v110_wp80</PlatformToolset>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
-    <UseDebugLibraries>false</UseDebugLibraries>
-    <WholeProgramOptimization>true</WholeProgramOptimization>
     <PlatformToolset>v110_wp80</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -57,12 +84,27 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Phone Debug|Win32'">
     <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Phone Release|Win32'">
     <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
@@ -70,26 +112,61 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)LibPNG;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <ClCompile>
-      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Phone Debug|ARM'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Phone Release|ARM'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)LibPNG;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <CompileAsWinRT>true</CompileAsWinRT>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <AdditionalIncludeDirectories>$(SolutionDir)LibPNG;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ForcedUsingFiles Condition="'$(Configuration)|$(Platform)'=='Phone Debug|Win32'">platform.winmd</ForcedUsingFiles>
+      <ForcedUsingFiles Condition="'$(Configuration)|$(Platform)'=='Phone Release|Win32'">platform.winmd</ForcedUsingFiles>
+      <ForcedUsingFiles Condition="'$(Configuration)|$(Platform)'=='Phone Debug|ARM'">platform.winmd</ForcedUsingFiles>
+      <ForcedUsingFiles Condition="'$(Configuration)|$(Platform)'=='Phone Release|ARM'">platform.winmd</ForcedUsingFiles>
+      <ProgramDataBaseFileName>$(OutDir)$(TargetName).pdb</ProgramDataBaseFileName>
+      <CompileAsWinRT>true</CompileAsWinRT>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">shcore.lib;d2d1.lib;dwrite.lib;ole32.lib;freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">shcore.lib;d2d1.lib;dwrite.lib;ole32.lib;freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">shcore.lib;d2d1.lib;dwrite.lib;ole32.lib;freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">shcore.lib;d2d1.lib;dwrite.lib;ole32.lib;freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Phone Debug|Win32'">freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Phone Release|Win32'">freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Phone Debug|ARM'">freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Phone Release|ARM'">freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <Link>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
@@ -97,12 +174,6 @@
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <Reference Include="platform.winmd">
-      <IsWinMDFile>true</IsWinMDFile>
-      <Private>false</Private>
-    </Reference>
-  </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\acorn-hd.png" />
     <Image Include="Assets\acorn.png" />
@@ -134,11 +205,7 @@
     <Image Include="Assets\head_cat.png" />
     <Image Include="Assets\head_dog-hd.png" />
     <Image Include="Assets\head_dog.png" />
-    <Image Include="Assets\HelloWorld.png" />
-    <Image Include="Assets\Icon.png" />
     <Image Include="Assets\Logo.png" />
-    <Image Include="Assets\Player.png" />
-    <Image Include="Assets\Projectile.png" />
     <Image Include="Assets\SmallLogo.png" />
     <Image Include="Assets\SplashScreen.png" />
     <Image Include="Assets\squirrel_1-hd.png" />
@@ -146,17 +213,11 @@
     <Image Include="Assets\squirrel_2-hd.png" />
     <Image Include="Assets\squirrel_2.png" />
     <Image Include="Assets\StoreLogo.png" />
-    <Image Include="Assets\Target.png" />
-    <Image Include="Assets\WideLogo.png" />
-    <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
     <Image Include="Assets\Tiles\FlipCycleTileSmall.png" />
     <Image Include="Assets\Tiles\IconicTileMediumLarge.png" />
     <Image Include="Assets\Tiles\IconicTileSmall.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Box2D\Box2D.h" />
@@ -397,10 +458,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Media Include="Assets\background-music-aac.wav" />
-    <Media Include="Assets\pew-pew-lei.wav" />
-  </ItemGroup>
-  <ItemGroup>
     <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">
       <ShaderType>Pixel</ShaderType>
     </FxCompile>
@@ -462,8 +519,16 @@
       <ShaderType>Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Xml Condition="'$(Configuration)'=='Phone Debug' or '$(Configuration)'=='Phone Release'" Include="WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Condition="'$(Configuration)'=='Debug' or '$(Configuration)'=='Release'" Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />
+  <Import Condition="'$(Configuration)'=='Phone Debug' or '$(Configuration)'=='Phone Release'" Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
 </Project>

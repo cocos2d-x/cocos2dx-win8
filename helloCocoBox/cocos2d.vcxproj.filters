@@ -5,9 +5,6 @@
       <UniqueIdentifier>17b52f90-9b33-4188-8a0e-808582bbabbc</UniqueIdentifier>
       <Extensions>ico;bmp;dlg;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;resw;resjson</Extensions>
     </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{a9e2bfe7-0284-4ce6-b549-a716f1ca1301}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocos2dx">
       <UniqueIdentifier>{4827e607-4fd2-41fc-8834-41a89a0d78dc}</UniqueIdentifier>
     </Filter>
@@ -130,9 +127,6 @@
     <Image Include="Assets\ApplicationIcon.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="SplashScreenImage.jpg">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png">
       <Filter>Assets</Filter>
     </Image>
@@ -147,42 +141,6 @@
     </Image>
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\CloseNormal.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\CloseSelected.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\HelloWorld.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Icon.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Logo.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Player.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Projectile.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\SmallLogo.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\SplashScreen.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\StoreLogo.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Target.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\WideLogo.png">
-      <Filter>Resources</Filter>
     </Image>
     <Image Include="Assets\brick_1.png">
       <Filter>Assets</Filter>
@@ -275,6 +233,24 @@
       <Filter>Assets</Filter>
     </Image>
     <Image Include="Assets\bg-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\CloseNormal.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\CloseSelected.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Logo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -959,17 +935,6 @@
     <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="WMAppManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\background-music-aac.wav">
-      <Filter>Resources</Filter>
-    </Media>
-    <Media Include="Assets\pew-pew-lei.wav">
-      <Filter>Resources</Filter>
-    </Media>
-  </ItemGroup>
-  <ItemGroup>
     <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">
       <Filter>Assets\Textures</Filter>
     </FxCompile>
@@ -1022,5 +987,8 @@
     <FxCompile Include="VertexShader.hlsl" />
     <FxCompile Include="VertexShader1.hlsl" />
     <FxCompile Include="PixelShader1.hlsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest" />
   </ItemGroup>
 </Project>

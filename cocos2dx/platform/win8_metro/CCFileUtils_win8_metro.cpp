@@ -167,7 +167,7 @@ unsigned char* CCFileUtils::getFileDataPlatform(const char* pszFileName, const c
 		extendedParams.hTemplateFile = nullptr;
 
 		// read the file from hardware
-		hFile = ::CreateFile2(path.c_str(), GENERIC_READ, 0, OPEN_EXISTING, &extendedParams);
+		hFile = ::CreateFile2(path.c_str(), GENERIC_READ, FILE_SHARE_READ, OPEN_EXISTING, &extendedParams);
 		if (INVALID_HANDLE_VALUE == hFile)
 		{
 			break;
