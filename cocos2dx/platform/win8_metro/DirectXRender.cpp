@@ -25,7 +25,7 @@
 
 #include "CCDrawingPrimitives.h"
 
-#include "Classes\HelloWorldScene.h"
+//#include "Classes\HelloWorldScene.h"
 #include "d3d10.h"
 
 using namespace Windows::UI::Core;
@@ -90,7 +90,7 @@ void DirectXRender::Initialize(CoreWindow^ window, float dpi)
 
 	window->CharacterReceived += 
 		ref new TypedEventHandler<CoreWindow^, CharacterReceivedEventArgs^>(this, &DirectXRender::OnCharacterReceived);
-
+	 
 	CreateDeviceIndependentResources();
 	CreateDeviceResources();
 	SetDpi(dpi);

@@ -27,7 +27,7 @@
     <XapOutputs>true</XapOutputs>
     <XapFilename>cocos2d_$(Configuration)_$(Platform).xap</XapFilename>
     <WinMDAssembly>true</WinMDAssembly>
-    <ProjectName>cocos2d</ProjectName>
+    <ProjectName>HelloWorld</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -209,6 +209,7 @@
     <ClInclude Include="..\cocos2dx\cocoa\CCNS.h" />
     <ClInclude Include="..\cocos2dx\effects\CCGrabber.h" />
     <ClInclude Include="..\cocos2dx\effects\CCGrid.h" />
+    <ClInclude Include="..\cocos2dx\extensions\CCNotificationCenter.h" />
     <ClInclude Include="..\cocos2dx\platform\CCAccelerometer_platform.h" />
     <ClInclude Include="..\cocos2dx\platform\CCApplication_platform.h" />
     <ClInclude Include="..\cocos2dx\platform\CCArchOptimalParticleSystem.h" />
@@ -325,6 +326,7 @@
     <ClCompile Include="..\cocos2dx\cocos2d.cpp" />
     <ClCompile Include="..\cocos2dx\effects\CCGrabber.cpp" />
     <ClCompile Include="..\cocos2dx\effects\CCGrid.cpp" />
+    <ClCompile Include="..\cocos2dx\extensions\CCNotificationCenter.cpp" />
     <ClCompile Include="..\cocos2dx\label_nodes\CCLabelAtlas.cpp" />
     <ClCompile Include="..\cocos2dx\label_nodes\CCLabelBMFont.cpp" />
     <ClCompile Include="..\cocos2dx\label_nodes\CCLabelTTF.cpp" />

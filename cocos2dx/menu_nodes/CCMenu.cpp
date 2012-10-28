@@ -1,23 +1,27 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2008-2010 Ricardo Quesada
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
 
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 #include "pch.h"
 #include "CCMenu.h"
 #include "CCDirector.h"
@@ -45,18 +49,12 @@ namespace cocos2d{
 
         CCMenu* CCMenu::node()
         {
-            CCMenu *menu = new CCMenu();
-            if (menu && menu->init()) {
-                menu->autorelease();
-                return menu;
-            }
-            CC_SAFE_DELETE(menu)
-            return 0;
+            return menuWithItem(NULL);
         }
 
 	CCMenu * CCMenu::menuWithItems(CCMenuItem* item, ...)
 	{
-		va_list args = NULL;
+		va_list args;
 		va_start(args,item);
 		CCMenu *pRet = new CCMenu();
 		if (pRet && pRet->initWithItems(item, args))
@@ -77,39 +75,44 @@ namespace cocos2d{
 
     bool CCMenu::init()
     {
-        va_list args = NULL;
-        return initWithItems(NULL, args);
+        if (CCLayer::init())
+        {
+            this->m_bIsTouchEnabled = true;
+
+            // menu in the center of the screen
+            CCSize s = CCDirector::sharedDirector()->getWinSize();
+
+            this->m_bIsRelativeAnchorPoint = false;
+            setAnchorPoint(ccp(0.5f, 0.5f));
+            this->setContentSize(s);
+
+            // XXX: in v0.7, winSize should return the visible size
+            // XXX: so the bar calculation should be done there
+            CCRect r;
+            CCApplication::sharedApplication().statusBarFrame(&r);
+            ccDeviceOrientation orientation = CCDirector::sharedDirector()->getDeviceOrientation();
+            if (orientation == CCDeviceOrientationLandscapeLeft || orientation == CCDeviceOrientationLandscapeRight)
+            {
+                s.height -= r.size.width;
+            }
+            else
+            {
+                s.height -= r.size.height;
+            }
+            setPosition(ccp(s.width/2, s.height/2));
+            //	[self alignItemsVertically];
+            m_pSelectedItem = NULL;
+            m_eState = kCCMenuStateWaiting;
+            return true;
+        }
+        return false;
     }
 
 	bool CCMenu::initWithItems(CCMenuItem* item, va_list args)
 	{
-		if (CCLayer::init())
-		{
-			this->m_bIsTouchEnabled = true;
-
-			// menu in the center of the screen
-			CCSize s = CCDirector::sharedDirector()->getWinSize();
-
-			this->m_bIsRelativeAnchorPoint = false;
-			setAnchorPoint(ccp(0.5f, 0.5f));
-			this->setContentSize(s);
-
-			// XXX: in v0.7, winSize should return the visible size
-			// XXX: so the bar calculation should be done there
-			CCRect r;
-            CCApplication::sharedApplication().statusBarFrame(&r);
-			ccDeviceOrientation orientation = CCDirector::sharedDirector()->getDeviceOrientation();
-			if (orientation == CCDeviceOrientationLandscapeLeft || orientation == CCDeviceOrientationLandscapeRight)
-			{
-				s.height -= r.size.width;
-			}
-			else
-			{
-				s.height -= r.size.height;
-			}
-			setPosition(ccp(s.width/2, s.height/2));
-
-			int z=0;
+        if (init())
+        {
+            int z=0;
 
 			if (item)
 			{
@@ -122,14 +125,10 @@ namespace cocos2d{
 					i = va_arg(args, CCMenuItem*);
 				}
 			}
-			//	[self alignItemsVertically];
 
-			m_pSelectedItem = NULL;
-			m_eState = kCCMenuStateWaiting;
 			return true;
-		}
-
-		return false;
+        }
+        return false;
 	}
 
 	/*
@@ -589,7 +588,7 @@ namespace cocos2d{
 
 	CCMenuItem* CCMenu::itemForTouch(CCTouch *touch)
 	{
-		CCPoint touchLocation = touch->locationInView(touch->view());
+		CCPoint touchLocation = touch->locationInView();
 		touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
 
         if (m_pChildren && m_pChildren->count() > 0)

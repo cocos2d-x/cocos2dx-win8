@@ -23,7 +23,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 // For licensing information relating to this distribution please see Third Party Notices file.
-
+#include "pch.h"
 #include <string.h>
 #include <stdlib.h>
 

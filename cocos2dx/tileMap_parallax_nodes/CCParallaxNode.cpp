@@ -25,7 +25,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 // For licensing information relating to this distribution please see Third Party Notices file.
-
+#include "pch.h"
 #include "CCParallaxNode.h"
 #include "CCPointExtension.h"
 #include "support/data_support/ccCArray.h"
@@ -73,14 +73,14 @@ namespace cocos2d {
 		pRet->autorelease();
 		return pRet;
 	}
-	void CCParallaxNode::addChild(CCNode * child, unsigned int zOrder, int tag)
+	void CCParallaxNode::addChild(CCNode * child, int zOrder, int tag)
 	{
         CC_UNUSED_PARAM(zOrder);
         CC_UNUSED_PARAM(child);
         CC_UNUSED_PARAM(tag);
 		CCAssert(0,"ParallaxNode: use addChild:z:parallaxRatio:positionOffset instead");
 	}
-	void CCParallaxNode::addChild(CCNode *child, unsigned int z, const CCPoint& ratio, const CCPoint& offset)
+	void CCParallaxNode::addChild(CCNode *child, int z, const CCPoint& ratio, const CCPoint& offset)
 	{
 		CCAssert( child != NULL, "Argument must be non-nil");
 		CCPointObject *obj = CCPointObject::pointWithCCPoint(ratio, offset);

@@ -83,6 +83,12 @@ bool CCFileUtils::isFileExist(const char * resPath)
 
 const char* CCFileUtils::fullPathFromRelativePath(const char *pszRelativePath)
 {
+    ccResolutionType ignore;
+    return fullPathFromRelativePath(pszRelativePath, &ignore);
+}
+
+const char* CCFileUtils::fullPathFromRelativePath(const char *pszRelativePath, ccResolutionType *pResolutionType)
+{
 	_CheckPath();
 
     CCString * pRet = new CCString();
@@ -128,6 +134,10 @@ const char* CCFileUtils::fullPathFromRelativePath(const char *pszRelativePath)
 //        }
 //    }
 //#endif
+	if (pResolutionType)
+	{
+		*pResolutionType = kCCResolutioniPhone;
+	}
 	return pRet->m_sString.c_str();
 }
 
@@ -167,7 +177,7 @@ unsigned char* CCFileUtils::getFileDataPlatform(const char* pszFileName, const c
 		extendedParams.hTemplateFile = nullptr;
 
 		// read the file from hardware
-		hFile = ::CreateFile2(path.c_str(), GENERIC_READ, 0, OPEN_EXISTING, &extendedParams);
+		hFile = ::CreateFile2(path.c_str(), GENERIC_READ, FILE_SHARE_READ, OPEN_EXISTING, &extendedParams);
 		if (INVALID_HANDLE_VALUE == hFile)
 		{
 			break;
@@ -188,8 +198,9 @@ unsigned char* CCFileUtils::getFileDataPlatform(const char* pszFileName, const c
 		}
 
 		dwFileSize = fileStandardInfo.EndOfFile.LowPart;
-		pBuffer = new BYTE[dwFileSize];
-
+		//for read text
+		pBuffer = new BYTE[dwFileSize+1];
+		pBuffer[dwFileSize] = 0;
 		if (!ReadFile(hFile, pBuffer, dwFileSize, &bytesRead, nullptr))
 		{
 			break;

@@ -1,23 +1,27 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010 ForzeField Studios S.L. http://forzefield.com
-* Copyright (c) 2010 cocos2d-x.org
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010 ForzeField Studios S.L. http://forzefield.com
+Copyright (c) 2010 cocos2d-x.org
 
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 #ifndef __CCARRAY_H__
 #define __CCARRAY_H__
 
@@ -52,41 +56,72 @@ class CC_DLL CCArray : public CCObject
 {
 public:
     ~CCArray();
+	/** Create an array */
     static CCArray* array();
+	/** Create an array with capacity */
     static CCArray* arrayWithCapacity(unsigned int capacity);
+	/** Create an array with an existing array */
     static CCArray* arrayWithArray(CCArray* otherArray);
 
+	/** Initializes an array */
     bool init();
+	/** Initializes an array with capacity */
     bool initWithCapacity(unsigned int capacity);
+	/** Initializes an array with an existing array */
     bool initWithArray(CCArray* otherArray);
 
     // Querying an Array
+
+	/** Returns element count of the array */
     unsigned int count();
+	/** Returns capacity of the array */
     unsigned int capacity();
+	/** Returns index of a certain object, return UINT_MAX if doesn't contain the object */
     unsigned int indexOfObject(CCObject* object);
+	/** Returns an element with a certain index */
     CCObject* objectAtIndex(unsigned int index);
+	/** Returns last element */
     CCObject* lastObject();
+	/** Returns a random element */
     CCObject* randomObject();
+	/** Returns a Boolean value that indicates whether object is present in array. */
     bool containsObject(CCObject* object);
 
     // Adding Objects
+
+	/** Add a certain object */
     void addObject(CCObject* object);
+	/** Add all elements of an existing array */
     void addObjectsFromArray(CCArray* otherArray);
+	/** Insert a certain object at a certain index */
     void insertObject(CCObject* object, unsigned int index);
 
     // Removing Objects
+
+	/** Remove last object */
     void removeLastObject();
+	/** Remove a certain object */
     void removeObject(CCObject* object);
+	/** Remove an element with a certain index */
     void removeObjectAtIndex(unsigned int index);
+	/** Remove all elements */
     void removeObjectsInArray(CCArray* otherArray);
+	/** Remove all objects */
     void removeAllObjects();
+	/** Fast way to remove a certain object */
     void fastRemoveObject(CCObject* object);
+	/** Fast way to remove an element with a certain index */
     void fastRemoveObjectAtIndex(unsigned int index);
 
     // Rearranging Content
+
+	/** Swap two elements */
     void exchangeObject(CCObject* object1, CCObject* object2);
+	/** Swap two elements with certain indexes */
     void exchangeObjectAtIndex(unsigned int index1, unsigned int index2);
+	/** Revers the array */
     void reverseObjects();
+	/* Shrinks the array so the memory footprint corresponds with the number of items */
     void reduceMemoryFootprint();
 
 public:

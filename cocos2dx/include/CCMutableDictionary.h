@@ -21,9 +21,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 ****************************************************************************/
-
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 #ifndef __CCMUTABLE_DICTIONARY_H__
 #define __CCMUTABLE_DICTIONARY_H__
 

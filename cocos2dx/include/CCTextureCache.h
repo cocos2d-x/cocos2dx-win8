@@ -1,23 +1,28 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2008-2010 Ricardo Quesada
-* Copyright (c) 2011      Zynga Inc.
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
+Copyright (c) 2011      Zynga Inc.
+
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 
 #ifndef __CCTEXTURE_CACHE_H__
 #define __CCTEXTURE_CACHE_H__
@@ -26,7 +31,7 @@
 #include "CCObject.h"
 #include "CCMutableDictionary.h"
 #include "CCTexture2D.h"
-#include "selector_protocol.h"
+
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
     #include "CCImage.h"
@@ -41,7 +46,7 @@ class CCImage;
 * Once the texture is loaded, the next time it will return
 * a reference of the previously loaded texture reducing GPU & CPU memory
 */
-class CC_DLL CCTextureCache : public SelectorProtocol, public CCObject
+class CC_DLL CCTextureCache : public CCObject
 {
 protected:
 	CCMutableDictionary<std::string, CCTexture2D*> * m_pTextures;
@@ -57,8 +62,6 @@ public:
 	CCTextureCache();
 	virtual ~CCTextureCache();
 
-    virtual void selectorProtocolRetain(void) { this->retain(); }
-    virtual void selectorProtocolRelease(void) { this->release(); }
 	char * description(void);
 
 	/** Retruns ths shared instance of the cache */
@@ -85,7 +88,7 @@ public:
 	* @since v0.8
 	*/
 	
-	void addImageAsync(const char *path, SelectorProtocol *target, SEL_CallFuncO selector);
+	void addImageAsync(const char *path, CCObject *target, SEL_CallFuncO selector);
 
 	/* Returns a Texture2D object given an CGImageRef image
 	* If the image was not previously loaded, it will create a new CCTexture2D object and it will return it.
@@ -160,13 +163,6 @@ public:
     It's only useful when the value of CC_ENABLE_CACHE_TEXTTURE_DATA is 1
     */
     static void reloadAllTextures();
-    // get the count of textues need reload
-    static int texturesCount();
-
-    // reload one texture
-    static void reloadTexture(int nIndex);
-
-    static void setIsLoading(bool bLoading);
 };
 
 #if CC_ENABLE_CACHE_TEXTTURE_DATA
@@ -191,10 +187,8 @@ public:
     static void removeTexture(CCTexture2D *t);
     static void reloadAllTextures();
 
-    static int  texturesCount();
-    static void reloadTexture(int nIndex);
 public:
-    static std::vector<VolatileTexture*> textures;
+    static std::list<VolatileTexture*> textures;
     static bool isReloading;
 
 protected:

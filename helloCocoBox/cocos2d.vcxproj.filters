@@ -125,6 +125,9 @@
     <Filter Include="Assets\Textures">
       <UniqueIdentifier>{6de4d6c1-987e-47a6-886c-bf2247e28236}</UniqueIdentifier>
     </Filter>
+    <Filter Include="cocos2dx\extensions">
+      <UniqueIdentifier>{388af2a1-e72d-4708-a642-38d344a56fb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -699,6 +702,9 @@
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp" />
+    <ClCompile Include="..\cocos2dx\extensions\CCNotificationCenter.cpp">
+      <Filter>cocos2dx\extensions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cocos2dx\cocoa\CCNS.h">
@@ -957,6 +963,9 @@
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
+    <ClInclude Include="..\cocos2dx\extensions\CCNotificationCenter.h">
+      <Filter>cocos2dx\extensions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />

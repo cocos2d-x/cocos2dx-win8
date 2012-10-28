@@ -727,7 +727,7 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent *event)
 
 	CCTouch* touch = (CCTouch*)(touches->anyObject());
 	touches->count();
-	CCPoint location = touch->locationInView(touch->view());
+	CCPoint location = touch->locationInView();
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
 	if(locationWorld.x < armBody->GetWorldCenter().x + 50.0/PTM_RATIO)
@@ -749,7 +749,7 @@ void HelloWorld::ccTouchesMoved(CCSet* touches, CCEvent* event)
 	if(mouseJoint == nullptr)
 		return;
 	CCTouch* touch = (CCTouch*)(touches->anyObject());
-	CCPoint location = touch->locationInView(touch->view());
+	CCPoint location = touch->locationInView();
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	b2Vec2 locationWorld = b2Vec2(location.x/PTM_RATIO, location.y/PTM_RATIO);
 	mouseJoint->SetTarget(locationWorld);

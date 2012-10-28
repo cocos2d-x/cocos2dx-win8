@@ -1,20 +1,26 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010 cocos2d-x.org
+
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 
 #ifndef __COCOA_CC_MUTABLE_ARRAY_H__
 #define __COCOA_CC_MUTABLE_ARRAY_H__
@@ -50,28 +56,6 @@ public:
 	inline unsigned int count(void)
 	{
 		return (unsigned int)m_array.size();
-	}
-
-	unsigned int getIndexOfObject(T pObject)
-	{
-                if (m_array.empty() || (pObject == 0))
-		{
-			return 0;
-		}
-
-		CCMutableArrayIterator iter;
-		unsigned int uRet = 0;
-		unsigned int i;
-		for (iter = m_array.begin(), i = 0; iter != m_array.end(); ++iter, ++i)
-		{
-			if (*iter == pObject)
-			{
-				uRet = i;
-				break;
-			}
-		}
-
-		return uRet;
 	}
 
 	bool containsObject(T pObject)
@@ -240,19 +224,13 @@ public:
 	void removeAllObjects(bool bDeleteObject = true)
 	{
 		if (bDeleteObject)
-        {
-            CCMutableArrayIterator iter;
-            for (iter = m_array.begin(); iter != m_array.end();)
-            {
-                CCObject* pObj = *iter;
-                iter = m_array.erase(iter);
-                pObj->release();
-            }
-        }		
-        else
-        {
-            m_array.clear();
-        }
+		{
+			CCMutableArrayIterator iter;
+			for (iter = m_array.begin(); iter != m_array.end(); ++iter)
+				(*iter)->release();
+		}		
+
+		m_array.clear();
 	}
 
 	void replaceObjectAtIndex(unsigned int uIndex, T pObject, bool bDeleteObject = true)
