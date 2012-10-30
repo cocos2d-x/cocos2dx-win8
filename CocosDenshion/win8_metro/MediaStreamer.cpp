@@ -59,9 +59,9 @@ Platform::Array<byte>^ MediaStreamer::ReadData(
 
     Wrappers::FileHandle file(
         CreateFile2(
-            Platform::String::Concat(m_locationPath, filename)->Data(),
+            filename->Data(),
             GENERIC_READ,
-            0,
+            FILE_SHARE_READ,
             OPEN_EXISTING,
             &extendedParams
             )

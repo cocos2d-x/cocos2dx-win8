@@ -80,8 +80,8 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new TextureTestScene(); break;
     case TEST_BOX2D:
         pScene = new Box2DTestScene(); break;
-//    case TEST_BOX2DBED:
-//        pScene = new Box2dTestBedScene(); break;
+    case TEST_BOX2DBED:
+        pScene = new Box2dTestBedScene(); break;
     case TEST_EFFECT_ADVANCE:
         pScene = new EffectAdvanceScene(); break;
 //    case TEST_HIRES:
@@ -94,8 +94,8 @@ static TestScene* CreateTestScene(int nIdx)
 //    case TEST_KEYPAD:
 //        pScene = new KeypadTestScene(); break;
 //#endif
-//	case TEST_COCOSDENSHION:
-//		pScene = new CocosDenshionTestScene(); break;
+	case TEST_COCOSDENSHION:
+		pScene = new CocosDenshionTestScene(); break;
     case TEST_PERFORMANCE:
         pScene = new PerformanceTestScene(); break;
     case TEST_ZWOPTEX:
@@ -107,12 +107,12 @@ static TestScene* CreateTestScene(int nIdx)
 //		pScene = new CurlTestScene(); break;
 //#endif
 //#endif
-	//case TEST_USERDEFAULT:
-	//	pScene = new UserDefaultTestScene(); break;
+	case TEST_USERDEFAULT:
+		pScene = new UserDefaultTestScene(); break;
     case TEST_DIRECTOR:
         pScene = new DirectorTestScene(); break;
-    //case TEST_BUGS:
-    //    pScene = new BugsTestScene(); break;
+    case TEST_BUGS:
+        pScene = new BugsTestScene(); break;
 	case TEST_FONTS:
 		pScene = new FontTestScene(); break;
 	case TEST_CURRENT_LANGUAGE:
@@ -120,11 +120,11 @@ static TestScene* CreateTestScene(int nIdx)
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
 //	case TEST_TEXTURECACHE: pScene = new TextureCacheTestScene(); break;
 //#endif
-    //case TEST_EXTENSIONS:
-    //    {
-    //        pScene = new ExtensionsTestScene();
-    //    }
-    //    break;	
+    case TEST_EXTENSIONS:
+        {
+            pScene = new ExtensionsTestScene();
+        }
+        break;	
     default:
         break;
     }

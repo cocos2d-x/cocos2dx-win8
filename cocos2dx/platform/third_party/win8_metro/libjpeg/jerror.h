@@ -14,8 +14,6 @@
  * and/or the macros.
  */
 
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 /*
  * To define the enum list of message codes, include this file without
  * defining macro JMESSAGE.  To create a message string table, include it

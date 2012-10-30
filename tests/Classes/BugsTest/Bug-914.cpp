@@ -7,6 +7,7 @@
 //
 
 // Import the interfaces
+#include "pch.h"
 #include"Bug-914.h"
 
 CCScene* Bug914Layer::scene()

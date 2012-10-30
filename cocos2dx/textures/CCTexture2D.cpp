@@ -210,7 +210,7 @@ bool CCTexture2D::initWithData(const void *data, CCTexture2DPixelFormat pixelFor
 		break;
 	case kCCTexture2DPixelFormat_RGBA4444:
 		dataSizeByte = 4;
-		formatTmp = DXGI_FORMAT_R8G8B8A8_UNORM;
+		formatTmp = DXGI_FORMAT_B4G4R4A4_UNORM;
 		//info.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		//=glTexImage2D(CC_TEXTURE_2D, 0, CC_RGBA, (GLsizei)pixelsWide, (GLsizei)pixelsHigh, 0, CC_RGBA, CC_UNSIGNED_SHORT_4_4_4_4, data);
 		break;
@@ -266,7 +266,7 @@ bool CCTexture2D::initWithData(const void *data, CCTexture2DPixelFormat pixelFor
 	
 	if(FAILED(pdevice->CreateTexture2D(&tdesc,&tbsd,&tex)))
 	{
-		// e_fail
+		return false;
 	}
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
@@ -495,9 +495,13 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
 		{
 			*outPixel16++ = 
-			((((*inPixel32 >> 0) & 0xFF) >> 4) << 12) | // R
+			//((((*inPixel32 >> 0) & 0xFF) >> 4) << 12) | // R
+			//((((*inPixel32 >> 8) & 0xFF) >> 4) << 8) | // G
+			//((((*inPixel32 >> 16) & 0xFF) >> 4) << 4) | // B
+			//((((*inPixel32 >> 24) & 0xFF) >> 4) << 0); // A
+			((((*inPixel32 >> 0) & 0xFF) >> 4) << 4) | // B
 			((((*inPixel32 >> 8) & 0xFF) >> 4) << 8) | // G
-			((((*inPixel32 >> 16) & 0xFF) >> 4) << 4) | // B
+			((((*inPixel32 >> 16) & 0xFF) >> 4) << 12) | // R
 			((((*inPixel32 >> 24) & 0xFF) >> 4) << 0); // A
 		}
 
@@ -526,14 +530,14 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 	else if (pixelFormat == kCCTexture2DPixelFormat_A8)
 	{
 		// fix me, how to convert to A8
-		pixelFormat = kCCTexture2DPixelFormat_RGBA8888;
+		//pixelFormat = kCCTexture2DPixelFormat_RGBA8888;
 
-		/*
-		 * The code can not work, how to convert to A8?
-		 *
+		
+		 //* The code can not work, how to convert to A8?
+		 //*
 		tempData = new unsigned char[POTHigh * POTWide];
 		inPixel32 = (unsigned int*)data;
-		outPixel8 = tempData;
+		unsigned char * outPixel8 = tempData;
 
 		unsigned int length = POTWide * POTHigh;
 		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
@@ -543,7 +547,7 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 
 		delete []data;
 		data = tempData;
-		*/
+		
 	}
 
 	if (data)

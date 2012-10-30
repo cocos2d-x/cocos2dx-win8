@@ -346,8 +346,8 @@ CCDXParticleSystemQuad::CCDXParticleSystemQuad()
 	m_matrixBuffer = 0;
 	m_indexBuffer = 0;
 	m_vertexBuffer = 0;
-	//assumed there has 100 particles first
-	m_uMaxTotalParticles = 100;
+	//there is no any allocated memory yet
+	m_uMaxTotalParticles = 0;
 
 	m_bIsInit = FALSE;
 }
@@ -460,6 +460,8 @@ void CCDXParticleSystemQuad::RenderVertexBuffer(ccV2F_C4B_T2F_Quad *quad,unsigne
 	result = CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource);
 	if(FAILED(result))
 	{
+		// clean up allocated resources
+		delete[] verticesTmp;
 		return ;
 	}
 	verticesPtr = (VertexType*)mappedResource.pData;
@@ -504,7 +506,7 @@ bool CCDXParticleSystemQuad::InitializeShader()
 	 };
 
 	 loader->LoadShader(
-		 L"VertexShader1.cso",
+		 L"CCParticleVertexShader.cso",
 		 layoutDesc,
 		 ARRAYSIZE(layoutDesc),
 		 &m_vertexShader,
@@ -512,7 +514,7 @@ bool CCDXParticleSystemQuad::InitializeShader()
 		 );
 
 	 loader->LoadShader(
-		 L"PixelShader1.cso",
+		 L"CCParticlePixelShader.cso",
 		 &m_pixelShader
 		 );	
 
@@ -633,6 +635,7 @@ void CCDXParticleSystemQuad::Render(ccV2F_C4B_T2F_Quad *quad,unsigned short* ind
 	{
 		m_bIsInit = TRUE;
 		FreeBuffer();
+		m_uMaxTotalParticles = uTotalParticles;
 		initVertexAndIndexBuffer(indices, uTotalParticles);
 		InitializeShader();
 	}

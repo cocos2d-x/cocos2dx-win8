@@ -1,5 +1,3 @@
-#define COCOS2D_DEBUG 1
-
 #include "pch.h"
 #include "UserDefaultTest.h"
 #include "stdio.h"
@@ -19,7 +17,7 @@ UserDefaultTest::UserDefaultTest()
 
 void UserDefaultTest::doTest()
 {
-	CCLOG("********************** init value ***********************");
+	CCLog("********************** init value ***********************");
 
 	// set default value
 
@@ -32,28 +30,28 @@ void UserDefaultTest::doTest()
 	// print value
 
 	string ret = CCUserDefault::sharedUserDefault()->getStringForKey("string");
-	CCLOG("string is %s", ret.c_str());
+	CCLog("string is %s", ret.c_str());
 
 	double d = CCUserDefault::sharedUserDefault()->getDoubleForKey("double");
-	CCLOG("double is %f", d);
+	CCLog("double is %f", d);
 
 	int i = CCUserDefault::sharedUserDefault()->getIntegerForKey("integer");
-	CCLOG("integer is %d", i);
+	CCLog("integer is %d", i);
 
 	float f = CCUserDefault::sharedUserDefault()->getFloatForKey("float");
-	CCLOG("float is %f", f);
+	CCLog("float is %f", f);
 
 	bool b = CCUserDefault::sharedUserDefault()->getBoolForKey("bool");
 	if (b)
 	{
-		CCLOG("bool is true");
+		CCLog("bool is true");
 	}
 	else
 	{
-		CCLOG("bool is false");
+		CCLog("bool is false");
 	}
 
-    CCLOG("********************** after change value ***********************");
+    CCLog("********************** after change value ***********************");
 
 	// change the value
 
@@ -68,25 +66,25 @@ void UserDefaultTest::doTest()
 	// print value
 
 	ret = CCUserDefault::sharedUserDefault()->getStringForKey("string");
-	CCLOG("string is %s", ret.c_str());
+	CCLog("string is %s", ret.c_str());
 
 	d = CCUserDefault::sharedUserDefault()->getDoubleForKey("double");
-	CCLOG("double is %f", d);
+	CCLog("double is %f", d);
 
 	i = CCUserDefault::sharedUserDefault()->getIntegerForKey("integer");
-	CCLOG("integer is %d", i);
+	CCLog("integer is %d", i);
 
 	f = CCUserDefault::sharedUserDefault()->getFloatForKey("float");
-	CCLOG("float is %f", f);
+	CCLog("float is %f", f);
 
 	b = CCUserDefault::sharedUserDefault()->getBoolForKey("bool");
 	if (b)
 	{
-		CCLOG("bool is true");
+		CCLog("bool is true");
 	}
 	else
 	{
-		CCLOG("bool is false");
+		CCLog("bool is false");
 	}
 }
 

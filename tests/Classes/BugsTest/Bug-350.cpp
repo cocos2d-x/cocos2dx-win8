@@ -2,7 +2,7 @@
 // Bug-350 
 // http://code.google.com/p/cocos2d-iphone/issues/detail?id=350
 //
-
+#include "pch.h"
 #include "Bug-350.h"
 
 bool Bug350Layer::init()

@@ -345,7 +345,9 @@ CCTexture2D * CCTextureCache::addImage(const char * path)
 		{
 			if (std::string::npos != lowerCase.find(".pvr"))
 			{
-				texture = this->addPVRImage(fullpath.c_str());
+				// pvr is not supported in windows
+				texture = nullptr;//texture = this->addPVRImage(fullpath.c_str());
+				break;
 			}
 			// Issue #886: TEMPORARY FIX FOR TRANSPARENT JPEGS IN IOS4
 			else if (std::string::npos != lowerCase.find(".jpg") || std::string::npos != lowerCase.find(".jpeg"))

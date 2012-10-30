@@ -2,7 +2,7 @@
 // Bug-1174
 // http://code.google.com/p/cocos2d-iphone/issues/detail?id=1174
 //
-
+#include "pch.h"
 #include "Bug-1174.h"
 
 int check_for_error( CCPoint p1, CCPoint p2, CCPoint p3, CCPoint p4, float s, float t );

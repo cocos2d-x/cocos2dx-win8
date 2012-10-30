@@ -271,25 +271,25 @@ namespace   cocos2d {
 		m_vertices =NULL;
 	}
 
-	void CCDrawingPrimitive::initVertexBuffer(unsigned int numberOfPoints)
-	{
+void CCDrawingPrimitive::initVertexBuffer(unsigned int numberOfPoints)
+{
 
-		VertexType* verticesT = new VertexType[numberOfPoints];
-		if ( !verticesT )
-		{
-			//
-		}
-		memset(verticesT, 0, (sizeof(VertexType) * numberOfPoints));
-		/*
-		for (int i=0; i<numberOfPoints; i++)
-		{
+	VertexType* verticesT = new VertexType[numberOfPoints];
+	if ( !verticesT )
+	{
+		return;
+	}
+	memset(verticesT, 0, (sizeof(VertexType) * numberOfPoints));
+	/*
+	for (int i=0; i<numberOfPoints; i++)
+	{
 		verticesT[i].position = XMFLOAT3((vertices[i]).x, (vertices[i]).y, 1.0f);
 		verticesT[i].color = m_currentColor;
-		}
-		*/
-		D3D11_BUFFER_DESC vertexBufferDesc;
-		D3D11_SUBRESOURCE_DATA vertexData;
-		HRESULT result;
+	}
+	*/
+	D3D11_BUFFER_DESC vertexBufferDesc;
+	D3D11_SUBRESOURCE_DATA vertexData;
+	HRESULT result;
 
 		// Set up the description of the static vertex buffer.
 		vertexBufferDesc.Usage = D3D11_USAGE_DYNAMIC;
@@ -304,12 +304,14 @@ namespace   cocos2d {
 		vertexData.SysMemPitch = 0;
 		vertexData.SysMemSlicePitch = 0;
 
-		// Now create the vertex buffer.
-		result = CCID3D11Device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);
-		if(FAILED(result))
-		{
-			return ;
-		}
+	// Now create the vertex buffer.
+	result = CCID3D11Device->CreateBuffer(&vertexBufferDesc, &vertexData, &m_vertexBuffer);
+	if(FAILED(result))
+	{
+		// clean up allocated resources
+		delete[] verticesT;
+		return ;
+	}
 
 		if ( verticesT )
 		{
@@ -371,13 +373,17 @@ namespace   cocos2d {
 			verticesTmp[i].color = m_currentColor;
 		}
 
-		D3D11_MAPPED_SUBRESOURCE mappedResource;
-		VertexType* verticesPtr;
-		
-		if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource))){return ;}
-		verticesPtr = (VertexType*)mappedResource.pData;
-		memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * m_vertexAmount));
-		CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
+	D3D11_MAPPED_SUBRESOURCE mappedResource;
+	VertexType* verticesPtr;
+	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource)))
+	{
+		// clean up allocated resources
+		delete[] verticesTmp;
+		return;
+	}
+	verticesPtr = (VertexType*)mappedResource.pData;
+	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * m_vertexAmount));
+	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
 
 		if ( verticesTmp )
 		{
@@ -441,12 +447,17 @@ namespace   cocos2d {
 			verticesTmp[i].color = m_currentColor;
 		}
 
-		D3D11_MAPPED_SUBRESOURCE mappedResource;
-		VertexType* verticesPtr;
-		if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource))){return ;}
-		verticesPtr = (VertexType*)mappedResource.pData;
-		memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * m_vertexAmount));
-		CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
+	D3D11_MAPPED_SUBRESOURCE mappedResource;
+	VertexType* verticesPtr;
+	if(FAILED(CCID3D11DeviceContext->Map(m_vertexBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &mappedResource)))
+	{
+		// clean up allocated resources
+		delete[] verticesTmp;
+		return;
+	}
+	verticesPtr = (VertexType*)mappedResource.pData;
+	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * m_vertexAmount));
+	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
 
 		if ( verticesTmp )
 		{
@@ -488,45 +499,17 @@ namespace   cocos2d {
 			CCID3D11DeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
 		}
 
-		return;
-	}
+	return;
+}
 
-	bool CCDrawingPrimitive::InitializeShader()
+bool CCDrawingPrimitive::InitializeShader()
+{
+	BasicLoader^ loader = ref new BasicLoader(CCID3D11Device);
+	D3D11_INPUT_ELEMENT_DESC layoutDesc[] =
 	{
-		D3D11_INPUT_ELEMENT_DESC layoutDesc[] =
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
-		};
-
-		//D3DCompileFromFile(L"CCSpriteVertexShader.hlsl", 0,0,"main","ps_4_0", 0,0,&m_vertexShader,0);
-		//m_d3dDevice = Direct3DVB
-		//auto loadVSTask = DX::ReadDataAsync("SimpleVertexShader.cso");
-		//auto createVSTask = loadVSTask.then([this](DX::ByteArray ba){
-		//	DX::ThrowIfFailed(
-		//		CCID3D11Device->CreateVertexShader(
-		//		ba.data->Data,
-		//		ba.data->Length,
-		//		nullptr,
-		//		&m_vertexShader
-		//		)
-		//		);
-		//});
-
-		BasicLoader^ loader = ref new BasicLoader(CCID3D11Device);
-		//auto loadPSTask = DX::ReadDataAsync("SimplePixelShader.cso");
-		//auto createPSTask = loadPSTask.then([this](DX::ByteArray ba){
-		//	auto bytearrr = ba;
-		//	DX::ThrowIfFailed(
-		//		CCID3D11Device->CreatePixelShader(
-		//		ba.data->Data,
-		//		ba.data->Length,
-		//		nullptr,
-		//		&m_pixelShader
-		//		)
-		//		);
-		//});
-
+		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+	};
 
 		loader->LoadShader(
 			L"CCDrawingVertexShader.cso",

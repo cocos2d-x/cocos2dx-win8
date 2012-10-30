@@ -2,7 +2,7 @@
 // Bug-624
 // http://code.google.com/p/cocos2d-iphone/issues/detail?id=624
 //
-
+#include "pch.h"
 #include "Bug-624.h"
 
 ////////////////////////////////////////////////////////

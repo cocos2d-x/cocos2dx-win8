@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "CocosDenshionTest.h"
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
@@ -14,7 +15,7 @@
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
 	#define MUSIC_FILE		"music.mid"
 #else
-	#define MUSIC_FILE		"background.mp3"
+	#define MUSIC_FILE		"background.wav"
 #endif // CC_PLATFORM_WIN32
 
 using namespace cocos2d;

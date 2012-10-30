@@ -97,17 +97,17 @@ void TextureTest::performTestsPNG(const char* filename)
         CCLog(" ERROR\n");
     cache->removeTexture(texture);
 
-    CCLog("RGBA 4444");
-    CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
-    gettimeofday(&now, NULL);
-    texture = cache->addImage(filename);
-    if( texture )
-        CCLog("  ms:%f\n", calculateDeltaTime(&now) );
-    else
-        CCLog(" ERROR\n");
-    cache->removeTexture(texture);
+    //CCLog("RGBA 4444");
+    //CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
+    //gettimeofday(&now, NULL);
+    //texture = cache->addImage(filename);
+    //if( texture )
+    //    CCLog("  ms:%f\n", calculateDeltaTime(&now) );
+    //else
+    //    CCLog(" ERROR\n");
+    //cache->removeTexture(texture);
 
-    CCLog("RGBA 5551");
+ /*   CCLog("RGBA 5551");
     CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGB5A1);
     gettimeofday(&now, NULL);
     texture = cache->addImage(filename);
@@ -115,7 +115,7 @@ void TextureTest::performTestsPNG(const char* filename)
         CCLog("  ms:%f\n", calculateDeltaTime(&now) );
     else
         CCLog(" ERROR\n");
-    cache->removeTexture(texture);
+    cache->removeTexture(texture);*/
 
     CCLog("RGB 565");
     CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGB565);
@@ -126,6 +126,10 @@ void TextureTest::performTestsPNG(const char* filename)
     else
         CCLog(" ERROR\n");
     cache->removeTexture(texture);
+
+	// restore default
+    CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_Default);
+
 }
 
 void TextureTest::performTests()

@@ -8,7 +8,7 @@ enum {
 	kTagSprite2 = 3,
 };
 
-#define TEST_CASE_COUNT     30
+#define TEST_CASE_COUNT     9
 
 static int sceneIdx=-1;
 CCLayer* createTextureTest(int index)
@@ -21,7 +21,7 @@ CCLayer* createTextureTest(int index)
         pLayer = new TextureAlias(); break;
     case 1:
         pLayer = new TextureMipMap(); break;
-    case 2:
+/*  case 2:
         pLayer = new TexturePVRMipMap(); break;
     case 3:
         pLayer = new TexturePVRMipMap2(); break;
@@ -60,22 +60,22 @@ CCLayer* createTextureTest(int index)
     case 20:
         pLayer = new TexturePVRAI88(); break;
     case 21:
-        pLayer = new TexturePVRBadEncoding(); break;
-    case 22:
+        pLayer = new TexturePVRBadEncoding(); break;*/
+    case 2:
         pLayer = new TexturePNG(); break;
-    case 23:
+    case 3:
         pLayer = new TextureJPEG(); break;
-    case 24:
+    case 4:
         pLayer = new TexturePixelFormat(); break;
-    case 25:
+    case 5:
         pLayer = new TextureBlend(); break;
-    case 26:
+    case 6:
         pLayer = new TextureGlClamp(); break;
-    case 27:
+    case 7:
         pLayer = new TextureGlRepeat(); break;
-    case 28:
+    case 8:
         pLayer = new TextureSizeTest(); break;
-    case 29:
+    case 9:
         pLayer = new TextureCache1(); break;
     default:
         break;
@@ -952,23 +952,23 @@ void TexturePixelFormat::onEnter()
 	// remove texture from texture manager	
 	CCTextureCache::sharedTextureCache()->removeTexture(sprite1->getTexture());
 
-	// RGBA 4444 image (16-bit)
-    CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
-    CCSprite *sprite2 = CCSprite::spriteWithFile("Images/test-rgba1.png");
-	sprite2->setPosition(ccp(2*s.width/6, s.height/2-32));
-	addChild(sprite2, 0);
+	//// RGBA 4444 image (16-bit)
+ //   CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGBA4444);
+ //   CCSprite *sprite2 = CCSprite::spriteWithFile("Images/test-rgba1.png");
+	//sprite2->setPosition(ccp(2*s.width/6, s.height/2-32));
+	//addChild(sprite2, 0);
 
-	// remove texture from texture manager	
-	CCTextureCache::sharedTextureCache()->removeTexture(sprite2->getTexture());
+	//// remove texture from texture manager	
+	//CCTextureCache::sharedTextureCache()->removeTexture(sprite2->getTexture());
 
-	// RGB5A1 image (16-bit)
-    CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGB5A1);
-    CCSprite *sprite3 = CCSprite::spriteWithFile("Images/test-rgba1.png");
-	sprite3->setPosition(ccp(3*s.width/6, s.height/2+32));
-	addChild(sprite3, 0);
+	//// RGB5A1 image (16-bit)
+ //   CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGB5A1);
+ //   CCSprite *sprite3 = CCSprite::spriteWithFile("Images/test-rgba1.png");
+	//sprite3->setPosition(ccp(3*s.width/6, s.height/2+32));
+	//addChild(sprite3, 0);
 
-	// remove texture from texture manager	
-	CCTextureCache::sharedTextureCache()->removeTexture(sprite3->getTexture());
+	//// remove texture from texture manager	
+	//CCTextureCache::sharedTextureCache()->removeTexture(sprite3->getTexture());
 
 	// RGB565 image (16-bit)
     CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_RGB565);
@@ -979,14 +979,14 @@ void TexturePixelFormat::onEnter()
 	// remove texture from texture manager	
 	CCTextureCache::sharedTextureCache()->removeTexture(sprite4->getTexture());
 
-	// A8 image (8-bit)
-    CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_A8);
-    CCSprite *sprite5 = CCSprite::spriteWithFile("Images/test-rgba1.png");
-	sprite5->setPosition(ccp(5*s.width/6, s.height/2+32));
-	addChild(sprite5, 0);
+	//// A8 image (8-bit)
+ //   CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_A8);
+ //   CCSprite *sprite5 = CCSprite::spriteWithFile("Images/test-rgba1.png");
+	//sprite5->setPosition(ccp(5*s.width/6, s.height/2+32));
+	//addChild(sprite5, 0);
 	
 	// remove texture from texture manager	
-	CCTextureCache::sharedTextureCache()->removeTexture(sprite5->getTexture());
+	//CCTextureCache::sharedTextureCache()->removeTexture(sprite5->getTexture());
 
     CCFadeOut* fadeout = CCFadeOut::actionWithDuration(2);
     CCFadeIn*  fadein  = CCFadeIn::actionWithDuration(2);
@@ -998,10 +998,10 @@ void TexturePixelFormat::onEnter()
     CCRepeatForever* seq_4ever5 = (CCRepeatForever*) (seq_4ever->copy()); seq_4ever5->autorelease();
 	
 	sprite1->runAction(seq_4ever);
-	sprite2->runAction(seq_4ever2);
-    sprite3->runAction(seq_4ever3);
+	//sprite2->runAction(seq_4ever2);
+    //sprite3->runAction(seq_4ever3);
     sprite4->runAction(seq_4ever4);
-	sprite5->runAction(seq_4ever5);
+	//sprite5->runAction(seq_4ever5);
 
 	// restore default
     CCTexture2D::setDefaultAlphaPixelFormat(kCCTexture2DPixelFormat_Default);
@@ -1015,7 +1015,7 @@ std::string TexturePixelFormat::title()
 
 std::string TexturePixelFormat::subtitle()
 {
-	return "Textures: RGBA8888, RGBA4444, RGB5A1, RGB565, A8";
+	return "Textures: RGBA8888, /*RGBA4444, RGB5A1, A8*/, RGB565";
 }
 
 //------------------------------------------------------------------

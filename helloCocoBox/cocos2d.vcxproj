@@ -83,10 +83,10 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(SolutionDir)LibPNG;$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;TIXML_USE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -236,11 +236,20 @@
     <ClInclude Include="..\cocos2dx\support\base64.h" />
     <ClInclude Include="..\cocos2dx\support\CCProfiling.h" />
     <ClInclude Include="..\cocos2dx\support\ccUtils.h" />
+    <ClInclude Include="..\cocos2dx\support\data_support\ccCArray.h" />
+    <ClInclude Include="..\cocos2dx\support\data_support\uthash.h" />
+    <ClInclude Include="..\cocos2dx\support\data_support\utlist.h" />
+    <ClInclude Include="..\cocos2dx\support\image_support\TGAlib.h" />
     <ClInclude Include="..\cocos2dx\support\TransformUtils.h" />
+    <ClInclude Include="..\cocos2dx\support\zip_support\ioapi.h" />
+    <ClInclude Include="..\cocos2dx\support\zip_support\unzip.h" />
+    <ClInclude Include="..\cocos2dx\support\zip_support\ZipUtils.h" />
     <ClInclude Include="..\CocosDenshion\include\Export.h" />
     <ClInclude Include="..\CocosDenshion\include\SimpleAudioEngine.h" />
     <ClInclude Include="..\CocosDenshion\win8_metro\Audio.h" />
     <ClInclude Include="..\CocosDenshion\win8_metro\MediaStreamer.h" />
+    <ClInclude Include="..\tinyxml\tinystr.h" />
+    <ClInclude Include="..\tinyxml\tinyxml.h" />
     <ClInclude Include="Classes\AppDelegate.h" />
     <ClInclude Include=".\cocos2dorig.h" />
     <ClInclude Include="Classes\GameOverScene.h" />
@@ -375,7 +384,11 @@
     <ClCompile Include="..\cocos2dx\support\CCProfiling.cpp" />
     <ClCompile Include="..\cocos2dx\support\CCUserDefault.cpp" />
     <ClCompile Include="..\cocos2dx\support\ccUtils.cpp" />
+    <ClCompile Include="..\cocos2dx\support\image_support\TGAlib.cpp" />
     <ClCompile Include="..\cocos2dx\support\TransformUtils.cpp" />
+    <ClCompile Include="..\cocos2dx\support\zip_support\ioapi.cpp" />
+    <ClCompile Include="..\cocos2dx\support\zip_support\unzip.cpp" />
+    <ClCompile Include="..\cocos2dx\support\zip_support\ZipUtils.cpp" />
     <ClCompile Include="..\cocos2dx\textures\CCTexture2D.cpp" />
     <ClCompile Include="..\cocos2dx\textures\CCTextureAtlas.cpp" />
     <ClCompile Include="..\cocos2dx\textures\CCTextureCache.cpp" />
@@ -387,6 +400,10 @@
     <ClCompile Include="..\CocosDenshion\win8_metro\Audio.cpp" />
     <ClCompile Include="..\CocosDenshion\win8_metro\MediaStreamer.cpp" />
     <ClCompile Include="..\CocosDenshion\win8_metro\SimpleAudioEngine.cpp" />
+    <ClCompile Include="..\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Classes\AppDelegate.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
     <ClCompile Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.cpp" />

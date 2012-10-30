@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "NotificationCenterTest.h"
 #include "ExtensionsTest.h"
 

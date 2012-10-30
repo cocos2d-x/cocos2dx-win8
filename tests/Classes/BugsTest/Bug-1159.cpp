@@ -6,7 +6,7 @@
 //  Created by Greg Woods on 4/5/11.
 //  Copyright 2011 Westlake Design. All rights reserved.
 //
-
+#include "pch.h"
 #include "Bug-1159.h"
 
 CCScene* Bug1159Layer::scene()

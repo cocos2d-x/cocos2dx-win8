@@ -45,7 +45,7 @@
 #include "CCFileUtils.h"
 #include "CCImage.h"
 #include "platform/platform.h"
-//#include "support/zip_support/ZipUtils.h"
+#include "support/zip_support/ZipUtils.h"
 #include "CCDirector.h"
 
 // opengl
@@ -143,12 +143,12 @@ bool CCParticleSystem::initWithFile(const char *plistFile)
 	CCDictionary<std::string, CCObject*> *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(m_sPlistFile.c_str());
 
 	CCAssert( dict != NULL, "Particles: file not found");
-	bRet = false;//this->initWithDictionary(dict);
+	bRet = this->initWithDictionary(dict);
 	dict->release();
 
 	return bRet;
 }
-/*
+
 bool CCParticleSystem::initWithDictionary(CCDictionary<std::string, CCObject*> *dictionary)
 {
 	bool bRet = false;
@@ -322,7 +322,6 @@ bool CCParticleSystem::initWithDictionary(CCDictionary<std::string, CCObject*> *
 	CC_SAFE_DELETE(image);
 	return bRet;
 }
-*/
 bool CCParticleSystem::initWithTotalParticles(unsigned int numberOfParticles)
 {
 	m_uTotalParticles = numberOfParticles;
@@ -339,7 +338,7 @@ bool CCParticleSystem::initWithTotalParticles(unsigned int numberOfParticles)
 	}
 
 	// default, active
-	//m_bIsi = true;
+	m_bIsActive = true;
 
 	// default blend function
 	m_tBlendFunc.src = CC_BLEND_SRC;

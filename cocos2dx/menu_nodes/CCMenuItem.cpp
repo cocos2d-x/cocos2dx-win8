@@ -37,7 +37,7 @@ THE SOFTWARE.
 namespace cocos2d{
     
     static unsigned int _fontSize = kCCItemSize;
-    static std::string _fontName = "Marker Felt";
+    static std::string _fontName = "Marker Felt.ttf";
     static bool _fontNameRelease = false;
     
     const unsigned int	kCurrentItem = 0xc0c05001;

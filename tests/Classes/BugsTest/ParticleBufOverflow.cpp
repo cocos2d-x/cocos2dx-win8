@@ -17,6 +17,7 @@
   Created by Denis Mingulov on 01.09.2012.
 */
 
+#include "pch.h"
 #include "ParticleBufOverflow.h"
 #include "../testResource.h"
 

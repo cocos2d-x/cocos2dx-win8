@@ -291,7 +291,7 @@ void MenuLayer2::menuCallbackAlign(CCObject* sender)
 //------------------------------------------------------------------
 MenuLayer3::MenuLayer3()
 {
-	CCMenuItemFont::setFontName("Marker Felt");
+	CCMenuItemFont::setFontName("fonts/Marker Felt.ttf");
 	CCMenuItemFont::setFontSize(28);
 
 	CCLabelBMFont* label = CCLabelBMFont::labelWithString("Enable AtlasItem", "fonts/bitmapFontTest3.fnt");

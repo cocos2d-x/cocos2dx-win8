@@ -95,7 +95,7 @@ public:
         }
         parser.setDelegator(this);
 
-        //parser.parse(pFileName);
+        parser.parse(pFileName);
         return m_pRootDict;
     }
 
@@ -110,7 +110,7 @@ public:
         }
         parser.setDelegator(this);
 
-        //parser.parse(pFileName);
+        parser.parse(pFileName);
         return m_pArray;
     }
 

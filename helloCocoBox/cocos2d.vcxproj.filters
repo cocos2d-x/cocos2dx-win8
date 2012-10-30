@@ -128,6 +128,18 @@
     <Filter Include="cocos2dx\extensions">
       <UniqueIdentifier>{388af2a1-e72d-4708-a642-38d344a56fb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{c5048e6a-5813-4b97-902a-cd2cbcf9d532}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support\data_support">
+      <UniqueIdentifier>{21d1f199-3ddc-40b6-9994-f7efba985bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support\image_support">
+      <UniqueIdentifier>{d760a121-ad30-4d6a-8f39-b04513cfc5dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos2dx\support\zip_support">
+      <UniqueIdentifier>{81c59bb2-0953-4906-842f-942ea5a19eca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -705,6 +717,30 @@
     <ClCompile Include="..\cocos2dx\extensions\CCNotificationCenter.cpp">
       <Filter>cocos2dx\extensions</Filter>
     </ClCompile>
+    <ClCompile Include="..\tinyxml\tinystr.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyxml\tinyxml.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyxml\tinyxmlerror.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\tinyxml\tinyxmlparser.cpp">
+      <Filter>tinyxml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2dx\support\image_support\TGAlib.cpp">
+      <Filter>cocos2dx\support\image_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2dx\support\zip_support\ioapi.cpp">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2dx\support\zip_support\unzip.cpp">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2dx\support\zip_support\ZipUtils.cpp">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\cocos2dx\cocoa\CCNS.h">
@@ -965,6 +1001,33 @@
     <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
     <ClInclude Include="..\cocos2dx\extensions\CCNotificationCenter.h">
       <Filter>cocos2dx\extensions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\data_support\ccCArray.h">
+      <Filter>cocos2dx\support\data_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\data_support\uthash.h">
+      <Filter>cocos2dx\support\data_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\data_support\utlist.h">
+      <Filter>cocos2dx\support\data_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\image_support\TGAlib.h">
+      <Filter>cocos2dx\support\image_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\zip_support\ioapi.h">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\zip_support\unzip.h">
+      <Filter>cocos2dx\support\zip_support</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\support\zip_support\ZipUtils.h">
+      <Filter>cocos2dx\support\zip_support</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

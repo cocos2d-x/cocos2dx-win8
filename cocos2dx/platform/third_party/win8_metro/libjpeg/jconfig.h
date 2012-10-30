@@ -1,5 +1,3 @@
-// For licensing information relating to this distribution please see Third Party Notices file.
-
 /* jconfig.vc --- jconfig.h for Microsoft Visual C++ on Windows 95 or NT. */
 /* see jconfig.txt for explanations */
 

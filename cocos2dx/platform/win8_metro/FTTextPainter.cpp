@@ -23,6 +23,7 @@
 using namespace Microsoft::WRL;
 using namespace Windows::UI::Core;
 using namespace Windows::Foundation;
+using namespace cocos2d;
 
 
 const CHAR TAG_NAME_A[] = "name";
@@ -48,6 +49,8 @@ FTTextPainter::~FTTextPainter()
 
 Platform::Array<byte>^ FTTextPainter::DrawTextToImage(Platform::String^ text, Windows::Foundation::Size* tSize, TextAlignment alignment)
 {
+	if(text->Length() == 0) return nullptr;
+
 	const UINT PIXEL_WIDTH = 4;
 	const UINT LINE_SPACING = 1;
 	const UINT BLANK_SPACE = m_fontSize / 4;
@@ -57,7 +60,7 @@ Platform::Array<byte>^ FTTextPainter::DrawTextToImage(Platform::String^ text, Wi
 
 	FT_Error error = 0;
 	FT_GlyphSlot slot = m_fontFace->glyph;
-	UINT addHeight = 0;
+	INT addHeight = 0;
 
 	// estimate bitmap dimensions
 	for (UINT n = 0; n < text->Length(); n++ )
@@ -69,15 +72,15 @@ Platform::Array<byte>^ FTTextPainter::DrawTextToImage(Platform::String^ text, Wi
 
 		tSize->Width += (LINE_SPACING + (glyphBmp.rows * glyphBmp.width > 0 ? glyphBmp.width : BLANK_SPACE));
 		tSize->Height = tSize->Height < glyphBmp.rows ? glyphBmp.rows : tSize->Height;
-		addHeight = addHeight < ((UINT)tSize->Height - slot->bitmap_top) ? ((UINT)tSize->Height - slot->bitmap_top) : addHeight;
+		addHeight = addHeight < ((INT)tSize->Height - slot->bitmap_top) ? ((INT)tSize->Height - slot->bitmap_top) : addHeight;
 	}
 
 	tSize->Height += addHeight;
 	Platform::Array<byte>^ pixelBuffer = ref new Platform::Array<byte>((UINT)tSize->Width * (UINT)tSize->Height * PIXEL_WIDTH);
 	memset(pixelBuffer->Data, 0, pixelBuffer->Length);
 
-	UINT buffRow = 0;
-	UINT buffCol = 0;
+	INT buffRow = 0;
+	INT buffCol = 0;
 
 	// render each glyph to bitmap
 	for (UINT n = 0; n < text->Length(); n++ )
@@ -89,7 +92,8 @@ Platform::Array<byte>^ FTTextPainter::DrawTextToImage(Platform::String^ text, Wi
 
 		if(glyphBmp.rows * glyphBmp.width > 0)
 		{
-			buffRow = UINT(tSize->Height - addHeight - slot->bitmap_top);
+			buffRow = (INT)tSize->Height - addHeight - slot->bitmap_top;
+			buffRow = (buffRow < 0)? 0 : buffRow;
 
 			for(int row = 0; row < glyphBmp.rows; row++)
 			{
@@ -136,8 +140,22 @@ bool FTTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 		m_fontName = fontName;
 		Platform::String^ fontFile = itr->second;
 		error = FT_New_Face( m_textLibrary, cocos2d::CCUnicodeToUtf8(fontFile->Data()).c_str(), 0, &m_fontFace );
+	}else
+	{
+		// try to load new font		
+		const char* fullPath = CCFileUtils::fullPathFromRelativePath(CCUnicodeToUtf8(fontName->Data()).c_str());
+		Platform::String^ fullPathRefStr = ref new Platform::String(CCUtf8ToUnicode(fullPath).c_str());
+
+		if(fontName->Length() > 0)
+		{
+			m_fontMap.insert(std::pair<Platform::String^, Platform::String^>(fontName, fullPathRefStr));
+			m_fontName = fontName;
+		}
+		error = FT_New_Face( m_textLibrary, fullPath, 0, &m_fontFace );
 	}
-	else // set default font
+
+	// set default font
+	if(error)
 	{
 		m_fontName = ref new Platform::String(DEFAULT_FONT_W);
 		error = FT_New_Face( m_textLibrary, DEFAULT_FONT_FILE_A, 0, &m_fontFace );

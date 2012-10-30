@@ -1237,7 +1237,7 @@ bool CCDXSprite::InitializeShader()
 
 
 	loader->LoadShader(
-		L"VertexShader.cso",
+		L"CCSpriteVertexShader.cso",
 		layoutDesc,
 		ARRAYSIZE(layoutDesc),
 		&m_vertexShader,
@@ -1245,7 +1245,7 @@ bool CCDXSprite::InitializeShader()
 		);
 
 	loader->LoadShader(
-		L"PixelShader.cso",
+		L"CCSpritePixelShader.cso",
 		&m_pixelShader
 		);
 

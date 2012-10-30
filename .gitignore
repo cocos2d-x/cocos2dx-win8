@@ -36,6 +36,8 @@ _ReSharper*/
 ipch/
 *.opensdf
 AppPackages/
+bin/
+ARM/
 
 # Ignore f/les build by ndk and eclipse
 NUL
