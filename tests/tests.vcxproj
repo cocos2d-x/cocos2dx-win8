@@ -68,11 +68,11 @@
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)LibPNG;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
     <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
