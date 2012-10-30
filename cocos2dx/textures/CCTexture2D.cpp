@@ -495,13 +495,9 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
 		{
 			*outPixel16++ = 
-			//((((*inPixel32 >> 0) & 0xFF) >> 4) << 12) | // R
-			//((((*inPixel32 >> 8) & 0xFF) >> 4) << 8) | // G
-			//((((*inPixel32 >> 16) & 0xFF) >> 4) << 4) | // B
-			//((((*inPixel32 >> 24) & 0xFF) >> 4) << 0); // A
-			((((*inPixel32 >> 0) & 0xFF) >> 4) << 4) | // B
+			((((*inPixel32 >> 0) & 0xFF) >> 4) << 12) | // R
 			((((*inPixel32 >> 8) & 0xFF) >> 4) << 8) | // G
-			((((*inPixel32 >> 16) & 0xFF) >> 4) << 12) | // R
+			((((*inPixel32 >> 16) & 0xFF) >> 4) << 4) | // B
 			((((*inPixel32 >> 24) & 0xFF) >> 4) << 0); // A
 		}
 
@@ -530,14 +526,14 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 	else if (pixelFormat == kCCTexture2DPixelFormat_A8)
 	{
 		// fix me, how to convert to A8
-		//pixelFormat = kCCTexture2DPixelFormat_RGBA8888;
+		pixelFormat = kCCTexture2DPixelFormat_RGBA8888;
 
-		
-		 //* The code can not work, how to convert to A8?
-		 //*
+		/*
+		 * The code can not work, how to convert to A8?
+		 *
 		tempData = new unsigned char[POTHigh * POTWide];
 		inPixel32 = (unsigned int*)data;
-		unsigned char * outPixel8 = tempData;
+		outPixel8 = tempData;
 
 		unsigned int length = POTWide * POTHigh;
 		for(unsigned int i = 0; i < length; ++i, ++inPixel32)
@@ -547,7 +543,7 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 
 		delete []data;
 		data = tempData;
-		
+		*/
 	}
 
 	if (data)
