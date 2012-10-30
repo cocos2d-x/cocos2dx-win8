@@ -215,7 +215,7 @@ bool CCTexture2D::initWithData(const void *data, CCTexture2DPixelFormat pixelFor
 		break;
 	case kCCTexture2DPixelFormat_RGBA4444:
 		dataSizeByte = 4;
-		formatTmp = DXGI_FORMAT_R8G8B8A8_UNORM;
+		formatTmp = DXGI_FORMAT_B4G4R4A4_UNORM;
 		//info.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
 		//=glTexImage2D(CC_TEXTURE_2D, 0, CC_RGBA, (GLsizei)pixelsWide, (GLsizei)pixelsHigh, 0, CC_RGBA, CC_UNSIGNED_SHORT_4_4_4_4, data);
 		break;
@@ -271,7 +271,7 @@ bool CCTexture2D::initWithData(const void *data, CCTexture2DPixelFormat pixelFor
 	
 	if(FAILED(pdevice->CreateTexture2D(&tdesc,&tbsd,&tex)))
 	{
-		// e_fail
+		return false;
 	}
 
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
@@ -553,7 +553,7 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 
 	if (data)
 	{
-		this->initWithData(data, pixelFormat, POTWide, POTHigh, imageSize);
+		CCAssert(this->initWithData(data, pixelFormat, POTWide, POTHigh, imageSize), "Create texture failed!");
 
 		// should be after calling super init
 		m_bHasPremultipliedAlpha = image->isPremultipliedAlpha();
