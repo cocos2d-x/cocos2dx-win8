@@ -548,7 +548,7 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 
 	if (data)
 	{
-		this->initWithData(data, pixelFormat, POTWide, POTHigh, imageSize);
+		CCAssert(this->initWithData(data, pixelFormat, POTWide, POTHigh, imageSize), "Create texture failed!");
 
 		// should be after calling super init
 		m_bHasPremultipliedAlpha = image->isPremultipliedAlpha();
