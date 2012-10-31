@@ -275,7 +275,7 @@ Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, W
 
 }
 
-bool DXTextPainter::PrepareBitmap(UINT nWidth, UINT nHeight)
+	bool DXTextPainter::PrepareBitmap(UINT nWidth, UINT nHeight)
 {
 	if((nWidth == 0) || (nHeight == 0))
 	{
