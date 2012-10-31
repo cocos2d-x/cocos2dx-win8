@@ -5,17 +5,11 @@
       <UniqueIdentifier>17b52f90-9b33-4188-8a0e-808582bbabbc</UniqueIdentifier>
       <Extensions>ico;bmp;dlg;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;resw;resjson</Extensions>
     </Filter>
-    <Filter Include="Resources">
-      <UniqueIdentifier>{a9e2bfe7-0284-4ce6-b549-a716f1ca1301}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocos2dx">
       <UniqueIdentifier>{4827e607-4fd2-41fc-8834-41a89a0d78dc}</UniqueIdentifier>
     </Filter>
     <Filter Include="cocos2dx\actions">
       <UniqueIdentifier>{d97b80bc-b50e-4536-8a62-da0d7b3c7b41}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ExtraCocos">
-      <UniqueIdentifier>{19be2898-c48e-4c0f-8fa8-588d6677d52a}</UniqueIdentifier>
     </Filter>
     <Filter Include="cocos2dx\cocoa">
       <UniqueIdentifier>{d8700274-7ffa-43da-9654-5bf42a1329d3}</UniqueIdentifier>
@@ -162,42 +156,6 @@
     </Image>
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
-    </Image>
-    <Image Include="Assets\CloseNormal.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\CloseSelected.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\HelloWorld.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Icon.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Logo.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Player.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Projectile.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\SmallLogo.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\SplashScreen.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\StoreLogo.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\Target.png">
-      <Filter>Resources</Filter>
-    </Image>
-    <Image Include="Assets\WideLogo.png">
-      <Filter>Resources</Filter>
     </Image>
     <Image Include="Assets\brick_1.png">
       <Filter>Assets</Filter>
@@ -545,9 +503,6 @@
     <ClCompile Include="..\cocos2dx\menu_nodes\CCMenuItem.cpp">
       <Filter>cocos2dx\menu_nodes</Filter>
     </ClCompile>
-    <ClCompile Include="DDSTextureLoader.cpp">
-      <Filter>ExtraCocos</Filter>
-    </ClCompile>
     <ClCompile Include="..\CocosDenshion\win8_metro\Audio.cpp">
       <Filter>CocosDenshion</Filter>
     </ClCompile>
@@ -836,9 +791,6 @@
     <ClInclude Include="Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="DDSTextureLoader.h">
-      <Filter>ExtraCocos</Filter>
-    </ClInclude>
     <ClInclude Include="..\cocos2dx\platform\win8_metro\BasicLoader.h">
       <Filter>cocos2dx\platform\win8_metro</Filter>
     </ClInclude>
@@ -1038,14 +990,6 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\background-music-aac.wav">
-      <Filter>Resources</Filter>
-    </Media>
-    <Media Include="Assets\pew-pew-lei.wav">
-      <Filter>Resources</Filter>
-    </Media>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">

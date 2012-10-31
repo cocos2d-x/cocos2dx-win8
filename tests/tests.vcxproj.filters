@@ -14,9 +14,6 @@
     <Filter Include="cocos2dx\actions">
       <UniqueIdentifier>{d97b80bc-b50e-4536-8a62-da0d7b3c7b41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ExtraCocos">
-      <UniqueIdentifier>{19be2898-c48e-4c0f-8fa8-588d6677d52a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="cocos2dx\cocoa">
       <UniqueIdentifier>{d8700274-7ffa-43da-9654-5bf42a1329d3}</UniqueIdentifier>
     </Filter>
@@ -1226,9 +1223,6 @@
     <ClCompile Include="..\cocos2dx\menu_nodes\CCMenuItem.cpp">
       <Filter>cocos2dx\menu_nodes</Filter>
     </ClCompile>
-    <ClCompile Include="DDSTextureLoader.cpp">
-      <Filter>ExtraCocos</Filter>
-    </ClCompile>
     <ClCompile Include="..\CocosDenshion\win8_metro\Audio.cpp">
       <Filter>CocosDenshion</Filter>
     </ClCompile>
@@ -1705,9 +1699,6 @@
     </ClInclude>
     <ClInclude Include="..\cocos2dx\platform\win8_metro\DXTextPainter.h">
       <Filter>cocos2dx\platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include="DDSTextureLoader.h">
-      <Filter>ExtraCocos</Filter>
     </ClInclude>
     <ClInclude Include="..\cocos2dx\platform\win8_metro\BasicLoader.h">
       <Filter>cocos2dx\platform\win8_metro</Filter>

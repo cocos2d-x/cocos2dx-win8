@@ -534,7 +534,6 @@
     <ClInclude Include="Classes\TransitionsTest\TransitionsTest.h" />
     <ClInclude Include="Classes\UserDefaultTest\UserDefaultTest.h" />
     <ClInclude Include="Classes\ZwoptexTest\ZwoptexTest.h" />
-    <ClInclude Include="DDSTextureLoader.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -752,7 +751,6 @@
     <ClCompile Include="Classes\TransitionsTest\TransitionsTest.cpp" />
     <ClCompile Include="Classes\UserDefaultTest\UserDefaultTest.cpp" />
     <ClCompile Include="Classes\ZwoptexTest\ZwoptexTest.cpp" />
-    <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>

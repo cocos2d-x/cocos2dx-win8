@@ -125,8 +125,6 @@
     <Image Include="Assets\catapult_base_2.png" />
     <Image Include="Assets\catapult_cup-hd.png" />
     <Image Include="Assets\catapult_cup.png" />
-    <Image Include="Assets\CloseNormal.png" />
-    <Image Include="Assets\CloseSelected.png" />
     <Image Include="Assets\fg-hd.png" />
     <Image Include="Assets\fg.png" />
     <Image Include="Assets\fire.png" />
@@ -134,20 +132,10 @@
     <Image Include="Assets\head_cat.png" />
     <Image Include="Assets\head_dog-hd.png" />
     <Image Include="Assets\head_dog.png" />
-    <Image Include="Assets\HelloWorld.png" />
-    <Image Include="Assets\Icon.png" />
-    <Image Include="Assets\Logo.png" />
-    <Image Include="Assets\Player.png" />
-    <Image Include="Assets\Projectile.png" />
-    <Image Include="Assets\SmallLogo.png" />
-    <Image Include="Assets\SplashScreen.png" />
     <Image Include="Assets\squirrel_1-hd.png" />
     <Image Include="Assets\squirrel_1.png" />
     <Image Include="Assets\squirrel_2-hd.png" />
     <Image Include="Assets\squirrel_2.png" />
-    <Image Include="Assets\StoreLogo.png" />
-    <Image Include="Assets\Target.png" />
-    <Image Include="Assets\WideLogo.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
@@ -254,7 +242,6 @@
     <ClInclude Include=".\cocos2dorig.h" />
     <ClInclude Include="Classes\GameOverScene.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
-    <ClInclude Include="DDSTextureLoader.h" />
     <ClInclude Include="Classes\MyContactListener.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -409,15 +396,10 @@
     <ClCompile Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.cpp" />
     <ClCompile Include="Classes\GameOverScene.cpp" />
     <ClCompile Include="Classes\HelloWorldScene.cpp" />
-    <ClCompile Include="DDSTextureLoader.cpp" />
     <ClCompile Include="Classes\MyContactListener.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Media Include="Assets\background-music-aac.wav" />
-    <Media Include="Assets\pew-pew-lei.wav" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">
