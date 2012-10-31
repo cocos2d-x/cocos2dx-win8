@@ -31,6 +31,7 @@
 #include "CCScheduler.h"
 #include "CCTouch.h"
 #include "CCActionManager.h"
+#include "CCScriptSupport.h"
 
 #if CC_COCOSNODE_RENDER_SUBPIXEL
 #define RENDER_IN_SUBPIXEL
@@ -72,10 +73,11 @@ CCNode::CCNode(void)
 #ifdef CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
 , m_bIsTransformGLDirty(true)
 #endif
+, m_nScriptHandler(0)
 {
     // nothing
 }
-CCNode::~CCNode()
+CCNode::~CCNode(void)
 {
 	CCLOGINFO( "cocos2d: deallocing" );
 
@@ -99,6 +101,7 @@ CCNode::~CCNode()
 
 	// children
 	CC_SAFE_RELEASE(m_pChildren);
+
 }
 
 void CCNode::arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func)
@@ -134,16 +137,16 @@ void CCNode::setSkewX(float newSkewX)
 float CCNode::getSkewY()
 {
 	return m_fSkewY;
-	m_bIsTransformDirty = m_bIsInverseDirty = true;
-#if CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
-	m_bIsTransformGLDirty = true;
-#endif
 }
 
 void CCNode::setSkewY(float newSkewY)
 {
 	m_fSkewY = newSkewY;
 
+	m_bIsTransformDirty = m_bIsInverseDirty = true;
+#if CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
+	m_bIsTransformGLDirty = true;
+#endif
 }
 
 /// zOrder getter
@@ -171,6 +174,7 @@ void CCNode::setVertexZ(float var)
 {
 	m_fVertexZ = var * CC_CONTENT_SCALE_FACTOR();
 }
+
 
 /// rotation getter
 float CCNode::getRotation()
@@ -287,10 +291,56 @@ const CCPoint& CCNode::getPositionInPixels()
 	return m_tPositionInPixels;
 }
 
+const CCPoint& CCNode::getPositionLua(void)
+{
+    return m_tPosition;
+}
+
+void CCNode::getPosition(float* x, float* y)
+{
+    *x = m_tPosition.x;
+    *y = m_tPosition.y;
+}
+
+float CCNode::getPositionX(void)
+{
+    return m_tPosition.x;
+}
+
+float CCNode::getPositionY(void)
+{
+    return  m_tPosition.y;
+}
+
+void CCNode::setPositionX(float x)
+{
+    setPosition(ccp(x, m_tPosition.y));
+}
+
+void CCNode::setPositionY(float y)
+{
+    setPosition(ccp(m_tPosition.x, y));
+}
+
+void CCNode::setPosition(float x, float y)
+{
+    setPosition(ccp(x, y));
+}
+
+void CCNode::setPositionInPixels(float x, float y)
+{
+    setPositionInPixels(ccp(x, y));
+}
+
 /// children getter
 CCArray* CCNode::getChildren()
 {
 	return m_pChildren;
+}
+
+unsigned int CCNode::getChildrenCount(void)
+{
+    return m_pChildren ? m_pChildren->count() : 0;
 }
 
 /// camera getter: lazy alloc
@@ -678,10 +728,10 @@ void CCNode::insertChild(CCNode* child, int z)
 {
     unsigned int index = 0;
     CCNode* a = (CCNode*) m_pChildren->lastObject();
-	if (!a || a->getZOrder() <= z)
-	{
-		m_pChildren->addObject(child);
-	}
+    if (!a || a->getZOrder() <= z)
+    {
+        m_pChildren->addObject(child);
+    }
     else
     {
         CCObject* pObject;
@@ -726,7 +776,6 @@ void CCNode::visit()
 	{
 		return;
 	}
-	
 	CCD3DCLASS->D3DPushMatrix();
 
  	if (m_pGrid && m_pGrid->isActive())
@@ -762,7 +811,6 @@ void CCNode::visit()
 	// self draw
 	this->draw();
 
-
 	// draw children zOrder >= 0
     if (m_pChildren && m_pChildren->count() > 0)
     {
@@ -781,6 +829,7 @@ void CCNode::visit()
  	{
  		m_pGrid->afterDraw(this);
 	}
+ 
 	CCD3DCLASS->D3DPopMatrix();
 }
 
@@ -796,6 +845,7 @@ void CCNode::transformAncestors()
 void CCNode::transform()
 {	
 	// transformations
+
 #if CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
 	// BEGIN alternative -- using cached transform
 	//
@@ -827,6 +877,7 @@ void CCNode::transform()
 			CCD3DCLASS->D3DTranslate(RENDER_IN_SUBPIXEL(-m_tAnchorPointInPixels.x), RENDER_IN_SUBPIXEL(-m_tAnchorPointInPixels.y), 0);
 		}
 	}
+
 
 	// END alternative
 
@@ -870,6 +921,7 @@ void CCNode::transform()
 	*/
 	// END original implementation
 #endif
+
 }
 
 
@@ -880,6 +932,11 @@ void CCNode::onEnter()
 	this->resumeSchedulerAndActions();
 
 	m_bIsRunning = true;
+
+    if (m_nScriptHandler)
+    {
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnEnter);
+    }
 }
 
 void CCNode::onEnterTransitionDidFinish()
@@ -893,8 +950,31 @@ void CCNode::onExit()
 
 	m_bIsRunning = false;
 
+    if (m_nScriptHandler)
+    {
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnExit);
+    }
+
 	arrayMakeObjectsPerformSelector(m_pChildren, &CCNode::onExit);
 }
+
+void CCNode::registerScriptHandler(int nHandler)
+{
+    unregisterScriptHandler();
+    m_nScriptHandler = nHandler;
+    LUALOG("[LUA] Add CCNode event handler: %d", m_nScriptHandler);
+}
+
+void CCNode::unregisterScriptHandler(void)
+{
+    if (m_nScriptHandler)
+    {
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nScriptHandler);
+        LUALOG("[LUA] Remove CCNode event handler: %d", m_nScriptHandler);
+        m_nScriptHandler = 0;
+    }
+}
+
 CCAction * CCNode::runAction(CCAction* action)
 {
 	CCAssert( action != NULL, "Argument must be non-nil");
@@ -985,19 +1065,10 @@ void CCNode::pauseSchedulerAndActions()
 	CCActionManager::sharedManager()->pauseTarget(this);
 }
 
-void CCNode::selectorProtocolRetain(void)
-{
-	retain();
-}
-
-void CCNode::selectorProtocolRelease(void)
-{
-	release();
-}
-
 CCAffineTransform CCNode::nodeToParentTransform(void)
 {
 	if (m_bIsTransformDirty) {
+
 		m_tTransform = CCAffineTransformIdentity;
 
 		if( ! m_bIsRelativeAnchorPoint && ! CCPoint::CCPointEqualToPoint(m_tAnchorPointInPixels, CCPointZero) )
@@ -1138,35 +1209,15 @@ CCPoint CCNode::convertToWindowSpace(const CCPoint& nodePoint)
 // convenience methods which take a CCTouch instead of CCPoint
 CCPoint CCNode::convertTouchToNodeSpace(CCTouch *touch)
 {
-	CCPoint point = touch->locationInView(touch->view());
+	CCPoint point = touch->locationInView();
 	point = CCDirector::sharedDirector()->convertToGL(point);
 	return this->convertToNodeSpace(point);
 }
 CCPoint CCNode::convertTouchToNodeSpaceAR(CCTouch *touch)
 {
-	CCPoint point = touch->locationInView(touch->view());
+	CCPoint point = touch->locationInView();
 	point = CCDirector::sharedDirector()->convertToGL(point);
 	return this->convertToNodeSpaceAR(point);
 }
 
-CCPoint CCNode::convertPointFromSubNode(CCNode* pNode, CCPoint point)
-{
-	bool selfContainNode = false;
-	CCNode *temp = pNode;
-	CCPoint result = CCPointZero;
-	while (temp->getParent() != NULL) {
-		if (temp->getParent() == this) {
-			selfContainNode = true;
-			break;
-		}
-		temp = temp->getParent();
-		result = ccpAdd(point, temp->getPosition());
-	}
-
-	if (selfContainNode) {
-		return result;
-	}else{
-		return CCPointZero;
-	}
-}
 }//namespace   cocos2d 

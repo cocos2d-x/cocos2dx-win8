@@ -25,7 +25,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 // For licensing information relating to this distribution please see Third Party Notices file.
-
+#include "pch.h"
 #include "CCTMXLayer.h"
 #include "CCTMXXMLParser.h"
 #include "CCTMXTiledMap.h"

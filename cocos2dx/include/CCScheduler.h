@@ -1,30 +1,33 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2008-2010 Ricardo Quesada
-* Copyright (c) 2011      Zynga Inc.
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
+Copyright (c) 2011      Zynga Inc.
+
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 
 #ifndef __CCSCHEDULER_H__
 #define __CCSCHEDULER_H__
 
-#include <string>
 #include "CCObject.h"
-#include "selector_protocol.h"
 #include "support/data_support/uthash.h"
 
 namespace   cocos2d {
@@ -44,34 +47,35 @@ public:
 	inline void setInterval(ccTime fInterval){ m_fInterval = fInterval; }
 
     /** Initializes a timer with a target and a selector. */
-	bool initWithTarget(SelectorProtocol *pTarget, SEL_SCHEDULE pfnSelector);
+	bool initWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector);
 
 	/** Initializes a timer with a target, a selector and an interval in seconds. */
-    bool initWithTarget(SelectorProtocol *pTarget, SEL_SCHEDULE pfnSelector, ccTime fSeconds);
+    bool initWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector, ccTime fSeconds);
 
-	bool initWithScriptFuncName(const char *pszFuncName, ccTime fSeconds);
+    /** Initializes a timer with a script callback function and an interval in seconds. */
+    bool initWithScriptHandler(int nHandler, ccTime fSeconds);
 
 	/** triggers the timer */
 	void update(ccTime dt);
 
 public:
 	/** Allocates a timer with a target and a selector. */
-	static CCTimer* timerWithTarget(SelectorProtocol *pTarget, SEL_SCHEDULE pfnSelector);
-
-	/** Allocates a timer with a script function name. */
-	static CCTimer* timerWithScriptFuncName(const char* pszFuncName, ccTime fSeconds);
+	static CCTimer* timerWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector);
 
 	/** Allocates a timer with a target, a selector and an interval in seconds. */
-	static CCTimer* timerWithTarget(SelectorProtocol *pTarget, SEL_SCHEDULE pfnSelector, ccTime fSeconds);
+	static CCTimer* timerWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector, ccTime fSeconds);
+
+    /** Allocates a timer with a script callback function and an interval in seconds. */
+    static CCTimer* timerWithScriptHandler(int nHandler, ccTime fSeconds);
 
 public:
 	SEL_SCHEDULE m_pfnSelector;
 	ccTime m_fInterval;
-	std::string m_scriptFunc;
 
 protected:
-	SelectorProtocol *m_pTarget;	
-	ccTime m_fElapsed;	
+	CCObject *m_pTarget;
+	ccTime m_fElapsed;
+    int m_nScriptHandler;
 };
 
 //
@@ -80,7 +84,8 @@ protected:
 struct _listEntry;
 struct _hashSelectorEntry;
 struct _hashUpdateEntry;
-struct _hashScriptFuncEntry;
+
+class CCArray;
 
 /** @brief Scheduler is responsible of triggering the scheduled callbacks.
 You should not use NSTimer. Instead use this class.
@@ -97,7 +102,7 @@ class CC_DLL CCScheduler : public CCObject
 {
 public:
     ~CCScheduler(void);
-	
+
 	inline ccTime getTimeScale(void) { return m_fTimeScale; }
 	/** Modifies the time of all scheduled callbacks.
 	You can use this property to create a 'slow motion' or 'fast forward' effect.
@@ -120,36 +125,30 @@ public:
 
 	 @since v0.99.3
 	 */
-	void scheduleSelector(SEL_SCHEDULE pfnSelector, SelectorProtocol *pTarget, ccTime fInterval, bool bPaused);
-	/** Schedule the script function
-	 */
-	void scheduleScriptFunc(const char *pszFuncName, ccTime fInterval, bool bPaused);
+	void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, ccTime fInterval, bool bPaused);
 	/** Schedules the 'update' selector for a given target with a given priority.
 	 The 'update' selector will be called every frame.
 	 The lower the priority, the earlier it is called.
 	 @since v0.99.3
 	 */
-	void scheduleUpdateForTarget(SelectorProtocol *pTarget, int nPriority, bool bPaused);
+	void scheduleUpdateForTarget(CCObject *pTarget, int nPriority, bool bPaused);
 
 	/** Unschedule a selector for a given target.
 	 If you want to unschedule the "update", use unscheudleUpdateForTarget.
 	 @since v0.99.3
 	 */
-	void unscheduleSelector(SEL_SCHEDULE pfnSelector, SelectorProtocol *pTarget);
-	/** Unschedule the script function
-	*/
-	void unscheduleScriptFunc(const char *pszFuncName);
+	void unscheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget);
 
 	/** Unschedules the update selector for a given target
 	 @since v0.99.3
 	 */
-	void unscheduleUpdateForTarget(const SelectorProtocol *pTarget);
+	void unscheduleUpdateForTarget(const CCObject *pTarget);
 
 	/** Unschedules all selectors for a given target.
 	 This also includes the "update" selector.
 	 @since v0.99.3
 	 */
-	void unscheduleAllSelectorsForTarget(SelectorProtocol *pTarget);
+	void unscheduleAllSelectorsForTarget(CCObject *pTarget);
 
 	/** Unschedules all selectors from all targets.
 	 You should NEVER call this method, unless you know what you are doing.
@@ -157,25 +156,35 @@ public:
 	 @since v0.99.3
 	 */
 	void unscheduleAllSelectors(void);
+    
+    /** The scheduled script callback will be called every 'interval' seconds.
+	 If paused is YES, then it won't be called until it is resumed.
+	 If 'interval' is 0, it will be called every frame.
+     return schedule script entry ID, used for unscheduleScriptFunc().
+     */
+    unsigned int scheduleScriptFunc(int nHandler, ccTime fInterval, bool bPaused);
+    
+	/** Unschedule a script entry. */
+    void unscheduleScriptEntry(unsigned int uScheduleScriptEntryID);
 
 	/** Pauses the target.
 	 All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.
 	 If the target is not present, nothing happens.
 	 @since v0.99.3
 	 */
-	void pauseTarget(SelectorProtocol *pTarget);
+	void pauseTarget(CCObject *pTarget);
 
 	/** Resumes the target.
 	 The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
 	 If the target is not present, nothing happens.
 	 @since v0.99.3
 	 */
-	void resumeTarget(SelectorProtocol *pTarget);
+	void resumeTarget(CCObject *pTarget);
 
     /** Returns whether or not the target is paused
     @since v1.0.0
     */
-    bool isTargetPaused(SelectorProtocol *pTarget);
+    bool isTargetPaused(CCObject *pTarget);
 
 public:
     /** returns a shared instance of the Scheduler */
@@ -194,8 +203,8 @@ private:
 
 	// update specific
 
-	void priorityIn(struct _listEntry **ppList, SelectorProtocol *pTarget, int nPriority, bool bPaused);
-	void appendIn(struct _listEntry **ppList, SelectorProtocol *pTarget, bool bPaused);
+	void priorityIn(struct _listEntry **ppList, CCObject *pTarget, int nPriority, bool bPaused);
+	void appendIn(struct _listEntry **ppList, CCObject *pTarget, bool bPaused);
 
 protected:
 	ccTime m_fTimeScale;
@@ -214,10 +223,8 @@ protected:
 	bool m_bCurrentTargetSalvaged;
 	// If true unschedule will not remove anything from a hash. Elements will only be marked for deletion.
 	bool m_bUpdateHashLocked;
-
-	// Used for "script function call back with interval"
-	struct _hashScriptFuncEntry *m_pHashForScriptFunctions;
+    CCArray* m_pScriptHandlerEntries;
 };
-}//namespace   cocos2d 
+}//namespace   cocos2d
 
 #endif // __CCSCHEDULER_H__

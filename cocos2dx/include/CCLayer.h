@@ -1,23 +1,28 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2008-2010 Ricardo Quesada
-* Copyright (c) 2011      Zynga Inc.
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
+Copyright (c) 2011      Zynga Inc.
+
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 
 #ifndef __CCLAYER_H__
 #define __CCLAYER_H__
@@ -30,6 +35,8 @@
 #include "CCMutableArray.h"
 
 namespace   cocos2d {
+
+class CCTouchScriptHandlerEntry;
 
 //
 // CCLayer
@@ -51,7 +58,12 @@ public:
 	virtual void onEnter();
 	virtual void onExit();
     virtual void onEnterTransitionDidFinish();
+
+    // default implements are used to call script callback if exist
 	virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent);
+    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent);
 
 	// default implements are used to call script callback if exist
 	virtual void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
@@ -73,8 +85,10 @@ public:
 	*/
 	virtual void registerWithTouchDispatcher(void);
 
-	virtual void touchDelegateRetain();
-	virtual void touchDelegateRelease();
+    /** Register script touch events handler */
+    void registerScriptTouchHandler(int nHandler, bool bIsMultiTouches = false, int nPriority = INT_MIN, bool bSwallowsTouches = false);
+    /** Unregister script touch events handler */
+    void unregisterScriptTouchHandler(void);
 
 	/** whether or not it will receive Touch events.
 	You can enable / disable touch events with this property.
@@ -92,6 +106,12 @@ public:
     it's new in cocos2d-x
     */
     CC_PROPERTY(bool, m_bIsKeypadEnabled, IsKeypadEnabled)
+
+private:
+    // Script touch events handler
+    CCTouchScriptHandlerEntry* m_pScriptHandlerEntry;
+    int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
+    int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
 };
     
 // for the subclass of CCLayer, each has to implement the static "node" method 

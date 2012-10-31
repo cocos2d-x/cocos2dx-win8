@@ -19,7 +19,7 @@
 * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
 * See the License for the specific language governing permissions and limitations under the License.
 */
-
+#include "pch.h"
 #include <map>
 #include "CCTMXXMLParser.h"
 #include "CCTMXTiledMap.h"
@@ -31,17 +31,6 @@
 #include "platform/platform.h"
 
 using namespace std;
-
-/*
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
-	#include "expat.h"
-#else
-	#include <libxml/parser.h>
-	#include <libxml/tree.h>
-	#include <libxml/xmlmemory.h>
-	#include "CCLibxml2.h"
-#endf
-*/
 
 namespace cocos2d {
 
@@ -255,7 +244,7 @@ namespace cocos2d {
 			std::string version = valueForKey("version", attributeDict);
 			if ( version != "1.0")
 			{
-				CCLOG("cocos2d: TMXFormat: Unsupported TMX version: %@", version.c_str());
+				CCLOG("cocos2d: TMXFormat: Unsupported TMX version: %s", version.c_str());
 			}
 			std::string orientationStr = valueForKey("orientation", attributeDict);
 			if( orientationStr == "orthogonal")

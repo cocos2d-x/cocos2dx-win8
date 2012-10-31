@@ -244,7 +244,7 @@ void CCActionManager::removeAllActionsFromTarget(CCObject *pTarget)
 	}
 	else
 	{
-		CCLOG("cocos2d: removeAllActionsFromTarget: Target not found");
+//		CCLOG("cocos2d: removeAllActionsFromTarget: Target not found");
 	}
 }
 

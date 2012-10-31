@@ -1,24 +1,28 @@
-/*
-* cocos2d-x   http://www.cocos2d-x.org
-*
-* Copyright (c) 2010-2011 - cocos2d-x community
-* Copyright (c) 2010-2011 cocos2d-x.org
-* Copyright (c) 2008-2010 Ricardo Quesada
-* Copyright (c) 2011      Zynga Inc.
-* 
-* Portions Copyright (c) Microsoft Open Technologies, Inc.
-* All Rights Reserved
-* 
-* Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. 
-* You may obtain a copy of the License at 
-* 
-* http://www.apache.org/licenses/LICENSE-2.0 
-* 
-* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an 
-* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-* See the License for the specific language governing permissions and limitations under the License.
-*/
+/****************************************************************************
+Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
+Copyright (c) 2011      Zynga Inc.
 
+http://www.cocos2d-x.org
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 #include "pch.h"
 #include <stdarg.h>
 #include "CCLayer.h"
@@ -27,6 +31,7 @@
 #include "CCAccelerometer.h"
 #include "CCDirector.h"
 #include "CCPointExtension.h"
+#include "CCScriptSupport.h"
 #include "CCFileUtils.h"
 #include "DirectXHelper.h"
 #include <fstream>
@@ -42,6 +47,7 @@ CCLayer::CCLayer()
 :m_bIsTouchEnabled(false)
 ,m_bIsAccelerometerEnabled(false)
 ,m_bIsKeypadEnabled(false)
+,m_pScriptHandlerEntry(NULL)
 {
 	setAnchorPoint(ccp(0.5f, 0.5f));
 	m_bIsRelativeAnchorPoint = false;
@@ -49,6 +55,7 @@ CCLayer::CCLayer()
 
 CCLayer::~CCLayer()
 {
+    unregisterScriptTouchHandler();
 }
 
 bool CCLayer::init()
@@ -86,7 +93,49 @@ CCLayer *CCLayer::node()
 
 void CCLayer::registerWithTouchDispatcher()
 {
+    if (m_pScriptHandlerEntry)
+    {
+        if (m_pScriptHandlerEntry->getIsMultiTouches())
+        {
+            CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0);
+            LUALOG("[LUA] Add multi-touches event handler: %d", m_pScriptHandlerEntry->getHandler());
+        }
+        else
+        {
+            CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this,
+                                                                       m_pScriptHandlerEntry->getPriority(),
+                                                                       m_pScriptHandlerEntry->getSwallowsTouches());
+            LUALOG("[LUA] Add touch event handler: %d", m_pScriptHandlerEntry->getHandler());
+        }
+        return;
+    }
 	CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0);
+}
+
+void CCLayer::registerScriptTouchHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches)
+{
+    unregisterScriptTouchHandler();
+    m_pScriptHandlerEntry = CCTouchScriptHandlerEntry::entryWithHandler(nHandler, bIsMultiTouches, nPriority, bSwallowsTouches);
+    m_pScriptHandlerEntry->retain();
+}
+
+void CCLayer::unregisterScriptTouchHandler(void)
+{
+    if (m_pScriptHandlerEntry)
+    {
+        m_pScriptHandlerEntry->release();
+        m_pScriptHandlerEntry = NULL;
+    }
+}
+
+int CCLayer::excuteScriptTouchHandler(int nEventType, CCTouch *pTouch)
+{
+    return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeTouchEvent(m_pScriptHandlerEntry->getHandler(), nEventType, pTouch);
+}
+
+int CCLayer::excuteScriptTouchHandler(int nEventType, CCSet *pTouches)
+{
+    return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeTouchesEvent(m_pScriptHandlerEntry->getHandler(), nEventType, pTouches);
 }
 
 /// isTouchEnabled getter
@@ -125,18 +174,16 @@ void CCLayer::setIsAccelerometerEnabled(bool enabled)
 {
     if (enabled != m_bIsAccelerometerEnabled)
     {
-        //m_bIsAccelerometerEnabled = enabled;
+        m_bIsAccelerometerEnabled = enabled;
 
         if (m_bIsRunning)
         {
             if (enabled)
             {
-				m_bIsAccelerometerEnabled = true;
-				CCAccelerometer::sharedAccelerometer()->setDelegate(this);
+                CCAccelerometer::sharedAccelerometer()->setDelegate(this);
             }
             else
             {
-				m_bIsAccelerometerEnabled = false;
                 CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
             }
         }
@@ -185,7 +232,7 @@ void CCLayer::onEnter()
     // add this layer to concern the Accelerometer Sensor
     if (m_bIsAccelerometerEnabled)
     {
-        CCAccelerometer::sharedAccelerometer()->setDelegate(this);
+       // CCAccelerometer::sharedAccelerometer()->setDelegate(this);
     }
 
     // add this layer to concern the kaypad msg
@@ -200,12 +247,13 @@ void CCLayer::onExit()
 	if( m_bIsTouchEnabled )
 	{
 		CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
+		unregisterScriptTouchHandler();
 	}
 
     // remove this layer from the delegates who concern Accelerometer Sensor
     if (m_bIsAccelerometerEnabled)
     {
-        CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
+       // CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
     }
 
     // remove this layer from the delegates who concern the kaypad msg
@@ -227,54 +275,90 @@ void CCLayer::onEnterTransitionDidFinish()
     CCNode::onEnterTransitionDidFinish();
 }
 
-void CCLayer::touchDelegateRetain()
-{
-	retain();
-}
-
-void CCLayer::touchDelegateRelease()
-{
-	release();
-}
-
 bool CCLayer::ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent)
 {
+    if (m_pScriptHandlerEntry)
+    {
+        return excuteScriptTouchHandler(CCTOUCHBEGAN, pTouch);
+    }
     CC_UNUSED_PARAM(pTouch);
     CC_UNUSED_PARAM(pEvent);
 	CCAssert(false, "Layer#ccTouchBegan override me");
 	return true;
 }
 
-void CCLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
-{
-	if (isScriptHandlerExist(CCTOUCHBEGAN))
-	{
-		excuteScriptTouchesHandler(CCTOUCHBEGAN, pTouches);
-	}
+void CCLayer::ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent) {
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHMOVED, pTouch);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouch);
+    CC_UNUSED_PARAM(pEvent);
+}
+    
+void CCLayer::ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent) {
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHENDED, pTouch);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouch);
+    CC_UNUSED_PARAM(pEvent);
 }
 
-void CCLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+void CCLayer::ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent) {
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHCANCELLED, pTouch);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouch);
+    CC_UNUSED_PARAM(pEvent);
+}    
+
+void CCLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
-	if (isScriptHandlerExist(CCTOUCHENDED))
-	{
-		excuteScriptTouchesHandler(CCTOUCHENDED, pTouches);
-	}
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHBEGAN, pTouches);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouches);
+    CC_UNUSED_PARAM(pEvent);
 }
 
 void CCLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
-	if (isScriptHandlerExist(CCTOUCHMOVED))
-	{
-		excuteScriptTouchesHandler(CCTOUCHMOVED, pTouches);
-	}
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHMOVED, pTouches);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouches);
+    CC_UNUSED_PARAM(pEvent);
+}
+
+void CCLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+{
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHENDED, pTouches);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouches);
+    CC_UNUSED_PARAM(pEvent);
 }
 
 void CCLayer::ccTouchesCancelled(CCSet *pTouches, CCEvent *pEvent)
 {
-	if (isScriptHandlerExist(CCTOUCHCANCELLED))
-	{
-		excuteScriptTouchesHandler(CCTOUCHCANCELLED, pTouches);
-	}
+    if (m_pScriptHandlerEntry)
+    {
+        excuteScriptTouchHandler(CCTOUCHCANCELLED, pTouches);
+        return;
+    }
+    CC_UNUSED_PARAM(pTouches);
+    CC_UNUSED_PARAM(pEvent);
 }
 
 /// ColorLayer
@@ -504,14 +588,8 @@ void CCDXLayerColor::initVertexBuffer()
 
 void CCDXLayerColor::RenderVertexBuffer(ccVertex2F* squareVertices,ccColor4B* squareColors)
 {
-
-	VertexType* verticesTmp;
 	// Create the vertex array.
-	verticesTmp = new VertexType[4];
-	if(!verticesTmp)
-	{
-		return ;
-	}
+	VertexType verticesTmp[4];
 	
 	verticesTmp[0].position = DirectX::XMFLOAT3(squareVertices[0].x, squareVertices[0].y, 0);
 	verticesTmp[1].position = DirectX::XMFLOAT3(squareVertices[1].x, squareVertices[1].y, 0);
@@ -533,11 +611,6 @@ void CCDXLayerColor::RenderVertexBuffer(ccVertex2F* squareVertices,ccColor4B* sq
 	memcpy(verticesPtr, (void*)verticesTmp, (sizeof(VertexType) * 4));
 	CCID3D11DeviceContext->Unmap(m_vertexBuffer, 0);
 
-	if ( verticesTmp )
-	{
-		delete[] verticesTmp;
-		verticesTmp = 0;
-	}
 
 	////////////////////////
 	unsigned int stride;
@@ -565,41 +638,25 @@ bool CCDXLayerColor::InitializeShader()
 	//vertexShaderBuffer = 0;
 	//pixelShaderBuffer = 0;
 
-		BasicLoader^ loader = ref new BasicLoader(CCID3D11Device);
-		D3D11_INPUT_ELEMENT_DESC layoutDesc[] = 
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		};
+		 BasicLoader^ loader = ref new BasicLoader(CCID3D11Device);
+		 D3D11_INPUT_ELEMENT_DESC layoutDesc[] = 
+		 {
+			 { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+			 { "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+		 };
 
-		//auto loadVSTask = DX::ReadDataAsync("CCLayerColorVertexShader.cso");
-		//auto loadPSTask = DX::ReadDataAsync("CCLayerColorPixelShader.cso");
+		 loader->LoadShader(
+			 L"CCLayerColorVertexShader.cso",
+			 layoutDesc,
+			 ARRAYSIZE(layoutDesc),
+			 &m_vertexShader,
+			 &m_layout
+			 );
 
-		//auto createVSTask = loadVSTask.then([this](DX::ByteArray ba) {
-		//bytecodeVSArray = ba;
-		//auto bytecodeVS = ba.data;
-		//DX::ThrowIfFailed(
-		//	m_d3dDevice->CreateVertexShader(
-		//		bytecodeVS->Data,
-		//		bytecodeVS->Length,
-		//		nullptr,
-		//		&m_vertexShader
-		//		)
-		//	);
-		//});
-
-		 //loader->LoadShader(
-			// L"CCLayerColorVertexShader.cso",
-			// layoutDesc,
-			// ARRAYSIZE(layoutDesc),
-			// &m_vertexShader,
-			// &m_layout
-			// );
-
-		 //loader->LoadShader(
-			// L"CCLayerColorPixelShader.cso",
-			// &m_pixelShader
-			// );
+		 loader->LoadShader(
+			 L"CCLayerColorPixelShader.cso",
+			 &m_pixelShader
+			 );
 
 
 	// Setup the description of the dynamic matrix constant buffer that is in the vertex shader.
@@ -765,7 +822,7 @@ bool CCLayerGradient::initWithColor(const ccColor4B& start, const ccColor4B& end
 
     m_bCompressedInterpolation = true;
 
-    return CCLayerColor::initWithColor(ccc4(start.r, start.g, start.b, 255));
+    return CCLayerColor::initWithColor(ccc4f(start.r, start.g, start.b, 255));
 }
 
 void CCLayerGradient::updateColor()

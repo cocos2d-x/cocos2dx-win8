@@ -1,0 +1,1059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A9E507CA-55C4-45D9-A0E4-6450A43176A6}</ProjectGuid>
+    <RootNamespace>tests</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <XapOutputs>true</XapOutputs>
+    <XapFilename>test_$(Configuration)_$(Platform).xap</XapFilename>
+    <WinMDAssembly>true</WinMDAssembly>
+    <ProjectName>tests</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)\$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <CompileAsWinRT>true</CompileAsWinRT>
+      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;TIXML_USE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
+      <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
+      <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>$(SolutionDir)\cocos2dx\platform\third_party\win8_metro\libraries\$(TargetedSDKArchitecture)</AdditionalLibraryDirectories>
+      <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="platform.winmd">
+      <IsWinMDFile>true</IsWinMDFile>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\animations\dragon_animation-hd.png" />
+    <Image Include="Assets\animations\dragon_animation.png" />
+    <Image Include="Assets\animations\ghosts.png" />
+    <Image Include="Assets\animations\grossini-aliases.png" />
+    <Image Include="Assets\animations\grossini.png" />
+    <Image Include="Assets\animations\grossini_blue.png" />
+    <Image Include="Assets\animations\grossini_family.png" />
+    <Image Include="Assets\animations\grossini_gray.png" />
+    <Image Include="Assets\ApplicationIcon.png" />
+    <Image Include="Assets\CloseNormal.png" />
+    <Image Include="Assets\CloseSelected.png" />
+    <Image Include="Assets\fonts\arial16.png" />
+    <Image Include="Assets\fonts\bitmapFontChinese.png" />
+    <Image Include="Assets\fonts\bitmapFontTest.png" />
+    <Image Include="Assets\fonts\bitmapFontTest2.png" />
+    <Image Include="Assets\fonts\bitmapFontTest3.png" />
+    <Image Include="Assets\fonts\bitmapFontTest4.png" />
+    <Image Include="Assets\fonts\bitmapFontTest5.png" />
+    <Image Include="Assets\fonts\fps_images-hd.png" />
+    <Image Include="Assets\fonts\fps_images.png" />
+    <Image Include="Assets\fonts\futura-48.png" />
+    <Image Include="Assets\fonts\konqa32-hd.png" />
+    <Image Include="Assets\fonts\konqa32.png" />
+    <Image Include="Assets\fonts\larabie-16-hd.png" />
+    <Image Include="Assets\fonts\larabie-16.png" />
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap-hd.png" />
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap.png" />
+    <Image Include="Assets\Hello.png" />
+    <Image Include="Assets\HelloWorld.png" />
+    <Image Include="Assets\Icon.png" />
+    <Image Include="Assets\Images\atlastest.png" />
+    <Image Include="Assets\Images\b1-hd.png" />
+    <Image Include="Assets\Images\b1.png" />
+    <Image Include="Assets\Images\b2-hd.png" />
+    <Image Include="Assets\Images\b2.png" />
+    <Image Include="Assets\Images\background.png" />
+    <Image Include="Assets\Images\background1-hd.png" />
+    <Image Include="Assets\Images\background1.png" />
+    <Image Include="Assets\Images\background2-hd.png" />
+    <Image Include="Assets\Images\background2.png" />
+    <Image Include="Assets\Images\background3-hd.png" />
+    <Image Include="Assets\Images\background3.png" />
+    <Image Include="Assets\Images\ball-hd.png" />
+    <Image Include="Assets\Images\ball.png" />
+    <Image Include="Assets\Images\bitmapFontTest3.png" />
+    <Image Include="Assets\Images\blocks-hd.png" />
+    <Image Include="Assets\Images\blocks.png" />
+    <Image Include="Assets\Images\btn-about-normal.png" />
+    <Image Include="Assets\Images\btn-about-selected.png" />
+    <Image Include="Assets\Images\btn-highscores-normal.png" />
+    <Image Include="Assets\Images\btn-highscores-selected.png" />
+    <Image Include="Assets\Images\btn-play-normal.png" />
+    <Image Include="Assets\Images\btn-play-selected.png" />
+    <Image Include="Assets\Images\bugs\bug886.jpg" />
+    <Image Include="Assets\Images\bugs\bug886.png" />
+    <Image Include="Assets\Images\bugs\circle-hd.png" />
+    <Image Include="Assets\Images\bugs\circle.png" />
+    <Image Include="Assets\Images\bugs\corner.png" />
+    <Image Include="Assets\Images\bugs\edge.png" />
+    <Image Include="Assets\Images\bugs\fill.png" />
+    <Image Include="Assets\Images\bugs\picture-hd.png" />
+    <Image Include="Assets\Images\bugs\picture.png" />
+    <Image Include="Assets\Images\bugs\RetinaDisplay.jpg" />
+    <Image Include="Assets\Images\close-hd.png" />
+    <Image Include="Assets\Images\close.png" />
+    <Image Include="Assets\Images\Comet.png" />
+    <Image Include="Assets\Images\f1-hd.png" />
+    <Image Include="Assets\Images\f1.png" />
+    <Image Include="Assets\Images\f2-hd.png" />
+    <Image Include="Assets\Images\f2.png" />
+    <Image Include="Assets\Images\fire-grayscale.png" />
+    <Image Include="Assets\Images\fire.png" />
+    <Image Include="Assets\Images\Fog.png" />
+    <Image Include="Assets\Images\fps_images.png" />
+    <Image Include="Assets\Images\grossini-hd.png" />
+    <Image Include="Assets\Images\grossini.png" />
+    <Image Include="Assets\Images\grossinis_sister1-hd.png" />
+    <Image Include="Assets\Images\grossinis_sister1-testalpha.png" />
+    <Image Include="Assets\Images\grossinis_sister1.png" />
+    <Image Include="Assets\Images\grossinis_sister2-hd.png" />
+    <Image Include="Assets\Images\grossinis_sister2.png" />
+    <Image Include="Assets\Images\grossini_dance_01.png" />
+    <Image Include="Assets\Images\grossini_dance_02.png" />
+    <Image Include="Assets\Images\grossini_dance_03.png" />
+    <Image Include="Assets\Images\grossini_dance_04.png" />
+    <Image Include="Assets\Images\grossini_dance_05.png" />
+    <Image Include="Assets\Images\grossini_dance_06.png" />
+    <Image Include="Assets\Images\grossini_dance_07.png" />
+    <Image Include="Assets\Images\grossini_dance_08.png" />
+    <Image Include="Assets\Images\grossini_dance_09.png" />
+    <Image Include="Assets\Images\grossini_dance_10.png" />
+    <Image Include="Assets\Images\grossini_dance_11.png" />
+    <Image Include="Assets\Images\grossini_dance_12.png" />
+    <Image Include="Assets\Images\grossini_dance_13.png" />
+    <Image Include="Assets\Images\grossini_dance_14.png" />
+    <Image Include="Assets\Images\grossini_dance_atlas-hd.png" />
+    <Image Include="Assets\Images\grossini_dance_atlas-mono.png" />
+    <Image Include="Assets\Images\grossini_dance_atlas.png" />
+    <Image Include="Assets\Images\grossini_dance_atlas_nomipmap.png" />
+    <Image Include="Assets\Images\HelloWorld.png" />
+    <Image Include="Assets\Images\Icon.png" />
+    <Image Include="Assets\Images\landscape-1024x1024.png" />
+    <Image Include="Assets\Images\menuitemsprite.png" />
+    <Image Include="Assets\Images\paddle-hd.png" />
+    <Image Include="Assets\Images\paddle.png" />
+    <Image Include="Assets\Images\particles-hd.png" />
+    <Image Include="Assets\Images\particles.png" />
+    <Image Include="Assets\Images\pattern1.png" />
+    <Image Include="Assets\Images\Pea.png" />
+    <Image Include="Assets\Images\piece.png" />
+    <Image Include="Assets\Images\PlanetCute-1024x1024.png" />
+    <Image Include="Assets\Images\powered.png" />
+    <Image Include="Assets\Images\r1-hd.png" />
+    <Image Include="Assets\Images\r1.png" />
+    <Image Include="Assets\Images\r2-hd.png" />
+    <Image Include="Assets\Images\r2.png" />
+    <Image Include="Assets\Images\SendScoreButton.png" />
+    <Image Include="Assets\Images\SendScoreButtonPressed.png" />
+    <Image Include="Assets\Images\snow.png" />
+    <Image Include="Assets\Images\SpinningPeas.png" />
+    <Image Include="Assets\Images\SpookyPeas.png" />
+    <Image Include="Assets\Images\spritesheet1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-0-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-1-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-2-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-3-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-4-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-5-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-6-7.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-0.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-1.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-2.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-3.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-4.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-5.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-6.png" />
+    <Image Include="Assets\Images\sprites_test\sprite-7-7.png" />
+    <Image Include="Assets\Images\stars-grayscale.png" />
+    <Image Include="Assets\Images\stars.png" />
+    <Image Include="Assets\Images\stars2-grayscale.png" />
+    <Image Include="Assets\Images\stars2.png" />
+    <Image Include="Assets\Images\streak.png" />
+    <Image Include="Assets\Images\test-rgba1.png" />
+    <Image Include="Assets\Images\test_blend.png" />
+    <Image Include="Assets\Images\test_image.jpeg" />
+    <Image Include="Assets\Images\test_image.png" />
+    <Image Include="Assets\Images\texture1024x1024.png" />
+    <Image Include="Assets\Images\texture2048x2048.png" />
+    <Image Include="Assets\Images\texture512x512.png" />
+    <Image Include="Assets\Logo.png" />
+    <Image Include="Assets\Player.png" />
+    <Image Include="Assets\Projectile.png" />
+    <Image Include="Assets\SmallLogo.png" />
+    <Image Include="Assets\SplashScreen.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="Assets\Target.png" />
+    <Image Include="Assets\TileMaps\fixed-ortho-test2.png" />
+    <Image Include="Assets\TileMaps\hexa-tiles.png" />
+    <Image Include="Assets\TileMaps\iso-test.png" />
+    <Image Include="Assets\TileMaps\iso-test2.png" />
+    <Image Include="Assets\TileMaps\iso.png" />
+    <Image Include="Assets\TileMaps\ortho-test1.png" />
+    <Image Include="Assets\TileMaps\ortho-test1_bw.png" />
+    <Image Include="Assets\TileMaps\ortho-test2.png" />
+    <Image Include="Assets\TileMaps\tiles-hd.png" />
+    <Image Include="Assets\TileMaps\tiles.png" />
+    <Image Include="Assets\TileMaps\tmw_desert_spacing-hd.png" />
+    <Image Include="Assets\TileMaps\tmw_desert_spacing.png" />
+    <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
+    <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
+    <Image Include="Assets\Tiles\FlipCycleTileSmall.png" />
+    <Image Include="Assets\Tiles\IconicTileMediumLarge.png" />
+    <Image Include="Assets\Tiles\IconicTileSmall.png" />
+    <Image Include="Assets\WideLogo.png" />
+    <Image Include="Assets\zwoptex\grossini-generic.png" />
+    <Image Include="Assets\zwoptex\grossini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Assets\animations\grossini.plist.xml" />
+    <Xml Include="WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Box2D\Box2D.h" />
+    <ClInclude Include="..\Box2D\Collision\b2BroadPhase.h" />
+    <ClInclude Include="..\Box2D\Collision\b2Collision.h" />
+    <ClInclude Include="..\Box2D\Collision\b2Distance.h" />
+    <ClInclude Include="..\Box2D\Collision\b2DynamicTree.h" />
+    <ClInclude Include="..\Box2D\Collision\b2TimeOfImpact.h" />
+    <ClInclude Include="..\Box2D\Collision\Shapes\b2ChainShape.h" />
+    <ClInclude Include="..\Box2D\Collision\Shapes\b2CircleShape.h" />
+    <ClInclude Include="..\Box2D\Collision\Shapes\b2EdgeShape.h" />
+    <ClInclude Include="..\Box2D\Collision\Shapes\b2PolygonShape.h" />
+    <ClInclude Include="..\Box2D\Collision\Shapes\b2Shape.h" />
+    <ClInclude Include="..\Box2D\Common\b2BlockAllocator.h" />
+    <ClInclude Include="..\Box2D\Common\b2Draw.h" />
+    <ClInclude Include="..\Box2D\Common\b2GrowableStack.h" />
+    <ClInclude Include="..\Box2D\Common\b2Math.h" />
+    <ClInclude Include="..\Box2D\Common\b2Settings.h" />
+    <ClInclude Include="..\Box2D\Common\b2StackAllocator.h" />
+    <ClInclude Include="..\Box2D\Common\b2Timer.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2Body.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2ContactManager.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2Fixture.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2Island.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2TimeStep.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2World.h" />
+    <ClInclude Include="..\Box2D\Dynamics\b2WorldCallbacks.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2CircleContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2Contact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2ContactSolver.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Contacts\b2PolygonContact.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2DistanceJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2FrictionJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2GearJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2Joint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2MouseJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2PrismaticJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2PulleyJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2RevoluteJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2RopeJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2WeldJoint.h" />
+    <ClInclude Include="..\Box2D\Dynamics\Joints\b2WheelJoint.h" />
+    <ClInclude Include="..\Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="..\cocos2dx\CCConfiguration.h" />
+    <ClInclude Include="..\cocos2dx\cocoa\CCNS.h" />
+    <ClInclude Include="..\cocos2dx\effects\CCGrabber.h" />
+    <ClInclude Include="..\cocos2dx\effects\CCGrid.h" />
+    <ClInclude Include="..\cocos2dx\extensions\CCNotificationCenter.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCAccelerometer_platform.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCApplication_platform.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCArchOptimalParticleSystem.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCCommon.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCEGLView_platform.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCFileUtils.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCGL.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCImage.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCLibxml2.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCPlatformConfig.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCPlatformMacros.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCSAXParser.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCStdC.h" />
+    <ClInclude Include="..\cocos2dx\platform\CCThread.h" />
+    <ClInclude Include="..\cocos2dx\platform\platform.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\BasicLoader.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\BasicReaderWriter.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\DirectXRender.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\DXTextPainter.h" />
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
+    <ClInclude Include="..\cocos2dx\support\base64.h" />
+    <ClInclude Include="..\cocos2dx\support\CCProfiling.h" />
+    <ClInclude Include="..\cocos2dx\support\ccUtils.h" />
+    <ClInclude Include="..\cocos2dx\support\data_support\ccCArray.h" />
+    <ClInclude Include="..\cocos2dx\support\data_support\uthash.h" />
+    <ClInclude Include="..\cocos2dx\support\data_support\utlist.h" />
+    <ClInclude Include="..\cocos2dx\support\image_support\TGAlib.h" />
+    <ClInclude Include="..\cocos2dx\support\TransformUtils.h" />
+    <ClInclude Include="..\cocos2dx\support\zip_support\ioapi.h" />
+    <ClInclude Include="..\cocos2dx\support\zip_support\unzip.h" />
+    <ClInclude Include="..\cocos2dx\support\zip_support\ZipUtils.h" />
+    <ClInclude Include="..\CocosDenshion\include\Export.h" />
+    <ClInclude Include="..\CocosDenshion\include\SimpleAudioEngine.h" />
+    <ClInclude Include="..\CocosDenshion\win8_metro\Audio.h" />
+    <ClInclude Include="..\CocosDenshion\win8_metro\MediaStreamer.h" />
+    <ClInclude Include="..\tinyxml\tinystr.h" />
+    <ClInclude Include="..\tinyxml\tinyxml.h" />
+    <ClInclude Include="Classes\ActionManagerTest\ActionManagerTest.h" />
+    <ClInclude Include="Classes\ActionsTest\ActionsTest.h" />
+    <ClInclude Include="Classes\AppDelegate.h" />
+    <ClInclude Include=".\cocos2dorig.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Box2dView.h" />
+    <ClInclude Include="Classes\Box2DTestBed\GLES-Render.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Test.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\AddPair.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\ApplyForce.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\BodyTypes.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Breakable.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Bridge.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\BulletTest.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Cantilever.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Car.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Chain.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\CharacterCollision.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\CollisionFiltering.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\CollisionProcessing.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\CompoundShapes.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Confined.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\ContinuousTest.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\DistanceTest.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Dominos.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\DumpShell.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\DynamicTreeTest.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\EdgeShapes.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\EdgeTest.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Gears.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\OneSidedPlatform.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Pinball.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\PolyCollision.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\PolyShapes.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Prismatic.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Pulleys.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Pyramid.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\RayCast.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Revolute.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Rope.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\RopeJoint.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\SensorTest.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\ShapeEditing.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\SliderCrank.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\SphereStack.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\TheoJansen.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Tiles.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\TimeOfImpact.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Tumbler.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\VaryingFriction.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\VaryingRestitution.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\VerticalStack.h" />
+    <ClInclude Include="Classes\Box2DTestBed\Tests\Web.h" />
+    <ClInclude Include="Classes\Box2DTest\Box2dTest.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-1159.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-1174.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-350.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-422.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-458\Bug-458.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-624.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-886.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-899.h" />
+    <ClInclude Include="Classes\BugsTest\Bug-914.h" />
+    <ClInclude Include="Classes\BugsTest\BugsTest.h" />
+    <ClInclude Include="Classes\BugsTest\ParticleBufOverflow.h" />
+    <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h" />
+    <ClInclude Include="Classes\CocosDenshionTest\CocosDenshionTest.h" />
+    <ClInclude Include="Classes\CocosNodeTest\CocosNodeTest.h" />
+    <ClInclude Include="Classes\controller.h" />
+    <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h" />
+    <ClInclude Include="Classes\DirectorTest\DirectorTest.h" />
+    <ClInclude Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.h" />
+    <ClInclude Include="Classes\EaseActionsTest\EaseActionsTest.h" />
+    <ClInclude Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.h" />
+    <ClInclude Include="Classes\EffectsTest\EffectsTest.h" />
+    <ClInclude Include="Classes\ExtensionsTest\ExtensionsTest.h" />
+    <ClInclude Include="Classes\ExtensionsTest\NotificationCenterTest.h" />
+    <ClInclude Include="Classes\FontTest\FontTest.h" />
+    <ClInclude Include="Classes\IntervalTest\IntervalTest.h" />
+    <ClInclude Include="Classes\LabelTest\LabelTest.h" />
+    <ClInclude Include="Classes\LayerTest\LayerTest.h" />
+    <ClInclude Include="Classes\MenuTest\MenuTest.h" />
+    <ClInclude Include="Classes\MotionStreakTest\MotionStreakTest.h" />
+    <ClInclude Include="Classes\ParallaxTest\ParallaxTest.h" />
+    <ClInclude Include="Classes\ParticleTest\ParticleTest.h" />
+    <ClInclude Include="Classes\PerformanceTest\PerformanceNodeChildrenTest.h" />
+    <ClInclude Include="Classes\PerformanceTest\PerformanceParticleTest.h" />
+    <ClInclude Include="Classes\PerformanceTest\PerformanceSpriteTest.h" />
+    <ClInclude Include="Classes\PerformanceTest\PerformanceTest.h" />
+    <ClInclude Include="Classes\PerformanceTest\PerformanceTextureTest.h" />
+    <ClInclude Include="Classes\PerformanceTest\PerformanceTouchesTest.h" />
+    <ClInclude Include="Classes\ProgressActionsTest\ProgressActionsTest.h" />
+    <ClInclude Include="Classes\RenderTextureTest\RenderTextureTest.h" />
+    <ClInclude Include="Classes\RotateWorldTest\RotateWorldTest.h" />
+    <ClInclude Include="Classes\SceneTest\SceneTest.h" />
+    <ClInclude Include="Classes\SchedulerTest\SchedulerTest.h" />
+    <ClInclude Include="Classes\SpriteTest\SpriteTest.h" />
+    <ClInclude Include="Classes\testBasic.h" />
+    <ClInclude Include="Classes\testResource.h" />
+    <ClInclude Include="Classes\tests.h" />
+    <ClInclude Include="Classes\Texture2dTest\Texture2dTest.h" />
+    <ClInclude Include="Classes\TileMapTest\TileMapTest.h" />
+    <ClInclude Include="Classes\TouchesTest\Ball.h" />
+    <ClInclude Include="Classes\TouchesTest\Paddle.h" />
+    <ClInclude Include="Classes\TouchesTest\TouchesTest.h" />
+    <ClInclude Include="Classes\TransitionsTest\TransitionsTest.h" />
+    <ClInclude Include="Classes\UserDefaultTest\UserDefaultTest.h" />
+    <ClInclude Include="Classes\ZwoptexTest\ZwoptexTest.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Box2D\Collision\b2BroadPhase.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2CollideCircle.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2CollideEdge.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2CollidePolygon.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2Collision.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2Distance.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2DynamicTree.cpp" />
+    <ClCompile Include="..\Box2D\Collision\b2TimeOfImpact.cpp" />
+    <ClCompile Include="..\Box2D\Collision\Shapes\b2ChainShape.cpp" />
+    <ClCompile Include="..\Box2D\Collision\Shapes\b2CircleShape.cpp" />
+    <ClCompile Include="..\Box2D\Collision\Shapes\b2EdgeShape.cpp" />
+    <ClCompile Include="..\Box2D\Collision\Shapes\b2PolygonShape.cpp" />
+    <ClCompile Include="..\Box2D\Common\b2BlockAllocator.cpp" />
+    <ClCompile Include="..\Box2D\Common\b2Draw.cpp" />
+    <ClCompile Include="..\Box2D\Common\b2Math.cpp" />
+    <ClCompile Include="..\Box2D\Common\b2Settings.cpp" />
+    <ClCompile Include="..\Box2D\Common\b2StackAllocator.cpp" />
+    <ClCompile Include="..\Box2D\Common\b2Timer.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\b2Body.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\b2ContactManager.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\b2Fixture.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\b2Island.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\b2World.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\b2WorldCallbacks.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2CircleContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2Contact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2ContactSolver.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Contacts\b2PolygonContact.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2DistanceJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2FrictionJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2GearJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2Joint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2MouseJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2PulleyJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2RopeJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
+    <ClCompile Include="..\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
+    <ClCompile Include="..\Box2D\Rope\b2Rope.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCAction.cpp">
+      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\cocos2dx\actions\CCActionCamera.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionEase.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionGrid.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionGrid3D.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionInstant.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionInterval.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionManager.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionPageTurn3D.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionProgressTimer.cpp" />
+    <ClCompile Include="..\cocos2dx\actions\CCActionTiledGrid.cpp" />
+    <ClCompile Include="..\cocos2dx\base_nodes\CCAtlasNode.cpp" />
+    <ClCompile Include="..\cocos2dx\base_nodes\CCNode.cpp" />
+    <ClCompile Include="..\cocos2dx\CCCamera.cpp" />
+    <ClCompile Include="..\cocos2dx\CCConfiguration.cpp" />
+    <ClCompile Include="..\cocos2dx\CCDirector.cpp" />
+    <ClCompile Include="..\cocos2dx\CCDrawingPrimitives.cpp" />
+    <ClCompile Include="..\cocos2dx\CCScheduler.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCAffineTransform.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCAutoreleasePool.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCData.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCGeometry.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCNS.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCObject.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCSet.cpp" />
+    <ClCompile Include="..\cocos2dx\cocoa\CCZone.cpp" />
+    <ClCompile Include="..\cocos2dx\cocos2d.cpp" />
+    <ClCompile Include="..\cocos2dx\effects\CCGrabber.cpp" />
+    <ClCompile Include="..\cocos2dx\effects\CCGrid.cpp" />
+    <ClCompile Include="..\cocos2dx\extensions\CCNotificationCenter.cpp" />
+    <ClCompile Include="..\cocos2dx\label_nodes\CCLabelAtlas.cpp" />
+    <ClCompile Include="..\cocos2dx\label_nodes\CCLabelBMFont.cpp" />
+    <ClCompile Include="..\cocos2dx\label_nodes\CCLabelTTF.cpp" />
+    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCLayer.cpp" />
+    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCScene.cpp" />
+    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCTransition.cpp" />
+    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionPageTurn.cpp" />
+    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionRadial.cpp" />
+    <ClCompile Include="..\cocos2dx\menu_nodes\CCMenu.cpp" />
+    <ClCompile Include="..\cocos2dx\menu_nodes\CCMenuItem.cpp" />
+    <ClCompile Include="..\cocos2dx\misc_nodes\CCMotionStreak.cpp" />
+    <ClCompile Include="..\cocos2dx\misc_nodes\CCProgressTimer.cpp" />
+    <ClCompile Include="..\cocos2dx\misc_nodes\CCRenderTexture.cpp" />
+    <ClCompile Include="..\cocos2dx\misc_nodes\CCRibbon.cpp" />
+    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleExamples.cpp" />
+    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleSystem.cpp" />
+    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleSystemPoint.cpp" />
+    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleSystemQuad.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCCommon.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCFileUtils.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCGL.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCImage.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCSAXParser.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCStdC.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\CCThread.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\platform.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\BasicLoader.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\BasicReaderWriter.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCFileUtils_win8_metro.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCImage_win8_metro.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\DirectXRender.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\DXTextPainter.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp" />
+    <ClCompile Include="..\cocos2dx\script_support\CCScriptSupport.cpp" />
+    <ClCompile Include="..\cocos2dx\sprite_nodes\CCAnimation.cpp" />
+    <ClCompile Include="..\cocos2dx\sprite_nodes\CCAnimationCache.cpp" />
+    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSprite.cpp" />
+    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSpriteBatchNode.cpp" />
+    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSpriteFrame.cpp" />
+    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSpriteFrameCache.cpp" />
+    <ClCompile Include="..\cocos2dx\support\base64.cpp" />
+    <ClCompile Include="..\cocos2dx\support\CCArray.cpp" />
+    <ClCompile Include="..\cocos2dx\support\CCPointExtension.cpp" />
+    <ClCompile Include="..\cocos2dx\support\CCProfiling.cpp" />
+    <ClCompile Include="..\cocos2dx\support\CCUserDefault.cpp" />
+    <ClCompile Include="..\cocos2dx\support\ccUtils.cpp" />
+    <ClCompile Include="..\cocos2dx\support\image_support\TGAlib.cpp" />
+    <ClCompile Include="..\cocos2dx\support\TransformUtils.cpp" />
+    <ClCompile Include="..\cocos2dx\support\zip_support\ioapi.cpp" />
+    <ClCompile Include="..\cocos2dx\support\zip_support\unzip.cpp" />
+    <ClCompile Include="..\cocos2dx\support\zip_support\ZipUtils.cpp" />
+    <ClCompile Include="..\cocos2dx\textures\CCTexture2D.cpp" />
+    <ClCompile Include="..\cocos2dx\textures\CCTextureAtlas.cpp" />
+    <ClCompile Include="..\cocos2dx\textures\CCTextureCache.cpp" />
+    <ClCompile Include="..\cocos2dx\textures\CCTexturePVR.cpp" />
+    <ClCompile Include="..\cocos2dx\text_input_node\CCIMEDispatcher.cpp" />
+    <ClCompile Include="..\cocos2dx\text_input_node\CCTextFieldTTF.cpp" />
+    <ClCompile Include="..\cocos2dx\tileMap_parallax_nodes\CCParallaxNode.cpp" />
+    <ClCompile Include="..\cocos2dx\tileMap_parallax_nodes\CCTileMapAtlas.cpp" />
+    <ClCompile Include="..\cocos2dx\tileMap_parallax_nodes\CCTMXLayer.cpp" />
+    <ClCompile Include="..\cocos2dx\tileMap_parallax_nodes\CCTMXObjectGroup.cpp" />
+    <ClCompile Include="..\cocos2dx\tileMap_parallax_nodes\CCTMXTiledMap.cpp" />
+    <ClCompile Include="..\cocos2dx\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
+    <ClCompile Include="..\cocos2dx\touch_dispatcher\CCTouchDispatcher.cpp" />
+    <ClCompile Include="..\cocos2dx\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="..\CocosDenshion\win8_metro\Audio.cpp" />
+    <ClCompile Include="..\CocosDenshion\win8_metro\MediaStreamer.cpp" />
+    <ClCompile Include="..\CocosDenshion\win8_metro\SimpleAudioEngine.cpp" />
+    <ClCompile Include="..\tinyxml\tinystr.cpp" />
+    <ClCompile Include="..\tinyxml\tinyxml.cpp" />
+    <ClCompile Include="..\tinyxml\tinyxmlerror.cpp" />
+    <ClCompile Include="..\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="Classes\ActionManagerTest\ActionManagerTest.cpp" />
+    <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp" />
+    <ClCompile Include="Classes\AppDelegate.cpp" />
+    <ClCompile Include=".\cocos2dorig.cpp" />
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.cpp" />
+    <ClCompile Include="Classes\Box2DTestBed\Box2dView.cpp" />
+    <ClCompile Include="Classes\Box2DTestBed\GLES-Render.cpp" />
+    <ClCompile Include="Classes\Box2DTestBed\Test.cpp" />
+    <ClCompile Include="Classes\Box2DTestBed\TestEntries.cpp" />
+    <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-1159.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-1174.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-350.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-422.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-458\Bug-458.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-624.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-886.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-899.cpp" />
+    <ClCompile Include="Classes\BugsTest\Bug-914.cpp" />
+    <ClCompile Include="Classes\BugsTest\BugsTest.cpp" />
+    <ClCompile Include="Classes\BugsTest\ParticleBufOverflow.cpp" />
+    <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp" />
+    <ClCompile Include="Classes\CocosDenshionTest\CocosDenshionTest.cpp" />
+    <ClCompile Include="Classes\CocosNodeTest\CocosNodeTest.cpp" />
+    <ClCompile Include="Classes\controller.cpp" />
+    <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp" />
+    <ClCompile Include="Classes\DirectorTest\DirectorTest.cpp" />
+    <ClCompile Include="Classes\DrawPrimitivesTest\DrawPrimitivesTest.cpp" />
+    <ClCompile Include="Classes\EaseActionsTest\EaseActionsTest.cpp" />
+    <ClCompile Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.cpp" />
+    <ClCompile Include="Classes\EffectsTest\EffectsTest.cpp" />
+    <ClCompile Include="Classes\ExtensionsTest\ExtensionsTest.cpp" />
+    <ClCompile Include="Classes\ExtensionsTest\NotificationCenterTest.cpp" />
+    <ClCompile Include="Classes\FontTest\FontTest.cpp" />
+    <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp" />
+    <ClCompile Include="Classes\LabelTest\LabelTest.cpp" />
+    <ClCompile Include="Classes\LayerTest\LayerTest.cpp" />
+    <ClCompile Include="Classes\MenuTest\MenuTest.cpp" />
+    <ClCompile Include="Classes\MotionStreakTest\MotionStreakTest.cpp" />
+    <ClCompile Include="Classes\ParallaxTest\ParallaxTest.cpp" />
+    <ClCompile Include="Classes\ParticleTest\ParticleTest.cpp" />
+    <ClCompile Include="Classes\PerformanceTest\PerformanceNodeChildrenTest.cpp" />
+    <ClCompile Include="Classes\PerformanceTest\PerformanceParticleTest.cpp" />
+    <ClCompile Include="Classes\PerformanceTest\PerformanceSpriteTest.cpp" />
+    <ClCompile Include="Classes\PerformanceTest\PerformanceTest.cpp" />
+    <ClCompile Include="Classes\PerformanceTest\PerformanceTextureTest.cpp" />
+    <ClCompile Include="Classes\PerformanceTest\PerformanceTouchesTest.cpp" />
+    <ClCompile Include="Classes\ProgressActionsTest\ProgressActionsTest.cpp" />
+    <ClCompile Include="Classes\RenderTextureTest\RenderTextureTest.cpp" />
+    <ClCompile Include="Classes\RotateWorldTest\RotateWorldTest.cpp" />
+    <ClCompile Include="Classes\SceneTest\SceneTest.cpp" />
+    <ClCompile Include="Classes\SchedulerTest\SchedulerTest.cpp" />
+    <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp" />
+    <ClCompile Include="Classes\testBasic.cpp" />
+    <ClCompile Include="Classes\Texture2dTest\Texture2dTest.cpp" />
+    <ClCompile Include="Classes\TileMapTest\TileMapTest.cpp" />
+    <ClCompile Include="Classes\TouchesTest\Ball.cpp" />
+    <ClCompile Include="Classes\TouchesTest\Paddle.cpp" />
+    <ClCompile Include="Classes\TouchesTest\TouchesTest.cpp" />
+    <ClCompile Include="Classes\TransitionsTest\TransitionsTest.cpp" />
+    <ClCompile Include="Classes\UserDefaultTest\UserDefaultTest.cpp" />
+    <ClCompile Include="Classes\ZwoptexTest\ZwoptexTest.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\background-music-aac.wav" />
+    <Media Include="Assets\background.wav" />
+    <Media Include="Assets\effect1.wav" />
+    <Media Include="Assets\pew-pew-lei.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCDrawingVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCGridPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCGridVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCLayerColorPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCLayerColorVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCParticlePixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCParticleVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCProgressTimerPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCProgressTimerVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCRibbonSegmentPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCRibbonSegmentVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCSpritePixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCSpriteVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCTexture2DPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCTexture2DVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCTextureAtlasPixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="Assets\Textures\CCTextureAtlasVertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">Vertex</ShaderType>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\animations\ghosts.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini-aliases.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini.ztp" />
+    <None Include="Assets\animations\grossini_blue.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini_family.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\animations\grossini_gray.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\effect1.raw">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\arial16.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontChinese.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest2.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest3.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest4.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest5.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\futura-48.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\konqa32-hd.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\fonts\konqa32.fnt">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\bitmapFontTest3.fnt" />
+    <None Include="Assets\Images\BoilingFoam.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\bugs\circle-hd.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\bugs\circle.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\BurstPipe.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\Comet.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\debian.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\ExplodingRing.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\Flower.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\Galaxy.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\grossinis_sister1-testalpha.ppng" />
+    <None Include="Assets\Images\grossini_128x256_mipmap.pvr" />
+    <None Include="Assets\Images\grossini_pvr_rgba4444.pvr" />
+    <None Include="Assets\Images\grossini_pvr_rgba8888.pvr" />
+    <None Include="Assets\Images\LavaFlow.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\logo-mipmap.pvr" />
+    <None Include="Assets\Images\logo-nomipmap.pvr" />
+    <None Include="Assets\Images\Phoenix.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\SpinningPeas.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\Spiral.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\SpookyPeas.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\Images\test_image-bad_encoding.pvr" />
+    <None Include="Assets\Images\test_image.pvr" />
+    <None Include="Assets\Images\test_image.pvrraw" />
+    <None Include="Assets\Images\test_image_a8.pvr" />
+    <None Include="Assets\Images\test_image_ai88.pvr" />
+    <None Include="Assets\Images\test_image_bgra8888.pvr" />
+    <None Include="Assets\Images\test_image_i8.pvr" />
+    <None Include="Assets\Images\test_image_pvrtc2bpp.pvr" />
+    <None Include="Assets\Images\test_image_pvrtc4bpp.pvr" />
+    <None Include="Assets\Images\test_image_rgb565.pvr" />
+    <None Include="Assets\Images\test_image_rgba4444.pvr" />
+    <None Include="Assets\Images\test_image_rgba4444.pvr.ccz" />
+    <None Include="Assets\Images\test_image_rgba4444.pvr.gz" />
+    <None Include="Assets\Images\test_image_rgba4444_mipmap.pvr" />
+    <None Include="Assets\Images\test_image_rgba5551.pvr" />
+    <None Include="Assets\Images\test_image_rgba8888.pvr" />
+    <None Include="Assets\Images\Upsidedown.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\music.mid" />
+    <None Include="Assets\TileMaps\hexa-test.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-bug787.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-movelayer.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-objectgroup.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-vertexz.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test-zorder.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test1.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2-uncompressed.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\iso-test2.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\levelmap.tga">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\ortho-objects.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-movelayer.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-vertexz.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test-zorder.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test1.tsx" />
+    <None Include="Assets\TileMaps\orthogonal-test2.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test3.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4-hd.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test4.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test5.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6-hd.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\orthogonal-test6.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\TileMaps\test-object-layer.tmx">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\zwoptex\grossini-generic.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+    <None Include="Assets\zwoptex\grossini.plist">
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\fonts\A Damn Mess.ttf" />
+    <Font Include="Assets\fonts\Abberancy.ttf" />
+    <Font Include="Assets\fonts\Abduction.ttf" />
+    <Font Include="Assets\fonts\American Typewriter.ttf" />
+    <Font Include="Assets\fonts\arial.ttf" />
+    <Font Include="Assets\fonts\Courier New.ttf" />
+    <Font Include="Assets\fonts\Marker Felt.ttf" />
+    <Font Include="Assets\fonts\Paint Boy.ttf" />
+    <Font Include="Assets\fonts\Schwarzwald Regular.ttf" />
+    <Font Include="Assets\fonts\Scissor Cuts.ttf" />
+    <Font Include="Assets\fonts\tahoma.ttf" />
+    <Font Include="Assets\fonts\Thonburi.ttf" />
+    <Font Include="Assets\fonts\ThonburiBold.ttf" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

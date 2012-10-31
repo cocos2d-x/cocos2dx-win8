@@ -26,7 +26,7 @@ THE SOFTWARE.
 ****************************************************************************/
 
 // For licensing information relating to this distribution please see Third Party Notices file.
-
+#include "pch.h"
 #include "CCTMXObjectGroup.h"
 #include "ccMacros.h"
 namespace cocos2d {
