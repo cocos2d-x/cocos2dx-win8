@@ -99,8 +99,7 @@ bool DXTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 	return true;
 }
 
-*
-	Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, Windows::Foundation::Size* tSize, TextAlignment alignment)
+Platform::Array<byte>^  DXTextPainter::DrawTextToImage(Platform::String^ text, Windows::Foundation::Size* tSize, TextAlignment alignment)
 {
 	//set text alignment and paragraph alignment
 	switch (alignment)
@@ -274,7 +273,7 @@ bool DXTextPainter::SetFont(Platform::String^ fontName , UINT nSize)
 
 	return pixelBuffer;
 
-}*/
+}
 
 	bool DXTextPainter::PrepareBitmap(UINT nWidth, UINT nHeight)
 {

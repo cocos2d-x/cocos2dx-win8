@@ -204,7 +204,7 @@ void DirectXRender::CreateDeviceResources()
 	while (factory->EnumAdapters(i, &adapter) != DXGI_ERROR_NOT_FOUND)
 	{
 		DX::ThrowIfFailed(D3D11CreateDevice(
-			adapter.Get(),                   // specify null to use the default adapter
+			nullptr,                   // specify null to use the default adapter
 			D3D_DRIVER_TYPE_HARDWARE,
 			nullptr,                          // leave as 0 unless software device
 			creationFlags,              // optionally set debug and Direct2D compatibility flags
@@ -242,10 +242,10 @@ void DirectXRender::CreateDeviceResources()
 
 #if WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
 #else
-	//// Obtain the Direct2D device for 2-D rendering.
-	//DX::ThrowIfFailed(
-	//    m_d2dFactory->CreateDevice(dxgiDevice.Get(), &m_d2dDevice)
-	//    );
+	// Obtain the Direct2D device for 2-D rendering.
+	DX::ThrowIfFailed(
+		m_d2dFactory->CreateDevice(dxgiDevice.Get(), &m_d2dDevice)
+		);
 
 	// And get its corresponding device context object.
 	DX::ThrowIfFailed(
@@ -319,7 +319,8 @@ void DirectXRender::CreateWindowSizeDependentResources()
 	// Otherwise, create a new one.
 	else
 	{
-		// Allocate a descriptor.
+		//// Allocate a descriptor.
+#if WINAPI_FAMILY == WINAPI_FAMILY_PHONE_APP
 		DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {0};
 		swapChainDesc.Width = 0;                                     // use automatic sizing
 		swapChainDesc.Height = 0;
@@ -332,6 +333,20 @@ void DirectXRender::CreateWindowSizeDependentResources()
 		swapChainDesc.Scaling = DXGI_SCALING_STRETCH;
 		swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_DISCARD; // all Metro style apps must use this SwapEffect
 		swapChainDesc.Flags = 0;
+#else
+		DXGI_SWAP_CHAIN_DESC1 swapChainDesc = {0};
+		swapChainDesc.Width = 0;                                     // use automatic sizing
+		swapChainDesc.Height = 0;
+		swapChainDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;           // this is the most common swapchain format
+		swapChainDesc.Stereo = false; 
+		swapChainDesc.SampleDesc.Count = 1;                          // don't use multi-sampling
+		swapChainDesc.SampleDesc.Quality = 0;
+		swapChainDesc.BufferUsage = DXGI_USAGE_RENDER_TARGET_OUTPUT;
+		swapChainDesc.BufferCount = 2;                               // use double buffering to enable flip
+		swapChainDesc.Scaling = DXGI_SCALING_NONE;
+		swapChainDesc.SwapEffect = DXGI_SWAP_EFFECT_FLIP_SEQUENTIAL; // all Metro style apps must use this SwapEffect
+		swapChainDesc.Flags = 0;
+#endif
 
 		// Once the desired swap chain description is configured, it must be created on the same adapter as our D3D Device
 

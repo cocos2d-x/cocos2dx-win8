@@ -23,11 +23,6 @@
 #include "CCCommon.h"
 #include "BasicLoader.h"
 #include <CCParticleExamples.h>
-//#include "DirectXHelper.h"
-//#include "DirectXRender.h"
-
-//#include "SimpleAudioEngine.h"
-//#include "Direct3DBase.h"
 #include <vector>
 #include <time.h>
 
@@ -50,8 +45,6 @@ bool releasingArm;
 vector<b2Body*> *targets;
 vector<b2Body*> *enemies;
 MyContactListener *contactListener;
-PCWSTR largeFont = L"Assets\\SegoeBlack40.spritefont";
-PCWSTR smallFont = L"Assets\\SegoeBlack30.spritefont";
 
 #define PIX_TO_MET 0.03125f
 #define MET_TO_PIX 32.0f

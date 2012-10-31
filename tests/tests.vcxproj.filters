@@ -1391,7 +1391,6 @@
     <ClCompile Include="Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp" />
     <ClCompile Include="Classes\testBasic.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -1616,6 +1615,9 @@
     </ClCompile>
     <ClCompile Include="Classes\CocosDenshionTest\CocosDenshionTest.cpp">
       <Filter>Classes\CocosDenshionTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1860,12 +1862,10 @@
     <ClInclude Include="..\Box2D\Box2D.h">
       <Filter>Box2d</Filter>
     </ClInclude>
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\DirectXRender.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
     <ClInclude Include="Classes\testBasic.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -2213,6 +2213,12 @@
     </ClInclude>
     <ClInclude Include="Classes\CocosDenshionTest\CocosDenshionTest.h">
       <Filter>Classes\CocosDenshionTest</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\DirectXRender.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h">
+      <Filter>cocos2dx\platform\win8_metro</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

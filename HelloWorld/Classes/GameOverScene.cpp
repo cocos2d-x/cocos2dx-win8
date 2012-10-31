@@ -61,7 +61,6 @@ bool GameOverLayer::init()
 		_label->retain();
 		_label->setColor( ccc3(255, 255, 255) );
 		_label->setPosition( ccp(winSize.width/2, winSize.height/2) );
-		//_label->setPosition(ccp(0,0));
 		this->addChild(_label);
 		
 		this->runAction( CCSequence::actions(
