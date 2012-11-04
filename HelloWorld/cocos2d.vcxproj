@@ -240,7 +240,6 @@
     <ClInclude Include="..\tinyxml\tinyxml.h" />
     <ClInclude Include="Classes\AppDelegate.h" />
     <ClInclude Include=".\cocos2dorig.h" />
-    <ClInclude Include="Classes\GameOverScene.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
     <ClInclude Include="Classes\MyContactListener.h" />
     <ClInclude Include="pch.h" />
@@ -394,7 +393,6 @@
     <ClCompile Include="Classes\AppDelegate.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
     <ClCompile Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.cpp" />
-    <ClCompile Include="Classes\GameOverScene.cpp" />
     <ClCompile Include="Classes\HelloWorldScene.cpp" />
     <ClCompile Include="Classes\MyContactListener.cpp" />
     <ClCompile Include="pch.cpp">

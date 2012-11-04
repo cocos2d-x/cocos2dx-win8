@@ -476,9 +476,6 @@
     <ClCompile Include="..\cocos2dx\label_nodes\CCLabelTTF.cpp">
       <Filter>cocos2dx\label_nodes</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\GameOverScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\HelloWorldScene.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
@@ -784,9 +781,6 @@
     </ClInclude>
     <ClInclude Include="..\cocos2dx\platform\win8_metro\DXTextPainter.h">
       <Filter>cocos2dx\platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\GameOverScene.h">
-      <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="Classes\HelloWorldScene.h">
       <Filter>Classes</Filter>
