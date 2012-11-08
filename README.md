@@ -8,5 +8,5 @@ System requirements
 
 - Windows 8 
 - Visual Studio 2012
-- Windows Phone 8 SDK LKG35
+- Windows Phone 8 SDK Final
 
