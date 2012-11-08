@@ -2214,9 +2214,6 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />
-    <Xml Include="Assets\animations\grossini.plist.xml">
-      <Filter>Assets\animations</Filter>
-    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\background-music-aac.wav">
@@ -2541,6 +2538,7 @@
     <None Include="Assets\music.mid">
       <Filter>Assets</Filter>
     </None>
+    <None Include="Assets\animations\grossini.plist.xml" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Assets\fonts\A Damn Mess.ttf">
