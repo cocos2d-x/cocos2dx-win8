@@ -41,15 +41,11 @@ namespace cocos2d
 {
     class CCEGLView;
 	class CCImage;
-}
 
-#pragma warning (disable: 4449) // warns that class is not consumable by JS because it is not sealed
-
-// Helper class that initializes the DirectX APIs in the sample apps.
-ref class DirectXRender 
+    // Helper class that initializes the DirectX APIs in the sample apps.
+public ref class DirectXRender sealed
 {
 public:
-	internal:
     DirectXRender();
 
     void Initialize(Windows::UI::Core::CoreWindow^ window, float dpi);
@@ -144,4 +140,4 @@ protected:
 
 };
 
-#pragma warning (default: 4449)
+}

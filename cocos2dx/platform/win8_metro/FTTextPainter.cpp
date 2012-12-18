@@ -40,13 +40,6 @@ FTTextPainter::FTTextPainter() : m_textLibrary(0), m_fontSize(10), m_fontName(re
 	BuildFontsInformation();
 }
 
-FTTextPainter::~FTTextPainter()
-{
-	m_fontMap.clear();
-	if(m_fontFace != nullptr) FT_Done_Face(m_fontFace);
-	if(m_textLibrary != nullptr) FT_Done_FreeType(m_textLibrary);
-}
-
 Platform::Array<byte>^ FTTextPainter::DrawTextToImage(Platform::String^ text, Windows::Foundation::Size* tSize, TextAlignment alignment)
 {
 	if(text->Length() == 0) return nullptr;
@@ -192,8 +185,8 @@ bool FTTextPainter::BuildFontsInformation()
 	Platform::String^ fontStore = GetFontStore();
 	Platform::String^ srchStrg = "*.*";
 
-	WIN32_FIND_DATA fndData = { 0 }; 
-	HANDLE hFindFile = FindFirstFileEx((fontStore + srchStrg)->Data(), FindExInfoStandard, &fndData, FindExSearchNameMatch, NULL, 0);
+	WIN32_FIND_DATAW fndData = { 0 }; 
+	HANDLE hFindFile = FindFirstFileExW((fontStore + srchStrg)->Data(), FindExInfoStandard, &fndData, FindExSearchNameMatch, NULL, 0);
 
 	// search for all ttf files and extract font names from them
 	if(INVALID_HANDLE_VALUE != hFindFile)
@@ -214,7 +207,7 @@ bool FTTextPainter::BuildFontsInformation()
 				}
 			}
 		}
-		while(FindNextFile(hFindFile, &fndData));
+		while(FindNextFileW(hFindFile, &fndData));
 	}
 
 	return bRet;

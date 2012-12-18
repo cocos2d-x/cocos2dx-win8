@@ -45,7 +45,7 @@ void cocos2dorig::Initialize(CoreApplicationView^ applicationView)
     CoreApplication::Resuming +=
         ref new EventHandler<Platform::Object^>(this, &cocos2dorig::OnResuming);
 
-    m_renderer = ref new DirectXRender();
+    m_renderer = ref new cocos2d::DirectXRender();
 }
 
 void cocos2dorig::SetWindow(CoreWindow^ window)
@@ -83,7 +83,7 @@ void cocos2dorig::Run()
         CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
         //m_renderer->Update(timer->Total, timer->Delta);
         m_renderer->Render();
-        m_renderer->Present(); // This call is synchronized to the display frame rate.
+        m_renderer->Present(); // This call is synchronized to the ddlay frame rate.
     }
 }
 
@@ -136,11 +136,6 @@ void cocos2dorig::OnPointerMoved(CoreWindow^ sender, PointerEventArgs^ args)
 IFrameworkView^ Direct3DApplicationSource::CreateView()
 {
     return ref new cocos2dorig();
-}
-namespace cocos2d
-{
-    // implement in CCApplication_win8_metro.cpp
-    extern Windows::ApplicationModel::Core::IFrameworkView^ getSharedCCApplicationFrameworkView();
 }
 
 ref class CCApplicationFrameworkViewSource sealed : Windows::ApplicationModel::Core::IFrameworkViewSource 
