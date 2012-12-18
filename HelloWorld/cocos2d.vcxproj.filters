@@ -32,9 +32,6 @@
     <Filter Include="Box2d\Collision\Shapes">
       <UniqueIdentifier>{41e87adc-66b1-4b8a-bfbd-e7f653e5802b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Assets\Textures">
-      <UniqueIdentifier>{6de4d6c1-987e-47a6-886c-bf2247e28236}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -453,55 +450,5 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCDrawingVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCGridPixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCGridVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCLayerColorPixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCLayerColorVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCParticlePixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCParticleVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCProgressTimerPixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCProgressTimerVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCSpritePixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCSpriteVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTexture2DPixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTexture2DVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTextureAtlasPixelShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTextureAtlasVertexShader.hlsl">
-      <Filter>Assets\Textures</Filter>
-    </FxCompile>
   </ItemGroup>
 </Project>
