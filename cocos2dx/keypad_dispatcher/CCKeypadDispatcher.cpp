@@ -24,6 +24,7 @@ THE SOFTWARE.
 
 // For licensing information relating to this distribution please see Third Party Notices file.
 
+#include "pch.h"
 #include "CCKeypadDispatcher.h"
 #include "support/data_support/ccCArray.h"
 

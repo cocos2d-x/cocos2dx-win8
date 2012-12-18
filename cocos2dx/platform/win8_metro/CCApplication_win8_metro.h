@@ -99,4 +99,6 @@ public:
     static ccLanguageType getCurrentLanguage();
 };
 
+CC_DLL Windows::ApplicationModel::Core::IFrameworkView^ getSharedCCApplicationFrameworkView();
+
 NS_CC_END;

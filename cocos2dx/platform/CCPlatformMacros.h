@@ -201,10 +201,10 @@ public: virtual void set##funName(varType var)   \
 
 // platform depended macros
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32) || (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
 
     #undef CC_DLL
-    #if defined(_USRDLL)
+    #if defined(CC_EXPORT_WINDOWS)
         #define CC_DLL     __declspec(dllexport)
     #else 		/* use a DLL library */
         #define CC_DLL     __declspec(dllimport)
