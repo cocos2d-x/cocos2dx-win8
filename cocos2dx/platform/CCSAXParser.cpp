@@ -1,6 +1,7 @@
 /****************************************************************************
  Copyright (c) 2010 cocos2d-x.org  http://cocos2d-x.org
  Copyright (c) 2010 Максим Аксенов
+ Copyright (c) 2013 Martell Malone
  
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
@@ -24,20 +25,20 @@
 #include "CCSAXParser.h"
 #include "CCMutableDictionary.h"
 #include "CCFileUtils.h"
-#include "tinyxml\tinyxml.h"
+#include "tinyxml2/tinyxml2.h"
 
 
 NS_CC_BEGIN;
 
-class CC_DLL XmlSaxHander : public TiXmlVisitor
+class CC_DLL XmlSaxHander : public tinyxml2::XMLVisitor
 {
 public:
 	XmlSaxHander():m_ccsaxParserImp(0){};
-
-	virtual bool VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute );
-	virtual bool VisitExit( const TiXmlElement& element );
-	virtual bool Visit( const TiXmlText& text );
-	virtual bool Visit( const TiXmlUnknown&){ return true; }
+	
+	virtual bool VisitEnter( const tinyxml2::XMLElement& element, const tinyxml2::XMLAttribute* firstAttribute );
+	virtual bool VisitExit( const tinyxml2::XMLElement& element );
+	virtual bool Visit( const tinyxml2::XMLText& text );
+	virtual bool Visit( const tinyxml2::XMLUnknown&){ return true; }
 
 	void setCCSAXParserImp(CCSAXParser* parser)
 	{
@@ -49,12 +50,12 @@ private:
 };
 
 
-bool XmlSaxHander::VisitEnter( const TiXmlElement& element, const TiXmlAttribute* firstAttribute )
+bool XmlSaxHander::VisitEnter( const tinyxml2::XMLElement& element, const tinyxml2::XMLAttribute* firstAttribute )
 {
 	//CCLog(" VisitEnter %s",element.Value());
 
 	std::vector<const char*> attsVector;
-	for( const TiXmlAttribute* attrib = firstAttribute; attrib; attrib = attrib->Next() )
+	for( const tinyxml2::XMLAttribute* attrib = firstAttribute; attrib; attrib = attrib->Next() )
 	{
 		//CCLog("%s", attrib->Name());
 		attsVector.push_back(attrib->Name());
@@ -66,7 +67,7 @@ bool XmlSaxHander::VisitEnter( const TiXmlElement& element, const TiXmlAttribute
 	CCSAXParser::startElement(m_ccsaxParserImp, (const CC_XML_CHAR *)element.Value(), (const CC_XML_CHAR **)(&attsVector[0]));
 	return true;
 }
-bool XmlSaxHander::VisitExit( const TiXmlElement& element )
+bool XmlSaxHander::VisitExit( const tinyxml2::XMLElement& element )
 {
 	//CCLog("VisitExit %s",element.Value());
 
@@ -74,10 +75,10 @@ bool XmlSaxHander::VisitExit( const TiXmlElement& element )
 	return true;
 }
 
-bool XmlSaxHander::Visit( const TiXmlText& text )
+bool XmlSaxHander::Visit( const tinyxml2::XMLText& text )
 {
 	//CCLog("Visit %s",text.Value());
-	CCSAXParser::textHandler(m_ccsaxParserImp, (const CC_XML_CHAR *)text.Value(), text.ValueTStr().size());
+	CCSAXParser::textHandler(m_ccsaxParserImp, (const CC_XML_CHAR *)text.Value(), strlen(text.Value()));
 	return true;
 }
 
@@ -110,8 +111,8 @@ bool CCSAXParser::parse(const char *pszFile)
 		return false;
 	}
 		
-	TiXmlDocument tinyDoc;
-	tinyDoc.Parse(pBuffer,0,TIXML_ENCODING_UTF8);
+	tinyxml2::XMLDocument tinyDoc;
+	tinyDoc.Parse(pBuffer);
 	XmlSaxHander printer;
 	printer.setCCSAXParserImp(this);
 	return tinyDoc.Accept( &printer );	

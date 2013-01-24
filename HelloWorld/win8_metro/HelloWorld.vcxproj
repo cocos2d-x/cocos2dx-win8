@@ -279,8 +279,7 @@
     <ClInclude Include="..\..\CocosDenshion\include\SimpleAudioEngine.h" />
     <ClInclude Include="..\..\CocosDenshion\win8_metro\Audio.h" />
     <ClInclude Include="..\..\CocosDenshion\win8_metro\MediaStreamer.h" />
-    <ClInclude Include="..\..\tinyxml\tinystr.h" />
-    <ClInclude Include="..\..\tinyxml\tinyxml.h" />
+    <ClInclude Include="..\..\tinyxml2\tinyxml2.h" />
     <ClInclude Include="..\AppDelegate.h" />
     <ClInclude Include="..\Classes\HelloWorldScene.h" />
     <ClInclude Include="pch.h" />
@@ -431,10 +430,7 @@
     <ClCompile Include="..\..\cocos2dx\touch_dispatcher\CCTouchHandler.cpp" />
     <ClCompile Include="..\..\CocosDenshion\win8_metro\MediaStreamer.cpp" />
     <ClCompile Include="..\..\CocosDenshion\win8_metro\SimpleAudioEngine.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinystr.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinyxml.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\tinyxml2\tinyxml2.cpp" />
     <ClCompile Include="..\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\HelloWorldScene.cpp" />
     <ClCompile Include="main.cpp" />
