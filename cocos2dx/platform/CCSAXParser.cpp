@@ -112,7 +112,7 @@ bool CCSAXParser::parse(const char *pszFile)
 	}
 		
 	tinyxml2::XMLDocument tinyDoc;
-	tinyDoc.Parse(pBuffer,0);
+	tinyDoc.Parse(pBuffer);
 	XmlSaxHander printer;
 	printer.setCCSAXParserImp(this);
 	return tinyDoc.Accept( &printer );	
