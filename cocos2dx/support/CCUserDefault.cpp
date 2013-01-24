@@ -1,5 +1,6 @@
 /****************************************************************************
 Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2013-2013	Martell Malone 
 
 http://www.cocos2d-x.org
 
@@ -23,7 +24,7 @@ THE SOFTWARE.
 ****************************************************************************/
 #include "CCUserDefault.h"
 #include "platform/CCFileUtils.h"
-#include "tinyxml\tinyxml.h"
+#include "tinyxml2/tinyxml2.h"
 
 
 // root name of xml
@@ -36,9 +37,9 @@ using namespace std;
 
 NS_CC_BEGIN;
 
-static TiXmlElement* getXMLNodeForKey(const char* pKey, TiXmlElement** rootNode, TiXmlDocument **doc)
+static tinyxml2::XMLElement* getXMLNodeForKey(const char* pKey, tinyxml2::XMLElement** rootNode, tinyxml2::XMLDocument **doc)
 {
-	TiXmlElement* curNode = NULL;
+	tinyxml2::XMLElement* curNode = NULL;
 	// check the key value
 	if (! pKey)
 	{
@@ -47,7 +48,7 @@ static TiXmlElement* getXMLNodeForKey(const char* pKey, TiXmlElement** rootNode,
 
 	do 
 	{
-		TiXmlDocument* xmlDoc = new TiXmlDocument();
+		tinyxml2::XMLDocument* xmlDoc = new tinyxml2::XMLDocument();
 		*doc = xmlDoc;
 		CCFileData data(CCUserDefault::sharedUserDefault()->getXMLFilePath().c_str(),"rt");
 		const char* pXmlBuffer = (const char*)data.getBuffer();
@@ -85,9 +86,9 @@ static TiXmlElement* getXMLNodeForKey(const char* pKey, TiXmlElement** rootNode,
 
 static void setValueForKey(const char* pKey, const char* pValue)
 {
-	TiXmlElement* rootNode;
-	TiXmlDocument* doc;
-	TiXmlElement* node;
+	tinyxml2::XMLElement* rootNode;
+	tinyxml2::XMLDocument* doc;
+	tinyxml2::XMLElement* node;
 	// check the params
 	if (! pKey || ! pValue)
 	{
@@ -104,19 +105,21 @@ static void setValueForKey(const char* pKey, const char* pValue)
 	{
 		if (rootNode)
 		{
-			TiXmlElement* tmpNode = new TiXmlElement(pKey);
+			
+			tinyxml2::XMLElement* tmpNode = doc->NewElement(pKey);//new tinyxml2::XMLElement(pKey);
 			rootNode->LinkEndChild(tmpNode);
-
-			TiXmlText* content = new TiXmlText(pValue);
+			tinyxml2::XMLText* content = doc->NewText(pValue);//new tinyxml2::XMLText(pValue);
 			tmpNode->LinkEndChild(content);
 			
 		}	
 	}
 
+
 		// save file and free doc
 	if (doc)
 	{
-		doc->SaveFile(CCUserDefault::sharedUserDefault()->getWStrXMLFilePath().c_str());
+		
+		doc->SaveFile(CCUserDefault::sharedUserDefault()->getXMLFilePath().c_str());
 		delete doc;
 	}
 }
@@ -148,9 +151,9 @@ void CCUserDefault::purgeSharedUserDefault()
 bool CCUserDefault::getBoolForKey(const char* pKey, bool defaultValue)
 {
     const char* value = NULL;
-	TiXmlElement* rootNode;
-	TiXmlDocument* doc;
-	TiXmlElement* node;
+	tinyxml2::XMLElement* rootNode;
+	tinyxml2::XMLDocument* doc;
+	tinyxml2::XMLElement* node;
 	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
 	// find the node
 	if (node)
@@ -173,9 +176,9 @@ bool CCUserDefault::getBoolForKey(const char* pKey, bool defaultValue)
 int CCUserDefault::getIntegerForKey(const char* pKey, int defaultValue)
 {
 	const char* value = NULL;
-	TiXmlElement* rootNode;
-	TiXmlDocument* doc;
-	TiXmlElement* node;
+	tinyxml2::XMLElement* rootNode;
+	tinyxml2::XMLDocument* doc;
+	tinyxml2::XMLElement* node;
 	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
 	// find the node
 	if (node)
@@ -209,9 +212,9 @@ float CCUserDefault::getFloatForKey(const char* pKey, float defaultValue)
 double CCUserDefault::getDoubleForKey(const char* pKey, double defaultValue)
 {
     const char* value = NULL;
-	TiXmlElement* rootNode;
-	TiXmlDocument* doc;
-	TiXmlElement* node;
+	tinyxml2::XMLElement* rootNode;
+	tinyxml2::XMLDocument* doc;
+	tinyxml2::XMLElement* node;
 	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
 	// find the node
 	if (node)
@@ -234,9 +237,9 @@ double CCUserDefault::getDoubleForKey(const char* pKey, double defaultValue)
 string CCUserDefault::getStringForKey(const char* pKey, const std::string & defaultValue)
 {
     const char* value = NULL;
-	TiXmlElement* rootNode;
-	TiXmlDocument* doc;
-	TiXmlElement* node;
+	tinyxml2::XMLElement* rootNode;
+	tinyxml2::XMLDocument* doc;
+	tinyxml2::XMLElement* node;
 	node =  getXMLNodeForKey(pKey, &rootNode, &doc);
 	// find the node
 	if (node)
@@ -365,27 +368,25 @@ void CCUserDefault::initXMLFilePath()
 // create new xml file
 bool CCUserDefault::createXMLFile()
 {
-	bool bRet = false;
-	// 定义一个TiXmlDocument类指针   
-    TiXmlDocument *pDoc = new TiXmlDocument;  
+	bool bRet = false;  
+    tinyxml2::XMLDocument *pDoc = new tinyxml2::XMLDocument(); 
     if (NULL==pDoc)  
     {  
         return false;  
     }  
-	TiXmlDeclaration *pDeclaration = new TiXmlDeclaration("1.0","","");  
+	tinyxml2::XMLDeclaration *pDeclaration = pDoc->NewDeclaration("1.0");  
 	if (NULL==pDeclaration)  
 	{  
 		return false;  
 	}  
 	pDoc->LinkEndChild(pDeclaration); 
-	// 生成一个根节点：MyApp  
-	TiXmlElement *pRootEle = new TiXmlElement(USERDEFAULT_ROOT_NAME);  
+	tinyxml2::XMLElement *pRootEle = pDoc->NewElement(USERDEFAULT_ROOT_NAME);  
 	if (NULL==pRootEle)  
 	{  
 		return false;  
 	}  
 	pDoc->LinkEndChild(pRootEle);  
-	bRet = pDoc->SaveFile(m_wsFilePath.c_str());
+	bRet = pDoc->SaveFile(m_sFilePath.c_str());
 
 	if(pDoc)
 	{

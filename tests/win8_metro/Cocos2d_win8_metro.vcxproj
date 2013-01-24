@@ -340,8 +340,7 @@
     <ClInclude Include="..\..\tests\tests\TransitionsTest\TransitionsTest.h" />
     <ClInclude Include="..\..\tests\tests\UserDefaultTest\UserDefaultTest.h" />
     <ClInclude Include="..\..\tests\tests\ZwoptexTest\ZwoptexTest.h" />
-    <ClInclude Include="..\..\tinyxml\tinystr.h" />
-    <ClInclude Include="..\..\tinyxml\tinyxml.h" />
+    <ClInclude Include="..\..\tinyxml2\tinyxml2.h" />
     <ClInclude Include="..\tests\Box2DTestBed\Box2dView.h" />
     <ClInclude Include="..\tests\Box2DTestBed\GLES-Render.h" />
     <ClInclude Include="..\tests\Box2DTestBed\Test.h" />
@@ -598,10 +597,7 @@
     <ClCompile Include="..\..\tests\tests\TransitionsTest\TransitionsTest.cpp" />
     <ClCompile Include="..\..\tests\tests\UserDefaultTest\UserDefaultTest.cpp" />
     <ClCompile Include="..\..\tests\tests\ZwoptexTest\ZwoptexTest.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinystr.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinyxml.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="..\..\tinyxml2\tinyxml2.cpp" />
     <ClCompile Include="..\tests\Box2DTestBed\Box2dView.cpp" />
     <ClCompile Include="..\tests\Box2DTestBed\GLES-Render.cpp" />
     <ClCompile Include="..\tests\Box2DTestBed\Test.cpp" />
