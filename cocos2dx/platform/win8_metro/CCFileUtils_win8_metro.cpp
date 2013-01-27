@@ -216,7 +216,7 @@ unsigned char* CCFileUtils::getFileDataPlatform(const char* pszFileName, const c
 		msg.append(pszPath).append(") failed!");
 
 		//CCMessageBox(msg.c_str(), title.c_str());
-		OutputDebugString(L"CCFileUtils_win8_metro.cpp: Get data from file failed!\n");
+		OutputDebugStringA("CCFileUtils_win8_metro.cpp: Get data from file failed!\n");
 	}
 
     if (hFile != INVALID_HANDLE_VALUE)

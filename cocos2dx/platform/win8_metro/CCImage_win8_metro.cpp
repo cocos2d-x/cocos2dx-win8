@@ -97,6 +97,8 @@ bool CCImage::initWithString(
 
 		bRet = true;
 
+        painter = nullptr;
+
 	}while(0);
 
 	return bRet;

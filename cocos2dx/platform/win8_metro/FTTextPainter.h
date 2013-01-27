@@ -77,7 +77,12 @@ typedef std::multimap<Platform::String^, Platform::String^>::const_iterator	FONT
 ref class FTTextPainter
 {
 public:
-	virtual ~FTTextPainter();
+	virtual ~FTTextPainter()
+    {
+	    m_fontMap.clear();
+	    if(m_fontFace != nullptr) FT_Done_Face(m_fontFace);
+	    if(m_textLibrary != nullptr) FT_Done_FreeType(m_textLibrary);
+    }
 
 internal:
 	FTTextPainter();

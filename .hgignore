@@ -1,0 +1,9 @@
+##########
+# by default, Mercurial uses python/perl regex to ignore files
+#
+# for help, see:
+# http://mercurial.selenic.com/wiki/.hgignore
+# http://docs.python.org/library/re.html
+##########
+
+(.suo$|.user$|.sdf$|Debug/|Release/|ipch/)

@@ -23,7 +23,6 @@
 
 #include "DirectXRender.h"
 #include "CCDirector.h"
-#include "SimpleAudioEngine.h"
 
 using namespace Windows::UI::Core;
 
@@ -164,7 +163,6 @@ void CCFrameworkView::Run()
         CoreWindow::GetForCurrentThread()->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent);
 
         CCDirector::sharedDirector()->mainLoop();
-        CocosDenshion::SimpleAudioEngine::sharedEngine()->render();
     }
 //    m_renderer->OnSuspending();  // the app is exiting so do the same thing as would if app was being suspended.
     CCLog("CCFrameworkView::-Run()");

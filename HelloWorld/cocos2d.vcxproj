@@ -56,6 +56,10 @@
   <ImportGroup Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)cocos2dx\platform\third_party\win8_metro\freetype;$(SolutionDir);$(ProjectDir)inc;$(SolutionDir)CocosDenshion\include;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\zlib;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libraries;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libpng;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libjpeg;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\libxml2;$(SolutionDir)cocos2dx\platform\third_party\win8_metro\;$(SolutionDir)cocos2dx\platform\win8_metro;$(SolutionDir)cocos2dx\platform;$(SolutionDir)cocos2dx\include;$(SolutionDir)cocos2dx;$(IncludePath)</IncludePath>
@@ -83,17 +87,18 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)cocos2dx/include/;$(SolutionDir)cocos2dx/platform/;$(SolutionDir)cocos2dx/platform/win8_metro/;%(AdditionalIncludeDirectories);$(ProjectDir);$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;TIXML_USE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>TIXML_USE_STL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TurnOffAllWarnings</WarningLevel>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>cocos2dx-wp8.lib;freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>$(SolutionDir)\cocos2dx\platform\third_party\win8_metro\libraries\$(TargetedSDKArchitecture)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\cocos2dx\platform\third_party\win8_metro\libraries\$(TargetedSDKArchitecture);$(SolutionDir)$(Configuration)/cocos2dx-wp8/</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
     </Link>
   </ItemDefinitionGroup>
@@ -193,51 +198,6 @@
     <ClInclude Include="..\Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="..\Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="..\Box2D\Rope\b2Rope.h" />
-    <ClInclude Include="..\cocos2dx\CCConfiguration.h" />
-    <ClInclude Include="..\cocos2dx\cocoa\CCNS.h" />
-    <ClInclude Include="..\cocos2dx\effects\CCGrabber.h" />
-    <ClInclude Include="..\cocos2dx\effects\CCGrid.h" />
-    <ClInclude Include="..\cocos2dx\extensions\CCNotificationCenter.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCAccelerometer_platform.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCApplication_platform.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCArchOptimalParticleSystem.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCCommon.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCEGLView_platform.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCFileUtils.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCGL.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCImage.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCLibxml2.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCPlatformConfig.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCPlatformMacros.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCSAXParser.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCStdC.h" />
-    <ClInclude Include="..\cocos2dx\platform\CCThread.h" />
-    <ClInclude Include="..\cocos2dx\platform\platform.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\BasicLoader.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\BasicReaderWriter.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\DirectXRender.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\DXTextPainter.h" />
-    <ClInclude Include="..\cocos2dx\platform\win8_metro\FTTextPainter.h" />
-    <ClInclude Include="..\cocos2dx\support\base64.h" />
-    <ClInclude Include="..\cocos2dx\support\CCProfiling.h" />
-    <ClInclude Include="..\cocos2dx\support\ccUtils.h" />
-    <ClInclude Include="..\cocos2dx\support\data_support\ccCArray.h" />
-    <ClInclude Include="..\cocos2dx\support\data_support\uthash.h" />
-    <ClInclude Include="..\cocos2dx\support\data_support\utlist.h" />
-    <ClInclude Include="..\cocos2dx\support\image_support\TGAlib.h" />
-    <ClInclude Include="..\cocos2dx\support\TransformUtils.h" />
-    <ClInclude Include="..\cocos2dx\support\zip_support\ioapi.h" />
-    <ClInclude Include="..\cocos2dx\support\zip_support\unzip.h" />
-    <ClInclude Include="..\cocos2dx\support\zip_support\ZipUtils.h" />
-    <ClInclude Include="..\CocosDenshion\include\Export.h" />
-    <ClInclude Include="..\CocosDenshion\include\SimpleAudioEngine.h" />
-    <ClInclude Include="..\CocosDenshion\win8_metro\Audio.h" />
-    <ClInclude Include="..\CocosDenshion\win8_metro\MediaStreamer.h" />
-    <ClInclude Include="..\tinyxml\tinystr.h" />
-    <ClInclude Include="..\tinyxml\tinyxml.h" />
     <ClInclude Include="Classes\AppDelegate.h" />
     <ClInclude Include=".\cocos2dorig.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
@@ -290,109 +250,8 @@
     <ClCompile Include="..\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="..\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="..\Box2D\Rope\b2Rope.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCAction.cpp">
-      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-    </ClCompile>
-    <ClCompile Include="..\cocos2dx\actions\CCActionCamera.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionEase.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionGrid.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionGrid3D.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionInstant.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionInterval.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionManager.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionPageTurn3D.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionProgressTimer.cpp" />
-    <ClCompile Include="..\cocos2dx\actions\CCActionTiledGrid.cpp" />
-    <ClCompile Include="..\cocos2dx\base_nodes\CCAtlasNode.cpp" />
-    <ClCompile Include="..\cocos2dx\base_nodes\CCNode.cpp" />
-    <ClCompile Include="..\cocos2dx\CCCamera.cpp" />
-    <ClCompile Include="..\cocos2dx\CCConfiguration.cpp" />
-    <ClCompile Include="..\cocos2dx\CCDirector.cpp" />
-    <ClCompile Include="..\cocos2dx\CCDrawingPrimitives.cpp" />
-    <ClCompile Include="..\cocos2dx\CCScheduler.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCAffineTransform.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCAutoreleasePool.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCData.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCGeometry.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCNS.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCObject.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCSet.cpp" />
-    <ClCompile Include="..\cocos2dx\cocoa\CCZone.cpp" />
-    <ClCompile Include="..\cocos2dx\cocos2d.cpp" />
-    <ClCompile Include="..\cocos2dx\effects\CCGrabber.cpp" />
-    <ClCompile Include="..\cocos2dx\effects\CCGrid.cpp" />
-    <ClCompile Include="..\cocos2dx\extensions\CCNotificationCenter.cpp" />
-    <ClCompile Include="..\cocos2dx\label_nodes\CCLabelAtlas.cpp" />
-    <ClCompile Include="..\cocos2dx\label_nodes\CCLabelBMFont.cpp" />
-    <ClCompile Include="..\cocos2dx\label_nodes\CCLabelTTF.cpp" />
-    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCLayer.cpp" />
-    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCScene.cpp" />
-    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCTransition.cpp" />
-    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionPageTurn.cpp" />
-    <ClCompile Include="..\cocos2dx\layers_scenes_transitions_nodes\CCTransitionRadial.cpp" />
-    <ClCompile Include="..\cocos2dx\menu_nodes\CCMenu.cpp" />
-    <ClCompile Include="..\cocos2dx\menu_nodes\CCMenuItem.cpp" />
-    <ClCompile Include="..\cocos2dx\misc_nodes\CCMotionStreak.cpp" />
-    <ClCompile Include="..\cocos2dx\misc_nodes\CCProgressTimer.cpp" />
-    <ClCompile Include="..\cocos2dx\misc_nodes\CCRenderTexture.cpp" />
-    <ClCompile Include="..\cocos2dx\misc_nodes\CCRibbon.cpp" />
-    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleExamples.cpp" />
-    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleSystem.cpp" />
-    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleSystemPoint.cpp" />
-    <ClCompile Include="..\cocos2dx\particle_nodes\CCParticleSystemQuad.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCCommon.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCFileUtils.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCGL.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCImage.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCSAXParser.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCStdC.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\CCThread.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\platform.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\BasicLoader.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\BasicReaderWriter.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCApplication_win8_metro.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCEGLView_win8_metro.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCFileUtils_win8_metro.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCImage_win8_metro.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\DirectXRender.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\DXTextPainter.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\FTTextPainter.cpp" />
-    <ClCompile Include="..\cocos2dx\script_support\CCScriptSupport.cpp" />
-    <ClCompile Include="..\cocos2dx\sprite_nodes\CCAnimation.cpp" />
-    <ClCompile Include="..\cocos2dx\sprite_nodes\CCAnimationCache.cpp" />
-    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSprite.cpp" />
-    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSpriteBatchNode.cpp" />
-    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSpriteFrame.cpp" />
-    <ClCompile Include="..\cocos2dx\sprite_nodes\CCSpriteFrameCache.cpp" />
-    <ClCompile Include="..\cocos2dx\support\base64.cpp" />
-    <ClCompile Include="..\cocos2dx\support\CCArray.cpp" />
-    <ClCompile Include="..\cocos2dx\support\CCPointExtension.cpp" />
-    <ClCompile Include="..\cocos2dx\support\CCProfiling.cpp" />
-    <ClCompile Include="..\cocos2dx\support\CCUserDefault.cpp" />
-    <ClCompile Include="..\cocos2dx\support\ccUtils.cpp" />
-    <ClCompile Include="..\cocos2dx\support\image_support\TGAlib.cpp" />
-    <ClCompile Include="..\cocos2dx\support\TransformUtils.cpp" />
-    <ClCompile Include="..\cocos2dx\support\zip_support\ioapi.cpp" />
-    <ClCompile Include="..\cocos2dx\support\zip_support\unzip.cpp" />
-    <ClCompile Include="..\cocos2dx\support\zip_support\ZipUtils.cpp" />
-    <ClCompile Include="..\cocos2dx\textures\CCTexture2D.cpp" />
-    <ClCompile Include="..\cocos2dx\textures\CCTextureAtlas.cpp" />
-    <ClCompile Include="..\cocos2dx\textures\CCTextureCache.cpp" />
-    <ClCompile Include="..\cocos2dx\textures\CCTexturePVR.cpp" />
-    <ClCompile Include="..\cocos2dx\text_input_node\CCIMEDispatcher.cpp" />
-    <ClCompile Include="..\cocos2dx\text_input_node\CCTextFieldTTF.cpp" />
-    <ClCompile Include="..\cocos2dx\touch_dispatcher\CCTouchDispatcher.cpp" />
-    <ClCompile Include="..\cocos2dx\touch_dispatcher\CCTouchHandler.cpp" />
-    <ClCompile Include="..\CocosDenshion\win8_metro\Audio.cpp" />
-    <ClCompile Include="..\CocosDenshion\win8_metro\MediaStreamer.cpp" />
-    <ClCompile Include="..\CocosDenshion\win8_metro\SimpleAudioEngine.cpp" />
-    <ClCompile Include="..\tinyxml\tinystr.cpp" />
-    <ClCompile Include="..\tinyxml\tinyxml.cpp" />
-    <ClCompile Include="..\tinyxml\tinyxmlerror.cpp" />
-    <ClCompile Include="..\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="Classes\AppDelegate.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
-    <ClCompile Include="..\cocos2dx\platform\win8_metro\CCAccelerometer_win8_metro.cpp" />
     <ClCompile Include="Classes\HelloWorldScene.cpp" />
     <ClCompile Include="Classes\MyContactListener.cpp" />
     <ClCompile Include="pch.cpp">
@@ -400,54 +259,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Assets\Textures\CCDrawingPixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCDrawingVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCGridPixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCGridVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCLayerColorPixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCLayerColorVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCParticlePixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCParticleVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCProgressTimerPixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCProgressTimerVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCSpritePixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCSpriteVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTexture2DPixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTexture2DVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTextureAtlasPixelShader.hlsl">
-      <ShaderType>Pixel</ShaderType>
-    </FxCompile>
-    <FxCompile Include="Assets\Textures\CCTextureAtlasVertexShader.hlsl">
-      <ShaderType>Vertex</ShaderType>
-    </FxCompile>
+    <ProjectReference Include="..\cocos2dx\proj.winrt\cocos2dx-wp8.vcxproj">
+      <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CocosDenshion\proj.winrt\CocosDension.vcxproj">
+      <Project>{54d5a760-05c6-4560-bb0e-6804d248f14a}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />

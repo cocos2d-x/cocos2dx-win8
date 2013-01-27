@@ -19,9 +19,7 @@
 #pragma once
 
 #include "pch.h"
-#include <wrl\client.h>
 //#include "CubeRenderer.h"
-#include "DirectXRender.h"
 
 ref class cocos2dorig sealed : public Windows::ApplicationModel::Core::IFrameworkView
 {
@@ -46,7 +44,7 @@ protected:
     void OnPointerMoved(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::PointerEventArgs^ args);
 
 private:
-    DirectXRender^ m_renderer;
+    cocos2d::DirectXRender^ m_renderer;
     bool m_windowClosed;
 
 };
