@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2012 for Windows Phone
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cocos2d-WindowsPhone", "Cocos2d-WindowsPhone.vcxproj", "{8C939C76-A430-450E-9607-56CEC95DEE2F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Debug|Win32 = Debug|Win32
+		Release|ARM = Release|ARM
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Debug|ARM.Build.0 = Debug|ARM
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Debug|Win32.Build.0 = Debug|Win32
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Release|ARM.ActiveCfg = Release|ARM
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Release|ARM.Build.0 = Release|ARM
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Release|Win32.ActiveCfg = Release|Win32
+		{8C939C76-A430-450E-9607-56CEC95DEE2F}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
