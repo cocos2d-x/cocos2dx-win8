@@ -72,7 +72,7 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\libraries\x86\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -96,7 +96,7 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OutputFile>.\libraries\x86\$(TargetName)$(TargetExt)</OutputFile>
@@ -116,7 +116,7 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\arm\zlib.lib;.\platform\third_party\win8_metro\libraries\arm\libpng.lib;.\platform\third_party\win8_metro\libraries\arm\libjpeg.lib;.\platform\third_party\win8_metro\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\arm\zlib.lib;.\platform\third_party\win8_metro\libraries\arm\libpng.lib;.\platform\third_party\win8_metro\libraries\arm\libjpeg.lib;.\platform\third_party\win8_metro\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\libraries\arm\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -134,7 +134,7 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\arm\zlib.lib;.\platform\third_party\win8_metro\libraries\arm\libpng.lib;.\platform\third_party\win8_metro\libraries\arm\libjpeg.lib;.\platform\third_party\win8_metro\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\arm\zlib.lib;.\platform\third_party\win8_metro\libraries\arm\libpng.lib;.\platform\third_party\win8_metro\libraries\arm\libjpeg.lib;.\platform\third_party\win8_metro\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OutputFile>.\libraries\arm\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
@@ -258,6 +258,9 @@
     <ClCompile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="CocosDenshion\Audio.cpp" />
+    <ClCompile Include="CocosDenshion\MediaStreamer.cpp" />
+    <ClCompile Include="CocosDenshion\SimpleAudioEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\CCConfiguration.h" />
@@ -389,6 +392,9 @@
     <ClInclude Include=".\support\zip_support\unzip.h" />
     <ClInclude Include=".\support\zip_support\ZipUtils.h" />
     <ClInclude Include=".\targetver.h" />
+    <ClInclude Include="CocosDenshion\Audio.h" />
+    <ClInclude Include="CocosDenshion\MediaStreamer.h" />
+    <ClInclude Include="include\SimpleAudioEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">
