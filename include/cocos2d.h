@@ -264,7 +264,7 @@ THE SOFTWARE.
 //
 // cocos2d macros
 //
-#include "DirectXRender.h"
+
 
 
 NS_CC_BEGIN
