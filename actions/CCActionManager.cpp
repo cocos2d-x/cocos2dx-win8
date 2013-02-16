@@ -25,8 +25,8 @@
 #include "CCActionManager.h"
 #include "CCScheduler.h"
 #include "ccMacros.h"
-#include "support/data_support/ccCArray.h"
-#include "support/data_support/uthash.h"
+#include "ccCArray.h"
+#include "uthash.h"
 
 namespace cocos2d {
 //
