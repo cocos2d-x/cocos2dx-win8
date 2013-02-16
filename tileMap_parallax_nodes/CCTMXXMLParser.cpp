@@ -28,7 +28,7 @@
 #include "support/zip_support/ZipUtils.h"
 #include "CCPointExtension.h"
 #include "support/base64.h"
-#include "platform/platform.h"
+#include "platform.h"
 
 using namespace std;
 

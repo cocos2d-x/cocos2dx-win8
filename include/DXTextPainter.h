@@ -32,13 +32,6 @@
 #include "DirectXHelper.h"
 
 
-enum class TextAlignment
-{
-	TextAlignmentLeft = 0,
-	TextAlignmentCenter,
-	TextAlignmentRight,
-};
-
 ref class DXTextPainter
 {
 public:

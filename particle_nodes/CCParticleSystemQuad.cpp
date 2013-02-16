@@ -21,7 +21,7 @@
 */
 
 #include "pch.h"
-#include "platform/CCGL.h"
+#include "CCGL.h"
 
 #include "CCParticleSystemQuad.h"
 #include "CCSpriteFrame.h"

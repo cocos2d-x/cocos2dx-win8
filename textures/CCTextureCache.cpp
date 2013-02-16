@@ -30,7 +30,7 @@
 #include "ccMacros.h"
 #include "CCData.h"
 #include "CCDirector.h"
-#include "platform/platform.h"
+#include "platform.h"
 #include "CCFileUtils.h"
 #include "CCImage.h"
 #include "support/ccUtils.h"

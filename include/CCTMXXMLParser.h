@@ -33,7 +33,7 @@ THE SOFTWARE.
 #include "CCMutableDictionary.h"
 #include "CCGeometry.h"
 
-#include "../platform/CCSAXParser.h"
+#include "CCSAXParser.h"
 
 namespace cocos2d {
 

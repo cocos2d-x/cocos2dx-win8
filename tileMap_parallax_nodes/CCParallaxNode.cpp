@@ -28,7 +28,7 @@ THE SOFTWARE.
 #include "pch.h"
 #include "CCParallaxNode.h"
 #include "CCPointExtension.h"
-#include "support/data_support/ccCArray.h"
+#include "ccCArray.h"
 
 namespace cocos2d {
 

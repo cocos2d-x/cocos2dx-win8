@@ -21,7 +21,7 @@
 
 #include "CCCommon.h"
 //#include <wincodec.h>
-#include "png.h"
+//#include "png.h"
 //#include "wincodec_h.h"
 
 NS_CC_BEGIN;

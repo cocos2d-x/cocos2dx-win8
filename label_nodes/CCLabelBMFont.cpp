@@ -33,7 +33,7 @@ http://www.angelcode.com/products/bmfont/ (Free, Windows only)
 #include "pch.h"
 #include "CCLabelBMFont.h"
 
-#include "platform/platform.h"
+#include "platform.h"
 #include "CCMutableDictionary.h"
 #include "CCConfiguration.h"
 #include "CCDrawingPrimitives.h"
@@ -41,7 +41,7 @@ http://www.angelcode.com/products/bmfont/ (Free, Windows only)
 #include "CCPointExtension.h"
 
 #include "CCFileUtils.h"
-#include "support/data_support/uthash.h"
+#include "uthash.h"
 namespace cocos2d{
 
     static int cc_wcslen(const unsigned short* str)

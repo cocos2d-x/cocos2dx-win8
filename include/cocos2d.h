@@ -37,6 +37,7 @@ THE SOFTWARE.
 //
 #include "ccConfig.h"	// should be included first
 
+
 // actions
 // Features of 1.0
 #include "CCAction.h"
@@ -263,7 +264,7 @@ THE SOFTWARE.
 //
 // cocos2d macros
 //
-
+#include "DirectXRender.h"
 
 
 NS_CC_BEGIN

@@ -23,8 +23,8 @@
 
 #include "CCScheduler.h"
 #include "ccMacros.h"
-#include "support/data_support/utlist.h"
-#include "support/data_support/ccCArray.h"
+#include "utlist.h"
+#include "ccCArray.h"
 #include "CCArray.h"
 #include "CCScriptSupport.h"
 

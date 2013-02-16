@@ -26,7 +26,7 @@
 #include "CCDrawingPrimitives.h"
 #include "DirectXHelper.h"
 #include "CCFileUtils.h"
-#include "ft2build.h"
+#include "./freetype/ft2build.h"
 #include FT_FREETYPE_H
 
 

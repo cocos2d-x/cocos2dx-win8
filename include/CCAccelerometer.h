@@ -27,6 +27,6 @@ THE SOFTWARE.
 #ifndef __CC_CCAccelerometer_H__
 #define __CC_CCAccelerometer_H__
 
-#include "platform/CCAccelerometer_platform.h"
+#include "CCAccelerometer_platform.h"
 
 #endif // __CC_CCAccelerometer_H__

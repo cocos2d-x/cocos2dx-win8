@@ -23,7 +23,7 @@
 #include "CCConfiguration.h"
 #include "CCRenderTexture.h"
 #include "CCDirector.h"
-#include "platform/platform.h"
+#include "platform.h"
 #include "CCImage.h"
 #include "support/ccUtils.h"
 #include "CCTextureCache.h"

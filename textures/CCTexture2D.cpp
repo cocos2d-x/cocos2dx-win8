@@ -30,11 +30,11 @@
 #include "ccConfig.h"
 #include "ccMacros.h"
 #include "CCConfiguration.h"
-#include "platform/platform.h"
+#include "platform.h"
 #include "CCImage.h"
 #include "CCGL.h"
 #include "support/ccUtils.h"
-#include "platform/CCPlatformMacros.h"
+#include "CCPlatformMacros.h"
 #include "CCTexturePVR.h"
 #include "CCDirector.h"
 

@@ -34,7 +34,7 @@
 //#include "CCTransition.h"
 #include "CCSpriteFrameCache.h"
 #include "CCAutoreleasePool.h"
-#include "platform/platform.h"
+#include "platform.h"
 #include "CCApplication.h"
 #include "CCLabelBMFont.h"
 #include "CCActionManager.h"

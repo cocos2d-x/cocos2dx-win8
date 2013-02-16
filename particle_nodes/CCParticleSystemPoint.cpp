@@ -21,7 +21,7 @@
 
 #include "pch.h"
 #include "CCParticleSystemPoint.h"
-#include "platform/CCGL.h"
+#include "CCGL.h"
 #include "CCDirector.h"
 
 namespace cocos2d {

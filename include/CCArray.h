@@ -25,7 +25,7 @@ THE SOFTWARE.
 #ifndef __CCARRAY_H__
 #define __CCARRAY_H__
 
-#include "support/data_support/ccCArray.h"
+#include "ccCArray.h"
 
 /** @def CCARRAY_FOREACH
 A convience macro to iterate over a CCArray using. It is faster than the "fast enumeration" interface.

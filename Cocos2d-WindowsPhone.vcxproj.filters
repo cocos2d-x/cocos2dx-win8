@@ -89,9 +89,6 @@
     <Filter Include="support">
       <UniqueIdentifier>{5993a1a4-8bbc-4ea4-97b2-45dfce3656e2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="support\data_support">
-      <UniqueIdentifier>{ca5a0746-6fb4-4f19-90ba-ee5fca082ae7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="support\image_support">
       <UniqueIdentifier>{e3224bf0-9c2b-41f3-bedf-89b32aee7a2b}</UniqueIdentifier>
     </Filter>
@@ -444,63 +441,6 @@
     <ClInclude Include=".\cocoa\CCNS.h">
       <Filter>cocoa</Filter>
     </ClInclude>
-    <ClInclude Include=".\platform\CCAccelerometer_platform.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCApplication_platform.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCArchOptimalParticleSystem.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCCommon.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCEGLView_platform.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCFileUtils.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCGL.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCImage.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCLibxml2.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCPlatformConfig.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCSAXParser.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCStdC.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\CCThread.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\platform.h">
-      <Filter>platform</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\BasicLoader.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\BasicReaderWriter.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\DirectXRender.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\DXTextPainter.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\FTTextPainter.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
     <ClInclude Include=".\platform\third_party\tinyxml\tinystr.h">
       <Filter>platform\third_party\tinyxml</Filter>
     </ClInclude>
@@ -519,15 +459,6 @@
     <ClInclude Include=".\support\TransformUtils.h">
       <Filter>support</Filter>
     </ClInclude>
-    <ClInclude Include=".\support\data_support\ccCArray.h">
-      <Filter>support\data_support</Filter>
-    </ClInclude>
-    <ClInclude Include=".\support\data_support\uthash.h">
-      <Filter>support\data_support</Filter>
-    </ClInclude>
-    <ClInclude Include=".\support\data_support\utlist.h">
-      <Filter>support\data_support</Filter>
-    </ClInclude>
     <ClInclude Include=".\support\image_support\TGAlib.h">
       <Filter>support\image_support</Filter>
     </ClInclude>
@@ -540,7 +471,6 @@
     <ClInclude Include=".\support\zip_support\ZipUtils.h">
       <Filter>support\zip_support</Filter>
     </ClInclude>
-    <ClInclude Include=".\CCConfiguration.h" />
     <ClInclude Include=".\pch.h" />
     <ClInclude Include=".\targetver.h" />
     <ClInclude Include=".\include\CCActionGrid3D.h">

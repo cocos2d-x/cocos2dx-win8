@@ -26,7 +26,7 @@
 #include "CCSet.h"
 #include "CCTouch.h"
 #include "CCTexture2D.h"
-#include "support/data_support/ccCArray.h"
+#include "ccCArray.h"
 #include "ccMacros.h"
 #include <algorithm>
 

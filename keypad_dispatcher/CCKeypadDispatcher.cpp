@@ -26,7 +26,7 @@ THE SOFTWARE.
 
 #include "pch.h"
 #include "CCKeypadDispatcher.h"
-#include "support/data_support/ccCArray.h"
+#include "ccCArray.h"
 
 NS_CC_BEGIN
 

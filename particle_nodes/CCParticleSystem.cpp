@@ -44,12 +44,12 @@
 #include "CCPointExtension.h"
 #include "CCFileUtils.h"
 #include "CCImage.h"
-#include "platform/platform.h"
+#include "platform.h"
 #include "support/zip_support/ZipUtils.h"
 #include "CCDirector.h"
 
 // opengl
-#include "platform/CCGL.h"
+#include "CCGL.h"
 
 #if CC_ENABLE_PROFILERS
 #include "Support/CCProfiling.h"

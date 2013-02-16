@@ -1,4 +1,0 @@
-libjpeg			8b
-libpng			1.4.2
-libxml2			2.7.8
-zlib			1.2.5

@@ -32,7 +32,7 @@ THE SOFTWARE.
 #include "CCSprite.h"
 #include "CCTextureCache.h"
 #include "CCPointExtension.h"
-#include "support/data_support/ccCArray.h"
+#include "ccCArray.h"
 #include "CCDirector.h"
 
 namespace cocos2d {

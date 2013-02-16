@@ -18,7 +18,7 @@
 
 #include "pch.h"
 #include "CCUserDefault.h"
-#include "platform/CCFileUtils.h"
+#include "CCFileUtils.h"
 #include "tinyxml\tinyxml.h"
 
 

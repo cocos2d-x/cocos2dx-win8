@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8c939c76-a430-450e-9607-56cec95dee2f}</ProjectGuid>
-    <RootNamespace>cocos2dx_wp8</RootNamespace>
+    <RootNamespace>Cocos2d-WindowsPhone</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <WinMDAssembly>true</WinMDAssembly>
@@ -64,7 +64,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalIncludeDirectories>./;./include/;./platform/;./platform/win8_metro/;./platform/third_party/;./platform/third_party/win8_metro/libpng;./platform/third_party/win8_metro/libjpeg;./platform/third_party/win8_metro/freetype;./platform/third_party/win8_metro/zlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;./include/;./platform/third_party;./include/libpng;./include/libjpeg;./include/freetype;./include/zlib</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
     </ClCompile>
     <Link>
@@ -72,7 +72,7 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\libraries\x86\zlib.lib;.\libraries\x86\libpng.lib;.\libraries\x86\libjpeg.lib;.\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\libraries\x86\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -83,7 +83,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalIncludeDirectories>./;./include/;./platform/;./platform/win8_metro/;./platform/third_party/;./platform/third_party/win8_metro/libpng;./platform/third_party/win8_metro/libjpeg;./platform/third_party/win8_metro/freetype;./platform/third_party/win8_metro/zlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;./include/;./platform/third_party;./include/libpng;./include/libjpeg;./include/freetype;./include/zlib</AdditionalIncludeDirectories>
       <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <IntrinsicFunctions>false</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -109,14 +109,14 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalIncludeDirectories>./;./include/;./platform/;./platform/win8_metro/;./platform/third_party/;./platform/third_party/win8_metro/libpng;./platform/third_party/win8_metro/libjpeg;./platform/third_party/win8_metro/freetype;./platform/third_party/win8_metro/zlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;./include/;./platform/third_party;./include/libpng;./include/libjpeg;./include/freetype;./include/zlib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\arm\zlib.lib;.\platform\third_party\win8_metro\libraries\arm\libpng.lib;.\platform\third_party\win8_metro\libraries\arm\libjpeg.lib;.\platform\third_party\win8_metro\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\libraries\arm\zlib.lib;.\libraries\arm\libpng.lib;.\libraries\arm\libjpeg.lib;.\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OutputFile>.\libraries\arm\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
   </ItemDefinitionGroup>
@@ -127,14 +127,14 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
       <CompileAsWinRT>true</CompileAsWinRT>
-      <AdditionalIncludeDirectories>./;./include/;./platform/;./platform/win8_metro/;./platform/third_party/;./platform/third_party/win8_metro/libpng;./platform/third_party/win8_metro/libjpeg;./platform/third_party/win8_metro/freetype;./platform/third_party/win8_metro/zlib</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;./include/;./platform/third_party;./include/libpng;./include/libjpeg;./include/freetype;./include/zlib</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\arm\zlib.lib;.\platform\third_party\win8_metro\libraries\arm\libpng.lib;.\platform\third_party\win8_metro\libraries\arm\libjpeg.lib;.\platform\third_party\win8_metro\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\libraries\arm\zlib.lib;.\libraries\arm\libpng.lib;.\libraries\arm\libjpeg.lib;.\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
       <OutputFile>.\libraries\arm\$(TargetName)$(TargetExt)</OutputFile>
     </Link>
@@ -263,7 +263,6 @@
     <ClCompile Include="CocosDenshion\SimpleAudioEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include=".\CCConfiguration.h" />
     <ClInclude Include=".\cocoa\CCNS.h" />
     <ClInclude Include=".\include\CCAccelerometer.h" />
     <ClInclude Include=".\include\CCAccelerometerDelegate.h" />
@@ -355,34 +354,12 @@
     <ClInclude Include=".\include\CCZone.h" />
     <ClInclude Include=".\include\cocos2d.h" />
     <ClInclude Include=".\pch.h" />
-    <ClInclude Include=".\platform\CCAccelerometer_platform.h" />
-    <ClInclude Include=".\platform\CCApplication_platform.h" />
-    <ClInclude Include=".\platform\CCArchOptimalParticleSystem.h" />
-    <ClInclude Include=".\platform\CCCommon.h" />
-    <ClInclude Include=".\platform\CCEGLView_platform.h" />
-    <ClInclude Include=".\platform\CCFileUtils.h" />
-    <ClInclude Include=".\platform\CCGL.h" />
-    <ClInclude Include=".\platform\CCImage.h" />
-    <ClInclude Include=".\platform\CCLibxml2.h" />
-    <ClInclude Include=".\platform\CCPlatformConfig.h" />
     <ClInclude Include=".\platform\CCPlatformMacros.h" />
-    <ClInclude Include=".\platform\CCSAXParser.h" />
-    <ClInclude Include=".\platform\CCStdC.h" />
-    <ClInclude Include=".\platform\CCThread.h" />
-    <ClInclude Include=".\platform\platform.h" />
     <ClInclude Include=".\platform\third_party\tinyxml\tinystr.h" />
     <ClInclude Include=".\platform\third_party\tinyxml\tinyxml.h" />
-    <ClInclude Include=".\platform\win8_metro\BasicLoader.h" />
-    <ClInclude Include=".\platform\win8_metro\BasicReaderWriter.h" />
-    <ClInclude Include=".\platform\win8_metro\DirectXRender.h" />
-    <ClInclude Include=".\platform\win8_metro\DXTextPainter.h" />
-    <ClInclude Include=".\platform\win8_metro\FTTextPainter.h" />
     <ClInclude Include=".\support\base64.h" />
     <ClInclude Include=".\support\CCProfiling.h" />
     <ClInclude Include=".\support\ccUtils.h" />
-    <ClInclude Include=".\support\data_support\ccCArray.h" />
-    <ClInclude Include=".\support\data_support\uthash.h" />
-    <ClInclude Include=".\support\data_support\utlist.h" />
     <ClInclude Include=".\support\image_support\TGAlib.h" />
     <ClInclude Include=".\support\TransformUtils.h" />
     <ClInclude Include=".\support\zip_support\ioapi.h" />

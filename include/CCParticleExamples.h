@@ -30,7 +30,7 @@ THE SOFTWARE.
 #ifndef __CCPARTICLE_EXAMPLE_H__
 #define __CCPARTICLE_EXAMPLE_H__
 
-#include "platform/CCArchOptimalParticleSystem.h"
+#include "CCArchOptimalParticleSystem.h"
 
 namespace cocos2d {
 
