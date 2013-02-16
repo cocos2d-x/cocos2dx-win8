@@ -374,9 +374,6 @@
     <ClInclude Include=".\platform\third_party\tinyxml\tinyxml.h" />
     <ClInclude Include=".\platform\win8_metro\BasicLoader.h" />
     <ClInclude Include=".\platform\win8_metro\BasicReaderWriter.h" />
-    <ClInclude Include=".\platform\win8_metro\CCAccelerometer_win8_metro.h" />
-    <ClInclude Include=".\platform\win8_metro\CCApplication_win8_metro.h" />
-    <ClInclude Include=".\platform\win8_metro\CCEGLView_win8_metro.h" />
     <ClInclude Include=".\platform\win8_metro\DirectXRender.h" />
     <ClInclude Include=".\platform\win8_metro\DXTextPainter.h" />
     <ClInclude Include=".\platform\win8_metro\FTTextPainter.h" />

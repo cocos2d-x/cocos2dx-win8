@@ -46,7 +46,7 @@ THE SOFTWARE.
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
     #include "qnx/CCAccelerometer_qnx.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
-    #include "win8_metro/CCAccelerometer_win8_metro.h"
+    #include "CCAccelerometer_win8_metro.h"
 #else
     #error
 #endif

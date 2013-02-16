@@ -43,7 +43,7 @@ namespace cocos2d
 	class CCImage;
 
     // Helper class that initializes the DirectX APIs in the sample apps.
-public ref class DirectXRender sealed
+CC_DLL public ref class DirectXRender sealed
 {
 public:
     DirectXRender();

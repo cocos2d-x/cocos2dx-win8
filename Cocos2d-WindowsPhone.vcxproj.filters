@@ -492,15 +492,6 @@
     <ClInclude Include=".\platform\win8_metro\BasicReaderWriter.h">
       <Filter>platform\win8_metro</Filter>
     </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\CCAccelerometer_win8_metro.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\CCApplication_win8_metro.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
-    <ClInclude Include=".\platform\win8_metro\CCEGLView_win8_metro.h">
-      <Filter>platform\win8_metro</Filter>
-    </ClInclude>
     <ClInclude Include=".\platform\win8_metro\DirectXRender.h">
       <Filter>platform\win8_metro</Filter>
     </ClInclude>

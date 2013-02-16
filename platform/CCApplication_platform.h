@@ -38,7 +38,7 @@
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_QNX)
     #include "qnx/CCApplication_qnx.h"
 #elif (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
-    #include "win8_metro\CCApplication_win8_metro.h"
+    #include "CCApplication_win8_metro.h"
 #else
     #error
 #endif
