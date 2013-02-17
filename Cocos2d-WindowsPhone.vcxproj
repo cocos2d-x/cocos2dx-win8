@@ -77,7 +77,9 @@
     </Link>
     <PostBuildEvent>
       <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
+cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -107,7 +109,9 @@ cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</C
     </Link>
     <PostBuildEvent>
       <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
+cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -129,7 +133,9 @@ cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</C
     </Link>
     <PostBuildEvent>
       <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
+cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -152,7 +158,9 @@ cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</C
     </Link>
     <PostBuildEvent>
       <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
+cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
