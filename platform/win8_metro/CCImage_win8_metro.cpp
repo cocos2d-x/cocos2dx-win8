@@ -21,7 +21,7 @@
 #include "CCImage.h"
 
 #include "DirectXRender.h"
-
+using namespace Cocos2dWindowsPhone;
 
 NS_CC_BEGIN;
 

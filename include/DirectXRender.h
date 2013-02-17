@@ -37,7 +37,7 @@
 #include "DirectXHelper.h"
 
 // forward declare
-namespace cocos2d
+namespace Cocos2dWindowsPhone
 {
     class CCEGLView;
 	class CCImage;

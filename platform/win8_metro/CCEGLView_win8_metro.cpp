@@ -31,6 +31,7 @@
 #include "CCApplication.h"
 
 using namespace DirectX;
+using namespace Cocos2dWindowsPhone;
 NS_CC_BEGIN;
 
 static CCEGLView * s_pMainWindow;

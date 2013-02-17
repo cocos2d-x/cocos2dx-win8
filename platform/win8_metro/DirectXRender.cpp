@@ -40,11 +40,13 @@ typedef DXTextPainter TextPainter;
 using namespace D2D1;
 #endif
 
+using namespace Cocos2dWindowsPhone;
 USING_NS_CC;
+
 
 static CCPoint getCCPointFromScreen(Point point)
 {
-	CCSize viewSize = CCEGLView::sharedOpenGLView().getSize();
+	CCSize viewSize = cocos2d::CCEGLView::sharedOpenGLView().getSize();
 
 	CCPoint ccPoint;
 	ccPoint.x = ceilf(point.X);
