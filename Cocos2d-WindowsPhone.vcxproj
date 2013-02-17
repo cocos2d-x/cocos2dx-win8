@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8c939c76-a430-450e-9607-56cec95dee2f}</ProjectGuid>
-    <RootNamespace>Cocos2d-WindowsPhone</RootNamespace>
+    <RootNamespace>Cocos2dWindowsPhone</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <WinMDAssembly>true</WinMDAssembly>
@@ -73,8 +73,12 @@
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <AdditionalDependencies>d3d11.lib;.\libraries\x86\zlib.lib;.\libraries\x86\libpng.lib;.\libraries\x86\libjpeg.lib;.\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\libraries\x86\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -99,8 +103,12 @@
       <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
-      <OutputFile>.\libraries\x86\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <ClCompile>
@@ -117,8 +125,12 @@
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <AdditionalDependencies>d3d11.lib;.\libraries\arm\zlib.lib;.\libraries\arm\libpng.lib;.\libraries\arm\libjpeg.lib;.\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <OutputFile>.\libraries\arm\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
@@ -136,8 +148,12 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <AdditionalDependencies>d3d11.lib;.\libraries\arm\zlib.lib;.\libraries\arm\libpng.lib;.\libraries\arm\libjpeg.lib;.\libraries\arm\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <OutputFile>.\libraries\arm\$(TargetName)$(TargetExt)</OutputFile>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
+    <PostBuildEvent>
+      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
+cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <Reference Include="platform.winmd">
