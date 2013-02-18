@@ -8,6 +8,7 @@ Cocos2dx for Windows Phone
 Windows Phone doesn't support OpenGL ES. Cocos2dx for Windows Phone branched on Cocos2d-x uses Direct3D 11. 
 
 This is a Windows Phone 8 port of cocos2d-x game engine, based on 2.1.1 API.
+The url of CocosDenshion module is https://github.com/QiMa/CocosDenshion-WindowsPhone
 
 System requirements
 ===================

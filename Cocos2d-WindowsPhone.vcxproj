@@ -346,9 +346,6 @@ cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextu
     <ClCompile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
-    <ClCompile Include="CocosDenshion\Audio.cpp" />
-    <ClCompile Include="CocosDenshion\MediaStreamer.cpp" />
-    <ClCompile Include="CocosDenshion\SimpleAudioEngine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h" />
@@ -454,9 +451,6 @@ cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextu
     <ClInclude Include=".\support\zip_support\unzip.h" />
     <ClInclude Include=".\support\zip_support\ZipUtils.h" />
     <ClInclude Include=".\targetver.h" />
-    <ClInclude Include="CocosDenshion\Audio.h" />
-    <ClInclude Include="CocosDenshion\MediaStreamer.h" />
-    <ClInclude Include="include\SimpleAudioEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

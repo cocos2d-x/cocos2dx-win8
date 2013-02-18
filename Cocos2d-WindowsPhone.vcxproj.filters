@@ -113,9 +113,6 @@
     <Filter Include="draw_nodes">
       <UniqueIdentifier>{e5baebb5-aed0-43ab-b68f-e0d3dde32094}</UniqueIdentifier>
     </Filter>
-    <Filter Include="CocosDenshion">
-      <UniqueIdentifier>{3b4482fe-8fe3-47ac-900b-b7a0a1b17362}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include=".\actions\CCAction.cpp">
@@ -427,15 +424,6 @@
     <ClCompile Include=".\layers_scenes_transitions_nodes\CCTransitionProgress.cpp">
       <Filter>layers_scenes_transitions_nodes</Filter>
     </ClCompile>
-    <ClCompile Include="CocosDenshion\Audio.cpp">
-      <Filter>CocosDenshion</Filter>
-    </ClCompile>
-    <ClCompile Include="CocosDenshion\MediaStreamer.cpp">
-      <Filter>CocosDenshion</Filter>
-    </ClCompile>
-    <ClCompile Include="CocosDenshion\SimpleAudioEngine.cpp">
-      <Filter>CocosDenshion</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h">
@@ -741,15 +729,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include=".\include\CCNotificationCenter.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="CocosDenshion\Audio.h">
-      <Filter>CocosDenshion</Filter>
-    </ClInclude>
-    <ClInclude Include="CocosDenshion\MediaStreamer.h">
-      <Filter>CocosDenshion</Filter>
-    </ClInclude>
-    <ClInclude Include="include\SimpleAudioEngine.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
