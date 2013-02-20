@@ -114,6 +114,32 @@ void CCFrameworkView::SetWindow(
     CCLog("CCFrameworkView::+SetWindow()");
 	m_window = window;
     //window->PointerCursor = ref new CoreCursor(CoreCursorType::Arrow, 0);
+	//这时需要将设备的分辨率读出保存
+	DeviceResolutionInPixels res;
+	switch (DisplayProperties::ResolutionScale) 
+	{
+		case ResolutionScale::Scale100Percent: 
+			{
+				res = DeviceResolutionInPixels_WVGA;
+				break;
+			}
+		case ResolutionScale::Scale150Percent: 
+			{
+				res = DeviceResolutionInPixels_720p;
+				break;
+			}
+		case ResolutionScale::Scale160Percent: 
+			{
+				res = DeviceResolutionInPixels_WXGA;
+				break;
+			}
+		default:
+			{
+				res = DeviceResolutionInPixels_WVGA;
+				break;
+			}
+	}
+	CCApplication::sharedApplication().setDeviceResolutionInPixels(res);
 
     DisplayProperties::LogicalDpiChanged +=
         ref new DisplayPropertiesEventHandler(this, &CCFrameworkView::OnLogicalDpiChanged);
@@ -257,7 +283,8 @@ Windows::ApplicationModel::Core::IFrameworkView^ getSharedCCApplicationFramework
 // sharedApplication pointer
 CCApplication * s_pSharedApplication = 0;
 
-CCApplication::CCApplication()
+CCApplication::CCApplication():
+	m_deviceResolutionInPixels(DeviceResolutionInPixels_Invalid)
 {
     CC_ASSERT(! s_pSharedApplication);
     s_pSharedApplication = this;
@@ -267,6 +294,17 @@ CCApplication::~CCApplication()
 {
     CC_ASSERT(this == s_pSharedApplication);
     s_pSharedApplication = NULL;
+}
+
+void CCApplication::setDeviceResolutionInPixels(DeviceResolutionInPixels res)
+{
+	CC_ASSERT(m_deviceResolutionInPixels == DeviceResolutionInPixels_Invalid);
+	m_deviceResolutionInPixels = res;
+}
+
+DeviceResolutionInPixels CCApplication::getdeviceResolutionInPixels()
+{
+	return m_deviceResolutionInPixels;
 }
 
 void CCApplication::setAnimationInterval(double interval)

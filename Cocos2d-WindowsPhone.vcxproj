@@ -59,7 +59,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CC_UNDER_WIN8_METRO;_WINRT_DLL;CC_EXPORT_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CC_UNDER_WIN8_METRO;_WINRT_DLL;CC_EXPORT_WINDOWS;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
@@ -76,26 +76,26 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
-cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
-cp $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso
-cp $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso
-cp $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso
-cp $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso
-cp $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso
-cp $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso
-cp $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso
-cp $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso
-cp $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso
-cp $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso
-cp $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso
-cp $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso
-cp $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso
-cp $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso
-cp $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso
-cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso
-</Command>
+      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
+xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
+xcopy $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd /y
+xcopy $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso /y
+xcopy $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso /y
+xcopy $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso /y
+xcopy $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso /y
+xcopy $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso /y
+xcopy $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso /y
+xcopy $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso /y
+xcopy $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso /y
+xcopy $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso /y
+xcopy $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso /y
+xcopy $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso /y
+xcopy $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso /y
+xcopy $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso /y
+xcopy $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso /y
+xcopy $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso /y
+xcopy $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso /y</Command>
+      <Message>复制编译之后的文件</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,32 +118,31 @@ cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextu
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>msvcrt.lib;ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
-      <AdditionalDependencies>d3d11.lib;.\platform\third_party\win8_metro\libraries\x86\zlib.lib;.\platform\third_party\win8_metro\libraries\x86\libpng.lib;.\platform\third_party\win8_metro\libraries\x86\libjpeg.lib;.\platform\third_party\win8_metro\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d11.lib;.\libraries\x86\zlib.lib;.\libraries\x86\libpng.lib;.\libraries\x86\libjpeg.lib;.\libraries\x86\freetype.lib;WindowsPhoneCore.lib;RuntimeObject.lib;xaudio2.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
-cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
-cp $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso
-cp $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso
-cp $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso
-cp $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso
-cp $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso
-cp $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso
-cp $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso
-cp $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso
-cp $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso
-cp $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso
-cp $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso
-cp $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso
-cp $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso
-cp $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso
-cp $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso
-cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso
-</Command>
+      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
+xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
+xcopy $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd /y
+xcopy $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso /y
+xcopy $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso /y
+xcopy $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso /y
+xcopy $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso /y
+xcopy $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso /y
+xcopy $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso /y
+xcopy $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso /y
+xcopy $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso /y
+xcopy $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso /y
+xcopy $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso /y
+xcopy $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso /y
+xcopy $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso /y
+xcopy $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso /y
+xcopy $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso /y
+xcopy $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso /y
+xcopy $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -164,26 +163,25 @@ cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextu
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
-cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
-cp $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso
-cp $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso
-cp $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso
-cp $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso
-cp $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso
-cp $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso
-cp $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso
-cp $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso
-cp $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso
-cp $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso
-cp $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso
-cp $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso
-cp $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso
-cp $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso
-cp $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso
-cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso
-</Command>
+      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
+xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
+xcopy $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd /y
+xcopy $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso /y
+xcopy $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso /y
+xcopy $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso /y
+xcopy $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso /y
+xcopy $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso /y
+xcopy $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso /y
+xcopy $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso /y
+xcopy $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso /y
+xcopy $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso /y
+xcopy $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso /y
+xcopy $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso /y
+xcopy $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso /y
+xcopy $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso /y
+xcopy $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso /y
+xcopy $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso /y
+xcopy $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -205,26 +203,25 @@ cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextu
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>cp $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll
-cp $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib
-cp $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd
-cp $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso
-cp $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso
-cp $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso
-cp $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso
-cp $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso
-cp $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso
-cp $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso
-cp $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso
-cp $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso
-cp $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso
-cp $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso
-cp $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso
-cp $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso
-cp $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso
-cp $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso
-cp $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso
-</Command>
+      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
+xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
+xcopy $(OutDir)Cocos2dWindowsPhone.winmd .\libraries\$(PlatformTarget)\Cocos2dWindowsPhone.winmd /y
+xcopy $(OutDir)CCDrawingPixelShader.cso .\libraries\$(PlatformTarget)\CCDrawingPixelShader.cso /y
+xcopy $(OutDir)CCDrawingVertexShader.cso .\libraries\$(PlatformTarget)\CCDrawingVertexShader.cso /y
+xcopy $(OutDir)CCGridPixelShader.cso .\libraries\$(PlatformTarget)\CCGridPixelShader.cso /y
+xcopy $(OutDir)CCGridVertexShader.cso .\libraries\$(PlatformTarget)\CCGridVertexShader.cso /y
+xcopy $(OutDir)CCLayerColorPixelShader.cso .\libraries\$(PlatformTarget)\CCLayerColorPixelShader.cso /y
+xcopy $(OutDir)CCLayerColorVertexShader.cso .\libraries\$(PlatformTarget)\CCLayerColorVertexShader.cso /y
+xcopy $(OutDir)CCParticlePixelShader.cso .\libraries\$(PlatformTarget)\CCParticlePixelShader.cso /y
+xcopy $(OutDir)CCParticleVertexShader.cso .\libraries\$(PlatformTarget)\CCParticleVertexShader.cso /y
+xcopy $(OutDir)CCProgressTimerPixelShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerPixelShader.cso /y
+xcopy $(OutDir)CCProgressTimerVertexShader.cso .\libraries\$(PlatformTarget)\CCProgressTimerVertexShader.cso /y
+xcopy $(OutDir)CCSpritePixelShader.cso .\libraries\$(PlatformTarget)\CCSpritePixelShader.cso /y
+xcopy $(OutDir)CCSpriteVertexShader.cso .\libraries\$(PlatformTarget)\CCSpriteVertexShader.cso /y
+xcopy $(OutDir)CCTexture2DPixelShader.cso .\libraries\$(PlatformTarget)\CCTexture2DPixelShader.cso /y
+xcopy $(OutDir)CCTexture2DVertexShader.cso .\libraries\$(PlatformTarget)\CCTexture2DVertexShader.cso /y
+xcopy $(OutDir)CCTextureAtlasPixelShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasPixelShader.cso /y
+xcopy $(OutDir)CCTextureAtlasVertexShader.cso .\libraries\$(PlatformTarget)\CCTextureAtlasVertexShader.cso /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

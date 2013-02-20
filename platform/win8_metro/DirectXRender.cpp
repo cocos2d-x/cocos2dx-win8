@@ -290,12 +290,35 @@ void DirectXRender::SetDpi(float dpi)
 	}
 }
 
+using namespace Windows::Graphics::Display;
 // This routine is called in the event handler for the view SizeChanged event.
 void DirectXRender::UpdateForWindowSizeChange()
 {
+	//在windowsPhone中，window bounds的值一直是480*800
 	if (m_window->Bounds.Width  != m_windowBounds.Width ||
 		m_window->Bounds.Height != m_windowBounds.Height)
 	{
+		// Store the window bounds so the next time we get a SizeChanged event we can
+		// avoid rebuilding everything if the size is identical.
+		switch (DisplayProperties::ResolutionScale) 
+		{
+			case ResolutionScale::Scale100Percent: 
+				{
+					m_windowBounds = Rect(0, 0, 480, 800);
+					break;
+				}
+			case ResolutionScale::Scale150Percent: 
+				{
+					m_windowBounds = Rect(0, 0, 720, 1280);
+					break;
+				}	
+			case ResolutionScale::Scale160Percent: 
+				{
+					m_windowBounds = Rect(0, 0, 768, 1280);
+					break;
+				}
+		}
+
 		//m_d2dContext->SetTarget(nullptr);
 		//m_d2dTargetBitmap = nullptr;
 		m_renderTargetView = nullptr;
@@ -307,10 +330,6 @@ void DirectXRender::UpdateForWindowSizeChange()
 // Allocate all memory resources that change on a window SizeChanged event.
 void DirectXRender::CreateWindowSizeDependentResources()
 {
-	// Store the window bounds so the next time we get a SizeChanged event we can
-	// avoid rebuilding everything if the size is identical.
-	m_windowBounds = m_window->Bounds;
-
 	// If the swap chain already exists, resize it.
 	if(m_swapChain != nullptr)
 	{

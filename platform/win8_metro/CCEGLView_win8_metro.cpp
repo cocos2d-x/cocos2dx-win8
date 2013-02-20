@@ -85,7 +85,8 @@ bool CCEGLView::Create()
         DirectXRender^ render = DirectXRender::SharedDXRender();
         m_initWinWidth = (int)render->m_window->Bounds.Width;
         m_initWinHeight = (int)render->m_window->Bounds.Height;
-        setDesignResolution(m_initWinWidth, m_initWinHeight);
+	    setDesignResolution(m_initWinWidth, m_initWinHeight);
+		//setDesignResolution(render->m_windowBounds.Width, render->m_windowBounds.Height);
         SetBackBufferRenderTarget();
         m_oldViewState = 0;//int(Windows::UI::ViewManagement::ApplicationView::Value);
 		s_pMainWindow = this;
@@ -149,7 +150,7 @@ void CCEGLView::swapBuffers()
 void CCEGLView::setViewPortInPoints(float x, float y, float w, float h)
 {
 	float factor = m_fScreenScaleFactor / CC_CONTENT_SCALE_FACTOR();
-	
+	factor = 1.0f;
     D3DViewport(
         (int)(x * factor * m_fWinScaleX) + m_rcViewPort.left,
 		(int)(y * factor * m_fWinScaleY) + m_rcViewPort.top,
@@ -202,6 +203,8 @@ void CCEGLView::setContentScaleFactor(float contentScaleFactor)
 
 void CCEGLView::setDesignResolution(int dx, int dy)
 {
+	CCLOG("CCGLView::setDesignResolution(), line:206, setDesignResolution(%d, %d)", dx, dy);
+
     // 重新计算 contentScale 和 m_rcViewPort 
     m_sizeInPoints.width = (float)dx;
     m_sizeInPoints.height = (float)dy;

@@ -22,10 +22,28 @@
 
 NS_CC_BEGIN;
 
+/** 屏幕分辨率 */
+enum DeviceResolutionInPixels
+{
+	DeviceResolutionInPixels_WVGA = 1, //480*800
+	DeviceResolutionInPixels_WXGA = 2, //768*1280
+	DeviceResolutionInPixels_720p = 3, //720*1280
+
+	DeviceResolutionInPixels_Invalid = -1//无效值
+};
+typedef DeviceResolutionInPixels DeviceResolutionInPixels;
+
 class CCRect;
 
 class CC_DLL CCApplication
 {
+private:
+	CC_PROPERTY_READONLY(DeviceResolutionInPixels, m_deviceResolutionInPixels, deviceResolutionInPixels);
+
+public:
+	//(interal) just call once, you can't call in by self
+	void setDeviceResolutionInPixels(DeviceResolutionInPixels res);
+
 public:
     CCApplication();
     virtual ~CCApplication();
