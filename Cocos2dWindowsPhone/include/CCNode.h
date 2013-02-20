@@ -288,7 +288,7 @@ NS_CC_BEGIN
 		/** allocates and initializes a node.
          The node will be created as "autorelease".
          */
-		static CCNode * node(void);
+		static CCNode * create(void);
 
 		//scene managment
 

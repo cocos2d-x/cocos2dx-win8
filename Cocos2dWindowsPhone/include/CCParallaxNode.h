@@ -49,7 +49,7 @@ namespace cocos2d {
 		*/
 		CCParallaxNode();
 		virtual ~CCParallaxNode();
-		static CCParallaxNode * node();
+		static CCParallaxNode * create();
 		virtual void addChild(CCNode * child, int z, const CCPoint& parallaxRatio, const CCPoint& positionOffset);
 		// super methods
 		virtual void addChild(CCNode * child, int zOrder, int tag);

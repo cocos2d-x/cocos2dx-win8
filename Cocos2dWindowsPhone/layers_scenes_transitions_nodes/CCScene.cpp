@@ -51,7 +51,7 @@ bool CCScene::init()
  	return bRet;
 }
 
-CCScene *CCScene::node()
+CCScene *CCScene::create()
 {
 	CCScene *pRet = new CCScene();
 	if (pRet && pRet->init())

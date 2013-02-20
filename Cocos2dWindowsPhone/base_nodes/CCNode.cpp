@@ -538,7 +538,7 @@ CCRect CCNode::boundingBoxInPixels()
 }
 
 
-CCNode * CCNode::node(void)
+CCNode * CCNode::create(void)
 {
 	CCNode * pRet = new CCNode();
 	pRet->autorelease();

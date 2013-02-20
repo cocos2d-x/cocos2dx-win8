@@ -67,7 +67,7 @@ namespace cocos2d {
 			m_pParallaxArray = NULL;
 		}
 	}
-	CCParallaxNode * CCParallaxNode::node()
+	CCParallaxNode * CCParallaxNode::create()
 	{
 		CCParallaxNode *pRet = new CCParallaxNode();
 		pRet->autorelease();

@@ -44,11 +44,11 @@ CCScene* HelloWorld::scene()
 	CCScene * scene = NULL;
 	do 
 	{		// 'scene' is an autorelease object
-		scene = CCScene::node();
+		scene = CCScene::create();
 		CC_BREAK_IF(! scene);
 
 		// 'layer' is an autorelease object
-		HelloWorld *layer = HelloWorld::node();
+		HelloWorld *layer = HelloWorld::create();
 		CC_BREAK_IF(! layer);
 
 		// add layer as a child to scene

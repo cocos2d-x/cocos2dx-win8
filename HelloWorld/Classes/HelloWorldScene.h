@@ -40,7 +40,7 @@ public:
 	// a selector callback
 	//virtual void menuCloseCallback(CCObject* pSender);
 
-	// implement the "static node()" method manually
+	// implement the "static create()" method manually
 	LAYER_NODE_FUNC(HelloWorld);
 
 	//void registerWithTouchDispatcher();

@@ -53,7 +53,7 @@ public:
 	CCLayer();
 	virtual ~CCLayer();
 	bool init();
-	static CCLayer *node(void);
+	static CCLayer *create(void);
 
 	virtual void onEnter();
 	virtual void onExit();
@@ -116,7 +116,7 @@ private:
     
 // for the subclass of CCLayer, each has to implement the static "node" method 
 #define LAYER_NODE_FUNC(layer) \
-static layer* node() \
+static layer* create() \
 { \
 layer *pRet = new layer(); \
 if (pRet && pRet->init()) \
@@ -133,7 +133,7 @@ return NULL; \
 }; 
 
 #define LAYER_NODE_FUNC_PARAM(layer,__PARAMTYPE__,__PARAM__) \
-	static layer* node(__PARAMTYPE__ __PARAM__) \
+	static layer* create(__PARAMTYPE__ __PARAM__) \
 { \
 	layer *pRet = new layer(); \
 	if (pRet && pRet->init(__PARAM__)) \

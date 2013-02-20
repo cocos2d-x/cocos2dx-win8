@@ -49,13 +49,13 @@ public:
 	CCScene();
 	virtual ~CCScene();
 	bool init();
-	static CCScene *node(void);
+	static CCScene *create(void);
 };
 NS_CC_END 
 
 // for the subclass of CCScene, each has to implement the static "node" method 
 #define SCENE_NODE_FUNC(scene) \
-static scene* node() \
+static scene* create() \
 { \
 	scene *pRet = new scene(); \
 	if (pRet && pRet->init()) \
@@ -72,14 +72,14 @@ static scene* node() \
 }; 
 
 #define SCENE_FUNC_PARAM(__TYPE__,__PARAMTYPE__,__PARAM__) \
-	static cocos2d::CCScene* node(__PARAMTYPE__ __PARAM__) \
+	static cocos2d::CCScene* create(__PARAMTYPE__ __PARAM__) \
 { \
 	cocos2d::CCScene * scene = NULL; \
 	do  \
 { \
-	scene = cocos2d::CCScene::node(); \
+	scene = cocos2d::CCScene::create(); \
 	CC_BREAK_IF(! scene); \
-	__TYPE__ *layer = __TYPE__::node(__PARAM__); \
+	__TYPE__ *layer = __TYPE__::create(__PARAM__); \
 	CC_BREAK_IF(! layer); \
 	scene->addChild(layer); \
 } while (0); \

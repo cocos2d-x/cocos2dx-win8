@@ -74,7 +74,7 @@ bool CCLayer::init()
 	return bRet;
 }
 
-CCLayer *CCLayer::node()
+CCLayer *CCLayer::create()
 {
 	CCLayer *pRet = new CCLayer();
 	if (pRet && pRet->init())
