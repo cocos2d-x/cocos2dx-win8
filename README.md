@@ -6,13 +6,8 @@ Cocos2d-x is a multi-platform 2D game framework in C++, branched on cocos2d-ipho
 Cocos2dx for Windows Phone
 =============
 Windows Phone doesn't support OpenGL ES. Cocos2dx for Windows Phone branched on Cocos2d-x uses Direct3D 11. 
+
 This is a Windows Phone 8 port of cocos2d-x game engine, based on 2.1.1 API.
-
-
-CocosDenshion for Windows Phone
-=============
-CocosDenshion is Simple AudioEngine for Windows Phone using media streamer. CocosDenshion is a part of Cocos2dx for Windows Phone. https://github.com/QiMa/Cocos2d-WindowsPhone
-
 
 System requirements
 ===================
