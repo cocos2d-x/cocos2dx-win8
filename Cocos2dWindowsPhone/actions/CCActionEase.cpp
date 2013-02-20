@@ -39,7 +39,7 @@ namespace cocos2d {
 	//
 	// EaseAction
 	//
-	CCActionEase* CCActionEase::actionWithAction(CCActionInterval *pAction)
+	CCActionEase* CCActionEase::create(CCActionInterval *pAction)
 	{
 		CCActionEase *pRet = new CCActionEase();
 		if (pRet)
@@ -119,13 +119,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCActionEase::reverse(void)
 	{
-		return CCActionEase::actionWithAction(m_pOther->reverse());
+		return CCActionEase::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseRateAction
 	//
-	CCEaseRateAction* CCEaseRateAction::actionWithAction(CCActionInterval *pAction, float fRate)
+	CCEaseRateAction* CCEaseRateAction::create(CCActionInterval *pAction, float fRate)
 	{
 		CCEaseRateAction *pRet = new CCEaseRateAction();
 		if (pRet)
@@ -181,13 +181,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseRateAction::reverse(void)
 	{
-		return CCEaseRateAction::actionWithAction(m_pOther->reverse(), 1 / m_fRate);
+		return CCEaseRateAction::create(m_pOther->reverse(), 1 / m_fRate);
 	}
 
 	//
 	// EeseIn
 	//
-	CCEaseIn* CCEaseIn::actionWithAction(CCActionInterval *pAction, float fRate)
+	CCEaseIn* CCEaseIn::create(CCActionInterval *pAction, float fRate)
 	{
 		CCEaseIn *pRet = new CCEaseIn();
 		if (pRet)
@@ -234,7 +234,7 @@ namespace cocos2d {
 	//
 	// EaseOut
 	//
-	CCEaseOut* CCEaseOut::actionWithAction(CCActionInterval *pAction, float fRate)
+	CCEaseOut* CCEaseOut::create(CCActionInterval *pAction, float fRate)
 	{
 		CCEaseOut *pRet = new CCEaseOut();
 		if (pRet)
@@ -281,7 +281,7 @@ namespace cocos2d {
 	//
 	// EaseInOut
 	//
-	CCEaseInOut* CCEaseInOut::actionWithAction(CCActionInterval *pAction, float fRate)
+	CCEaseInOut* CCEaseInOut::create(CCActionInterval *pAction, float fRate)
 	{
 		CCEaseInOut *pRet = new CCEaseInOut();
 		if (pRet)
@@ -344,13 +344,13 @@ namespace cocos2d {
 	// InOut and OutIn are symmetrical
 	CCActionInterval* CCEaseInOut::reverse(void)
 	{
-		return CCEaseInOut::actionWithAction(m_pOther->reverse(), m_fRate);
+		return CCEaseInOut::create(m_pOther->reverse(), m_fRate);
 	}
 
 	//
 	// EaseExponentialIn
 	//
-	CCEaseExponentialIn* CCEaseExponentialIn::actionWithAction(CCActionInterval* pAction)
+	CCEaseExponentialIn* CCEaseExponentialIn::create(CCActionInterval* pAction)
 	{
 		CCEaseExponentialIn *pRet = new CCEaseExponentialIn();
 		if (pRet)
@@ -396,13 +396,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseExponentialIn::reverse(void)
 	{
-		return CCEaseExponentialOut::actionWithAction(m_pOther->reverse());
+		return CCEaseExponentialOut::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseExponentialOut
 	//
-	CCEaseExponentialOut* CCEaseExponentialOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseExponentialOut* CCEaseExponentialOut::create(CCActionInterval* pAction)
 	{
 		CCEaseExponentialOut *pRet = new CCEaseExponentialOut();
 		if (pRet)
@@ -448,13 +448,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseExponentialOut::reverse(void)
 	{
-		return CCEaseExponentialIn::actionWithAction(m_pOther->reverse());
+		return CCEaseExponentialIn::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseExponentialInOut
 	//
-	CCEaseExponentialInOut* CCEaseExponentialInOut::actionWithAction(CCActionInterval *pAction)
+	CCEaseExponentialInOut* CCEaseExponentialInOut::create(CCActionInterval *pAction)
 	{
 		CCEaseExponentialInOut *pRet = new CCEaseExponentialInOut();
 		if (pRet)
@@ -511,7 +511,7 @@ namespace cocos2d {
 	//
 	// EaseSineIn
 	//
-	CCEaseSineIn* CCEaseSineIn::actionWithAction(CCActionInterval* pAction)
+	CCEaseSineIn* CCEaseSineIn::create(CCActionInterval* pAction)
 	{
 		CCEaseSineIn *pRet = new CCEaseSineIn();
 		if (pRet)
@@ -557,13 +557,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseSineIn::reverse(void)
 	{
-		return CCEaseSineOut::actionWithAction(m_pOther->reverse());
+		return CCEaseSineOut::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseSineOut
 	//
-	CCEaseSineOut* CCEaseSineOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseSineOut* CCEaseSineOut::create(CCActionInterval* pAction)
 	{
 		CCEaseSineOut *pRet = new CCEaseSineOut();
 		if (pRet)
@@ -609,13 +609,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseSineOut::reverse(void)
 	{
-		return CCEaseSineIn::actionWithAction(m_pOther->reverse());
+		return CCEaseSineIn::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseSineInOut
 	//
-	CCEaseSineInOut* CCEaseSineInOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseSineInOut* CCEaseSineInOut::create(CCActionInterval* pAction)
 	{
 		CCEaseSineInOut *pRet = new CCEaseSineInOut();
 		if (pRet)
@@ -662,7 +662,7 @@ namespace cocos2d {
 	//
 	// EaseElastic
 	//
-	CCEaseElastic* CCEaseElastic::actionWithAction(CCActionInterval *pAction)
+	CCEaseElastic* CCEaseElastic::create(CCActionInterval *pAction)
 	{
 		CCEaseElastic *pRet = new CCEaseElastic();
 		if (pRet)
@@ -680,7 +680,7 @@ namespace cocos2d {
 		return pRet; 
 	}
 
-	CCEaseElastic* CCEaseElastic::actionWithAction(CCActionInterval *pAction, float fPeriod)
+	CCEaseElastic* CCEaseElastic::create(CCActionInterval *pAction, float fPeriod)
 	{
 		CCEaseElastic *pRet = new CCEaseElastic();
 		if (pRet)
@@ -745,7 +745,7 @@ namespace cocos2d {
     //
 	// EaseElasticIn
 	//
-	CCEaseElasticIn* CCEaseElasticIn::actionWithAction(CCActionInterval *pAction, float fPeriod)
+	CCEaseElasticIn* CCEaseElasticIn::create(CCActionInterval *pAction, float fPeriod)
 	{
 		CCEaseElasticIn *pRet = new CCEaseElasticIn();
 		if (pRet)
@@ -763,7 +763,7 @@ namespace cocos2d {
 		return pRet; 
 	}
 
-	CCEaseElasticIn* CCEaseElasticIn::actionWithAction(CCActionInterval *pAction)
+	CCEaseElasticIn* CCEaseElasticIn::create(CCActionInterval *pAction)
 	{
 		CCEaseElasticIn *pRet = new CCEaseElasticIn();
 		if (pRet)
@@ -821,13 +821,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseElasticIn::reverse(void)
 	{
-		return CCEaseElasticOut::actionWithAction(m_pOther->reverse(), m_fPeriod);
+		return CCEaseElasticOut::create(m_pOther->reverse(), m_fPeriod);
 	}
 
 	//
 	// EaseElasticOut
 	//
-	CCEaseElasticOut* CCEaseElasticOut::actionWithAction(CCActionInterval *pAction)
+	CCEaseElasticOut* CCEaseElasticOut::create(CCActionInterval *pAction)
 	{
 		CCEaseElasticOut *pRet = new CCEaseElasticOut();
 		if (pRet)
@@ -845,7 +845,7 @@ namespace cocos2d {
 		return pRet; 
 	}
 
-	CCEaseElasticOut* CCEaseElasticOut::actionWithAction(CCActionInterval *pAction, float fPeriod)
+	CCEaseElasticOut* CCEaseElasticOut::create(CCActionInterval *pAction, float fPeriod)
 	{
 		CCEaseElasticOut *pRet = new CCEaseElasticOut();
 		if (pRet)
@@ -902,13 +902,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseElasticOut::reverse(void)
 	{
-		return CCEaseElasticIn::actionWithAction(m_pOther->reverse(), m_fPeriod);
+		return CCEaseElasticIn::create(m_pOther->reverse(), m_fPeriod);
 	}
 
 	//
 	// EaseElasticInOut
 	//
-	CCEaseElasticInOut* CCEaseElasticInOut::actionWithAction(CCActionInterval *pAction)
+	CCEaseElasticInOut* CCEaseElasticInOut::create(CCActionInterval *pAction)
 	{
 		CCEaseElasticInOut *pRet = new CCEaseElasticInOut();
 		if (pRet)
@@ -926,7 +926,7 @@ namespace cocos2d {
 		return pRet; 
 	}
 
-	CCEaseElasticInOut* CCEaseElasticInOut::actionWithAction(CCActionInterval *pAction, float fPeriod)
+	CCEaseElasticInOut* CCEaseElasticInOut::create(CCActionInterval *pAction, float fPeriod)
 	{
 		CCEaseElasticInOut *pRet = new CCEaseElasticInOut();
 		if (pRet)
@@ -999,13 +999,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseElasticInOut::reverse(void)
 	{
-		return CCEaseInOut::actionWithAction(m_pOther->reverse(), m_fPeriod);
+		return CCEaseInOut::create(m_pOther->reverse(), m_fPeriod);
 	}
 
 	//
 	// EaseBounce
 	//
-	CCEaseBounce* CCEaseBounce::actionWithAction(CCActionInterval* pAction)
+	CCEaseBounce* CCEaseBounce::create(CCActionInterval* pAction)
 	{
 		CCEaseBounce *pRet = new CCEaseBounce();
 		if (pRet)
@@ -1068,7 +1068,7 @@ namespace cocos2d {
 	//
 	// EaseBounceIn
 	//
-	CCEaseBounceIn* CCEaseBounceIn::actionWithAction(CCActionInterval* pAction)
+	CCEaseBounceIn* CCEaseBounceIn::create(CCActionInterval* pAction)
 	{
 		CCEaseBounceIn *pRet = new CCEaseBounceIn();
 		if (pRet)
@@ -1115,13 +1115,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseBounceIn::reverse(void)
 	{
-		return CCEaseBounceOut::actionWithAction(m_pOther->reverse());
+		return CCEaseBounceOut::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseBounceOut
 	//
-	CCEaseBounceOut* CCEaseBounceOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseBounceOut* CCEaseBounceOut::create(CCActionInterval* pAction)
 	{
 		CCEaseBounceOut *pRet = new CCEaseBounceOut();
 		if (pRet)
@@ -1168,13 +1168,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseBounceOut::reverse(void)
 	{
-		return CCEaseBounceIn::actionWithAction(m_pOther->reverse());
+		return CCEaseBounceIn::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseBounceInOut
 	//
-	CCEaseBounceInOut* CCEaseBounceInOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseBounceInOut* CCEaseBounceInOut::create(CCActionInterval* pAction)
 	{
 		CCEaseBounceInOut *pRet = new CCEaseBounceInOut();
 		if (pRet)
@@ -1232,7 +1232,7 @@ namespace cocos2d {
 	//
 	// EaseBackIn
 	//
-	CCEaseBackIn* CCEaseBackIn::actionWithAction(CCActionInterval *pAction)
+	CCEaseBackIn* CCEaseBackIn::create(CCActionInterval *pAction)
 	{
 		CCEaseBackIn *pRet = new CCEaseBackIn();
 		if (pRet)
@@ -1279,13 +1279,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseBackIn::reverse(void)
 	{
-		return CCEaseBackOut::actionWithAction(m_pOther->reverse());
+		return CCEaseBackOut::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseBackOut
 	//
-	CCEaseBackOut* CCEaseBackOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseBackOut* CCEaseBackOut::create(CCActionInterval* pAction)
 	{
 		CCEaseBackOut *pRet = new CCEaseBackOut();
 		if (pRet)
@@ -1334,13 +1334,13 @@ namespace cocos2d {
 
 	CCActionInterval* CCEaseBackOut::reverse(void)
 	{
-		return CCEaseBackIn::actionWithAction(m_pOther->reverse());
+		return CCEaseBackIn::create(m_pOther->reverse());
 	}
 
 	//
 	// EaseBackInOut
 	//
-	CCEaseBackInOut* CCEaseBackInOut::actionWithAction(CCActionInterval* pAction)
+	CCEaseBackInOut* CCEaseBackInOut::create(CCActionInterval* pAction)
 	{
 		CCEaseBackInOut *pRet = new CCEaseBackInOut();
 		if (pRet)

@@ -328,7 +328,7 @@ CCActionInterval* CCSequence::reverse(void)
 //
 // Repeat
 //
-CCRepeat* CCRepeat::actionWithAction(CCFiniteTimeAction *pAction, unsigned int times)
+CCRepeat* CCRepeat::create(CCFiniteTimeAction *pAction, unsigned int times)
 {
 	CCRepeat* pRepeat = new CCRepeat();
 	pRepeat->initWithAction(pAction, times);
@@ -446,7 +446,7 @@ bool CCRepeat::isDone(void)
 
 CCActionInterval* CCRepeat::reverse(void)
 {
-	return CCRepeat::actionWithAction(m_pInnerAction->reverse(), m_uTimes);
+	return CCRepeat::create(m_pInnerAction->reverse(), m_uTimes);
 }
 
 //
@@ -456,7 +456,7 @@ CCRepeatForever::~CCRepeatForever()
 {
 	CC_SAFE_RELEASE(m_pInnerAction);
 }
-CCRepeatForever *CCRepeatForever::actionWithAction(CCActionInterval *pAction)
+CCRepeatForever *CCRepeatForever::create(CCActionInterval *pAction)
 {
 	CCRepeatForever *pRet = new CCRepeatForever();
 	if (pRet && pRet->initWithAction(pAction))
@@ -521,7 +521,7 @@ bool CCRepeatForever::isDone()
 
 CCActionInterval *CCRepeatForever::reverse()
 {
-	return (CCActionInterval*)(CCRepeatForever::actionWithAction(m_pInnerAction->reverse()));
+	return (CCActionInterval*)(CCRepeatForever::create(m_pInnerAction->reverse()));
 }
 
 //
@@ -1957,7 +1957,7 @@ CCActionInterval* CCDelayTime::reverse(void)
 //
 // ReverseTime
 //
-CCReverseTime* CCReverseTime::actionWithAction(CCFiniteTimeAction *pAction)
+CCReverseTime* CCReverseTime::create(CCFiniteTimeAction *pAction)
 {
 	// casting to prevent warnings
 	CCReverseTime *pReverseTime = new CCReverseTime();

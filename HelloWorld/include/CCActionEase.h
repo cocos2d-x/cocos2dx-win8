@@ -54,7 +54,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCActionEase* actionWithAction(CCActionInterval *pAction);
+	static CCActionEase* create(CCActionInterval *pAction);
 
 protected:
 	CCActionInterval *m_pOther;
@@ -81,7 +81,7 @@ public:
 
 public:
 	/** Creates the action with the inner action and the rate parameter */
-	static CCEaseRateAction* actionWithAction(CCActionInterval* pAction, float fRate);
+	static CCEaseRateAction* create(CCActionInterval* pAction, float fRate);
 
 protected:
 	float m_fRate;
@@ -97,7 +97,7 @@ public:
 	virtual CCObject* copyWithZone(CCZone* pZone);
 public:
 	/** Creates the action with the inner action and the rate parameter */
-	static CCEaseIn* actionWithAction(CCActionInterval* pAction, float fRate);
+	static CCEaseIn* create(CCActionInterval* pAction, float fRate);
 };
 
 /** 
@@ -111,7 +111,7 @@ public:
 
 public:
 	/** Creates the action with the inner action and the rate parameter */
-    static CCEaseOut* actionWithAction(CCActionInterval* pAction, float fRate);
+    static CCEaseOut* create(CCActionInterval* pAction, float fRate);
 };
 
 /** 
@@ -126,7 +126,7 @@ public:
 
 public:
 	/** Creates the action with the inner action and the rate parameter */
-	static CCEaseInOut* actionWithAction(CCActionInterval* pAction, float fRate);
+	static CCEaseInOut* create(CCActionInterval* pAction, float fRate);
 };
 
 /** 
@@ -141,7 +141,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseExponentialIn* actionWithAction(CCActionInterval* pAction);
+	static CCEaseExponentialIn* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -156,7 +156,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseExponentialOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseExponentialOut* create(CCActionInterval* pAction);
 
 };
 
@@ -171,7 +171,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseExponentialInOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseExponentialInOut* create(CCActionInterval* pAction);
 
 };
 
@@ -187,7 +187,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseSineIn* actionWithAction(CCActionInterval* pAction);
+	static CCEaseSineIn* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -202,7 +202,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseSineOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseSineOut* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -216,7 +216,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseSineInOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseSineInOut* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -241,9 +241,9 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseElastic* actionWithAction(CCActionInterval *pAction);
+	static CCEaseElastic* create(CCActionInterval *pAction);
 	/** Creates the action with the inner action and the period in radians (default is 0.3) */
-	static CCEaseElastic* actionWithAction(CCActionInterval *pAction, float fPeriod);
+	static CCEaseElastic* create(CCActionInterval *pAction, float fPeriod);
 
 protected:
 	float m_fPeriod;
@@ -263,9 +263,9 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseElasticIn* actionWithAction(CCActionInterval *pAction);
+	static CCEaseElasticIn* create(CCActionInterval *pAction);
 	/** Creates the action with the inner action and the period in radians (default is 0.3) */
-	static CCEaseElasticIn* actionWithAction(CCActionInterval *pAction, float fPeriod);
+	static CCEaseElasticIn* create(CCActionInterval *pAction, float fPeriod);
 };
 
 /** 
@@ -282,9 +282,9 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseElasticOut* actionWithAction(CCActionInterval *pAction);
+	static CCEaseElasticOut* create(CCActionInterval *pAction);
 	/** Creates the action with the inner action and the period in radians (default is 0.3) */
-	static CCEaseElasticOut* actionWithAction(CCActionInterval *pAction, float fPeriod);
+	static CCEaseElasticOut* create(CCActionInterval *pAction, float fPeriod);
 };
 
 /** 
@@ -301,9 +301,9 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseElasticInOut* actionWithAction(CCActionInterval *pAction);
+	static CCEaseElasticInOut* create(CCActionInterval *pAction);
 	/** Creates the action with the inner action and the period in radians (default is 0.3) */
-	static CCEaseElasticInOut* actionWithAction(CCActionInterval *pAction, float fPeriod);
+	static CCEaseElasticInOut* create(CCActionInterval *pAction, float fPeriod);
 };
 
 /** 
@@ -318,7 +318,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBounce* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBounce* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -335,7 +335,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBounceIn* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBounceIn* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -352,7 +352,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBounceOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBounceOut* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -368,7 +368,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBounceInOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBounceInOut* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -385,7 +385,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBackIn* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBackIn* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -402,7 +402,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBackOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBackOut* create(CCActionInterval* pAction);
 };
 
 /** 
@@ -418,7 +418,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCEaseBackInOut* actionWithAction(CCActionInterval* pAction);
+	static CCEaseBackInOut* create(CCActionInterval* pAction);
 };
 
 }

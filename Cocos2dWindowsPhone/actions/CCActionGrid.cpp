@@ -100,7 +100,7 @@ namespace cocos2d
 
 	CCActionInterval* CCGridAction::reverse(void)
 	{
-		return CCReverseTime::actionWithAction(this);
+		return CCReverseTime::create(this);
 	}
 
 	CCObject* CCGridAction::copyWithZone(CCZone *pZone)
@@ -178,7 +178,7 @@ namespace cocos2d
 
 	// implementation CCAccelDeccelAmplitude
 
-	CCAccelDeccelAmplitude* CCAccelDeccelAmplitude::actionWithAction(CCAction *pAction, ccTime duration)
+	CCAccelDeccelAmplitude* CCAccelDeccelAmplitude::create(CCAction *pAction, ccTime duration)
 	{
 		CCAccelDeccelAmplitude *pRet = new CCAccelDeccelAmplitude();
 		if (pRet)
@@ -236,12 +236,12 @@ namespace cocos2d
 
 	CCActionInterval* CCAccelDeccelAmplitude::reverse(void)
 	{
-		return CCAccelDeccelAmplitude::actionWithAction(m_pOther->reverse(), m_fDuration);
+		return CCAccelDeccelAmplitude::create(m_pOther->reverse(), m_fDuration);
 	}
 
 	// implementation of AccelAmplitude
 
-	CCAccelAmplitude* CCAccelAmplitude::actionWithAction(CCAction *pAction, ccTime duration)
+	CCAccelAmplitude* CCAccelAmplitude::create(CCAction *pAction, ccTime duration)
 	{
 		CCAccelAmplitude *pRet = new CCAccelAmplitude();
 		if (pRet)
@@ -292,12 +292,12 @@ namespace cocos2d
 
 	CCActionInterval* CCAccelAmplitude::reverse(void)
 	{
-		return CCAccelAmplitude::actionWithAction(m_pOther->reverse(), m_fDuration);
+		return CCAccelAmplitude::create(m_pOther->reverse(), m_fDuration);
 	}
 
 	// DeccelAmplitude
 
-	CCDeccelAmplitude* CCDeccelAmplitude::actionWithAction(CCAction *pAction, ccTime duration)
+	CCDeccelAmplitude* CCDeccelAmplitude::create(CCAction *pAction, ccTime duration)
 	{
 		CCDeccelAmplitude *pRet = new CCDeccelAmplitude();
 		if (pRet)
@@ -348,7 +348,7 @@ namespace cocos2d
 
 	CCActionInterval* CCDeccelAmplitude::reverse(void)
 	{
-		return CCDeccelAmplitude::actionWithAction(m_pOther->reverse(), m_fDuration);
+		return CCDeccelAmplitude::create(m_pOther->reverse(), m_fDuration);
 	}
 
 	// implementation of StopGrid

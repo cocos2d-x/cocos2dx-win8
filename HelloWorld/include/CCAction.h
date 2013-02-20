@@ -180,7 +180,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCSpeed* actionWithAction(CCActionInterval *pAction, float fRate);
+	static CCSpeed* create(CCActionInterval *pAction, float fRate);
     
 protected:
 	float m_fSpeed;

@@ -343,7 +343,7 @@ CCActionInterval* CCTransitionMoveInL::action()
 
 CCActionInterval* CCTransitionMoveInL::easeActionWithAction(CCActionInterval* action)
 {
-	return CCEaseOut::actionWithAction(action, 2.0f);
+	return CCEaseOut::create(action, 2.0f);
 //	return [EaseElasticOut actionWithAction:action period:0.4f];
 }
 
@@ -464,7 +464,7 @@ CCActionInterval* CCTransitionSlideInL::action()
 
 CCActionInterval* CCTransitionSlideInL::easeActionWithAction(CCActionInterval* action)
 {
-	return CCEaseOut::actionWithAction(action, 2.0f);
+	return CCEaseOut::create(action, 2.0f);
 //	return [EaseElasticOut actionWithAction:action period:0.4f];
 }
 
@@ -598,7 +598,7 @@ void CCTransitionShrinkGrow::onEnter()
 }
 CCActionInterval* CCTransitionShrinkGrow:: easeActionWithAction(CCActionInterval* action)
 {
-	return CCEaseOut::actionWithAction(action, 2.0f);
+	return CCEaseOut::create(action, 2.0f);
 //	return [EaseElasticOut actionWithAction:action period:0.3f];
 }
 
@@ -1282,7 +1282,7 @@ CCActionInterval* CCTransitionSplitCols:: action()
 
 CCActionInterval* CCTransitionSplitCols::easeActionWithAction(CCActionInterval * action)
 {
-	return CCEaseInOut::actionWithAction(action, 3.0f);
+	return CCEaseInOut::create(action, 3.0f);
 }
 
 IMPLEMENT_TRANSITIONWITHDURATION(CCTransitionSplitCols)

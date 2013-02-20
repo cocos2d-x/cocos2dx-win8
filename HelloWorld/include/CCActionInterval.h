@@ -151,7 +151,7 @@ public:
 
 public:
 	/** creates a CCRepeat action. Times is an unsigned integer between 1 and pow(2,30) */
-	static CCRepeat* actionWithAction(CCFiniteTimeAction *pAction, unsigned int times);
+	static CCRepeat* create(CCFiniteTimeAction *pAction, unsigned int times);
 
 protected:
 	unsigned int m_uTimes;
@@ -197,7 +197,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCRepeatForever* actionWithAction(CCActionInterval *pAction);
+	static CCRepeatForever* create(CCActionInterval *pAction);
 
 protected:
 	/** Inner action */
@@ -657,7 +657,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCReverseTime* actionWithAction(CCFiniteTimeAction *pAction);
+	static CCReverseTime* create(CCFiniteTimeAction *pAction);
 
 protected:
 	CCFiniteTimeAction *m_pOther;

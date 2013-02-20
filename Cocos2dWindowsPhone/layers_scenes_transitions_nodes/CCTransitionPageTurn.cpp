@@ -118,7 +118,7 @@ CCActionInterval* CCTransitionPageTurn:: actionWithSize(const ccGridSize& vector
 	if( m_bBack )
 	{
 		// Get hold of the PageTurn3DAction
-		return CCReverseTime::actionWithAction
+		return CCReverseTime::create
 		(
 			CCPageTurn3D::actionWithSize(vector, m_fDuration)
 		);

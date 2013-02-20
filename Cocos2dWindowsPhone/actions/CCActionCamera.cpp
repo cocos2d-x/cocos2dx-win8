@@ -41,7 +41,7 @@ NS_CC_BEGIN
 	
 	CCActionInterval * CCActionCamera::reverse()
 	{
-		return CCReverseTime::actionWithAction(this);
+		return CCReverseTime::create(this);
 	}
 	//
 	// CCOrbitCamera

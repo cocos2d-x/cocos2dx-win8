@@ -120,7 +120,7 @@ CCSpeed::~CCSpeed()
 	CC_SAFE_RELEASE(m_pInnerAction);
 }
 
-CCSpeed * CCSpeed::actionWithAction(CCActionInterval *pAction, float fRate)
+CCSpeed * CCSpeed::create(CCActionInterval *pAction, float fRate)
 {
 	CCSpeed *pRet = new CCSpeed();
 	if (pRet && pRet->initWithAction(pAction, fRate))
@@ -186,7 +186,7 @@ bool CCSpeed::isDone()
 
 CCActionInterval *CCSpeed::reverse()
 {
-	 return (CCActionInterval*)(CCSpeed::actionWithAction(m_pInnerAction->reverse(), m_fSpeed));
+	 return (CCActionInterval*)(CCSpeed::create(m_pInnerAction->reverse(), m_fSpeed));
 }
 
 void CCSpeed::setInnerAction(CCActionInterval *pAction)

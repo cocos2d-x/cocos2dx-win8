@@ -115,7 +115,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with an inner action that has the amplitude property, and a duration time */
-		static CCAccelDeccelAmplitude* actionWithAction(CCAction *pAction, ccTime duration);
+		static CCAccelDeccelAmplitude* create(CCAction *pAction, ccTime duration);
 
 	protected:
 		float m_fRate;
@@ -141,7 +141,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with an inner action that has the amplitude property, and a duration time */
-		static CCAccelAmplitude* actionWithAction(CCAction *pAction, ccTime duration);
+		static CCAccelAmplitude* create(CCAction *pAction, ccTime duration);
 
 	protected:
 		float m_fRate;
@@ -167,7 +167,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with an inner action that has the amplitude property, and a duration time */
-        static CCDeccelAmplitude* actionWithAction(CCAction *pAction, ccTime duration);
+        static CCDeccelAmplitude* create(CCAction *pAction, ccTime duration);
 
 	protected:
 		float m_fRate;
