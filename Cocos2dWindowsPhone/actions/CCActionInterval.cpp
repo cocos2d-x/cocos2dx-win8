@@ -29,12 +29,12 @@
 
 #include <stdarg.h>
 
-namespace cocos2d {
+NS_CC_BEGIN
 
 //
 // IntervalAction
 //
-CCActionInterval* CCActionInterval::actionWithDuration(ccTime d)
+CCActionInterval* CCActionInterval::create(ccTime d)
 {
 	CCActionInterval *pAction = new CCActionInterval();
 	pAction->initWithDuration(d);
@@ -2215,4 +2215,4 @@ CCActionInterval* CCAnimate::reverse(void)
 	return CCAnimate::actionWithDuration(m_fDuration, pNewAnim, m_bRestoreOriginalFrame);
 }
 
-}
+NS_CC_END

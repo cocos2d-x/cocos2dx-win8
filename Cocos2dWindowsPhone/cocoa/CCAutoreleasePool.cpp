@@ -20,8 +20,7 @@
 #include "CCAutoreleasePool.h"
 #include "ccMacros.h"
 
-namespace cocos2d 
-{
+NS_CC_BEGIN
 
 CCPoolManager	g_PoolManager;
 
@@ -182,4 +181,4 @@ CCAutoreleasePool* CCPoolManager::getCurReleasePool()
 	return m_pCurReleasePool;
 }
 
-}
+NS_CC_END

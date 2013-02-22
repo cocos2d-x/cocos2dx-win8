@@ -25,8 +25,7 @@
 #include "platform.h"
 #include "CCDirector.h"
 
-namespace cocos2d
-{
+NS_CC_BEGIN
 	CCGrabber::CCGrabber(void)
 		: m_fbo(0)
 		, m_oldFBO(0)
@@ -118,4 +117,4 @@ namespace cocos2d
 		}
 		return true;
 	}
-} // end of namespace cocos2d
+NS_CC_END

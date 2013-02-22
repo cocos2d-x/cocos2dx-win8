@@ -72,7 +72,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCActionInterval* actionWithDuration(ccTime d);
+	static CCActionInterval* create(ccTime d);
 
 public:
     //extension in CCGridAction 

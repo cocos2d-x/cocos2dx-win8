@@ -29,8 +29,7 @@ THE SOFTWARE.
 
 #include "CCGeometry.h"
 
-namespace cocos2d
-{
+NS_CC_BEGIN
     /**
     @brief Returns a Core Graphics rectangle structure corresponding to the data in a given string.
     @param pszContent   A string object whose contents are of the form "{{x,y},{w, h}}",
@@ -66,7 +65,7 @@ namespace cocos2d
             If the string is not well-formed, the function returns CCSizeZero.
     */
 	CCSize CC_DLL CCSizeFromString(const char* pszContent);
-}
+NS_CC_END
 
 #endif // __PLATFOMR_CCNS_H__
 
