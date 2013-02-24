@@ -42,7 +42,8 @@ using namespace DirectX;
 #endif
 
 NS_CC_BEGIN
-	static CCDrawingPrimitive *pSharedDrawingPrimitive = NULL;
+
+static CCDrawingPrimitive *pSharedDrawingPrimitive = NULL;
 
 void ccDrawPoint(const CCPoint& point)
 {

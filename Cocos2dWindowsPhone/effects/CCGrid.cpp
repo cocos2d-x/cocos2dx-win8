@@ -36,7 +36,7 @@ using namespace DirectX;
 NS_CC_BEGIN
 	// implementation of CCGridBase
 
-	CCGridBase* CCGridBase::gridWithSize(const ccGridSize& gridSize)
+	CCGridBase* CCGridBase::create(const ccGridSize& gridSize)
 {
 	CCGridBase *pGridBase = new CCGridBase();
 
@@ -55,7 +55,7 @@ NS_CC_BEGIN
 	return pGridBase;
 }
 
-CCGridBase* CCGridBase::gridWithSize(const ccGridSize& gridSize, CCTexture2D *texture, bool flipped)
+CCGridBase* CCGridBase::create(const ccGridSize& gridSize, CCTexture2D *texture, bool flipped)
 {
 	CCGridBase *pGridBase = new CCGridBase();
 
@@ -592,7 +592,7 @@ void CCGridBase::Render()
 
 // implementation of CCGrid3D
 
-CCGrid3D* CCGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
+CCGrid3D* CCGrid3D::create(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
 {
 	CCGrid3D *pRet= new CCGrid3D();
 
@@ -612,7 +612,7 @@ CCGrid3D* CCGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture2D *pTextu
 	return pRet;
 }
 
-CCGrid3D* CCGrid3D::gridWithSize(const ccGridSize& gridSize)
+CCGrid3D* CCGrid3D::create(const ccGridSize& gridSize)
 {
 	CCGrid3D *pRet= new CCGrid3D();
 
@@ -758,7 +758,7 @@ CCTiledGrid3D::~CCTiledGrid3D(void)
 {
 }
 
-CCTiledGrid3D* CCTiledGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
+CCTiledGrid3D* CCTiledGrid3D::create(const ccGridSize& gridSize, CCTexture2D *pTexture, bool bFlipped)
 {
 	CCTiledGrid3D *pRet= new CCTiledGrid3D();
 
@@ -778,7 +778,7 @@ CCTiledGrid3D* CCTiledGrid3D::gridWithSize(const ccGridSize& gridSize, CCTexture
 	return pRet;
 }
 
-CCTiledGrid3D* CCTiledGrid3D::gridWithSize(const ccGridSize& gridSize)
+CCTiledGrid3D* CCTiledGrid3D::create(const ccGridSize& gridSize)
 {
 	CCTiledGrid3D *pRet= new CCTiledGrid3D();
 
