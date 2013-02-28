@@ -95,7 +95,7 @@ bool CCSprite::initWithBatchNodeRectInPixels(CCSpriteBatchNode *batchNode, const
 	return false;
 }
 
-CCSprite* CCSprite::spriteWithTexture(CCTexture2D *pTexture)
+CCSprite* CCSprite::create(CCTexture2D *pTexture)
 {
 	CCSprite *pobSprite = new CCSprite();
 	if (pobSprite && pobSprite->initWithTexture(pTexture))
@@ -107,7 +107,7 @@ CCSprite* CCSprite::spriteWithTexture(CCTexture2D *pTexture)
 	return NULL;
 }
 
-CCSprite* CCSprite::spriteWithTexture(CCTexture2D *pTexture, const CCRect& rect)
+CCSprite* CCSprite::create(CCTexture2D *pTexture, const CCRect& rect)
 {
     CCSprite *pobSprite = new CCSprite();
 	if (pobSprite && pobSprite->initWithTexture(pTexture, rect))
@@ -119,7 +119,7 @@ CCSprite* CCSprite::spriteWithTexture(CCTexture2D *pTexture, const CCRect& rect)
 	return NULL;
 }
 
-CCSprite* CCSprite::spriteWithTexture(CCTexture2D *pTexture, const CCRect& rect, const CCPoint& offset)
+CCSprite* CCSprite::create(CCTexture2D *pTexture, const CCRect& rect, const CCPoint& offset)
 {
     CC_UNUSED_PARAM(pTexture);
     CC_UNUSED_PARAM(rect);
@@ -129,7 +129,7 @@ CCSprite* CCSprite::spriteWithTexture(CCTexture2D *pTexture, const CCRect& rect,
 	return NULL;
 }
 
-CCSprite* CCSprite::spriteWithFile(const char *pszFileName)
+CCSprite* CCSprite::create(const char *pszFileName)
 {
 	CCSprite *pobSprite = new CCSprite();
     if (pobSprite && pobSprite->initWithFile(pszFileName))
@@ -141,7 +141,7 @@ CCSprite* CCSprite::spriteWithFile(const char *pszFileName)
 	return NULL;
 }
 
-CCSprite* CCSprite::spriteWithFile(const char *pszFileName, const CCRect& rect)
+CCSprite* CCSprite::create(const char *pszFileName, const CCRect& rect)
 {
     CCSprite *pobSprite = new CCSprite();
 	if (pobSprite && pobSprite->initWithFile(pszFileName, rect))
@@ -153,7 +153,7 @@ CCSprite* CCSprite::spriteWithFile(const char *pszFileName, const CCRect& rect)
 	return NULL;
 }
 
-CCSprite* CCSprite::spriteWithSpriteFrame(CCSpriteFrame *pSpriteFrame)
+CCSprite* CCSprite::createWithSpriteFrame(CCSpriteFrame *pSpriteFrame)
 {
     CCSprite *pobSprite = new CCSprite();
     if (pobSprite && pobSprite->initWithSpriteFrame(pSpriteFrame))
@@ -165,14 +165,14 @@ CCSprite* CCSprite::spriteWithSpriteFrame(CCSpriteFrame *pSpriteFrame)
 	return NULL;
 }
 
-CCSprite* CCSprite::spriteWithSpriteFrameName(const char *pszSpriteFrameName)
+CCSprite* CCSprite::createWithSpriteFrameName(const char *pszSpriteFrameName)
 {
 	CCSpriteFrame *pFrame = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName(pszSpriteFrameName);
 
     char msg[256] = {0};
     sprintf(msg, "Invalid spriteFrameName: %s", pszSpriteFrameName);
     CCAssert(pFrame != NULL, msg);
-	return spriteWithSpriteFrame(pFrame);
+	return createWithSpriteFrame(pFrame);
 }
 
 bool CCSprite::init(void)

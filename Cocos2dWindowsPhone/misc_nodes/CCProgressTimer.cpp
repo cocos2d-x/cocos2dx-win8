@@ -79,7 +79,7 @@ CCProgressTimer* CCProgressTimer::progressWithTexture(CCTexture2D *pTexture)
 
 bool CCProgressTimer::initWithTexture(CCTexture2D *pTexture)
 {
-	m_pSprite = CCSprite::spriteWithTexture(pTexture);
+	m_pSprite = CCSprite::create(pTexture);
 	CC_SAFE_RETAIN(m_pSprite);
 	m_fPercentage = 0.f;
 	m_pVertexData = NULL;

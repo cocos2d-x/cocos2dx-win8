@@ -80,7 +80,7 @@ bool HelloWorld::init()
 
 		//this->resetGame();
 		//start = true;
-		//CCSprite *b = CCSprite::spriteWithFile("back.png");
+		//CCSprite *b = CCSprite::create("back.png");
 		//b->setAnchorPoint(ccp(0, 0));
 		//b->setPosition(ccp(0, 0));
 		//this->addChild(b);

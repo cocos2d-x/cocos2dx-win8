@@ -622,18 +622,18 @@ NS_CC_BEGIN
     }
     bool CCMenuItemImage::initFromNormalImage(const char *normalImage, const char *selectedImage, const char *disabledImage, CCObject* target, SEL_MenuHandler selector)
     {
-        CCNode *normalSprite = CCSprite::spriteWithFile(normalImage);
+        CCNode *normalSprite = CCSprite::create(normalImage);
         CCNode *selectedSprite = NULL;
         CCNode *disabledSprite = NULL;
         
         if (selectedImage)
         {
-            selectedSprite = CCSprite::spriteWithFile(selectedImage);
+            selectedSprite = CCSprite::create(selectedImage);
         }
         
         if(disabledImage)
         {
-            disabledSprite = CCSprite::spriteWithFile(disabledImage);
+            disabledSprite = CCSprite::create(disabledImage);
         }
         return initFromNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector);
     }

@@ -536,7 +536,7 @@ void DirectXRender::Render()
 	//ccDrawPoly(box,4,true,true);
 	//ccDrawLine(ccp(0,100),ccp(480,100));
 	////CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	////CCSprite *player = CCSprite::spriteWithFile("Player.png", CCRectMake(0, 0, 27, 40) );
+	////CCSprite *player = CCSprite::create("Player.png", CCRectMake(0, 0, 27, 40) );
 	////player->setPosition( ccp(150, 150) );
 	////player->draw();
 	////HelloWorld::schedule(schedule_selector(HelloWorld::gameLogic), 1.0));

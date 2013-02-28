@@ -122,7 +122,7 @@ bool CCRenderTexture::initWithWidthAndHeight(int w, int h, CCTexture2DPixelForma
 
         m_pTexture->setAliasTexParameters();
 
-        m_pSprite = CCSprite::spriteWithTexture(m_pTexture);
+        m_pSprite = CCSprite::create(m_pTexture);
 
 		m_pTexture->release();
 		//=m_pSprite->setScaleY(-1);
