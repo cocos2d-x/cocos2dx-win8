@@ -1209,13 +1209,13 @@ CCPoint CCNode::convertToWindowSpace(const CCPoint& nodePoint)
 // convenience methods which take a CCTouch instead of CCPoint
 CCPoint CCNode::convertTouchToNodeSpace(CCTouch *touch)
 {
-	CCPoint point = touch->locationInView();
+	CCPoint point = touch->getLocationInView();
 	point = CCDirector::sharedDirector()->convertToGL(point);
 	return this->convertToNodeSpace(point);
 }
 CCPoint CCNode::convertTouchToNodeSpaceAR(CCTouch *touch)
 {
-	CCPoint point = touch->locationInView();
+	CCPoint point = touch->getLocationInView();
 	point = CCDirector::sharedDirector()->convertToGL(point);
 	return this->convertToNodeSpaceAR(point);
 }

@@ -427,6 +427,9 @@
     <ClCompile Include="cocoa\CCString.cpp">
       <Filter>cocoa</Filter>
     </ClCompile>
+    <ClCompile Include="touch_dispatcher\CCTouch.cpp">
+      <Filter>touch_dispatcher</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h">

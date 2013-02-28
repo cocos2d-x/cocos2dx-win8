@@ -588,7 +588,7 @@ namespace cocos2d{
 
 	CCMenuItem* CCMenu::itemForTouch(CCTouch *touch)
 	{
-		CCPoint touchLocation = touch->locationInView();
+		CCPoint touchLocation = touch->getLocationInView();
 		touchLocation = CCDirector::sharedDirector()->convertToGL(touchLocation);
 
         if (m_pChildren && m_pChildren->count() > 0)

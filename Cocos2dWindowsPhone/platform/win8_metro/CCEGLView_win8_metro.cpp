@@ -708,7 +708,7 @@ void CCEGLView::OnPointerPressed(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-    pTouch->SetTouchInfo((point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
+    pTouch->setTouchInfo(id, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
     pSet->addObject(pTouch);
 
@@ -723,7 +723,7 @@ void CCEGLView::OnPointerReleased(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-    pTouch->SetTouchInfo((point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
+    pTouch->setTouchInfo(id, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
 
     m_pDelegate->touchesEnded(pSet, NULL);
@@ -741,7 +741,7 @@ void CCEGLView::OnPointerMoved(int id, const CCPoint& point)
     if (! pTouch || ! pSet)
         return;
 
-    pTouch->SetTouchInfo((point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
+    pTouch->setTouchInfo(id, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
     m_pDelegate->touchesMoved(pSet, NULL);
 }

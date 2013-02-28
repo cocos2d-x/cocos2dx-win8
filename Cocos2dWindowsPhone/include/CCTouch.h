@@ -28,33 +28,57 @@ THE SOFTWARE.
 #include "CCObject.h"
 #include "CCGeometry.h"
 
-namespace cocos2d {
+NS_CC_BEGIN
 
-class CCTouch : public CCObject
+/**
+ * @addtogroup input
+ * @{
+ */
+
+class CC_DLL CCTouch : public CCObject
 {
 public:
-    CCTouch() {}
-    CCTouch(float x, float y) :  m_point(x, y), m_prevPoint(x, y) {}
+    CCTouch() 
+        : m_nId(0)
+    {}
 
-    CCPoint locationInView() { return m_point; }
-    CCPoint previousLocationInView() { return m_prevPoint; }
-
-    void SetTouchInfo(float x, float y)
+    /** returns the current touch location in OpenGL coordinates */
+    CCPoint getLocation() const;
+    /** returns the previous touch location in OpenGL coordinates */
+    CCPoint getPreviousLocation() const;
+    /** returns the delta of 2 current touches locations in screen coordinates */
+    CCPoint getDelta() const;
+    /** returns the current touch location in screen coordinates */
+    CCPoint getLocationInView() const;
+    /** returns the previous touch location in screen coordinates */
+    CCPoint getPreviousLocationInView() const;
+    
+    void setTouchInfo(int id, float x, float y)
     {
+        m_nId = id;
         m_prevPoint = m_point;
         m_point.x   = x;
         m_point.y   = y;
     }
 
+    int getID() const
+    {
+        return m_nId;
+    }
+
 private:
+    int m_nId;
     CCPoint m_point;
-    CCPoint	m_prevPoint;
+    CCPoint m_prevPoint;
 };
 
-class CCEvent : public CCObject
+class CC_DLL CCEvent : public CCObject
 {
 };
 
-}       // end of namespace cocos2d
+// end of input group
+/// @}
+
+NS_CC_END
 
 #endif  // __PLATFORM_TOUCH_H__
