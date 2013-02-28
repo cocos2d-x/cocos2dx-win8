@@ -61,7 +61,7 @@ namespace cocos2d {
 		/** creates a CCTileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
 		The tile file will be loaded using the TextureMgr.
 		*/
-		static CCTileMapAtlas * tileMapAtlasWithTileFile(const char *tile, const char *mapFile, int tileWidth, int tileHeight);
+		static CCTileMapAtlas * create(const char *tile, const char *mapFile, int tileWidth, int tileHeight);
 		/** initializes a CCTileMap with a tile file (atlas) with a map file and the width and height of each tile in points.
 		The file will be loaded using the TextureMgr.
 		*/

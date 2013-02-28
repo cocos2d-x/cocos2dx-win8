@@ -81,7 +81,7 @@ namespace cocos2d {
 		CCTMXLayer();
 		virtual ~CCTMXLayer();
 		/** creates a CCTMXLayer with an tileset info, a layer info and a map info */
-		static CCTMXLayer * layerWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
+		static CCTMXLayer * create(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
 		/** initializes a CCTMXLayer with a tileset info, a layer info and a map info */
 		bool initWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
 
