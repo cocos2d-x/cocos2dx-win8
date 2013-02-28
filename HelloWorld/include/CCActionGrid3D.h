@@ -72,7 +72,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with duration */
-		static CCFlipX3D* actionWithDuration(ccTime duration);
+		static CCFlipX3D* create(ccTime duration);
 	};
 
 	/** @brief CCFlipY3D action */
@@ -84,7 +84,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with duration */
-		static CCFlipY3D* actionWithDuration(ccTime duration);
+		static CCFlipY3D* create(ccTime duration);
 	};
 
 	/** @brief CCLens3D action */

@@ -230,7 +230,7 @@ NS_CC_BEGIN
                 m_fOriginalScale = this->getScale();
             }
             
-            CCAction *zoomAction = CCScaleTo::actionWithDuration(0.1f, m_fOriginalScale * 1.2f);
+            CCAction *zoomAction = CCScaleTo::create(0.1f, m_fOriginalScale * 1.2f);
             zoomAction->setTag(kZoomActionTag);
             this->runAction(zoomAction);
         }
@@ -242,7 +242,7 @@ NS_CC_BEGIN
         {
             CCMenuItem::unselected();
             this->stopActionByTag(kZoomActionTag);
-            CCAction *zoomAction = CCScaleTo::actionWithDuration(0.1f, m_fOriginalScale);
+            CCAction *zoomAction = CCScaleTo::create(0.1f, m_fOriginalScale);
             zoomAction->setTag(kZoomActionTag);
             this->runAction(zoomAction);
         }

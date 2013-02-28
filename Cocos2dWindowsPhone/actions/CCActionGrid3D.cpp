@@ -102,7 +102,7 @@ void CCWaves3D::update(ccTime time)
 
 // implementation of CCFlipX3D
 
-CCFlipX3D* CCFlipX3D::actionWithDuration(ccTime duration)
+CCFlipX3D* CCFlipX3D::create(ccTime duration)
 {
 	CCFlipX3D *pAction = new CCFlipX3D();
 
@@ -228,7 +228,7 @@ void CCFlipX3D::update(ccTime time)
 
 // implementation of FlipY3D
 
-CCFlipY3D* CCFlipY3D::actionWithDuration(ccTime duration)
+CCFlipY3D* CCFlipY3D::create(ccTime duration)
 {
 	CCFlipY3D *pAction = new CCFlipY3D();
 

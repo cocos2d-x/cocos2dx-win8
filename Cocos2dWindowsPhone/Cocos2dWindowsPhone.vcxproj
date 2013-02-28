@@ -291,6 +291,7 @@ xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
     <ClCompile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="cocoa\CCString.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h" />
@@ -396,6 +397,7 @@ xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
     <ClInclude Include=".\support\zip_support\unzip.h" />
     <ClInclude Include=".\support\zip_support\ZipUtils.h" />
     <ClInclude Include=".\targetver.h" />
+    <ClInclude Include="include\ccTypeInfo.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

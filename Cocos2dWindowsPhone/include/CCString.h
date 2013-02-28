@@ -23,82 +23,136 @@ THE SOFTWARE.
 ****************************************************************************/
 #ifndef __CCSTRING_H__
 #define __CCSTRING_H__
+
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_BLACKBERRY)
+#include <string.h>
+#endif
+
+#include <stdarg.h>
 #include <string>
-#include <stdlib.h>
+#include <functional>
 #include "CCObject.h"
-#include "CCFileUtils.h"
 
-namespace cocos2d {
+NS_CC_BEGIN
 
-	class CC_DLL CCString : public CCObject
+	/**
+	* @addtogroup data_structures
+	* @{
+	*/
+
+class CC_DLL CCString : public CCObject
+{
+public:
+	CCString();
+	CCString(const char* str);
+	CCString(const std::string& str);
+	CCString(const CCString& str);
+
+	virtual ~CCString();
+
+	/* override assignment operator */
+	CCString& operator= (const CCString& other);
+
+	/** init a string with format, it's similar with the c function 'sprintf' */ 
+	bool initWithFormat(const char* format, ...);
+
+	/** convert to int value */
+	int intValue() const;
+
+	/** convert to unsigned int value */
+	unsigned int uintValue() const;
+
+	/** convert to float value */
+	float floatValue() const;
+
+	/** convert to double value */
+	double doubleValue() const;
+
+	/** convert to bool value */
+	bool boolValue() const;
+
+	/** get the C string */
+	const char* getCString() const;
+
+	/** get the length of string */
+	unsigned int length() const;
+
+	/** compare to a c string */
+	int compare(const char *) const;
+
+	/* override functions */
+	virtual CCObject* copyWithZone(CCZone* pZone);
+	virtual bool isEqual(const CCObject* pObject);
+
+	/** create a string with std string, you can also pass a c string pointer because the default constructor of std::string can access a c string pointer. 
+	*  @return A CCString pointer which is an autorelease object pointer,
+	*          it means that you needn't do a release operation unless you retain it.
+	*/
+	static CCString* create(const std::string& str);
+
+	/** create a string with format, it's similar with the c function 'sprintf', the default buffer size is (1024*100) bytes,
+	*  if you want to change it, you should modify the kMaxStringLen macro in CCString.cpp file.
+	*  @return A CCString pointer which is an autorelease object pointer,
+	*          it means that you needn't do a release operation unless you retain it.
+	*/ 
+	static CCString* createWithFormat(const char* format, ...);
+
+	/** create a string with binary data 
+	*  @return A CCString pointer which is an autorelease object pointer,
+	*          it means that you needn't do a release operation unless you retain it.
+	*/
+	static CCString* createWithData(const unsigned char* pData, unsigned long nLen);
+
+	/** create a string with a file, 
+	*  @return A CCString pointer which is an autorelease object pointer,
+	*          it means that you needn't do a release operation unless you retain it.
+	*/
+	static CCString* createWithContentsOfFile(const char* pszFileName);
+
+	int toInt()
 	{
-	public:
-		std::string m_sString;
-	public:
-		CCString()
-			:m_sString("")
-		{}
-		CCString(const char * str)
-		{
-			m_sString = str;
-		}
-		virtual ~CCString(){ m_sString.clear(); }
-		
-		int toInt()
-		{
-			return atoi(m_sString.c_str());
-		}
-		unsigned int toUInt()
-		{
-			return (unsigned int)atoi(m_sString.c_str());
-		}
-		float toFloat()
-		{
-			return (float)atof(m_sString.c_str());
-		}
-		std::string toStdString()
-		{
-			return m_sString;
-		}
+		return atoi(m_sString.c_str());
+	}
+	unsigned int toUInt()
+	{
+		return (unsigned int)atoi(m_sString.c_str());
+	}
+	float toFloat()
+	{
+		return (float)atof(m_sString.c_str());
+	}
+	std::string toStdString()
+	{
+		return m_sString;
+	}
 
-		bool isEmpty()
-		{
-			return m_sString.empty();
-		}
+	bool isEmpty()
+	{
+		return m_sString.empty();
+	}
 
-        virtual bool isEqual(const CCObject* pObject)
-        {
-            bool bRet = false;
-            const CCString* pStr = dynamic_cast<const CCString*>(pObject);
-            if (pStr != NULL)
-            {
-                if (0 == m_sString.compare(pStr->m_sString))
-                {
-                    bRet = true;
-                }
-            }
-            return bRet;
-        }
+private:
 
-        /** @brief: Get string from a file.
-        *   @return: a pointer which needs to be deleted manually by 'delete[]' .
-        */
-        static char* stringWithContentsOfFile(const char* pszFileName)
-        {
-            unsigned long size = 0;
-            unsigned char* pData = 0;
-            char* pszRet = 0;
-            pData = CCFileUtils::getFileData(pszFileName, "rb", &size);
-            do 
-            {
-                CC_BREAK_IF(!pData || size <= 0);
-                pszRet = new char[size+1];
-                pszRet[size] = '\0';
-                memcpy(pszRet, pData, size);
-                CC_SAFE_DELETE_ARRAY(pData);
-            } while (false);
-            return pszRet;
-        }
-	};
-}// namespace cocos2d
+	/** only for internal use */
+	bool initWithFormatAndValist(const char* format, va_list ap);
+
+public:
+	std::string m_sString;
+};
+
+struct CCStringCompare : public std::binary_function<CCString *, CCString *, bool> {
+public:
+	bool operator() (CCString * a, CCString * b) const {
+		return strcmp(a->getCString(), b->getCString()) < 0;
+	}
+};
+
+#define CCStringMake(str) CCString::create(str)
+#define ccs               CCStringMake
+
+// end of data_structure group
+/// @}
+
+NS_CC_END
+
 #endif //__CCSTRING_H__

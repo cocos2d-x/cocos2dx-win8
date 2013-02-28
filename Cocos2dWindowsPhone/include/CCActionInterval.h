@@ -252,7 +252,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCRotateTo* actionWithDuration(ccTime duration, float fDeltaAngle);
+	static CCRotateTo* create(ccTime duration, float fDeltaAngle);
 
 protected:
 	float m_fDstAngle;
@@ -275,7 +275,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCRotateBy* actionWithDuration(ccTime duration, float fDeltaAngle);
+	static CCRotateBy* create(ccTime duration, float fDeltaAngle);
 
 protected:
 	float m_fAngle;
@@ -296,7 +296,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCMoveTo* actionWithDuration(ccTime duration, const CCPoint& position);
+	static CCMoveTo* create(ccTime duration, const CCPoint& position);
 
 protected:
 	CCPoint m_endPosition;
@@ -320,7 +320,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCMoveBy* actionWithDuration(ccTime duration, const CCPoint& position);
+	static CCMoveBy* create(ccTime duration, const CCPoint& position);
 };
 
 /** Skews a CCNode object to given angles by modifying it's skewX and skewY attributes
@@ -336,7 +336,7 @@ public:
 	virtual void update(ccTime time);
 
 public:
-	static CCSkewTo* actionWithDuration(ccTime t, float sx, float sy);
+	static CCSkewTo* create(ccTime t, float sx, float sy);
 
 protected:
 	float m_fSkewX;
@@ -360,7 +360,7 @@ public:
 	virtual CCActionInterval* reverse(void);
 
 public:
-	static CCSkewBy* actionWithDuration(ccTime t, float deltaSkewX, float deltaSkewY);
+	static CCSkewBy* create(ccTime t, float deltaSkewX, float deltaSkewY);
 };
 
 /** @brief Moves a CCNode object simulating a parabolic jump movement by modifying it's position attribute.
@@ -378,7 +378,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCJumpBy* actionWithDuration(ccTime duration, const CCPoint& position, ccTime height, unsigned int jumps);
+	static CCJumpBy* create(ccTime duration, const CCPoint& position, ccTime height, unsigned int jumps);
 
 protected:
 	CCPoint			m_startPosition;
@@ -397,7 +397,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCJumpTo* actionWithDuration(ccTime duration, const CCPoint& position, ccTime height, int jumps);
+	static CCJumpTo* create(ccTime duration, const CCPoint& position, ccTime height, int jumps);
 };
 
 /** @typedef bezier configuration structure
@@ -426,7 +426,7 @@ public:
 
 public:
 	/** creates the action with a duration and a bezier configuration */
-	static CCBezierBy* actionWithDuration(ccTime t, const ccBezierConfig& c);
+	static CCBezierBy* create(ccTime t, const ccBezierConfig& c);
 
 protected:
 	ccBezierConfig m_sConfig;
@@ -444,7 +444,7 @@ public:
 
 public:
 	/** creates the action with a duration and a bezier configuration */
-    static CCBezierTo* actionWithDuration(ccTime t, const ccBezierConfig& c);
+    static CCBezierTo* create(ccTime t, const ccBezierConfig& c);
 };
 
 /** @brief Scales a CCNode object to a zoom factor by modifying it's scale attribute.
@@ -465,10 +465,10 @@ public:
 
 public:
 	/** creates the action with the same scale factor for X and Y */
-	static CCScaleTo* actionWithDuration(ccTime duration, float s);
+	static CCScaleTo* create(ccTime duration, float s);
 
 	/** creates the action with and X factor and a Y factor */
-	static CCScaleTo* actionWithDuration(ccTime duration, float sx, float sy);
+	static CCScaleTo* create(ccTime duration, float sx, float sy);
 protected:
 	float m_fScaleX;
 	float m_fScaleY;
@@ -491,10 +491,10 @@ public:
 
 public:
 	/** creates the action with the same scale factor for X and Y */
-	static CCScaleBy* actionWithDuration(ccTime duration, float s);
+	static CCScaleBy* create(ccTime duration, float s);
 
 	/** creates the action with and X factor and a Y factor */
-	static CCScaleBy* actionWithDuration(ccTime duration, float sx, float sy);
+	static CCScaleBy* create(ccTime duration, float sx, float sy);
 };
 
 /** @brief Blinks a CCNode object by modifying it's visible attribute
@@ -511,7 +511,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCBlink* actionWithDuration(ccTime duration, unsigned int uBlinks);
+	static CCBlink* create(ccTime duration, unsigned int uBlinks);
 protected:
 	unsigned int m_nTimes;
 };
@@ -528,7 +528,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCFadeIn* actionWithDuration(ccTime d);
+	static CCFadeIn* create(ccTime d);
 };
 
 /** @brief Fades Out an object that implements the CCRGBAProtocol protocol. It modifies the opacity from 255 to 0.
@@ -543,7 +543,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCFadeOut* actionWithDuration(ccTime d);
+	static CCFadeOut* create(ccTime d);
 };
 
 /** @brief Fades an object that implements the CCRGBAProtocol protocol. It modifies the opacity from the current value to a custom one.
@@ -561,7 +561,7 @@ public:
 
 public:
 	/** creates an action with duration and opacity */
-	static CCFadeTo* actionWithDuration(ccTime duration, CCubyte opacity);
+	static CCFadeTo* create(ccTime duration, CCubyte opacity);
 
 protected:
 	CCubyte m_toOpacity;
@@ -584,7 +584,7 @@ public:
 
 public:
 	/** creates an action with duration and color */
-	static CCTintTo* actionWithDuration(ccTime duration, CCubyte red, CCubyte green, CCubyte blue);
+	static CCTintTo* create(ccTime duration, CCubyte red, CCubyte green, CCubyte blue);
 
 protected:
 	ccColor3B m_to;
@@ -607,7 +607,7 @@ public:
 
 public:
 	/** creates an action with duration and color */
-	static CCTintBy* actionWithDuration(ccTime duration, CCshort deltaRed, CCshort deltaGreen, CCshort deltaBlue);
+	static CCTintBy* create(ccTime duration, CCshort deltaRed, CCshort deltaGreen, CCshort deltaBlue);
 
 protected:
 	CCshort m_deltaR;
@@ -630,7 +630,7 @@ public:
 
 public:
 	/** creates the action */
-	static CCDelayTime* actionWithDuration(ccTime d);
+	static CCDelayTime* create(ccTime d);
 };
 
 /** @brief Executes an action in reverse order, from time=duration to time=0
@@ -709,7 +709,7 @@ public:
 	 The 'delay' parameter of the animation will be overridden by the duration parameter.
 	 @since v0.99.0
 	 */	
-     static CCAnimate* actionWithDuration(ccTime duration, CCAnimation *pAnimation, bool bRestoreOriginalFrame);
+     static CCAnimate* create(ccTime duration, CCAnimation *pAnimation, bool bRestoreOriginalFrame);
 protected:
 	CCAnimation *m_pAnimation;
 	CCSpriteFrame *m_pOrigFrame;

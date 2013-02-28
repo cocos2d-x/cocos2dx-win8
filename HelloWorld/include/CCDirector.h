@@ -29,6 +29,7 @@ THE SOFTWARE.
 #ifndef __CCDIRECTOR_H__
 #define __CCDIRECTOR_H__
 
+
 #include "CCPlatformMacros.h"
 #include "CCObject.h"
 #include "ccTypes.h"
@@ -37,6 +38,7 @@ THE SOFTWARE.
 #include "CCGeometry.h"
 #include "CCEGLView.h"
 #include "CCGL.h"
+
 
 NS_CC_BEGIN
 
@@ -169,7 +171,7 @@ and when to execute the Scenes.
   - CC_COLOR_ARRAY is enabled
   - CC_TEXTURE_COORD_ARRAY is enabled
 */
-class CC_DLL CCDirector : public CCObject
+class CC_DLL CCDirector : public CCObject //, public TypeInfo
 {
 public: 
 	virtual bool init(void);
@@ -393,6 +395,7 @@ public:
 	/** returns a shared instance of the director */
 	static CCDirector* sharedDirector(void);
 	void resetDirector();
+	CCTouchDispatcher* getTouchDispatcher();
 
 protected:
 
