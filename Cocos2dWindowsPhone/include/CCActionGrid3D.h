@@ -106,7 +106,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with center position, radius, a grid size and duration */
-        static CCLens3D* actionWithPosition(const CCPoint& pos, float r, const ccGridSize& gridSize, ccTime duration);
+        static CCLens3D* create(const CCPoint& pos, float r, const ccGridSize& gridSize, ccTime duration);
 	protected:
 		/* lens center position */
 		CCPoint m_position;
@@ -143,7 +143,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with radius, number of waves, amplitude, a grid size and duration */
-		static CCRipple3D* actionWithPosition(const CCPoint& pos, float r, int wav, float amp, 
+		static CCRipple3D* create(const CCPoint& pos, float r, int wav, float amp, 
 			const ccGridSize& gridSize, ccTime duration);
 	protected:
 		/* center position */
@@ -251,7 +251,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with center position, number of twirls, amplitude, a grid size and duration */
-		static CCTwirl* actionWithPosition(CCPoint pos, int t, float amp, const ccGridSize& gridSize,
+		static CCTwirl* create(CCPoint pos, int t, float amp, const ccGridSize& gridSize,
 			ccTime duration);
 	protected:
 		/* twirl center */

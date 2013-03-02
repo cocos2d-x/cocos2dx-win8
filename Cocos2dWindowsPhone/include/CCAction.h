@@ -195,7 +195,7 @@ class CCRect;
 @brief CCFollow is an action that "follows" a node.
 
 Eg:
-layer->runAction(CCFollow::actionWithTarget(hero));
+layer->runAction(CCFollow::create(hero));
 
 Instead of using CCCamera as a "follower", use this action instead.
 @since v0.99.2
@@ -231,10 +231,10 @@ public:
 
 public:
 	/** creates the action with no boundary set */
-	static CCFollow* actionWithTarget(CCNode *pFollowedNode);
+	static CCFollow* create(CCNode *pFollowedNode);
 
 	/** creates the action with a set boundary */
-	static CCFollow* actionWithTarget(CCNode *pFollowedNode, const CCRect& rect);
+	static CCFollow* create(CCNode *pFollowedNode, const CCRect& rect);
 
 protected:
 	// node to follow

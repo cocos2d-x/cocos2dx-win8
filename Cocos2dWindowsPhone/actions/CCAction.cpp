@@ -207,7 +207,7 @@ CCFollow::~CCFollow()
 	CC_SAFE_RELEASE(m_pobFollowedNode);
 }
 
-CCFollow *CCFollow::actionWithTarget(CCNode *pFollowedNode)
+CCFollow *CCFollow::create(CCNode *pFollowedNode)
 {
 	CCFollow *pRet = new CCFollow();
 	if (pRet && pRet->initWithTarget(pFollowedNode))
@@ -218,7 +218,7 @@ CCFollow *CCFollow::actionWithTarget(CCNode *pFollowedNode)
 	CC_SAFE_DELETE(pRet)
 	return NULL;
 }
-CCFollow *CCFollow::actionWithTarget(CCNode *pFollowedNode, const CCRect& rect)
+CCFollow *CCFollow::create(CCNode *pFollowedNode, const CCRect& rect)
 {
 	CCFollow *pRet = new CCFollow();
 	if (pRet && pRet->initWithTarget(pFollowedNode, rect))

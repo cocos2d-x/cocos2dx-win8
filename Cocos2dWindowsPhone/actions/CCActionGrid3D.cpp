@@ -337,7 +337,7 @@ void CCFlipY3D::update(ccTime time)
 
 // implementation of Lens3D
 
-CCLens3D* CCLens3D::actionWithPosition(const CCPoint& pos, float r, const ccGridSize& gridSize, ccTime duration)
+CCLens3D* CCLens3D::create(const CCPoint& pos, float r, const ccGridSize& gridSize, ccTime duration)
 {
 	CCLens3D *pAction = new CCLens3D();
 
@@ -451,7 +451,7 @@ void CCLens3D::update(ccTime time)
 
 // implementation of Ripple3D
 
-CCRipple3D* CCRipple3D::actionWithPosition(const CCPoint& pos, float r, int wav, float amp, const ccGridSize& gridSize, ccTime duration)
+CCRipple3D* CCRipple3D::create(const CCPoint& pos, float r, int wav, float amp, const ccGridSize& gridSize, ccTime duration)
 {
 	CCRipple3D *pAction = new CCRipple3D();
 
@@ -780,7 +780,7 @@ void CCWaves::update(ccTime time)
 
 // implementation of Twirl
 
-CCTwirl* CCTwirl::actionWithPosition(CCPoint pos, int t, float amp, const ccGridSize& gridSize, ccTime duration)
+CCTwirl* CCTwirl::create(CCPoint pos, int t, float amp, const ccGridSize& gridSize, ccTime duration)
 {
 	CCTwirl *pAction = new CCTwirl();
 

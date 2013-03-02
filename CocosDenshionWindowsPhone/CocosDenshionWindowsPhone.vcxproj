@@ -75,10 +75,7 @@
       <AdditionalLibraryDirectories>$(OutDir)../cocos2dx-wp8/</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\$(TargetName).winmd /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -101,10 +98,7 @@ xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(Pl
       <AdditionalLibraryDirectories>$(OutDir)../cocos2dx-wp8/</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\$(TargetName).winmd /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -125,10 +119,7 @@ xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(Pl
       <AdditionalDependencies>xaudio2.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\$(TargetName).winmd /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -149,10 +140,7 @@ xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(Pl
       <AdditionalDependencies>xaudio2.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\$(TargetName).dll /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\$(TargetName).lib /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\$(TargetName).winmd /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

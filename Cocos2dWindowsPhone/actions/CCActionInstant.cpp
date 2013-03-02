@@ -163,7 +163,7 @@ void CCToggleVisibility::startWithTarget(CCNode *pTarget) {
 //
 // FlipX
 //
-CCFlipX *CCFlipX::actionWithFlipX(bool x) {
+CCFlipX *CCFlipX::create(bool x) {
 	CCFlipX *pRet = new CCFlipX();
 
 	if (pRet && pRet->initWithFlipX(x)) {
@@ -186,7 +186,7 @@ void CCFlipX::startWithTarget(CCNode *pTarget) {
 }
 
 CCFiniteTimeAction* CCFlipX::reverse() {
-	return CCFlipX::actionWithFlipX(!m_bFlipX);
+	return CCFlipX::create(!m_bFlipX);
 }
 
 CCObject * CCFlipX::copyWithZone(CCZone *pZone) {
@@ -255,7 +255,7 @@ CCObject* CCFlipY::copyWithZone(CCZone *pZone) {
 //
 // Place
 //
-CCPlace* CCPlace::actionWithPosition(const CCPoint& pos) {
+CCPlace* CCPlace::create(const CCPoint& pos) {
 	CCPlace *pRet = new CCPlace();
 
 	if (pRet && pRet->initWithPosition(pos)) {
@@ -298,7 +298,7 @@ void CCPlace::startWithTarget(CCNode *pTarget) {
 // CallFunc
 //
 
-CCCallFunc * CCCallFunc::actionWithTarget(CCObject* pSelectorTarget,
+CCCallFunc * CCCallFunc::create(CCObject* pSelectorTarget,
 		SEL_CallFunc selector) {
 	CCCallFunc *pRet = new CCCallFunc();
 
@@ -366,7 +366,7 @@ void CCCallFuncN::execute() {
 	}
 }
 
-CCCallFuncN * CCCallFuncN::actionWithTarget(CCObject* pSelectorTarget,
+CCCallFuncN * CCCallFuncN::create(CCObject* pSelectorTarget,
 		SEL_CallFuncN selector) {
 	CCCallFuncN *pRet = new CCCallFuncN();
 
@@ -410,7 +410,7 @@ CCObject * CCCallFuncN::copyWithZone(CCZone* zone) {
 //
 // CallFuncND
 //
-CCCallFuncND * CCCallFuncND::actionWithTarget(CCObject* pSelectorTarget,
+CCCallFuncND * CCCallFuncND::create(CCObject* pSelectorTarget,
 		SEL_CallFuncND selector, void* d) {
 	CCCallFuncND* pRet = new CCCallFuncND();
 
@@ -475,7 +475,7 @@ void CCCallFuncO::execute() {
 	}
 }
 
-CCCallFuncO * CCCallFuncO::actionWithTarget(CCObject* pSelectorTarget,
+CCCallFuncO * CCCallFuncO::create(CCObject* pSelectorTarget,
 		SEL_CallFuncO selector, CCObject* pObject) {
 	CCCallFuncO *pRet = new CCCallFuncO();
 

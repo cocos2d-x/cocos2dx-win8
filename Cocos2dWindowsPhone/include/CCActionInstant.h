@@ -115,7 +115,7 @@ namespace cocos2d {
 		virtual ~CCFlipX(){}
 
 		/** create the action */
-		static CCFlipX * actionWithFlipX(bool x);
+		static CCFlipX * create(bool x);
 		/** init the action */
 		bool initWithFlipX(bool x);
 		//super methods
@@ -160,7 +160,7 @@ namespace cocos2d {
 		CCPlace(){}
 		virtual ~CCPlace(){}
 		/** creates a Place action with a position */
-		static CCPlace * actionWithPosition(const CCPoint& pos);
+		static CCPlace * create(const CCPoint& pos);
 		/** Initializes a Place action with a position */
 		bool initWithPosition(const CCPoint& pos);
 		//super methods
@@ -192,7 +192,7 @@ namespace cocos2d {
 
 		typedef void (CCObject::*SEL_CallFunc)();
 		*/
-		static CCCallFunc * actionWithTarget(CCObject* pSelectorTarget, SEL_CallFunc selector);
+		static CCCallFunc * create(CCObject* pSelectorTarget, SEL_CallFunc selector);
 		/** initializes the action with the callback 
 		
 		typedef void (CCObject::*SEL_CallFunc)();
@@ -253,7 +253,7 @@ namespace cocos2d {
 
 		typedef void (CCObject::*SEL_CallFuncN)(CCNode*);
 		*/
-		static CCCallFuncN * actionWithTarget(CCObject* pSelectorTarget, SEL_CallFuncN selector);
+		static CCCallFuncN * create(CCObject* pSelectorTarget, SEL_CallFuncN selector);
 		/** initializes the action with the callback 
 
 		typedef void (CCObject::*SEL_CallFuncN)(CCNode*);
@@ -274,7 +274,7 @@ namespace cocos2d {
 	public:
 
 		/** creates the action with the callback and the data to pass as an argument */
-		static CCCallFuncND * actionWithTarget(CCObject* pSelectorTarget, SEL_CallFuncND selector, void* d);
+		static CCCallFuncND * create(CCObject* pSelectorTarget, SEL_CallFuncND selector, void* d);
 		/** initializes the action with the callback and the data to pass as an argument */
 		virtual bool initWithTarget(CCObject* pSelectorTarget, SEL_CallFuncND selector, void* d);
 		// super methods
@@ -300,7 +300,7 @@ namespace cocos2d {
 
         typedef void (CCObject::*SEL_CallFuncO)(CCObject*);
         */
-        static CCCallFuncO * actionWithTarget(CCObject* pSelectorTarget, SEL_CallFuncO selector, CCObject* pObject);
+        static CCCallFuncO * create(CCObject* pSelectorTarget, SEL_CallFuncO selector, CCObject* pObject);
         /** initializes the action with the callback 
 
         typedef void (CCObject::*SEL_CallFuncO)(CCObject*);

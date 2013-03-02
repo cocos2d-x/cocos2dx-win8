@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorld", "HelloWorld\cocos2d.vcxproj", "{1A0D24B4-1DE0-400B-BC35-92A51351477F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorld", "HelloWorld\HelloWorld.vcxproj", "{1A0D24B4-1DE0-400B-BC35-92A51351477F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cocos2dWindowsPhone", "Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj", "{8C939C76-A430-450E-9607-56CEC95DEE2F}"
 EndProject

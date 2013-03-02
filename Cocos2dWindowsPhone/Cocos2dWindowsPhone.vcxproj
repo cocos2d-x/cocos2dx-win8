@@ -76,11 +76,7 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)*.cso .\libraries\$(PlatformTarget)\ /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
       <Message>复制编译之后的文件</Message>
     </PostBuildEvent>
@@ -111,11 +107,7 @@ xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)*.cso .\libraries\$(PlatformTarget)\ /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -137,11 +129,7 @@ xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)*.cso .\libraries\$(PlatformTarget)\ /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -164,11 +152,7 @@ xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).dll .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).lib .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)$(TargetName).winmd .\libraries\$(PlatformTarget)\ /y
-xcopy $(OutDir)*.cso .\libraries\$(PlatformTarget)\ /y
-xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
+      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
 xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
