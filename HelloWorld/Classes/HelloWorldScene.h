@@ -41,7 +41,7 @@ public:
 	//virtual void menuCloseCallback(CCObject* pSender);
 
 	// implement the "static create()" method manually
-	LAYER_NODE_FUNC(HelloWorld);
+	 CREATE_FUNC(HelloWorld);
 
 	//void registerWithTouchDispatcher();
 

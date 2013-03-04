@@ -122,7 +122,7 @@ bool CCDirector::init(void)
 	m_bIsContentScaleSupported = false;
 
 	// create autorelease pool
-	CCPoolManager::getInstance()->push();
+	CCPoolManager::sharedPoolManager()->push();
 
 	return true;
 }
@@ -140,7 +140,7 @@ CCDirector::~CCDirector(void)
 	CC_SAFE_RELEASE(m_pobScenesStack);
 
 	// pop the autorelease pool
-	CCPoolManager::getInstance()->pop();
+	CCPoolManager::sharedPoolManager()->pop();
 
 	// delete m_pLastUpdate
 	CC_SAFE_DELETE(m_pLastUpdate);
@@ -931,7 +931,7 @@ void CCDisplayLinkDirector::mainLoop(void)
  		drawScene();
 	 
  		// release the objects
- 		CCPoolManager::getInstance()->pop();		
+ 		CCPoolManager::sharedPoolManager()->pop();		
  	}
 }
 

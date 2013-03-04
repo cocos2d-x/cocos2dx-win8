@@ -60,8 +60,8 @@ public:
 	void removeObject(CCObject* pObject);
 	void addObject(CCObject* pObject);
 
-	static CCPoolManager* getInstance();
-
+	static CCPoolManager* sharedPoolManager();
+	
 	friend class CCAutoreleasePool;
 };
 

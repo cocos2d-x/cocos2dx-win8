@@ -81,7 +81,7 @@ void CCAutoreleasePool::clear()
 //
 //--------------------------------------------------------------------
 
-CCPoolManager* CCPoolManager::getInstance()
+CCPoolManager* CCPoolManager::sharedPoolManager()
 {
 	return &g_PoolManager;
 }

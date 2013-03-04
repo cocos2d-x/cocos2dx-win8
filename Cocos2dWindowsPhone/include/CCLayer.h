@@ -33,6 +33,7 @@ THE SOFTWARE.
 #include "CCAccelerometerDelegate.h"
 #include "CCKeypadDelegate.h"
 #include "CCMutableArray.h"
+#include "CCPlatformMacros.h"
 
 NS_CC_BEGIN
 
@@ -114,23 +115,6 @@ private:
     int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
 };
     
-// for the subclass of CCLayer, each has to implement the static "node" method 
-#define LAYER_NODE_FUNC(layer) \
-static layer* create() \
-{ \
-layer *pRet = new layer(); \
-if (pRet && pRet->init()) \
-{ \
-pRet->autorelease(); \
-return pRet; \
-} \
-else \
-{ \
-delete pRet; \
-pRet = NULL; \
-return NULL; \
-} \
-}; 
 
 #define LAYER_NODE_FUNC_PARAM(layer,__PARAMTYPE__,__PARAM__) \
 	static layer* create(__PARAMTYPE__ __PARAM__) \
@@ -203,7 +187,7 @@ public:
 
 	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
     virtual bool getIsOpacityModifyRGB(void) { return false;}
-    LAYER_NODE_FUNC(CCLayerColor);
+    CREATE_FUNC(CCLayerColor);
     
 protected:
 	virtual void updateColor();
@@ -294,7 +278,7 @@ public:
     */
     CC_PROPERTY(bool, m_bCompressedInterpolation, IsCompressedInterpolation)
 
-    LAYER_NODE_FUNC(CCLayerGradient);
+    CREATE_FUNC(CCLayerGradient);
 protected:
     virtual void updateColor();
 };
@@ -336,7 +320,7 @@ public:
 	*/
 	void switchToAndReleaseMe(unsigned int n);
     
-    LAYER_NODE_FUNC(CCLayerMultiplex);
+    CREATE_FUNC(CCLayerMultiplex);
 };
 
 NS_CC_END
