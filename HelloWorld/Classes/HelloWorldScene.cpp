@@ -72,7 +72,7 @@ bool HelloWorld::init()
 		}
 
 
-		CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Hello World", "Times New Roman", 24);
+		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
 		pLabel->setColor(ccc3(160, 80, 5));

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio Express 2012 for Windows Phone
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HelloWorld", "HelloWorld\HelloWorld.vcxproj", "{1A0D24B4-1DE0-400B-BC35-92A51351477F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cocos2dWindowsPhone", "Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj", "{8C939C76-A430-450E-9607-56CEC95DEE2F}"
@@ -8,6 +8,8 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CocosDenshionWindowsPhone", "CocosDenshionWindowsPhone\CocosDenshionWindowsPhone.vcxproj", "{54D5A760-05C6-4560-BB0E-6804D248F14A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Box2DWindowsPhone", "external\Box2D\Box2DWindowsPhone.vcxproj", "{06ECB3CA-E6CC-4CFB-874E-6979F9DC280B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestCpp", "TestCpp\TestCpp.vcxproj", "{1A0D24B4-1DE0-400B-BC35-92A51351487F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,18 @@ Global
 		{06ECB3CA-E6CC-4CFB-874E-6979F9DC280B}.Release|ARM.Build.0 = Release|ARM
 		{06ECB3CA-E6CC-4CFB-874E-6979F9DC280B}.Release|Win32.ActiveCfg = Release|Win32
 		{06ECB3CA-E6CC-4CFB-874E-6979F9DC280B}.Release|Win32.Build.0 = Release|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Debug|ARM.Build.0 = Debug|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Debug|ARM.Deploy.0 = Debug|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Debug|Win32.Build.0 = Debug|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Debug|Win32.Deploy.0 = Debug|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Release|ARM.ActiveCfg = Release|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Release|ARM.Build.0 = Release|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Release|ARM.Deploy.0 = Release|ARM
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Release|Win32.ActiveCfg = Release|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Release|Win32.Build.0 = Release|Win32
+		{1A0D24B4-1DE0-400B-BC35-92A51351487F}.Release|Win32.Deploy.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

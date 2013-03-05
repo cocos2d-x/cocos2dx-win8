@@ -91,6 +91,36 @@ public:
     /** Unregister script touch events handler */
     void unregisterScriptTouchHandler(void);
 
+    /** whether or not it will receive Touch events.
+    You can enable / disable touch events with this property.
+    Only the touches of this node will be affected. This "method" is not propagated to it's children.
+    @since v0.8.1
+    */
+    virtual bool isTouchEnabled();
+    virtual void setTouchEnabled(bool value);
+    
+    virtual void setTouchMode(ccTouchesMode mode);
+    virtual int getTouchMode();
+
+	/** priority of the touch events. Default is 0 */
+    virtual void setTouchPriority(int priority);
+    virtual int getTouchPriority();
+
+	/** whether or not it will receive Accelerometer events
+    You can enable / disable accelerometer events with this property.
+    @since v0.8.1
+    */
+    virtual bool isAccelerometerEnabled();
+    virtual void setAccelerometerEnabled(bool value);
+    virtual void setAccelerometerInterval(double interval);
+
+	    /** whether or not it will receive keypad events
+    You can enable / disable accelerometer events with this property.
+    it's new in cocos2d-x
+    */
+    virtual bool isKeypadEnabled();
+    virtual void setKeypadEnabled(bool value);
+
 	/** whether or not it will receive Touch events.
 	You can enable / disable touch events with this property.
 	Only the touches of this node will be affected. This "method" is not propagated to it's children.

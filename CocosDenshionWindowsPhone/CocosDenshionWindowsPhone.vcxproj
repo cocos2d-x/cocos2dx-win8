@@ -151,7 +151,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include=".\include\Export.h" />
     <ClInclude Include=".\include\SimpleAudioEngine.h" />
     <ClInclude Include=".\pch.h" />
     <ClInclude Include=".\win8_metro\Audio.h" />

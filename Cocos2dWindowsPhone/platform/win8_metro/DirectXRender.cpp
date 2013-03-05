@@ -540,7 +540,7 @@ void DirectXRender::Render()
 	////player->setPosition( ccp(150, 150) );
 	////player->draw();
 	////HelloWorld::schedule(schedule_selector(HelloWorld::gameLogic), 1.0));
-	////CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Hello World", "Arial", 24);
+	////CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Arial", 24);
 	////pLabel->setPosition(ccp(200,200));
 	////b2Body* temp = HelloWorld::getBody();
 	////Direct3DBase::DrawRect(100.0f, 100.0f, 1.0f, 1.0f,  DirectX::XMFLOAT3(1.0f, 1.0f, 1.0f));

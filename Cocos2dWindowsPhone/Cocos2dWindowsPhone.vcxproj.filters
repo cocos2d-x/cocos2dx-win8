@@ -430,6 +430,9 @@
     <ClCompile Include="touch_dispatcher\CCTouch.cpp">
       <Filter>touch_dispatcher</Filter>
     </ClCompile>
+    <ClCompile Include="particle_nodes\CCParticleBatchNode.cpp">
+      <Filter>particle_nodes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocoa\CCNS.h">

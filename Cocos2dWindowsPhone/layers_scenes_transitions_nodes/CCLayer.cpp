@@ -138,6 +138,112 @@ int CCLayer::excuteScriptTouchHandler(int nEventType, CCSet *pTouches)
     return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeTouchesEvent(m_pScriptHandlerEntry->getHandler(), nEventType, pTouches);
 }
 
+
+/// isTouchEnabled getter
+bool CCLayer::isTouchEnabled()
+{
+    return m_bTouchEnabled;
+}
+/// isTouchEnabled setter
+void CCLayer::setTouchEnabled(bool enabled)
+{
+    if (m_bTouchEnabled != enabled)
+    {
+        m_bTouchEnabled = enabled;
+        if (m_bRunning)
+        {
+            if (enabled)
+            {
+                this->registerWithTouchDispatcher();
+            }
+            else
+            {
+                // have problems?
+                CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+            }
+        }
+    }
+}
+
+void CCLayer::setTouchMode(ccTouchesMode mode)
+{
+    if(m_eTouchMode != mode)
+    {
+        m_eTouchMode = mode;
+        
+		if( m_bTouchEnabled)
+        {
+			setTouchEnabled(false);
+			setTouchEnabled(true);
+		}
+    }
+}
+
+void CCLayer::setTouchPriority(int priority)
+{
+    if (m_nTouchPriority != priority)
+    {
+        m_nTouchPriority = priority;
+        
+		if( m_bTouchEnabled)
+        {
+			setTouchEnabled(false);
+			setTouchEnabled(true);
+		}
+    }
+}
+
+int CCLayer::getTouchPriority()
+{
+    return m_nTouchPriority;
+}
+
+int CCLayer::getTouchMode()
+{
+    return m_eTouchMode;
+}
+
+/// isAccelerometerEnabled getter
+bool CCLayer::isAccelerometerEnabled()
+{
+    return m_bAccelerometerEnabled;
+}
+/// isAccelerometerEnabled setter
+void CCLayer::setAccelerometerEnabled(bool enabled)
+{
+    if (enabled != m_bAccelerometerEnabled)
+    {
+        m_bAccelerometerEnabled = enabled;
+
+        if (m_bRunning)
+        {
+            CCDirector* pDirector = CCDirector::sharedDirector();
+            if (enabled)
+            {
+                pDirector->getAccelerometer()->setDelegate(this);
+            }
+            else
+            {
+                pDirector->getAccelerometer()->setDelegate(NULL);
+            }
+        }
+    }
+}
+
+
+void CCLayer::setAccelerometerInterval(double interval) {
+    if (m_bAccelerometerEnabled)
+    {
+        if (m_bRunning)
+        {
+            CCDirector* pDirector = CCDirector::sharedDirector();
+            pDirector->getAccelerometer()->setAccelerometerInterval(interval);
+        }
+    }
+}
+
+
+
 /// isTouchEnabled getter
 bool CCLayer::getIsTouchEnabled()
 {

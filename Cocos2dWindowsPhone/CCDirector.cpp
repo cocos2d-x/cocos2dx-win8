@@ -166,7 +166,7 @@ void CCDirector::setGLDefaultValues(void)
 #if CC_DIRECTOR_FAST_FPS
 	if (false)//(! m_pFPSLabel)
 	{
-        m_pFPSLabel = CCLabelTTF::labelWithString("00.0", "Arial", 24);
+        m_pFPSLabel = CCLabelTTF::create("00.0", "Arial", 24);
 		m_pFPSLabel->retain();
 	}
 #endif
@@ -790,7 +790,7 @@ bool CCDirector::enableRetinaDisplay(bool enabled)
     if (m_pFPSLabel)
     {
         CC_SAFE_RELEASE_NULL(m_pFPSLabel);
-        m_pFPSLabel = CCLabelTTF::labelWithString("00.0", "Arial", 24);
+        m_pFPSLabel = CCLabelTTF::create("00.0", "Arial", 24);
         m_pFPSLabel->retain();
     }
 #endif

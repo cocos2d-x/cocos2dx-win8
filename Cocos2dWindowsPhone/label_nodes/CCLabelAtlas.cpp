@@ -29,7 +29,7 @@
 namespace cocos2d{
 
 	//CCLabelAtlas - Creation & Init
-	CCLabelAtlas * CCLabelAtlas::labelWithString(const char *label, const char *charMapFile, unsigned int itemWidth, int unsigned itemHeight, unsigned char startCharMap)
+	CCLabelAtlas * CCLabelAtlas::create(const char *label, const char *charMapFile, unsigned int itemWidth, int unsigned itemHeight, unsigned char startCharMap)
 	{
 		CCLabelAtlas *pRet = new CCLabelAtlas();
 		if(pRet && pRet->initWithString(label, charMapFile, itemWidth, itemHeight, startCharMap))

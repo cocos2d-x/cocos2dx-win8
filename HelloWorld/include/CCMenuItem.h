@@ -60,7 +60,7 @@ namespace cocos2d{
         {}
         virtual ~CCMenuItem();
         /** Creates a CCMenuItem with a target/selector */
-        static CCMenuItem * itemWithTarget(CCObject *rec, SEL_MenuHandler selector);
+        static CCMenuItem * create(CCObject *rec, SEL_MenuHandler selector);
         /** Initializes a CCMenuItem with a target/selector */
         bool initWithTarget(CCObject *rec, SEL_MenuHandler selector);
         /** Returns the outside box */
@@ -104,9 +104,9 @@ namespace cocos2d{
         {}
         virtual ~CCMenuItemLabel();
         /** creates a CCMenuItemLabel with a Label, target and selector */
-        static CCMenuItemLabel * itemWithLabel(CCNode*label, CCObject* target, SEL_MenuHandler selector);
+        static CCMenuItemLabel * create(CCNode*label, CCObject* target, SEL_MenuHandler selector);
         /** creates a CCMenuItemLabel with a Label. Target and selector will be nill */
-        static CCMenuItemLabel* itemWithLabel(CCNode *label);
+        static CCMenuItemLabel* create(CCNode *label);
         /** initializes a CCMenuItemLabel with a Label, target and selector */
         bool initWithLabel(CCNode* label, CCObject* target, SEL_MenuHandler selector);
         /** sets a new string to the inner label */
@@ -255,13 +255,13 @@ namespace cocos2d{
         CCMenuItemImage(){}
         virtual ~CCMenuItemImage(){}
         /** creates a menu item with a normal and selected image*/
-        static CCMenuItemImage* itemFromNormalImage(const char *normalImage, const char *selectedImage);
+        static CCMenuItemImage* create(const char *normalImage, const char *selectedImage);
         /** creates a menu item with a normal,selected  and disabled image*/
-        static CCMenuItemImage* itemFromNormalImage(const char *normalImage, const char *selectedImage, const char *disabledImage);
+        static CCMenuItemImage* create(const char *normalImage, const char *selectedImage, const char *disabledImage);
         /** creates a menu item with a normal and selected image with target/selector */
-        static CCMenuItemImage* itemFromNormalImage(const char *normalImage, const char *selectedImage, CCObject* target, SEL_MenuHandler selector);
+        static CCMenuItemImage* create(const char *normalImage, const char *selectedImage, CCObject* target, SEL_MenuHandler selector);
         /** creates a menu item with a normal,selected  and disabled image with target/selector */
-        static CCMenuItemImage* itemFromNormalImage(const char *normalImage, const char *selectedImage, const char *disabledImage, CCObject* target, SEL_MenuHandler selector);
+        static CCMenuItemImage* create(const char *normalImage, const char *selectedImage, const char *disabledImage, CCObject* target, SEL_MenuHandler selector);
         /** initializes a menu item with a normal, selected  and disabled image with target/selector */
         bool initFromNormalImage(const char *normalImage, const char *selectedImage, const char *disabledImage, CCObject* target, SEL_MenuHandler selector);
     };
@@ -290,7 +290,7 @@ namespace cocos2d{
         {}
         virtual ~CCMenuItemToggle();
         /** creates a menu item from a list of items with a target/selector */
-        static CCMenuItemToggle* itemWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, ...);		
+        static CCMenuItemToggle* create(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, ...);		
         /** initializes a menu item from a list of items with a target selector */
         bool initWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, va_list args);
         

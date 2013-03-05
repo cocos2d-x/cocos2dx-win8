@@ -276,6 +276,7 @@ xcopy .\libraries\$(PlatformTarget)\*.cso ..\HelloWorld\ /y</Command>
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
     <ClCompile Include="cocoa\CCString.cpp" />
+    <ClCompile Include="particle_nodes\CCParticleBatchNode.cpp" />
     <ClCompile Include="touch_dispatcher\CCTouch.cpp" />
   </ItemGroup>
   <ItemGroup>

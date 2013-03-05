@@ -25,7 +25,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include=".\include\Export.h" />
     <ClInclude Include=".\pch.h" />
     <ClInclude Include=".\include\SimpleAudioEngine.h">
       <Filter>Include</Filter>

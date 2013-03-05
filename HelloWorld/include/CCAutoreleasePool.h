@@ -63,6 +63,7 @@ public:
 	static CCPoolManager* sharedPoolManager();
 	
 	friend class CCAutoreleasePool;
+
 };
 
 }

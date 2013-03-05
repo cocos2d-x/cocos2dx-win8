@@ -297,6 +297,14 @@ typedef struct _ccBlendFunc
 	CCenum dst;
 } ccBlendFunc;
 
+// XXX: If any of these enums are edited and/or reordered, update CCTexture2D.m
+//! Vertical text alignment type
+typedef enum
+{
+    kCCVerticalTextAlignmentTop,
+    kCCVerticalTextAlignmentCenter,
+    kCCVerticalTextAlignmentBottom,
+} CCVerticalTextAlignment;
 
 //! ccResolutionType
 typedef enum

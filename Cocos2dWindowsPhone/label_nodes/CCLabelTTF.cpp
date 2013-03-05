@@ -40,7 +40,7 @@ namespace cocos2d{
 		CC_SAFE_DELETE(m_pString);        
     }
 
-	CCLabelTTF * CCLabelTTF::labelWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize)
+	CCLabelTTF * CCLabelTTF::create(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize)
 	{
 		CCLabelTTF *pRet = new CCLabelTTF();
 		if(pRet && pRet->initWithString(label, dimensions, alignment, fontName, fontSize))
@@ -51,7 +51,7 @@ namespace cocos2d{
 		CC_SAFE_DELETE(pRet);
 		return NULL;
 	}
-	CCLabelTTF * CCLabelTTF::labelWithString(const char *label, const char *fontName, float fontSize)
+	CCLabelTTF * CCLabelTTF::create(const char *label, const char *fontName, float fontSize)
 	{
 		CCLabelTTF *pRet = new CCLabelTTF();
 		if(pRet && pRet->initWithString(label, fontName, fontSize))

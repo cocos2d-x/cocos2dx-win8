@@ -120,7 +120,7 @@ THE SOFTWARE.
 #include "CCRenderTexture.h"
 
 // particle_nodes
-//#include "CCParticleBatchNode.h"
+#include "CCParticleBatchNode.h"
 #include "CCParticleSystem.h"
 #include "CCParticleSystemPoint.h"
 #include "CCParticleSystemQuad.h"
