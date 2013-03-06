@@ -462,7 +462,7 @@ NS_CC_BEGIN
 
 		/** check whether a selector is scheduled. */
 		bool isScheduled(SEL_SCHEDULE selector);
-
+		 bool m_bRunning;    
 		/** schedules the "update" method. It will use the order number 0. This method will be called every frame.
          Scheduled methods with a lower order value will be called before the ones that have a higher order value.
          Only one "update" method could be scheduled per node.

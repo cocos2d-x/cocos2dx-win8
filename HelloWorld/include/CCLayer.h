@@ -36,6 +36,10 @@ THE SOFTWARE.
 #include "CCPlatformMacros.h"
 
 NS_CC_BEGIN
+typedef enum {
+	kCCTouchesAllAtOnce,
+	kCCTouchesOneByOne,
+} ccTouchesMode;
 
 class CCTouchScriptHandlerEntry;
 

@@ -159,7 +159,7 @@ void CCLayer::setTouchEnabled(bool enabled)
             else
             {
                 // have problems?
-                CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+              CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
             }
         }
     }
@@ -220,11 +220,11 @@ void CCLayer::setAccelerometerEnabled(bool enabled)
             CCDirector* pDirector = CCDirector::sharedDirector();
             if (enabled)
             {
-                pDirector->getAccelerometer()->setDelegate(this);
+               pDirector->getAccelerometer()->setDelegate(this);
             }
             else
             {
-                pDirector->getAccelerometer()->setDelegate(NULL);
+              pDirector->getAccelerometer()->setDelegate(NULL);
             }
         }
     }
@@ -237,10 +237,11 @@ void CCLayer::setAccelerometerInterval(double interval) {
         if (m_bRunning)
         {
             CCDirector* pDirector = CCDirector::sharedDirector();
-            pDirector->getAccelerometer()->setAccelerometerInterval(interval);
+           pDirector->getAccelerometer()->setAccelerometerInterval(interval);
         }
     }
 }
+
 
 
 

@@ -37,6 +37,7 @@ THE SOFTWARE.
 #include "CCGeometry.h"
 #include "CCEGLView.h"
 #include "CCGL.h"
+#include "CCAccelerometer_win8_metro.h"
 
 NS_CC_BEGIN
 
@@ -390,9 +391,36 @@ public:
 	static bool setDirectorType(ccDirectorType obDirectorType);
 
 public:
+	 /** CCScheduler associated with this director
+     @since v2.0
+     */
+  //  CC_PROPERTY(CCScheduler*, m_pScheduler, Scheduler);
+
+    /** CCActionManager associated with this director
+     @since v2.0
+     */
+    CC_PROPERTY(CCActionManager*, m_pActionManager, ActionManager);
+
+    /** CCTouchDispatcher associated with this director
+     @since v2.0
+     */
+    CC_PROPERTY(CCTouchDispatcher*, m_pTouchDispatcher, TouchDispatcher);
+
+    /** CCKeypadDispatcher associated with this director
+     @since v2.0
+     */
+    CC_PROPERTY(CCKeypadDispatcher*, m_pKeypadDispatcher, KeypadDispatcher);
+
+    /** CCAccelerometer associated with this director
+     @since v2.0
+     */
+    CC_PROPERTY(CCAccelerometer*, m_pAccelerometer, Accelerometer);
+
 	/** returns a shared instance of the director */
 	static CCDirector* sharedDirector(void);
 	void resetDirector();
+
+
 
 protected:
 

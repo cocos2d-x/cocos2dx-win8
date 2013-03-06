@@ -145,10 +145,16 @@ public:
     CC_PROPERTY(bool, m_bIsKeypadEnabled, IsKeypadEnabled)
 
 private:
+	 int m_nTouchPriority;
+	 ccTouchesMode m_eTouchMode;
     // Script touch events handler
     CCTouchScriptHandlerEntry* m_pScriptHandlerEntry;
     int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
     int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
+protected:   
+    bool m_bTouchEnabled;
+	bool m_bAccelerometerEnabled;
+	bool m_bKeypadEnabled;
 };
     
 

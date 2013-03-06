@@ -172,6 +172,7 @@ void CCDirector::setGLDefaultValues(void)
 #endif
 }
 
+
 // Draw the SCene
 void CCDirector::drawScene(void)
 {
@@ -265,6 +266,20 @@ void CCDirector::calculateDeltaTime(void)
 #endif
 
 	*m_pLastUpdate = now;
+}
+void CCDirector::setTouchDispatcher(CCTouchDispatcher* pTouchDispatcher)
+{
+    if (m_pTouchDispatcher != pTouchDispatcher)
+    {
+        CC_SAFE_RETAIN(pTouchDispatcher);
+        CC_SAFE_RELEASE(m_pTouchDispatcher);
+        m_pTouchDispatcher = pTouchDispatcher;
+    }    
+}
+
+CCTouchDispatcher* CCDirector::getTouchDispatcher()
+{
+    return m_pTouchDispatcher;
 }
 
 
