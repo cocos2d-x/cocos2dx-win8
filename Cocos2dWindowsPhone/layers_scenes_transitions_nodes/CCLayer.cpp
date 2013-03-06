@@ -1148,4 +1148,34 @@ void CCLayerMultiplex::switchToAndReleaseMe(unsigned int n)
 
 	this->addChild(m_pLayers->getObjectAtIndex(n));
 }
+
+/// isKeypadEnabled getter
+bool CCLayer::isKeypadEnabled()
+{
+    return m_bKeypadEnabled;
+}
+/// isKeypadEnabled setter
+void CCLayer::setKeypadEnabled(bool enabled)
+{
+    if (enabled != m_bKeypadEnabled)
+    {
+        m_bKeypadEnabled = enabled;
+
+        if (m_bRunning)
+        {
+            CCDirector* pDirector = CCDirector::sharedDirector();
+            if (enabled)
+            {
+                pDirector->getKeypadDispatcher()->addDelegate(this);
+            }
+            else
+            {
+                pDirector->getKeypadDispatcher()->removeDelegate(this);
+            }
+        }
+    }
+}
+
+
+
 NS_CC_END

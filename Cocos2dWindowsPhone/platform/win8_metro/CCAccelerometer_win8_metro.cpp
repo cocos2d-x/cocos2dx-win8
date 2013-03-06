@@ -52,34 +52,34 @@ namespace cocos2d
 		return pSharedAccelerometer;
 	}
 
-	void CCAccelerometer::setDelegate(CCAccelerometerDelegate* pDelegate) 
-	{
-		//m_pAccelDelegate = pDelegate;
-		//
+	//void CCAccelerometer::setDelegate(CCAccelerometerDelegate* pDelegate) 
+	//{
+	//	//m_pAccelDelegate = pDelegate;
+	//	//
 
-		//if (pDelegate)
-		//{
-		//	m_accelerometer = Accelerometer::GetDefault();
+	//	//if (pDelegate)
+	//	//{
+	//	//	m_accelerometer = Accelerometer::GetDefault();
 
-		//	if(m_accelerometer != nullptr){
+	//	//	if(m_accelerometer != nullptr){
 
-		//		m_accelerometer->ReadingChanged += ref new TypedEventHandler
-		//			<Accelerometer^,AccelerometerReadingChangedEventArgs^>
-		//			([=](Accelerometer^, AccelerometerReadingChangedEventArgs^)
-		//		{
+	//	//		m_accelerometer->ReadingChanged += ref new TypedEventHandler
+	//	//			<Accelerometer^,AccelerometerReadingChangedEventArgs^>
+	//	//			([=](Accelerometer^, AccelerometerReadingChangedEventArgs^)
+	//	//		{
 
-		//			AccelerometerReading^ reading = m_accelerometer->GetCurrentReading();
-		//			m_obAccelerationValue.x = reading->AccelerationX;
-		//			m_obAccelerationValue.y = reading->AccelerationY;
-		//			m_obAccelerationValue.z = reading->AccelerationZ;
-		//			m_pAccelDelegate->didAccelerate(&m_obAccelerationValue);
-		//		});
-		//	}
-		//}
-		//else
-		//{
-		//	m_accelerometer = nullptr;
-		//}
-	}
+	//	//			AccelerometerReading^ reading = m_accelerometer->GetCurrentReading();
+	//	//			m_obAccelerationValue.x = reading->AccelerationX;
+	//	//			m_obAccelerationValue.y = reading->AccelerationY;
+	//	//			m_obAccelerationValue.z = reading->AccelerationZ;
+	//	//			m_pAccelDelegate->didAccelerate(&m_obAccelerationValue);
+	//	//		});
+	//	//	}
+	//	//}
+	//	//else
+	//	//{
+	//	//	m_accelerometer = nullptr;
+	//	//}
+	//}
 	
 }

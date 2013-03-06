@@ -822,6 +822,50 @@ bool CCDirector::enableRetinaDisplay(bool enabled)
 	return true;
 }
 
+void CCDirector::setActionManager(CCActionManager* pActionManager)
+{
+    if (m_pActionManager != pActionManager)
+    {
+        CC_SAFE_RETAIN(pActionManager);
+        CC_SAFE_RELEASE(m_pActionManager);
+        m_pActionManager = pActionManager;
+    }    
+}
+
+CCActionManager* CCDirector::getActionManager()
+{
+    return m_pActionManager;
+}
+
+void CCDirector::setKeypadDispatcher(CCKeypadDispatcher* pKeypadDispatcher)
+{
+    CC_SAFE_RETAIN(pKeypadDispatcher);
+    CC_SAFE_RELEASE(m_pKeypadDispatcher);
+    m_pKeypadDispatcher = pKeypadDispatcher;
+}
+
+CCKeypadDispatcher* CCDirector::getKeypadDispatcher()
+{
+    return m_pKeypadDispatcher;
+}
+
+void CCDirector::setAccelerometer(CCAccelerometer* pAccelerometer)
+{
+    if (m_pAccelerometer != pAccelerometer)
+    {
+        CC_SAFE_DELETE(m_pAccelerometer);
+        m_pAccelerometer = pAccelerometer;
+    }
+}
+
+CCAccelerometer* CCDirector::getAccelerometer()
+{
+    return m_pAccelerometer;
+}
+
+
+
+
 CGFloat CCDirector::getContentScaleFactor(void)
 {
 	return m_fContentScaleFactor;
