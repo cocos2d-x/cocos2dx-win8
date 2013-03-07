@@ -31,7 +31,8 @@
 //#include "support/zip_support/unzip.h"
 
 NS_CC_BEGIN;
-
+//static ZipFile *s_pZipFile = NULL;
+static CCFileUtils* s_pFileUtils = NULL;
 static const char *__suffixiPhoneRetinaDisplay = "-hd";
 static const char *__suffixiPad = "-ipad";
 static const char *__suffixiPadRetinaDisplay = "-ipadhd";
@@ -68,7 +69,7 @@ public:
 
     std::stack<CCMutableArray<CCObject*>*> m_tArrayStack;
     std::stack<CCSAXState>  m_tStateStack;
-
+	
 public:
     CCDictMaker()
         : m_eResultType(SAX_RESULT_NONE),
@@ -113,7 +114,7 @@ public:
         parser.parse(pFileName);
         return m_pArray;
     }
-
+	
     void startElement(void *ctx, const char *name, const char **atts)
     {
         CC_UNUSED_PARAM(ctx);
@@ -555,7 +556,26 @@ bool CCFileUtils::getIsPopupNotify()
 {
     return s_bPopupNotify;
 }
+bool CCFileUtils::init()
+{
+	m_strDefaultResRootPath = "assets/";
+    m_searchPathArray.push_back(m_strDefaultResRootPath);
+    m_searchResolutionsOrderArray.push_back("");
 
+    return true;
+}
+
+CCFileUtils* CCFileUtils::sharedFileUtils()
+{
+    if (s_pFileUtils == NULL)
+    {
+        s_pFileUtils = new CCFileUtils();
+        s_pFileUtils->init();
+       // std::string resourcePath = getApkPath();
+        //s_pZipFile = new ZipFile(resourcePath, "assets/");
+    }
+    return s_pFileUtils;
+}
 NS_CC_END;
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)

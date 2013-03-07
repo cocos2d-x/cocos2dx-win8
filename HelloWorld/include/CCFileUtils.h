@@ -28,148 +28,149 @@ NS_CC_BEGIN;
 class CC_DLL CCFileUtils
 {
 public:
+	static CCFileUtils* sharedFileUtils();
+	 bool init();
+	/**
+	@brief   Check resource exist or not.
+	@return  If the resource exist, return true.
+	*/
+	static bool isFileExist(const char * resPath);
 
-    /**
-    @brief   Check resource exist or not.
-    @return  If the resource exist, return true.
-    */
-    static bool isFileExist(const char * resPath);
+	/**
+	@brief Get resource file data
+	@param[in]  pszFileName The resource file name which contain the path
+	@param[in]  pszMode The read mode of the file
+	@param[out] pSize If get the file data succeed the it will be the data size,or it will be 0
+	@return if success,the pointer of data will be returned,or NULL is returned
+	@warning If you get the file data succeed,you must delete it after used.
+	*/
+	static unsigned char* getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize);
+	static unsigned char* getFileDataPlatform(const char* pszFileName, const char* pszMode, unsigned long * pSize);
+	static void purgeCachedFileData();
 
-    /**
-    @brief Get resource file data
-    @param[in]  pszFileName The resource file name which contain the path
-    @param[in]  pszMode The read mode of the file
-    @param[out] pSize If get the file data succeed the it will be the data size,or it will be 0
-    @return if success,the pointer of data will be returned,or NULL is returned
-    @warning If you get the file data succeed,you must delete it after used.
-    */
-    static unsigned char* getFileData(const char* pszFileName, const char* pszMode, unsigned long * pSize);
-    static unsigned char* getFileDataPlatform(const char* pszFileName, const char* pszMode, unsigned long * pSize);
-    static void purgeCachedFileData();
+	/**
+	@brief Get resource file data from zip file
+	@param[in]  pszFileName The resource file name which contain the relative path of zip file
+	@param[out] pSize If get the file data succeed the it will be the data size,or it will be 0
+	@return if success,the pointer of data will be returned,or NULL is returned
+	@warning If you get the file data succeed,you must delete it after used.
+	*/
+	static unsigned char* getFileDataFromZip(const char* pszZipFilePath, const char* pszFileName, unsigned long * pSize);
 
-    /**
-    @brief Get resource file data from zip file
-    @param[in]  pszFileName The resource file name which contain the relative path of zip file
-    @param[out] pSize If get the file data succeed the it will be the data size,or it will be 0
-    @return if success,the pointer of data will be returned,or NULL is returned
-    @warning If you get the file data succeed,you must delete it after used.
-    */
-    static unsigned char* getFileDataFromZip(const char* pszZipFilePath, const char* pszFileName, unsigned long * pSize);
+	/** removes the suffix from a path
+	* On RetinaDisplay it will remove the -hd suffix
+	* On iPad it will remove the -ipad suffix
+	* On iPhone it will remove the (empty) suffix
+	Only valid on iOS. Not valid for OS X.
 
-    /** removes the suffix from a path
-     * On RetinaDisplay it will remove the -hd suffix
-     * On iPad it will remove the -ipad suffix
-     * On iPhone it will remove the (empty) suffix
-     Only valid on iOS. Not valid for OS X.
- 
-     @since v0.99.5
-     */
-    static std::string& removeSuffixFromFile(std::string& path);
+	@since v0.99.5
+	*/
+	static std::string& removeSuffixFromFile(std::string& path);
 
-    /**
-    @brief   Generate the absolute path of the file.
-    @param   pszRelativePath     The relative path of the file.
-    @return  The absolute path of the file.
-    @warning We only add the ResourcePath before the relative path of the file.
-    If you have not set the ResourcePath,the function add "/NEWPLUS/TDA_DATA/UserData/" as default.
-    You can set ResourcePath by function void setResourcePath(const char *pszResourcePath);
-    */
-    static const char* fullPathFromRelativePath(const char *pszRelativePath);
+	/**
+	@brief   Generate the absolute path of the file.
+	@param   pszRelativePath     The relative path of the file.
+	@return  The absolute path of the file.
+	@warning We only add the ResourcePath before the relative path of the file.
+	If you have not set the ResourcePath,the function add "/NEWPLUS/TDA_DATA/UserData/" as default.
+	You can set ResourcePath by function void setResourcePath(const char *pszResourcePath);
+	*/
+	static const char* fullPathFromRelativePath(const char *pszRelativePath);
 
 	/** Returns the fullpath of an filename including the resolution of the image.
- 
-        If in RetinaDisplay mode, and a RetinaDisplay file is found, it will return that path.
-        If in iPad mode, and an iPad file is found, it will return that path.
- 
-        Examples:
- 
-        * In iPad mode: "image.png" -> "/full/path/image-ipad.png" (in case the -ipad file exists)
-        * In RetinaDisplay mode: "image.png" -> "/full/path/image-hd.png" (in case the -hd file exists)
- 
-        If an iPad file is found, it will set resolution type to kCCResolutioniPad
-        If a RetinaDisplay file is found, it will set resolution type to kCCResolutionRetinaDisplay
- 
-      */
+
+	If in RetinaDisplay mode, and a RetinaDisplay file is found, it will return that path.
+	If in iPad mode, and an iPad file is found, it will return that path.
+
+	Examples:
+
+	* In iPad mode: "image.png" -> "/full/path/image-ipad.png" (in case the -ipad file exists)
+	* In RetinaDisplay mode: "image.png" -> "/full/path/image-hd.png" (in case the -hd file exists)
+
+	If an iPad file is found, it will set resolution type to kCCResolutioniPad
+	If a RetinaDisplay file is found, it will set resolution type to kCCResolutionRetinaDisplay
+
+	*/
 	static const char* fullPathFromRelativePath(const char *pszRelativePath, ccResolutionType *pResolutionType);
 
-    /// @cond
-    static const char* fullPathFromRelativeFile(const char *pszFilename, const char *pszRelativeFile);
-    /// @endcond
+	/// @cond
+	static const char* fullPathFromRelativeFile(const char *pszFilename, const char *pszRelativeFile);
+	/// @endcond
 
 	/** Sets the iPhone RetinaDisplay suffix to load resources.
-        By default it is "-hd".
-        Only valid on iOS. Not valid for OS X.
- 
-        @since v1.1
-     */
+	By default it is "-hd".
+	Only valid on iOS. Not valid for OS X.
+
+	@since v1.1
+	*/
 	static void setiPhoneRetinaDisplaySuffix(const char *suffix);
 
 	/** Sets the iPad suffix to load resources.
-        By default it is "".
-        Only valid on iOS. Not valid for OS X.
- 
+	By default it is "".
+	Only valid on iOS. Not valid for OS X.
 
-     */
+
+	*/
 	static void setiPadSuffix(const char *suffix);
 
 	/** Sets the iPad Retina Display suffix to load resources.
-        By default it is "-ipadhd".
-        Only valid on iOS. Not valid for OS X.
- 
-        @since v1.1
-     */
+	By default it is "-ipadhd".
+	Only valid on iOS. Not valid for OS X.
+
+	@since v1.1
+	*/
 	static void setiPadRetinaDisplaySuffix(const char *suffix);
 
 	/** Returns whether or not a given filename exists with the iPad suffix.
-        Only available on iOS. Not supported on OS X.
-        @since v1.1
-    */
+	Only available on iOS. Not supported on OS X.
+	@since v1.1
+	*/
 	bool iPadFileExistsAtPath(const char *filename);
 
 	/** Returns whether or not a given filename exists with the iPad RetinaDisplay suffix.
-        Only available on iOS. Not supported on OS X.
- 
-     */
+	Only available on iOS. Not supported on OS X.
+
+	*/
 	bool iPadRetinaDisplayFileExistsAtPath(const char *filename);
 
 	/** Returns whether or not a given path exists with the iPhone RetinaDisplay suffix.
-        Only available on iOS. Not supported on OS X.
-        @since v1.1
-    */
+	Only available on iOS. Not supported on OS X.
+	@since v1.1
+	*/
 	bool iPhoneRetinaDisplayFileExistsAtPath(const char *filename);
 
-    /**
-    @brief  Set the ResourcePath,we will find resource in this path
-    @param pszResourcePath  The absolute resource path
+	/**
+	@brief  Set the ResourcePath,we will find resource in this path
+	@param pszResourcePath  The absolute resource path
 	@warning Don't call this function in android and iOS, it has not effect.
 	In android, if you want to read file other than apk, you shoud use invoke getFileData(), and pass the 
 	absolute path.
-    */
-    static void setResourcePath(const char *pszResourcePath);
+	*/
+	static void setResourcePath(const char *pszResourcePath);
 
-    /**
-    @brief   Generate a CCDictionary pointer by file
-    @param   pFileName  The file name of *.plist file
-    @return  The CCDictionary pointer generated from the file
-    */
-    static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFile(const char *pFileName);
+	/**
+	@brief   Generate a CCDictionary pointer by file
+	@param   pFileName  The file name of *.plist file
+	@return  The CCDictionary pointer generated from the file
+	*/
+	static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFile(const char *pFileName);
 
 	/**
 	@brief The same meaning as dictionaryWithContentsOfFile(), but it doesn't call autorelease, so the
-	       invoker should call release().
+	invoker should call release().
 	*/
 	static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFileThreadSafe(const char *pFileName);
 
 	/**
-    @brief   Generate a CCMutableArray pointer by file
-    @param   pFileName  The file name of *.plist file
-    @return  The CCArray pointer generated from the file
-    */
+	@brief   Generate a CCMutableArray pointer by file
+	@param   pFileName  The file name of *.plist file
+	@return  The CCArray pointer generated from the file
+	*/
 	static CCMutableArray<CCObject*>* arrayWithContentsOfFile(const char* pFileName);
 
 	/*
 	@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
-	       invoker should call release().
+	invoker should call release().
 	*/
 	static CCMutableArray<CCObject*>* arrayWithContentsOfFileThreadSafe(const char* pFileName);
 	/**
@@ -178,53 +179,55 @@ public:
 	*/
 	static std::string getWriteablePath();
 
-    /**
-    @brief Set/Get whether pop-up a message box when the image load failed
-    */
-    static void setIsPopupNotify(bool bNotify);
-    static bool getIsPopupNotify();
+	/**
+	@brief Set/Get whether pop-up a message box when the image load failed
+	*/
+	static void setIsPopupNotify(bool bNotify);
+	static bool getIsPopupNotify();
 
-    ///////////////////////////////////////////////////
-    // interfaces on wophone
-    ///////////////////////////////////////////////////
-    /**
-    @brief  Set the resource zip file name
-    @param pszZipFileName The relative path of the .zip file
-    */
-    static void setResource(const char* pszZipFileName);
+	///////////////////////////////////////////////////
+	// interfaces on wophone
+	///////////////////////////////////////////////////
+	/**
+	@brief  Set the resource zip file name
+	@param pszZipFileName The relative path of the .zip file
+	*/
+	static void setResource(const char* pszZipFileName);
 
- //   ///////////////////////////////////////////////////
- //   // interfaces on ios
- //   ///////////////////////////////////////////////////
- //   static int ccLoadFileIntoMemory(const char *filename, unsigned char **out);
+	//   ///////////////////////////////////////////////////
+	//   // interfaces on ios
+	//   ///////////////////////////////////////////////////
+	//   static int ccLoadFileIntoMemory(const char *filename, unsigned char **out);
 };
 
 class CCFileData
 {
 public:
-    CCFileData(const char* pszFileName, const char* pszMode)
-        : m_pBuffer(0)
-        , m_uSize(0)
-    {
-        m_pBuffer = CCFileUtils::getFileData(pszFileName, pszMode, &m_uSize);
-    }
-    ~CCFileData()
-    {
-        CC_SAFE_DELETE_ARRAY(m_pBuffer);
-    }
+	CCFileData(const char* pszFileName, const char* pszMode)
+		: m_pBuffer(0)
+		, m_uSize(0)
+	{
+		m_pBuffer = CCFileUtils::getFileData(pszFileName, pszMode, &m_uSize);
+	}
+	~CCFileData()
+	{
+		CC_SAFE_DELETE_ARRAY(m_pBuffer);
+	}
 
-    bool reset(const char* pszFileName, const char* pszMode)
-    {
-        CC_SAFE_DELETE_ARRAY(m_pBuffer);
-        m_uSize = 0;
-        m_pBuffer = CCFileUtils::getFileData(pszFileName, pszMode, &m_uSize);
-        return (m_pBuffer) ? true : false;
-    }
+	bool reset(const char* pszFileName, const char* pszMode)
+	{
+		CC_SAFE_DELETE_ARRAY(m_pBuffer);
+		m_uSize = 0;
+		m_pBuffer = CCFileUtils::getFileData(pszFileName, pszMode, &m_uSize);
+		return (m_pBuffer) ? true : false;
+	}
 
-    CC_SYNTHESIZE_READONLY(unsigned char *, m_pBuffer, Buffer);
-    CC_SYNTHESIZE_READONLY(unsigned long ,  m_uSize,   Size);
+	CC_SYNTHESIZE_READONLY(unsigned char *, m_pBuffer, Buffer);
+	CC_SYNTHESIZE_READONLY(unsigned long ,  m_uSize,   Size);
 };
-
+std::vector<std::string> m_searchResolutionsOrderArray;
+std::vector<std::string> m_searchPathArray;
+std::string m_strDefaultResRootPath;
 NS_CC_END;
 
 #endif	// end of __CC_EGLVIEW_PLATFORM_H__
