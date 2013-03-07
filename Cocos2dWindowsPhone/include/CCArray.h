@@ -43,94 +43,175 @@ __arr__++)
 
 I found that it's not work in C++. So it keep what it's look like in version 1.0.0-rc3. ---By Bin
 */
-#define CCARRAY_FOREACH(__array__, __object__)												\
-    if (__array__ && __array__->data->num > 0)													\
-    for(CCObject** arr = __array__->data->arr, **end = __array__->data->arr + __array__->data->num-1;	\
-    arr <= end && ((__object__ = *arr) != NULL/* || true*/);										\
-    arr++)
+#define CCARRAY_FOREACH(__array__, __object__)                                                                         \
+	if ((__array__) && (__array__)->data->num > 0)                                                                     \
+	for(CCObject** __arr__ = (__array__)->data->arr, **__end__ = (__array__)->data->arr + (__array__)->data->num-1;    \
+	__arr__ <= __end__ && (((__object__) = *__arr__) != NULL/* || true*/);                                             \
+	__arr__++)
 
-namespace cocos2d
-{
+#define CCARRAY_FOREACH_REVERSE(__array__, __object__)                                                                  \
+	if ((__array__) && (__array__)->data->num > 0)                                                                      \
+	for(CCObject** __arr__ = (__array__)->data->arr + (__array__)->data->num-1, **__end__ = (__array__)->data->arr;     \
+	__arr__ >= __end__ && (((__object__) = *__arr__) != NULL/* || true*/);                                              \
+	__arr__--)
+
+#if defined(COCOS2D_DEBUG) && (COCOS2D_DEBUG > 0)
+#define CCARRAY_VERIFY_TYPE(__array__, __type__)                                                                 \
+	do {                                                                                                         \
+	if ((__array__) && (__array__)->data->num > 0)                                                           \
+	for(CCObject** __arr__ = (__array__)->data->arr,                                                     \
+	**__end__ = (__array__)->data->arr + (__array__)->data->num-1; __arr__ <= __end__; __arr__++)    \
+	CCAssert(dynamic_cast<__type__>(*__arr__), "element type is wrong!");                            \
+	} while(false)
+#else
+#define CCARRAY_VERIFY_TYPE(__array__, __type__) void(0)
+#endif
+
+#define arrayMakeObjectsPerformSelector(pArray, func, elementType)    \
+	do {                                                                  \
+	if(pArray && pArray->count() > 0)                                 \
+	{                                                                 \
+	CCObject* child;                                              \
+	CCARRAY_FOREACH(pArray, child)                                \
+		{                                                             \
+		elementType pNode = (elementType) child;                  \
+		if(pNode)                                                 \
+			{                                                         \
+			pNode->func();                                        \
+			}                                                         \
+		}                                                             \
+	}                                                                 \
+	}                                                                     \
+	while(false)
+
+#define arrayMakeObjectsPerformSelectorWithObject(pArray, func, pObject, elementType)   \
+	do {                                                                  \
+	if(pArray && pArray->count() > 0)                                 \
+	{                                                                 \
+	CCObject* child = NULL;                                       \
+	CCARRAY_FOREACH(pArray, child)                                \
+		{                                                             \
+		elementType pNode = (elementType) child;                  \
+		if(pNode)                                                 \
+			{                                                         \
+			pNode->func(pObject);                                 \
+			}                                                         \
+		}                                                             \
+	}                                                                 \
+	}                                                                     \
+	while(false)
+
+
+NS_CC_BEGIN
+
+	//namespace cocos2d
+	//{
 
 class CC_DLL CCArray : public CCObject
 {
 public:
-    ~CCArray();
+	~CCArray();
 	/** Create an array */
-    static CCArray* array();
+	static CCArray* create();
+	/** Create an array with some objects */
+	static CCArray* create(CCObject* pObject, ...);
+	/** Create an array with one object */
+	static CCArray* createWithObject(CCObject* pObject);
 	/** Create an array with capacity */
-    static CCArray* arrayWithCapacity(unsigned int capacity);
+	static CCArray* createWithCapacity(unsigned int capacity);
 	/** Create an array with an existing array */
-    static CCArray* arrayWithArray(CCArray* otherArray);
+	static CCArray* createWithArray(CCArray* otherArray);
+	static CCArray* createWithContentsOfFile(const char* pFileName);
+
+	/*
+	@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
+	invoker should call release().
+	*/
+	static CCArray* createWithContentsOfFileThreadSafe(const char* pFileName);
 
 	/** Initializes an array */
-    bool init();
+	bool init();
+	/** Initializes an array with one object */
+	bool initWithObject(CCObject* pObject);
+	/** Initializes an array with some objects */
+	bool initWithObjects(CCObject* pObject, ...);
 	/** Initializes an array with capacity */
-    bool initWithCapacity(unsigned int capacity);
+	bool initWithCapacity(unsigned int capacity);
 	/** Initializes an array with an existing array */
-    bool initWithArray(CCArray* otherArray);
+	bool initWithArray(CCArray* otherArray);
 
-    // Querying an Array
+	// Querying an Array
 
 	/** Returns element count of the array */
-    unsigned int count();
+	unsigned int count();
 	/** Returns capacity of the array */
-    unsigned int capacity();
+	unsigned int capacity();
 	/** Returns index of a certain object, return UINT_MAX if doesn't contain the object */
-    unsigned int indexOfObject(CCObject* object);
+	unsigned int indexOfObject(CCObject* object);
 	/** Returns an element with a certain index */
-    CCObject* objectAtIndex(unsigned int index);
+	CCObject* objectAtIndex(unsigned int index);
 	/** Returns last element */
-    CCObject* lastObject();
+	CCObject* lastObject();
 	/** Returns a random element */
-    CCObject* randomObject();
+	CCObject* randomObject();
 	/** Returns a Boolean value that indicates whether object is present in array. */
-    bool containsObject(CCObject* object);
+	bool containsObject(CCObject* object);
+	bool isEqualToArray(CCArray* pOtherArray);
+	// Adding Objects
 
-    // Adding Objects
+	// Adding Objects
 
 	/** Add a certain object */
-    void addObject(CCObject* object);
+	void addObject(CCObject* object);
 	/** Add all elements of an existing array */
-    void addObjectsFromArray(CCArray* otherArray);
+	void addObjectsFromArray(CCArray* otherArray);
 	/** Insert a certain object at a certain index */
-    void insertObject(CCObject* object, unsigned int index);
+	void insertObject(CCObject* object, unsigned int index);
 
-    // Removing Objects
+	// Removing Objects
 
 	/** Remove last object */
-    void removeLastObject();
+	void removeLastObject(bool bReleaseObj = true);
 	/** Remove a certain object */
-    void removeObject(CCObject* object);
+	void removeObject(CCObject* object, bool bReleaseObj = true);
 	/** Remove an element with a certain index */
-    void removeObjectAtIndex(unsigned int index);
+	void removeObjectAtIndex(unsigned int index, bool bReleaseObj = true);
 	/** Remove all elements */
-    void removeObjectsInArray(CCArray* otherArray);
+	void removeObjectsInArray(CCArray* otherArray);
 	/** Remove all objects */
-    void removeAllObjects();
+	void removeAllObjects();
 	/** Fast way to remove a certain object */
-    void fastRemoveObject(CCObject* object);
+	void fastRemoveObject(CCObject* object);
 	/** Fast way to remove an element with a certain index */
-    void fastRemoveObjectAtIndex(unsigned int index);
+	void fastRemoveObjectAtIndex(unsigned int index);
 
-    // Rearranging Content
+	// Rearranging Content
 
 	/** Swap two elements */
-    void exchangeObject(CCObject* object1, CCObject* object2);
+	void exchangeObject(CCObject* object1, CCObject* object2);
 	/** Swap two elements with certain indexes */
-    void exchangeObjectAtIndex(unsigned int index1, unsigned int index2);
+	void exchangeObjectAtIndex(unsigned int index1, unsigned int index2);
+
+	/** Replace object at index with another object. */
+	void replaceObjectAtIndex(unsigned int uIndex, CCObject* pObject, bool bReleaseObject = true);
 	/** Revers the array */
-    void reverseObjects();
+	void reverseObjects();
 	/* Shrinks the array so the memory footprint corresponds with the number of items */
-    void reduceMemoryFootprint();
+	void reduceMemoryFootprint();
+	/* override functions */
+	virtual CCObject* copyWithZone(CCZone* pZone);
+
 
 public:
-    ccArray* data;
+	ccArray* data;
+	CCArray();
+	CCArray(unsigned int capacity);
 
-private:
-	CCArray() : data(NULL) {};
+	//private:
+	//CCArray() : data(NULL) {};
 };
 
-}
+//}
+NS_CC_END
 
 #endif // __CCARRAY_H__

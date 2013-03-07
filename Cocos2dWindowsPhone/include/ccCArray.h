@@ -227,16 +227,21 @@ static inline void ccArrayRemoveAllObjects(ccArray *arr)
 
 /** Removes object at specified index and pushes back all subsequent objects.
  Behaviour undefined if index outside [0, num-1]. */
-static inline void ccArrayRemoveObjectAtIndex(ccArray *arr, unsigned int index)
+void ccArrayRemoveObjectAtIndex(ccArray *arr, unsigned int index, bool bReleaseObj/* = true*/)
 {
-	arr->arr[index]->release(); 
+	CCAssert(arr && arr->num > 0 && index < arr->num, "Invalid index. Out of bounds");
+    if (bReleaseObj)
+    {
+        CC_SAFE_RELEASE(arr->arr[index]);
+    }
+    
 	arr->num--;
-
+	
 	unsigned int remaining = arr->num - index;
-	if (remaining > 0)
-	{
-			memmove(&arr->arr[index], &arr->arr[index+1], remaining * sizeof(void*));
-	}
+	if(remaining>0)
+    {
+		memmove((void *)&arr->arr[index], (void *)&arr->arr[index+1], remaining * sizeof(CCObject*));
+    }
 }
 
 /** Removes object at specified index and fills the gap with the last object,
@@ -259,13 +264,13 @@ static inline void ccArrayFastRemoveObject(ccArray *arr, CCObject* object)
 
 /** Searches for the first occurance of object and removes it. If object is not
  found the function has no effect. */
-static inline void ccArrayRemoveObject(ccArray *arr, CCObject* object)
+ void ccArrayRemoveObject(ccArray *arr, CCObject* object,bool bReleaseObj/* = true*/)
 {
 	unsigned int index = ccArrayGetIndexOfObject(arr, object);
 
 	if (index != UINT_MAX)
 	{
-		ccArrayRemoveObjectAtIndex(arr, index);
+		ccArrayRemoveObjectAtIndex(arr, index,bReleaseObj);
 	}
 }
 
