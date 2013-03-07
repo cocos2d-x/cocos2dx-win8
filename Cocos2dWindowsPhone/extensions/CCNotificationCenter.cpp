@@ -35,7 +35,7 @@ static CCNotificationCenter *s_sharedNotifCenter = NULL;
 
 CCNotificationCenter::CCNotificationCenter()
 {
-    m_observers = CCArray::arrayWithCapacity(3);
+    m_observers = CCArray::createWithCapacity(3);
     m_observers->retain();
 }
 

@@ -306,7 +306,7 @@ void CCScheduler::unscheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget
 					pElement->currentTimerSalvaged = true;
 				}
 
-				ccArrayRemoveObjectAtIndex(pElement->timers, i );
+				ccArrayRemoveObjectAtIndex(pElement->timers, i, true);
 
 				// update timerIndex in case we are in tick:, looping over the actions
 				if (pElement->timerIndex >= i)
@@ -557,7 +557,7 @@ unsigned int CCScheduler::scheduleScriptFunc(int nHandler, ccTime fInterval, boo
     CCSchedulerScriptHandlerEntry* pEntry = CCSchedulerScriptHandlerEntry::entryWithHandler(nHandler, fInterval, bPaused);
     if (!m_pScriptHandlerEntries)
     {
-        m_pScriptHandlerEntries = CCArray::arrayWithCapacity(20);
+        m_pScriptHandlerEntries = CCArray::createWithCapacity(20);
         m_pScriptHandlerEntries->retain();
     }
     m_pScriptHandlerEntries->addObject(pEntry);

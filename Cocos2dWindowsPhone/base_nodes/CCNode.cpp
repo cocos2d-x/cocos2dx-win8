@@ -104,21 +104,21 @@ CCNode::~CCNode(void)
 
 }
 
-void CCNode::arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func)
-{
-	if(pArray && pArray->count() > 0)
-	{
-        CCObject* child;
-        CCARRAY_FOREACH(pArray, child)
-        {
-            CCNode* pNode = (CCNode*) child;
-            if(pNode && (0 != func))
-            {
-                (pNode->*func)();
-            }
-        }
-	}
-}
+//void CCNode::arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func)
+//{
+	//if(pArray && pArray->count() > 0)
+	//{
+      //  CCObject* child;
+     //   CCARRAY_FOREACH(pArray, child)
+      //  {
+        //    CCNode* pNode = (CCNode*) child;
+        //    if(pNode && (0 != func))
+        //    {
+         //       (pNode->*func)();
+         //   }
+       // }
+	//}
+//}
 
 float CCNode::getSkewX()
 {
@@ -553,7 +553,8 @@ void CCNode::cleanup()
 	this->unscheduleAllSelectors();	
 
 	// timers
-	arrayMakeObjectsPerformSelector(m_pChildren, &CCNode::cleanup);
+	//arrayMakeObjectsPerformSelector(m_pChildren, &CCNode::cleanup);
+	 arrayMakeObjectsPerformSelector(m_pChildren, cleanup, CCNode*);
 }
 
 
@@ -567,7 +568,7 @@ char * CCNode::description()
 // lazy allocs
 void CCNode::childrenAlloc(void)
 {
-    m_pChildren = CCArray::arrayWithCapacity(4);
+    m_pChildren = CCArray::createWithCapacity(4);
     m_pChildren->retain();
 }
 
@@ -927,7 +928,8 @@ void CCNode::transform()
 
 void CCNode::onEnter()
 {
-	arrayMakeObjectsPerformSelector(m_pChildren, &CCNode::onEnter);
+	arrayMakeObjectsPerformSelector(m_pChildren, onEnter, CCNode*);
+	 
 
 	this->resumeSchedulerAndActions();
 
@@ -941,7 +943,7 @@ void CCNode::onEnter()
 
 void CCNode::onEnterTransitionDidFinish()
 {
-	arrayMakeObjectsPerformSelector(m_pChildren, &CCNode::onEnterTransitionDidFinish);
+	arrayMakeObjectsPerformSelector(m_pChildren, onEnterTransitionDidFinish, CCNode*);
 }
 
 void CCNode::onExit()
@@ -955,7 +957,7 @@ void CCNode::onExit()
         CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnExit);
     }
 
-	arrayMakeObjectsPerformSelector(m_pChildren, &CCNode::onExit);
+	arrayMakeObjectsPerformSelector(m_pChildren,onExit, CCNode*);  
 }
 
 void CCNode::registerScriptHandler(int nHandler)

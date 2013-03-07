@@ -273,7 +273,7 @@ NS_CC_BEGIN
 
 		typedef void (CCNode::*callbackFunc)(void);
 
-		void arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func);
+		//void arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func);
 
 		CCPoint convertToWindowSpace(const CCPoint& nodePoint);
 

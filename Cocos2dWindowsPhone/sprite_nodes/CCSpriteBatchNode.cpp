@@ -90,8 +90,8 @@ bool CCSpriteBatchNode::initWithTexture(CCTexture2D *tex, unsigned int capacity)
 	updateBlendFunc();
 
 	// no lazy alloc in this node
-	m_pChildren = CCArray::array();
-	m_pobDescendants = CCArray::array();
+	m_pChildren =new CCArray();
+	m_pobDescendants =new CCArray();
 	m_pChildren->retain();
 	m_pobDescendants->retain();
 
