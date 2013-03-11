@@ -743,6 +743,9 @@
     <ClInclude Include="include\ccTypeInfo.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\CCFileUtils.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

@@ -300,6 +300,12 @@ public:
     }
 };
 
+//CCDictionary* ccFileUtils_dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
+//{
+//    CCDictMaker tMaker;
+//    return tMaker.dictionaryWithContentsOfFile(pFileName);
+//}
+
 std::string& CCFileUtils::removeSuffixFromFile(std::string& path)
 {
 	// XXX win32 now can only support iphone retina, because 
@@ -556,6 +562,7 @@ bool CCFileUtils::getIsPopupNotify()
 {
     return s_bPopupNotify;
 }
+
 bool CCFileUtils::init()
 {
 	m_strDefaultResRootPath = "assets/";

@@ -198,6 +198,10 @@ public:
 	//   // interfaces on ios
 	//   ///////////////////////////////////////////////////
 	//   static int ccLoadFileIntoMemory(const char *filename, unsigned char **out);
+
+	std::vector<std::string> m_searchResolutionsOrderArray;
+	std::vector<std::string> m_searchPathArray;
+	std::string m_strDefaultResRootPath;
 };
 
 class CCFileData
@@ -225,9 +229,7 @@ public:
 	CC_SYNTHESIZE_READONLY(unsigned char *, m_pBuffer, Buffer);
 	CC_SYNTHESIZE_READONLY(unsigned long ,  m_uSize,   Size);
 };
-std::vector<std::string> m_searchResolutionsOrderArray;
-std::vector<std::string> m_searchPathArray;
-std::string m_strDefaultResRootPath;
+
 NS_CC_END;
 
 #endif	// end of __CC_EGLVIEW_PLATFORM_H__

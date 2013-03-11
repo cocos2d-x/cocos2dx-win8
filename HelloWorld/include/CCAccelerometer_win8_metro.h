@@ -30,9 +30,9 @@ public:
     ~CCAccelerometer();
 
     static CCAccelerometer* sharedAccelerometer();// { return NULL; }
-    void setDelegate(CCAccelerometerDelegate* pDelegate);// {CC_UNUSED_PARAM(pDelegate);}
+    void setDelegate(CCAccelerometerDelegate* pDelegate){CC_UNUSED_PARAM(pDelegate);}
 	void update(float x, float y, float z, long sensorTimeStamp);
-
+	void setAccelerometerInterval(float interval) {CC_UNUSED_PARAM(interval);};
 //private:
 	//static Windows::Devices::Sensors::Accelerometer^ m_deviceAccelerometer;
 	CCAccelerometerDelegate* m_pAccelDelegate;

@@ -227,7 +227,7 @@ static inline void ccArrayRemoveAllObjects(ccArray *arr)
 
 /** Removes object at specified index and pushes back all subsequent objects.
 Behaviour undefined if index outside [0, num-1]. */
-void ccArrayRemoveObjectAtIndex(ccArray *arr, unsigned int index, bool bReleaseObj/* = true*/)
+static inline void ccArrayRemoveObjectAtIndex(ccArray *arr, unsigned int index, bool bReleaseObj/* = true*/)
 {
 	CCAssert(arr && arr->num > 0 && index < arr->num, "Invalid index. Out of bounds");
 	if (bReleaseObj)
@@ -281,7 +281,7 @@ static inline void ccArrayRemoveArray(ccArray *arr, ccArray *minusArr)
 	
 	for( unsigned int i = 0; i < minusArr->num; i++)
 	{
-		ccArrayRemoveObject(arr, minusArr->arr[i]);
+		ccArrayRemoveObject(arr, minusArr->arr[i],true);
 	}
 }
 

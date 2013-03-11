@@ -125,11 +125,13 @@ CCArray* CCArray::createWithContentsOfFile(const char* pFileName)
     return pRet;
 }
 
-extern CCArray* ccFileUtils_arrayWithContentsOfFileThreadSafe(const char* pFileName);
+//extern CCArray* ccFileUtils_arrayWithContentsOfFileThreadSafe(const char* pFileName);
 
 CCArray* CCArray::createWithContentsOfFileThreadSafe(const char* pFileName)
 {
-    return ccFileUtils_arrayWithContentsOfFileThreadSafe(pFileName);
+	CCAssert(false, "Not implemented!");
+    //return ccFileUtils_arrayWithContentsOfFileThreadSafe(pFileName);
+	return NULL;
 }
 bool CCArray::init()
 {

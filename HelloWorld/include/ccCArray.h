@@ -26,16 +26,16 @@ THE SOFTWARE.
 // For licensing information relating to this distribution please see Third Party Notices file.
 
 /** 
- @file
- Based on Chipmunk cpArray.
- ccArray is a faster alternative to CCMutableArray, it does pretty much the
- same thing (stores CCObjects and retains/releases them appropriately). It's
- faster because:
- - it uses a plain C interface so it doesn't incur Objective-c messaging overhead 
- - it assumes you know what you're doing, so it doesn't spend time on safety checks
-   (index out of bounds, required capacity etc.)
- - comparisons are done using pointer equality instead of isEqual
- */
+@file
+Based on Chipmunk cpArray.
+ccArray is a faster alternative to CCMutableArray, it does pretty much the
+same thing (stores CCObjects and retains/releases them appropriately). It's
+faster because:
+- it uses a plain C interface so it doesn't incur Objective-c messaging overhead 
+- it assumes you know what you're doing, so it doesn't spend time on safety checks
+(index out of bounds, required capacity etc.)
+- comparisons are done using pointer equality instead of isEqual
+*/
 
 #ifndef CC_ARRAY_H
 #define CC_ARRAY_H
@@ -47,13 +47,13 @@ THE SOFTWARE.
 #include "CCObject.h"
 #include "ccMacros.h"
 
-namespace cocos2d {
-
+//namespace cocos2d {
+NS_CC_BEGIN
 	// Easy integration	
 #define CCARRAYDATA_FOREACH(__array__, __object__)															\
 	__object__=__array__->arr[0]; for(unsigned int i=0, num=__array__->num; i<num; i++, __object__=__array__->arr[i])	\
 
-typedef struct _ccArray 
+	typedef struct _ccArray 
 {
 	unsigned int num, max;
 	CCObject**    arr; //equals CCObject** arr;
@@ -66,13 +66,13 @@ static inline ccArray* ccArrayNew(unsigned int capacity)
 	{
 		capacity = 1; 
 	}
-	
+
 	ccArray *arr = (ccArray*)malloc( sizeof(ccArray) );
 	arr->num = 0;
-	
+
 	arr->arr =  (CCObject**)malloc( capacity * sizeof(CCObject*) );
 	arr->max = capacity;
-	
+
 	return arr;
 }
 
@@ -85,12 +85,12 @@ static inline void ccArrayFree(ccArray *arr)
 	{
 		return;
 	}
-	
+
 	ccArrayRemoveAllObjects(arr);
-	
+
 	//delete arr->m_pObjectArray; 
 	free(arr->arr);
-	
+
 	free(arr);
 }
 
@@ -98,10 +98,10 @@ static inline void ccArrayFree(ccArray *arr)
 static inline void ccArrayDoubleCapacity(ccArray *arr)
 {
 	arr->max *= 2;
-    CCObject** newArr = (CCObject**)realloc( arr->arr, arr->max * sizeof(CCObject*) );
-    // will fail when there's not enough memory
-    CCAssert(newArr != NULL, "ccArrayDoubleCapacity failed. Not enough memory");
-    arr->arr = newArr;
+	CCObject** newArr = (CCObject**)realloc( arr->arr, arr->max * sizeof(CCObject*) );
+	// will fail when there's not enough memory
+	CCAssert(newArr != NULL, "ccArrayDoubleCapacity failed. Not enough memory");
+	arr->arr = newArr;
 }
 
 /** Increases array capacity such that max >= num + extra. */
@@ -116,25 +116,25 @@ static inline void ccArrayEnsureExtraCapacity(ccArray *arr, unsigned int extra)
 /** shrinks the array so the memory footprint corresponds with the number of items */
 static inline void ccArrayShrink(ccArray *arr)
 {
-    unsigned int newSize;
+	unsigned int newSize;
 
-    //only resize when necessary
-    if (arr->max > arr->num && !(arr->num==0 && arr->max==1))
-    {
-        if (arr->num!=0) 
-        {
-            newSize=arr->num;
-            arr->max=arr->num; 
-        }
-        else 
-        {//minimum capacity of 1, with 0 elements the array would be free'd by realloc
-            newSize=1;
-            arr->max=1;
-        }
+	//only resize when necessary
+	if (arr->max > arr->num && !(arr->num==0 && arr->max==1))
+	{
+		if (arr->num!=0) 
+		{
+			newSize=arr->num;
+			arr->max=arr->num; 
+		}
+		else 
+		{//minimum capacity of 1, with 0 elements the array would be free'd by realloc
+			newSize=1;
+			arr->max=1;
+		}
 
-        arr->arr = (CCObject**) realloc(arr->arr,newSize * sizeof(CCObject*) );
-        CCAssert(arr->arr != NULL, "could not reallocate the memory");
-    }
+		arr->arr = (CCObject**) realloc(arr->arr,newSize * sizeof(CCObject*) );
+		CCAssert(arr->arr != NULL, "could not reallocate the memory");
+	}
 } 
 
 /** Returns index of first occurence of object, UXNotFound if object not found. */
@@ -172,7 +172,7 @@ static inline void ccArrayAppendObjectWithResize(ccArray *arr, CCObject* object)
 }
 
 /** Appends objects from plusArr to arr. Behaviour undefined if arr doesn't have
- enough capacity. */
+enough capacity. */
 static inline void ccArrayAppendArray(ccArray *arr, ccArray *plusArr)
 {
 	for( unsigned int i = 0; i < plusArr->num; i++)
@@ -191,29 +191,29 @@ static inline void ccArrayAppendArrayWithResize(ccArray *arr, ccArray *plusArr)
 /** Inserts an object at index */
 static inline void ccArrayInsertObjectAtIndex(ccArray *arr, CCObject* object, unsigned int index)
 {
-    CCAssert(index<=arr->num, "Invalid index. Out of bounds");
+	CCAssert(index<=arr->num, "Invalid index. Out of bounds");
 
-    ccArrayEnsureExtraCapacity(arr, 1);
+	ccArrayEnsureExtraCapacity(arr, 1);
 
-    unsigned int remaining = arr->num - index;
-    if( remaining > 0)
-        memmove(&arr->arr[index+1], &arr->arr[index], sizeof(CCObject*) * remaining );
+	unsigned int remaining = arr->num - index;
+	if( remaining > 0)
+		memmove(&arr->arr[index+1], &arr->arr[index], sizeof(CCObject*) * remaining );
 
-    object->retain();
-    arr->arr[index] = object;
-    arr->num++;
+	object->retain();
+	arr->arr[index] = object;
+	arr->num++;
 }
 
 /** Swaps two objects */
 static inline void ccArraySwapObjectsAtIndexes(ccArray *arr, unsigned int index1, unsigned int index2)
 {
-    CCAssert(index1 < arr->num, "(1) Invalid index. Out of bounds");
-    CCAssert(index2 < arr->num, "(2) Invalid index. Out of bounds");
+	CCAssert(index1 < arr->num, "(1) Invalid index. Out of bounds");
+	CCAssert(index2 < arr->num, "(2) Invalid index. Out of bounds");
 
-    CCObject* object1 = arr->arr[index1];
+	CCObject* object1 = arr->arr[index1];
 
-    arr->arr[index1] = arr->arr[index2];
-    arr->arr[index2] = object1;
+	arr->arr[index1] = arr->arr[index2];
+	arr->arr[index2] = object1;
 }
 
 /** Removes all objects from arr */
@@ -226,27 +226,27 @@ static inline void ccArrayRemoveAllObjects(ccArray *arr)
 }
 
 /** Removes object at specified index and pushes back all subsequent objects.
- Behaviour undefined if index outside [0, num-1]. */
- void ccArrayRemoveObjectAtIndex(ccArray *arr, unsigned int index, bool bReleaseObj/* = true*/)
+Behaviour undefined if index outside [0, num-1]. */
+static inline void ccArrayRemoveObjectAtIndex(ccArray *arr, unsigned int index, bool bReleaseObj/* = true*/)
 {
 	CCAssert(arr && arr->num > 0 && index < arr->num, "Invalid index. Out of bounds");
-    if (bReleaseObj)
-    {
-        CC_SAFE_RELEASE(arr->arr[index]);
-    }
-    
+	if (bReleaseObj)
+	{
+		CC_SAFE_RELEASE(arr->arr[index]);
+	}
+
 	arr->num--;
-	
+
 	unsigned int remaining = arr->num - index;
 	if(remaining>0)
-    {
+	{
 		memmove((void *)&arr->arr[index], (void *)&arr->arr[index+1], remaining * sizeof(CCObject*));
-    }
+	}
 }
 
 /** Removes object at specified index and fills the gap with the last object,
- thereby avoiding the need to push back subsequent objects.
- Behaviour undefined if index outside [0, num-1]. */
+thereby avoiding the need to push back subsequent objects.
+Behaviour undefined if index outside [0, num-1]. */
 static inline void ccArrayFastRemoveObjectAtIndex(ccArray *arr, unsigned int index)
 {
 	arr->arr[index]->release();
@@ -257,14 +257,14 @@ static inline void ccArrayFastRemoveObjectAtIndex(ccArray *arr, unsigned int ind
 
 static inline void ccArrayFastRemoveObject(ccArray *arr, CCObject* object)
 {
-    unsigned int index = ccArrayGetIndexOfObject(arr, object);
-    if (index != UINT_MAX)
-        ccArrayFastRemoveObjectAtIndex(arr, index);
+	unsigned int index = ccArrayGetIndexOfObject(arr, object);
+	if (index != UINT_MAX)
+		ccArrayFastRemoveObjectAtIndex(arr, index);
 }
 
 /** Searches for the first occurance of object and removes it. If object is not
- found the function has no effect. */
-void ccArrayRemoveObject(ccArray *arr, CCObject* object, bool bReleaseObj/* = true*/)
+found the function has no effect. */
+static inline  void ccArrayRemoveObject(ccArray *arr, CCObject* object,bool bReleaseObj/* = true*/)
 {
 	unsigned int index = ccArrayGetIndexOfObject(arr, object);
 
@@ -275,21 +275,22 @@ void ccArrayRemoveObject(ccArray *arr, CCObject* object, bool bReleaseObj/* = tr
 }
 
 /** Removes from arr all objects in minusArr. For each object in minusArr, the
- first matching instance in arr will be removed. */
+first matching instance in arr will be removed. */
 static inline void ccArrayRemoveArray(ccArray *arr, ccArray *minusArr)
 {
+	
 	for( unsigned int i = 0; i < minusArr->num; i++)
 	{
-		ccArrayRemoveObject(arr, minusArr->arr[i]);
+		ccArrayRemoveObject(arr, minusArr->arr[i],true);
 	}
 }
 
 /** Removes from arr all objects in minusArr. For each object in minusArr, all
- matching instances in arr will be removed. */
+matching instances in arr will be removed. */
 static inline void ccArrayFullRemoveArray(ccArray *arr, ccArray *minusArr)
 {
 	unsigned int back = 0;
-	
+
 	for( unsigned int i = 0; i < arr->num; i++) 
 	{
 		if( ccArrayContainsObject(minusArr, arr->arr[i]) ) 
@@ -302,7 +303,7 @@ static inline void ccArrayFullRemoveArray(ccArray *arr, ccArray *minusArr)
 			arr->arr[i - back] = arr->arr[i];
 		}
 	}
-	
+
 	arr->num -= back;
 }
 
@@ -321,12 +322,12 @@ static inline ccCArray* ccCArrayNew(unsigned int capacity)
 	{
 		capacity = 1; 
 	}
-	
+
 	ccCArray *arr = (ccCArray*)malloc( sizeof(ccCArray) );
 	arr->num = 0;
 	arr->arr =  (void**) malloc( capacity * sizeof(void*) );
 	arr->max = capacity;
-	
+
 	return arr;
 }
 
@@ -337,9 +338,9 @@ static inline void ccCArrayFree(ccCArray *arr)
 	{
 		return;
 	}
-	
+
 	ccCArrayRemoveAllValues(arr);
-	
+
 	free(arr->arr);
 	free(arr);
 }
@@ -379,22 +380,22 @@ static inline bool ccCArrayContainsValue(ccCArray *arr, void* value)
 /** Inserts a value at a certain position. The valid index is [0, num] */
 static inline void ccCArrayInsertValueAtIndex( ccCArray *arr, void* value, unsigned int index)
 {
-    CCAssert( index < arr->max, "ccCArrayInsertValueAtIndex: invalid index");
+	CCAssert( index < arr->max, "ccCArrayInsertValueAtIndex: invalid index");
 	unsigned int remaining = arr->num - index;
 
 	// make sure it has enough capacity
 	if (arr->num + 1 == arr->max)
 	{
-        ccCArrayDoubleCapacity(arr);
+		ccCArrayDoubleCapacity(arr);
 	}
-	
+
 	// last Value doesn't need to be moved
 	if( remaining > 0) 
 	{
 		// tex coordinates
 		memmove( &arr->arr[index+1],&arr->arr[index], sizeof(void*) * remaining );
 	}
-	
+
 	arr->num++;	
 	arr->arr[index] = value;
 }
@@ -421,7 +422,7 @@ static inline void ccCArrayAppendValueWithResize(ccCArray *arr, void* value)
 }
 
 /** Appends values from plusArr to arr. Behaviour undefined if arr doesn't have
- enough capacity. */
+enough capacity. */
 static inline void ccCArrayAppendArray(ccCArray *arr, ccCArray *plusArr)
 {
 	for (unsigned int i = 0; i < plusArr->num; i++)
@@ -444,7 +445,7 @@ static inline void ccCArrayRemoveAllValues(ccCArray *arr)
 }
 
 /** Removes value at specified index and pushes back all subsequent values.
- Behaviour undefined if index outside [0, num-1]. */
+Behaviour undefined if index outside [0, num-1]. */
 static inline void ccCArrayRemoveValueAtIndex(ccCArray *arr, unsigned int index)
 {	
 	for (unsigned int last = --arr->num; index < last; index++)
@@ -454,8 +455,8 @@ static inline void ccCArrayRemoveValueAtIndex(ccCArray *arr, unsigned int index)
 }
 
 /** Removes value at specified index and fills the gap with the last value,
- thereby avoiding the need to push back subsequent values.
- Behaviour undefined if index outside [0, num-1]. */
+thereby avoiding the need to push back subsequent values.
+Behaviour undefined if index outside [0, num-1]. */
 static inline void ccCArrayFastRemoveValueAtIndex(ccCArray *arr, unsigned int index)
 {
 	unsigned int last = --arr->num;
@@ -463,7 +464,7 @@ static inline void ccCArrayFastRemoveValueAtIndex(ccCArray *arr, unsigned int in
 }
 
 /** Searches for the first occurance of value and removes it. If value is not
- found the function has no effect. */
+found the function has no effect. */
 static inline void ccCArrayRemoveValue(ccCArray *arr, void* value)
 {
 	unsigned int index = ccCArrayGetIndexOfValue(arr, value);
@@ -474,7 +475,7 @@ static inline void ccCArrayRemoveValue(ccCArray *arr, void* value)
 }
 
 /** Removes from arr all values in minusArr. For each Value in minusArr, the
- first matching instance in arr will be removed. */
+first matching instance in arr will be removed. */
 static inline void ccCArrayRemoveArray(ccCArray *arr, ccCArray *minusArr)
 {
 	for( unsigned int i = 0; i < minusArr->num; i++)
@@ -484,11 +485,11 @@ static inline void ccCArrayRemoveArray(ccCArray *arr, ccCArray *minusArr)
 }
 
 /** Removes from arr all values in minusArr. For each value in minusArr, all
- matching instances in arr will be removed. */
+matching instances in arr will be removed. */
 static inline void ccCArrayFullRemoveArray(ccCArray *arr, ccCArray *minusArr)
 {
 	unsigned int back = 0;
-	
+
 	for (unsigned int i = 0; i < arr->num; i++) 
 	{
 		if( ccCArrayContainsValue(minusArr, arr->arr[i]) ) 
@@ -499,10 +500,10 @@ static inline void ccCArrayFullRemoveArray(ccCArray *arr, ccCArray *minusArr)
 			arr->arr[i - back] = arr->arr[i];
 		}
 	}
-	
+
 	arr->num -= back;
 } 
 
-}
-
+//}
+NS_CC_END
 #endif // CC_ARRAY_H
