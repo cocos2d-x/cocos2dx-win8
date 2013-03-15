@@ -149,7 +149,7 @@ class CCScene;
 class CCEGLView;
 class CCProjectionProtocol;
 class CCNode;
-
+class CCScheduler;
 /**
 @brief Class that creates and handle the main Window and manages how
 and when to execute the Scenes.
@@ -394,7 +394,7 @@ public:
 	 /** CCScheduler associated with this director
      @since v2.0
      */
-  //  CC_PROPERTY(CCScheduler*, m_pScheduler, Scheduler);
+    CC_PROPERTY(CCScheduler*, m_pScheduler, Scheduler);
 
     /** CCActionManager associated with this director
      @since v2.0

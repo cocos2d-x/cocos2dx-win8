@@ -50,11 +50,12 @@ CCAction * CCAction::action()
 	return pRet;
 }
 
-char * CCAction::description()
+const char* CCAction::description()
 {
-	char *ret = new char[100] ;
+	return CCString::createWithFormat("<CCAction | Tag = %d>", m_nTag)->getCString();
+	//char *ret = new char[100] ;
 	//sprintf(ret,"<CCAction | Tag = %d>", m_nTag);
-	return ret;
+	//return ret;
 }
 CCObject* CCAction::copyWithZone(CCZone *pZone)
 {
@@ -90,13 +91,13 @@ bool CCAction::isDone()
 	return true;
 }
 
-void CCAction::step(ccTime dt)
+void CCAction::step(float dt)
 {
     CC_UNUSED_PARAM(dt);
 	CCLOG("[Action step]. override me");
 }
 
-void CCAction::update(ccTime time)
+void CCAction::update(float time)
 {
     CC_UNUSED_PARAM(time);
 	CCLOG("[Action update]. override me");
@@ -174,7 +175,7 @@ void CCSpeed::stop()
 	CCAction::stop();
 }
 
-void CCSpeed::step(ccTime dt)
+void CCSpeed::step(float dt)
 {
     m_pInnerAction->step(dt * m_fSpeed);
 }
@@ -207,79 +208,140 @@ CCFollow::~CCFollow()
 	CC_SAFE_RELEASE(m_pobFollowedNode);
 }
 
-CCFollow *CCFollow::create(CCNode *pFollowedNode)
+CCFollow* CCFollow::create(CCNode *pFollowedNode, const CCRect& rect/* = CCRectZero*/)
 {
-	CCFollow *pRet = new CCFollow();
-	if (pRet && pRet->initWithTarget(pFollowedNode))
-	{
-		pRet->autorelease();
-		return pRet;
-	}
-	CC_SAFE_DELETE(pRet)
-	return NULL;
+    CCFollow *pRet = new CCFollow();
+    if (pRet && pRet->initWithTarget(pFollowedNode, rect))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    CC_SAFE_DELETE(pRet);
+    return NULL;
 }
-CCFollow *CCFollow::create(CCNode *pFollowedNode, const CCRect& rect)
-{
-	CCFollow *pRet = new CCFollow();
-	if (pRet && pRet->initWithTarget(pFollowedNode, rect))
-	{
-		pRet->autorelease();
-		return pRet;
-	}
-	CC_SAFE_DELETE(pRet)
-	return NULL;
-}
+//CCFollow *CCFollow::create(CCNode *pFollowedNode)
+//{
+	//CCFollow *pRet = new CCFollow();
+	//if (pRet && pRet->initWithTarget(pFollowedNode))
+	//{
+	//	pRet->autorelease();
+	//	return pRet;
+	//}
+	//CC_SAFE_DELETE(pRet)
+	//return NULL;
+//}
+//CCFollow *CCFollow::create(CCNode *pFollowedNode, const CCRect& rect)
+//{
+//	CCFollow *pRet = new CCFollow();
+//	if (pRet && pRet->initWithTarget(pFollowedNode, rect))
+//	{
+//		pRet->autorelease();
+//		return pRet;
+//	}
+//	CC_SAFE_DELETE(pRet)
+//	return NULL;
+//}
 
-bool CCFollow::initWithTarget(CCNode *pFollowedNode)
-{
-	CCAssert(pFollowedNode != NULL, "");
-	pFollowedNode->retain();
-	m_pobFollowedNode = pFollowedNode;
-	m_bBoundarySet = false;
-	m_bBoundaryFullyCovered = false;
+//bool CCFollow::initWithTarget(CCNode *pFollowedNode)
+//{
+//	CCAssert(pFollowedNode != NULL, "");
+	//pFollowedNode->retain();
+//	m_pobFollowedNode = pFollowedNode;
+//	m_bBoundarySet = false;
+//	m_bBoundaryFullyCovered = false;
 
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	m_obFullScreenSize = CCPointMake(winSize.width, winSize.height);
-	m_obHalfScreenSize = ccpMult(m_obFullScreenSize, 0.5f);
-	return true;
-}
+//	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+//	m_obFullScreenSize = CCPointMake(winSize.width, winSize.height);
+//	m_obHalfScreenSize = ccpMult(m_obFullScreenSize, 0.5f);
+//	return true;
+//}
 
-bool CCFollow::initWithTarget(CCNode *pFollowedNode, const CCRect& rect)
-{
-	CCAssert(pFollowedNode != NULL, "");
-	pFollowedNode->retain();
-	m_pobFollowedNode = pFollowedNode;
-	m_bBoundarySet = true;
-	m_bBoundaryFullyCovered = false;
+//bool CCFollow::initWithTarget(CCNode *pFollowedNode, const CCRect& rect)
+//{
+//	CCAssert(pFollowedNode != NULL, "");
+//	pFollowedNode->retain();
+//	m_pobFollowedNode = pFollowedNode;
+//	m_bBoundarySet = true;
+//	m_bBoundaryFullyCovered = false;
 
-	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
-	m_obFullScreenSize = CCPointMake(winSize.width, winSize.height);
-	m_obHalfScreenSize = ccpMult(m_obFullScreenSize, 0.5f);
+//	CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+//	m_obFullScreenSize = CCPointMake(winSize.width, winSize.height);
+//	m_obHalfScreenSize = ccpMult(m_obFullScreenSize, 0.5f);
 
-	m_fLeftBoundary = -((rect.origin.x+rect.size.width) - m_obFullScreenSize.x);
-	m_fRightBoundary = -rect.origin.x ;
-	m_fTopBoundary = -rect.origin.y;
-	m_fBottomBoundary = -((rect.origin.y+rect.size.height) - m_obFullScreenSize.y);
+//	m_fLeftBoundary = -((rect.origin.x+rect.size.width) - m_obFullScreenSize.x);
+//	m_fRightBoundary = -rect.origin.x ;
+//	m_fTopBoundary = -rect.origin.y;
+//	m_fBottomBoundary = -((rect.origin.y+rect.size.height) - m_obFullScreenSize.y);
 
-	if(m_fRightBoundary < m_fLeftBoundary)
-	{
+//	if(m_fRightBoundary < m_fLeftBoundary)
+//	{
 		// screen width is larger than world's boundary width
 		//set both in the middle of the world
-		m_fRightBoundary = m_fLeftBoundary = (m_fLeftBoundary + m_fRightBoundary) / 2;
-	}
-	if(m_fTopBoundary < m_fBottomBoundary)
-	{
+//		m_fRightBoundary = m_fLeftBoundary = (m_fLeftBoundary + m_fRightBoundary) / 2;
+//	}
+//	if(m_fTopBoundary < m_fBottomBoundary)
+//	{
 		// screen width is larger than world's boundary width
 		//set both in the middle of the world
-		m_fTopBoundary = m_fBottomBoundary = (m_fTopBoundary + m_fBottomBoundary) / 2;
-	}
+//		m_fTopBoundary = m_fBottomBoundary = (m_fTopBoundary + m_fBottomBoundary) / 2;
+//	}
 
-	if( (m_fTopBoundary == m_fBottomBoundary) && (m_fLeftBoundary == m_fRightBoundary) )
-	{
-		m_bBoundaryFullyCovered = true;
-	}
-	return true;
+//	if( (m_fTopBoundary == m_fBottomBoundary) && (m_fLeftBoundary == m_fRightBoundary) )
+//	{
+//		m_bBoundaryFullyCovered = true;
+//	}
+//	return true;
+//}
+bool CCFollow::initWithTarget(CCNode *pFollowedNode, const CCRect& rect/* = CCRectZero*/)
+{
+    CCAssert(pFollowedNode != NULL, "");
+ 
+    pFollowedNode->retain();
+    m_pobFollowedNode = pFollowedNode;
+    if (rect.equals(CCRectZero))
+    {
+        m_bBoundarySet = false;
+    }
+    else
+    {
+        m_bBoundarySet = true;
+    }
+    
+    m_bBoundaryFullyCovered = false;
+
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    m_obFullScreenSize = CCPointMake(winSize.width, winSize.height);
+    m_obHalfScreenSize = ccpMult(m_obFullScreenSize, 0.5f);
+
+    if (m_bBoundarySet)
+    {
+        m_fLeftBoundary = -((rect.origin.x+rect.size.width) - m_obFullScreenSize.x);
+        m_fRightBoundary = -rect.origin.x ;
+        m_fTopBoundary = -rect.origin.y;
+        m_fBottomBoundary = -((rect.origin.y+rect.size.height) - m_obFullScreenSize.y);
+
+        if(m_fRightBoundary < m_fLeftBoundary)
+        {
+            // screen width is larger than world's boundary width
+            //set both in the middle of the world
+            m_fRightBoundary = m_fLeftBoundary = (m_fLeftBoundary + m_fRightBoundary) / 2;
+        }
+        if(m_fTopBoundary < m_fBottomBoundary)
+        {
+            // screen width is larger than world's boundary width
+            //set both in the middle of the world
+            m_fTopBoundary = m_fBottomBoundary = (m_fTopBoundary + m_fBottomBoundary) / 2;
+        }
+
+        if( (m_fTopBoundary == m_fBottomBoundary) && (m_fLeftBoundary == m_fRightBoundary) )
+        {
+            m_bBoundaryFullyCovered = true;
+        }
+    }
+    
+    return true;
 }
+
 CCObject *CCFollow::copyWithZone(CCZone *pZone)
 {
 	CCZone *pNewZone = NULL;
@@ -299,7 +361,7 @@ CCObject *CCFollow::copyWithZone(CCZone *pZone)
 	CC_SAFE_DELETE(pNewZone);
 	return pRet;
 }
-void CCFollow::step(ccTime dt)
+void CCFollow::step(float dt)
 {
     CC_UNUSED_PARAM(dt);
 

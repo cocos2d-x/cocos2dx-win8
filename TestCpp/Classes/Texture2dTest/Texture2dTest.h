@@ -408,7 +408,7 @@ private:
 class TextureTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class TextureMemoryAlloc : public TextureDemo

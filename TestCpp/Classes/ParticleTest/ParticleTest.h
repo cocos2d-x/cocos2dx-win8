@@ -9,7 +9,7 @@
 class ParticleTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class ParticleDemo : public CCLayerColor

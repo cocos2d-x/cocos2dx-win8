@@ -7,7 +7,7 @@
 class FontTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class FontTest : public cocos2d::CCLayer

@@ -8,7 +8,7 @@ using namespace std;
 class FileUtilsTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class FileUtilsDemo : public CCLayer

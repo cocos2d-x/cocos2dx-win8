@@ -45,6 +45,7 @@ faster because:
 #include <limits.h>
 #include "ccMacros.h"
 #include "CCObject.h"
+
 #include "ccMacros.h"
 
 //namespace cocos2d {
@@ -221,7 +222,7 @@ static inline void ccArrayRemoveAllObjects(ccArray *arr)
 {
 	while(arr->num > 0)
 	{
-		arr->arr[--arr->num]->release();
+		(arr->arr[--arr->num])->release();
 	}
 }
 

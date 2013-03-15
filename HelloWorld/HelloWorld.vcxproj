@@ -98,8 +98,9 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>.\libraries\$(TargetedSDKArchitecture);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\libraries\$(PlatformTarget);C:\Users\lucky\Desktop\Cocos2d-WindowsPhone\Debug\Cocos2dWindowsPhone</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
+      <WindowsMetadataFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)$(RootNamespace).winmd</WindowsMetadataFile>
     </Link>
     <PreBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">

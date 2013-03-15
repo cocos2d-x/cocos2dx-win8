@@ -287,7 +287,7 @@ public:
 class TileMapTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif

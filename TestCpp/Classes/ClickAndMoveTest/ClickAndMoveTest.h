@@ -6,7 +6,7 @@
 class ClickAndMoveTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class MainLayer : public CCLayer

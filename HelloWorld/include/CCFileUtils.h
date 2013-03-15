@@ -29,7 +29,7 @@ class CC_DLL CCFileUtils
 {
 public:
 	static CCFileUtils* sharedFileUtils();
-	 bool init();
+	bool init();
 	/**
 	@brief   Check resource exist or not.
 	@return  If the resource exist, return true.

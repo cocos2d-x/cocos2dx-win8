@@ -80,7 +80,20 @@ CCRect::CCRect(float x, float y, float width, float height)
 	size.width = width;
 	size.height = height;
 }
+bool CCPoint::equals(const CCPoint& target) const
+{
+    return ((x == target.x) && (y == target.y));
+}
+bool CCSize::equals(const CCSize& target) const
+{
+    return ((width == target.width) && (height == target.height));
+}
 
+bool CCRect::equals(const CCRect& rect) const
+{
+    return (origin.equals(rect.origin) && 
+            size.equals(rect.size));
+}
 bool CCRect::CCRectEqualToRect(const CCRect& rect1, const CCRect& rect2)
 {
 	return (CCPoint::CCPointEqualToPoint(rect1.origin, rect2.origin)

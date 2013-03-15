@@ -13,7 +13,7 @@ public:
 class ExtensionsTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif /* __EXTENSIONS_TEST_H__ */

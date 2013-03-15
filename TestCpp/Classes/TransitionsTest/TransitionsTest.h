@@ -8,7 +8,7 @@ USING_NS_CC;
 class TransitionsTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class TestLayer1 : public CCLayer

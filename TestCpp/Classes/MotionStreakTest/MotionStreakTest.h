@@ -64,7 +64,7 @@ private:
 class MotionStreakTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 //CCLayer* nextAction();

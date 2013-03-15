@@ -44,7 +44,6 @@
 #include "CCGL.h"
 #include "CCAnimationCache.h"
 #include "CCTouch.h"
-
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
 #include "CCUserDefault.h"
 #endif
@@ -92,6 +91,7 @@ bool CCDirector::init(void)
 	m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;	
 	m_pobScenesStack = new CCMutableArray<CCScene*>();
 
+
 	// Set default projection (3D)
 	m_eProjection = kCCDirectorProjectionDefault;
 
@@ -116,7 +116,6 @@ bool CCDirector::init(void)
 	m_eDeviceOrientation = CCDeviceOrientationPortrait;		
 
 	m_pobOpenGLView = NULL;
-
     m_bRetinaDisplay = false;
     m_fContentScaleFactor = 1;	
 	m_bIsContentScaleSupported = false;
@@ -821,7 +820,20 @@ bool CCDirector::enableRetinaDisplay(bool enabled)
 
 	return true;
 }
+void CCDirector::setScheduler(CCScheduler* pScheduler)
+{
+    if (m_pScheduler != pScheduler)
+    {
+        CC_SAFE_RETAIN(pScheduler);
+        CC_SAFE_RELEASE(m_pScheduler);
+        m_pScheduler = pScheduler;
+    }
+}
 
+CCScheduler* CCDirector::getScheduler()
+{
+    return m_pScheduler;
+}
 void CCDirector::setActionManager(CCActionManager* pActionManager)
 {
     if (m_pActionManager != pActionManager)

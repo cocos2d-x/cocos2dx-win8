@@ -13,7 +13,7 @@ public:
 class CurrentLanguageTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif // _CURRENT_LANGUAGE_TEST_H_

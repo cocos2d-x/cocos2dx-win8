@@ -96,7 +96,7 @@ public:
 class TextInputTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif    // __TEXT_INPUT_TEST_H__

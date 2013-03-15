@@ -71,7 +71,7 @@ public:
 };
 
 
-typedef void (CCObject::*SEL_SCHEDULE)(ccTime);
+typedef void (CCObject::*SEL_SCHEDULE)(float);
 typedef void (CCObject::*SEL_CallFunc)();
 typedef void (CCObject::*SEL_CallFuncN)(CCNode*);
 typedef void (CCObject::*SEL_CallFuncND)(CCNode*, void*);

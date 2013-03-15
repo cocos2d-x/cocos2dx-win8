@@ -168,7 +168,7 @@ public:
 class AtlasTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class LabelTTFTest : public AtlasDemo

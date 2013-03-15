@@ -19,7 +19,7 @@ private:
 class CurlTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif // _CURL_TEST_H_

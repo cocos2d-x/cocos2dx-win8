@@ -581,7 +581,7 @@ public:
 class SpriteTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif

@@ -43,7 +43,7 @@ public:
 class RenderTextureScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class RenderTextureZbuffer : public RenderTextureTest

@@ -29,7 +29,7 @@ class CC_DLL CCFileUtils
 {
 public:
 	static CCFileUtils* sharedFileUtils();
-	 bool init();
+	bool init();
 	/**
 	@brief   Check resource exist or not.
 	@return  If the resource exist, return true.
@@ -198,7 +198,6 @@ public:
 	//   // interfaces on ios
 	//   ///////////////////////////////////////////////////
 	//   static int ccLoadFileIntoMemory(const char *filename, unsigned char **out);
-
 	std::vector<std::string> m_searchResolutionsOrderArray;
 	std::vector<std::string> m_searchPathArray;
 	std::string m_strDefaultResRootPath;

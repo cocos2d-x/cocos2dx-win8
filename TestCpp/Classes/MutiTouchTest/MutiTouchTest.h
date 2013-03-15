@@ -20,7 +20,7 @@ public:
 class MutiTouchTestScene : public TestScene
 {
  public:
-  virtual void runThisTest();
+	 virtual void runThisTest();
 };
 
 #endif /* __MUTITOUCHTEST_H__ */

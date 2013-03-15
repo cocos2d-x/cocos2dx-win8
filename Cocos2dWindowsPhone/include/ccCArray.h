@@ -45,7 +45,7 @@ faster because:
 #include <limits.h>
 #include "ccMacros.h"
 #include "CCObject.h"
-#include "ccMacros.h"
+//#include "ccMacros.h"
 
 //namespace cocos2d {
 NS_CC_BEGIN
@@ -53,7 +53,7 @@ NS_CC_BEGIN
 #define CCARRAYDATA_FOREACH(__array__, __object__)															\
 	__object__=__array__->arr[0]; for(unsigned int i=0, num=__array__->num; i<num; i++, __object__=__array__->arr[i])	\
 
-	typedef struct _ccArray 
+typedef struct _ccArray 
 {
 	unsigned int num, max;
 	CCObject**    arr; //equals CCObject** arr;
@@ -221,7 +221,7 @@ static inline void ccArrayRemoveAllObjects(ccArray *arr)
 {
 	while(arr->num > 0)
 	{
-		arr->arr[--arr->num]->release();
+		(arr->arr[--arr->num])->release();
 	}
 }
 
@@ -264,7 +264,7 @@ static inline void ccArrayFastRemoveObject(ccArray *arr, CCObject* object)
 
 /** Searches for the first occurance of object and removes it. If object is not
 found the function has no effect. */
-static inline  void ccArrayRemoveObject(ccArray *arr, CCObject* object,bool bReleaseObj/* = true*/)
+static inline  void ccArrayRemoveObject(ccArray *arr, CCObject* object,bool bReleaseObj/*= true*/)
 {
 	unsigned int index = ccArrayGetIndexOfObject(arr, object);
 

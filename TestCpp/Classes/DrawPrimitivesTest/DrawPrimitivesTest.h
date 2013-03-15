@@ -41,7 +41,7 @@ public:
 class DrawPrimitivesTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif

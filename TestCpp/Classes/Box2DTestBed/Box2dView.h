@@ -55,7 +55,7 @@ public:
 class Box2dTestBedScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif

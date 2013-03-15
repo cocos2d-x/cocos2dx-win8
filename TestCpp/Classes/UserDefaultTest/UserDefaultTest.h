@@ -17,7 +17,7 @@ private:
 class UserDefaultTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif // _USERDEFAULT_TEST_H_

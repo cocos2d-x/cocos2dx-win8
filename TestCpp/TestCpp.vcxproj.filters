@@ -527,5 +527,6 @@
     <None Include="CCTextureAtlasVertexShader.cso">
       <Filter>Shaders</Filter>
     </None>
+    <None Include="TestCpp_2013_03_11_05_59_12.sap" />
   </ItemGroup>
 </Project>

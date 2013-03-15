@@ -39,7 +39,7 @@ private:
 class ChipmunkAccelTouchTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest(){};
 };
 
 #endif /* __CHIPMUNKACCELTOUCHTEST_H__ */

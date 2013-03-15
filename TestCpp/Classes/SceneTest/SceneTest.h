@@ -1,7 +1,7 @@
 #ifndef _SCENE_TEST_H_
 #define _SCENE_TEST_H_
 
-////----#include "cocos2d.h"
+#include "cocos2d.h"
 #include "../testBasic.h"
 
 class SceneTestLayer1 : public CCLayer
@@ -50,7 +50,7 @@ public:
 class SceneTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif

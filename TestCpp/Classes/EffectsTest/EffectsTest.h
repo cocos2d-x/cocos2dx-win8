@@ -6,7 +6,7 @@
 class EffectTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class TextLayer : public CCLayerColor

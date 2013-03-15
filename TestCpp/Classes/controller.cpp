@@ -37,8 +37,8 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new DrawPrimitivesTestScene(); break;
     case TEST_COCOSNODE:
         pScene = new CocosNodeTestScene(); break;
-    case TEST_TOUCHES:
-        pScene = new PongScene(); break;
+   // case TEST_TOUCHES:
+       // pScene = new PongScene(); break;
     case TEST_MENU:
         pScene = new MenuTestScene(); break;
     case TEST_ACTION_MANAGER:

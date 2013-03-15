@@ -24,7 +24,7 @@ private:
 class CocosDenshionTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif //__COCOS_DENSHION_TEST__

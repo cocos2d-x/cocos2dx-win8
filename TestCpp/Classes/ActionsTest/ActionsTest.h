@@ -2,7 +2,7 @@
 #define _ActionsTest_H_
 
 #include "../testBasic.h"
-////----#include "cocos2d.h"
+#include "cocos2d.h"
 
 USING_NS_CC;
 
@@ -58,7 +58,7 @@ enum
 class ActionsTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 class ActionsDemo : public CCLayer

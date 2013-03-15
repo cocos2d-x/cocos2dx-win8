@@ -99,7 +99,7 @@ public:
 class LayerTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif

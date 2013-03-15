@@ -23,7 +23,7 @@ private:
 class TextureCacheTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif // _TEXTURECACHE_TEST_H_

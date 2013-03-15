@@ -1012,7 +1012,20 @@ unsigned int CCNode::numberOfRunningActions()
 }
 
 // CCNode - Callbacks
+void CCNode::setScheduler(CCScheduler* scheduler)
+{
+    if( scheduler != m_pScheduler ) {
+        this->unscheduleAllSelectors();
+        CC_SAFE_RETAIN(scheduler);
+        CC_SAFE_RELEASE(m_pScheduler);
+        m_pScheduler = scheduler;
+    }
+}
 
+CCScheduler* CCNode::getScheduler()
+{
+    return m_pScheduler;
+}
 void CCNode::scheduleUpdate()
 {
 	scheduleUpdateWithPriority(0);

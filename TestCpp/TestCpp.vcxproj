@@ -98,8 +98,9 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>..\Debug\Cocos2dWindowsPhone\;..\ARM\Release\CocosDenshionWindowsPhone\$(TargetedSDKArchitecture)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Debug\Cocos2dWindowsPhone\;..\ARM\Release\CocosDenshionWindowsPhone\$(TargetedSDKArchitecture);..\Cocos2dWindowsPhone\libraries\x86;</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
+      <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateDebugInformation>
     </Link>
     <PreBuildEvent>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -338,10 +339,16 @@
     <None Include="CCTextureAtlasVertexShader.cso">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="TestCpp_2013_03_11_05_59_12.sap" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
       <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
+      <Private>false</Private>
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <CopyLocalSatelliteAssemblies>false</CopyLocalSatelliteAssemblies>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
     <ProjectReference Include="..\CocosDenshionWindowsPhone\CocosDenshionWindowsPhone.vcxproj">
       <Project>{54d5a760-05c6-4560-bb0e-6804d248f14a}</Project>

@@ -35,6 +35,6 @@ public:
     static CCScene* scene();
 };
 
-void runTextureTest();
+void runTextureTest(){};
 
 #endif

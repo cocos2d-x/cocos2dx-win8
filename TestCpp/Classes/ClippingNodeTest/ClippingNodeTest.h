@@ -183,7 +183,7 @@ public:
 class ClippingNodeTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest(){};
 };
 
 #endif //__CLIPPINGNODETEST_H__

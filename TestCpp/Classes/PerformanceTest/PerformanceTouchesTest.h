@@ -61,6 +61,6 @@ public:
     virtual void ccTouchesCancelled(CCSet* touches, CCEvent* event);
 };
 
-void runTouchesTest();
+void runTouchesTest(){};
 
 #endif

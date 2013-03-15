@@ -115,6 +115,6 @@ public:
     virtual std::string profilerName();
 };
 
-void runNodeChildrenTest();
+void runNodeChildrenTest(){};
 
 #endif // __PERFORMANCE_NODE_CHILDREN_TEST_H__

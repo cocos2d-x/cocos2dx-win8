@@ -70,7 +70,7 @@ public:
 class ProgressActionsTestScene : public TestScene
 {
 public:
-    virtual void runThisTest();
+	virtual void runThisTest();
 };
 
 #endif
