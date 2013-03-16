@@ -30,6 +30,7 @@ THE SOFTWARE.
 #define __CC_ANIMATION_H__
 
 #include "CCPlatformConfig.h"
+#include "CCPlatformMacros.h"
 #include "CCObject.h"
 #include "CCMutableArray.h"
 #include "CCGeometry.h"
@@ -38,6 +39,41 @@ THE SOFTWARE.
 NS_CC_BEGIN
 class CCSpriteFrame;
 class CCTexture2D;
+
+
+/**
+ * @addtogroup sprite_nodes
+ * @{
+ */
+
+/** CCAnimationFrame
+ A frame of the animation. It contains information like:
+    - sprite frame name
+    - # of delay units.
+    - offset
+ 
+ @since v2.0
+ */
+class CC_DLL CCAnimationFrame : public CCObject
+{
+public:
+    CCAnimationFrame();
+    virtual ~CCAnimationFrame();
+    virtual CCObject* copyWithZone(CCZone* pZone);
+    /** initializes the animation frame with a spriteframe, number of delay units and a notification user info */
+    //bool initWithSpriteFrame(CCSpriteFrame* spriteFrame, float delayUnits, CCDictionary* userInfo);
+    
+    /** CCSpriteFrameName to be used */
+    CC_SYNTHESIZE_RETAIN(CCSpriteFrame*, m_pSpriteFrame, SpriteFrame)
+
+    /**  how many units of time the frame takes */
+    CC_SYNTHESIZE(float, m_fDelayUnits, DelayUnits)
+
+    /**  A CCAnimationFrameDisplayedNotification notification will be broadcast when the frame is displayed with this dictionary as UserInfo. If UserInfo is nil, then no notification will be broadcast. */
+//    CC_SYNTHESIZE_RETAIN(CCDictionary*, m_pUserInfo, UserInfo)
+};
+ 
+
 /** A CCAnimation object is used to perform animations on the CCSprite objects.
 
 The CCAnimation object contains CCSpriteFrame objects, and a possible delay between the frames.
@@ -104,11 +140,16 @@ public:
 
 	bool init(void);
 
+	/** Initializes a CCAnimation with frames and a delay between frames
+    @since v0.99.5
+    */
+    bool initWithSpriteFrames(CCArray *pFrames, float delay = 0.0f);
+
 public:
 	/** Creates an animation
 	@since v0.99.5
 	*/
-	static CCAnimation* animation(void);
+	static CCAnimation* create(void);
 
 	/** Creates an animation with frames.
 	@since v0.99.5
@@ -119,6 +160,12 @@ public:
 	@since v0.99.5
 	*/
 	static CCAnimation* create(CCMutableArray<CCSpriteFrame*> *frames, float delay);
+
+	/* Creates an animation with an array of CCSpriteFrame and a delay between frames in seconds.
+     The frames will be added with one "delay unit".
+     @since v0.99.5
+    */
+    static CCAnimation* createWithSpriteFrames(CCArray* arrayOfSpriteFrameNames, float delay = 0.0f);
 };
 NS_CC_END
 

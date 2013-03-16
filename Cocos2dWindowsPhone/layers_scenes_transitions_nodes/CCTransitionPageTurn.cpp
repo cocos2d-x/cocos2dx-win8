@@ -85,7 +85,7 @@ void CCTransitionPageTurn::onEnter()
 	{
 		m_pOutScene->runAction
 		(
-			CCSequence::actions
+			CCSequence::create
 			(
 				action,
 				CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),
@@ -97,10 +97,10 @@ void CCTransitionPageTurn::onEnter()
 	else
 	{
 		// to prevent initial flicker
-		m_pInScene->setIsVisible(false);
+		m_pInScene->setVisible(false);
 		m_pInScene->runAction
 		(
-			CCSequence::actions
+			CCSequence::create
 			(
 			    CCShow::action(),
 				action,

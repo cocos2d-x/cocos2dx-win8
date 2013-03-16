@@ -27,9 +27,57 @@
 #include "CCSpriteFrame.h"
 
 NS_CC_BEGIN
-	// implementation of CCAnimation
 
-	CCAnimation* CCAnimation::animation()
+CCAnimationFrame::CCAnimationFrame()
+: m_pSpriteFrame(NULL)
+, m_fDelayUnits(0.0f)
+//, m_pUserInfo(NULL)
+{
+
+}
+
+//bool CCAnimationFrame::initWithSpriteFrame(CCSpriteFrame* spriteFrame, float delayUnits, CCDictionary* userInfo)
+//{
+//    setSpriteFrame(spriteFrame);
+//    setDelayUnits(delayUnits);
+//    setUserInfo(userInfo);
+//
+//    return true;
+//}
+
+CCAnimationFrame::~CCAnimationFrame()
+{    
+    CCLOGINFO( "cocos2d: deallocing %s", this);
+
+    CC_SAFE_RELEASE(m_pSpriteFrame);
+//    CC_SAFE_RELEASE(m_pUserInfo);
+}
+
+CCObject* CCAnimationFrame::copyWithZone(CCZone* pZone)
+{
+	CCAssert(false, "Not implemented!");
+    CCZone* pNewZone = NULL;
+    CCAnimationFrame* pCopy = NULL;
+    if(pZone && pZone->m_pCopyObject) 
+    {
+        //in case of being called at sub class
+        pCopy = (CCAnimationFrame*)(pZone->m_pCopyObject);
+    }
+    else
+    {
+        pCopy = new CCAnimationFrame();
+        pNewZone = new CCZone(pCopy);
+    }
+
+    //pCopy->initWithSpriteFrame((CCSpriteFrame*)m_pSpriteFrame->copy()->autorelease(),
+    //    m_fDelayUnits, m_pUserInfo != NULL ? (CCDictionary*)m_pUserInfo->copy()->autorelease() : NULL);
+
+    //CC_SAFE_DELETE(pNewZone);
+    return pCopy;
+}
+
+// implementation of CCAnimation
+	CCAnimation* CCAnimation::create()
 {
 	CCAnimation *pAnimation = new CCAnimation();
 	pAnimation->init();
@@ -50,6 +98,44 @@ CCAnimation* CCAnimation::create(CCMutableArray<CCSpriteFrame*> *frames)
 	pAnimation->autorelease();
 
 	return pAnimation;
+}
+
+bool CCAnimation::initWithSpriteFrames(CCArray *pFrames, float delay/* = 0.0f*/)
+{
+    CCARRAY_VERIFY_TYPE(pFrames, CCSpriteFrame*);
+
+	CCAssert(false, "Not implemented!");
+    //m_uLoops = 1;
+    //m_fDelayPerUnit = delay;
+    //CCArray* pTmpFrames = CCArray::create();
+    //setFrames(pTmpFrames);
+
+    //if (pFrames != NULL)
+    //{
+    //    CCObject* pObj = NULL;
+    //    CCARRAY_FOREACH(pFrames, pObj)
+    //    {
+    //        CCSpriteFrame* frame = (CCSpriteFrame*)pObj;
+    //        CCAnimationFrame *animFrame = new CCAnimationFrame();
+    //        animFrame->initWithSpriteFrame(frame, 1, NULL);
+    //        m_pFrames->addObject(animFrame);
+    //        animFrame->release();
+
+    //        m_fTotalDelayUnits++;
+    //    }
+    //}
+
+    return true;
+}
+
+
+CCAnimation* CCAnimation::createWithSpriteFrames(CCArray *frames, float delay/* = 0.0f*/)
+{
+    CCAnimation *pAnimation = new CCAnimation();
+    pAnimation->initWithSpriteFrames(frames, delay);
+    pAnimation->autorelease();
+
+    return pAnimation;
 }
 
 CCAnimation* CCAnimation::create(CCMutableArray<CCSpriteFrame*> *frames, float delay)

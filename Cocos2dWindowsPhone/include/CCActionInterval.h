@@ -92,7 +92,7 @@ public:
 	~CCSequence(void);
 
 	/** initializes the action */
-    bool initOneTwo(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
+    bool initWithTwoActions(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
 
 	virtual CCObject* copyWithZone(CCZone* pZone);
 	virtual void startWithTarget(CCNode *pTarget);
@@ -101,15 +101,21 @@ public:
 	virtual CCActionInterval* reverse(void);
 
 public:
-	/** helper constructor to create an array of sequenceable actions */
-	static CCFiniteTimeAction* actions(CCFiniteTimeAction *pAction1, ...);
-	/** helper contructor to create an array of sequenceable actions given an array */
-	static CCFiniteTimeAction* actionsWithArray(CCArray *actions);
+	///** helper constructor to create an array of sequenceable actions */
+	//static CCFiniteTimeAction* actions(CCFiniteTimeAction *pAction1, ...);
+	///** helper contructor to create an array of sequenceable actions given an array */
+	//static CCFiniteTimeAction* actionsWithArray(CCArray *actions);
     /** for Lua */
     static CCSequence* actionsWithArrayLua(CCArray *actions);
 
+    /** helper constructor to create an array of sequenceable actions */
+    static CCSequence* create(CCFiniteTimeAction *pAction1, ...);
+    /** helper constructor to create an array of sequenceable actions given an array */
+    static CCSequence* create(CCArray *arrayOfActions);
+    /** helper constructor to create an array of sequence-able actions */
+    static CCSequence* createWithVariableList(CCFiniteTimeAction *pAction1, va_list args);
 	/** creates the action */
-	static CCSequence* actionOneTwo(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
+	static CCSequence* createWithTwoActions(CCFiniteTimeAction *pActionOne, CCFiniteTimeAction *pActionTwo);
 protected:
 	CCFiniteTimeAction *m_pActions[2];
 	ccTime m_split;
@@ -212,7 +218,7 @@ public:
 	~CCSpawn(void);
 
 	/** initializes the Spawn action with the 2 actions to spawn */
-	bool initOneTwo(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+	bool initWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 
 	virtual CCObject* copyWithZone(CCZone* pZone);
 	virtual void startWithTarget(CCNode *pTarget);
@@ -229,7 +235,7 @@ public:
 	static CCSpawn* actionsWithArrayLua(CCArray *actions);
 
 	/** creates the Spawn action */
-	static CCSpawn* actionOneTwo(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
+	static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 
 protected:
 	CCFiniteTimeAction *m_pOne;
@@ -700,10 +706,10 @@ public:
 
 public:
 	/** creates the action with an Animation and will restore the original frame when the animation is over */
-	static CCAnimate* actionWithAnimation(CCAnimation *pAnimation);
+	static CCAnimate* create(CCAnimation *pAnimation);
 
 	/** creates the action with an Animation */
-	static CCAnimate* actionWithAnimation(CCAnimation *pAnimation, bool bRestoreOriginalFrame);
+	static CCAnimate* create(CCAnimation *pAnimation, bool bRestoreOriginalFrame);
 
 	/** creates an action with a duration, animation and depending of the restoreOriginalFrame, it will restore the original frame or not.
 	 The 'delay' parameter of the animation will be overridden by the duration parameter.

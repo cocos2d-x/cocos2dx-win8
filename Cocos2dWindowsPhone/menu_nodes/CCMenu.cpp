@@ -167,14 +167,14 @@ void CCMenu::registerWithTouchDispatcher()
 bool CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)
 {
 	CC_UNUSED_PARAM(event);
-	if (m_eState != kCCMenuStateWaiting || ! m_bIsVisible)
+	if (m_eState != kCCMenuStateWaiting || ! m_bVisible)
 	{
 		return false;
 	}
 
 	for (CCNode *c = this->m_pParent; c != NULL; c = c->getParent())
 	{
-		if (c->getIsVisible() == false)
+		if (c->isVisible() == false)
 		{
 			return false;
 		}
@@ -597,7 +597,7 @@ CCMenuItem* CCMenu::itemForTouch(CCTouch *touch)
 		CCARRAY_FOREACH(m_pChildren, pObject)
 		{
 			CCNode* pChild = dynamic_cast<CCNode*>(pObject);
-			if (pChild && pChild->getIsVisible() && ((CCMenuItem*)pChild)->getIsEnabled())
+			if (pChild && pChild->isVisible() && ((CCMenuItem*)pChild)->getIsEnabled())
 			{
 				CCPoint local = pChild->convertToNodeSpace(touchLocation);
 				CCRect r = ((CCMenuItem*)pChild)->rect();

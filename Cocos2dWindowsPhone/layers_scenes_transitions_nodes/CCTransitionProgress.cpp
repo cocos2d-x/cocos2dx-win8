@@ -97,7 +97,7 @@ void CCTransitionProgress::onEnter()
     CCProgressTimer *pNode = progressTimerNodeWithRenderTexture(texture);
 
     // create the blend action
-    CCActionInterval* layerAction = (CCActionInterval*)CCSequence::actions(
+    CCActionInterval* layerAction = (CCActionInterval*)CCSequence::create(
         CCProgressFromTo::create(m_fDuration, m_fFrom, m_fTo),
         CCCallFunc::create(this, callfunc_selector(CCTransitionProgress::finish)), 
         NULL);
@@ -183,7 +183,7 @@ void CCTransitionRadialCCW::onEnter()
 	outNode->setAnchorPoint(ccp(0.5f,0.5f));
 
 	// create the blend action
-	CCAction * layerAction = CCSequence::actions
+	CCAction * layerAction = CCSequence::create
 	(
 		CCProgressFromTo::create(m_fDuration, 100.0f, 0.0f),
 		CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),

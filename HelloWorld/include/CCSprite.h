@@ -159,12 +159,12 @@ public:
 	 The rect used will be the size of the texture.
 	 The offset will be (0,0).
 	 */
-	static CCSprite* create(CCTexture2D *pTexture);
+	static CCSprite* createWithTexture(CCTexture2D *pTexture);
 
 	/** Creates an sprite with a texture and a rect.
 	 The offset will be (0,0).
 	 */
-	static CCSprite* create(CCTexture2D *pTexture, const CCRect& rect);
+	static CCSprite* createWithTexture(CCTexture2D *pTexture, const CCRect& rect);
 
 	/** Creates an sprite with a texture, a rect and offset. */
     static CCSprite* create(CCTexture2D *pTexture, const CCRect& rect, const CCPoint& offset);

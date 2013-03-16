@@ -124,7 +124,7 @@ void CCSpriteBatchNode::visit(void)
 	// The alternative is to have a void CCSprite#visit, but
 	// although this is less mantainable, is faster
 	//
-	if (! m_bIsVisible)
+	if (! m_bVisible)
 	{
 		return;
 	}

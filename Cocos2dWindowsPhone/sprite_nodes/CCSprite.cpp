@@ -95,7 +95,7 @@ bool CCSprite::initWithBatchNodeRectInPixels(CCSpriteBatchNode *batchNode, const
 	return false;
 }
 
-CCSprite* CCSprite::create(CCTexture2D *pTexture)
+CCSprite* CCSprite::createWithTexture(CCTexture2D *pTexture)
 {
 	CCSprite *pobSprite = new CCSprite();
 	if (pobSprite && pobSprite->initWithTexture(pTexture))
@@ -107,7 +107,7 @@ CCSprite* CCSprite::create(CCTexture2D *pTexture)
 	return NULL;
 }
 
-CCSprite* CCSprite::create(CCTexture2D *pTexture, const CCRect& rect)
+CCSprite* CCSprite::createWithTexture(CCTexture2D *pTexture, const CCRect& rect)
 {
     CCSprite *pobSprite = new CCSprite();
 	if (pobSprite && pobSprite->initWithTexture(pTexture, rect))
@@ -513,7 +513,7 @@ void CCSprite::updateTransform(void)
 	CCAffineTransform matrix;
 
 	// Optimization: if it is not visible, then do nothing
-	if (! m_bIsVisible)
+	if (! m_bVisible)
 	{
 		m_sQuad.br.vertices = m_sQuad.tl.vertices = m_sQuad.tr.vertices = m_sQuad.bl.vertices = vertex3(0,0,0);
 		m_pobTextureAtlas->updateQuad(&m_sQuad, m_uAtlasIndex);
@@ -648,7 +648,7 @@ void CCSprite::getTransformValues(struct transformValues_ *tv)
     tv->skew.x	 = m_fSkewX;
     tv->skew.y	 = m_fSkewY;
 	tv->ap = m_tAnchorPointInPixels;
-	tv->visible = m_bIsVisible;
+	tv->visible = m_bVisible;
 }
 
 // draw
@@ -875,7 +875,7 @@ void CCSprite::setIsRelativeAnchorPoint(bool bRelative)
 
 void CCSprite::setIsVisible(bool bVisible)
 {
-	CCNode::setIsVisible(bVisible);
+	CCNode::setVisible(bVisible);
 	SET_DIRTY_RECURSIVELY();
 }
 

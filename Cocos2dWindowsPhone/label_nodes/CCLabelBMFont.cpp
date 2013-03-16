@@ -910,7 +910,7 @@ namespace cocos2d{
 				CCNode* pNode = (CCNode*) child;
 				if (pNode)
 				{
-					pNode->setIsVisible(false);
+					pNode->setVisible(false);
 				}
 			}
 		}
@@ -1038,7 +1038,7 @@ namespace cocos2d{
 				while (!(characterSprite = (CCSprite*)this->getChildByTag(j + skip)))
 					skip++;
 
-				if (!characterSprite->getIsVisible()) continue;
+				if (!characterSprite->isVisible()) continue;
 
 				if (i >= stringLength || i < 0)
 					break;

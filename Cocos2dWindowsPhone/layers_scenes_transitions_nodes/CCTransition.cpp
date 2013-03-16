@@ -121,13 +121,13 @@ void CCTransitionScene::draw()
 void CCTransitionScene::finish()
 {
 	// clean up 	
- 	m_pInScene->setIsVisible(true);
+ 	m_pInScene->setVisible(true);
  	m_pInScene->setPosition(ccp(0,0));
  	m_pInScene->setScale(1.0f);
  	m_pInScene->setRotation(0.0f);
  	m_pInScene->getCamera()->restore();
  
- 	m_pOutScene->setIsVisible(false);
+ 	m_pOutScene->setVisible(false);
  	m_pOutScene->setPosition(ccp(0,0));
  	m_pOutScene->setScale(1.0f);
  	m_pOutScene->setRotation(0.0f);
@@ -152,13 +152,13 @@ void CCTransitionScene::setNewScene(ccTime dt)
 	// enable events while transitions
 	CCTouchDispatcher::sharedDispatcher()->setDispatchEvents(true);
 	// issue #267
-	m_pOutScene->setIsVisible(true);
+	m_pOutScene->setVisible(true);
 }
 
 void CCTransitionScene::hideOutShowIn()
 {
-	m_pInScene->setIsVisible(true);
-	m_pOutScene->setIsVisible(false);
+	m_pInScene->setVisible(true);
+	m_pOutScene->setVisible(false);
 }
 
 
@@ -237,7 +237,7 @@ void CCTransitionRotoZoom:: onEnter()
 	m_pInScene->setAnchorPoint(ccp(0.5f, 0.5f));
 	m_pOutScene->setAnchorPoint(ccp(0.5f, 0.5f));
 
-	CCActionInterval *rotozoom = (CCActionInterval*)(CCSequence::actions
+	CCActionInterval *rotozoom = (CCActionInterval*)(CCSequence::create
 	(
 		CCSpawn::actions
 		(
@@ -252,7 +252,7 @@ void CCTransitionRotoZoom:: onEnter()
 	m_pOutScene->runAction(rotozoom);
 	m_pInScene->runAction
 	(
-		CCSequence::actions
+		CCSequence::create
 		(
 			rotozoom->reverse(),
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),
@@ -288,15 +288,15 @@ void CCTransitionJumpZoom::onEnter()
 	CCActionInterval *scaleIn = CCScaleTo::create(m_fDuration/4, 1.0f);
 	CCActionInterval *scaleOut = CCScaleTo::create(m_fDuration/4, 0.5f);
 
-	CCActionInterval *jumpZoomOut = (CCActionInterval*)(CCSequence::actions(scaleOut, jump, NULL));
-	CCActionInterval *jumpZoomIn = (CCActionInterval*)(CCSequence::actions(jump, scaleIn, NULL));
+	CCActionInterval *jumpZoomOut = (CCActionInterval*)(CCSequence::create(scaleOut, jump, NULL));
+	CCActionInterval *jumpZoomIn = (CCActionInterval*)(CCSequence::create(jump, scaleIn, NULL));
 
 	CCActionInterval *delay = CCDelayTime::create(m_fDuration/2);
 
 	m_pOutScene->runAction(jumpZoomOut);
 	m_pInScene->runAction
 	(
-		CCSequence::actions
+		CCSequence::create
 		(
 			delay,
 			jumpZoomIn,
@@ -327,7 +327,7 @@ void CCTransitionMoveInL::onEnter()
 
 	m_pInScene->runAction
 	(
-		CCSequence::actions
+		CCSequence::create
 		(
 			this->easeActionWithAction(a),
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),
@@ -435,7 +435,7 @@ void CCTransitionSlideInL::onEnter()
 	CCActionInterval *out = this->action();
 
 	CCActionInterval* inAction = easeActionWithAction(in);
-	CCActionInterval* outAction = (CCActionInterval*)CCSequence::actions
+	CCActionInterval* outAction = (CCActionInterval*)CCSequence::create
 	(
 		easeActionWithAction(out),
 		CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), 
@@ -588,7 +588,7 @@ void CCTransitionShrinkGrow::onEnter()
 	m_pInScene->runAction(this->easeActionWithAction(scaleIn));
 	m_pOutScene->runAction
 	(
-		CCSequence::actions
+		CCSequence::create
 		(
 			this->easeActionWithAction(scaleOut),
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), 
@@ -619,7 +619,7 @@ void CCTransitionFlipX::onEnter()
 	CCTransitionSceneOriented::onEnter();
 
 	CCActionInterval *inA, *outA;
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	float inDeltaZ, inAngleZ;
 	float outDeltaZ, outAngleZ;
@@ -639,7 +639,7 @@ void CCTransitionFlipX::onEnter()
 		outAngleZ = 0;
 	}
 
-	inA = (CCActionInterval*)CCSequence::actions
+	inA = (CCActionInterval*)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
 			CCShow::action(),
@@ -648,7 +648,7 @@ void CCTransitionFlipX::onEnter()
 			NULL
 		);
 
-	outA = (CCActionInterval *)CCSequence::actions
+	outA = (CCActionInterval *)CCSequence::create
 		(
 			CCOrbitCamera::create(m_fDuration/2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
 			CCHide::action(),
@@ -684,7 +684,7 @@ void CCTransitionFlipY::onEnter()
 	CCTransitionSceneOriented::onEnter();
 
 	CCActionInterval *inA, *outA;
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	float inDeltaZ, inAngleZ;
 	float outDeltaZ, outAngleZ;
@@ -704,7 +704,7 @@ void CCTransitionFlipY::onEnter()
 		outAngleZ = 0;
 	}
 
-	inA = (CCActionInterval*)CCSequence::actions
+	inA = (CCActionInterval*)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
 			CCShow::action(),
@@ -712,7 +712,7 @@ void CCTransitionFlipY::onEnter()
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), 
 			NULL
 		);
-	outA = (CCActionInterval*)CCSequence::actions
+	outA = (CCActionInterval*)CCSequence::create
 		(
 			CCOrbitCamera::create(m_fDuration/2, 1, 0, outAngleZ, outDeltaZ, 90, 0),
 			CCHide::action(),
@@ -749,7 +749,7 @@ void CCTransitionFlipAngular::onEnter()
 	CCTransitionSceneOriented::onEnter();
 
 	CCActionInterval *inA, *outA;
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	float inDeltaZ, inAngleZ;
 	float outDeltaZ, outAngleZ;
@@ -769,7 +769,7 @@ void CCTransitionFlipAngular::onEnter()
 		outAngleZ = 0;
 	}
 
-	inA = (CCActionInterval *)CCSequence::actions
+	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
 			CCShow::action(),
@@ -777,7 +777,7 @@ void CCTransitionFlipAngular::onEnter()
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), 
 			NULL
 		);
-	outA = (CCActionInterval *)CCSequence::actions
+	outA = (CCActionInterval *)CCSequence::create
 		(
 			CCOrbitCamera::create(m_fDuration/2, 1, 0, outAngleZ, outDeltaZ, 45, 0),
 			CCHide::action(),
@@ -813,7 +813,7 @@ void CCTransitionZoomFlipX::onEnter()
 	CCTransitionSceneOriented::onEnter();
 
 	CCActionInterval *inA, *outA;
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	float inDeltaZ, inAngleZ;
 	float outDeltaZ, outAngleZ;
@@ -831,7 +831,7 @@ void CCTransitionZoomFlipX::onEnter()
 		outDeltaZ = -90;
 		outAngleZ = 0;
 	}
-	inA = (CCActionInterval *)CCSequence::actions
+	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
 			CCSpawn::actions
@@ -844,7 +844,7 @@ void CCTransitionZoomFlipX::onEnter()
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),
 			NULL
 		);
-	outA = (CCActionInterval *)CCSequence::actions
+	outA = (CCActionInterval *)CCSequence::create
 		(
 			CCSpawn::actions
 			(
@@ -886,7 +886,7 @@ void CCTransitionZoomFlipY::onEnter()
 	CCTransitionSceneOriented::onEnter();
 
 	CCActionInterval *inA, *outA;
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	float inDeltaZ, inAngleZ;
 	float outDeltaZ, outAngleZ;
@@ -903,7 +903,7 @@ void CCTransitionZoomFlipY::onEnter()
 		outAngleZ = 0;
 	}
 
-	inA = (CCActionInterval *)CCSequence::actions
+	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
 			CCSpawn::actions
@@ -917,7 +917,7 @@ void CCTransitionZoomFlipY::onEnter()
 			NULL
 		);
 
-	outA = (CCActionInterval *)CCSequence::actions
+	outA = (CCActionInterval *)CCSequence::create
 		(
 			CCSpawn::actions
 			(
@@ -960,7 +960,7 @@ void CCTransitionZoomFlipAngular::onEnter()
 	CCTransitionSceneOriented::onEnter();
 
 	CCActionInterval *inA, *outA;
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	float inDeltaZ, inAngleZ;
 	float outDeltaZ, outAngleZ;
@@ -979,7 +979,7 @@ void CCTransitionZoomFlipAngular::onEnter()
 		outAngleZ = 0;
 	}
 
-	inA = (CCActionInterval *)CCSequence::actions
+	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
 			CCSpawn::actions
@@ -993,7 +993,7 @@ void CCTransitionZoomFlipAngular::onEnter()
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),
 			NULL
 		);
-	outA = (CCActionInterval *)CCSequence::actions
+	outA = (CCActionInterval *)CCSequence::create
 		(
 			CCSpawn::actions
 			(
@@ -1062,12 +1062,12 @@ void CCTransitionFade :: onEnter()
 	CCTransitionScene::onEnter();
 
 	CCLayerColor* l = CCLayerColor::layerWithColor(m_tColor);
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	addChild(l, 2, kSceneFade);
 	CCNode* f = getChildByTag(kSceneFade);
 
-	CCActionInterval* a = (CCActionInterval *)CCSequence::actions
+	CCActionInterval* a = (CCActionInterval *)CCSequence::create
 		(
 			CCFadeIn::create(m_fDuration/2),
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::hideOutShowIn)),//CCCallFunc::actionWithTarget:self selector:@selector(hideOutShowIn)],
@@ -1156,7 +1156,7 @@ void CCTransitionCrossFade::onEnter()
 	outTexture->getSprite()->setOpacity(255);
 
 	// create the blend action
-	CCAction* layerAction = CCSequence::actions
+	CCAction* layerAction = CCSequence::create
 	(
 		CCFadeTo::create(m_fDuration, 0),
 		CCCallFunc::create(this, callfunc_selector(CCTransitionScene::hideOutShowIn)),
@@ -1218,7 +1218,7 @@ void CCTransitionTurnOffTiles::onEnter()
 	CCActionInterval* action = easeActionWithAction(toff);
 	m_pOutScene->runAction
 	(
-		CCSequence::actions
+		CCSequence::create
 		(
 			action,
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), 
@@ -1250,10 +1250,10 @@ CCTransitionSplitCols::~CCTransitionSplitCols()
 void CCTransitionSplitCols::onEnter()
 {
 	CCTransitionScene::onEnter();
-	m_pInScene->setIsVisible(false);
+	m_pInScene->setVisible(false);
 
 	CCActionInterval* split = action();
-	CCActionInterval* seq = (CCActionInterval*)CCSequence::actions
+	CCActionInterval* seq = (CCActionInterval*)CCSequence::create
 	(
 		split,
 		CCCallFunc::create(this, callfunc_selector(CCTransitionScene::hideOutShowIn)),
@@ -1263,7 +1263,7 @@ void CCTransitionSplitCols::onEnter()
 
 	this->runAction
 	( 
-		CCSequence::actions
+		CCSequence::create
 		(
 			easeActionWithAction(seq),
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)),
@@ -1335,7 +1335,7 @@ void CCTransitionFadeTR::onEnter()
 
 	m_pOutScene->runAction
 	(
-		CCSequence::actions
+		CCSequence::create
 		(
 			easeActionWithAction(action),
 			CCCallFunc::create(this, callfunc_selector(CCTransitionScene::finish)), 

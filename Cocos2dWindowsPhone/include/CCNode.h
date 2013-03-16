@@ -193,7 +193,23 @@ class CC_DLL CCNode : public CCObject
 		CC_PROPERTY(CCGridBase *, m_pGrid, Grid)
 
 		/** Whether of not the node is visible. Default is true */
-		CC_PROPERTY(bool, m_bIsVisible, IsVisible)
+//		CC_PROPERTY(bool, m_bVisible, IsVisible)
+		/**
+		* Sets whether the node is visible
+		*
+		* The default value is true, a node is default to visible
+		*
+		* @param visible   true if the node is visible, false if the node is hidden.
+		*/
+		virtual void setVisible(bool visible);
+		/**
+		* Determines if the node is visible
+		*
+		* @see setVisible(bool)
+		*
+		* @return true if the node is visible, false if the node is hidden.
+		*/
+		virtual bool isVisible();
 
 		/** anchorPoint is the point around which all transformations and positioning manipulations take place.
 		It's like a pin in the node where it is "attached" to its parent.
@@ -570,6 +586,35 @@ public:
 	@since v0.7.1
 	*/
 	CCPoint convertTouchToNodeSpaceAR(CCTouch * touch);
+
+
+
+	    /**
+     * Sets whether the anchor point will be (0,0) when you position this node.
+     *
+     * This is an internal method, only used by CCLayer and CCScene. Don't call it outside framework.
+     * The default value is false, while in CCLayer and CCScene are true
+     *
+     * @param ignore    true if anchor point will be (0,0) when you position this node
+     * @todo This method shoud be renamed as setIgnoreAnchorPointForPosition(bool) or something with "set"
+     */
+    virtual void ignoreAnchorPointForPosition(bool ignore);
+    /**
+     * Gets whether the anchor point will be (0,0) when you position this node.
+     *
+     * @see ignoreAnchorPointForPosition(bool)
+     *
+     * @return true if the anchor point will be (0,0) when you position this node.
+     */
+    virtual bool isIgnoreAnchorPointForPosition();
+
+	bool m_bTransformDirty;             ///< transform dirty flag
+    bool m_bInverseDirty;               ///< transform dirty flag
+
+    bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
+                                          ///< Used by CCLayer and CCScene.
+	bool m_bVisible;                    ///< is this node visible
+
 };
 NS_CC_END
 

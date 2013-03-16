@@ -56,7 +56,7 @@ CCNode::CCNode(void)
 // lazy alloc
 , m_pCamera(NULL)
 , m_pGrid(NULL)
-, m_bIsVisible(true)
+, m_bVisible(true)
 , m_tAnchorPoint(CCPointZero)
 , m_tAnchorPointInPixels(CCPointZero)
 , m_tContentSize(CCSizeZero)
@@ -370,17 +370,32 @@ void CCNode::setGrid(CCGridBase* pGrid)
 }
 
 
+///// isVisible getter
+//bool CCNode::getIsVisible()
+//{
+//	return m_bVisible;
+//}
+//
+///// isVisible setter
+//void CCNode::setIsVisible(bool var)
+//{
+//	m_bVisible = var;
+//}
+
 /// isVisible getter
-bool CCNode::getIsVisible()
+bool CCNode::isVisible()
 {
-	return m_bIsVisible;
+    return m_bVisible;
 }
 
 /// isVisible setter
-void CCNode::setIsVisible(bool var)
+void CCNode::setVisible(bool var)
 {
-	m_bIsVisible = var;
+    m_bVisible = var;
 }
+
+
+
 
 
 /// anchorPoint getter
@@ -773,7 +788,7 @@ void CCNode::reorderChild(CCNode *child, int zOrder)
 void CCNode::visit()
 {
 	// quick return if not visible
-	if (!m_bIsVisible)
+	if (!m_bVisible)
 	{
 		return;
 	}
@@ -1233,6 +1248,21 @@ CCPoint CCNode::convertTouchToNodeSpaceAR(CCTouch *touch)
 	CCPoint point = touch->getLocationInView();
 	point = CCDirector::sharedDirector()->convertToGL(point);
 	return this->convertToNodeSpaceAR(point);
+}
+
+/// isRelativeAnchorPoint getter
+bool CCNode::isIgnoreAnchorPointForPosition()
+{
+    return m_bIgnoreAnchorPointForPosition;
+}
+/// isRelativeAnchorPoint setter
+void CCNode::ignoreAnchorPointForPosition(bool newValue)
+{
+    if (newValue != m_bIgnoreAnchorPointForPosition) 
+    {
+		m_bIgnoreAnchorPointForPosition = newValue;
+		m_bTransformDirty = m_bInverseDirty = true;
+	}
 }
 
 NS_CC_END

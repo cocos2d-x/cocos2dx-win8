@@ -81,7 +81,7 @@ CCShow* CCShow::action() {
 
 void CCShow::startWithTarget(CCNode *pTarget) {
 	CCActionInstant::startWithTarget(pTarget);
-	pTarget->setIsVisible(true);
+	pTarget->setVisible(true);
 }
 
 CCFiniteTimeAction* CCShow::reverse() {
@@ -119,7 +119,7 @@ CCHide * CCHide::action() {
 
 void CCHide::startWithTarget(CCNode *pTarget) {
 	CCActionInstant::startWithTarget(pTarget);
-	pTarget->setIsVisible(false);
+	pTarget->setVisible(false);
 }
 
 CCFiniteTimeAction *CCHide::reverse() {
@@ -157,7 +157,7 @@ CCToggleVisibility * CCToggleVisibility::action() {
 
 void CCToggleVisibility::startWithTarget(CCNode *pTarget) {
 	CCActionInstant::startWithTarget(pTarget);
-	pTarget->setIsVisible(!pTarget->getIsVisible());
+	pTarget->setVisible(!pTarget->isVisible());
 }
 
 //
