@@ -38,7 +38,7 @@ NS_CC_BEGIN
 /*
 * creation with CCTexture2D
 */
-CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithTexture(CCTexture2D *tex)
+CCSpriteBatchNode* CCSpriteBatchNode::createWithTexture(CCTexture2D *tex)
 {
 	CCSpriteBatchNode *batchNode = new CCSpriteBatchNode();
 	batchNode->initWithTexture(tex, defaultCapacity);
@@ -47,7 +47,7 @@ CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithTexture(CCTexture2D *tex)
 	return batchNode;
 }
 
-CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithTexture(CCTexture2D* tex, unsigned int capacity)
+CCSpriteBatchNode* CCSpriteBatchNode::createWithTexture(CCTexture2D* tex, unsigned int capacity)
 {
 	CCSpriteBatchNode *batchNode = new CCSpriteBatchNode();
 	batchNode->initWithTexture(tex, capacity);
@@ -59,7 +59,7 @@ CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithTexture(CCTexture2D* tex, uns
 /*
 * creation with File Image
 */
-CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithFile(const char *fileImage, unsigned int capacity)
+CCSpriteBatchNode* CCSpriteBatchNode::create(const char *fileImage, unsigned int capacity)
 {
 	CCSpriteBatchNode *batchNode = new CCSpriteBatchNode();
 	batchNode->initWithFile(fileImage, capacity);
@@ -68,7 +68,7 @@ CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithFile(const char *fileImage, u
 	return batchNode;
 }
 
-CCSpriteBatchNode* CCSpriteBatchNode::batchNodeWithFile(const char *fileImage)
+CCSpriteBatchNode* CCSpriteBatchNode::create(const char *fileImage)
 {
 	CCSpriteBatchNode *batchNode = new CCSpriteBatchNode();
 	batchNode->initWithFile(fileImage, defaultCapacity);

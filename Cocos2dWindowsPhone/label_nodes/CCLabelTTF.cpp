@@ -27,7 +27,7 @@ namespace cocos2d{
 	//CCLabelTTF
 	//
     CCLabelTTF::CCLabelTTF()
-        : m_eAlignment(CCTextAlignmentCenter)
+        : m_eAlignment(kCCTextAlignmentCenter)
         , m_pFontName(NULL)
         , m_fFontSize(0.0)
         , m_pString(NULL)
@@ -84,12 +84,48 @@ namespace cocos2d{
 		}
 		return false;
 	}
-	bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize)
-	{
+	//bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize)
+	//{
+	//	CCAssert(label != NULL, "");
+	//	if (CCSprite::init())
+	//	{
+	//		m_tDimensions = CCSizeZero;
+
+ //           if (m_pFontName)
+ //           {
+ //               delete m_pFontName;
+ //               m_pFontName = NULL;
+ //           }
+ //           m_pFontName = new std::string(fontName);
+
+	//		m_fFontSize = fontSize * CC_CONTENT_SCALE_FACTOR();
+	//		this->setString(label);
+	//		return true;
+	//	}
+	//	return false;
+	//}
+
+bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize, 
+                                const CCSize& dimensions, CCTextAlignment alignment)
+{
+    return this->initWithString(label, fontName, fontSize, dimensions, alignment, kCCVerticalTextAlignmentTop);
+}
+
+bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize)
+{
+    return this->initWithString(label, fontName, fontSize, 
+                                CCSizeZero, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+}
+
+bool CCLabelTTF::initWithString(const char *string, const char *fontName, float fontSize,
+                                const cocos2d::CCSize &dimensions, CCTextAlignment hAlignment,
+                                CCVerticalTextAlignment vAlignment)
+{
 		CCAssert(label != NULL, "");
 		if (CCSprite::init())
 		{
-			m_tDimensions = CCSizeZero;
+			m_tDimensions = CCSizeMake( dimensions.width * CC_CONTENT_SCALE_FACTOR(), dimensions.height * CC_CONTENT_SCALE_FACTOR() );
+			m_eAlignment = hAlignment;
 
             if (m_pFontName)
             {
@@ -99,11 +135,12 @@ namespace cocos2d{
             m_pFontName = new std::string(fontName);
 
 			m_fFontSize = fontSize * CC_CONTENT_SCALE_FACTOR();
-			this->setString(label);
+			this->setString(string);
 			return true;
 		}
 		return false;
-	}
+}
+
 	void CCLabelTTF::setString(const char *label)
 	{
         if (m_pString)

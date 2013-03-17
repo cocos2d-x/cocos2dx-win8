@@ -202,9 +202,9 @@ public:
 	virtual void setContentSize(const CCSize& var);
 
 	/** creates a CCLayer with color, width and height in Points */
-	static CCLayerColor * layerWithColorWidthHeight(const ccColor4B& color, CCfloat width, CCfloat height);
+	static CCLayerColor * create(const ccColor4B& color, CCfloat width, CCfloat height);
 	/** creates a CCLayer with color. Width and height are the window size. */
-	static CCLayerColor * layerWithColor(const ccColor4B& color);
+	static CCLayerColor * create(const ccColor4B& color);
 
 	/** initializes a CCLayer with color, width and height in Points */
 	virtual bool initWithColorWidthHeight(const ccColor4B& color, CCfloat width, CCfloat height);
@@ -298,10 +298,10 @@ class CC_DLL CCLayerGradient : public CCLayerColor
 {
 public:
     /** Creates a full-screen CCLayer with a gradient between start and end. */
-    static CCLayerGradient* layerWithColor(const ccColor4B& start, const ccColor4B& end);
+    static CCLayerGradient* create(const ccColor4B& start, const ccColor4B& end);
 
     /** Creates a full-screen CCLayer with a gradient between start and end in the direction of v. */
-    static CCLayerGradient* layerWithColor(const ccColor4B& start, const ccColor4B& end, const CCPoint& v);
+    static CCLayerGradient* create(const ccColor4B& start, const ccColor4B& end, const CCPoint& v);
 
     /** Initializes the CCLayer with a gradient between start and end. */
     virtual bool initWithColor(const ccColor4B& start, const ccColor4B& end);

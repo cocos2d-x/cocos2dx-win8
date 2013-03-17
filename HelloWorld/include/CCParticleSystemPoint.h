@@ -67,7 +67,7 @@ public:
     /** creates an initializes a CCParticleSystemPoint from a plist file.
     This plist files can be creted manually or with Particle Designer:  
     */
-    static CCParticleSystemPoint * particleWithFile(const char *plistFile);
+    static CCParticleSystemPoint * create(const char *plistFile);
 
 	// super methods
 	virtual bool initWithTotalParticles(unsigned int numberOfParticles);

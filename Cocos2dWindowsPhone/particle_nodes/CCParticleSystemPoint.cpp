@@ -65,7 +65,7 @@ CCParticleSystemPoint::~CCParticleSystemPoint()
 }
 
 // implementation CCParticleSystemPoint
-CCParticleSystemPoint * CCParticleSystemPoint::particleWithFile(const char *plistFile)
+CCParticleSystemPoint * CCParticleSystemPoint::create(const char *plistFile)
 {
     CCParticleSystemPoint *pRet = new CCParticleSystemPoint();
     if (pRet && pRet->initWithFile(plistFile))

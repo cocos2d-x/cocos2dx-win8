@@ -491,15 +491,15 @@ const ccColor3B& CCMenuItemSprite::getColor()
 {
 	return dynamic_cast<CCRGBAProtocol*>(m_pNormalImage)->getColor();
 }
-CCMenuItemSprite * CCMenuItemSprite::itemFromNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite)
+CCMenuItemSprite * CCMenuItemSprite::create(CCNode* normalSprite, CCNode* selectedSprite, CCNode* disabledSprite)
 {
-	return CCMenuItemSprite::itemFromNormalSprite(normalSprite, selectedSprite, disabledSprite, NULL, NULL);
+	return CCMenuItemSprite::create(normalSprite, selectedSprite, disabledSprite, NULL, NULL);
 }
-CCMenuItemSprite * CCMenuItemSprite::itemFromNormalSprite(CCNode* normalSprite, CCNode* selectedSprite, CCObject* target, SEL_MenuHandler selector)
+CCMenuItemSprite * CCMenuItemSprite::create(CCNode* normalSprite, CCNode* selectedSprite, CCObject* target, SEL_MenuHandler selector)
 {
-	return CCMenuItemSprite::itemFromNormalSprite(normalSprite, selectedSprite, NULL, target, selector);
+	return CCMenuItemSprite::create(normalSprite, selectedSprite, NULL, target, selector);
 }
-CCMenuItemSprite * CCMenuItemSprite::itemFromNormalSprite(CCNode *normalSprite, CCNode *selectedSprite, CCNode *disabledSprite, CCObject *target, SEL_MenuHandler selector)
+CCMenuItemSprite * CCMenuItemSprite::create(CCNode *normalSprite, CCNode *selectedSprite, CCNode *disabledSprite, CCObject *target, SEL_MenuHandler selector)
 {
 	CCMenuItemSprite *pRet = new CCMenuItemSprite();
 	pRet->initFromNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector); 

@@ -525,7 +525,7 @@ void CCLayerColor::setBlendFunc(ccBlendFunc var)
 }
 
 
-CCLayerColor * CCLayerColor::layerWithColorWidthHeight(const ccColor4B& color, CCfloat width, CCfloat height)
+CCLayerColor * CCLayerColor::create(const ccColor4B& color, CCfloat width, CCfloat height)
 {
 	CCLayerColor * pLayer = new CCLayerColor();
 	if( pLayer && pLayer->initWithColorWidthHeight(color,width,height))
@@ -536,7 +536,7 @@ CCLayerColor * CCLayerColor::layerWithColorWidthHeight(const ccColor4B& color, C
 	CC_SAFE_DELETE(pLayer);
 	return NULL;
 }
-CCLayerColor * CCLayerColor::layerWithColor(const ccColor4B& color)
+CCLayerColor * CCLayerColor::create(const ccColor4B& color)
 {
 	CCLayerColor * pLayer = new CCLayerColor();
 	if(pLayer && pLayer->initWithColor(color))
@@ -546,6 +546,20 @@ CCLayerColor * CCLayerColor::layerWithColor(const ccColor4B& color)
 	}
 	CC_SAFE_DELETE(pLayer);
 	return NULL;
+}
+
+CCLayerColor* CCLayerColor::create()
+{
+    CCLayerColor* pRet = new CCLayerColor();
+    if (pRet && pRet->init())
+    {
+        pRet->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(pRet);
+    }
+    return pRet;
 }
 
 bool CCLayerColor::initWithColorWidthHeight(const ccColor4B& color, CCfloat width, CCfloat height)
@@ -888,7 +902,7 @@ void CCDXLayerColor::Render(ccVertex2F* squareVertices,ccColor4B* squareColors)
 //
 // CCLayerGradient
 // 
-CCLayerGradient* CCLayerGradient::layerWithColor(const ccColor4B& start, const ccColor4B& end)
+CCLayerGradient* CCLayerGradient::create(const ccColor4B& start, const ccColor4B& end)
 {
     CCLayerGradient * pLayer = new CCLayerGradient();
     if( pLayer && pLayer->initWithColor(start, end))
@@ -900,7 +914,7 @@ CCLayerGradient* CCLayerGradient::layerWithColor(const ccColor4B& start, const c
     return NULL;
 }
 
-CCLayerGradient* CCLayerGradient::layerWithColor(const ccColor4B& start, const ccColor4B& end, const CCPoint& v)
+CCLayerGradient* CCLayerGradient::create(const ccColor4B& start, const ccColor4B& end, const CCPoint& v)
 {
 	CCLayerGradient * pLayer = new CCLayerGradient();
 	if( pLayer && pLayer->initWithColor(start, end, v))

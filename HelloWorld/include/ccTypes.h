@@ -306,6 +306,16 @@ typedef enum
     kCCVerticalTextAlignmentBottom,
 } CCVerticalTextAlignment;
 
+// XXX: If any of these enums are edited and/or reordered, update CCTexture2D.m
+//! Horizontal text alignment type
+typedef enum
+{
+    kCCTextAlignmentLeft,
+    kCCTextAlignmentCenter,
+    kCCTextAlignmentRight,
+} CCTextAlignment;
+
+
 //! ccResolutionType
 typedef enum
 {
@@ -326,13 +336,6 @@ typedef enum
 //! if you want more resolution redefine it as a double
 typedef float ccTime;
 //typedef double ccTime;
-
-typedef enum 
-{
-	CCTextAlignmentLeft,
-	CCTextAlignmentCenter,
-	CCTextAlignmentRight,
-} CCTextAlignment;
 
 // types for animation in particle systems
 

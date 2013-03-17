@@ -106,7 +106,7 @@ CCParticleSystemQuad::~CCParticleSystemQuad()
 }
 
 // implementation CCParticleSystemQuad
-CCParticleSystemQuad * CCParticleSystemQuad::particleWithFile(const char *plistFile)
+CCParticleSystemQuad * CCParticleSystemQuad::create(const char *plistFile)
 {
     CCParticleSystemQuad *pRet = new CCParticleSystemQuad();
     if (pRet && pRet->initWithFile(plistFile))

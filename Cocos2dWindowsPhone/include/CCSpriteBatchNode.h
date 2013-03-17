@@ -79,24 +79,24 @@ public:
 	/** creates a CCSpriteBatchNode with a texture2d and a default capacity of 29 children.
 	The capacity will be increased in 33% in runtime if it run out of space.
 	*/
-	static CCSpriteBatchNode* batchNodeWithTexture(CCTexture2D *tex);
+	static CCSpriteBatchNode* createWithTexture(CCTexture2D *tex);
 
 	/** creates a CCSpriteBatchNode with a texture2d and capacity of children.
 	The capacity will be increased in 33% in runtime if it run out of space.
 	*/
-	static CCSpriteBatchNode* batchNodeWithTexture(CCTexture2D* tex, unsigned int capacity);
+	static CCSpriteBatchNode* createWithTexture(CCTexture2D* tex, unsigned int capacity);
 
 	/** creates a CCSpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) with a default capacity of 29 children.
 	The capacity will be increased in 33% in runtime if it run out of space.
 	The file will be loaded using the TextureMgr.
 	*/
-	static CCSpriteBatchNode* batchNodeWithFile(const char* fileImage);
+	static CCSpriteBatchNode* create(const char* fileImage);
 
 	/** creates a CCSpriteBatchNode with a file image (.png, .jpeg, .pvr, etc) and capacity of children.
 	The capacity will be increased in 33% in runtime if it run out of space.
 	The file will be loaded using the TextureMgr.
 	*/
-	static CCSpriteBatchNode* batchNodeWithFile(const char* fileImage, unsigned int capacity);
+	static CCSpriteBatchNode* create(const char* fileImage, unsigned int capacity);
 
 	/** initializes a CCSpriteBatchNode with a texture2d and capacity of children.
 	The capacity will be increased in 33% in runtime if it run out of space.

@@ -705,7 +705,7 @@ namespace cocos2d{
 	//LabelBMFont - Creation & Init
 	CCLabelBMFont *CCLabelBMFont::create(const char *str, const char *fntFile)
 	{
-		return create(str, fntFile, CCTextAlignmentLeft, 0);
+		return create(str, fntFile, kCCTextAlignmentLeft, 0);
 	}
 
 	//LabelBMFont - Creation & Init
@@ -724,7 +724,7 @@ namespace cocos2d{
 
 	bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile)
 	{
-		return initWithString(theString, fntFile, CCTextAlignmentCenter, 0);
+		return initWithString(theString, fntFile, kCCTextAlignmentCenter, 0);
 	}
 
 	bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile, CCTextAlignment alignment
@@ -1182,7 +1182,7 @@ namespace cocos2d{
 		}
 
 		// Step 2: Make alignment
-		if (m_pAlignment != CCTextAlignmentLeft)
+		if (m_pAlignment != kCCTextAlignmentLeft)
 		{
 			int i = 0;
 
@@ -1205,10 +1205,10 @@ namespace cocos2d{
 					float shift = 0;
 					switch (m_pAlignment)
 					{
-					case CCTextAlignmentCenter:
+					case kCCTextAlignmentCenter:
 						shift = getContentSize().width/2.0f - lineWidth/2.0f;
 						break;
-					case CCTextAlignmentRight:
+					case kCCTextAlignmentRight:
 						shift = getContentSize().width - lineWidth;
 					default:
 						break;

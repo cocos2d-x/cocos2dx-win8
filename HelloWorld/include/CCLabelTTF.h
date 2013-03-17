@@ -48,10 +48,23 @@ namespace cocos2d{
 		static CCLabelTTF * create(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
 		/** creates a CCLabelTTF from a fontname and font size */
 		static CCLabelTTF * create(const char *label, const char *fontName, float fontSize);
-		/** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
-		bool initWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
+		///** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
+		//bool initWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
+		///** initializes the CCLabelTTF with a font name and font size */
+		//bool initWithString(const char *label, const char *fontName, float fontSize);
 		/** initializes the CCLabelTTF with a font name and font size */
-		bool initWithString(const char *label, const char *fontName, float fontSize);
+		bool initWithString(const char *string, const char *fontName, float fontSize);
+
+		/** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
+		bool initWithString(const char *string, const char *fontName, float fontSize,
+			const CCSize& dimensions, CCTextAlignment hAlignment);
+
+		/** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
+		bool initWithString(const char *string, const char *fontName, float fontSize,
+			const CCSize& dimensions, CCTextAlignment hAlignment, 
+			CCVerticalTextAlignment vAlignment);
+
+
 
 		/** changes the string to render
 		* @warning Changing the string is as expensive as creating a new CCLabelTTF. To obtain better performance use CCLabelAtlas
