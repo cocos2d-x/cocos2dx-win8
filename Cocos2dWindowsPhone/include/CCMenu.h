@@ -41,7 +41,7 @@ NS_CC_BEGIN
 
 enum {
 	//* priority used by the menu
-	kCCMenuTouchPriority = -128,
+	kCCMenuHandlerPriority = -128,
 };
 
 /** @brief A CCMenu
