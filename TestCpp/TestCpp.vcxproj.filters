@@ -14,6 +14,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{3f5a98d3-f467-4716-89d3-d7db8b9389ba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\ActionsTest">
+      <UniqueIdentifier>{47299f81-026d-4f61-9a3a-7f2452e2a946}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -58,6 +61,9 @@
     </ClCompile>
     <ClCompile Include="Classes\VisibleRect.cpp">
       <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp">
+      <Filter>Classes\ActionsTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -473,6 +479,9 @@
     </ClInclude>
     <ClInclude Include="Classes\VisibleRect.h">
       <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionsTest\ActionsTest.h">
+      <Filter>Classes\ActionsTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
