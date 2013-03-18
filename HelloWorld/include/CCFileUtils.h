@@ -198,7 +198,6 @@ public:
 	//   // interfaces on ios
 	//   ///////////////////////////////////////////////////
 	//   static int ccLoadFileIntoMemory(const char *filename, unsigned char **out);
-
 	std::vector<std::string> m_searchResolutionsOrderArray;
 	std::vector<std::string> m_searchPathArray;
 	std::string m_strDefaultResRootPath;

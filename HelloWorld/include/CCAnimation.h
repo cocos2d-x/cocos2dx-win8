@@ -61,7 +61,7 @@ public:
     virtual ~CCAnimationFrame();
     virtual CCObject* copyWithZone(CCZone* pZone);
     /** initializes the animation frame with a spriteframe, number of delay units and a notification user info */
-    //bool initWithSpriteFrame(CCSpriteFrame* spriteFrame, float delayUnits, CCDictionary* userInfo);
+//    bool initWithSpriteFrame(CCSpriteFrame* spriteFrame, float delayUnits, CCDictionary* userInfo);
     
     /** CCSpriteFrameName to be used */
     CC_SYNTHESIZE_RETAIN(CCSpriteFrame*, m_pSpriteFrame, SpriteFrame)
@@ -70,7 +70,7 @@ public:
     CC_SYNTHESIZE(float, m_fDelayUnits, DelayUnits)
 
     /**  A CCAnimationFrameDisplayedNotification notification will be broadcast when the frame is displayed with this dictionary as UserInfo. If UserInfo is nil, then no notification will be broadcast. */
-//    CC_SYNTHESIZE_RETAIN(CCDictionary*, m_pUserInfo, UserInfo)
+    //CC_SYNTHESIZE_RETAIN(CCDictionary*, m_pUserInfo, UserInfo)
 };
  
 

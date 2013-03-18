@@ -96,7 +96,7 @@ namespace cocos2d {
 		// super methods
 		virtual CCObject* copyWithZone(CCZone* pZone);
 		virtual void startWithTarget(CCNode *pTarget);
-		virtual void update(float time);
+		virtual void update(ccTime time);
 
 	protected:
 		float m_fRadius;

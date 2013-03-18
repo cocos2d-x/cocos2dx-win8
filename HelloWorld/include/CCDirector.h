@@ -391,33 +391,28 @@ public:
 	static bool setDirectorType(ccDirectorType obDirectorType);
 
 public:
-
-	  /** CCScheduler associated with this director
-  @since v2.0
-   */
+	 /** CCScheduler associated with this director
+     @since v2.0
+     */
     CC_PROPERTY(CCScheduler*, m_pScheduler, Scheduler);
 
-   /** CCActionManager associated with this director
-
+    /** CCActionManager associated with this director
      @since v2.0
      */
     CC_PROPERTY(CCActionManager*, m_pActionManager, ActionManager);
 
-
-   /** CCTouchDispatcher associated with this director
+    /** CCTouchDispatcher associated with this director
      @since v2.0
-    */
+     */
     CC_PROPERTY(CCTouchDispatcher*, m_pTouchDispatcher, TouchDispatcher);
 
-   /** CCKeypadDispatcher associated with this director
-
+    /** CCKeypadDispatcher associated with this director
      @since v2.0
      */
     CC_PROPERTY(CCKeypadDispatcher*, m_pKeypadDispatcher, KeypadDispatcher);
 
     /** CCAccelerometer associated with this director
-
-    @since v2.0
+     @since v2.0
      */
     CC_PROPERTY(CCAccelerometer*, m_pAccelerometer, Accelerometer);
 

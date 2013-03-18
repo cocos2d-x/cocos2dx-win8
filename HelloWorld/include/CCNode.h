@@ -1,29 +1,29 @@
 /****************************************************************************
- Copyright (c) 2010-2011 cocos2d-x.org
- Copyright (c) 2008-2010 Ricardo Quesada
- Copyright (c) 2009      Valentin Milea
- Copyright (c) 2011      Zynga Inc.
+Copyright (c) 2010-2011 cocos2d-x.org
+Copyright (c) 2008-2010 Ricardo Quesada
+Copyright (c) 2009      Valentin Milea
+Copyright (c) 2011      Zynga Inc.
 
- http://www.cocos2d-x.org
+http://www.cocos2d-x.org
 
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
 
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- THE SOFTWARE.
- ****************************************************************************/
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+****************************************************************************/
 
 #ifndef __PLATFOMR_CCNODE_H__
 #define __PLATFOMR_CCNODE_H__
@@ -34,7 +34,6 @@
 #include "CCGL.h"
 
 NS_CC_BEGIN
-
 class CCCamera;
 class CCGridBase;
 class CCPoint;
@@ -43,6 +42,7 @@ class CCAction;
 class CCRGBAProtocol;
 class CCLabelProtocol;
 class CCScheduler;
+
 enum {
 	kCCNodeTagInvalid = -1,
 };
@@ -211,7 +211,6 @@ class CC_DLL CCNode : public CCObject
 		*/
 		virtual bool isVisible();
 
-
 		/** anchorPoint is the point around which all transformations and positioning manipulations take place.
 		It's like a pin in the node where it is "attached" to its parent.
 		The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.
@@ -264,131 +263,127 @@ protected:
 	CCAffineTransform m_tTransform, m_tInverse;
 
 #ifdef	CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
-		CCfloat	m_pTransformGL[16];
+	CCfloat	m_pTransformGL[16];
 #endif
-		// To reduce memory, place bools that are not properties here:
-		bool m_bIsTransformDirty;
-		bool m_bIsInverseDirty;
+	// To reduce memory, place bools that are not properties here:
+	bool m_bIsTransformDirty;
+	bool m_bIsInverseDirty;
 
 #ifdef	CC_NODE_TRANSFORM_USING_AFFINE_MATRIX
-		bool m_bIsTransformGLDirty;
+	bool m_bIsTransformGLDirty;
 #endif
 
-        int m_nScriptHandler;
+	int m_nScriptHandler;
 
-	private:
+private:
 
-		//! lazy allocs
-		void childrenAlloc(void);
+	//! lazy allocs
+	void childrenAlloc(void);
 
-		//! helper that reorder a child
-		void insertChild(CCNode* child, int z);
+	//! helper that reorder a child
+	void insertChild(CCNode* child, int z);
 
-		//! used internally to alter the zOrder variable. DON'T call this method manually
-		void setZOrder(int z);
+	//! used internally to alter the zOrder variable. DON'T call this method manually
+	void setZOrder(int z);
 
-		void detachChild(CCNode *child, bool doCleanup);
+	void detachChild(CCNode *child, bool doCleanup);
 
-		typedef void (CCNode::*callbackFunc)(void);
+	typedef void (CCNode::*callbackFunc)(void);
 
-		//void arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func);
+	//void arrayMakeObjectsPerformSelector(CCArray* pArray, callbackFunc func);
 
 	CCPoint convertToWindowSpace(const CCPoint& nodePoint);
 protected:
 	CCScheduler *m_pScheduler; 
 public:
 
+	CCNode(void);
 
-		CCNode(void);
+	virtual ~CCNode(void);
 
-		virtual ~CCNode(void);
+	char * description(void);
 
-		char * description(void);
+	/** allocates and initializes a node.
+	The node will be created as "autorelease".
+	*/
+	static CCNode * create(void);
 
-		/** allocates and initializes a node.
-         The node will be created as "autorelease".
-         */
-		static CCNode * create(void);
+	//scene managment
 
-		//scene managment
+	/** callback that is called every time the CCNode enters the 'stage'.
+	If the CCNode enters the 'stage' with a transition, this callback is called when the transition starts.
+	During onEnter you can't a "sister/brother" node.
+	*/
+	virtual void onEnter();
 
-		/** callback that is called every time the CCNode enters the 'stage'.
-         If the CCNode enters the 'stage' with a transition, this callback is called when the transition starts.
-         During onEnter you can't a "sister/brother" node.
-         */
-		virtual void onEnter();
+	/** callback that is called when the CCNode enters in the 'stage'.
+	If the CCNode enters the 'stage' with a transition, this callback is called when the transition finishes.
+	@since v0.8
+	*/
+	virtual void onEnterTransitionDidFinish();
 
-		/** callback that is called when the CCNode enters in the 'stage'.
-         If the CCNode enters the 'stage' with a transition, this callback is called when the transition finishes.
-         @since v0.8
-         */
-		virtual void onEnterTransitionDidFinish();
+	/** callback that is called every time the CCNode leaves the 'stage'.
+	If the CCNode leaves the 'stage' with a transition, this callback is called when the transition finishes.
+	During onExit you can't access a sibling node.
+	*/
+	virtual void onExit();
 
-		/** callback that is called every time the CCNode leaves the 'stage'.
-         If the CCNode leaves the 'stage' with a transition, this callback is called when the transition finishes.
-         During onExit you can't access a sibling node.
-         */
-		virtual void onExit();
+	/** Register onEnter/onExit handler script function
 
-        /** Register onEnter/onExit handler script function
-         
-         Script handler auto unregister after onEnter().
-         */
-        virtual void registerScriptHandler(int nHandler);
-        virtual void unregisterScriptHandler(void);
+	Script handler auto unregister after onEnter().
+	*/
+	virtual void registerScriptHandler(int nHandler);
+	virtual void unregisterScriptHandler(void);
 
-		// composition: ADD
+	// composition: ADD
 
-		/** Adds a child to the container with z-order as 0.
-         If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.
-         @since v0.7.1
-         */
-		virtual void addChild(CCNode * child);
+	/** Adds a child to the container with z-order as 0.
+	If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.
+	@since v0.7.1
+	*/
+	virtual void addChild(CCNode * child);
 
-		/** Adds a child to the container with a z-order
-         If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.
-         @since v0.7.1
-         */
-		virtual void addChild(CCNode * child, int zOrder);
+	/** Adds a child to the container with a z-order
+	If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.
+	@since v0.7.1
+	*/
+	virtual void addChild(CCNode * child, int zOrder);
 
-		/** Adds a child to the container with z order and tag
-         If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.
-         @since v0.7.1
-         */
-		virtual void addChild(CCNode * child, int zOrder, int tag);
+	/** Adds a child to the container with z order and tag
+	If the child is added to a 'running' node, then 'onEnter' and 'onEnterTransitionDidFinish' will be called immediately.
+	@since v0.7.1
+	*/
+	virtual void addChild(CCNode * child, int zOrder, int tag);
 
-		// composition: REMOVE
+	// composition: REMOVE
 
-		/** Remove itself from its parent node. If cleanup is true, then also remove all actions and callbacks.
-         If the node orphan, then nothing happens.
-         @since v0.99.3
-         */
-		void removeFromParentAndCleanup(bool cleanup);
+	/** Remove itself from its parent node. If cleanup is true, then also remove all actions and callbacks.
+	If the node orphan, then nothing happens.
+	@since v0.99.3
+	*/
+	void removeFromParentAndCleanup(bool cleanup);
 
-		/** Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.
-         @since v0.7.1
-         */
-		virtual void removeChild(CCNode* child, bool cleanup);
+	/** Removes a child from the container. It will also cleanup all running actions depending on the cleanup parameter.
+	@since v0.7.1
+	*/
+	virtual void removeChild(CCNode* child, bool cleanup);
 
-		/** Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter
-         @since v0.7.1
-         */
-		void removeChildByTag(int tag, bool cleanup);
+	/** Removes a child from the container by tag value. It will also cleanup all running actions depending on the cleanup parameter
+	@since v0.7.1
+	*/
+	void removeChildByTag(int tag, bool cleanup);
 
-		/** Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter.
-         @since v0.7.1
-         */
-		virtual void removeAllChildrenWithCleanup(bool cleanup);
+	/** Removes all children from the container and do a cleanup all running actions depending on the cleanup parameter.
+	@since v0.7.1
+	*/
+	virtual void removeAllChildrenWithCleanup(bool cleanup);
 
-		// composition: GET
-		/** Gets a child from the container given its tag
-         @return returns a CCNode object
-         @since v0.7.1
-         */
-		CCNode * getChildByTag(int tag);
-
-	
-
+	// composition: GET
+	/** Gets a child from the container given its tag
+	@return returns a CCNode object
+	@since v0.7.1
+	*/
+	CCNode * getChildByTag(int tag);
 
 	/** Reorders a child according to a new z value.
 	* The child MUST be already added.
@@ -479,13 +474,13 @@ public:
 	*    If you are running 7 Sequences of 2 actions, it will return 7.
 	*/
 	unsigned int numberOfRunningActions(void);
-
 	virtual void setScheduler(CCScheduler* scheduler);
-	// timers
 	virtual CCScheduler* getScheduler();
+	// timers
+
 	/** check whether a selector is scheduled. */
 	bool isScheduled(SEL_SCHEDULE selector);
-
+	bool m_bRunning;    
 	/** schedules the "update" method. It will use the order number 0. This method will be called every frame.
 	Scheduled methods with a lower order value will be called before the ones that have a higher order value.
 	Only one "update" method could be scheduled per node.
@@ -592,6 +587,8 @@ public:
 	*/
 	CCPoint convertTouchToNodeSpaceAR(CCTouch * touch);
 
+
+
 	    /**
      * Sets whether the anchor point will be (0,0) when you position this node.
      *
@@ -611,13 +608,13 @@ public:
      */
     virtual bool isIgnoreAnchorPointForPosition();
 
-
 	bool m_bTransformDirty;             ///< transform dirty flag
     bool m_bInverseDirty;               ///< transform dirty flag
 
     bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
                                           ///< Used by CCLayer and CCScene.
 	bool m_bVisible;                    ///< is this node visible
+
 };
 NS_CC_END
 

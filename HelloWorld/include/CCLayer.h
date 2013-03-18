@@ -201,6 +201,10 @@ public:
 	virtual void draw();
 	virtual void setContentSize(const CCSize& var);
 
+	    //@deprecated: This interface will be deprecated sooner or later.
+    static CCLayerColor* node();
+    static CCLayerColor* create();
+
 	/** creates a CCLayer with color, width and height in Points */
 	static CCLayerColor * create(const ccColor4B& color, CCfloat width, CCfloat height);
 	/** creates a CCLayer with color. Width and height are the window size. */
@@ -229,7 +233,6 @@ public:
 
 	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
     virtual bool getIsOpacityModifyRGB(void) { return false;}
-    CREATE_FUNC(CCLayerColor);
     
 protected:
 	virtual void updateColor();

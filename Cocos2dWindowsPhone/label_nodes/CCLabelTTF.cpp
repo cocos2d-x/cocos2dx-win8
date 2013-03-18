@@ -121,7 +121,7 @@ bool CCLabelTTF::initWithString(const char *string, const char *fontName, float 
                                 const cocos2d::CCSize &dimensions, CCTextAlignment hAlignment,
                                 CCVerticalTextAlignment vAlignment)
 {
-		CCAssert(label != NULL, "");
+		CCAssert(string != NULL, "Lable can't be NULL!");
 		if (CCSprite::init())
 		{
 			m_tDimensions = CCSizeMake( dimensions.width * CC_CONTENT_SCALE_FACTOR(), dimensions.height * CC_CONTENT_SCALE_FACTOR() );

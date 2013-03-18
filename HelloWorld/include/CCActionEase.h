@@ -49,7 +49,7 @@ public:
 	virtual CCObject* copyWithZone(CCZone* pZone);
 	virtual void startWithTarget(CCNode *pTarget);
 	virtual void stop(void);
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 
 public:
@@ -93,7 +93,7 @@ protected:
 class CC_DLL CCEaseIn : public CCEaseRateAction
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 public:
 	/** Creates the action with the inner action and the rate parameter */
@@ -106,7 +106,7 @@ public:
 class CC_DLL CCEaseOut : public CCEaseRateAction
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
 public:
@@ -120,7 +120,7 @@ public:
 class CC_DLL CCEaseInOut : public CCEaseRateAction
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 	virtual CCActionInterval* reverse(void);
 
@@ -135,7 +135,7 @@ public:
 class CC_DLL CCEaseExponentialIn : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -150,7 +150,7 @@ public:
 class CC_DLL CCEaseExponentialOut : public CCActionEase
 {
 public:
-    virtual void update(float time);
+    virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -166,7 +166,7 @@ public:
 class CC_DLL CCEaseExponentialInOut : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
 public:
@@ -181,7 +181,7 @@ public:
 class CC_DLL CCEaseSineIn : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -196,7 +196,7 @@ public:
 class CC_DLL CCEaseSineOut : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -211,7 +211,7 @@ public:
 class CC_DLL CCEaseSineInOut : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
 public:
@@ -257,7 +257,7 @@ protected:
 class CC_DLL CCEaseElasticIn : public CCEaseElastic
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -276,7 +276,7 @@ public:
 class CC_DLL CCEaseElasticOut : public CCEaseElastic
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -295,7 +295,7 @@ public:
 class CC_DLL CCEaseElasticInOut : public CCEaseElastic
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -313,7 +313,7 @@ public:
 class CC_DLL CCEaseBounce : public CCActionEase
 {
 public:
-	float bounceTime(float time);
+	ccTime bounceTime(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
 public:
@@ -329,7 +329,7 @@ public:
 class CC_DLL CCEaseBounceIn : public CCEaseBounce
 {
 public:
-    virtual void update(float time);
+    virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -346,7 +346,7 @@ public:
 class CC_DLL CCEaseBounceOut : public CCEaseBounce
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -363,7 +363,7 @@ public:
 class CC_DLL CCEaseBounceInOut : public CCEaseBounce
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
 public:
@@ -379,7 +379,7 @@ public:
 class CC_DLL CCEaseBackIn : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -396,7 +396,7 @@ public:
 class CC_DLL CCEaseBackOut : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCActionInterval* reverse(void);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
@@ -413,7 +413,7 @@ public:
 class CC_DLL CCEaseBackInOut : public CCActionEase
 {
 public:
-	virtual void update(float time);
+	virtual void update(ccTime time);
 	virtual CCObject* copyWithZone(CCZone* pZone);
 
 public:
