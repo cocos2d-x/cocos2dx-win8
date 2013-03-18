@@ -83,7 +83,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./;./include/;./platform/third_party;./include/libpng;./include/libjpeg;./include/freetype;./include/zlib$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib;../CocosDenshionWindowsPhone/include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAsWinRT>true</CompileAsWinRT>
       <PreprocessorDefinitions>TIXML_USE_STL;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
