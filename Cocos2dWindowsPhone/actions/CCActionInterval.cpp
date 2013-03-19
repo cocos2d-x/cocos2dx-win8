@@ -638,7 +638,7 @@ CCActionInterval *CCRepeatForever::reverse()
 //
 // Spawn
 //
-CCFiniteTimeAction* CCSpawn::actions(CCFiniteTimeAction *pAction1, ...)
+CCFiniteTimeAction* CCSpawn::create(CCFiniteTimeAction *pAction1, ...)
 {
 	va_list params;
 	va_start(params, pAction1);
@@ -663,7 +663,7 @@ CCFiniteTimeAction* CCSpawn::actions(CCFiniteTimeAction *pAction1, ...)
 	return pPrev;
 }
 
-CCFiniteTimeAction* CCSpawn::actionsWithArray(CCArray *actions)
+CCFiniteTimeAction* CCSpawn::create(CCArray *actions)
 {
 	CCFiniteTimeAction* prev = (CCFiniteTimeAction*)actions->objectAtIndex(0);
 
@@ -673,6 +673,34 @@ CCFiniteTimeAction* CCSpawn::actionsWithArray(CCArray *actions)
 	}
 
 	return prev;
+}
+
+CCSpawn* CCSpawn::createWithVariableList(CCFiniteTimeAction *pAction1, va_list args)
+{
+    CCFiniteTimeAction *pNow;
+    CCFiniteTimeAction *pPrev = pAction1;
+    bool bOneAction = true;
+
+    while (pAction1)
+    {
+        pNow = va_arg(args, CCFiniteTimeAction*);
+        if (pNow)
+        {
+            pPrev = createWithTwoActions(pPrev, pNow);
+            bOneAction = false;
+        }
+        else
+        {
+            // If only one action is added to CCSpawn, make up a CCSpawn by adding a simplest finite time action.
+            if (bOneAction)
+            {
+                pPrev = createWithTwoActions(pPrev, ExtraAction::create());
+            }
+            break;
+        }
+    }
+
+    return ((CCSpawn*)pPrev);
 }
 
 CCSpawn* CCSpawn::actionsWithArrayLua(CCArray *actions)

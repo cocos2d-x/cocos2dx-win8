@@ -62,6 +62,18 @@ struct transformValues_ {
 
 CCDXSprite CCSprite::mDXSprite;
 
+CCSprite* CCSprite::create()
+{
+    CCSprite *pSprite = new CCSprite();
+    if (pSprite && pSprite->init())
+    {
+        pSprite->autorelease();
+        return pSprite;
+    }
+    CC_SAFE_DELETE(pSprite);
+    return NULL;
+}
+
 CCSprite* CCSprite::spriteWithBatchNode(CCSpriteBatchNode *batchNode, const CCRect& rect)
 {
 	CCSprite *pobSprite = new CCSprite();

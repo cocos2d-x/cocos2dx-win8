@@ -239,7 +239,7 @@ void CCTransitionRotoZoom:: onEnter()
 
 	CCActionInterval *rotozoom = (CCActionInterval*)(CCSequence::create
 	(
-		CCSpawn::actions
+		CCSpawn::create
 		(
 			CCScaleBy::create(m_fDuration/2, 0.001f),
 			CCRotateBy::create(m_fDuration/2, 360 * 2),
@@ -834,7 +834,7 @@ void CCTransitionZoomFlipX::onEnter()
 	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
-			CCSpawn::actions
+			CCSpawn::create
 			(
 				CCOrbitCamera::create(m_fDuration/2, 1, 0, inAngleZ, inDeltaZ, 0, 0),
 				CCScaleTo::create(m_fDuration/2, 1),
@@ -846,7 +846,7 @@ void CCTransitionZoomFlipX::onEnter()
 		);
 	outA = (CCActionInterval *)CCSequence::create
 		(
-			CCSpawn::actions
+			CCSpawn::create
 			(
 				CCOrbitCamera::create(m_fDuration/2, 1, 0, outAngleZ, outDeltaZ, 0, 0),
 				CCScaleTo::create(m_fDuration/2, 0.5f),
@@ -906,7 +906,7 @@ void CCTransitionZoomFlipY::onEnter()
 	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
-			CCSpawn::actions
+			CCSpawn::create
 			(
 				CCOrbitCamera::create(m_fDuration/2, 1, 0, inAngleZ, inDeltaZ, 90, 0),
 				CCScaleTo::create(m_fDuration/2, 1),
@@ -919,7 +919,7 @@ void CCTransitionZoomFlipY::onEnter()
 
 	outA = (CCActionInterval *)CCSequence::create
 		(
-			CCSpawn::actions
+			CCSpawn::create
 			(
 				CCOrbitCamera::create(m_fDuration/2, 1, 0, outAngleZ, outDeltaZ, 90, 0),
 				CCScaleTo::create(m_fDuration/2, 0.5f),
@@ -982,7 +982,7 @@ void CCTransitionZoomFlipAngular::onEnter()
 	inA = (CCActionInterval *)CCSequence::create
 		(
 			CCDelayTime::create(m_fDuration/2),
-			CCSpawn::actions
+			CCSpawn::create
 			(
 				CCOrbitCamera::create(m_fDuration/2, 1, 0, inAngleZ, inDeltaZ, -45, 0),
 				CCScaleTo::create(m_fDuration/2, 1),
@@ -995,7 +995,7 @@ void CCTransitionZoomFlipAngular::onEnter()
 		);
 	outA = (CCActionInterval *)CCSequence::create
 		(
-			CCSpawn::actions
+			CCSpawn::create
 			(
 				CCOrbitCamera::create(m_fDuration/2, 1, 0 , outAngleZ, outDeltaZ, 45, 0),
 				CCScaleTo::create(m_fDuration/2, 0.5f),

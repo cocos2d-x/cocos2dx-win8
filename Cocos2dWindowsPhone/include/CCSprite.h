@@ -155,6 +155,12 @@ public:
 	inline void setBlendFunc(ccBlendFunc blendFunc) { m_sBlendFunc = blendFunc; }
 
 public:
+	    /**
+     * Creates an empty sprite without texture. You can call setTexture method subsequently.
+     *
+     * @return An empty sprite object that is marked as autoreleased.
+     */
+    static CCSprite* create();
 	/** Creates an sprite with a texture.
 	 The rect used will be the size of the texture.
 	 The offset will be (0,0).

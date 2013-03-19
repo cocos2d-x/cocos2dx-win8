@@ -211,7 +211,7 @@ public:
 	static CCLayerColor * create(const ccColor4B& color);
 
 	/** initializes a CCLayer with color, width and height in Points */
-	virtual bool initWithColorWidthHeight(const ccColor4B& color, CCfloat width, CCfloat height);
+	virtual bool initWithColor(const ccColor4B& color, CCfloat width, CCfloat height);
 	/** initializes a CCLayer with color. Width and height are the window size. */
 	virtual bool initWithColor(const ccColor4B& color);
 

@@ -528,7 +528,7 @@ void CCLayerColor::setBlendFunc(ccBlendFunc var)
 CCLayerColor * CCLayerColor::create(const ccColor4B& color, CCfloat width, CCfloat height)
 {
 	CCLayerColor * pLayer = new CCLayerColor();
-	if( pLayer && pLayer->initWithColorWidthHeight(color,width,height))
+	if( pLayer && pLayer->initWithColor(color,width,height))
 	{
 		pLayer->autorelease();
 		return pLayer;
@@ -562,7 +562,7 @@ CCLayerColor* CCLayerColor::create()
     return pRet;
 }
 
-bool CCLayerColor::initWithColorWidthHeight(const ccColor4B& color, CCfloat width, CCfloat height)
+bool CCLayerColor::initWithColor(const ccColor4B& color, CCfloat width, CCfloat height)
 {
 	// default blend function
 	m_tBlendFunc.src = CC_BLEND_SRC;
@@ -587,7 +587,7 @@ bool CCLayerColor::initWithColorWidthHeight(const ccColor4B& color, CCfloat widt
 bool CCLayerColor::initWithColor(const ccColor4B& color)
 {
 	CCSize s = CCDirector::sharedDirector()->getWinSize();
-	this->initWithColorWidthHeight(color, s.width, s.height);
+	this->initWithColor(color, s.width, s.height);
 	return true;
 }
 

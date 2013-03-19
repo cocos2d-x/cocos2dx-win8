@@ -617,10 +617,10 @@ void CCEGLView::GetClearColor(float* color)
 	color[3] = m_color[3];
 }
 
-CCEGLView& CCEGLView::sharedOpenGLView()
+CCEGLView* CCEGLView::sharedOpenGLView()
 {
     CC_ASSERT(s_pMainWindow);
-    return *s_pMainWindow;
+    return s_pMainWindow;
 }
 
 void CCEGLView::OnWindowSizeChanged()

@@ -228,10 +228,11 @@ public:
 
 public:
 	/** helper constructor to create an array of spawned actions */
-	static CCFiniteTimeAction* actions(CCFiniteTimeAction *pAction1, ...);
-
+	static CCFiniteTimeAction* create(CCFiniteTimeAction *pAction1, ...);
+	    /** helper constructor to create an array of spawned actions */
+    static CCSpawn* createWithVariableList(CCFiniteTimeAction *pAction1, va_list args);
 	/** helper contructor to create an array of spawned actions given an array */
-	static CCFiniteTimeAction* actionsWithArray(CCArray *actions);
+	static CCFiniteTimeAction* create(CCArray *actions);
 	static CCSpawn* actionsWithArrayLua(CCArray *actions);
 
 	/** creates the Spawn action */
