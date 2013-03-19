@@ -84,7 +84,7 @@ namespace cocos2d {
 	public:
 		//override static method
 		/** Allocates and initializes the action */
-		static CCHide * action();
+		static CCHide * create();
 	};
 
 	/** @brief Toggles the visibility of a node

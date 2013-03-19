@@ -1030,7 +1030,7 @@ bool CCSprite::isFrameDisplayed(CCSpriteFrame *pFrame)
 {
 	CCRect r = pFrame->getRect();
 
-	return (CCRect::CCRectEqualToRect(r, m_obRect) &&
+	return (r.equals(m_obRect) &&
 		pFrame->getTexture()->getName() == m_pobTexture->getName());
 }
 

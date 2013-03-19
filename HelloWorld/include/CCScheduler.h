@@ -75,7 +75,7 @@ public:
 protected:
 	CCObject *m_pTarget;
 	ccTime m_fElapsed;
-    int m_nScriptHandler;
+    int m_eScriptHandler;
 };
 
 //

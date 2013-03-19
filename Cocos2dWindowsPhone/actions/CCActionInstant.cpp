@@ -69,7 +69,7 @@ CCFiniteTimeAction * CCActionInstant::reverse() {
 //
 // Show
 //
-CCShow* CCShow::action() {
+CCShow* CCShow::create() {
 	CCShow* pRet = new CCShow();
 
 	if (pRet) {
@@ -107,7 +107,7 @@ CCObject* CCShow::copyWithZone(CCZone *pZone) {
 //
 // Hide
 //
-CCHide * CCHide::action() {
+CCHide * CCHide::create() {
 	CCHide *pRet = new CCHide();
 
 	if (pRet) {

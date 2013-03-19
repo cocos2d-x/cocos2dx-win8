@@ -363,7 +363,7 @@ void CCStopGrid::startWithTarget(CCNode *pTarget)
 	}
 }
 
-CCStopGrid* CCStopGrid::action(void)
+CCStopGrid* CCStopGrid::create(void)
 {
 	CCStopGrid* pAction = new CCStopGrid();
 	pAction->autorelease();

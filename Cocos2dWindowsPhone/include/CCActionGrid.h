@@ -186,7 +186,7 @@ namespace cocos2d
 
 	public:
 		/** Allocates and initializes the action */
-		static CCStopGrid* action(void);
+		static CCStopGrid* create(void);
 	};
 
 	/** @brief CCReuseGrid action */

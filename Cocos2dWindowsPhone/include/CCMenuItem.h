@@ -45,43 +45,55 @@ class CCSprite;
 */
 class CC_DLL CCMenuItem : public CCNode
 {
-	/** whether or not the item is selected
-	@since v0.8.2
-	*/
-	CC_PROPERTY_READONLY(bool, m_bIsSelected, IsSelected);
-	CC_PROPERTY(bool, m_bIsEnabled, IsEnabled);
-public:
-	CCMenuItem()
-		: m_bIsSelected(false)
-		, m_bIsEnabled(false)            
-		, m_pListener(NULL)			
-		, m_pfnSelector(NULL)
-		, m_nScriptHandler(0)
-	{}
-	virtual ~CCMenuItem();
-	/** Creates a CCMenuItem with a target/selector */
-	static CCMenuItem * create(CCObject *rec, SEL_MenuHandler selector);
-	/** Initializes a CCMenuItem with a target/selector */
-	bool initWithTarget(CCObject *rec, SEL_MenuHandler selector);
-	/** Returns the outside box */
-	CCRect rect();
-	/** Activate the item */
-	virtual void activate();
-	/** The item was selected (not activated), similar to "mouse-over" */
-	virtual void selected();
-	/** The item was unselected */
-	virtual void unselected();
-
-	/** Register menu handler script function */
-	virtual void registerScriptHandler(int nHandler);
-	virtual void unregisterScriptHandler(void);
-
-	/** set the target/selector of the menu item*/
-	void setTarget(CCObject *rec, SEL_MenuHandler selector);
 protected:
-	CCObject*       m_pListener;
-	SEL_MenuHandler	m_pfnSelector;
-	int             m_nScriptHandler;
+    /** whether or not the item is selected
+     @since v0.8.2
+     */
+    bool m_bIsSelected;
+    bool m_bIsEnabled;
+
+public:
+    CCMenuItem()
+    : m_bIsSelected(false)
+    , m_bIsEnabled(false)            
+    , m_pListener(NULL)            
+    , m_pfnSelector(NULL)
+    , m_nScriptTapHandler(0)
+    {}
+    virtual ~CCMenuItem();
+
+    /** Creates a CCMenuItem with no target/selector */
+    static CCMenuItem* create();
+    /** Creates a CCMenuItem with a target/selector */
+    static CCMenuItem* create(CCObject *rec, SEL_MenuHandler selector);
+    /** Initializes a CCMenuItem with a target/selector */
+    bool initWithTarget(CCObject *rec, SEL_MenuHandler selector);
+    /** Returns the outside box */
+    CCRect rect();
+    /** Activate the item */
+    virtual void activate();
+    /** The item was selected (not activated), similar to "mouse-over" */
+    virtual void selected();
+    /** The item was unselected */
+    virtual void unselected();
+    
+    /** Register menu handler script function */
+    virtual void registerScriptTapHandler(int nHandler);
+    virtual void unregisterScriptTapHandler(void);
+    int getScriptTapHandler() { return m_nScriptTapHandler; };
+
+    virtual bool isEnabled();
+    //@note: It's 'setIsEnable' in cocos2d-iphone. 
+    virtual void setEnabled(bool value);
+    virtual bool isSelected();
+    
+    /** set the target/selector of the menu item*/
+    void setTarget(CCObject *rec, SEL_MenuHandler selector);
+
+protected:
+    CCObject*       m_pListener;
+    SEL_MenuHandler    m_pfnSelector;
+    int             m_nScriptTapHandler;
 };
 
 /** @brief An abstract class for "label" CCMenuItemLabel items 

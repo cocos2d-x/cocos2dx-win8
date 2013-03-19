@@ -597,16 +597,16 @@ CCMenuItem* CCMenu::itemForTouch(CCTouch *touch)
 		CCARRAY_FOREACH(m_pChildren, pObject)
 		{
 			CCNode* pChild = dynamic_cast<CCNode*>(pObject);
-			if (pChild && pChild->isVisible() && ((CCMenuItem*)pChild)->getIsEnabled())
+			if (pChild && pChild->isVisible() && ((CCMenuItem*)pChild)->isEnabled())
 			{
 				CCPoint local = pChild->convertToNodeSpace(touchLocation);
 				CCRect r = ((CCMenuItem*)pChild)->rect();
 				r.origin = CCPointZero;
 
-				if (CCRect::CCRectContainsPoint(r, local))
-				{
-					return (CCMenuItem*)pChild;
-				}
+                if (r.containsPoint(local))
+                {
+                    return (CCMenuItem*)pChild;
+                }
 			}
 		}
 

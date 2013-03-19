@@ -81,21 +81,21 @@ void CCMenuItem::unselected()
 	m_bIsSelected = false;
 }
 
-void CCMenuItem::registerScriptHandler(int nHandler)
+void CCMenuItem::registerScriptTapHandler(int nHandler)
 {
-	unregisterScriptHandler();
-	m_nScriptHandler = nHandler;
-	LUALOG("[LUA] Add CCMenuItem script handler: %d", m_nScriptHandler);
+    unregisterScriptTapHandler();
+    m_nScriptTapHandler = nHandler;
+    LUALOG("[LUA] Add CCMenuItem script handler: %d", m_nScriptTapHandler);
 }
 
-void CCMenuItem::unregisterScriptHandler(void)
+void CCMenuItem::unregisterScriptTapHandler(void)
 {
-	if (m_nScriptHandler)
-	{
-		CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nScriptHandler);
-		LUALOG("[LUA] Remove CCMenuItem script handler: %d", m_nScriptHandler);
-		m_nScriptHandler = 0;
-	}
+    if (m_nScriptTapHandler)
+    {
+        //CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptTapHandler);
+        //LUALOG("[LUA] Remove CCMenuItem script handler: %d", m_nScriptTapHandler);
+        m_nScriptTapHandler = 0;
+    }
 }
 
 void CCMenuItem::activate()
@@ -114,14 +114,14 @@ void CCMenuItem::activate()
 	}
 }
 
-void CCMenuItem::setIsEnabled(bool enabled)
+void CCMenuItem::setEnabled(bool enabled)
 {
-	m_bIsEnabled = enabled;
+    m_bIsEnabled = enabled;
 }
 
-bool CCMenuItem::getIsEnabled()
+bool CCMenuItem::isEnabled()
 {
-	return m_bIsEnabled;
+    return m_bIsEnabled;
 }
 
 CCRect CCMenuItem::rect()
@@ -131,9 +131,9 @@ CCRect CCMenuItem::rect()
 		m_tContentSize.width, m_tContentSize.height);
 }
 
-bool CCMenuItem::getIsSelected()
+bool CCMenuItem::isSelected()
 {
-	return m_bIsSelected;
+    return m_bIsSelected;
 }
 
 void CCMenuItem::setTarget(CCObject *rec, SEL_MenuHandler selector)
@@ -261,7 +261,7 @@ void CCMenuItemLabel::setIsEnabled(bool enabled)
 			dynamic_cast<CCRGBAProtocol*>(m_pLabel)->setColor(m_tColorBackup);
 		}
 	}
-	CCMenuItem::setIsEnabled(enabled);
+	CCMenuItem::setEnabled(enabled);
 }
 void CCMenuItemLabel::setOpacity(CCubyte opacity)
 {
@@ -560,7 +560,7 @@ void CCMenuItemSprite::unselected()
 
 void CCMenuItemSprite::setIsEnabled(bool bEnabled)
 {
-	CCMenuItem::setIsEnabled(bEnabled);
+	CCMenuItem::setEnabled(bEnabled);
 
 	if (m_pSelectedImage)
 	{
@@ -765,14 +765,14 @@ void CCMenuItemToggle::activate()
 }
 void CCMenuItemToggle::setIsEnabled(bool enabled)
 {
-	CCMenuItem::setIsEnabled(enabled);
+	CCMenuItem::setEnabled(enabled);
 
 	if(m_pSubItems && m_pSubItems->count() > 0)
 	{
 		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
 		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
 		{
-			(*it)->setIsEnabled(enabled);
+			(*it)->setEnabled(enabled);
 		}
 	}
 }

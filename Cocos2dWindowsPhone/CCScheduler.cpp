@@ -72,7 +72,7 @@ CCTimer::CCTimer()
 , m_fInterval(0.0f)
 , m_pTarget(NULL)
 , m_fElapsed(0.0f)
-, m_nScriptHandler(0)
+, m_eScriptHandler(0)
 {
 
 }
@@ -109,7 +109,7 @@ CCTimer* CCTimer::timerWithScriptHandler(int nHandler, ccTime fSeconds)
 
 bool CCTimer::initWithScriptHandler(int nHandler, ccTime fSeconds)
 {
-    m_nScriptHandler = nHandler;
+    m_eScriptHandler = nHandler;
 	m_fElapsed = -1;
     m_fInterval = fSeconds;
 
@@ -148,9 +148,9 @@ void CCTimer::update(ccTime dt)
 		{
 			(m_pTarget->*m_pfnSelector)(m_fElapsed);
 		}
-        if (m_nScriptHandler)
+        if (m_eScriptHandler)
 		{
-            CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_nScriptHandler, m_fElapsed);
+            CCScriptEngineManager::sharedManager()->getScriptEngine()->executeSchedule(m_eScriptHandler, m_fElapsed);
 		}
         m_fElapsed = 0;
 	}
