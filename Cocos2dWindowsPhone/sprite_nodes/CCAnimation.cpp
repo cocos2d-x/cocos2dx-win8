@@ -53,6 +53,11 @@ CCAnimationFrame::~CCAnimationFrame()
 //    CC_SAFE_RELEASE(m_pUserInfo);
 }
 
+float CCAnimation::getDuration(void)
+{
+    return m_fTotalDelayUnits * m_fDelayPerUnit;
+}
+
 CCObject* CCAnimationFrame::copyWithZone(CCZone* pZone)
 {
 	CCAssert(false, "Not implemented!");
