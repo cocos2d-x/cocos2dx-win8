@@ -44,10 +44,26 @@ public:
 	CCLabelTTF();
 	virtual ~CCLabelTTF();
 	char * description();
-	/** creates a CCLabelTTF from a fontname, alignment, dimension and font size */
-	static CCLabelTTF * create(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
-	/** creates a CCLabelTTF from a fontname and font size */
-	static CCLabelTTF * create(const char *label, const char *fontName, float fontSize);
+	/** Creates an label.
+     */
+    static CCLabelTTF * create();
+    /** creates a CCLabelTTF with a font name and font size in points
+     @since v2.0.1
+     */
+    static CCLabelTTF * create(const char *string, const char *fontName, float fontSize);
+    
+    /** creates a CCLabelTTF from a fontname, horizontal alignment, dimension in points,  and font size in points.
+     @since v2.0.1
+     */
+    static CCLabelTTF * create(const char *string, const char *fontName, float fontSize,
+                               const CCSize& dimensions, CCTextAlignment hAlignment);
+  
+    /** creates a CCLabel from a fontname, alignment, dimension in points and font size in points
+     @since v2.0.1
+     */
+    static CCLabelTTF * create(const char *string, const char *fontName, float fontSize,
+                               const CCSize& dimensions, CCTextAlignment hAlignment, 
+                               CCVerticalTextAlignment vAlignment);
 	///** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
 	bool initWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
 	///** initializes the CCLabelTTF with a font name and font size */

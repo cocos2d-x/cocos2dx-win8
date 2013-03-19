@@ -273,7 +273,7 @@ protected:
 	bool m_bIsTransformGLDirty;
 #endif
 
-	int m_eScriptHandler;
+	int m_nScriptHandler;
 
 private:
 

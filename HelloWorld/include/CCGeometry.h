@@ -65,43 +65,30 @@ public:
 class CC_DLL CCRect
 {
 public:
-	CCPoint origin;
-	CCSize  size;
+    CCPoint origin;
+    CCSize  size;
 
 public:
-	CCRect();	
-	CCRect(float x, float y, float width, float height);
-	bool equals(const CCRect& rect) const;  
-public:
-	//! return the leftmost x-value of 'rect'
-	static CGFloat CCRectGetMinX(const CCRect& rect);
-
-	//! return the rightmost x-value of 'rect'
-	static CGFloat CCRectGetMaxX(const CCRect& rect);
-
-	//! return the midpoint x-value of 'rect'
-	static CGFloat CCRectGetMidX(const CCRect& rect);
-
-	//! Return the bottommost y-value of `rect'
-	static CGFloat CCRectGetMinY(const CCRect& rect);
-
-	//! Return the topmost y-value of `rect'
-	static CGFloat CCRectGetMaxY(const CCRect& rect);
-
-	//! Return the midpoint y-value of `rect'
-	static CGFloat CCRectGetMidY(const CCRect& rect);
-
-	static bool CCRectEqualToRect(const CCRect& rect1, const CCRect& rect2);
-
-    static bool CCRectContainsPoint(const CCRect& rect, const CCPoint& point);
-
-	static bool CCRectIntersectsRect(const CCRect& rectA, const CCRect& rectB);
+    CCRect();    
+    CCRect(float x, float y, float width, float height);
+    CCRect(const CCRect& other);
+    CCRect& operator= (const CCRect& other); 
+    void setRect(float x, float y, float width, float height);
+    float getMinX() const; /// return the leftmost x-value of current rect
+    float getMidX() const; /// return the midpoint x-value of current rect
+    float getMaxX() const; /// return the rightmost x-value of current rect
+    float getMinY() const; /// return the bottommost y-value of current rect
+    float getMidY() const; /// return the midpoint y-value of current rect
+    float getMaxY() const; /// return the topmost y-value of current rect
+    bool equals(const CCRect& rect) const;   
+    bool containsPoint(const CCPoint& point) const;
+    bool intersectsRect(const CCRect& rect) const;
 };
 
 
-#define CCPointMake(x, y) CCPoint((x), (y))
-#define CCSizeMake(width, height) CCSize((width), (height))
-#define CCRectMake(x, y, width, height) CCRect((x), (y), (width), (height))
+#define CCPointMake(x, y) CCPoint((float)(x), (float)(y))
+#define CCSizeMake(width, height) CCSize((float)(width), (float)(height))
+#define CCRectMake(x, y, width, height) CCRect((float)(x), (float)(y), (float)(width), (float)(height))
 
 
 const CCPoint CCPointZero = CCPointMake(0,0);
@@ -111,6 +98,9 @@ const CCSize CCSizeZero = CCSizeMake(0,0);
 
 /* The "zero" rectangle -- equivalent to CCRectMake(0, 0, 0, 0). */ 
 const CCRect CCRectZero = CCRectMake(0,0,0,0);
+
+// end of data_structure group
+/// @}
 
 NS_CC_END
 

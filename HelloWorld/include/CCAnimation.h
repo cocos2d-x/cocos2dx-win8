@@ -167,7 +167,8 @@ public:
     */
     static CCAnimation* createWithSpriteFrames(CCArray* arrayOfSpriteFrameNames, float delay = 0.0f);
 
-   /** total Delay units of the CCAnimation. */
+
+	    /** total Delay units of the CCAnimation. */
     CC_SYNTHESIZE_READONLY(float, m_fTotalDelayUnits, TotalDelayUnits)
 
     /** Delay in seconds of the "delay unit" */
@@ -175,11 +176,14 @@ public:
 
     /** duration in seconds of the whole animation. It is the result of totalDelayUnits * delayPerUnit */
     CC_PROPERTY_READONLY(float, m_fDuration, Duration)
+
     /** array of CCAnimationFrames */
     CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
-	/** whether or not it shall restore the original frame when the animation finishes */
+
+    /** whether or not it shall restore the original frame when the animation finishes */
     CC_SYNTHESIZE(bool, m_bRestoreOriginalFrame, RestoreOriginalFrame)
-	/** how many times the animation is going to loop. 0 means animation is not animated. 1, animation is executed one time, ... */
+
+    /** how many times the animation is going to loop. 0 means animation is not animated. 1, animation is executed one time, ... */
     CC_SYNTHESIZE(unsigned int, m_uLoops, Loops)
 };
 NS_CC_END

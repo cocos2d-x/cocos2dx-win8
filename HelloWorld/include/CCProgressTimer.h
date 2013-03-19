@@ -49,6 +49,10 @@ typedef enum {
 	kCCProgressTimerTypeVerticalBarBT,
 	/// Vertical Top-Bottom
 	kCCProgressTimerTypeVerticalBarTB,
+	/// Radial Counter-Clockwise
+    kCCProgressTimerTypeRadial,
+    /// Bar
+    kCCProgressTimerTypeBar,
 } CCProgressTimerType;
 
 /**

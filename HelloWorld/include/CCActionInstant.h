@@ -64,7 +64,7 @@ namespace cocos2d {
 	public:
 		//override static method
 		/** Allocates and initializes the action */
-		static CCShow * action();
+		static CCShow * create();
 	};
 
 
