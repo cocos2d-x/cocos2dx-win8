@@ -97,6 +97,13 @@ public:
     /** Resumes the target. All queued actions will be resumed.
 	*/
 	void resumeTarget(CCObject *pTarget);
+	    /** Pauses all running actions, returning a list of targets whose actions were paused.
+     */
+    CCSet* pauseAllRunningActions();
+    
+    /** Resume a set of targets (convenience function to reverse a pauseAllRunningActions call)
+     */
+    void resumeTargets(CCSet *targetsToResume);
 
 	/** purges the shared action manager. It releases the retained instance.
 	 * because it uses this, so it can not be static

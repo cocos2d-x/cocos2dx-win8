@@ -36,7 +36,7 @@ static CCFileUtils* s_pFileUtils = NULL;
 static const char *__suffixiPhoneRetinaDisplay = "-hd";
 static const char *__suffixiPad = "-ipad";
 static const char *__suffixiPadRetinaDisplay = "-ipadhd";
-
+static std::map<std::string, std::string> s_fullPathCache;
 typedef enum 
 {
     SAX_NONE = 0,
@@ -305,7 +305,34 @@ public:
 //    CCDictMaker tMaker;
 //    return tMaker.dictionaryWithContentsOfFile(pFileName);
 //}
+std::string CCFileUtils::getPathForFilename(const std::string& filename, const std::string& resourceDirectory, const std::string& searchPath)
+{
+    std::string file = filename;
+    std::string file_path = "";
+    size_t pos = filename.find_last_of("/");
+    if (pos != std::string::npos)
+    {
+        file_path = filename.substr(0, pos+1);
+        file = filename.substr(pos+1);
+    }
 
+    // searchPath + file_path + resourceDirectory
+    std::string path = searchPath;
+    if (path.size() > 0 && path[path.length()-1] != '/')
+    {
+        path += "/";
+    }
+    path += file_path;
+    path += resourceDirectory;
+
+    if (path.size() > 0 && path[path.length()-1] != '/')
+    {
+        path += "/";
+    }
+    path += file;
+
+    return path;
+}
 std::string& CCFileUtils::removeSuffixFromFile(std::string& path)
 {
 	// XXX win32 now can only support iphone retina, because 
@@ -326,7 +353,52 @@ std::string& CCFileUtils::removeSuffixFromFile(std::string& path)
 
     return path;
 }
+std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
+{
+	CCAssert(pszFileName != NULL, "CCFileUtils: Invalid path");
 
+    // Return directly if it's an absolute path.
+    if (strlen(pszFileName) > 3 
+        && pszFileName[0] >= 'a' && pszFileName[0] <= 'z'
+        && pszFileName[0] >= 'A' && pszFileName[0] <= 'Z'
+        && (pszFileName[1] == ':')
+        && (pszFileName[2] == '\\' || pszFileName[2] == '/')
+    )
+    {
+        //CCLOG("Probably invoking fullPathForFilename recursively, return the full path: %s", pszFileName);
+        return pszFileName;
+    }
+
+    // Already Cached ?
+    std::map<std::string, std::string>::iterator cacheIter = s_fullPathCache.find(pszFileName);
+    if (cacheIter != s_fullPathCache.end()) {
+        //CCLOG("Return full path from cache: %s", cacheIter->second.c_str());
+        return cacheIter->second;
+    }
+
+    std::string newFileName = getNewFilename(pszFileName);
+    std::string fullpath;
+    
+    for (std::vector<std::string>::iterator searchPathsIter = m_searchPathArray.begin();
+         searchPathsIter != m_searchPathArray.end(); ++searchPathsIter) {
+        for (std::vector<std::string>::iterator resOrderIter = m_searchResolutionsOrderArray.begin();
+             resOrderIter != m_searchResolutionsOrderArray.end(); ++resOrderIter) {
+
+            fullpath = this->getPathForFilename(newFileName, *resOrderIter, *searchPathsIter);
+
+            if (GetFileAttributesA(fullpath.c_str()) != -1)
+            {
+                // Adding the full path to cache if the file was found.
+                s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
+				//CCLOG("Returning path: %s", fullpath.c_str());
+                return fullpath;
+            }
+        }
+    }
+
+    // The file wasn't found, return the file name passed in.
+    return pszFileName;
+}
 CCDictionary<std::string, CCObject*> *CCFileUtils::dictionaryWithContentsOfFile(const char *pFileName)
 {
 	//convert to full path

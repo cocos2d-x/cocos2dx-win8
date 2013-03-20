@@ -147,7 +147,8 @@ public:
 	absolute path.
 	*/
 	static void setResourcePath(const char *pszResourcePath);
-
+	std::string fullPathForFilename(const char* pszFileName);
+	std::string getPathForFilename(const std::string& filename, const std::string& resourceDirectory, const std::string& searchPath);
 	/**
 	@brief   Generate a CCDictionary pointer by file
 	@param   pFileName  The file name of *.plist file

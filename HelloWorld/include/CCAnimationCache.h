@@ -73,7 +73,7 @@ namespace cocos2d
 		CCAnimation* animationByName(const char* name);
 
 		bool init(void);
-
+		void addAnimationsWithFile(const char* plist);
 	private:
 		CCMutableDictionary<std::string, CCAnimation*> *m_pAnimations;
 		static CCAnimationCache *s_pSharedAnimationCache;

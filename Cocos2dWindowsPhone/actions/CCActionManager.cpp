@@ -173,6 +173,31 @@ void CCActionManager::resumeTarget(CCObject *pTarget)
 		pElement->paused = false;
 	}
 }
+CCSet* CCActionManager::pauseAllRunningActions()
+{
+    CCSet *idsWithActions = new CCSet();
+    idsWithActions->autorelease();
+    
+    for (tHashElement *element=m_pTargets; element != NULL; element = (tHashElement *)element->hh.next) 
+    {
+        if (! element->paused) 
+        {
+            element->paused = true;
+            idsWithActions->addObject(element->target);
+        }
+    }    
+    
+    return idsWithActions;
+}
+
+void CCActionManager::resumeTargets(cocos2d::CCSet *targetsToResume)
+{    
+    CCSetIterator iter;
+    for (iter = targetsToResume->begin(); iter != targetsToResume->end(); ++iter)
+    {
+        resumeTarget(*iter);
+    }
+}
 
 // run
 

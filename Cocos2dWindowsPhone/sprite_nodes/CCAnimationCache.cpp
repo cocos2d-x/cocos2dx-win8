@@ -31,7 +31,7 @@ namespace cocos2d
 
 	CCAnimationCache* CCAnimationCache::sharedAnimationCache(void)
 	{
-        if (! s_pSharedAnimationCache)
+		if (! s_pSharedAnimationCache)
 		{
 			s_pSharedAnimationCache = new CCAnimationCache();
 			s_pSharedAnimationCache->init();
@@ -42,7 +42,7 @@ namespace cocos2d
 
 	void CCAnimationCache::purgeSharedAnimationCache(void)
 	{
-        CC_SAFE_RELEASE_NULL(s_pSharedAnimationCache);
+		CC_SAFE_RELEASE_NULL(s_pSharedAnimationCache);
 	}
 
 	bool CCAnimationCache::init()
@@ -52,7 +52,7 @@ namespace cocos2d
 	}
 
 	CCAnimationCache::CCAnimationCache()
-    : m_pAnimations(NULL)
+		: m_pAnimations(NULL)
 	{
 	}
 
@@ -69,7 +69,7 @@ namespace cocos2d
 
 	void CCAnimationCache::removeAnimationByName(const char* name)
 	{
-        if (! name)
+		if (! name)
 		{
 			return;
 		}
@@ -80,5 +80,16 @@ namespace cocos2d
 	CCAnimation* CCAnimationCache::animationByName(const char* name)
 	{
 		return m_pAnimations->objectForKey(std::string(name));
+	}
+	void CCAnimationCache::addAnimationsWithFile(const char* plist)
+	{
+		CCAssert( plist, "Invalid texture file name");
+
+		std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename(plist);
+		CCDictionary* dict = CCDictionary::createWithContentsOfFile(path.c_str());
+
+		CCAssert( dict, "CCAnimationCache: File could not be found");
+
+		addAnimationsWithDictionary(dict);
 	}
 }

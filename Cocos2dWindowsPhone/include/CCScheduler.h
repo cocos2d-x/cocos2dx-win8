@@ -125,7 +125,8 @@ public:
 
 	 @since v0.99.3
 	 */
-	void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, ccTime fInterval, bool bPaused);
+	void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget,  float fInterval, unsigned int repeat, float delay, bool bPaused);
+	void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, bool bPaused);
 	/** Schedules the 'update' selector for a given target with a given priority.
 	 The 'update' selector will be called every frame.
 	 The lower the priority, the earlier it is called.

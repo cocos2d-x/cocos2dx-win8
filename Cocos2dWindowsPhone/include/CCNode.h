@@ -502,6 +502,7 @@ public:
 	@since v0.99.3
 	*/
 	void unscheduleUpdate(void);
+	void scheduleOnce(SEL_SCHEDULE selector, float delay);
 
 	/** schedules a selector.
 	The scheduled selector will be ticked every frame
@@ -514,8 +515,8 @@ public:
 	If the selector is already scheduled, then the interval parameter
 	will be updated without scheduling it again.
 	*/
-	void schedule(SEL_SCHEDULE selector, ccTime interval);
-
+	void schedule(SEL_SCHEDULE selector, float interval);
+	void schedule(SEL_SCHEDULE selector, float interval, unsigned int repeat, float delay);
 	/** unschedules a custom selector.*/
 	void unschedule(SEL_SCHEDULE selector);
 

@@ -82,7 +82,7 @@ typedef struct _ccColor4B
 } ccColor4B;
 //! helper macro that creates an ccColor4B type
 static inline ccColor4B
-ccc4f(const CCubyte r, const CCubyte g, const CCubyte b, const CCubyte o)
+ccc4(const CCubyte r, const CCubyte g, const CCubyte b, const CCubyte o)
 {
 	ccColor4B c = {r, g, b, o};
 	return c;

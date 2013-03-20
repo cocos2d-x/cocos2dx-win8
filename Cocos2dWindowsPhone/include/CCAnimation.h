@@ -132,7 +132,7 @@ public:
 	Added to facilitate the migration from v0.8 to v0.9.
 	*/
 	void addFrameWithFileName(const char *pszFileName);
-
+	void addSpriteFrameWithFileName(const char *pszFileName);
 	/** Adds a frame with a texture and a rect. Internally it will create a CCSpriteFrame and it will add it.
 	Added to facilitate the migration from v0.8 to v0.9.
 	*/

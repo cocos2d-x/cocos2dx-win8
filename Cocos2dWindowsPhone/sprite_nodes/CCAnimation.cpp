@@ -184,13 +184,21 @@ void CCAnimation::addFrameWithFileName(const char *pszFileName)
 	CCTexture2D *pTexture = CCTextureCache::sharedTextureCache()->addImage(pszFileName);
 	CCRect rect = CCRectZero;
 	rect.size = pTexture->getContentSize();
-	CCSpriteFrame *pFrame = CCSpriteFrame::frameWithTexture(pTexture, rect);
+	CCSpriteFrame *pFrame = CCSpriteFrame::createWithTexture(pTexture, rect);
 	m_pobFrames->addObject(pFrame);
 }
 
+void CCAnimation::addSpriteFrameWithFileName(const char *pszFileName)
+{
+    CCTexture2D *pTexture = CCTextureCache::sharedTextureCache()->addImage(pszFileName);
+    CCRect rect = CCRectZero;
+    rect.size = pTexture->getContentSize();
+    CCSpriteFrame *pFrame = CCSpriteFrame::createWithTexture(pTexture, rect);
+    addSpriteFrame(pFrame);
+}
 void CCAnimation::addFrameWithTexture(CCTexture2D *pobTexture, const CCRect& rect)
 {
-	CCSpriteFrame *pFrame = CCSpriteFrame::frameWithTexture(pobTexture, rect);
+	CCSpriteFrame *pFrame = CCSpriteFrame::createWithTexture(pobTexture, rect);
 	m_pobFrames->addObject(pFrame);
 }
 NS_CC_END

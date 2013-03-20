@@ -225,8 +225,11 @@ void CCScheduler::removeHashElement(_hashSelectorEntry *pElement)
 	HASH_DEL(m_pHashForSelectors, pElement);
 	free(pElement);
 }
-
-void CCScheduler::scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, ccTime fInterval, bool bPaused)
+void CCScheduler::scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, bool bPaused)
+{
+    this->scheduleSelector(pfnSelector, pTarget, fInterval, kCCRepeatForever, 0.0f, bPaused);
+}
+void CCScheduler::scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, unsigned int repeat, float delay, bool bPaused)
 {
 	CCAssert(pfnSelector, "");
 	CCAssert(pTarget, "");

@@ -71,7 +71,7 @@ namespace cocos2d
 		You should retain the returned copy if you are going to use it.
 		*/
 		CCAnimation* animationByName(const char* name);
-
+		void addAnimationsWithFile(const char* plist);
 		bool init(void);
 
 	private:

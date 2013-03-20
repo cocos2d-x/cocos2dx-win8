@@ -1058,15 +1058,25 @@ void CCNode::unscheduleUpdate()
 
 void CCNode::schedule(SEL_SCHEDULE selector)
 {
-	this->schedule(selector, 0);
+    this->schedule(selector, 0.0f, kCCRepeatForever, 0.0f);
 }
 
-void CCNode::schedule(SEL_SCHEDULE selector, ccTime interval)
+void CCNode::schedule(SEL_SCHEDULE selector, float interval)
 {
-	CCAssert( selector, "Argument must be non-nil");
-	CCAssert( interval >=0, "Argument must be positive");
+    this->schedule(selector, interval, kCCRepeatForever, 0.0f);
+}
 
-	CCScheduler::sharedScheduler()->scheduleSelector(selector, this, interval, !m_bIsRunning);
+void CCNode::schedule(SEL_SCHEDULE selector, float interval, unsigned int repeat, float delay)
+{
+    CCAssert( selector, "Argument must be non-nil");
+    CCAssert( interval >=0, "Argument must be positive");
+
+    m_pScheduler->scheduleSelector(selector, this, interval , repeat, delay, !m_bRunning);
+}
+
+void CCNode::scheduleOnce(SEL_SCHEDULE selector, float delay)
+{
+    this->schedule(selector, 0.0f, 0, delay);
 }
 
 void CCNode::unschedule(SEL_SCHEDULE selector)

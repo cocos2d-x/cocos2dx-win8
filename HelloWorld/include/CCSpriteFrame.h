@@ -93,12 +93,12 @@ public:
 	/** Create a CCSpriteFrame with a texture, rect in points.
 	 It is assumed that the frame was not trimmed.
 	 */
-	static CCSpriteFrame* frameWithTexture(CCTexture2D* pobTexture, const CCRect& rect);
+	static CCSpriteFrame* createWithTexture(CCTexture2D* pobTexture, const CCRect& rect);
 
 	/** Create a CCSpriteFrame with a texture, rect, rotated, offset and originalSize in pixels.
 	 The originalSize is the size in points of the frame before being trimmed.
 	 */
-    static CCSpriteFrame* frameWithTexture(CCTexture2D* pobTexture, const CCRect& rect, bool rotated, const CCPoint& offset, const CCSize& originalSize);
+    static CCSpriteFrame* createWithTexture(CCTexture2D* pobTexture, const CCRect& rect, bool rotated, const CCPoint& offset, const CCSize& originalSize);
 
 public:
 	/** Initializes a CCSpriteFrame with a texture, rect in points.

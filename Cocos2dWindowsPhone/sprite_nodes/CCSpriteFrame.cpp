@@ -27,7 +27,7 @@
 NS_CC_BEGIN
 // implementation of CCSpriteFrame
 
-CCSpriteFrame* CCSpriteFrame::frameWithTexture(CCTexture2D *pobTexture, const CCRect& rect)
+CCSpriteFrame* CCSpriteFrame::createWithTexture(CCTexture2D *pobTexture, const CCRect& rect)
 {
 	CCSpriteFrame *pSpriteFrame = new CCSpriteFrame();;
 	pSpriteFrame->initWithTexture(pobTexture, rect);
@@ -36,7 +36,7 @@ CCSpriteFrame* CCSpriteFrame::frameWithTexture(CCTexture2D *pobTexture, const CC
 	return pSpriteFrame;
 }
 
-CCSpriteFrame* CCSpriteFrame::frameWithTexture(CCTexture2D* pobTexture, const CCRect& rect, bool rotated, const CCPoint& offset, const CCSize& originalSize)
+CCSpriteFrame* CCSpriteFrame::createWithTexture(CCTexture2D* pobTexture, const CCRect& rect, bool rotated, const CCPoint& offset, const CCSize& originalSize)
 {
     CCSpriteFrame *pSpriteFrame = new CCSpriteFrame();;
 	pSpriteFrame->initWithTexture(pobTexture, rect, rotated, offset, originalSize);
