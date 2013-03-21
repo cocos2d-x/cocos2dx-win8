@@ -2253,7 +2253,7 @@ bool CCAnimate::initWithAnimation(CCAnimation *pAnimation, bool bRestoreOriginal
 {
 	CCAssert(pAnimation, "");
 
-	if (CCActionInterval::initWithDuration(pAnimation->getFrames()->count() * pAnimation->getDelay()))
+	if (CCActionInterval::initWithDuration(pAnimation->getFrames()->count() * pAnimation->getTotalDelayUnits()))
 	{
 		m_bRestoreOriginalFrame = bRestoreOriginalFrame;
        m_pAnimation = pAnimation;
@@ -2396,7 +2396,7 @@ CCActionInterval* CCAnimate::reverse(void)
 		}
 	}
 
-	CCAnimation *pNewAnim = CCAnimation::create(pNewArray, m_pAnimation->getDelay());
+	CCAnimation *pNewAnim = CCAnimation::create(pNewArray, m_pAnimation->getTotalDelayUnits());
 
 	pNewArray->release();
 
