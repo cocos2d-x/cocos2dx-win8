@@ -32,6 +32,7 @@ THE SOFTWARE.
 #include "CCPlatformConfig.h"
 #include "CCPlatformMacros.h"
 #include "CCObject.h"
+#include "CCDictionary.h"
 #include "CCArray.h"
 #include "CCGeometry.h"
 #include <string>
@@ -61,7 +62,7 @@ public:
     virtual ~CCAnimationFrame();
     virtual CCObject* copyWithZone(CCZone* pZone);
     /** initializes the animation frame with a spriteframe, number of delay units and a notification user info */
-//    bool initWithSpriteFrame(CCSpriteFrame* spriteFrame, float delayUnits, CCDictionary* userInfo);
+    bool initWithSpriteFrame(CCSpriteFrame* spriteFrame, float delayUnits, CCDictionary* userInfo);
     
     /** CCSpriteFrameName to be used */
     CC_SYNTHESIZE_RETAIN(CCSpriteFrame*, m_pSpriteFrame, SpriteFrame)
@@ -70,7 +71,7 @@ public:
     CC_SYNTHESIZE(float, m_fDelayUnits, DelayUnits)
 
     /**  A CCAnimationFrameDisplayedNotification notification will be broadcast when the frame is displayed with this dictionary as UserInfo. If UserInfo is nil, then no notification will be broadcast. */
-    //CC_SYNTHESIZE_RETAIN(CCDictionary*, m_pUserInfo, UserInfo)
+    CC_SYNTHESIZE_RETAIN(CCDictionary*, m_pUserInfo, UserInfo)
 };
  
 
@@ -84,91 +85,61 @@ You can animate a CCAnimation object by using the CCAnimate action. Example:
 */
 class CC_DLL CCAnimation : public CCObject
 {
-protected:
-	std::string m_nameStr;
-	float m_fDelay;
-	CCArray *m_pobFrames;
-
 public:
-	// attributes
-
-	/** get name of the animation */
-	inline const char* getName(void) { return m_nameStr.c_str(); }
-	/** set name of the animation */
-	inline void setName(const char *pszName){ m_nameStr = pszName; }
-
-	/** get delay between frames in seconds */
-	inline float getDelay(void) { return m_fDelay; }
-	/** set delay between frames in seconds */
-	inline void setDelay(float fDelay) { m_fDelay = fDelay; }
-
-	/** get array of frames */
-	inline CCArray* getFrames(void) { return m_pobFrames; }
-	/** set array of frames, the Frames is retained */
-	inline void setFrames(CCArray *pFrames)
-	{
-		CC_SAFE_RETAIN(pFrames);
-		CC_SAFE_RELEASE(m_pobFrames);
-		m_pobFrames = pFrames;
-	}
-
+    CCAnimation();
+    ~CCAnimation(void);
 public:
-	~CCAnimation(void);
-
-	/** Initializes a CCAnimation with frames.
-	@since v0.99.5
-	*/
-	bool initWithFrames(CCArray *pFrames);
-
-	/** Initializes a CCAnimation with frames and a delay between frames
-	@since v0.99.5
-	*/
-	bool initWithFrames(CCArray *pFrames, float delay);
-
-	/** adds a frame to a CCAnimation */
-	void addFrame(CCSpriteFrame *pFrame);
-
-	/** Adds a frame with an image filename. Internally it will create a CCSpriteFrame and it will add it.
-	Added to facilitate the migration from v0.8 to v0.9.
-	*/
-	void addFrameWithFileName(const char *pszFileName);
-	void addSpriteFrameWithFileName(const char *pszFileName);
-	/** Adds a frame with a texture and a rect. Internally it will create a CCSpriteFrame and it will add it.
-	Added to facilitate the migration from v0.8 to v0.9.
-	*/
-	void addFrameWithTexture(CCTexture2D* pobTexture, const CCRect& rect);
-
-	bool init(void);
-
-	/** Initializes a CCAnimation with frames and a delay between frames
+    /** Creates an animation
     @since v0.99.5
     */
-    bool initWithSpriteFrames(CCArray *pFrames, float delay = 0.0f);
+    static CCAnimation* create(void);
 
-public:
-	/** Creates an animation
-	@since v0.99.5
-	*/
-	static CCAnimation* create(void);
-
-	/** Creates an animation with frames.
-	@since v0.99.5
-	*/
-	static CCAnimation* create(CCArray *frames);
-
-	/* Creates an animation with frames and a delay between frames.
-	@since v0.99.5
-	*/
-	static CCAnimation* create(CCArray *frames, float delay);
-
-	/* Creates an animation with an array of CCSpriteFrame and a delay between frames in seconds.
+    /* Creates an animation with an array of CCSpriteFrame and a delay between frames in seconds.
      The frames will be added with one "delay unit".
      @since v0.99.5
     */
     static CCAnimation* createWithSpriteFrames(CCArray* arrayOfSpriteFrameNames, float delay = 0.0f);
 
+    /* Creates an animation with an array of CCAnimationFrame, the delay per units in seconds and and how many times it should be executed.
+     @since v2.0
+     */
+    static CCAnimation* create(CCArray *arrayOfAnimationFrameNames, float delayPerUnit, unsigned int loops);
+    static CCAnimation* create(CCArray *arrayOfAnimationFrameNames, float delayPerUnit) {
+        return CCAnimation::create(arrayOfAnimationFrameNames, delayPerUnit, 1);
+    }
 
-	    /** total Delay units of the CCAnimation. */
+    /** Adds a CCSpriteFrame to a CCAnimation.
+     The frame will be added with one "delay unit".
+    */
+    void addSpriteFrame(CCSpriteFrame *pFrame);
+
+    /** Adds a frame with an image filename. Internally it will create a CCSpriteFrame and it will add it.
+     The frame will be added with one "delay unit".
+     Added to facilitate the migration from v0.8 to v0.9.
+     */  
+    void addSpriteFrameWithFileName(const char *pszFileName);
+
+    /** Adds a frame with a texture and a rect. Internally it will create a CCSpriteFrame and it will add it.
+     The frame will be added with one "delay unit".
+     Added to facilitate the migration from v0.8 to v0.9.
+     */
+    void addSpriteFrameWithTexture(CCTexture2D* pobTexture, const CCRect& rect);
+
+    bool init();
+
+    /** Initializes a CCAnimation with frames and a delay between frames
+    @since v0.99.5
+    */
+    bool initWithSpriteFrames(CCArray *pFrames, float delay = 0.0f);
+
+    /** Initializes a CCAnimation with CCAnimationFrame
+    @since v2.0
+    */
+    bool initWithAnimationFrames(CCArray* arrayOfAnimationFrames, float delayPerUnit, unsigned int loops);
+
+    virtual CCObject* copyWithZone(CCZone* pZone);
+
+    /** total Delay units of the CCAnimation. */
     CC_SYNTHESIZE_READONLY(float, m_fTotalDelayUnits, TotalDelayUnits)
 
     /** Delay in seconds of the "delay unit" */
@@ -177,8 +148,8 @@ public:
     /** duration in seconds of the whole animation. It is the result of totalDelayUnits * delayPerUnit */
     CC_PROPERTY_READONLY(float, m_fDuration, Duration)
 
-    ///** array of CCAnimationFrames */
-    //CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
+    /** array of CCAnimationFrames */
+    CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
 
     /** whether or not it shall restore the original frame when the animation finishes */
     CC_SYNTHESIZE(bool, m_bRestoreOriginalFrame, RestoreOriginalFrame)
