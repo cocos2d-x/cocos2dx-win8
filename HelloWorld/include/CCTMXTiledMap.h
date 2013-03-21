@@ -112,9 +112,9 @@ namespace cocos2d {
 		/** map orientation */
 		CC_SYNTHESIZE(int, m_nMapOrientation, MapOrientation);
 		/** object groups */
-		CC_PROPERTY(CCMutableArray<CCTMXObjectGroup*>*, m_pObjectGroups, ObjectGroups);
+		CC_PROPERTY(CCArray*, m_pObjectGroups, ObjectGroups);
 		/** properties */
-		CC_PROPERTY(CCStringToStringDictionary*, m_pProperties, Properties);
+		CC_PROPERTY(CCDictionary*, m_pProperties, Properties);
 	public:
 		CCTMXTiledMap();
 		virtual ~CCTMXTiledMap();
@@ -135,7 +135,7 @@ namespace cocos2d {
 		CCString *propertyNamed(const char *propertyName);
 
 		/** return properties dictionary for tile GID */
-		CCDictionary<std::string, CCString*> *propertiesForGID(int GID);
+		CCDictionary *propertiesForGID(int GID);
 
 	private:
  		CCTMXLayer * parseLayer(CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo);
@@ -143,8 +143,8 @@ namespace cocos2d {
 
 	protected:
 		//! tile properties
-        CCDictionary<int, CCStringToStringDictionary*> *m_pTileProperties;
-        CCDictionary<std::string, CCTMXLayer*> *m_pTMXLayers;
+        CCDictionary *m_pTileProperties;
+        CCDictionary *m_pTMXLayers;
 
 	};
 

@@ -30,7 +30,7 @@ THE SOFTWARE.
 #define __CC_ANIMATION_CACHE_H__
 
 #include "CCObject.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 
 #include <string>
 
@@ -75,7 +75,7 @@ namespace cocos2d
 		bool init(void);
 		void addAnimationsWithFile(const char* plist);
 	private:
-		CCMutableDictionary<std::string, CCAnimation*> *m_pAnimations;
+		CCDictionary *m_pAnimations;
 		static CCAnimationCache *s_pSharedAnimationCache;
 	};
 }

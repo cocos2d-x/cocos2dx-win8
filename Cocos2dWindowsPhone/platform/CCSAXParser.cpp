@@ -21,7 +21,7 @@
 #include "pch.h"
 
 #include "CCSAXParser.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 #include "CCLibxml2.h"
 #include "CCFileUtils.h"
 #include "tinyxml\tinyxml.h"

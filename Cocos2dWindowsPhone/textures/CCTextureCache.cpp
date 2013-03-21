@@ -169,7 +169,7 @@ CCTextureCache::CCTextureCache()
 {
 	CCAssert(g_sharedTextureCache == NULL, "Attempted to allocate a second instance of a singleton.");
 	
-	m_pTextures = new CCMutableDictionary<std::string, CCTexture2D*>();
+	m_pTextures = new CCDictionary();
 }
 
 CCTextureCache::~CCTextureCache()

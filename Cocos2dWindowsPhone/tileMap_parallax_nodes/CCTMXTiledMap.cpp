@@ -64,17 +64,17 @@ bool CCTMXTiledMap::initWithTMXFile(const char *tmxFile)
 
 	int idx = 0;
 
-	CCMutableArray<CCTMXLayerInfo*>* layers = mapInfo->getLayers();
+	CCArray* layers = mapInfo->getLayers();
 	if (layers && layers->count()>0)
 	{
 		if (NULL == m_pTMXLayers)
 		{
-			m_pTMXLayers = new CCDictionary<std::string, CCTMXLayer*>();
+			m_pTMXLayers = new CCDictionary();
 			CCAssert(m_pTMXLayers, "Allocate memory failed!");
 		}
 
 		CCTMXLayerInfo *layerInfo = NULL;
-		CCMutableArray<CCTMXLayerInfo*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for (it = layers->begin(); it != layers->end(); ++it)
 		{
 			layerInfo = *it;
@@ -116,21 +116,21 @@ CCTMXTiledMap::~CCTMXTiledMap()
 	CC_SAFE_RELEASE(m_pTileProperties);
 	CC_SAFE_RELEASE(m_pTMXLayers);
 }
-CCMutableArray<CCTMXObjectGroup*> * CCTMXTiledMap::getObjectGroups()
+CCArray * CCTMXTiledMap::getObjectGroups()
 {
 	return m_pObjectGroups;
 }
-void CCTMXTiledMap::setObjectGroups(CCMutableArray<CCTMXObjectGroup*>* var)
+void CCTMXTiledMap::setObjectGroups(CCArray* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pObjectGroups);
 	m_pObjectGroups = var;
 }
-CCStringToStringDictionary * CCTMXTiledMap::getProperties()
+CCDictionary * CCTMXTiledMap::getProperties()
 {
 	return m_pProperties;
 }
-void CCTMXTiledMap::setProperties(CCStringToStringDictionary* var)
+void CCTMXTiledMap::setProperties(CCDictionary* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pProperties);
@@ -152,11 +152,11 @@ CCTMXLayer * CCTMXTiledMap::parseLayer(CCTMXLayerInfo *layerInfo, CCTMXMapInfo *
 CCTMXTilesetInfo * CCTMXTiledMap::tilesetForLayer(CCTMXLayerInfo *layerInfo, CCTMXMapInfo *mapInfo)
 {
 	CCSize size = layerInfo->m_tLayerSize;
-	CCMutableArray<CCTMXTilesetInfo*>* tilesets = mapInfo->getTilesets();
+	CCArray* tilesets = mapInfo->getTilesets();
 	if (tilesets && tilesets->count()>0)
 	{
 		CCTMXTilesetInfo *tileset = NULL;
-		CCMutableArray<CCTMXTilesetInfo*>::CCMutableArrayRevIterator rit;
+		CCArray::CCMutableArrayRevIterator rit;
 		for (rit = tilesets->rbegin(); rit != tilesets->rend(); ++rit)
 		{
 			tileset = *rit;
@@ -208,7 +208,7 @@ CCTMXObjectGroup * CCTMXTiledMap::objectGroupNamed(const char *groupName)
 	if (m_pObjectGroups && m_pObjectGroups->count()>0)
 	{
 		CCTMXObjectGroup *objectGroup;
-		CCMutableArray<CCTMXObjectGroup*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for (it = m_pObjectGroups->begin(); it != m_pObjectGroups->end(); ++it)
 		{
 			objectGroup = (CCTMXObjectGroup*)(*it);
@@ -227,7 +227,7 @@ CCString * CCTMXTiledMap::propertyNamed(const char *propertyName)
 {
 	return m_pProperties->objectForKey(std::string(propertyName));
 }
-CCDictionary<std::string, CCString*> * CCTMXTiledMap::propertiesForGID(int GID)
+CCDictionary * CCTMXTiledMap::propertiesForGID(int GID)
 {
 	return m_pTileProperties->objectForKey(GID);
 }

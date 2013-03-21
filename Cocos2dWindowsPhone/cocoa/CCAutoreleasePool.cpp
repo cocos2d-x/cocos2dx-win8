@@ -26,7 +26,7 @@ CCPoolManager	g_PoolManager;
 
 CCAutoreleasePool::CCAutoreleasePool(void)
 {
-	m_pManagedObjectArray = new CCMutableArray<CCObject*>();
+	m_pManagedObjectArray = new CCArray();
 }
 
 CCAutoreleasePool::~CCAutoreleasePool(void)
@@ -56,7 +56,7 @@ void CCAutoreleasePool::clear()
 #ifdef _DEBUG
 		int nIndex = m_pManagedObjectArray->count() - 1;
 #endif
-		CCMutableArray<CCObject*>::CCMutableArrayRevIterator it;
+		CCArray::CCMutableArrayRevIterator it;
 		for(it = m_pManagedObjectArray->rbegin(); it != m_pManagedObjectArray->rend(); ++it)
 		{
 			if(!*it)
@@ -88,7 +88,7 @@ CCPoolManager* CCPoolManager::sharedPoolManager()
 
 CCPoolManager::CCPoolManager()
 {
-	m_pReleasePoolStack = new CCMutableArray<CCAutoreleasePool*>();	
+	m_pReleasePoolStack = new CCArray();	
         m_pCurReleasePool = 0;
 }
 
@@ -109,7 +109,7 @@ void CCPoolManager::finalize()
 	if(m_pReleasePoolStack->count() > 0)
 	{
 		//CCAutoreleasePool* pReleasePool;
-		CCMutableArray<CCAutoreleasePool*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for(it = m_pReleasePoolStack->begin(); it != m_pReleasePoolStack->end(); ++it)
 		{
 			if(!*it)

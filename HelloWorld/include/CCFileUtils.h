@@ -20,7 +20,7 @@
 #define __CC_FILEUTILS_PLATFORM_H__
 
 #include <string>
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 
 NS_CC_BEGIN;
 
@@ -154,26 +154,26 @@ public:
 	@param   pFileName  The file name of *.plist file
 	@return  The CCDictionary pointer generated from the file
 	*/
-	static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFile(const char *pFileName);
+	static CCDictionary *dictionaryWithContentsOfFile(const char *pFileName);
 
 	/**
 	@brief The same meaning as dictionaryWithContentsOfFile(), but it doesn't call autorelease, so the
 	invoker should call release().
 	*/
-	static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFileThreadSafe(const char *pFileName);
+	static CCDictionary *dictionaryWithContentsOfFileThreadSafe(const char *pFileName);
 
 	/**
 	@brief   Generate a CCMutableArray pointer by file
 	@param   pFileName  The file name of *.plist file
 	@return  The CCArray pointer generated from the file
 	*/
-	static CCMutableArray<CCObject*>* arrayWithContentsOfFile(const char* pFileName);
+	static CCArray* arrayWithContentsOfFile(const char* pFileName);
 
 	/*
 	@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
 	invoker should call release().
 	*/
-	static CCMutableArray<CCObject*>* arrayWithContentsOfFileThreadSafe(const char* pFileName);
+	static CCArray* arrayWithContentsOfFileThreadSafe(const char* pFileName);
 	/**
 	@brief   Get the writeable path
 	@return  The path that can write/read file

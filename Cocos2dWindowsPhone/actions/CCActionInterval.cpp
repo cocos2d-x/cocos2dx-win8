@@ -2347,7 +2347,7 @@ void CCAnimate::stop(void)
 
 void CCAnimate::update(float time)
 {
-	CCMutableArray<CCSpriteFrame*> *pFrames = m_pAnimation->getFrames();
+	CCArray *pFrames = m_pAnimation->getFrames();
 	unsigned int numberOfFrames = pFrames->count();
 
 	unsigned int idx = (unsigned int)(time * numberOfFrames);
@@ -2366,13 +2366,13 @@ void CCAnimate::update(float time)
 
 CCActionInterval* CCAnimate::reverse(void)
 {
-	CCMutableArray<CCSpriteFrame*> *pOldArray = m_pAnimation->getFrames();
-	CCMutableArray<CCSpriteFrame*> *pNewArray = new CCMutableArray<CCSpriteFrame*>(pOldArray->count());
+	CCArray *pOldArray = m_pAnimation->getFrames();
+	CCArray *pNewArray = new CCArray(pOldArray->count());
    
 	if (pOldArray->count() > 0)
 	{
 		CCSpriteFrame *pElement;
-		CCMutableArray<CCSpriteFrame*>::CCMutableArrayRevIterator iter;
+		CCArray::CCMutableArrayRevIterator iter;
 		for (iter = pOldArray->rbegin(); iter != pOldArray->rend(); iter++)
 		{
 			pElement = *iter;

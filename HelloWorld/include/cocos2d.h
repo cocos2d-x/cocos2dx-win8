@@ -62,11 +62,11 @@ THE SOFTWARE.
 #include "CCAffineTransform.h"
 // Replace CCDictionary with CCMutableDictionary
 //#include "CCDictionary.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 #include "CCObject.h"
 // Replace CCArray with CCMutableArray
 //#include "CCArray.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 #include "CCGeometry.h"
 #include "CCSet.h"
 #include "CCAutoreleasePool.h"

@@ -30,7 +30,7 @@ THE SOFTWARE.
 
 #include "CCTouchDelegateProtocol.h"
 #include "CCObject.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 NS_CC_BEGIN
 
 typedef enum
@@ -148,19 +148,19 @@ public:
 
 protected:
 	void forceRemoveDelegate(CCTouchDelegate *pDelegate);
-	void forceAddHandler(CCTouchHandler *pHandler, CCMutableArray<CCTouchHandler*> *pArray);
+	void forceAddHandler(CCTouchHandler *pHandler, CCArray *pArray);
 	void forceRemoveAllDelegates(void);
-	void rearrangeHandlers(CCMutableArray<CCTouchHandler*> *pArray);
-	CCTouchHandler* findHandler(CCMutableArray<CCTouchHandler*> *pArray, CCTouchDelegate *pDelegate);
+	void rearrangeHandlers(CCArray *pArray);
+	CCTouchHandler* findHandler(CCArray *pArray, CCTouchDelegate *pDelegate);
 
 protected:
- 	CCMutableArray<CCTouchHandler*> *m_pTargetedHandlers;
- 	CCMutableArray<CCTouchHandler*> *m_pStandardHandlers;
+ 	CCArray *m_pTargetedHandlers;
+ 	CCArray *m_pStandardHandlers;
 
 	bool m_bLocked;
 	bool m_bToAdd;
 	bool m_bToRemove;
- 	CCMutableArray<CCTouchHandler*> *m_pHandlersToAdd;
+ 	CCArray *m_pHandlersToAdd;
 	struct _ccCArray *m_pHandlersToRemove;
 	bool m_bToQuit;
 	bool m_bDispatchEvents;

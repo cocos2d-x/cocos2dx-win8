@@ -66,8 +66,8 @@ CCRibbon * CCRibbon::ribbonWithWidth(float w, const char *path, float length, co
 
 bool CCRibbon::initWithWidth(float w, const char *path, float length, const ccColor4B& color, float fade)
 {
-	m_pSegments = new CCMutableArray<CCRibbonSegment*>();
-	m_pDeletedSegments = new CCMutableArray<CCRibbonSegment*>();
+	m_pSegments = new CCArray();
+	m_pDeletedSegments = new CCArray();
 
 	/* 1 initial segment */
 	CCRibbonSegment* seg = new CCRibbonSegment();
@@ -159,7 +159,7 @@ void CCRibbon::addPointAt(CCPoint location, float width)
 	// lets kill old segments
 	if (m_pSegments && m_pSegments->count()>0)
 	{
-		CCMutableArray<CCRibbonSegment*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for (it = m_pSegments->begin(); it != m_pSegments->end(); ++it)
 		{
 			if (*it != seg && (*it)->m_bFinished)
@@ -274,7 +274,7 @@ void CCRibbon::draw()
 		if(m_pSegments && m_pSegments->count() > 0)
 		{
 			CCRibbonSegment* seg;
-			CCMutableArray<CCRibbonSegment*>::CCMutableArrayIterator it;
+			CCArray::CCMutableArrayIterator it;
 			for( it = m_pSegments->begin(); it != m_pSegments->end(); it++)
 			{
 				seg = (CCRibbonSegment*)*it;

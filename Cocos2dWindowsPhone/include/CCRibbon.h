@@ -31,7 +31,7 @@ THE SOFTWARE.
 /*#include <GLES/egl.h>*/
 #include "CCNode.h"
 #include "CCProtocols.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 
 namespace cocos2d {
 
@@ -83,8 +83,8 @@ private:
 	/** rotates a point around 0, 0 */
 	CCPoint rotatePoint(const CCPoint& vec, float rotation);
 protected:
-	CCMutableArray<CCRibbonSegment*> *m_pSegments;
-	CCMutableArray<CCRibbonSegment*> *m_pDeletedSegments;
+	CCArray *m_pSegments;
+	CCArray *m_pDeletedSegments;
 
 	CCPoint	m_tLastPoint1;
 	CCPoint	m_tLastPoint2;

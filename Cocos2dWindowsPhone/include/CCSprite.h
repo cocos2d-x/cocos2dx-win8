@@ -26,7 +26,7 @@
 #include "CCProtocols.h"
 #include "CCTextureAtlas.h"
 #include "ccTypes.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 #include <string>
 #include <fstream>
 

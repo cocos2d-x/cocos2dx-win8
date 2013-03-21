@@ -24,7 +24,7 @@
 #include "cocoa/CCNS.h"
 #include "CCDirector.h"
 #include "CCScene.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 #include "CCScheduler.h"
 #include "ccMacros.h"
 #include "CCTouchDispatcher.h"
@@ -89,7 +89,7 @@ bool CCDirector::init(void)
 	m_pNotificationNode = NULL;
 
 	m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;	
-	m_pobScenesStack = new CCMutableArray<CCScene*>();
+	m_pobScenesStack = new CCArray();
 
 
 	// Set default projection (3D)

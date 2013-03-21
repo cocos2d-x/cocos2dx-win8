@@ -96,7 +96,7 @@ bool CCAnimation::init()
 	return initWithFrames(NULL, 0);
 }
 
-CCAnimation* CCAnimation::create(CCMutableArray<CCSpriteFrame*> *frames)
+CCAnimation* CCAnimation::create(CCArray *frames)
 {
 	CCAnimation *pAnimation = new CCAnimation();
 	pAnimation->initWithFrames(frames);
@@ -143,7 +143,7 @@ CCAnimation* CCAnimation::createWithSpriteFrames(CCArray *frames, float delay/* 
     return pAnimation;
 }
 
-CCAnimation* CCAnimation::create(CCMutableArray<CCSpriteFrame*> *frames, float delay)
+CCAnimation* CCAnimation::create(CCArray *frames, float delay)
 {
 	CCAnimation *pAnimation = new CCAnimation();
 	pAnimation->initWithFrames(frames, delay);
@@ -152,16 +152,16 @@ CCAnimation* CCAnimation::create(CCMutableArray<CCSpriteFrame*> *frames, float d
 	return pAnimation;
 }
 
-bool CCAnimation::initWithFrames(CCMutableArray<CCSpriteFrame*> *pFrames, float delay)
+bool CCAnimation::initWithFrames(CCArray *pFrames, float delay)
 {
 	m_fDelay = delay;
-	m_pobFrames = CCMutableArray<CCSpriteFrame*>::arrayWithArray(pFrames);
+	m_pobFrames = CCArray::arrayWithArray(pFrames);
 	m_pobFrames->retain();
 
 	return true;
 }
 
-bool CCAnimation::initWithFrames(CCMutableArray<CCSpriteFrame*> *pFrames)
+bool CCAnimation::initWithFrames(CCArray *pFrames)
 {
 	return initWithFrames(pFrames, 0);
 }

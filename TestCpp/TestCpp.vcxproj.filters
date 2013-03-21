@@ -273,12 +273,6 @@
     <ClInclude Include="include\CCMotionStreak.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\CCMutableArray.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CCMutableDictionary.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\CCNode.h">
       <Filter>include</Filter>
     </ClInclude>

@@ -662,13 +662,13 @@ bool CCMenuItemImage::initWithNormalImage(const char *normalImage, const char *s
 //
 // MenuItemToggle
 //
-void CCMenuItemToggle::setSubItems(CCMutableArray<CCMenuItem*>* var)
+void CCMenuItemToggle::setSubItems(CCArray* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pSubItems);
 	m_pSubItems = var;
 }
-CCMutableArray<CCMenuItem*> *CCMenuItemToggle::getSubItems()
+CCArray *CCMenuItemToggle::getSubItems()
 {
 	return m_pSubItems;
 }
@@ -685,7 +685,7 @@ CCMenuItemToggle * CCMenuItemToggle::create(CCObject* target, SEL_MenuHandler se
 bool CCMenuItemToggle::initWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, va_list args)
 {
 	CCMenuItem::initWithTarget(target, selector);
-	this->m_pSubItems = new CCMutableArray<CCMenuItem*>();
+	this->m_pSubItems = new CCArray();
 	int z = 0;
 	CCMenuItem *i = item;
 	while(i) 
@@ -710,7 +710,7 @@ CCMenuItemToggle* CCMenuItemToggle::itemWithItem(CCMenuItem *item)
 bool CCMenuItemToggle::initWithItem(CCMenuItem *item)
 {
 	CCMenuItem::initWithTarget(NULL, NULL);
-	this->m_pSubItems = new CCMutableArray<CCMenuItem*>();
+	this->m_pSubItems = new CCArray();
 	m_pSubItems->addObject(item);
 	m_uSelectedIndex = UINT_MAX;
 	this->setSelectedIndex(0);
@@ -769,7 +769,7 @@ void CCMenuItemToggle::setIsEnabled(bool enabled)
 
 	if(m_pSubItems && m_pSubItems->count() > 0)
 	{
-		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
 		{
 			(*it)->setEnabled(enabled);
@@ -811,7 +811,7 @@ void CCMenuItemToggle::setOpacity(CCubyte opacity)
 	m_cOpacity = opacity;
 	if(m_pSubItems && m_pSubItems->count() > 0)
 	{
-		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
 		{
 			dynamic_cast<CCRGBAProtocol*>(*it)->setOpacity(opacity);
@@ -827,7 +827,7 @@ void CCMenuItemToggle::setColor(const ccColor3B& color)
 	m_tColor = color;
 	if(m_pSubItems && m_pSubItems->count() > 0)
 	{
-		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
+		CCArray::CCMutableArrayIterator it;
 		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
 		{
 			dynamic_cast<CCRGBAProtocol*>(*it)->setColor(color);

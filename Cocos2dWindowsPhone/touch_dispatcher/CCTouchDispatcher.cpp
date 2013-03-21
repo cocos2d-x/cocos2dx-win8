@@ -22,7 +22,7 @@
 
 #include "CCTouchDispatcher.h"
 #include "CCTouchHandler.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 #include "CCSet.h"
 #include "CCTouch.h"
 #include "CCTexture2D.h"
@@ -78,10 +78,10 @@ CCTouchDispatcher* CCTouchDispatcher::sharedDispatcher(void)
 bool CCTouchDispatcher::init(void)
 {
 	m_bDispatchEvents = true;
- 	m_pTargetedHandlers = new CCMutableArray<CCTouchHandler*>(8);
- 	m_pStandardHandlers = new CCMutableArray<CCTouchHandler*>(4);
+ 	m_pTargetedHandlers = new CCArray(8);
+ 	m_pStandardHandlers = new CCArray(4);
 
- 	m_pHandlersToAdd = new CCMutableArray<CCTouchHandler*>(8);
+ 	m_pHandlersToAdd = new CCArray(8);
     m_pHandlersToRemove = ccCArrayNew(8);
 
 	m_bToRemove = false;
@@ -110,11 +110,11 @@ CCTouchDispatcher::~CCTouchDispatcher(void)
 //
 // handlers management
 //
-void CCTouchDispatcher::forceAddHandler(CCTouchHandler *pHandler, CCMutableArray<CCTouchHandler*> *pArray)
+void CCTouchDispatcher::forceAddHandler(CCTouchHandler *pHandler, CCArray *pArray)
 {
 	unsigned int u = 0;
 
- 	CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator iter;
+ 	CCArray::CCMutableArrayIterator iter;
  	for (iter = pArray->begin(); iter != pArray->end(); ++iter)
  	{
  		CCTouchHandler *h = *iter;
@@ -185,7 +185,7 @@ void CCTouchDispatcher::addTargetedDelegate(CCTouchDelegate *pDelegate, int nPri
 void CCTouchDispatcher::forceRemoveDelegate(CCTouchDelegate *pDelegate)
 {
 	CCTouchHandler *pHandler;
-	CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator  iter;
+	CCArray::CCMutableArrayIterator  iter;
 
 	// XXX: remove it from both handlers ???
 	
@@ -260,7 +260,7 @@ void CCTouchDispatcher::removeAllDelegates(void)
 
 CCTouchHandler* CCTouchDispatcher::findHandler(CCTouchDelegate *pDelegate)
 {
-	CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator iter;
+	CCArray::CCMutableArrayIterator iter;
 
 	for (iter = m_pTargetedHandlers->begin(); iter != m_pTargetedHandlers->end(); ++iter)
 	{
@@ -281,11 +281,11 @@ CCTouchHandler* CCTouchDispatcher::findHandler(CCTouchDelegate *pDelegate)
 	return NULL;
 }
 
-CCTouchHandler* CCTouchDispatcher::findHandler(CCMutableArray<CCTouchHandler*> *pArray, CCTouchDelegate *pDelegate)
+CCTouchHandler* CCTouchDispatcher::findHandler(CCArray *pArray, CCTouchDelegate *pDelegate)
 {
 	CCAssert(pArray != NULL && pDelegate != NULL, "");
 
-	CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator iter;
+	CCArray::CCMutableArrayIterator iter;
 
 	for (iter = pArray->begin(); iter != pArray->end(); ++iter)
 	{
@@ -298,7 +298,7 @@ CCTouchHandler* CCTouchDispatcher::findHandler(CCMutableArray<CCTouchHandler*> *
 	return NULL;
 }
 
-void CCTouchDispatcher::rearrangeHandlers(CCMutableArray<CCTouchHandler*> *pArray)
+void CCTouchDispatcher::rearrangeHandlers(CCArray *pArray)
 {
 	std::sort(pArray->begin(), pArray->end(), cctdless);
 }
@@ -348,7 +348,7 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
 		{
 			pTouch = (CCTouch *)(*setIter);
 			CCTargetedTouchHandler *pHandler;
-			CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator arrayIter;
+			CCArray::CCMutableArrayIterator arrayIter;
 			for (arrayIter = m_pTargetedHandlers->begin(); arrayIter != m_pTargetedHandlers->end(); ++arrayIter)
 			/*for (unsigned int i = 0; i < m_pTargetedHandlers->num; ++i)*/
 			{
@@ -408,7 +408,7 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
 	//
 	if (uStandardHandlersCount > 0 && pMutableTouches->count() > 0)
 	{
-		CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator iter;
+		CCArray::CCMutableArrayIterator iter;
 		CCStandardTouchHandler *pHandler;
 		for (iter = m_pStandardHandlers->begin(); iter != m_pStandardHandlers->end(); ++iter)
 		{
@@ -460,7 +460,7 @@ void CCTouchDispatcher::touches(CCSet *pTouches, CCEvent *pEvent, unsigned int u
 	if (m_bToAdd)
 	{
 		m_bToAdd = false;
- 		CCMutableArray<CCTouchHandler*>::CCMutableArrayIterator iter;
+ 		CCArray::CCMutableArrayIterator iter;
          CCTouchHandler *pHandler;
  		for (iter = m_pHandlersToAdd->begin(); iter != m_pHandlersToAdd->end(); ++iter)
  		{

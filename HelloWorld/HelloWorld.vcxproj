@@ -216,8 +216,6 @@
     <ClInclude Include="include\CCMenu.h" />
     <ClInclude Include="include\CCMenuItem.h" />
     <ClInclude Include="include\CCMotionStreak.h" />
-    <ClInclude Include="include\CCMutableArray.h" />
-    <ClInclude Include="include\CCMutableDictionary.h" />
     <ClInclude Include="include\CCNode.h" />
     <ClInclude Include="include\CCNotificationCenter.h" />
     <ClInclude Include="include\CCNS.h" />

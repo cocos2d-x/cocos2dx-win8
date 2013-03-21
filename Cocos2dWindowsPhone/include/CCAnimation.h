@@ -32,7 +32,7 @@ THE SOFTWARE.
 #include "CCPlatformConfig.h"
 #include "CCPlatformMacros.h"
 #include "CCObject.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 #include "CCGeometry.h"
 #include <string>
 
@@ -87,7 +87,7 @@ class CC_DLL CCAnimation : public CCObject
 protected:
 	std::string m_nameStr;
 	float m_fDelay;
-	CCMutableArray<CCSpriteFrame*> *m_pobFrames;
+	CCArray *m_pobFrames;
 
 public:
 	// attributes
@@ -103,9 +103,9 @@ public:
 	inline void setDelay(float fDelay) { m_fDelay = fDelay; }
 
 	/** get array of frames */
-	inline CCMutableArray<CCSpriteFrame*>* getFrames(void) { return m_pobFrames; }
+	inline CCArray* getFrames(void) { return m_pobFrames; }
 	/** set array of frames, the Frames is retained */
-	inline void setFrames(CCMutableArray<CCSpriteFrame*> *pFrames)
+	inline void setFrames(CCArray *pFrames)
 	{
 		CC_SAFE_RETAIN(pFrames);
 		CC_SAFE_RELEASE(m_pobFrames);
@@ -118,12 +118,12 @@ public:
 	/** Initializes a CCAnimation with frames.
 	@since v0.99.5
 	*/
-	bool initWithFrames(CCMutableArray<CCSpriteFrame*> *pFrames);
+	bool initWithFrames(CCArray *pFrames);
 
 	/** Initializes a CCAnimation with frames and a delay between frames
 	@since v0.99.5
 	*/
-	bool initWithFrames(CCMutableArray<CCSpriteFrame*> *pFrames, float delay);
+	bool initWithFrames(CCArray *pFrames, float delay);
 
 	/** adds a frame to a CCAnimation */
 	void addFrame(CCSpriteFrame *pFrame);
@@ -154,12 +154,12 @@ public:
 	/** Creates an animation with frames.
 	@since v0.99.5
 	*/
-	static CCAnimation* create(CCMutableArray<CCSpriteFrame*> *frames);
+	static CCAnimation* create(CCArray *frames);
 
 	/* Creates an animation with frames and a delay between frames.
 	@since v0.99.5
 	*/
-	static CCAnimation* create(CCMutableArray<CCSpriteFrame*> *frames, float delay);
+	static CCAnimation* create(CCArray *frames, float delay);
 
 	/* Creates an animation with an array of CCSpriteFrame and a delay between frames in seconds.
      The frames will be added with one "delay unit".
@@ -177,8 +177,8 @@ public:
     /** duration in seconds of the whole animation. It is the result of totalDelayUnits * delayPerUnit */
     CC_PROPERTY_READONLY(float, m_fDuration, Duration)
 
-    /** array of CCAnimationFrames */
-    CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
+    ///** array of CCAnimationFrames */
+    //CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
 
     /** whether or not it shall restore the original frame when the animation finishes */
     CC_SYNTHESIZE(bool, m_bRestoreOriginalFrame, RestoreOriginalFrame)

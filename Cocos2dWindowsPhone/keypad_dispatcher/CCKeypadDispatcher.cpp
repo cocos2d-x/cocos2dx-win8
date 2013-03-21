@@ -128,7 +128,7 @@ void CCKeypadDispatcher::forceAddDelegate(CCKeypadDelegate* pDelegate)
 void CCKeypadDispatcher::forceRemoveDelegate(CCKeypadDelegate* pDelegate)
 {
     CCKeypadHandler  *pHandler;
-    CCMutableArray<CCKeypadHandler*>::CCMutableArrayIterator  iter;
+    CCArray::CCMutableArrayIterator  iter;
 
     for (iter = m_pDelegates->begin(); iter != m_pDelegates->end(); ++iter)
     {
@@ -145,7 +145,7 @@ bool CCKeypadDispatcher::dispatchKeypadMSG(ccKeypadMSGType nMsgType)
 {
     CCKeypadHandler  *pHandler;
     CCKeypadDelegate *pDelegate;
-    CCMutableArray<CCKeypadHandler*>::CCMutableArrayIterator  iter;
+    CCArray::CCMutableArrayIterator  iter;
 
     m_bLocked = true;
 

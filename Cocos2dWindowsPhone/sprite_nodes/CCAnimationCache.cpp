@@ -47,7 +47,7 @@ namespace cocos2d
 
 	bool CCAnimationCache::init()
 	{
-		m_pAnimations = new CCMutableDictionary<std::string, CCAnimation*>();
+		m_pAnimations = new CCDictionary();
 		return true;
 	}
 

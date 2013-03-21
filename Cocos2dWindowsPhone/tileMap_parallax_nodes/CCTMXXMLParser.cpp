@@ -58,7 +58,7 @@ CCTMXLayerInfo::CCTMXLayerInfo()
 	, m_uMaxGID(0)		
 	, m_tOffset(CCPointZero)
 {
-	m_pProperties= new CCStringToStringDictionary();;
+	m_pProperties= new CCDictionary();;
 }
 CCTMXLayerInfo::~CCTMXLayerInfo()
 {
@@ -70,11 +70,11 @@ CCTMXLayerInfo::~CCTMXLayerInfo()
 		m_pTiles = NULL;
 	}
 }
-CCStringToStringDictionary * CCTMXLayerInfo::getProperties()
+CCDictionary * CCTMXLayerInfo::getProperties()
 {
 	return m_pProperties;
 }
-void CCTMXLayerInfo::setProperties(CCStringToStringDictionary* var)
+void CCTMXLayerInfo::setProperties(CCDictionary* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pProperties);
@@ -121,12 +121,12 @@ CCTMXMapInfo * CCTMXMapInfo::formatWithTMXFile(const char *tmxFile)
 }
 bool CCTMXMapInfo::initWithTMXFile(const char *tmxFile)
 {
-	m_pTilesets = new CCMutableArray<CCTMXTilesetInfo*>();
-	m_pLayers = new CCMutableArray<CCTMXLayerInfo*>();
+	m_pTilesets = new CCArray();
+	m_pLayers = new CCArray();
 	m_sTMXFileName = CCFileUtils::fullPathFromRelativePath(tmxFile);
-	m_pObjectGroups = new CCMutableArray<CCTMXObjectGroup*>();
-	m_pProperties = new CCStringToStringDictionary();
-	m_pTileProperties = new CCDictionary<int, CCStringToStringDictionary*>();
+	m_pObjectGroups = new CCArray();
+	m_pProperties = new CCDictionary();
+	m_pTileProperties = new CCDictionary();
 
 	// tmp vars
 	m_sCurrentString = "";
@@ -157,51 +157,51 @@ CCTMXMapInfo::~CCTMXMapInfo()
 	CC_SAFE_RELEASE(m_pTileProperties);
 	CC_SAFE_RELEASE(m_pObjectGroups);
 }
-CCMutableArray<CCTMXLayerInfo*> * CCTMXMapInfo::getLayers()
+CCArray * CCTMXMapInfo::getLayers()
 {
 	return m_pLayers;
 }
-void CCTMXMapInfo::setLayers(CCMutableArray<CCTMXLayerInfo*>* var)
+void CCTMXMapInfo::setLayers(CCArray* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pLayers);
 	m_pLayers = var;
 }
-CCMutableArray<CCTMXTilesetInfo*> * CCTMXMapInfo::getTilesets()
+CCArray * CCTMXMapInfo::getTilesets()
 {
 	return m_pTilesets;
 }
-void CCTMXMapInfo::setTilesets(CCMutableArray<CCTMXTilesetInfo*>* var)
+void CCTMXMapInfo::setTilesets(CCArray* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pTilesets);
 	m_pTilesets = var;
 }
-CCMutableArray<CCTMXObjectGroup*> * CCTMXMapInfo::getObjectGroups()
+CCArray * CCTMXMapInfo::getObjectGroups()
 {
 	return m_pObjectGroups;
 }
-void CCTMXMapInfo::setObjectGroups(CCMutableArray<CCTMXObjectGroup*>* var)
+void CCTMXMapInfo::setObjectGroups(CCArray* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pObjectGroups);
 	m_pObjectGroups = var;
 }
-CCStringToStringDictionary * CCTMXMapInfo::getProperties()
+CCDictionary * CCTMXMapInfo::getProperties()
 {
 	return m_pProperties;
 }
-void CCTMXMapInfo::setProperties(CCStringToStringDictionary* var)
+void CCTMXMapInfo::setProperties(CCDictionary* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pProperties);
 	m_pProperties = var;
 }
-CCDictionary<int, CCStringToStringDictionary*> * CCTMXMapInfo::getTileProperties()
+CCDictionary * CCTMXMapInfo::getTileProperties()
 {
 	return m_pTileProperties;
 }
-void CCTMXMapInfo::setTileProperties(CCDictionary<int, CCStringToStringDictionary*> * tileProperties)
+void CCTMXMapInfo::setTileProperties(CCDictionary * tileProperties)
 {
 	CC_SAFE_RETAIN(tileProperties);
 	CC_SAFE_RELEASE(m_pTileProperties);
@@ -296,7 +296,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 	else if(elementName == "tile")
 	{
 		CCTMXTilesetInfo* info = pTMXMapInfo->getTilesets()->getLastObject();
-		CCStringToStringDictionary *dict = new CCStringToStringDictionary();
+		CCDictionary *dict = new CCDictionary();
 		pTMXMapInfo->setParentGID(info->m_uFirstGid + atoi(valueForKey("id", attributeDict)));
 		pTMXMapInfo->getTileProperties()->setObject(dict, pTMXMapInfo->getParentGID());
 		CC_SAFE_RELEASE(dict);
@@ -396,7 +396,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 
 		// The value for "type" was blank or not a valid class name
 		// Create an instance of TMXObjectInfo to store the object and its properties
-		CCStringToStringDictionary *dict = new CCStringToStringDictionary();
+		CCDictionary *dict = new CCDictionary();
 
 		// Set the name of the object to the value for "name"
 		std::string key = "name";
@@ -485,7 +485,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 		{
 			// The parent element is the last object
 			CCTMXObjectGroup *objectGroup = pTMXMapInfo->getObjectGroups()->getLastObject();
-			CCStringToStringDictionary *dict = objectGroup->getObjects()->getLastObject();
+			CCDictionary *dict = objectGroup->getObjects()->getLastObject();
 
 			std::string propertyName = valueForKey("name", attributeDict);
 			CCString *propertyValue = new CCString(valueForKey("value", attributeDict));
@@ -494,7 +494,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 		} 
 		else if ( pTMXMapInfo->getParentElement() == TMXPropertyTile ) 
 		{
-			CCStringToStringDictionary *dict;
+			CCDictionary *dict;
 			dict = pTMXMapInfo->getTileProperties()->objectForKey(pTMXMapInfo->getParentGID());
 
 			std::string propertyName = valueForKey("name", attributeDict);
