@@ -503,6 +503,7 @@ public:
 	*/
 	void unscheduleUpdate(void);
 	void scheduleOnce(SEL_SCHEDULE selector, float delay);
+
 	/** schedules a selector.
 	The scheduled selector will be ticked every frame
 	*/

@@ -260,11 +260,12 @@ namespace cocos2d {
 	public:
 		/** creates the action */
 		static CCRotateTo* create(float duration, float fDeltaAngle);
-
+		static CCRotateTo* create(float fDuration, float fDeltaAngleX, float fDeltaAngleY);
 	protected:
 		float m_fDstAngle;
 		float m_fStartAngle;
 		float m_fDiffAngle;
+
 		float m_fDstAngleX;
 		float m_fDstAngleY;
 	};
@@ -726,7 +727,7 @@ namespace cocos2d {
 		CCSpriteFrame *m_pOrigFrame;
 		bool m_bRestoreOriginalFrame;
 	};
-class CC_DLL CCTargetedAction : public CCActionInterval
+	class CC_DLL CCTargetedAction : public CCActionInterval
 {
 public:
     CCTargetedAction();
@@ -748,6 +749,7 @@ public:
 private:
     CCFiniteTimeAction* m_pAction;
 };
+
 
 }
 

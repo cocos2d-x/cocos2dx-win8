@@ -34,50 +34,49 @@ THE SOFTWARE.
 
 #include <string>
 
-namespace cocos2d
+NS_CC_BEGIN
+class CCAnimation;
+
+/** Singleton that manages the Animations.
+It saves in a cache the animations. You should use this class if you want to save your animations in a cache.
+
+Before v0.99.5, the recommend way was to save them on the CCSprite. Since v0.99.5, you should use this class instead.
+
+@since v0.99.5
+*/
+class CC_DLL CCAnimationCache : public CCObject
 {
-	class CCAnimation;
+public:
+	~CCAnimationCache();
+	CCAnimationCache();
 
-	/** Singleton that manages the Animations.
-	It saves in a cache the animations. You should use this class if you want to save your animations in a cache.
+	/** Retruns ths shared instance of the Animation cache */
+	static CCAnimationCache* sharedAnimationCache(void);
 
-	Before v0.99.5, the recommend way was to save them on the CCSprite. Since v0.99.5, you should use this class instead.
-
-	@since v0.99.5
+	/** Purges the cache. It releases all the CCAnimation objects and the shared instance.
 	*/
-	class CC_DLL CCAnimationCache : public CCObject
-	{
-	public:
-		~CCAnimationCache();
-		CCAnimationCache();
+	static void purgeSharedAnimationCache(void);
 
-		/** Retruns ths shared instance of the Animation cache */
-		static CCAnimationCache* sharedAnimationCache(void);
+	/** Adds a CCAnimation with a name.
+	*/
+	void addAnimation(CCAnimation *animation, const char * name);
 
-		/** Purges the cache. It releases all the CCAnimation objects and the shared instance.
-		*/
-		static void purgeSharedAnimationCache(void);
+	/** Deletes a CCAnimation from the cache.
+	*/
+	void removeAnimationByName(const char* name);
 
-		/** Adds a CCAnimation with a name.
-		*/
-		void addAnimation(CCAnimation *animation, const char * name);
+	/** Returns a CCAnimation that was previously added.
+	If the name is not found it will return nil.
+	You should retain the returned copy if you are going to use it.
+	*/
+	CCAnimation* animationByName(const char* name);
+	void addAnimationsWithFile(const char* plist);
+	bool init(void);
 
-		/** Deletes a CCAnimation from the cache.
-		*/
-		void removeAnimationByName(const char* name);
-
-		/** Returns a CCAnimation that was previously added.
-		If the name is not found it will return nil.
-		You should retain the returned copy if you are going to use it.
-		*/
-		CCAnimation* animationByName(const char* name);
-
-		bool init(void);
-		void addAnimationsWithFile(const char* plist);
-	private:
-		CCDictionary *m_pAnimations;
-		static CCAnimationCache *s_pSharedAnimationCache;
-	};
-}
+private:
+	CCDictionary *m_pAnimations;
+	static CCAnimationCache *s_pSharedAnimationCache;
+};
+NS_CC_END
 
 #endif // __CC_ANIMATION_CACHE_H__

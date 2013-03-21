@@ -70,7 +70,6 @@ typedef enum ccTMXTileFlags_ {
     kCCFlipedAll                    = (kCCTMXTileHorizontalFlag|kCCTMXTileVerticalFlag|kCCTMXTileDiagonalFlag),
     kCCFlippedMask                    = ~(kCCFlipedAll)
 } ccTMXTileFlags;
-
 /** @brief CCTMXLayerInfo contains the information about the layers like:
 - Layer name
 - Layer size

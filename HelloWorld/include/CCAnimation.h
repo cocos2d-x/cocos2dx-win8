@@ -177,8 +177,8 @@ public:
     /** duration in seconds of the whole animation. It is the result of totalDelayUnits * delayPerUnit */
     CC_PROPERTY_READONLY(float, m_fDuration, Duration)
 
-    /** array of CCAnimationFrames */
-    CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
+    ///** array of CCAnimationFrames */
+    //CC_SYNTHESIZE_RETAIN(CCArray*, m_pFrames, Frames)
 
     /** whether or not it shall restore the original frame when the animation finishes */
     CC_SYNTHESIZE(bool, m_bRestoreOriginalFrame, RestoreOriginalFrame)

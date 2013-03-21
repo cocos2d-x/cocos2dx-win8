@@ -24,6 +24,7 @@
 
 NS_CC_BEGIN;
 
+
 //! @brief  Helper class to handle file operations
 class CC_DLL CCFileUtils
 {
@@ -121,6 +122,16 @@ public:
 	*/
 	static void setiPadRetinaDisplaySuffix(const char *suffix);
 
+
+	std::string getNewFilename(const char* pszFileName);
+    /** Dictionary used to lookup filenames based on a key.
+     It is used internally by the following methods:
+     
+     const char* fullPathForFilename(const char* )key;
+     
+     @since v2.1
+     */
+    CCDictionary* m_pFilenameLookupDict;
 	/** Returns whether or not a given filename exists with the iPad suffix.
 	Only available on iOS. Not supported on OS X.
 	@since v1.1
