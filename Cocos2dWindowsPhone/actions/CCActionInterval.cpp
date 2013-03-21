@@ -2358,9 +2358,9 @@ void CCAnimate::update(float time)
 	}
 
 	CCSprite *pSprite = (CCSprite*)(m_pTarget);
-	if (! pSprite->isFrameDisplayed(pFrames->getObjectAtIndex(idx)))
+	if (! pSprite->isFrameDisplayed((CCSpriteFrame*)pFrames->objectAtIndex(idx)))
 	{
-		pSprite->setDisplayFrame(pFrames->getObjectAtIndex(idx));
+		pSprite->setDisplayFrame((CCSpriteFrame*)pFrames->objectAtIndex(idx));
 	}
 }
 
@@ -2372,10 +2372,21 @@ CCActionInterval* CCAnimate::reverse(void)
 	if (pOldArray->count() > 0)
 	{
 		CCSpriteFrame *pElement;
-		CCArray::CCMutableArrayRevIterator iter;
-		for (iter = pOldArray->rbegin(); iter != pOldArray->rend(); iter++)
+		//CCArray::CCMutableArrayRevIterator iter;
+		//for (iter = pOldArray->rbegin(); iter != pOldArray->rend(); iter++)
+		//{
+		//	pElement = *iter;
+		//	if (! pElement)
+		//	{
+		//		break;
+		//	}
+
+		//	pNewArray->addObject((CCSpriteFrame*)(pElement->copy()->autorelease()));
+		//}
+		CCObject* pObj = NULL;
+		CCARRAY_FOREACH(pOldArray, pObj)
 		{
-			pElement = *iter;
+			pElement = (CCSpriteFrame *)pObj;
 			if (! pElement)
 			{
 				break;

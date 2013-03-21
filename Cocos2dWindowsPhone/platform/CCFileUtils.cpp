@@ -20,6 +20,8 @@
 
 #include "CCFileUtils.h"
 #include "CCDirector.h"
+#include "fileapi.h"
+
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
 
@@ -300,11 +302,12 @@ public:
     }
 };
 
-//CCDictionary* ccFileUtils_dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
-//{
-//    CCDictMaker tMaker;
-//    return tMaker.dictionaryWithContentsOfFile(pFileName);
-//}
+CCDictionary* ccFileUtils_dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
+{
+    CCDictMaker tMaker;
+    return tMaker.dictionaryWithContentsOfFile(pFileName);
+}
+
 std::string CCFileUtils::getPathForFilename(const std::string& filename, const std::string& resourceDirectory, const std::string& searchPath)
 {
     std::string file = filename;
@@ -386,13 +389,13 @@ std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
 
             fullpath = this->getPathForFilename(newFileName, *resOrderIter, *searchPathsIter);
 
-            if (GetFileAttributesA(fullpath.c_str()) != -1)
-            {
-                // Adding the full path to cache if the file was found.
-                s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
-				//CCLOG("Returning path: %s", fullpath.c_str());
-                return fullpath;
-            }
+    //        if (GetFileAttributesA(fullpath.c_str()) != -1)
+    //        {
+    //            // Adding the full path to cache if the file was found.
+    //            s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
+				////CCLOG("Returning path: %s", fullpath.c_str());
+    //            return fullpath;
+    //        }
         }
     }
 
@@ -618,6 +621,21 @@ bool CCFileUtils::iPadRetinaDisplayFileExistsAtPath(const char *filename)
 bool CCFileUtils::iPhoneRetinaDisplayFileExistsAtPath(const char *filename)
 {
 	return false;
+}
+
+std::string CCFileUtils::getNewFilename(const char* pszFileName)
+{
+    const char* pszNewFileName = NULL;
+    // in Lookup Filename dictionary ?
+    CCString* fileNameFound = m_pFilenameLookupDict ? (CCString*)m_pFilenameLookupDict->objectForKey(pszFileName) : NULL;
+    if( NULL == fileNameFound || fileNameFound->length() == 0) {
+        pszNewFileName = pszFileName;
+    }
+    else {
+        pszNewFileName = fileNameFound->getCString();
+        //CCLOG("FOUND NEW FILE NAME: %s.", pszNewFileName);
+    }
+    return pszNewFileName;
 }
 
 //////////////////////////////////////////////////////////////////////////

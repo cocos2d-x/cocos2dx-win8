@@ -275,6 +275,8 @@
     <ClCompile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="cocoa\CCArray.cpp" />
+    <ClCompile Include="cocoa\CCDictionary.cpp" />
     <ClCompile Include="cocoa\CCString.cpp" />
     <ClCompile Include="particle_nodes\CCParticleBatchNode.cpp" />
     <ClCompile Include="touch_dispatcher\CCTouch.cpp" />

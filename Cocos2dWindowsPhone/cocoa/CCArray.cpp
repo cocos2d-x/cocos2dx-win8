@@ -131,11 +131,13 @@ CCArray* CCArray::createWithContentsOfFile(const char* pFileName)
     return pRet;
 }
 
-extern CCArray* ccFileUtils_arrayWithContentsOfFileThreadSafe(const char* pFileName);
+//extern CCArray* ccFileUtils_arrayWithContentsOfFileThreadSafe(const char* pFileName);
 
 CCArray* CCArray::createWithContentsOfFileThreadSafe(const char* pFileName)
 {
-    return ccFileUtils_arrayWithContentsOfFileThreadSafe(pFileName);
+	CCAssert(false, "Not implemented!");
+//    return ccFileUtils_arrayWithContentsOfFileThreadSafe(pFileName);
+	return NULL;
 }
 
 bool CCArray::init()
@@ -351,7 +353,7 @@ void CCArray::exchangeObjectAtIndex(unsigned int index1, unsigned int index2)
 void CCArray::replaceObjectAtIndex(unsigned int index, CCObject* pObject, bool bReleaseObject/* = true*/)
 {
     ccArrayInsertObjectAtIndex(data, pObject, index);
-    ccArrayRemoveObjectAtIndex(data, index+1);
+    ccArrayRemoveObjectAtIndex(data, index+1,true);
 }
 
 void CCArray::reverseObjects()

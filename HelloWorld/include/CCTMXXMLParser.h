@@ -63,6 +63,14 @@ enum {
 	TMXPropertyTile
 };
 
+typedef enum ccTMXTileFlags_ {
+    kCCTMXTileHorizontalFlag        = 0x80000000,
+    kCCTMXTileVerticalFlag            = 0x40000000,
+    kCCTMXTileDiagonalFlag            = 0x20000000,
+    kCCFlipedAll                    = (kCCTMXTileHorizontalFlag|kCCTMXTileVerticalFlag|kCCTMXTileDiagonalFlag),
+    kCCFlippedMask                    = ~(kCCFlipedAll)
+} ccTMXTileFlags;
+
 /** @brief CCTMXLayerInfo contains the information about the layers like:
 - Layer name
 - Layer size

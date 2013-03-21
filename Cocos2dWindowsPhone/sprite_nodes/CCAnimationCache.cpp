@@ -79,10 +79,11 @@ namespace cocos2d
 
 	CCAnimation* CCAnimationCache::animationByName(const char* name)
 	{
-		return m_pAnimations->objectForKey(std::string(name));
+		return (CCAnimation*)m_pAnimations->objectForKey(std::string(name));
 	}
 	void CCAnimationCache::addAnimationsWithFile(const char* plist)
 	{
+		CCAssert(false, "Not implemented!");
 		CCAssert( plist, "Invalid texture file name");
 
 		std::string path = CCFileUtils::sharedFileUtils()->fullPathForFilename(plist);
@@ -90,6 +91,6 @@ namespace cocos2d
 
 		CCAssert( dict, "CCAnimationCache: File could not be found");
 
-		addAnimationsWithDictionary(dict);
+		//addAnimationsWithDictionary(dict);
 	}
 }

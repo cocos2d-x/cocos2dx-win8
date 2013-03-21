@@ -155,16 +155,25 @@ void CCRibbon::addPointAt(CCPoint location, float width)
 	float tend = m_fTexVPos + len/m_fTextureLength;
 	CCRibbonSegment* seg;
 	// grab last segment
-	seg = m_pSegments->getLastObject();
+	seg = (CCRibbonSegment*)m_pSegments->lastObject();
 	// lets kill old segments
 	if (m_pSegments && m_pSegments->count()>0)
 	{
-		CCArray::CCMutableArrayIterator it;
-		for (it = m_pSegments->begin(); it != m_pSegments->end(); ++it)
+		//CCArray::CCMutableArrayIterator it;
+		//for (it = m_pSegments->begin(); it != m_pSegments->end(); ++it)
+		//{
+		//	if (*it != seg && (*it)->m_bFinished)
+		//	{
+		//		m_pDeletedSegments->addObject(*it);
+		//	}
+		//}
+        CCObject* pObj = NULL;
+		CCARRAY_FOREACH(m_pSegments, pObj)
 		{
-			if (*it != seg && (*it)->m_bFinished)
+			CCRibbonSegment* pItem = (CCRibbonSegment*) pObj;
+			if (pItem != seg && (pItem)->m_bFinished)
 			{
-				m_pDeletedSegments->addObject(*it);
+				m_pDeletedSegments->addObject(pItem);
 			}
 		}
 	}
@@ -176,7 +185,7 @@ void CCRibbon::addPointAt(CCPoint location, float width)
 		m_pSegments->removeObjectsInArray(m_pDeletedSegments);
 	}
 	// grab last segment and append to it if it's not full
-	seg = m_pSegments->getLastObject();
+	seg = (CCRibbonSegment*)m_pSegments->lastObject();
 	// is the segment full?
 	if (seg->m_uEnd >= 50)
 	{
@@ -184,7 +193,7 @@ void CCRibbon::addPointAt(CCPoint location, float width)
 		// grab it from the cache if we can
 		if (m_pDeletedSegments->count() > 0)
 		{
-			newSeg = m_pDeletedSegments->getObjectAtIndex(0);
+			newSeg = (CCRibbonSegment*)m_pDeletedSegments->objectAtIndex(0);
 			newSeg->retain();							// will be released later
 			m_pDeletedSegments->removeObject(newSeg);
 			newSeg->reset();
@@ -274,10 +283,16 @@ void CCRibbon::draw()
 		if(m_pSegments && m_pSegments->count() > 0)
 		{
 			CCRibbonSegment* seg;
-			CCArray::CCMutableArrayIterator it;
-			for( it = m_pSegments->begin(); it != m_pSegments->end(); it++)
+			//CCArray::CCMutableArrayIterator it;
+			//for( it = m_pSegments->begin(); it != m_pSegments->end(); it++)
+			//{
+			//	seg = (CCRibbonSegment*)*it;
+			//	seg->draw(m_fCurTime, m_fFadeTime, m_tColor,m_pTexture);
+			//}
+			CCObject* pObj = NULL;
+			CCARRAY_FOREACH(m_pSegments, pObj)
 			{
-				seg = (CCRibbonSegment*)*it;
+				seg = (CCRibbonSegment*) pObj;
 				seg->draw(m_fCurTime, m_fFadeTime, m_tColor,m_pTexture);
 			}
 		}

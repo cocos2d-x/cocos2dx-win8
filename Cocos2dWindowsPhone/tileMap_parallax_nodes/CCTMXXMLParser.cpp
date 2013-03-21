@@ -295,7 +295,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 	}
 	else if(elementName == "tile")
 	{
-		CCTMXTilesetInfo* info = pTMXMapInfo->getTilesets()->getLastObject();
+		CCTMXTilesetInfo* info = (CCTMXTilesetInfo*)pTMXMapInfo->getTilesets()->lastObject();
 		CCDictionary *dict = new CCDictionary();
 		pTMXMapInfo->setParentGID(info->m_uFirstGid + atoi(valueForKey("id", attributeDict)));
 		pTMXMapInfo->getTileProperties()->setObject(dict, pTMXMapInfo->getParentGID());
@@ -356,7 +356,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 	}
 	else if(elementName == "image")
 	{
-		CCTMXTilesetInfo *tileset = pTMXMapInfo->getTilesets()->getLastObject();
+		CCTMXTilesetInfo *tileset = (CCTMXTilesetInfo*)pTMXMapInfo->getTilesets()->lastObject();
 
 		// build full path
 		std::string imagename = valueForKey("source", attributeDict);		
@@ -392,7 +392,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 	else if(elementName == "object")
 	{
 		char buffer[32];
-		CCTMXObjectGroup *objectGroup = pTMXMapInfo->getObjectGroups()->getLastObject();
+		CCTMXObjectGroup *objectGroup = (CCTMXObjectGroup *)pTMXMapInfo->getObjectGroups()->lastObject();
 
 		// The value for "type" was blank or not a valid class name
 		// Create an instance of TMXObjectInfo to store the object and its properties
@@ -463,7 +463,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 		else if ( pTMXMapInfo->getParentElement() == TMXPropertyLayer )
 		{
 			// The parent element is the last layer
-			CCTMXLayerInfo *layer = pTMXMapInfo->getLayers()->getLastObject();
+			CCTMXLayerInfo *layer = (CCTMXLayerInfo *)pTMXMapInfo->getLayers()->lastObject();
 			CCString *value = new CCString(valueForKey("value", attributeDict));
 			std::string key = valueForKey("name", attributeDict);
 			// Add the property to the layer
@@ -474,7 +474,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 		else if ( pTMXMapInfo->getParentElement() == TMXPropertyObjectGroup ) 
 		{
 			// The parent element is the last object group
-			CCTMXObjectGroup *objectGroup = pTMXMapInfo->getObjectGroups()->getLastObject();
+			CCTMXObjectGroup *objectGroup = (CCTMXObjectGroup *)pTMXMapInfo->getObjectGroups()->lastObject();
 			CCString *value = new CCString(valueForKey("value", attributeDict));
 			std::string key = valueForKey("name", attributeDict);
 			objectGroup->getProperties()->setObject(value, key);
@@ -484,8 +484,8 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 		else if ( pTMXMapInfo->getParentElement() == TMXPropertyObject )
 		{
 			// The parent element is the last object
-			CCTMXObjectGroup *objectGroup = pTMXMapInfo->getObjectGroups()->getLastObject();
-			CCDictionary *dict = objectGroup->getObjects()->getLastObject();
+			CCTMXObjectGroup *objectGroup = (CCTMXObjectGroup *)pTMXMapInfo->getObjectGroups()->lastObject();
+			CCDictionary *dict = (CCDictionary *)objectGroup->getObjects()->lastObject();
 
 			std::string propertyName = valueForKey("name", attributeDict);
 			CCString *propertyValue = new CCString(valueForKey("value", attributeDict));
@@ -495,7 +495,7 @@ void CCTMXMapInfo::startElement(void *ctx, const char *name, const char **atts)
 		else if ( pTMXMapInfo->getParentElement() == TMXPropertyTile ) 
 		{
 			CCDictionary *dict;
-			dict = pTMXMapInfo->getTileProperties()->objectForKey(pTMXMapInfo->getParentGID());
+			dict = (CCDictionary*)pTMXMapInfo->getTileProperties()->objectForKey(pTMXMapInfo->getParentGID());
 
 			std::string propertyName = valueForKey("name", attributeDict);
 			CCString *propertyValue = new CCString(valueForKey("value", attributeDict));
@@ -522,7 +522,7 @@ void CCTMXMapInfo::endElement(void *ctx, const char *name)
 	{
 		pTMXMapInfo->setStoringCharacters(false);
 
-		CCTMXLayerInfo *layer = pTMXMapInfo->getLayers()->getLastObject();
+		CCTMXLayerInfo *layer = (CCTMXLayerInfo *)pTMXMapInfo->getLayers()->lastObject();
 
 		std::string currentString = pTMXMapInfo->getCurrentString();
 		unsigned char *buffer;

@@ -88,8 +88,9 @@ bool CCTransitionScene::initWithDuration(ccTime t, CCScene *scene)
 
 		CCAssert( m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene" );
 
-		// disable events while transitions
-		CCTouchDispatcher::sharedDispatcher()->setDispatchEvents(false);
+        // disable events while transitions
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->setDispatchEvents(false);
 		this->sceneOrder();
 
 		return true;
@@ -150,7 +151,7 @@ void CCTransitionScene::setNewScene(ccTime dt)
 	m_bIsSendCleanupToScene = director->isSendCleanupToScene();
 	director->replaceScene(m_pInScene);
 	// enable events while transitions
-	CCTouchDispatcher::sharedDispatcher()->setDispatchEvents(true);
+    director->getTouchDispatcher()->setDispatchEvents(true);
 	// issue #267
 	m_pOutScene->setVisible(true);
 }

@@ -1031,7 +1031,7 @@ void CCSprite::setDisplayFrameWithAnimationName(const char *animationName, int f
 
 	CCAssert(a, "");
 
-	CCSpriteFrame *frame = a->getFrames()->getObjectAtIndex(frameIndex);
+	CCSpriteFrame *frame = (CCSpriteFrame *)a->getFrames()->objectAtIndex(frameIndex);
 
 	CCAssert(frame, "");
 

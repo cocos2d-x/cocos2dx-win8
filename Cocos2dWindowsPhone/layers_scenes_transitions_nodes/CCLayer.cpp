@@ -93,23 +93,25 @@ CCLayer *CCLayer::create()
 
 void CCLayer::registerWithTouchDispatcher()
 {
+	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
+
     if (m_pScriptHandlerEntry)
     {
         if (m_pScriptHandlerEntry->getIsMultiTouches())
         {
-            CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0);
+            pDispatcher->addStandardDelegate(this,0);
             LUALOG("[LUA] Add multi-touches event handler: %d", m_pScriptHandlerEntry->getHandler());
         }
         else
         {
-            CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this,
+            pDispatcher->addTargetedDelegate(this,
                                                                        m_pScriptHandlerEntry->getPriority(),
                                                                        m_pScriptHandlerEntry->getSwallowsTouches());
             LUALOG("[LUA] Add touch event handler: %d", m_pScriptHandlerEntry->getHandler());
         }
         return;
     }
-	CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0);
+	pDispatcher->addStandardDelegate(this,0);
 }
 
 void CCLayer::registerScriptTouchHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches)
@@ -253,6 +255,7 @@ bool CCLayer::getIsTouchEnabled()
 /// isTouchEnabled setter
 void CCLayer::setIsTouchEnabled(bool enabled)
 {
+	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
 	if (m_bIsTouchEnabled != enabled)
 	{
 		m_bIsTouchEnabled = enabled;
@@ -265,7 +268,7 @@ void CCLayer::setIsTouchEnabled(bool enabled)
 			else
 			{
 				// have problems?
-				CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
+				pDispatcher->removeDelegate(this);
 			}
 		}
 	}
@@ -351,9 +354,10 @@ void CCLayer::onEnter()
 
 void CCLayer::onExit()
 {
+	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
 	if( m_bIsTouchEnabled )
 	{
-		CCTouchDispatcher::sharedDispatcher()->removeDelegate(this);
+		pDispatcher->removeDelegate(this);
 		unregisterScriptTouchHandler();
 	}
 
@@ -1111,7 +1115,7 @@ void CCLayerMultiplex::addLayer(CCLayer* layer)
 
 bool CCLayerMultiplex::initWithLayer(CCLayer* layer)
 {
-	m_pLayers = new CCMutableArray<CCLayer*>(1);
+	m_pLayers = new CCArray;
 	m_pLayers->addObject(layer);
 	m_nEnabledLayer = 0;
 	this->addChild(layer);
@@ -1120,7 +1124,7 @@ bool CCLayerMultiplex::initWithLayer(CCLayer* layer)
 
 bool CCLayerMultiplex::initWithLayers(CCLayer *layer, va_list params)
 {
-	m_pLayers = new CCMutableArray<CCLayer*>(5);
+	m_pLayers = new CCArray;
 	//m_pLayers->retain();
 
 	m_pLayers->addObject(layer);
@@ -1132,7 +1136,7 @@ bool CCLayerMultiplex::initWithLayers(CCLayer *layer, va_list params)
 	}
 
 	m_nEnabledLayer = 0;
-	this->addChild(m_pLayers->getObjectAtIndex(m_nEnabledLayer));
+	this->addChild((CCLayerMultiplex*)m_pLayers->objectAtIndex(m_nEnabledLayer));
 
 	return true;
 }
@@ -1142,25 +1146,25 @@ void CCLayerMultiplex::switchTo(unsigned int n)
 {
 	CCAssert( n < m_pLayers->count(), "Invalid index in MultiplexLayer switchTo message" );
 
-	this->removeChild(m_pLayers->getObjectAtIndex(m_nEnabledLayer), true);
+	this->removeChild((CCLayerMultiplex*)m_pLayers->objectAtIndex(m_nEnabledLayer), true);
 
 	m_nEnabledLayer = n;
 
-	this->addChild(m_pLayers->getObjectAtIndex(n));
+	this->addChild((CCLayerMultiplex*)m_pLayers->objectAtIndex(n));
 }
 
 void CCLayerMultiplex::switchToAndReleaseMe(unsigned int n)
 {
 	CCAssert( n < m_pLayers->count(), "Invalid index in MultiplexLayer switchTo message" );
 
-	this->removeChild(m_pLayers->getObjectAtIndex(m_nEnabledLayer), true);
+	this->removeChild((CCLayerMultiplex*)m_pLayers->objectAtIndex(m_nEnabledLayer), true);
 
 	//[layers replaceObjectAtIndex:enabledLayer withObject:[NSNull null]];
 	m_pLayers->replaceObjectAtIndex(m_nEnabledLayer, NULL);
 
 	m_nEnabledLayer = n;
 
-	this->addChild(m_pLayers->getObjectAtIndex(n));
+	this->addChild((CCLayerMultiplex*)m_pLayers->objectAtIndex(n));
 }
 
 /// isKeypadEnabled getter

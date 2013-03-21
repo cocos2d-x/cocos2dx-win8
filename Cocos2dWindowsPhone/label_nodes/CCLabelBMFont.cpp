@@ -348,17 +348,17 @@ namespace cocos2d{
 	//
 	//FNTConfig Cache - free functions
 	//
-	CCMutableDictionary<std::string, CCBMFontConfiguration*> *configurations = NULL;
+	CCDictionary *configurations = NULL;
 	CCBMFontConfiguration* FNTConfigLoadFile( const char *fntFile)
 	{
 		CCBMFontConfiguration *pRet = NULL;
 
 		if( configurations == NULL )
 		{
-			configurations = new CCMutableDictionary<std::string, CCBMFontConfiguration*>();
+			configurations = new CCDictionary();
 		}
 		std::string key(fntFile);
-		pRet = configurations->objectForKey(key);
+		pRet = (CCBMFontConfiguration*)configurations->objectForKey(key);
 		if( pRet == NULL )
 		{
 			pRet = CCBMFontConfiguration::configurationWithFNTFile(fntFile);

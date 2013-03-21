@@ -50,28 +50,29 @@ void CCAutoreleasePool::removeObject(CCObject* pObject)
 
 void CCAutoreleasePool::clear()
 {
-	if(m_pManagedObjectArray->count() > 0)
-	{
-		//CCAutoreleasePool* pReleasePool;
+    if(m_pManagedObjectArray->count() > 0)
+    {
+        //CCAutoreleasePool* pReleasePool;
 #ifdef _DEBUG
-		int nIndex = m_pManagedObjectArray->count() - 1;
+        int nIndex = m_pManagedObjectArray->count() - 1;
 #endif
-		CCArray::CCMutableArrayRevIterator it;
-		for(it = m_pManagedObjectArray->rbegin(); it != m_pManagedObjectArray->rend(); ++it)
-		{
-			if(!*it)
-				break;
 
-			(*it)->m_bManaged = false;
-			//(*it)->release();
-			//delete (*it);
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH_REVERSE(m_pManagedObjectArray, pObj)
+        {
+            if(!pObj)
+                break;
+
+            //--(pObj->m_uAutoReleaseCount);
+            //(*it)->release();
+            //delete (*it);
 #ifdef _DEBUG
-			nIndex--;
+            nIndex--;
 #endif
-		}
+        }
 
-		m_pManagedObjectArray->removeAllObjects();
-	}
+        m_pManagedObjectArray->removeAllObjects();
+    }
 }
 
 
@@ -106,18 +107,18 @@ CCPoolManager::~CCPoolManager()
 
 void CCPoolManager::finalize()
 {
-	if(m_pReleasePoolStack->count() > 0)
-	{
-		//CCAutoreleasePool* pReleasePool;
-		CCArray::CCMutableArrayIterator it;
-		for(it = m_pReleasePoolStack->begin(); it != m_pReleasePoolStack->end(); ++it)
-		{
-			if(!*it)
-				break;
-
-			(*it)->clear();
-		}
-	}
+    if(m_pReleasePoolStack->count() > 0)
+    {
+        //CCAutoreleasePool* pReleasePool;
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH(m_pReleasePoolStack, pObj)
+        {
+            if(!pObj)
+                break;
+            CCAutoreleasePool* pPool = (CCAutoreleasePool*)pObj;
+            pPool->clear();
+        }
+    }
 }
 
 void CCPoolManager::push()
@@ -137,23 +138,23 @@ void CCPoolManager::pop()
         return;
     }
 
- 	int nCount = m_pReleasePoolStack->count();
+     int nCount = m_pReleasePoolStack->count();
 
-	m_pCurReleasePool->clear();
+    m_pCurReleasePool->clear();
  
-  	if(nCount > 1)
-  	{
-		m_pReleasePoolStack->removeObjectAtIndex(nCount-1);
+      if(nCount > 1)
+      {
+        m_pReleasePoolStack->removeObjectAtIndex(nCount-1);
 
-// 		if(nCount > 1)
-// 		{
-// 			m_pCurReleasePool = m_pReleasePoolStack->getObjectAtIndex(nCount - 2);
-// 			return;
-// 		}
-		m_pCurReleasePool = m_pReleasePoolStack->getObjectAtIndex(nCount - 2);
-	}
+//         if(nCount > 1)
+//         {
+//             m_pCurReleasePool = m_pReleasePoolStack->objectAtIndex(nCount - 2);
+//             return;
+//         }
+        m_pCurReleasePool = (CCAutoreleasePool*)m_pReleasePoolStack->objectAtIndex(nCount - 2);
+    }
 
-	/*m_pCurReleasePool = NULL;*/
+    /*m_pCurReleasePool = NULL;*/
 }
 
 void CCPoolManager::removeObject(CCObject* pObject)

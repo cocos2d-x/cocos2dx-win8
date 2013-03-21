@@ -161,7 +161,8 @@ void CCMenu::onExit()
 //Menu - Events
 void CCMenu::registerWithTouchDispatcher()
 {
-	CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this, kCCMenuHandlerPriority, true);
+    CCDirector* pDirector = CCDirector::sharedDirector();
+    pDirector->getTouchDispatcher()->addTargetedDelegate(this, this->getTouchPriority(), true);
 }
 
 bool CCMenu::ccTouchBegan(CCTouch* touch, CCEvent* event)

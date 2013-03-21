@@ -50,22 +50,33 @@ CCDictionary * CCTMXObjectGroup::objectNamed(const char *objectName)
 {
 	if (m_pObjects && m_pObjects->count() > 0)
 	{
-		CCArray::CCMutableArrayIterator it;
-		for (it = m_pObjects->begin(); it != m_pObjects->end(); ++it)
-		{
-			CCString *name = (*it)->objectForKey(std::string("name"));
-			if (name && name->m_sString == objectName)
-			{
-				return *it;
-			}
-		}
+		//CCArray::CCMutableArrayIterator it;
+		//for (it = m_pObjects->begin(); it != m_pObjects->end(); ++it)
+		//{
+		//	CCString *name = (*it)->objectForKey(std::string("name"));
+		//	if (name && name->m_sString == objectName)
+		//	{
+		//		return *it;
+		//	}
+		//}
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH(m_pObjects, pObj)
+        {
+            CCDictionary* pDict = (CCDictionary*)pObj;
+            CCString *name = (CCString*)pDict->objectForKey("name");
+            if (name && name->m_sString == objectName)
+            {
+                return pDict;
+            }
+        }
 	}
 	// object not found
 	return NULL;	
 }
 CCString *CCTMXObjectGroup::propertyNamed(const char* propertyName)
 {
-	return m_pProperties->objectForKey(std::string(propertyName));
+	return (CCString*)m_pProperties->objectForKey(propertyName);
+	//return m_pProperties->objectForKey(std::string(propertyName));
 }
 
 CCDictionary * CCTMXObjectGroup::getProperties()

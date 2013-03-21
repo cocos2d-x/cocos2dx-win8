@@ -71,7 +71,7 @@ bool CCTMXLayer::initWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerIn
 		m_uMinGID = layerInfo->m_uMinGID;
 		m_uMaxGID = layerInfo->m_uMaxGID;
 		m_cOpacity = layerInfo->m_cOpacity;
-		m_pProperties = CCDictionary::dictionaryWithDictionary(layerInfo->getProperties());
+		m_pProperties = CCDictionary::createWithDictionary(layerInfo->getProperties());
 		m_fContentScaleFactor = CCDirector::sharedDirector()->getContentScaleFactor(); 
 
 		// tilesetInfo
@@ -198,7 +198,7 @@ void CCTMXLayer::setupTiles()
 // CCTMXLayer - Properties
 CCString *CCTMXLayer::propertyNamed(const char *propertyName)
 {
-	return m_pProperties->objectForKey(std::string(propertyName));
+	return (CCString *)m_pProperties->objectForKey(std::string(propertyName));
 }
 void CCTMXLayer::parseInternalProperties()
 {

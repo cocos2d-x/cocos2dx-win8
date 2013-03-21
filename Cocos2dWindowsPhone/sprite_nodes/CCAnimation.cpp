@@ -155,7 +155,7 @@ CCAnimation* CCAnimation::create(CCArray *frames, float delay)
 bool CCAnimation::initWithFrames(CCArray *pFrames, float delay)
 {
 	m_fDelay = delay;
-	m_pobFrames = CCArray::arrayWithArray(pFrames);
+	m_pobFrames = CCArray::createWithArray(pFrames);
 	m_pobFrames->retain();
 
 	return true;
@@ -194,11 +194,13 @@ void CCAnimation::addSpriteFrameWithFileName(const char *pszFileName)
     CCRect rect = CCRectZero;
     rect.size = pTexture->getContentSize();
     CCSpriteFrame *pFrame = CCSpriteFrame::createWithTexture(pTexture, rect);
-    addSpriteFrame(pFrame);
+    addFrame(pFrame);
 }
+
 void CCAnimation::addFrameWithTexture(CCTexture2D *pobTexture, const CCRect& rect)
 {
 	CCSpriteFrame *pFrame = CCSpriteFrame::createWithTexture(pobTexture, rect);
 	m_pobFrames->addObject(pFrame);
 }
+
 NS_CC_END

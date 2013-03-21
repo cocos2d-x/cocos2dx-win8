@@ -120,6 +120,11 @@ bool CCDirector::init(void)
     m_fContentScaleFactor = 1;	
 	m_bIsContentScaleSupported = false;
 
+	// touchDispatcher
+    m_pTouchDispatcher = new CCTouchDispatcher();
+    m_pTouchDispatcher->init();
+
+
 	// create autorelease pool
 	CCPoolManager::sharedPoolManager()->push();
 
@@ -304,9 +309,8 @@ void CCDirector::setOpenGLView(CC_GLVIEW *pobOpenGLView)
 			updateContentScaleFactor();
 		}
 
- 		CCTouchDispatcher *pTouchDispatcher = CCTouchDispatcher::sharedDispatcher();
- 		m_pobOpenGLView->setTouchDelegate(pTouchDispatcher);
-        pTouchDispatcher->setDispatchEvents(true);
+ 		m_pobOpenGLView->setTouchDelegate(m_pTouchDispatcher);
+        m_pTouchDispatcher->setDispatchEvents(true);
 	}
 }
 
@@ -548,7 +552,7 @@ void CCDirector::popScene(void)
 	else
 	{
 		m_bSendCleanupToScene = true;
-		m_pNextScene = m_pobScenesStack->getObjectAtIndex(c - 1);
+		m_pNextScene = (CCScene*)m_pobScenesStack->objectAtIndex(c - 1);
 	}
 }
 
@@ -562,7 +566,7 @@ void CCDirector::resetDirector()
 {
 	// don't release the event handlers
 	// They are needed in case the director is run again
-	CCTouchDispatcher::sharedDispatcher()->removeAllDelegates();
+	m_pTouchDispatcher->removeAllDelegates();
 
     if (m_pRunningScene)
     {
@@ -599,7 +603,7 @@ void CCDirector::purgeDirector()
 {
 	// don't release the event handlers
 	// They are needed in case the director is run again
-	CCTouchDispatcher::sharedDispatcher()->removeAllDelegates();
+	m_pTouchDispatcher->removeAllDelegates();
 
     if (m_pRunningScene)
     {
