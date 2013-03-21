@@ -251,7 +251,6 @@
     <ClCompile Include=".\sprite_nodes\CCSpriteFrame.cpp" />
     <ClCompile Include=".\sprite_nodes\CCSpriteFrameCache.cpp" />
     <ClCompile Include=".\support\base64.cpp" />
-    <ClCompile Include=".\support\CCArray.cpp" />
     <ClCompile Include=".\support\CCPointExtension.cpp" />
     <ClCompile Include=".\support\CCProfiling.cpp" />
     <ClCompile Include=".\support\CCUserDefault.cpp" />

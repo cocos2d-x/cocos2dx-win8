@@ -352,9 +352,6 @@
     <ClCompile Include=".\support\base64.cpp">
       <Filter>support</Filter>
     </ClCompile>
-    <ClCompile Include=".\support\CCArray.cpp">
-      <Filter>support</Filter>
-    </ClCompile>
     <ClCompile Include=".\support\CCPointExtension.cpp">
       <Filter>support</Filter>
     </ClCompile>

@@ -135,9 +135,7 @@ CCArray* CCArray::createWithContentsOfFile(const char* pFileName)
 
 CCArray* CCArray::createWithContentsOfFileThreadSafe(const char* pFileName)
 {
-	CCAssert(false, "Not implemented!");
-//    return ccFileUtils_arrayWithContentsOfFileThreadSafe(pFileName);
-	return NULL;
+	return CCFileUtils::arrayWithContentsOfFileThreadSafe(pFileName);
 }
 
 bool CCArray::init()
