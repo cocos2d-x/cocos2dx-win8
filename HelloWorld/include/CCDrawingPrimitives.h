@@ -83,7 +83,13 @@ void CC_DLL ccDrawQuadBezier(const CCPoint& origin, const CCPoint& control, cons
  @since v0.8
  */
 void CC_DLL ccDrawCubicBezier(const CCPoint& origin, const CCPoint& control1, const CCPoint& control2, const CCPoint& destination, int segments);
+void CC_DLL ccDrawCatmullRom( CCPointArray *arrayOfControlPoints, unsigned int segments );
 
+/** draws a Cardinal Spline path.
+ @warning This function could be pretty slow. Use it only for debugging purposes.
+ @since v2.0
+ */
+void CC_DLL ccDrawCardinalSpline( CCPointArray *config, float tension,  unsigned int segments );
 enum DXDrawingType
 {
 	DrawingPoints  = 0,

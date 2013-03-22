@@ -619,8 +619,18 @@ void CCEGLView::GetClearColor(float* color)
 
 CCEGLView* CCEGLView::sharedOpenGLView()
 {
-    CC_ASSERT(s_pMainWindow);
-    return s_pMainWindow;
+    static CCEGLView* s_pEglView = NULL;
+    if (s_pEglView == NULL)
+    {
+        s_pEglView = new CCEGLView();
+		if(!s_pEglView->Create())
+		{
+			delete s_pEglView;
+			s_pEglView = NULL;
+		}
+    }
+
+    return s_pEglView;
 }
 
 void CCEGLView::OnWindowSizeChanged()

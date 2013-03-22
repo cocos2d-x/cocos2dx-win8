@@ -37,7 +37,9 @@ THE SOFTWARE.
 //
 #include "ccConfig.h"	// should be included first
 
-
+// kazmath
+#include "kazmath/kazmath.h"
+#include "kazmath/GL/matrix.h"
 // actions
 // Features of 1.0
 #include "CCAction.h"

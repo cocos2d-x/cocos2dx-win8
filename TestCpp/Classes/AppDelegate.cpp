@@ -83,7 +83,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	CCDirector *pDirector = CCDirector::sharedDirector();
 
 
-	pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
+	CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
 	// turn on display FPS
 	//pDirector->setDisplayFPS(false);

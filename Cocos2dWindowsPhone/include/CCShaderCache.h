@@ -27,7 +27,7 @@ THE SOFTWARE.
 #ifndef __CCSHADERCACHE_H__
 #define __CCSHADERCACHE_H__
 
-#include "cocoa/CCDictionary.h"
+#include "CCDictionary.h"
 
 NS_CC_BEGIN
 
