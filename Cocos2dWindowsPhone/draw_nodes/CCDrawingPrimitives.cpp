@@ -677,5 +677,12 @@ void CCDrawingPrimitive::Render3D()
 	// Now render the prepared buffers with the shader.
 	RenderShader();
 }
+void ccDrawColor4B( CCubyte r, CCubyte g, CCubyte b, CCubyte a )
+{
+    s_tColor.r = r/255.0f;
+    s_tColor.g = g/255.0f;
+    s_tColor.b = b/255.0f;
+    s_tColor.a = a/255.0f;
+}
 
 NS_CC_END 

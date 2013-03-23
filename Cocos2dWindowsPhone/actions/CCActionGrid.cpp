@@ -26,67 +26,67 @@
 NS_CC_BEGIN
 	// implementation of CCGridAction
 
-	CCGridAction* CCGridAction::actionWithSize(const ccGridSize& gridSize, ccTime duration)
+CCGridAction* CCGridAction::create(float duration, const CCSize& gridSize)
 {
-	CCGridAction *pAction = new CCGridAction();
-	if (pAction)
-	{
-		if (pAction->initWithSize(gridSize, duration))
-		{
-			pAction->autorelease();
-		}
-		else
-		{
-			CC_SAFE_DELETE(pAction);
-		}
-	}
+    CCGridAction *pAction = new CCGridAction();
+    if (pAction)
+    {
+        if (pAction->initWithDuration(duration, gridSize))
+        {
+            pAction->autorelease();
+        }
+        else
+        {
+            CC_SAFE_DELETE(pAction);
+        }
+    }
 
-	return pAction;
+    return pAction;
 }
 
-bool CCGridAction::initWithSize(const ccGridSize& gridSize, ccTime duration)
+bool CCGridAction::initWithDuration(float duration, const CCSize& gridSize)
 {
-	if (CCActionInterval::initWithDuration(duration))
-	{
-		m_sGridSize = gridSize;
+    if (CCActionInterval::initWithDuration(duration))
+    {
+        m_sGridSize = gridSize;
 
-		return true;
-	}
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 void CCGridAction::startWithTarget(CCNode *pTarget)
 {
-	CCActionInterval::startWithTarget(pTarget);
+    CCActionInterval::startWithTarget(pTarget);
 
-	CCGridBase *newgrid = this->getGrid();
+    CCGridBase *newgrid = this->getGrid();
 
-	CCNode *t = m_pTarget;
-	CCGridBase *targetGrid = t->getGrid();
+    CCNode *t = m_pTarget;
+    CCGridBase *targetGrid = t->getGrid();
 
-	if (targetGrid && targetGrid->getReuseGrid() > 0)
-	{
-		if (targetGrid->isActive() && targetGrid->getGridSize().x == m_sGridSize.x
-			&& targetGrid->getGridSize().y == m_sGridSize.y /*&& dynamic_cast<CCGridBase*>(targetGrid) != NULL*/)
-		{
-			targetGrid->reuse();
-		}
-		else
-		{
-			CCAssert(0, "");
-		}
-	}
-	else
-	{
-		if (targetGrid && targetGrid->isActive())
-		{
-			targetGrid->setActive(false);
-		}
+    if (targetGrid && targetGrid->getReuseGrid() > 0)
+    {
+        if (targetGrid->isActive() && targetGrid->getGridSize().width == m_sGridSize.width
+            && targetGrid->getGridSize().height == m_sGridSize.height /*&& dynamic_cast<CCGridBase*>(targetGrid) != NULL*/)
+        {
+            targetGrid->reuse();
+        }
+        else
+        {
+            CCAssert(0, "");
+        }
+    }
+    else
+    {
+        if (targetGrid && targetGrid->isActive())
+        {
+            targetGrid->setActive(false);
+        }
 
-		t->setGrid(newgrid);
-		t->getGrid()->setActive(true);
-	}
+        t->setGrid(newgrid);
+        t->getGrid()->setActive(true);
+    }
 }
 
 CCGridBase* CCGridAction::getGrid(void)
@@ -119,7 +119,7 @@ CCObject* CCGridAction::copyWithZone(CCZone *pZone)
 
 	CCActionInterval::copyWithZone(pZone);
 
-	pCopy->initWithSize(m_sGridSize, m_fDuration);
+	pCopy->initWithDuration(m_fDuration, m_sGridSize);
 
 	CC_SAFE_DELETE(pNewZone);
 	return pCopy;
@@ -132,19 +132,19 @@ CCGridBase* CCGrid3DAction::getGrid(void)
 	return CCGrid3D::create(m_sGridSize);
 }
 
-ccVertex3F CCGrid3DAction::vertex(const ccGridSize& pos)
+ccVertex3F CCGrid3DAction::vertex(const CCPoint& pos)
 {
 	CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
 	return g->vertex(pos);
 }
 
-ccVertex3F CCGrid3DAction::originalVertex(const ccGridSize& pos)
+ccVertex3F CCGrid3DAction::originalVertex(const CCPoint& pos)
 {
 	CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
 	return g->originalVertex(pos);
 }
 
-void CCGrid3DAction::setVertex(const ccGridSize& pos, const ccVertex3F& vertex)
+void CCGrid3DAction::setVertex(const CCPoint& pos, const ccVertex3F& vertex)
 {
 	CCGrid3D *g = (CCGrid3D*)m_pTarget->getGrid();
 	g->setVertex(pos, vertex);
@@ -157,19 +157,19 @@ CCGridBase* CCTiledGrid3DAction::getGrid(void)
 	return CCTiledGrid3D::create(m_sGridSize);
 }
 
-ccQuad3 CCTiledGrid3DAction::tile(const ccGridSize& pos)
+ccQuad3 CCTiledGrid3DAction::tile(const CCPoint& pos)
 {
 	CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
 	return g->tile(pos);
 }
 
-ccQuad3 CCTiledGrid3DAction::originalTile(const ccGridSize& pos)
+ccQuad3 CCTiledGrid3DAction::originalTile(const CCPoint& pos)
 {
 	CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
 	return g->originalTile(pos);
 }
 
-void CCTiledGrid3DAction::setTile(const ccGridSize& pos, const ccQuad3& coords)
+void CCTiledGrid3DAction::setTile(const CCPoint& pos, const ccQuad3& coords)
 {
 	CCTiledGrid3D *g = (CCTiledGrid3D*)m_pTarget->getGrid();
 	return g->setTile(pos, coords);

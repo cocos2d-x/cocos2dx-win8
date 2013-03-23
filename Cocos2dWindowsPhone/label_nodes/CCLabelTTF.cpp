@@ -168,7 +168,7 @@ void CCLabelTTF::setString(const char *label)
 	m_pString = new std::string(label);
 
 	CCTexture2D *texture;
-	if( CCSize::CCSizeEqualToSize( m_tDimensions, CCSizeZero ) )
+	if( m_tDimensions.equals(CCSizeZero ) )
 	{
 		texture = new CCTexture2D();
 		texture->initWithString(label, m_pFontName->c_str(), m_fFontSize);

@@ -396,7 +396,7 @@ const CCPoint& CCNode::getAnchorPoint()
 
 void CCNode::setAnchorPoint(const CCPoint& point)
 {
-	if( ! CCPoint::CCPointEqualToPoint(point, m_tAnchorPoint) ) 
+	if( ! point.equals(m_tAnchorPoint) ) 
 	{
 		m_tAnchorPoint = point;
 		m_tAnchorPointInPixels = ccp( m_tContentSizeInPixels.width * m_tAnchorPoint.x, m_tContentSizeInPixels.height * m_tAnchorPoint.y );
@@ -421,7 +421,7 @@ const CCSize& CCNode::getContentSize()
 
 void CCNode::setContentSize(const CCSize& size)
 {
-	if( ! CCSize::CCSizeEqualToSize(size, m_tContentSize) ) 
+	if( ! size.equals(m_tContentSize) ) 
 	{
 		m_tContentSize = size;
 
@@ -444,7 +444,7 @@ void CCNode::setContentSize(const CCSize& size)
 
 void CCNode::setContentSizeInPixels(const CCSize& size)
 {
-	if (! CCSize::CCSizeEqualToSize(size, m_tContentSizeInPixels))
+	if (! size.equals( m_tContentSizeInPixels))
 	{
         m_tContentSizeInPixels = size;
 
@@ -1133,12 +1133,12 @@ CCAffineTransform CCNode::nodeToParentTransform(void)
 
 		m_tTransform = CCAffineTransformIdentity;
 
-		if( ! m_bIsRelativeAnchorPoint && ! CCPoint::CCPointEqualToPoint(m_tAnchorPointInPixels, CCPointZero) )
+		if( ! m_bIsRelativeAnchorPoint && ! m_tAnchorPointInPixels.equals(CCPointZero) )
 		{
 			m_tTransform = CCAffineTransformTranslate(m_tTransform, m_tAnchorPointInPixels.x, m_tAnchorPointInPixels.y);
 		}
 
-		if(! CCPoint::CCPointEqualToPoint(m_tPositionInPixels, CCPointZero))
+		if(! m_tPositionInPixels.equals(CCPointZero))
 		{
 			m_tTransform = CCAffineTransformTranslate(m_tTransform, m_tPositionInPixels.x, m_tPositionInPixels.y);
 		}
@@ -1161,7 +1161,7 @@ CCAffineTransform CCNode::nodeToParentTransform(void)
 			m_tTransform = CCAffineTransformScale(m_tTransform, m_fScaleX, m_fScaleY);
 		}
 
-		if(! CCPoint::CCPointEqualToPoint(m_tAnchorPointInPixels, CCPointZero))
+		if(! m_tAnchorPointInPixels.equals( CCPointZero))
 		{
 			m_tTransform = CCAffineTransformTranslate(m_tTransform, -m_tAnchorPointInPixels.x, -m_tAnchorPointInPixels.y);
 		}

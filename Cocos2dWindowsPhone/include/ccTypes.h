@@ -198,19 +198,19 @@ typedef struct _ccQuad3 {
 } ccQuad3;
 
 //! A 2D grid size
-typedef struct _ccGridSize
+/*typedef struct _ccGridSize
 {
 	int	x;
 	int	y;
-} ccGridSize;
-
-//! helper function to create a ccGridSize
-static inline ccGridSize
-ccg(const int x, const int y)
-{
-	ccGridSize v = {x, y};
-	return v;
-}
+} CCSize;
+*/
+//! helper function to create a CCSize
+//static inline CCSize
+//ccp(const int x, const int y)
+//{
+//	CCSize v = {x, y};
+//	return v;
+//}
 
 //! a Point with a vertex point, a tex coord point and a color 4B
 typedef struct _ccV2F_C4B_T2F

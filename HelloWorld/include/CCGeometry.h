@@ -36,30 +36,31 @@ typedef float CGFloat;
 class CC_DLL CCPoint
 {
 public:
-	float x;
-	float y;
+    float x;
+    float y;
 
 public:
-
-	CCPoint();
-	CCPoint(float x, float y);
-	bool equals(const CCPoint& target) const;
-public:
-	static bool CCPointEqualToPoint(const CCPoint& point1, const CCPoint& point2);
+    CCPoint();
+    CCPoint(float x, float y);
+    CCPoint(const CCPoint& other);
+    CCPoint& operator= (const CCPoint& other);
+    void setPoint(float x, float y);
+    bool equals(const CCPoint& target) const;
 };
 
 class CC_DLL CCSize
 {
 public:
-	float width;
-	float height;
+    float width;
+    float height;
 
 public:
-	CCSize();
-	CCSize(float width, float height);
-	bool equals(const CCSize& target) const;
-public:
-	static bool CCSizeEqualToSize(const CCSize& size1, const CCSize& size2);
+    CCSize();
+    CCSize(float width, float height);
+    CCSize(const CCSize& other);
+    CCSize& operator= (const CCSize& other);
+    void setSize(float width, float height);
+    bool equals(const CCSize& target) const;
 };
 
 class CC_DLL CCRect
