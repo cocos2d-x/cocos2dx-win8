@@ -756,4 +756,14 @@ void CCEGLView::OnPointerMoved(int id, const CCPoint& point)
     m_pDelegate->touchesMoved(pSet, NULL);
 }
 
+float CCEGLView::getScaleX() const
+{
+    return m_fWinScaleX;
+}
+
+float CCEGLView::getScaleY() const
+{
+    return m_fWinScaleY;
+}
+
 NS_CC_END;

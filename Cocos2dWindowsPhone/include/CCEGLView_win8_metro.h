@@ -117,6 +117,13 @@ public:
 	}
 };
 
+//class CC_DLL CCEGLViewProtocol
+//{
+//public:
+//    CCEGLViewProtocol();
+//    virtual ~CCEGLViewProtocol();
+//};
+
 class CC_DLL CCEGLView
 {
 public:
@@ -187,6 +194,17 @@ public:
 	void OnPointerPressed(int id, const CCPoint& point);
     void OnPointerReleased(int id, const CCPoint& point);
     void OnPointerMoved(int id, const CCPoint& point);
+
+	    /**
+     * Get scale factor of the horizontal direction.
+     */
+    float getScaleX() const;
+
+    /**
+     * Get scale factor of the vertical direction.
+     */
+    float getScaleY() const;
+
 protected:
 
 private:

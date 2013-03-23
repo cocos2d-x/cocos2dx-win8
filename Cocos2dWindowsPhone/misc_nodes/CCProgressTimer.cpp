@@ -37,6 +37,39 @@ namespace cocos2d {
 
 #define kProgressTextureCoordsCount 4
 const char kProgressTextureCoords = 0x1e;
+CCProgressTimer* CCProgressTimer::create(CCSprite* sp)
+{
+    CCProgressTimer *pProgressTimer = new CCProgressTimer();
+
+    if (pProgressTimer->initWithSprite(sp))
+    {
+        pProgressTimer->autorelease();
+    }
+    else
+    {
+        delete pProgressTimer;
+        pProgressTimer = NULL;
+    }        
+
+    return pProgressTimer;
+}
+
+bool CCProgressTimer::initWithSprite(CCSprite* sp)
+{
+    //setPercentage(0.0f);
+    //m_pVertexData = NULL;
+    //m_nVertexDataCount = 0;
+
+    //setAnchorPoint(ccp(0.5f,0.5f));
+    //m_eType = kCCProgressTimerTypeRadial;
+    //m_bReverseDirection = false;
+    //setMidpoint(ccp(0.5f, 0.5f));
+    //setBarChangeRate(ccp(1,1));
+    //setSprite(sp);
+    // shader program
+    //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
+    return this->initWithTexture(sp->getTexture());
+}
 
 CCDXProgressTimer CCProgressTimer::mDXProgressTimer;
 

@@ -40,7 +40,7 @@
 #endif
 
 NS_CC_BEGIN
-
+static int s_globalOrderOfArrival = 1;
 CCNode::CCNode(void)
 : m_nZOrder(0)
 , m_fVertexZ(0.0f)
@@ -370,17 +370,7 @@ void CCNode::setGrid(CCGridBase* pGrid)
 }
 
 
-///// isVisible getter
-//bool CCNode::getIsVisible()
-//{
-//	return m_bVisible;
-//}
-//
-///// isVisible setter
-//void CCNode::setIsVisible(bool var)
-//{
-//	m_bVisible = var;
-//}
+
 
 /// isVisible getter
 bool CCNode::isVisible()
@@ -483,11 +473,14 @@ const CCSize& CCNode::getContentSizeInPixels()
 
 
 // isRunning getter
-bool CCNode::getIsRunning()
+//bool CCNode::getIsRunning()
+//{
+//	return m_bIsRunning;
+//}
+bool CCNode::isRunning()
 {
-	return m_bIsRunning;
+    return m_bRunning;
 }
-
 
 /// parent getter
 CCNode * CCNode::getParent()
@@ -538,7 +531,15 @@ void CCNode::setUserData(void *var)
 {
 	m_pUserData = var;
 }
+unsigned int CCNode::getOrderOfArrival()
+{
+    return m_uOrderOfArrival;
+}
 
+void CCNode::setOrderOfArrival(unsigned int uOrderOfArrival)
+{
+    m_uOrderOfArrival = uOrderOfArrival;
+}
 
 CCRect CCNode::boundingBox()
 {
@@ -623,7 +624,7 @@ void CCNode::addChild(CCNode *child, int zOrder, int tag)
 	child->m_nTag = tag;
 
 	child->setParent(this);
-
+	child->setOrderOfArrival(s_globalOrderOfArrival++);
 	if( m_bIsRunning )
 	{
 		child->onEnter();
@@ -776,7 +777,34 @@ void CCNode::reorderChild(CCNode *child, int zOrder)
 	insertChild(child, zOrder);
 	child->release();
 }
+void CCNode::sortAllChildren()
+{
+    if (m_bReorderChildDirty)
+    {
+        int i,j,length = m_pChildren->data->num;
+        CCNode ** x = (CCNode**)m_pChildren->data->arr;
+        CCNode *tempItem;
 
+        // insertion sort
+        for(i=1; i<length; i++)
+        {
+            tempItem = x[i];
+            j = i-1;
+
+            //continue moving element downwards while zOrder is smaller or when zOrder is the same but mutatedIndex is smaller
+            while(j>=0 && ( tempItem->m_nZOrder < x[j]->m_nZOrder || ( tempItem->m_nZOrder== x[j]->m_nZOrder && tempItem->m_uOrderOfArrival < x[j]->m_uOrderOfArrival ) ) )
+            {
+                x[j+1] = x[j];
+                j = j-1;
+            }
+            x[j+1] = tempItem;
+        }
+
+        //don't need to check children recursively, that's done in visit of each child
+
+        m_bReorderChildDirty = false;
+    }
+}
  void CCNode::draw()
  {
 	 //CCAssert(0);
