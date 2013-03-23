@@ -192,8 +192,6 @@ class CC_DLL CCNode : public CCObject
 		/** A CCGrid object that is used when applying effects */
 		CC_PROPERTY(CCGridBase *, m_pGrid, Grid)
 
-		/** Whether of not the node is visible. Default is true */
-//		CC_PROPERTY(bool, m_bVisible, IsVisible)
 		/**
 		* Sets whether the node is visible
 		*
@@ -210,7 +208,7 @@ class CC_DLL CCNode : public CCObject
 		* @return true if the node is visible, false if the node is hidden.
 		*/
 		virtual bool isVisible();
-
+		virtual bool isRunning();
 		/** anchorPoint is the point around which all transformations and positioning manipulations take place.
 		It's like a pin in the node where it is "attached" to its parent.
 		The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.
@@ -307,7 +305,15 @@ public:
 	The node will be created as "autorelease".
 	*/
 	static CCNode * create(void);
-
+	 virtual void setOrderOfArrival(unsigned int uOrderOfArrival);
+    /**
+     * Returns the arrival order, indecates which children is added previously.
+     *
+     * @see setOrderOfArrival(unsigned int)
+     *
+     * @return The arrival order.
+     */
+    virtual unsigned int getOrderOfArrival();
 	//scene managment
 
 	/** callback that is called every time the CCNode enters the 'stage'.
@@ -389,7 +395,7 @@ public:
 	* The child MUST be already added.
 	*/
 	virtual void reorderChild(CCNode * child, int zOrder);
-
+	virtual void sortAllChildren();
 	/** Stops all running actions and schedulers
 	@since v0.8
 	*/
@@ -608,10 +614,10 @@ public:
      * @return true if the anchor point will be (0,0) when you position this node.
      */
     virtual bool isIgnoreAnchorPointForPosition();
-
+	unsigned int m_uOrderOfArrival; 
 	bool m_bTransformDirty;             ///< transform dirty flag
     bool m_bInverseDirty;               ///< transform dirty flag
-
+	bool m_bReorderChildDirty;
     bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
                                           ///< Used by CCLayer and CCScene.
 	bool m_bVisible;                    ///< is this node visible

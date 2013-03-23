@@ -57,18 +57,23 @@ public:
 
 	// optional
 
-	/** sets the premultipliedAlphaOpacity property.
-	 If set to NO then opacity will be applied as: glColor(R,G,B,opacity);
-	 If set to YES then oapcity will be applied as: glColor(opacity, opacity, opacity, opacity );
-	 Textures with premultiplied alpha will have this property by default on YES. Otherwise the default value is NO
-	 @since v0.8
-	 */
-	virtual void setIsOpacityModifyRGB(bool bValue) = 0;
+    /**
+     * Changes the OpacityModifyRGB property. 
+     * If thie property is set to true, then the rendered color will be affected by opacity.
+     * Normally, r = r * opacity/255, g = g * opacity/255, b = b * opacity/255.
+     *
+     * @param   bValue  true then the opacity will be applied as: glColor(R,G,B,opacity);
+     *                  false then the opacity will be applied as: glColor(opacity, opacity, opacity, opacity);
+     */
+    virtual void setOpacityModifyRGB(bool bValue) = 0;
 
-	/** returns whether or not the opacity will be applied using glColor(R,G,B,opacity) or glColor(opacity, opacity, opacity, opacity);
-	 @since v0.8
-	 */
-	virtual bool getIsOpacityModifyRGB(void) = 0;
+    /**
+     * Returns whether or not the opacity will be applied using glColor(R,G,B,opacity) 
+     * or glColor(opacity, opacity, opacity, opacity)
+     *
+     * @return  Returns opacity modify flag.
+     */
+    virtual bool isOpacityModifyRGB(void) = 0;
 };
 
 /**

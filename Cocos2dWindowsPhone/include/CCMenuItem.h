@@ -136,8 +136,8 @@ public:
 	virtual void setColor(const ccColor3B& color);
 	virtual const ccColor3B& getColor();
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-	virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
 protected:
 	ccColor3B	m_tColorBackup;
 	float		m_fOriginalScale;
@@ -249,8 +249,8 @@ public:
 	virtual void unselected();
 	virtual void setIsEnabled(bool bEnabled);
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-	virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
 };
 
 /** @brief CCMenuItemImage accepts images as items.
@@ -332,8 +332,8 @@ public:
 	virtual void unselected();
 	virtual void setIsEnabled(bool var);
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-	virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
 };
 
 NS_CC_END

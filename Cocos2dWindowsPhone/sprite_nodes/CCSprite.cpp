@@ -993,14 +993,14 @@ void CCSprite::setColor(const ccColor3B& color3)
 	updateColor();
 }
 
-void CCSprite::setIsOpacityModifyRGB(bool bValue)
+void CCSprite::setOpacityModifyRGB(bool bValue)
 {
 	ccColor3B oldColor = m_sColor;
 	m_bOpacityModifyRGB = bValue;
 	m_sColor = oldColor;
 }
 
-bool CCSprite::getIsOpacityModifyRGB(void)
+bool CCSprite::isOpacityModifyRGB(void)
 {
 	return m_bOpacityModifyRGB;
 }
@@ -1066,13 +1066,13 @@ void CCSprite::updateBlendFunc(void)
 	{
 		m_sBlendFunc.src = CC_SRC_ALPHA;
 		m_sBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
-		setIsOpacityModifyRGB(false);
+		setOpacityModifyRGB(false);
 	}
 	else
 	{
 		m_sBlendFunc.src = CC_BLEND_SRC;
 		m_sBlendFunc.dst = CC_BLEND_DST;
-		setIsOpacityModifyRGB(true);
+		setOpacityModifyRGB(true);
 	}
 }
 

@@ -29,13 +29,12 @@ THE SOFTWARE.
 #define __MISC_NODE_CCPROGRESS_TIMER_H__
 
 #include "CCSprite.h"
-
-namespace cocos2d
-{
-	class CCDXProgressTimer;
+#include "CCPlatformMacros.h"
+NS_CC_BEGIN
+class CCDXProgressTimer;
 /** Types of progress
- @since v0.99.1
- */
+@since v0.99.1
+*/
 typedef enum {
 	/// Radial Counter-Clockwise 
 	kCCProgressTimerTypeRadialCCW,
@@ -50,17 +49,17 @@ typedef enum {
 	/// Vertical Top-Bottom
 	kCCProgressTimerTypeVerticalBarTB,
 	/// Radial Counter-Clockwise
-    kCCProgressTimerTypeRadial,
-    /// Bar
-    kCCProgressTimerTypeBar,
+	kCCProgressTimerTypeRadial,
+	/// Bar
+	kCCProgressTimerTypeBar,
 } CCProgressTimerType;
 
 /**
- @brief CCProgresstimer is a subclass of CCNode.
- It renders the inner sprite according to the percentage.
- The progress can be Radial, Horizontal or vertical.
- @since v0.99.1
- */
+@brief CCProgresstimer is a subclass of CCNode.
+It renders the inner sprite according to the percentage.
+The progress can be Radial, Horizontal or vertical.
+@since v0.99.1
+*/
 class CC_DLL CCProgressTimer : public CCNode
 {
 public:
@@ -77,7 +76,7 @@ public:
 
 	bool initWithFile(const char *pszFileName);
 	bool initWithTexture(CCTexture2D *pTexture);
-
+	bool initWithSprite(CCSprite* sp);
 	void setPercentage(float fPercentage);
 	void setSprite(CCSprite *pSprite);
 	void setType(CCProgressTimerType type);
@@ -87,7 +86,7 @@ public:
 public:
 	static CCProgressTimer* progressWithFile(const char *pszFileName);
 	static CCProgressTimer* progressWithTexture(CCTexture2D *pTexture);
-
+	static CCProgressTimer* create(CCSprite* sp);
 protected:
 	ccVertex2F vertexFromTexCoord(const CCPoint& texCoord);
 	void updateProgress(void);
@@ -104,7 +103,8 @@ protected:
 	ccV2F_C4B_T2F *m_pVertexData;
 
 	static CCDXProgressTimer mDXProgressTimer;
-
+	bool m_bReverseDirection;
+	CC_SYNTHESIZE(CCPoint, m_tBarChangeRate, BarChangeRate);
 };
 
 class CC_DLL CCDXProgressTimer
@@ -143,6 +143,6 @@ private:
 	bool mIsInit;
 };
 
-}
+NS_CC_END
 
 #endif //__MISC_NODE_CCPROGRESS_TIMER_H__

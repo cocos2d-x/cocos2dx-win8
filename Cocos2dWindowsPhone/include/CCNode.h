@@ -237,8 +237,8 @@ class CC_DLL CCNode : public CCObject
 		*/
 		CC_PROPERTY_PASS_BY_REF(CCSize, m_tContentSizeInPixels, ContentSizeInPixels)
 
-		/** whether or not the node is running */
-		CC_PROPERTY_READONLY(bool, m_bIsRunning, IsRunning)
+		///** whether or not the node is running */
+		//CC_PROPERTY_READONLY(bool, m_bIsRunning, IsRunning)
 
 		/** A weak reference to the parent */
 		CC_PROPERTY(CCNode *, m_pParent, Parent)

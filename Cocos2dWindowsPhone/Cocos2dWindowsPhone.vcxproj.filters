@@ -566,9 +566,6 @@
     <ClInclude Include=".\include\ccMacros.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include=".\include\CCMenu.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include=".\include\CCMenuItem.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -741,6 +738,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\CCFileUtils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCMenu.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

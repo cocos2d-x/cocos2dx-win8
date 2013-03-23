@@ -321,7 +321,6 @@
     <ClInclude Include=".\include\CCLabelTTF.h" />
     <ClInclude Include=".\include\CCLayer.h" />
     <ClInclude Include=".\include\ccMacros.h" />
-    <ClInclude Include=".\include\CCMenu.h" />
     <ClInclude Include=".\include\CCMenuItem.h" />
     <ClInclude Include=".\include\CCMotionStreak.h" />
     <ClInclude Include=".\include\CCNode.h" />
@@ -383,6 +382,7 @@
     <ClInclude Include=".\support\zip_support\ZipUtils.h" />
     <ClInclude Include=".\targetver.h" />
     <ClInclude Include="include\CCFileUtils.h" />
+    <ClInclude Include="include\CCMenu.h" />
     <ClInclude Include="include\ccTypeInfo.h" />
   </ItemGroup>
   <ItemGroup>

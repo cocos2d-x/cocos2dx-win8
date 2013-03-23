@@ -231,8 +231,8 @@ public:
 	/** BlendFunction. Conforms to CCBlendProtocol protocol */
 	CC_PROPERTY(ccBlendFunc, m_tBlendFunc, BlendFunc)
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-    virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
     
 protected:
 	virtual void updateColor();
@@ -300,30 +300,40 @@ If ' compressedInterpolation' is enabled (default mode) you will see both the st
 class CC_DLL CCLayerGradient : public CCLayerColor
 {
 public:
+
     /** Creates a full-screen CCLayer with a gradient between start and end. */
     static CCLayerGradient* create(const ccColor4B& start, const ccColor4B& end);
 
     /** Creates a full-screen CCLayer with a gradient between start and end in the direction of v. */
     static CCLayerGradient* create(const ccColor4B& start, const ccColor4B& end, const CCPoint& v);
 
+    virtual bool init();
     /** Initializes the CCLayer with a gradient between start and end. */
     virtual bool initWithColor(const ccColor4B& start, const ccColor4B& end);
 
     /** Initializes the CCLayer with a gradient between start and end in the direction of v. */
     virtual bool initWithColor(const ccColor4B& start, const ccColor4B& end, const CCPoint& v);
 
-	CC_PROPERTY_PASS_BY_REF(ccColor3B, m_startColor, StartColor)
-	CC_PROPERTY_PASS_BY_REF(ccColor3B, m_endColor, EndColor)
+    CC_PROPERTY_PASS_BY_REF(ccColor3B, m_startColor, StartColor)
+    CC_PROPERTY_PASS_BY_REF(ccColor3B, m_endColor, EndColor)
     CC_PROPERTY(CCubyte, m_cStartOpacity, StartOpacity)
     CC_PROPERTY(CCubyte, m_cEndOpacity, EndOpacity)
-	CC_PROPERTY_PASS_BY_REF(CCPoint, m_AlongVector, Vector)
+    CC_PROPERTY_PASS_BY_REF(CCPoint, m_AlongVector, Vector)
 
     /** Whether or not the interpolation will be compressed in order to display all the colors of the gradient both in canonical and non canonical vectors
     Default: YES
     */
-    CC_PROPERTY(bool, m_bCompressedInterpolation, IsCompressedInterpolation)
+protected:
+    bool m_bCompressedInterpolation;
+public:
+    virtual void setCompressedInterpolation(bool bCompressedInterpolation);
+    virtual bool isCompressedInterpolation();
 
-    CREATE_FUNC(CCLayerGradient);
+    //@deprecated: This interface will be deprecated sooner or later.
+    static CCLayerGradient* node();
+    
+    static CCLayerGradient* create();
+
 protected:
     virtual void updateColor();
 };

@@ -171,17 +171,19 @@ void CCAtlasNode::setOpacity(CCubyte opacity)
 		this->setColor(m_tColorUnmodified);
 }
 
-void CCAtlasNode::setIsOpacityModifyRGB(bool bValue)
+
+bool CCAtlasNode::isOpacityModifyRGB()
 {
-	ccColor3B oldColor	= this->m_tColor;
-	m_bIsOpacityModifyRGB = bValue;
-	this->m_tColor		= oldColor;
+    return m_bIsOpacityModifyRGB;
 }
 
-bool CCAtlasNode::getIsOpacityModifyRGB()
+void CCAtlasNode::setOpacityModifyRGB(bool bValue)
 {
-	return m_bIsOpacityModifyRGB;
+    ccColor3B oldColor = this->getColor();
+    m_bIsOpacityModifyRGB = bValue;
+    this->setColor(oldColor);
 }
+
 
 void CCAtlasNode::updateOpacityModifyRGB()
 {

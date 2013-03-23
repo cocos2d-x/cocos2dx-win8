@@ -148,7 +148,8 @@ namespace cocos2d{
 		/** conforms to CCRGBAProtocol protocol */
 		CC_PROPERTY_PASS_BY_REF(ccColor3B, m_tColor, Color)
 		/** conforms to CCRGBAProtocol protocol */
-		CC_PROPERTY(bool, m_bIsOpacityModifyRGB, IsOpacityModifyRGB)
+		bool m_bIsOpacityModifyRGB;
+
 	protected:
 		// string to render
 		unsigned short* m_sString;
@@ -190,6 +191,9 @@ namespace cocos2d{
 		virtual void setAlignment(CCTextAlignment alignment);
 		virtual void setWidth(float width);
 		virtual void setLineBreakWithoutSpace(bool breakWithoutSpace);
+
+		virtual bool isOpacityModifyRGB();
+		virtual void setOpacityModifyRGB(bool isOpacityModifyRGB);
 
 #if CC_LABELBMFONT_DEBUG_DRAW
 		virtual void draw();

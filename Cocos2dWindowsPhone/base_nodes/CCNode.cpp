@@ -61,7 +61,7 @@ CCNode::CCNode(void)
 , m_tAnchorPointInPixels(CCPointZero)
 , m_tContentSize(CCSizeZero)
 , m_tContentSizeInPixels(CCSizeZero)
-, m_bIsRunning(false)
+, m_bRunning(false)
 , m_pParent(NULL)
 // "whole screen" objects. like Scenes and Layers, should set isRelativeAnchorPoint to false
 , m_bIsRelativeAnchorPoint(true)
@@ -471,12 +471,6 @@ const CCSize& CCNode::getContentSizeInPixels()
 	return m_tContentSizeInPixels;
 }
 
-
-// isRunning getter
-//bool CCNode::getIsRunning()
-//{
-//	return m_bIsRunning;
-//}
 bool CCNode::isRunning()
 {
     return m_bRunning;
@@ -625,7 +619,7 @@ void CCNode::addChild(CCNode *child, int zOrder, int tag)
 
 	child->setParent(this);
 	child->setOrderOfArrival(s_globalOrderOfArrival++);
-	if( m_bIsRunning )
+	if( m_bRunning )
 	{
 		child->onEnter();
 		child->onEnterTransitionDidFinish();
@@ -697,7 +691,7 @@ void CCNode::removeAllChildrenWithCleanup(bool cleanup)
 				// IMPORTANT:
 				//  -1st do onExit
 				//  -2nd cleanup
-				if(m_bIsRunning)
+				if(m_bRunning)
 				{
 					pNode->onExit();
 				}
@@ -721,7 +715,7 @@ void CCNode::detachChild(CCNode *child, bool doCleanup)
 	// IMPORTANT:
 	//  -1st do onExit
 	//  -2nd cleanup
-	if (m_bIsRunning)
+	if (m_bRunning)
 	{
 		child->onExit();
 	}
@@ -976,7 +970,7 @@ void CCNode::onEnter()
 
 	this->resumeSchedulerAndActions();
 
-	m_bIsRunning = true;
+	m_bRunning = true;
 
     if (m_nScriptHandler)
     {
@@ -993,7 +987,7 @@ void CCNode::onExit()
 {
 	this->pauseSchedulerAndActions();
 
-	m_bIsRunning = false;
+	m_bRunning = false;
 
     if (m_nScriptHandler)
     {
@@ -1023,7 +1017,7 @@ void CCNode::unregisterScriptHandler(void)
 CCAction * CCNode::runAction(CCAction* action)
 {
 	CCAssert( action != NULL, "Argument must be non-nil");
-	CCActionManager::sharedManager()->addAction(action, this, !m_bIsRunning);
+	CCActionManager::sharedManager()->addAction(action, this, !m_bRunning);
 	return action;
 }
 
@@ -1076,7 +1070,7 @@ void CCNode::scheduleUpdate()
 
 void CCNode::scheduleUpdateWithPriority(int priority)
 {
-	CCScheduler::sharedScheduler()->scheduleUpdateForTarget(this, priority, !m_bIsRunning);
+	CCScheduler::sharedScheduler()->scheduleUpdateForTarget(this, priority, !m_bRunning);
 }
 
 void CCNode::unscheduleUpdate()
