@@ -124,6 +124,10 @@ CCParticleSystem::CCParticleSystem()
 	m_tBlendFunc.src = CC_BLEND_SRC;
 	m_tBlendFunc.dst = CC_BLEND_DST;
 }
+void CCParticleSystem::setAutoRemoveOnFinish(bool var)
+{
+    m_bIsAutoRemoveOnFinish = var;
+}
 // implementation CCParticleSystem
 CCParticleSystem * CCParticleSystem::create(const char *plistFile)
 {
@@ -837,6 +841,28 @@ void CCParticleSystem::setEndRadiusVar(float endRadiusVar)
 {
 	CCAssert( m_nEmitterMode == kCCParticleModeRadius, "Particle Mode should be Radius");
 	modeB.endRadiusVar = endRadiusVar;
+}
+// ParticleSystem - Additive Blending
+void CCParticleSystem::setBlendAdditive(bool additive)
+{
+    if( additive )
+    {
+        m_tBlendFunc.src = GL_SRC_ALPHA;
+        m_tBlendFunc.dst = GL_ONE;
+    }
+    else
+    {
+        if( m_pTexture && ! m_pTexture->hasPremultipliedAlpha() )
+        {
+            m_tBlendFunc.src = GL_SRC_ALPHA;
+            m_tBlendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
+        } 
+        else 
+        {
+            m_tBlendFunc.src = CC_BLEND_SRC;
+            m_tBlendFunc.dst = CC_BLEND_DST;
+        }
+    }
 }
 float CCParticleSystem::getEndRadiusVar()
 {

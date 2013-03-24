@@ -248,7 +248,15 @@ void CCProgressTimer::updateProgress(void)
 		break;
 	}
 }
+CCPoint CCProgressTimer::getMidpoint(void)
+{
+    return m_tMidpoint;
+}
 
+void CCProgressTimer::setMidpoint(CCPoint midPoint)
+{
+    m_tMidpoint = ccpClamp(midPoint, CCPointZero, ccp(1,1));
+}
 ///
 //	Update does the work of mapping the texture onto the triangles
 //	It now doesn't occur the cost of free/alloc data every update cycle.

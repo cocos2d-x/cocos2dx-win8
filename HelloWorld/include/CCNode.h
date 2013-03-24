@@ -200,23 +200,23 @@ class CC_DLL CCNode : public CCObject
 		* @param visible   true if the node is visible, false if the node is hidden.
 		*/
 		virtual void setVisible(bool visible);
-		/**
-		* Determines if the node is visible
-		*
-		* @see setVisible(bool)
-		*
-		* @return true if the node is visible, false if the node is hidden.
-		*/
-		virtual bool isVisible();
-		virtual bool isRunning();
-		/** anchorPoint is the point around which all transformations and positioning manipulations take place.
-		It's like a pin in the node where it is "attached" to its parent.
-		The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.
-		But you can use values higher than (1,1) and lower than (0,0) too.
-		The default anchorPoint is (0.5,0.5), so it starts in the center of the node.
-		@since v0.8
-		*/
-		CC_PROPERTY_PASS_BY_REF(CCPoint, m_tAnchorPoint, AnchorPoint)
+	/**
+	* Determines if the node is visible
+	*
+	* @see setVisible(bool)
+	*
+	* @return true if the node is visible, false if the node is hidden.
+	*/
+	virtual bool isVisible();
+	virtual bool isRunning();
+	/** anchorPoint is the point around which all transformations and positioning manipulations take place.
+	It's like a pin in the node where it is "attached" to its parent.
+	The anchorPoint is normalized, like a percentage. (0,0) means the bottom-left corner and (1,1) means the top-right corner.
+	But you can use values higher than (1,1) and lower than (0,0) too.
+	The default anchorPoint is (0.5,0.5), so it starts in the center of the node.
+	@since v0.8
+	*/
+	CC_PROPERTY_PASS_BY_REF(CCPoint, m_tAnchorPoint, AnchorPoint)
 
 		/** The anchorPoint in absolute pixels.
 		Since v0.8 you can only read it. If you wish to modify it, use anchorPoint instead
@@ -305,15 +305,15 @@ public:
 	The node will be created as "autorelease".
 	*/
 	static CCNode * create(void);
-	 virtual void setOrderOfArrival(unsigned int uOrderOfArrival);
-    /**
-     * Returns the arrival order, indecates which children is added previously.
-     *
-     * @see setOrderOfArrival(unsigned int)
-     *
-     * @return The arrival order.
-     */
-    virtual unsigned int getOrderOfArrival();
+	virtual void setOrderOfArrival(unsigned int uOrderOfArrival);
+	/**
+	* Returns the arrival order, indecates which children is added previously.
+	*
+	* @see setOrderOfArrival(unsigned int)
+	*
+	* @return The arrival order.
+	*/
+	virtual unsigned int getOrderOfArrival();
 	//scene managment
 
 	/** callback that is called every time the CCNode enters the 'stage'.
@@ -596,30 +596,30 @@ public:
 
 
 
-	    /**
-     * Sets whether the anchor point will be (0,0) when you position this node.
-     *
-     * This is an internal method, only used by CCLayer and CCScene. Don't call it outside framework.
-     * The default value is false, while in CCLayer and CCScene are true
-     *
-     * @param ignore    true if anchor point will be (0,0) when you position this node
-     * @todo This method shoud be renamed as setIgnoreAnchorPointForPosition(bool) or something with "set"
-     */
-    virtual void ignoreAnchorPointForPosition(bool ignore);
-    /**
-     * Gets whether the anchor point will be (0,0) when you position this node.
-     *
-     * @see ignoreAnchorPointForPosition(bool)
-     *
-     * @return true if the anchor point will be (0,0) when you position this node.
-     */
-    virtual bool isIgnoreAnchorPointForPosition();
+	/**
+	* Sets whether the anchor point will be (0,0) when you position this node.
+	*
+	* This is an internal method, only used by CCLayer and CCScene. Don't call it outside framework.
+	* The default value is false, while in CCLayer and CCScene are true
+	*
+	* @param ignore    true if anchor point will be (0,0) when you position this node
+	* @todo This method shoud be renamed as setIgnoreAnchorPointForPosition(bool) or something with "set"
+	*/
+	virtual void ignoreAnchorPointForPosition(bool ignore);
+	/**
+	* Gets whether the anchor point will be (0,0) when you position this node.
+	*
+	* @see ignoreAnchorPointForPosition(bool)
+	*
+	* @return true if the anchor point will be (0,0) when you position this node.
+	*/
+	virtual bool isIgnoreAnchorPointForPosition();
 	unsigned int m_uOrderOfArrival; 
 	bool m_bTransformDirty;             ///< transform dirty flag
-    bool m_bInverseDirty;               ///< transform dirty flag
+	bool m_bInverseDirty;               ///< transform dirty flag
 	bool m_bReorderChildDirty;
-    bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
-                                          ///< Used by CCLayer and CCScene.
+	bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
+	///< Used by CCLayer and CCScene.
 	bool m_bVisible;                    ///< is this node visible
 
 };
