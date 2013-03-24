@@ -97,7 +97,7 @@ void CCLayer::registerWithTouchDispatcher()
 
     if (m_pScriptHandlerEntry)
     {
-        if (m_pScriptHandlerEntry->getIsMultiTouches())
+        if (m_pScriptHandlerEntry->isMultiTouches())
         {
             pDispatcher->addStandardDelegate(this,0);
             LUALOG("[LUA] Add multi-touches event handler: %d", m_pScriptHandlerEntry->getHandler());
@@ -117,7 +117,7 @@ void CCLayer::registerWithTouchDispatcher()
 void CCLayer::registerScriptTouchHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches)
 {
     unregisterScriptTouchHandler();
-    m_pScriptHandlerEntry = CCTouchScriptHandlerEntry::entryWithHandler(nHandler, bIsMultiTouches, nPriority, bSwallowsTouches);
+    m_pScriptHandlerEntry = CCTouchScriptHandlerEntry::create(nHandler, bIsMultiTouches, nPriority, bSwallowsTouches);
     m_pScriptHandlerEntry->retain();
 }
 
@@ -132,12 +132,12 @@ void CCLayer::unregisterScriptTouchHandler(void)
 
 int CCLayer::excuteScriptTouchHandler(int nEventType, CCTouch *pTouch)
 {
-    return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeTouchEvent(m_pScriptHandlerEntry->getHandler(), nEventType, pTouch);
+    return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeLayerTouchEvent(this, nEventType, pTouch);
 }
 
 int CCLayer::excuteScriptTouchHandler(int nEventType, CCSet *pTouches)
 {
-    return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeTouchesEvent(m_pScriptHandlerEntry->getHandler(), nEventType, pTouches);
+    return CCScriptEngineManager::sharedManager()->getScriptEngine()->executeLayerTouchesEvent(this, nEventType, pTouches);
 }
 
 

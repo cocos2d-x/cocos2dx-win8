@@ -34,112 +34,146 @@ typedef struct lua_State lua_State;
 NS_CC_BEGIN
 
 class CCTimer;
+class CCLayer;
+class CCMenuItem;
+class CCNotificationCenter;
+class CCCallFunc;
+//class CCAcceleration;
 
-// Lua support for CCScheduler
-class CCSchedulerScriptHandlerEntry : public CCObject
+enum ccScriptType {
+    kScriptTypeNone = 0,
+    kScriptTypeLua,
+    kScriptTypeJavascript
+};
+
+class CCScriptHandlerEntry : public CCObject
+{
+public:
+    static CCScriptHandlerEntry* create(int nHandler);
+    ~CCScriptHandlerEntry(void);
+    
+    int getHandler(void) {
+        return m_nHandler;
+    }
+    
+    int getEntryId(void) {
+        return m_nEntryId;
+    }
+    
+protected:
+    CCScriptHandlerEntry(int nHandler)
+    : m_nHandler(nHandler)
+    {
+        static int newEntryId = 0;
+        newEntryId++;
+        m_nEntryId = newEntryId;
+    }
+    
+    int m_nHandler;
+    int m_nEntryId;
+};
+
+/**
+ * @addtogroup script_support
+ * @{
+ */
+
+class CCSchedulerScriptHandlerEntry : public CCScriptHandlerEntry
 {
 public:
     // nHandler return by tolua_ref_function(), called from LuaCocos2d.cpp
-    static CCSchedulerScriptHandlerEntry* entryWithHandler(int nHandler, ccTime fInterval, bool bPaused);
+    static CCSchedulerScriptHandlerEntry* create(int nHandler, float fInterval, bool bPaused);
     ~CCSchedulerScriptHandlerEntry(void);
     
-    inline cocos2d::CCTimer* getTimer(void) {
+    cocos2d::CCTimer* getTimer(void) {
         return m_pTimer;
     }
     
-    inline bool isPaused(void) {
+    bool isPaused(void) {
         return m_bPaused;
     }
     
-    inline int getEntryID(void) {
-        return m_nEntryID;
-    }
-    
-    inline void markedForDeletion(void) {
+    void markedForDeletion(void) {
         m_bMarkedForDeletion = true;
     }
     
-    inline bool isMarkedForDeletion(void) {
+    bool isMarkedForDeletion(void) {
         return m_bMarkedForDeletion;
     }
     
 private:
-    CCSchedulerScriptHandlerEntry(void);
-    bool initWithHandler(int nHandler, ccTime fInterval, bool bPaused);
+    CCSchedulerScriptHandlerEntry(int nHandler)
+    : CCScriptHandlerEntry(nHandler)
+    , m_pTimer(NULL)
+    , m_bPaused(false)
+    , m_bMarkedForDeletion(false)
+    {
+    }
+    bool init(float fInterval, bool bPaused);
     
     cocos2d::CCTimer*   m_pTimer;
     bool                m_bPaused;
     bool                m_bMarkedForDeletion;
-    int                 m_nHandler;
-    int                 m_nEntryID;
 };
 
 
-// Lua support for touch events
-class CCTouchScriptHandlerEntry : public CCObject
+
+class CCTouchScriptHandlerEntry : public CCScriptHandlerEntry
 {
 public:
-    static CCTouchScriptHandlerEntry* entryWithHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches);
+    static CCTouchScriptHandlerEntry* create(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches);
     ~CCTouchScriptHandlerEntry(void);
     
-    inline int getHandler(void) {
-        return m_nHandler;
-    }
-    
-    inline bool getIsMultiTouches(void) {
+    bool isMultiTouches(void) {
         return m_bIsMultiTouches;
     }
     
-    inline int getPriority(void) {
+    int getPriority(void) {
         return m_nPriority;
     }
     
-    inline bool getSwallowsTouches(void) {
+    bool getSwallowsTouches(void) {
         return m_bSwallowsTouches;
     }
     
 private:
-    CCTouchScriptHandlerEntry(void);
-    bool initWithHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches);
+    CCTouchScriptHandlerEntry(int nHandler)
+    : CCScriptHandlerEntry(nHandler)
+    , m_bIsMultiTouches(false)
+    , m_nPriority(0)
+    , m_bSwallowsTouches(false)
+    {
+    }
+    bool init(bool bIsMultiTouches, int nPriority, bool bSwallowsTouches);
     
-    int     m_nHandler;
     bool    m_bIsMultiTouches;
     int     m_nPriority;
     bool    m_bSwallowsTouches;
 };
 
 
-class CC_DLL CCScriptEngineProtocol : public CCObject
+// Don't make CCScriptEngineProtocol inherits from CCObject since setScriptEngine is invoked only once in AppDelegate.cpp,
+// It will affect the lifecycle of ScriptCore instance, the autorelease pool will be destroyed before destructing ScriptCore.
+// So a crash will appear on Win32 if you click the close button.
+class CC_DLL CCScriptEngineProtocol
 {
 public:
-    /**
-     @brief Method used to get a pointer to the lua_State that the script module is attached to.
-     @return A pointer to the lua_State that the script module is attached to.
-     */
-    virtual lua_State* getLuaState(void) = 0;
+    virtual ~CCScriptEngineProtocol() {};
     
-    /**
-     @brief Remove CCObject from lua state
-     @param object to remove
-     */
-    virtual void removeCCObjectByID(int nLuaID) = 0;
+    /** Get script type */
+    virtual ccScriptType getScriptType() { return kScriptTypeNone; };
+
+    /** Remove script object. */
+    virtual void removeScriptObjectByCCObject(CCObject* pObj) = 0;
     
-    /**
-     @brief Remove Lua function handler
-     */
-    virtual void removeLuaHandler(int nHandler) = 0;
-    
-    /**
-     @brief Add a path to find lua files in
-     @param path to be added to the Lua path
-     */
-    virtual void addSearchPath(const char* path) = 0;
+    /** Remove script function handler, only CCLuaEngine class need to implement this function. */
+    virtual void removeScriptHandler(int nHandler) {};
     
     /**
      @brief Execute script code contained in the given string.
      @param codes holding the valid script code that should be executed.
-     @return 0 if the string is excuted correctly.
-     @return other if the string is excuted wrongly.
+     @return 0 if the string is executed correctly.
+     @return other if the string is executed wrongly.
      */
     virtual int executeString(const char* codes) = 0;
     
@@ -158,27 +192,33 @@ public:
     virtual int executeGlobalFunction(const char* functionName) = 0;
     
     /**
-     @brief Execute a function by handler
-     @param The function handler
-     @param Number of parameters
+     @brief Execute a node event function
+     @param pNode which node produce this event
+     @param nAction kCCNodeOnEnter,kCCNodeOnExit,kCCMenuItemActivated,kCCNodeOnEnterTransitionDidFinish,kCCNodeOnExitTransitionDidStart
      @return The integer value returned from the script function.
      */
-    virtual int executeFunctionByHandler(int nHandler, int numArgs = 0) = 0;
-    virtual int executeFunctionWithIntegerData(int nHandler, int data) = 0;
-    virtual int executeFunctionWithFloatData(int nHandler, float data) = 0;
-    virtual int executeFunctionWithBooleanData(int nHandler, bool data) = 0;
-    virtual int executeFunctionWithCCObject(int nHandler, CCObject* pObject, const char* typeName) = 0;    
-    virtual int pushIntegerToLuaStack(int data) = 0;
-    virtual int pushFloatToLuaStack(int data) = 0;
-    virtual int pushBooleanToLuaStack(int data) = 0;
-    virtual int pushCCObjectToLuaStack(CCObject* pObject, const char* typeName) = 0;
+    virtual int executeNodeEvent(CCNode* pNode, int nAction) = 0;
     
-    // functions for excute touch event
-    virtual int executeTouchEvent(int nHandler, int eventType, CCTouch *pTouch) = 0;
-    virtual int executeTouchesEvent(int nHandler, int eventType, CCSet *pTouches) = 0;
+    virtual int executeMenuItemEvent(CCMenuItem* pMenuItem) = 0;
+    /** Execute a notification event function */
+    virtual int executeNotificationEvent(CCNotificationCenter* pNotificationCenter, const char* pszName) = 0;
     
-    // execute a schedule function
-    virtual int executeSchedule(int nHandler, ccTime dt) = 0;
+    /** execute a callfun event */
+    virtual int executeCallFuncActionEvent(CCCallFunc* pAction, CCObject* pTarget = NULL) = 0;
+    /** execute a schedule function */
+    virtual int executeSchedule(int nHandler, float dt, CCNode* pNode = NULL) = 0;
+    
+    /** functions for executing touch event */
+    virtual int executeLayerTouchesEvent(CCLayer* pLayer, int eventType, CCSet *pTouches) = 0;
+    virtual int executeLayerTouchEvent(CCLayer* pLayer, int eventType, CCTouch *pTouch) = 0;
+
+    /** functions for keypad event */
+    virtual int executeLayerKeypadEvent(CCLayer* pLayer, int eventType) = 0;
+
+    /** execute a accelerometer event */
+    virtual int executeAccelerometerEvent(CCLayer* pLayer, CCAcceleration* pAccelerationValue) = 0;
+    /** function for assert test */
+    virtual bool executeAssert(bool cond, const char *msg = NULL) = 0;
 };
 
 /**
@@ -189,25 +229,28 @@ public:
 class CC_DLL CCScriptEngineManager
 {
 public:
-	~CCScriptEngineManager(void);
+    ~CCScriptEngineManager(void);
     
-	CCScriptEngineProtocol* getScriptEngine(void) {
+    CCScriptEngineProtocol* getScriptEngine(void) {
         return m_pScriptEngine;
     }
-	void setScriptEngine(CCScriptEngineProtocol *pScriptEngine);
+    void setScriptEngine(CCScriptEngineProtocol *pScriptEngine);
     void removeScriptEngine(void);
-
+    
     static CCScriptEngineManager* sharedManager(void);
     static void purgeSharedManager(void);
-
+    
 private:
     CCScriptEngineManager(void)
     : m_pScriptEngine(NULL)
     {
     }
     
-	CCScriptEngineProtocol *m_pScriptEngine;
+    CCScriptEngineProtocol *m_pScriptEngine;
 };
+
+// end of script_support group
+/// @}
 
 NS_CC_END
 

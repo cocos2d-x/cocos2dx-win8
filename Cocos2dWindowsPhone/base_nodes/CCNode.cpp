@@ -75,12 +75,22 @@ CCNode::CCNode(void)
 #endif
 , m_nScriptHandler(0)
 {
-    // nothing
+	// set default scheduler and actionManager
+    CCDirector *director = CCDirector::sharedDirector();
+    m_pActionManager = director->getActionManager();
+    m_pActionManager->retain();
+    m_pScheduler = director->getScheduler();
+    m_pScheduler->retain();
+
+
 }
+
 CCNode::~CCNode(void)
 {
 	CCLOGINFO( "cocos2d: deallocing" );
 
+	CC_SAFE_RELEASE(m_pActionManager);
+    CC_SAFE_RELEASE(m_pScheduler);
 	// attributes
 	CC_SAFE_RELEASE(m_pCamera);
 
@@ -974,7 +984,7 @@ void CCNode::onEnter()
 
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnEnter);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnter);
     }
 }
 
@@ -991,7 +1001,7 @@ void CCNode::onExit()
 
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnExit);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExit);
     }
 
 	arrayMakeObjectsPerformSelector(m_pChildren,onExit, CCNode*);  
@@ -1008,7 +1018,7 @@ void CCNode::unregisterScriptHandler(void)
 {
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nScriptHandler);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptHandler);
         LUALOG("[LUA] Remove CCNode event handler: %d", m_nScriptHandler);
         m_nScriptHandler = 0;
     }
@@ -1017,35 +1027,35 @@ void CCNode::unregisterScriptHandler(void)
 CCAction * CCNode::runAction(CCAction* action)
 {
 	CCAssert( action != NULL, "Argument must be non-nil");
-	CCActionManager::sharedManager()->addAction(action, this, !m_bRunning);
+	m_pActionManager->addAction(action, this, !m_bRunning);
 	return action;
 }
 
 void CCNode::stopAllActions()
 {
-	CCActionManager::sharedManager()->removeAllActionsFromTarget(this);
+	m_pActionManager->removeAllActionsFromTarget(this);
 }
 
 void CCNode::stopAction(CCAction* action)
 {
-	CCActionManager::sharedManager()->removeAction(action);
+	m_pActionManager->removeAction(action);
 }
 
 void CCNode::stopActionByTag(int tag)
 {
 	CCAssert( tag != kCCActionTagInvalid, "Invalid tag");
-	CCActionManager::sharedManager()->removeActionByTag(tag, this);
+	m_pActionManager->removeActionByTag(tag, this);
 }
 
 CCAction * CCNode::getActionByTag(int tag)
 {
 	CCAssert( tag != kCCActionTagInvalid, "Invalid tag");
-	return CCActionManager::sharedManager()->getActionByTag(tag, this);
+	return m_pActionManager->getActionByTag(tag, this);
 }
 
 unsigned int CCNode::numberOfRunningActions()
 {
-	return CCActionManager::sharedManager()->numberOfRunningActionsInTarget(this);
+	return m_pActionManager->numberOfRunningActionsInTarget(this);
 }
 
 // CCNode - Callbacks
@@ -1070,12 +1080,12 @@ void CCNode::scheduleUpdate()
 
 void CCNode::scheduleUpdateWithPriority(int priority)
 {
-	CCScheduler::sharedScheduler()->scheduleUpdateForTarget(this, priority, !m_bRunning);
+	m_pScheduler->scheduleUpdateForTarget(this, priority, !m_bRunning);
 }
 
 void CCNode::unscheduleUpdate()
 {
-	CCScheduler::sharedScheduler()->unscheduleUpdateForTarget(this);
+	m_pScheduler->unscheduleUpdateForTarget(this);
 }
 
 void CCNode::schedule(SEL_SCHEDULE selector)
@@ -1107,24 +1117,24 @@ void CCNode::unschedule(SEL_SCHEDULE selector)
 	if (selector == 0)
 		return;
 
-	CCScheduler::sharedScheduler()->unscheduleSelector(selector, this);
+	m_pScheduler->unscheduleSelector(selector, this);
 }
 
 void CCNode::unscheduleAllSelectors()
 {
-	CCScheduler::sharedScheduler()->unscheduleAllSelectorsForTarget(this);
+    m_pScheduler->unscheduleAllForTarget(this);
 }
 
 void CCNode::resumeSchedulerAndActions()
 {
-	CCScheduler::sharedScheduler()->resumeTarget(this);
-	CCActionManager::sharedManager()->resumeTarget(this);
+    m_pScheduler->resumeTarget(this);
+    m_pActionManager->resumeTarget(this);
 }
 
 void CCNode::pauseSchedulerAndActions()
 {
-	CCScheduler::sharedScheduler()->pauseTarget(this);
-	CCActionManager::sharedManager()->pauseTarget(this);
+    m_pScheduler->pauseTarget(this);
+    m_pActionManager->pauseTarget(this);
 }
 
 CCAffineTransform CCNode::nodeToParentTransform(void)

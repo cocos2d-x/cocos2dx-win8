@@ -120,6 +120,12 @@ bool CCDirector::init(void)
     m_fContentScaleFactor = 1;	
 	m_bIsContentScaleSupported = false;
 
+	// scheduler
+	m_pScheduler = new CCScheduler();
+	// action manager
+	m_pActionManager = new CCActionManager();
+	m_pScheduler->scheduleUpdateForTarget(m_pActionManager, kCCPrioritySystem, false);
+
 	// touchDispatcher
     m_pTouchDispatcher = new CCTouchDispatcher();
     m_pTouchDispatcher->init();
@@ -142,6 +148,8 @@ CCDirector::~CCDirector(void)
 	CC_SAFE_RELEASE(m_pRunningScene);
 	CC_SAFE_RELEASE(m_pNotificationNode);
 	CC_SAFE_RELEASE(m_pobScenesStack);
+	CC_SAFE_RELEASE(m_pScheduler);
+	CC_SAFE_RELEASE(m_pActionManager);
 
 	// pop the autorelease pool
 	CCPoolManager::sharedPoolManager()->pop();
@@ -186,7 +194,7 @@ void CCDirector::drawScene(void)
 	//tick before glClear: issue #533
 	if (! m_bPaused)
 	{
-		CCScheduler::sharedScheduler()->tick(m_fDeltaTime);
+		m_pScheduler->update(m_fDeltaTime);
 	}
 	
 	m_pobOpenGLView->clearRender(NULL);
@@ -593,8 +601,8 @@ void CCDirector::resetDirector()
 	// purge all managers
 	CCAnimationCache::purgeSharedAnimationCache();
  	CCSpriteFrameCache::purgeSharedSpriteFrameCache();
-	CCActionManager::sharedManager()->purgeSharedManager();
-	CCScheduler::purgeSharedScheduler();
+	//CCActionManager::sharedManager()->purgeSharedManager();
+	//CCScheduler::purgeSharedScheduler();
 	CCTextureCache::purgeSharedTextureCache();
 }
 
@@ -634,8 +642,8 @@ void CCDirector::purgeDirector()
 	// purge all managers
 	CCAnimationCache::purgeSharedAnimationCache();
  	CCSpriteFrameCache::purgeSharedSpriteFrameCache();
-	CCActionManager::sharedManager()->purgeSharedManager();
-	CCScheduler::purgeSharedScheduler();
+	//CCActionManager::sharedManager()->purgeSharedManager();
+	//CCScheduler::purgeSharedScheduler();
 	CCTextureCache::purgeSharedTextureCache();
 	
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)	
@@ -824,6 +832,7 @@ bool CCDirector::enableRetinaDisplay(bool enabled)
 
 	return true;
 }
+
 void CCDirector::setScheduler(CCScheduler* pScheduler)
 {
     if (m_pScheduler != pScheduler)
@@ -834,10 +843,12 @@ void CCDirector::setScheduler(CCScheduler* pScheduler)
     }
 }
 
+
 CCScheduler* CCDirector::getScheduler()
 {
     return m_pScheduler;
 }
+
 void CCDirector::setActionManager(CCActionManager* pActionManager)
 {
     if (m_pActionManager != pActionManager)
