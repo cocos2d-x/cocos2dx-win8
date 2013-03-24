@@ -83,7 +83,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./;./include/;./platform/third_party;./include/libpng;./include/libjpeg;./include/freetype;./include/zlib$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../external;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib$(IntermediateOutputPath);../CocosDenshionWindowsPhone/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAsWinRT>true</CompileAsWinRT>
       <PreprocessorDefinitions>TIXML_USE_STL;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -98,7 +98,7 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>.\libraries\$(PlatformTarget);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\Debug\Cocos2dWindowsPhone;..\Debug\Box2DWindowsPhone;..\Debug\CocosDenshionWindowsPhone</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
       <WindowsMetadataFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)$(RootNamespace).winmd</WindowsMetadataFile>
     </Link>
@@ -120,14 +120,6 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Reference Include="Cocos2dWindowsPhone">
-      <HintPath>libraries\x86\Cocos2dWindowsPhone.winmd</HintPath>
-      <IsWinMDFile>true</IsWinMDFile>
-    </Reference>
-    <Reference Include="CocosDenshionWindowsPhone">
-      <HintPath>libraries\x86\CocosDenshionWindowsPhone.winmd</HintPath>
-      <IsWinMDFile>true</IsWinMDFile>
-    </Reference>
     <Reference Include="platform.winmd">
       <IsWinMDFile>true</IsWinMDFile>
       <Private>false</Private>
@@ -378,6 +370,17 @@
     <None Include="CCTextureAtlasVertexShader.cso">
       <DeploymentContent>true</DeploymentContent>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
+      <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CocosDenshionWindowsPhone\CocosDenshionWindowsPhone.vcxproj">
+      <Project>{54d5a760-05c6-4560-bb0e-6804d248f14a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\external\Box2D\Box2DWindowsPhone.vcxproj">
+      <Project>{06ecb3ca-e6cc-4cfb-874e-6979f9dc280b}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />

@@ -847,15 +847,15 @@ void CCParticleSystem::setBlendAdditive(bool additive)
 {
     if( additive )
     {
-        m_tBlendFunc.src = GL_SRC_ALPHA;
-        m_tBlendFunc.dst = GL_ONE;
+        m_tBlendFunc.src = CC_SRC_ALPHA;
+        m_tBlendFunc.dst = CC_ONE;
     }
     else
     {
-        if( m_pTexture && ! m_pTexture->hasPremultipliedAlpha() )
+        if( m_pTexture && ! m_pTexture->getHasPremultipliedAlpha() )
         {
-            m_tBlendFunc.src = GL_SRC_ALPHA;
-            m_tBlendFunc.dst = GL_ONE_MINUS_SRC_ALPHA;
+            m_tBlendFunc.src = CC_SRC_ALPHA;
+            m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
         } 
         else 
         {

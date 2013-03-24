@@ -35,6 +35,14 @@ NS_CC_BEGIN
 
 class CCTimer;
 
+
+enum ccScriptType {
+    kScriptTypeNone = 0,
+    kScriptTypeLua,
+    kScriptTypeJavascript
+};
+
+
 // Lua support for CCScheduler
 class CCSchedulerScriptHandlerEntry : public CCObject
 {
