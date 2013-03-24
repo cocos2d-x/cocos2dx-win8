@@ -283,7 +283,6 @@ public:
 	virtual float getRotatePerSecondVar();
 	virtual void setRotatePerSecondVar(float degrees);
 	virtual void setBlendAdditive(bool value);
-	virtual void setBlendAdditive(bool value);
 //////////////////////////////////////////////////////////////////////////
 	
 	/** start size in pixels of each particle */
@@ -344,6 +343,7 @@ public:
 public:
 	CCParticleSystem();
 	virtual ~CCParticleSystem();
+	virtual void setAutoRemoveOnFinish(bool var);
 	/** creates an initializes a CCParticleSystem from a plist file.
 	This plist files can be creted manually or with Particle Designer:
 	http://particledesigner.71squared.com/

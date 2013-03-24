@@ -105,6 +105,7 @@ protected:
 	static CCDXProgressTimer mDXProgressTimer;
 	bool m_bReverseDirection;
 	CC_SYNTHESIZE(CCPoint, m_tBarChangeRate, BarChangeRate);
+	CC_PROPERTY(CCPoint, m_tMidpoint, Midpoint);
 };
 
 class CC_DLL CCDXProgressTimer
