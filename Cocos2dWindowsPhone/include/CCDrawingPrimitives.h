@@ -84,7 +84,7 @@ void CC_DLL ccDrawQuadBezier(const CCPoint& origin, const CCPoint& control, cons
  */
 void CC_DLL ccDrawCubicBezier(const CCPoint& origin, const CCPoint& control1, const CCPoint& control2, const CCPoint& destination, int segments);
 void CC_DLL ccDrawCatmullRom( CCPointArray *arrayOfControlPoints, unsigned int segments );
-
+void CC_DLL ccDrawColor4B( CCubyte r, CCubyte g, CCubyte b, CCubyte a );
 /** draws a Cardinal Spline path.
  @warning This function could be pretty slow. Use it only for debugging purposes.
  @since v2.0

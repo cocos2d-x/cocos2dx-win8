@@ -282,6 +282,8 @@ public:
 	virtual void setRotatePerSecond(float degrees);
 	virtual float getRotatePerSecondVar();
 	virtual void setRotatePerSecondVar(float degrees);
+	virtual void setBlendAdditive(bool value);
+	virtual void setBlendAdditive(bool value);
 //////////////////////////////////////////////////////////////////////////
 	
 	/** start size in pixels of each particle */
