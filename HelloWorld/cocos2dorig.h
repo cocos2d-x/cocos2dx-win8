@@ -21,10 +21,7 @@
 #include "pch.h"
 //#include "CubeRenderer.h"
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 ref class cocos2dorig sealed : public Windows::ApplicationModel::Core::IFrameworkView
 {
 public:
@@ -48,11 +45,7 @@ protected:
     void OnPointerMoved(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::PointerEventArgs^ args);
 
 private:
-<<<<<<< HEAD
-    cocos2d::DirectXRender^ m_renderer;
-=======
     Cocos2dWindowsPhone::DirectXRender^ m_renderer;
->>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
     bool m_windowClosed;
 
 };

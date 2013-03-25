@@ -50,9 +50,6 @@ bool AppDelegate::initInstance()
 	mainView->Create();
 	//mainView->setDesignResolution(480, 320);
 	//mainView->setDesignResolution(640, 1066);
-<<<<<<< HEAD
-	mainView->setDesignResolution(320, 533);
-=======
 	CCLOG("Device Res:%d", m_deviceResolutionInPixels);
 	switch (m_deviceResolutionInPixels) 
 	{
@@ -72,7 +69,6 @@ bool AppDelegate::initInstance()
 			break;
 		}
 	}
->>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 	
 
 #endif // CC_PLATFORM_WIN8_METRO
@@ -88,11 +84,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	CCDirector *pDirector = CCDirector::sharedDirector();
 
 
-<<<<<<< HEAD
-	pDirector->setOpenGLView(&CCEGLView::sharedOpenGLView());
-=======
 	pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
->>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 
 	// turn on display FPS
 	//pDirector->setDisplayFPS(false);
