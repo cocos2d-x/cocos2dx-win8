@@ -1645,11 +1645,11 @@ void ActionCatmullRom::draw()
 {
     ActionsDemo::draw();
     
-	// move to 50,50 since the "by" path will start at 50,50
-	kmGLPushMatrix();
-	kmGLTranslatef(50, 50, 0);
-	ccDrawCatmullRom(m_pArray1, 50);
-	kmGLPopMatrix();
+	//// move to 50,50 since the "by" path will start at 50,50
+	//kmGLPushMatrix();
+	//kmGLTranslatef(50, 50, 0);
+	//ccDrawCatmullRom(m_pArray1, 50);
+	//kmGLPopMatrix();
     
 	ccDrawCatmullRom(m_pArray2,50);
 }
@@ -1724,17 +1724,17 @@ void ActionCardinalSpline::draw()
     ActionsDemo::draw();
 	
 	// move to 50,50 since the "by" path will start at 50,50
-	kmGLPushMatrix();
-	kmGLTranslatef(50, 50, 0);
-	ccDrawCardinalSpline(m_pArray, 0, 100);
-	kmGLPopMatrix();
-    
-    CCSize s = CCDirector::sharedDirector()->getWinSize();
-    
-	kmGLPushMatrix();
-	kmGLTranslatef(s.width/2, 50, 0);
-	ccDrawCardinalSpline(m_pArray, 1, 100);
-	kmGLPopMatrix();
+	//kmGLPushMatrix();
+	//kmGLTranslatef(50, 50, 0);
+	//ccDrawCardinalSpline(m_pArray, 0, 100);
+	//kmGLPopMatrix();
+ //   
+ //   CCSize s = CCDirector::sharedDirector()->getWinSize();
+ //   
+	//kmGLPushMatrix();
+	//kmGLTranslatef(s.width/2, 50, 0);
+	//ccDrawCardinalSpline(m_pArray, 1, 100);
+	//kmGLPopMatrix();
 }
 
 string ActionCardinalSpline::title()

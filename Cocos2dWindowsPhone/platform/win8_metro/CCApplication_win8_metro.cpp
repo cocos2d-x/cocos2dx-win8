@@ -25,7 +25,7 @@
 #include "CCDirector.h"
 
 using namespace Windows::UI::Core;
-using namespace Cocos2dWindowsPhone;
+
 
 
 NS_CC_BEGIN;

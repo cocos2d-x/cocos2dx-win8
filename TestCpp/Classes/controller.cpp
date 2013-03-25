@@ -17,113 +17,113 @@ static TestScene* CreateTestScene(int nIdx)
     {
     case TEST_ACTIONS:
         pScene = new ActionsTestScene(); break;
-    case TEST_TRANSITIONS:
-        pScene = new TransitionsTestScene(); break;
-     case TEST_PROGRESS_ACTIONS:
-         pScene = new ProgressActionsTestScene(); break;
-    case TEST_EFFECTS:
-        pScene = new EffectTestScene(); break;
-    case TEST_CLICK_AND_MOVE:
-        pScene = new ClickAndMoveTestScene(); break;
-    case TEST_ROTATE_WORLD:
-        pScene = new RotateWorldTestScene(); break;
-    case TEST_PARTICLE:
-        pScene = new ParticleTestScene(); break;
-    case TEST_EASE_ACTIONS:
-        pScene = new ActionsEaseTestScene(); break;
-    case TEST_MOTION_STREAK:
-        pScene = new MotionStreakTestScene(); break;
-    case TEST_DRAW_PRIMITIVES:
-        pScene = new DrawPrimitivesTestScene(); break;
-    case TEST_COCOSNODE:
-        pScene = new CocosNodeTestScene(); break;
-   // case TEST_TOUCHES:
-       // pScene = new PongScene(); break;
-    case TEST_MENU:
-        pScene = new MenuTestScene(); break;
-    case TEST_ACTION_MANAGER:
-        pScene = new ActionManagerTestScene(); break;
-    case TEST_LAYER:
-        pScene = new LayerTestScene(); break;
-    case TEST_SCENE:
-        pScene = new SceneTestScene(); break;
-    case TEST_PARALLAX:
-        pScene = new ParallaxTestScene(); break;
-    case TEST_TILE_MAP:
-        pScene = new TileMapTestScene(); break;
-    case TEST_INTERVAL:
-        pScene = new IntervalTestScene(); break;
-    case TEST_LABEL:
-        pScene = new AtlasTestScene(); break;
-    case TEST_TEXT_INPUT:
-        pScene = new TextInputTestScene(); break;
-    case TEST_SPRITE:
-        pScene = new SpriteTestScene(); break;
-    //case TEST_SCHEDULER:
-    //    pScene = new SchedulerTestScene(); break;
-    case TEST_RENDERTEXTURE:
-        pScene = new RenderTextureScene(); break;
-    case TEST_TEXTURE2D:
-        pScene = new TextureTestScene(); break;
+//    case TEST_TRANSITIONS:
+//        pScene = new TransitionsTestScene(); break;
+//     case TEST_PROGRESS_ACTIONS:
+//         pScene = new ProgressActionsTestScene(); break;
+//    case TEST_EFFECTS:
+//        pScene = new EffectTestScene(); break;
+//    case TEST_CLICK_AND_MOVE:
+//        pScene = new ClickAndMoveTestScene(); break;
+//    case TEST_ROTATE_WORLD:
+//        pScene = new RotateWorldTestScene(); break;
+//    case TEST_PARTICLE:
+//        pScene = new ParticleTestScene(); break;
+//    case TEST_EASE_ACTIONS:
+//        pScene = new ActionsEaseTestScene(); break;
+//    case TEST_MOTION_STREAK:
+//        pScene = new MotionStreakTestScene(); break;
+//    case TEST_DRAW_PRIMITIVES:
+//        pScene = new DrawPrimitivesTestScene(); break;
+//    case TEST_COCOSNODE:
+//        pScene = new CocosNodeTestScene(); break;
+//   // case TEST_TOUCHES:
+//       // pScene = new PongScene(); break;
+//    case TEST_MENU:
+//        pScene = new MenuTestScene(); break;
+//    case TEST_ACTION_MANAGER:
+//        pScene = new ActionManagerTestScene(); break;
+//    case TEST_LAYER:
+//        pScene = new LayerTestScene(); break;
+//    case TEST_SCENE:
+//        pScene = new SceneTestScene(); break;
+//    case TEST_PARALLAX:
+//        pScene = new ParallaxTestScene(); break;
+//    case TEST_TILE_MAP:
+//        pScene = new TileMapTestScene(); break;
+//    case TEST_INTERVAL:
+//        pScene = new IntervalTestScene(); break;
+//    case TEST_LABEL:
+//        pScene = new AtlasTestScene(); break;
+//    case TEST_TEXT_INPUT:
+//        pScene = new TextInputTestScene(); break;
+//    case TEST_SPRITE:
+//        pScene = new SpriteTestScene(); break;
+//    case TEST_SCHEDULER:
+//        pScene = new SchedulerTestScene(); break;
+//    case TEST_RENDERTEXTURE:
+//        pScene = new RenderTextureScene(); break;
+//    case TEST_TEXTURE2D:
+//        pScene = new TextureTestScene(); break;
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
 //    case TEST_CHIPMUNK:
 //        pScene = new ChipmunkAccelTouchTestScene(); break;
 //#endif
-    //case TEST_BOX2D:
-    //    pScene = new Box2DTestScene(); break;
-    case TEST_BOX2DBED:
-        pScene = new Box2dTestBedScene(); break;
-    case TEST_EFFECT_ADVANCE:
-        pScene = new EffectAdvanceScene(); break;
-    case TEST_ACCELEROMRTER:
-        pScene = new AccelerometerTestScene(); break;
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-    case TEST_KEYPAD:
-        pScene = new KeypadTestScene(); break;
-#endif
-    case TEST_COCOSDENSHION:
-        pScene = new CocosDenshionTestScene(); break;
-    case TEST_PERFORMANCE:
-        pScene = new PerformanceTestScene(); break;
-    case TEST_ZWOPTEX:
-        pScene = new ZwoptexTestScene(); break;
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-// bada don't support libcurl
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
-    case TEST_CURL:
-        pScene = new CurlTestScene(); break;
-#endif
-#endif
-    case TEST_USERDEFAULT:
-        pScene = new UserDefaultTestScene(); break;
-    case TEST_BUGS:
-        pScene = new BugsTestScene(); break;
-    case TEST_FONTS:
-        pScene = new FontTestScene(); break;
-    case TEST_CURRENT_LANGUAGE:
-        pScene = new CurrentLanguageTestScene(); break;
-#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
-    case TEST_TEXTURECACHE: pScene = new TextureCacheTestScene(); break;
-#endif
-    case TEST_EXTENSIONS:
-        {
-            pScene = new ExtensionsTestScene();
-        }
-        break;
-    //case TEST_SHADER:
-    //    pScene = new ShaderTestScene();
-    //    break;
-    case TEST_MUTITOUCH:
-        pScene = new MutiTouchTestScene();
-        break;
+//    case TEST_BOX2D:
+//        pScene = new Box2DTestScene(); break;
+//    case TEST_BOX2DBED:
+//        pScene = new Box2dTestBedScene(); break;
+//    case TEST_EFFECT_ADVANCE:
+//        pScene = new EffectAdvanceScene(); break;
+//    case TEST_ACCELEROMRTER:
+//        pScene = new AccelerometerTestScene(); break;
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
+//    case TEST_KEYPAD:
+//        pScene = new KeypadTestScene(); break;
+//#endif
+//    case TEST_COCOSDENSHION:
+//        pScene = new CocosDenshionTestScene(); break;
+//    case TEST_PERFORMANCE:
+//        pScene = new PerformanceTestScene(); break;
+//    case TEST_ZWOPTEX:
+//        pScene = new ZwoptexTestScene(); break;
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//// bada don't support libcurl
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
+//    case TEST_CURL:
+//        pScene = new CurlTestScene(); break;
+//#endif
+//#endif
+//    case TEST_USERDEFAULT:
+//        pScene = new UserDefaultTestScene(); break;
+//    case TEST_BUGS:
+//        pScene = new BugsTestScene(); break;
+//    case TEST_FONTS:
+//        pScene = new FontTestScene(); break;
+//    case TEST_CURRENT_LANGUAGE:
+//        pScene = new CurrentLanguageTestScene(); break;
+//#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
+//    case TEST_TEXTURECACHE: pScene = new TextureCacheTestScene(); break;
+//#endif
+//    case TEST_EXTENSIONS:
+//        {
+//            pScene = new ExtensionsTestScene();
+//        }
+//        break;
+//    case TEST_SHADER:
+//        pScene = new ShaderTestScene();
+//        break;
+//    case TEST_MUTITOUCH:
+//        pScene = new MutiTouchTestScene();
+//        break;
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
 //    case TEST_CLIPPINGNODE:
 //        pScene = new ClippingNodeTestScene();
 //        break;
 //#endif
-    case TEST_FILEUTILS:
-        pScene = new FileUtilsTestScene();
-        break;
+//    case TEST_FILEUTILS:
+//        pScene = new FileUtilsTestScene();
+//        break;
     default:
         break;
     }
