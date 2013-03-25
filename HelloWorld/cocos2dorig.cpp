@@ -45,7 +45,7 @@ void cocos2dorig::Initialize(CoreApplicationView^ applicationView)
     CoreApplication::Resuming +=
         ref new EventHandler<Platform::Object^>(this, &cocos2dorig::OnResuming);
 
-    m_renderer = ref new Cocos2dWindowsPhone::DirectXRender();
+    m_renderer = ref new cocos2d::DirectXRender();
 }
 
 void cocos2dorig::SetWindow(CoreWindow^ window)

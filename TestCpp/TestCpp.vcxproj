@@ -126,8 +126,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\grossini.png" />
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathGrossini.png" />
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister1.png" />
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister2.png" />
     <Image Include="Assets\ApplicationIcon.png" />
     <Image Include="Assets\back.png" />
+    <Image Include="Assets\Images\b1.png" />
+    <Image Include="Assets\Images\b2.png" />
+    <Image Include="Assets\Images\background.png" />
+    <Image Include="Assets\Images\background1.jpg" />
+    <Image Include="Assets\Images\background1.png" />
+    <Image Include="Assets\Images\background2.png" />
+    <Image Include="Assets\Images\background3.png" />
+    <Image Include="Assets\Images\blocks.png" />
+    <Image Include="Assets\Images\f1.png" />
+    <Image Include="Assets\Images\f2.png" />
+    <Image Include="Assets\Images\r1.png" />
+    <Image Include="Assets\Images\r2.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />

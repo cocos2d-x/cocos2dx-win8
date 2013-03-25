@@ -37,10 +37,11 @@
 #include "DirectXHelper.h"
 
 // forward declare
-namespace Cocos2dWindowsPhone
-{
-    class CCEGLView;
-	class CCImage;
+
+NS_CC_BEGIN;
+
+class CCEGLView;
+class CCImage;
 
     // Helper class that initializes the DirectX APIs in the sample apps.
 public ref class DirectXRender sealed
@@ -139,5 +140,4 @@ protected:
         );
 
 };
-
-}
+NS_CC_END;
