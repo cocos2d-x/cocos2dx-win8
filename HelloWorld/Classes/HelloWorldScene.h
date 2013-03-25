@@ -22,7 +22,10 @@
 #include "cocos2d.h"
 #include "CCGeometry.h"
 #include "SimpleAudioEngine.h"
+<<<<<<< HEAD
 #include "MyContactListener.h"
+=======
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 #include <wrl\client.h>
 #include <memory>
 #include <vector>
@@ -41,6 +44,7 @@ public:
 	// a selector callback
 	//virtual void menuCloseCallback(CCObject* pSender);
 
+<<<<<<< HEAD
 	// implement the "static node()" method manually
 	LAYER_NODE_FUNC(HelloWorld);
 
@@ -85,6 +89,20 @@ private:
 	void didAccelerate(cocos2d::CCAcceleration* pAccelerationValue);
 	//Windows::Devices::Sensors::Accelerometer^ m_accelerometer;
 	bool start;
+=======
+	// implement the "static create()" method manually
+	 CREATE_FUNC(HelloWorld);
+
+	//void registerWithTouchDispatcher();
+
+protected:
+
+private:
+	void ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
+	void ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
+	void ccTouchesMoved(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
+
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 };
 
 #endif  // __HELLOWORLD_SCENE_H__

@@ -20,12 +20,20 @@
 
 #define _CRT_SECURE_NO_WARNINGS 1
 
+<<<<<<< HEAD
 
+=======
+#include "cocos2d.h"
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 #include <wrl\client.h>
 #include <d3d11_1.h>
 #include <DirectXMath.h>
 #include <memory>
+<<<<<<< HEAD
 #include <Box2D\Box2D.h>
+=======
+
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 //#include <d2d1.h>
 
 #define XAUDIO2_HELPER_FUNCTIONS 1

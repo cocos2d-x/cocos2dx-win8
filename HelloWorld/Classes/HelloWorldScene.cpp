@@ -30,6 +30,7 @@ using namespace cocos2d;
 using namespace Windows::Foundation;
 using namespace Windows::Devices::Sensors;
 
+<<<<<<< HEAD
 b2World *world;
 b2Fixture *armFixture;
 b2Body *armBody;
@@ -85,6 +86,14 @@ HelloWorld::HelloWorld()
 	:_targets(NULL)
 	,_projectiles(NULL)
 	,_projectilesDestroyed(0)
+=======
+HelloWorld::~HelloWorld()
+{
+
+}
+
+HelloWorld::HelloWorld()
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 {
 }
 
@@ -93,11 +102,19 @@ CCScene* HelloWorld::scene()
 	CCScene * scene = NULL;
 	do 
 	{		// 'scene' is an autorelease object
+<<<<<<< HEAD
 		scene = CCScene::node();
 		CC_BREAK_IF(! scene);
 
 		// 'layer' is an autorelease object
 		HelloWorld *layer = HelloWorld::node();
+=======
+		scene = CCScene::create();
+		CC_BREAK_IF(! scene);
+
+		// 'layer' is an autorelease object
+		HelloWorld *layer = HelloWorld::create();
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 		CC_BREAK_IF(! layer);
 
 		// add layer as a child to scene
@@ -120,6 +137,7 @@ bool HelloWorld::init()
 			break;
 		}
 
+<<<<<<< HEAD
 		this->setIsTouchEnabled(true);
 		b2Vec2 gravity;
 		gravity.Set(0.0f, -10.0f);
@@ -233,12 +251,31 @@ bool HelloWorld::init()
 
 		//this->resetGame();
 		//start = true;
+=======
+
+		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
+		pLabel->setColor(ccc3(160, 80, 5));
+		this->addChild(pLabel, 0);
+
+		//this->resetGame();
+		//start = true;
+		//CCSprite *b = CCSprite::create("back.png");
+		//b->setAnchorPoint(ccp(0, 0));
+		//b->setPosition(ccp(0, 0));
+		//this->addChild(b);
+
+		setIsTouchEnabled(true);
+
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 		bRet = true;
 	} while (0);
 
 	return bRet;
 }
 
+<<<<<<< HEAD
 void HelloWorld::resetGame(ccTime dt)
 {
 	this->unschedule(schedule_selector(HelloWorld::resetGame));
@@ -533,11 +570,17 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent *event)
 		mouseJoint = (b2MouseJoint *)world->CreateJoint(&md);
 		printf("asdf");
 	}
+=======
+void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent *event)
+{
+
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 }
 
 void HelloWorld::ccTouchesMoved(CCSet* touches, CCEvent* event)
 {
 
+<<<<<<< HEAD
 	if(mouseJoint == nullptr)
 		return;
 	CCTouch* touch = (CCTouch*)(touches->anyObject());
@@ -548,11 +591,14 @@ void HelloWorld::ccTouchesMoved(CCSet* touches, CCEvent* event)
 	float angle = armJoint->GetJointAngle();
 
 	printf("asdf");
+=======
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be
 }
 
 // cpp with cocos2d-x
 void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
 {
+<<<<<<< HEAD
 	if (mouseJoint != nullptr)
 	{
 		float angle = armJoint->GetJointAngle();
@@ -619,3 +665,13 @@ void HelloWorld::registerWithTouchDispatcher()
 	// CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this,0,true);
 	CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0);
 }
+=======
+
+}
+
+//void HelloWorld::registerWithTouchDispatcher()
+//{
+	// CCTouchDispatcher::sharedDispatcher()->addTargetedDelegate(this,0,true);
+	//CCTouchDispatcher::sharedDispatcher()->addStandardDelegate(this,0);
+//}
+>>>>>>> 0d187a6f7290ac3f2071e41b1c392af9d1e936be

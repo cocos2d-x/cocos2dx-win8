@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resources">
+      <UniqueIdentifier>5fd0e509-b6ae-4f29-bd2a-4d2cc10f3aa0</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Include">
+      <UniqueIdentifier>{76a7cd2a-8521-4b75-a29a-b0fcb78dade6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win8_metro">
+      <UniqueIdentifier>{c0a0c78b-27c3-4f3b-8f6d-9a89cad4b72f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include=".\pch.cpp" />
+    <ClCompile Include=".\win8_metro\Audio.cpp">
+      <Filter>win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include=".\win8_metro\MediaStreamer.cpp">
+      <Filter>win8_metro</Filter>
+    </ClCompile>
+    <ClCompile Include=".\win8_metro\SimpleAudioEngine.cpp">
+      <Filter>win8_metro</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\pch.h" />
+    <ClInclude Include=".\include\SimpleAudioEngine.h">
+      <Filter>Include</Filter>
+    </ClInclude>
+    <ClInclude Include=".\win8_metro\Audio.h">
+      <Filter>win8_metro</Filter>
+    </ClInclude>
+    <ClInclude Include=".\win8_metro\MediaStreamer.h">
+      <Filter>win8_metro</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>17b52f90-9b33-4188-8a0e-808582bbabbc</UniqueIdentifier>
+      <Extensions>ico;bmp;dlg;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;resw;resjson</Extensions>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{9e558cc3-4f4b-4a51-a5bb-bb99c608ba07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{3b5746b0-a71b-4e4a-8446-cae020d3584c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{3f5a98d3-f467-4716-89d3-d7db8b9389ba}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\ApplicationIcon.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="SplashScreenImage.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\FlipCycleTileLarge.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\FlipCycleTileMedium.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\FlipCycleTileSmall.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\IconicTileMediumLarge.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Tiles\IconicTileSmall.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\back.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\acorn-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\acorn.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Author-QiMa.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\bg-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\bg.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_1-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_2-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_3-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_3.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_platform-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\brick_platform.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_arm-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_arm.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_base_1-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_base_1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_base_2-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_base_2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_cup-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\catapult_cup.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\CloseNormal.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\CloseSelected.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\fg-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\fg.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\fire.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\head_cat-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\head_cat.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\head_dog-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\head_dog.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Logo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SmallLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\squirrel_1-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\squirrel_1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\squirrel_2-hd.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\squirrel_2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include=".\cocos2dorig.cpp" />
+    <ClCompile Include="Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MyContactListener.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include=".\cocos2dorig.h" />
+    <ClInclude Include="Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BasicLoader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BasicReaderWriter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAccelerometer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAccelerometer_platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAccelerometer_win8_metro.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAccelerometerDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAction.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionCamera.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionCatmullRom.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionEase.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionGrid.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionGrid3D.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionInstant.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionInterval.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionManager.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionPageTurn3D.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionProgressTimer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionTiledGrid.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCActionTween.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAffineTransform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAnimation.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAnimationCache.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCApplication.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCApplication_platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCApplication_win8_metro.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCArchOptimalParticleSystem.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCArray.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAtlasNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCAutoreleasePool.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCBool.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCCamera.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ccCArray.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCCommon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ccConfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCConfiguration.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCData.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCDictionary.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCDirector.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCDouble.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCDrawingPrimitives.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCDrawNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCEGLView.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCEGLView_platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCEGLView_win8_metro.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCEventType.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCFileUtils.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCFloat.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCGeometry.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCGL.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCGrabber.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCGrid.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCImage.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCIMEDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCIMEDispatcher.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCInteger.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCKeypadDelegate.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCKeypadDispatcher.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCLabelAtlas.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCLabelBMFont.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCLabelTTF.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCLayer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCLibxml2.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ccMacros.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCMenu.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCMenuItem.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCMotionStreak.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCNotificationCenter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCNS.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCObject.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCParallaxNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCParticleExamples.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCParticleSystem.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCParticleSystemPoint.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCParticleSystemQuad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCPlatformConfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCPlatformMacros.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCPointExtension.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCProgressTimer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCProtocols.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCRenderTexture.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCRibbon.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCSAXParser.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCScene.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCScheduler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCScriptSupport.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCSet.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCSprite.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCSpriteBatchNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCSpriteFrame.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCSpriteFrameCache.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCStdC.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCString.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTextFieldTTF.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTexture2D.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTextureAtlas.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTextureCache.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTexturePVR.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCThread.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTileMapAtlas.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTMXLayer.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTMXObjectGroup.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTMXTiledMap.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTMXXMLParser.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTouch.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTouchDelegateProtocol.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTouchDispatcher.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTouchHandler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTransition.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTransitionPageTurn.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCTransitionProgress.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ccTypes.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCUserDefault.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CCZone.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\cocos2d.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\corewrappers.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3d11shader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\d3dcompiler.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DirectXHelper.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DirectXRender.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DXTextPainter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FTTextPainter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\platform.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\shcore.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SimpleAudioEngine.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\uthash.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\utlist.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\xinput.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MyContactListener.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CCDrawingPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCDrawingVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCGridPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCGridVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCLayerColorPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCLayerColorVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCParticlePixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCParticleVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCProgressTimerPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCProgressTimerVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCSpritePixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCSpriteVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCTexture2DPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCTexture2DVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCTextureAtlasPixelShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="CCTextureAtlasVertexShader.cso">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="Assets\DebugFont.spritefont" />
+  </ItemGroup>
+</Project>
