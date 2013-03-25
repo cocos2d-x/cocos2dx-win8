@@ -45,7 +45,7 @@ protected:
     void OnPointerMoved(Windows::UI::Core::CoreWindow^ sender, Windows::UI::Core::PointerEventArgs^ args);
 
 private:
-    Cocos2dWindowsPhone::DirectXRender^ m_renderer;
+    cocos2d::DirectXRender^ m_renderer;
     bool m_windowClosed;
 
 };

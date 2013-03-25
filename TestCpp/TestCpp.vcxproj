@@ -98,7 +98,7 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\ARM\Debug\Cocos2dWindowsPhone</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\Debug\Cocos2dWindowsPhone;..\Debug\CocosDenshionWindowsPhone;..\Debug\Box2DWindowsPhone</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateDebugInformation>
     </Link>
