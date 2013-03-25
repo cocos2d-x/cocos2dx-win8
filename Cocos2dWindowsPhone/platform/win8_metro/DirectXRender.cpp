@@ -40,7 +40,7 @@ typedef DXTextPainter TextPainter;
 using namespace D2D1;
 #endif
 
-using namespace Cocos2dWindowsPhone;
+
 USING_NS_CC;
 
 

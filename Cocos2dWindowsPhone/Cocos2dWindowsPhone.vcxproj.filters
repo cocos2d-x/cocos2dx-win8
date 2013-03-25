@@ -743,6 +743,9 @@
     <ClInclude Include="include\CCMenu.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="include\CCApplication_win8_metro.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include=".\shaders\CCDrawingPixelShader.hlsl">

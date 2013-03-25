@@ -170,9 +170,10 @@ THE SOFTWARE.
 	#include "CCStdC.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINPHONE)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
 	#include "CCAccelerometer.h"
 	#include "CCApplication.h"
+    #include "CCApplication_win8_metro.h"
 	#include "CCStdC.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_WINPHONE
 
