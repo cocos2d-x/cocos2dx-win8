@@ -707,7 +707,68 @@ CCLabelBMFont *CCLabelBMFont::create(const char *str, const char *fntFile)
 {
 	return create(str, fntFile, kCCTextAlignmentLeft, 0);
 }
+bool CCLabelBMFont::init()
+{
+    return initWithString(NULL, NULL, kCCLabelAutomaticWidth, kCCTextAlignmentLeft, CCPointZero);
+}
+bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile, float width/* = kCCLabelAutomaticWidth*/, CCTextAlignment alignment/* = kCCTextAlignmentLeft*/, CCPoint imageOffset/* = CCPointZero*/)
+{
+    CCAssert(!m_pConfiguration, "re-init is no longer supported");
+    CCAssert( (theString && fntFile) || (theString==NULL && fntFile==NULL), "Invalid params for CCLabelBMFont");
+    
+    CCTexture2D *texture = NULL;
+    
+    if (fntFile)
+    {
+        CCBMFontConfiguration *newConf = FNTConfigLoadFile(fntFile);
+        if (!newConf)
+        {
+            CCLOG("cocos2d: WARNING. CCLabelBMFont: Impossible to create font. Please check file: '%s'", fntFile);
+            release();
+            return false;
+        }
+        
+        newConf->retain();
+        CC_SAFE_RELEASE(m_pConfiguration);
+        m_pConfiguration = newConf;
+        
+        m_sFntFile = fntFile;
+        
+		CCAssert(false, "Not implemented!");
+        //texture = CCTextureCache::sharedTextureCache()->addImage(m_pConfiguration->getAtlasName());
+    }
+    else 
+    {
+        texture = new CCTexture2D();
+        texture->autorelease();
+    }
 
+    if (theString == NULL)
+    {
+        theString = "";
+    }
+
+    if (CCSpriteBatchNode::initWithTexture(texture, strlen(theString)))
+    {
+        m_pAlignment = alignment;
+        m_tImageOffset = imageOffset;
+        m_fWidth = width;
+        m_cOpacity = 255;
+        m_tColor = ccWHITE;
+        m_obContentSize = CCSizeZero;
+        m_bIsOpacityModifyRGB = m_pobTextureAtlas->getTexture()->getHasPremultipliedAlpha();
+        m_obAnchorPoint = ccp(0.5f, 0.5f);
+        
+        m_pReusedChar = new CCSprite();
+        m_pReusedChar->createWithTexture(m_pobTextureAtlas->getTexture(), CCRectMake(0, 0, 0, 0));
+        m_pReusedChar->setSpriteBatchNode(this);
+        
+        this->setString(theString);
+        
+        return true;
+    }
+    return false;
+}
 //LabelBMFont - Creation & Init
 CCLabelBMFont *CCLabelBMFont::create(const char *str, const char *fntFile, CCTextAlignment alignment
 									 , float width)

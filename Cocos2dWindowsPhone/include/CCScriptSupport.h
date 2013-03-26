@@ -216,7 +216,7 @@ public:
     virtual int executeLayerKeypadEvent(CCLayer* pLayer, int eventType) = 0;
 
     /** execute a accelerometer event */
-    virtual int executeAccelerometerEvent(CCLayer* pLayer, CCAcceleration* pAccelerationValue) = 0;
+//    virtual int executeAccelerometerEvent(CCLayer* pLayer, CCAcceleration* pAccelerationValue) = 0;
     /** function for assert test */
     virtual bool executeAssert(bool cond, const char *msg = NULL) = 0;
 };

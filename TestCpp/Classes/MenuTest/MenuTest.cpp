@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "MenuTest.h"
 #include "../testResource.h"
 
@@ -285,7 +286,7 @@ void MenuLayer2::menuCallback(CCObject* sender)
 void MenuLayer2::menuCallbackOpacity(CCObject* sender)
 {
     CCMenu* menu = (CCMenu*)(((CCNode*)(sender))->getParent());
-    GLubyte opacity = menu->getOpacity();
+    CCubyte opacity = menu->getOpacity();
     if( opacity == 128 )
         menu->setOpacity(255);
     else
@@ -641,16 +642,16 @@ void MenuTestScene::runThisTest()
     CCLayer* pLayer6 = new BugsTest();
     CCLayer* pLayer7 = new RemoveMenuItemWhenMove();
 
-    CCLayerMultiplex* layer = CCLayerMultiplex::create(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5, pLayer6, pLayer7, NULL);
-    addChild(layer, 0); 
+    //CCLayerMultiplex* layer = CCLayerMultiplex::create(pLayer1, pLayer2, pLayer3, pLayer4, pLayer5, pLayer6, pLayer7, NULL);
+    //addChild(layer, 0); 
 
-    pLayer1->release();
-    pLayer2->release();
-    pLayer3->release();
-    pLayer4->release();
-    pLayer5->release();
-    pLayer6->release();
-    pLayer7->release();
+    //pLayer1->release();
+    //pLayer2->release();
+    //pLayer3->release();
+    //pLayer4->release();
+    //pLayer5->release();
+    //pLayer6->release();
+    //pLayer7->release();
 
     CCDirector::sharedDirector()->replaceScene(this);
 }

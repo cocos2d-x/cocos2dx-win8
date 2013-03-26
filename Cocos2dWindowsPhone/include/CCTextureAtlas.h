@@ -77,7 +77,7 @@ public:
 	/** creates a TextureAtlas with an filename and with an initial capacity for Quads.
 	* The TextureAtlas capacity can be increased in runtime.
 	*/
-	static CCTextureAtlas * textureAtlasWithFile(const char* file , unsigned int capacity);
+	static CCTextureAtlas * create(const char* file , unsigned int capacity);
 
 	/** initializes a TextureAtlas with a filename and with a certain capacity for Quads.
 	* The TextureAtlas capacity can be increased in runtime.

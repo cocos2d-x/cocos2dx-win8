@@ -198,7 +198,7 @@ NS_CC_BEGIN
 
 	public:
 		/** creates an action with the number of times that the current grid will be reused */
-		static CCReuseGrid* actionWithTimes(int times);
+		static CCReuseGrid* create(int times);
 
 	protected:
 		int m_nTimes;

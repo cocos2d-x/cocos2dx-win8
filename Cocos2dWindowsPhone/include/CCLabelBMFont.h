@@ -38,6 +38,9 @@ Use any of these editors to generate BMFonts:
 #include <vector>
 
 namespace cocos2d{
+	enum {
+    kCCLabelAutomaticWidth = -1,
+};
 
 	struct _KerningHashElement;
 
@@ -151,6 +154,9 @@ namespace cocos2d{
 		bool m_bIsOpacityModifyRGB;
 
 	protected:
+		std::string m_sFntFile;
+		    // offset of the texture atlas
+        CCPoint    m_tImageOffset;
 		// string to render
 		unsigned short* m_sString;
 		std::string m_sString_initial;
@@ -158,6 +164,8 @@ namespace cocos2d{
 		CCTextAlignment m_pAlignment;
 		float m_fWidth;
 		bool m_bLineBreakWithoutSpaces;
+		    // reused char
+    CCSprite *m_pReusedChar;
 	public:
 		CCLabelBMFont()
 			: m_cOpacity(0)           
@@ -174,6 +182,9 @@ namespace cocos2d{
 		/** creates a bitmap font altas with an initial string and the FNT file */
 		static CCLabelBMFont * create(const char *str, const char *fntFile);
 		static CCLabelBMFont * create(const char *str, const char *fntFile, CCTextAlignment alignment, float width);
+		bool init();
+		 /** init a bitmap font atlas with an initial string and the FNT file */
+    bool initWithString(const char *str, const char *fntFile, float width = kCCLabelAutomaticWidth, CCTextAlignment alignment = kCCTextAlignmentLeft, CCPoint imageOffset = CCPointZero);
 
 		/** init a bitmap font altas with an initial string and the FNT file */
 		bool initWithString(const char *str, const char *fntFile, CCTextAlignment alignment, float width);
