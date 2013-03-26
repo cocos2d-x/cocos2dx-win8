@@ -74,8 +74,8 @@
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(OutDir)$(TargetName).lib ..\..\HelloWorld\libraries\$(PlatformTarget)\ /y
-xcopy /S *.h ..\..\HelloWorld\include\Box2D\ /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

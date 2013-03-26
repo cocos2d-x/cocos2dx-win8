@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{54d5a760-05c6-4560-bb0e-6804d248f14a}</ProjectGuid>
-    <RootNamespace>CocosDenshionWindowsPhone</RootNamespace>
+    <RootNamespace>CocosDenshion</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <WinMDAssembly>true</WinMDAssembly>
