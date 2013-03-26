@@ -120,7 +120,7 @@ bool HelloWorld::init()
 			break;
 		}
 
-		this->setIsTouchEnabled(true);
+		this->setTouchEnabled(true);
 		b2Vec2 gravity;
 		gravity.Set(0.0f, -10.0f);
 

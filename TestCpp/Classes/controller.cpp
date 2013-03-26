@@ -7,6 +7,29 @@
 
 static CCPoint s_tCurPos = CCPointZero;
 
+static int s_enabledTestArray[] = {
+    TEST_ACTIONS,
+    TEST_PROGRESS_ACTIONS,
+    TEST_CLICK_AND_MOVE,
+    TEST_EASE_ACTIONS,
+    TEST_MENU,
+    TEST_ACTION_MANAGER,
+    TEST_LAYER,
+    TEST_SCENE,
+    TEST_SPRITE,
+    TEST_ACCELEROMRTER
+};
+
+static bool isTestDemoEnabled(int idx)
+{
+    for (int i = 0; i < sizeof(s_enabledTestArray)/sizeof(s_enabledTestArray[0]); i++)
+    {
+        if (s_enabledTestArray[i] == idx)
+            return true;
+    }
+    return false;
+}
+
 static TestScene* CreateTestScene(int nIdx)
 {
     CCDirector::sharedDirector()->purgeCachedData();
@@ -19,18 +42,18 @@ static TestScene* CreateTestScene(int nIdx)
         pScene = new ActionsTestScene(); break;
 //    case TEST_TRANSITIONS:
 //        pScene = new TransitionsTestScene(); break;
-//     case TEST_PROGRESS_ACTIONS:
-//         pScene = new ProgressActionsTestScene(); break;
+    case TEST_PROGRESS_ACTIONS:
+        pScene = new ProgressActionsTestScene(); break;
 //    case TEST_EFFECTS:
 //        pScene = new EffectTestScene(); break;
-//    case TEST_CLICK_AND_MOVE:
-//        pScene = new ClickAndMoveTestScene(); break;
+   case TEST_CLICK_AND_MOVE:
+       pScene = new ClickAndMoveTestScene(); break;
 //    case TEST_ROTATE_WORLD:
 //        pScene = new RotateWorldTestScene(); break;
 //    case TEST_PARTICLE:
 //        pScene = new ParticleTestScene(); break;
-//    case TEST_EASE_ACTIONS:
-//        pScene = new ActionsEaseTestScene(); break;
+   case TEST_EASE_ACTIONS:
+       pScene = new ActionsEaseTestScene(); break;
 //    case TEST_MOTION_STREAK:
 //        pScene = new MotionStreakTestScene(); break;
 //    case TEST_DRAW_PRIMITIVES:
@@ -39,14 +62,14 @@ static TestScene* CreateTestScene(int nIdx)
 //        pScene = new CocosNodeTestScene(); break;
 //   // case TEST_TOUCHES:
 //       // pScene = new PongScene(); break;
-//    case TEST_MENU:
-//        pScene = new MenuTestScene(); break;
-//    case TEST_ACTION_MANAGER:
-//        pScene = new ActionManagerTestScene(); break;
-//    case TEST_LAYER:
-//        pScene = new LayerTestScene(); break;
-//    case TEST_SCENE:
-//        pScene = new SceneTestScene(); break;
+   case TEST_MENU:
+       pScene = new MenuTestScene(); break;
+   case TEST_ACTION_MANAGER:
+       pScene = new ActionManagerTestScene(); break;
+   case TEST_LAYER:
+       pScene = new LayerTestScene(); break;
+   case TEST_SCENE:
+       pScene = new SceneTestScene(); break;
 //    case TEST_PARALLAX:
 //        pScene = new ParallaxTestScene(); break;
 //    case TEST_TILE_MAP:
@@ -57,8 +80,8 @@ static TestScene* CreateTestScene(int nIdx)
 //        pScene = new AtlasTestScene(); break;
 //    case TEST_TEXT_INPUT:
 //        pScene = new TextInputTestScene(); break;
-//    case TEST_SPRITE:
-//        pScene = new SpriteTestScene(); break;
+   case TEST_SPRITE:
+       pScene = new SpriteTestScene(); break;
 //    case TEST_SCHEDULER:
 //        pScene = new SchedulerTestScene(); break;
 //    case TEST_RENDERTEXTURE:
@@ -75,8 +98,8 @@ static TestScene* CreateTestScene(int nIdx)
 //        pScene = new Box2dTestBedScene(); break;
 //    case TEST_EFFECT_ADVANCE:
 //        pScene = new EffectAdvanceScene(); break;
-//    case TEST_ACCELEROMRTER:
-//        pScene = new AccelerometerTestScene(); break;
+   case TEST_ACCELEROMRTER:
+       pScene = new AccelerometerTestScene(); break;
 //#if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)
 //    case TEST_KEYPAD:
 //        pScene = new KeypadTestScene(); break;
@@ -154,6 +177,12 @@ TestController::TestController()
 
         m_pItemMenu->addChild(pMenuItem, i + 10000);
         pMenuItem->setPosition( ccp( VisibleRect::center().x, (VisibleRect::top().y - (i + 1) * LINE_SPACE) ));
+        
+        if (!isTestDemoEnabled(i))
+        {
+            pMenuItem->setColor(ccGRAY);
+            pMenuItem->setEnabled(false);
+        }
     }
 
     m_pItemMenu->setContentSize(CCSizeMake(VisibleRect::getVisibleRect().size.width, (TESTS_COUNT + 1) * (LINE_SPACE)));

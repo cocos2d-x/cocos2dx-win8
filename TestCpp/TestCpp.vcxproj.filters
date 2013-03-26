@@ -59,6 +59,15 @@
     <Filter Include="Classes\LayerTest">
       <UniqueIdentifier>{511d291a-340d-4b1e-957f-f4fbddea6e26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Assets\Images">
+      <UniqueIdentifier>{5e7f116e-02a2-4e57-b48b-d6099b4d4c7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\animations">
+      <UniqueIdentifier>{7ec571aa-1bbe-4aa7-8255-e3a537b3de3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\fonts">
+      <UniqueIdentifier>{2697d309-2f57-4273-b996-43caa017cce4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -82,56 +91,347 @@
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\back.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister2.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\grossini.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathGrossini.png">
-      <Filter>Assets</Filter>
-    </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister1.png">
-      <Filter>Assets</Filter>
-    </Image>
     <Image Include="Assets\Images\b1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\b2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\back.png">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background1.jpg">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background3.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\blocks.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\f1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\f2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\r1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\r2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\arrows.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\arrowsBar.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\atlastest.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background2.jpg">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background3.jpg">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\ball.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\bitmapFontTest3.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-about-normal.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-about-selected.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-normal.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-selected.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-play-normal.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-play-selected.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\close.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Comet.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fire.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fire-grayscale.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Fog.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_01.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_02.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_03.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_04.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_05.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_06.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_07.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_08.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_09.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_10.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_11.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_12.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_13.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_14.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas_nomipmap.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas-mono.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1-testalpha.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister2.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\HelloWorld.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\hole_effect.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\hole_stencil.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Icon.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\labelatlas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\landscape-1024x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\menuitemsprite.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\paddle.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\particles.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\pattern1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Pea.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\piece.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\PlanetCute-1024x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\powered.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButton.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButtonPressed.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\snow.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SpinningPeas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SpookyPeas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\spritesheet1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars2.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars2-grayscale.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars-grayscale.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\streak.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_1021x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_blend.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.jpeg">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.tiff">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test-rgba1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture512x512.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture1024x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture2048x2048.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\white-512x512.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\animations\dragon_animation.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\ghosts.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_blue.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_family.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini_gray.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\animations\grossini-aliases.png">
+      <Filter>Assets\animations</Filter>
+    </Image>
+    <Image Include="Assets\fonts\arial16.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\arial-unicode-26.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontChinese.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.bmp">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest3.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest4.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest5.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\boundsTestFont.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\font-issue1343.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\font-issue1343-hd.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\futura-48.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\helvetica-geneva-32.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\konqa32.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\labelatlas.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\larabie-16.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\markerFelt.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\west_england-64.png">
+      <Filter>Assets\fonts</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
@@ -636,6 +936,12 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />
+    <Xml Include="Assets\animations\grossini.plist.xml">
+      <Filter>Assets\animations</Filter>
+    </Xml>
+    <Xml Include="Assets\fonts\strings.xml">
+      <Filter>Assets\fonts</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <None Include="CCDrawingPixelShader.cso">
@@ -687,5 +993,277 @@
       <Filter>Shaders</Filter>
     </None>
     <None Include="TestCpp_2013_03_11_05_59_12.sap" />
+    <None Include="Assets\Images\bitmapFontTest3.fnt">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\fire_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_128x256_mipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba4444.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossinis_sister1-testalpha.ppng">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\logo-mipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\logo-nomipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_a8.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_a8.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgb888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgb888.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image.pvrraw">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_a8.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_a8_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_ai88.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_ai88_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_i8.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_i8_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtcii2bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtcii4bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb888_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.ccz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_mipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image-bad_encoding.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\animations\animations.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\animations-2.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\ghosts.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.pvr.gz">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.zss">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini.ztp">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_blue.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_family.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini_gray.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\animations\grossini-aliases.plist">
+      <Filter>Assets\animations</Filter>
+    </None>
+    <None Include="Assets\fonts\arial16.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\arial-unicode-26.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\arial-unicode-26.GlyphProject">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontChinese.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest2.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest3.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest4.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest5.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\boundsTestFont.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\font-issue1343.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\font-issue1343-hd.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\futura-48.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\geneva-32.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\helvetica-32.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\konqa32.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\larabie-16.plist">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\markerFelt.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\tuffy_bold_italic-charmap.plist">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\west_england-64.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\fonts\A Damn Mess.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Abberancy.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Abduction.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\American Typewriter.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\arial.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Courier New.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Marker Felt.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Paint Boy.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Schwarzwald Regular.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Scissor Cuts.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\tahoma.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Thonburi.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\ThonburiBold.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

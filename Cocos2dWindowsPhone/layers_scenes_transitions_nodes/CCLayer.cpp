@@ -44,9 +44,9 @@ NS_CC_BEGIN
 
 // CCLayer
 CCLayer::CCLayer()
-:m_bIsTouchEnabled(false)
-,m_bIsAccelerometerEnabled(false)
-,m_bIsKeypadEnabled(false)
+:m_bTouchEnabled(false)
+,m_bAccelerometerEnabled(false)
+,m_bKeypadEnabled(false)
 ,m_pScriptHandlerEntry(NULL)
 {
 	setAnchorPoint(ccp(0.5f, 0.5f));
@@ -66,8 +66,8 @@ bool CCLayer::init()
 		CCDirector * pDirector;
 		CC_BREAK_IF(!(pDirector = CCDirector::sharedDirector()));
 		this->setContentSize(pDirector->getWinSize());
-        m_bIsTouchEnabled = false;
-        m_bIsAccelerometerEnabled = false;
+        m_bTouchEnabled = false;
+        m_bAccelerometerEnabled = false;
 		// success
 		bRet = true;
 	} while(0);
@@ -244,94 +244,12 @@ void CCLayer::setAccelerometerInterval(double interval) {
     }
 }
 
-
-
-
-/// isTouchEnabled getter
-bool CCLayer::getIsTouchEnabled()
-{
-	return m_bIsTouchEnabled;
-}
-/// isTouchEnabled setter
-void CCLayer::setIsTouchEnabled(bool enabled)
-{
-	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-	if (m_bIsTouchEnabled != enabled)
-	{
-		m_bIsTouchEnabled = enabled;
-		if (m_bRunning)
-		{
-			if (enabled)
-			{
-				this->registerWithTouchDispatcher();
-			}
-			else
-			{
-				// have problems?
-				pDispatcher->removeDelegate(this);
-			}
-		}
-	}
-}
-
-/// isAccelerometerEnabled getter
-bool CCLayer::getIsAccelerometerEnabled()
-{
-	return m_bIsAccelerometerEnabled;
-}
-/// isAccelerometerEnabled setter
-void CCLayer::setIsAccelerometerEnabled(bool enabled)
-{
-    if (enabled != m_bIsAccelerometerEnabled)
-    {
-        m_bIsAccelerometerEnabled = enabled;
-
-        if (m_bRunning)
-        {
-            if (enabled)
-            {
-                CCAccelerometer::sharedAccelerometer()->setDelegate(this);
-            }
-            else
-            {
-                CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
-            }
-        }
-    }
-}
-
-/// isKeypadEnabled getter
-bool CCLayer::getIsKeypadEnabled()
-{
-    return m_bIsKeypadEnabled;
-}
-/// isKeypadEnabled setter
-void CCLayer::setIsKeypadEnabled(bool enabled)
-{
-    if (enabled != m_bIsKeypadEnabled)
-    {
-        m_bIsKeypadEnabled = enabled;
-
-        if (m_bRunning)
-        {
-            if (enabled)
-            {
-                //CCKeypadDispatcher::sharedDispatcher()->addDelegate(this);
-            }
-            else
-            {
-                //CCKeypadDispatcher::sharedDispatcher()->removeDelegate(this);
-            }
-        }
-    }
-}
-
 /// Callbacks
 void CCLayer::onEnter()
 {
 	// register 'parent' nodes first
 	// since events are propagated in reverse order
-	if (m_bIsTouchEnabled)
+	if (m_bTouchEnabled)
 	{
 		this->registerWithTouchDispatcher();
 	}
@@ -340,13 +258,13 @@ void CCLayer::onEnter()
 	CCNode::onEnter();
 
     // add this layer to concern the Accelerometer Sensor
-    if (m_bIsAccelerometerEnabled)
+    if (m_bAccelerometerEnabled)
     {
        // CCAccelerometer::sharedAccelerometer()->setDelegate(this);
     }
 
     // add this layer to concern the kaypad msg
-    if (m_bIsKeypadEnabled)
+    if (m_bKeypadEnabled)
     {
         //CCKeypadDispatcher::sharedDispatcher()->addDelegate(this);
     }
@@ -355,20 +273,20 @@ void CCLayer::onEnter()
 void CCLayer::onExit()
 {
 	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-	if( m_bIsTouchEnabled )
+	if( m_bTouchEnabled )
 	{
 		pDispatcher->removeDelegate(this);
 		unregisterScriptTouchHandler();
 	}
 
     // remove this layer from the delegates who concern Accelerometer Sensor
-    if (m_bIsAccelerometerEnabled)
+    if (m_bAccelerometerEnabled)
     {
        // CCAccelerometer::sharedAccelerometer()->setDelegate(NULL);
     }
 
     // remove this layer from the delegates who concern the kaypad msg
-    if (m_bIsKeypadEnabled)
+    if (m_bKeypadEnabled)
     {
         //CCKeypadDispatcher::sharedDispatcher()->removeDelegate(this);
     }
@@ -378,7 +296,7 @@ void CCLayer::onExit()
 
 void CCLayer::onEnterTransitionDidFinish()
 {
-    if (m_bIsAccelerometerEnabled)
+    if (m_bAccelerometerEnabled)
     {
         CCAccelerometer::sharedAccelerometer()->setDelegate(this);
     }
