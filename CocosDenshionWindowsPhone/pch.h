@@ -3,4 +3,6 @@
 
 #include <xaudio2.h>
 
+#include "CCPlatformConfig.h"
+#include "CCPlatformMacros.h"
 #endif
