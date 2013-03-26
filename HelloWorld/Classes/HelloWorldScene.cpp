@@ -82,7 +82,7 @@ bool HelloWorld::init()
 		//start = true;
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		CCSprite *b = CCSprite::create("HelloWorld.png");
-		//b->setAnchorPoint(ccp(0, 0));
+		b->setPosition(ccp(0, 0));
 		b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
 		this->addChild(b);
 
