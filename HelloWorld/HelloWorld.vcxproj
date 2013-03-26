@@ -135,7 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png" />
-    <Image Include="Assets\back.png" />
+    <Image Include="Assets\HelloWorld.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />

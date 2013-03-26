@@ -72,18 +72,19 @@ bool HelloWorld::init()
 		}
 
 
-		CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
-		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
-		pLabel->setColor(ccc3(160, 80, 5));
-		this->addChild(pLabel, 0);
+		//CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Times New Roman", 24);
+		//CCSize size = CCDirector::sharedDirector()->getWinSize();
+		//pLabel->setPosition( ccp(size.width * 0.5, size.height * 0.5) );
+		//pLabel->setColor(ccc3(160, 80, 5));
+		//this->addChild(pLabel, 0);
 
 		//this->resetGame();
 		//start = true;
-		//CCSprite *b = CCSprite::create("back.png");
+		CCSize size = CCDirector::sharedDirector()->getWinSize();
+		CCSprite *b = CCSprite::create("HelloWorld.png");
 		//b->setAnchorPoint(ccp(0, 0));
-		//b->setPosition(ccp(0, 0));
-		//this->addChild(b);
+		b->setPosition(ccp(size.width * 0.5, size.height * 0.5));
+		this->addChild(b);
 
 		setIsTouchEnabled(true);
 
