@@ -56,6 +56,12 @@
   <PropertyGroup>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>_WINRT_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -75,8 +81,8 @@
       <AdditionalLibraryDirectories>$(OutDir)../cocos2dx-wp8/</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -98,8 +104,8 @@
       <AdditionalLibraryDirectories>$(OutDir)../cocos2dx-wp8/</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
@@ -119,8 +125,8 @@
       <AdditionalDependencies>xaudio2.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
@@ -140,8 +146,8 @@
       <AdditionalDependencies>xaudio2.lib;WindowsPhoneCore.lib;RuntimeObject.lib;PhoneAppModelHost.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy .\libraries\$(PlatformTarget)\$(TargetName).* ..\HelloWorld\libraries\$(PlatformTarget)\ /y
-</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
