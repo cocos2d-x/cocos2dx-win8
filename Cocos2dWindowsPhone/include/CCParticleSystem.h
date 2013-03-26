@@ -31,7 +31,7 @@ THE SOFTWARE.
 
 #include "CCProtocols.h"
 #include "CCNode.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 #include "CCString.h"
 
 namespace cocos2d {
@@ -282,6 +282,7 @@ public:
 	virtual void setRotatePerSecond(float degrees);
 	virtual float getRotatePerSecondVar();
 	virtual void setRotatePerSecondVar(float degrees);
+	virtual void setBlendAdditive(bool value);
 //////////////////////////////////////////////////////////////////////////
 	
 	/** start size in pixels of each particle */
@@ -342,6 +343,7 @@ public:
 public:
 	CCParticleSystem();
 	virtual ~CCParticleSystem();
+	virtual void setAutoRemoveOnFinish(bool var);
 	/** creates an initializes a CCParticleSystem from a plist file.
 	This plist files can be creted manually or with Particle Designer:
 	http://particledesigner.71squared.com/
@@ -359,7 +361,7 @@ public:
 	/** initializes a CCQuadParticleSystem from a CCDictionary.
 	@since v0.99.3
 	*/
-	bool initWithDictionary(CCDictionary<std::string, CCObject*> *dictionary);
+	bool initWithDictionary(CCDictionary *dictionary);
 
 	//! Initializes a system with a fixed number of particles
 	virtual bool initWithTotalParticles(unsigned int numberOfParticles);
@@ -384,7 +386,7 @@ private:
 	/** Private method, return the string found by key in dict.
 	@return "" if not found; return the string if found.
 	*/
-	inline const char * valueForKey(const char *key, CCDictionary<std::string, CCObject*> *dict)
+	inline const char * valueForKey(const char *key, CCDictionary *dict)
 	{
 		if (dict)
 		{

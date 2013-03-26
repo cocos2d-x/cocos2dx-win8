@@ -57,6 +57,12 @@
   <PropertyGroup>
     <GenerateManifest>false</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;CC_UNDER_WIN8_METRO;_WINRT_DLL;CC_EXPORT_WINDOWS;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -251,7 +257,6 @@
     <ClCompile Include=".\sprite_nodes\CCSpriteFrame.cpp" />
     <ClCompile Include=".\sprite_nodes\CCSpriteFrameCache.cpp" />
     <ClCompile Include=".\support\base64.cpp" />
-    <ClCompile Include=".\support\CCArray.cpp" />
     <ClCompile Include=".\support\CCPointExtension.cpp" />
     <ClCompile Include=".\support\CCProfiling.cpp" />
     <ClCompile Include=".\support\CCUserDefault.cpp" />
@@ -275,6 +280,8 @@
     <ClCompile Include=".\tileMap_parallax_nodes\CCTMXXMLParser.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchDispatcher.cpp" />
     <ClCompile Include=".\touch_dispatcher\CCTouchHandler.cpp" />
+    <ClCompile Include="cocoa\CCArray.cpp" />
+    <ClCompile Include="cocoa\CCDictionary.cpp" />
     <ClCompile Include="cocoa\CCString.cpp" />
     <ClCompile Include="particle_nodes\CCParticleBatchNode.cpp" />
     <ClCompile Include="touch_dispatcher\CCTouch.cpp" />
@@ -320,11 +327,8 @@
     <ClInclude Include=".\include\CCLabelTTF.h" />
     <ClInclude Include=".\include\CCLayer.h" />
     <ClInclude Include=".\include\ccMacros.h" />
-    <ClInclude Include=".\include\CCMenu.h" />
     <ClInclude Include=".\include\CCMenuItem.h" />
     <ClInclude Include=".\include\CCMotionStreak.h" />
-    <ClInclude Include=".\include\CCMutableArray.h" />
-    <ClInclude Include=".\include\CCMutableDictionary.h" />
     <ClInclude Include=".\include\CCNode.h" />
     <ClInclude Include=".\include\CCNotificationCenter.h" />
     <ClInclude Include=".\include\CCObject.h" />
@@ -383,7 +387,9 @@
     <ClInclude Include=".\support\zip_support\unzip.h" />
     <ClInclude Include=".\support\zip_support\ZipUtils.h" />
     <ClInclude Include=".\targetver.h" />
+    <ClInclude Include="include\CCApplication_win8_metro.h" />
     <ClInclude Include="include\CCFileUtils.h" />
+    <ClInclude Include="include\CCMenu.h" />
     <ClInclude Include="include\ccTypeInfo.h" />
   </ItemGroup>
   <ItemGroup>

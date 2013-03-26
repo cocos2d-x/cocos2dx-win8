@@ -29,8 +29,8 @@ THE SOFTWARE.
 
 #ifndef __CC_TM_XML_PARSER__
 #define __CC_TM_XML_PARSER__
-#include "CCMutableArray.h"
-#include "CCMutableDictionary.h"
+#include "CCArray.h"
+#include "CCDictionary.h"
 #include "CCGeometry.h"
 
 #include "CCSAXParser.h"
@@ -63,6 +63,13 @@ enum {
 	TMXPropertyTile
 };
 
+typedef enum ccTMXTileFlags_ {
+    kCCTMXTileHorizontalFlag        = 0x80000000,
+    kCCTMXTileVerticalFlag            = 0x40000000,
+    kCCTMXTileDiagonalFlag            = 0x20000000,
+    kCCFlipedAll                    = (kCCTMXTileHorizontalFlag|kCCTMXTileVerticalFlag|kCCTMXTileDiagonalFlag),
+    kCCFlippedMask                    = ~(kCCFlipedAll)
+} ccTMXTileFlags;
 /** @brief CCTMXLayerInfo contains the information about the layers like:
 - Layer name
 - Layer size
@@ -73,7 +80,7 @@ This information is obtained from the TMX file.
 */
 class CC_DLL CCTMXLayerInfo : public CCObject
 {
-	CC_PROPERTY(CCStringToStringDictionary*, m_pProperties, Properties);
+	CC_PROPERTY(CCDictionary*, m_pProperties, Properties);
 public:
 	std::string			m_sName;
 	CCSize				m_tLayerSize;
@@ -140,11 +147,11 @@ public:
 	/// tiles width & height
 	CC_SYNTHESIZE_PASS_BY_REF(CCSize, m_tTileSize, TileSize);
 	/// Layers
-	CC_PROPERTY(CCMutableArray<CCTMXLayerInfo*>*, m_pLayers, Layers);
+	CC_PROPERTY(CCArray*, m_pLayers, Layers);
 	/// tilesets
-	CC_PROPERTY(CCMutableArray<CCTMXTilesetInfo*>*, m_pTilesets, Tilesets);
+	CC_PROPERTY(CCArray*, m_pTilesets, Tilesets);
 	/// ObjectGroups
-	CC_PROPERTY(CCMutableArray<CCTMXObjectGroup*>*, m_pObjectGroups, ObjectGroups);
+	CC_PROPERTY(CCArray*, m_pObjectGroups, ObjectGroups);
 	/// parent element
 	CC_SYNTHESIZE(int, m_nParentElement, ParentElement);
 	/// parent GID
@@ -154,7 +161,7 @@ public:
 	/// is stroing characters?
 	CC_SYNTHESIZE(bool, m_bStoringCharacters, StoringCharacters);
 	/// properties
-	CC_PROPERTY(CCStringToStringDictionary*, m_pProperties, Properties);
+	CC_PROPERTY(CCDictionary*, m_pProperties, Properties);
 public:	
 	CCTMXMapInfo();
 	virtual ~CCTMXMapInfo();
@@ -165,8 +172,8 @@ public:
 	/** initalises parsing of an XML file, either a tmx (Map) file or tsx (Tileset) file */
 	bool parseXMLFile(const char *xmlFilename);
 
-	CCDictionary<int, CCStringToStringDictionary*> * getTileProperties();
-	void setTileProperties(CCDictionary<int, CCStringToStringDictionary*> * tileProperties);
+	CCDictionary * getTileProperties();
+	void setTileProperties(CCDictionary * tileProperties);
 
 	// implement pure virtual methods of CCSAXDelegator
 	void startElement(void *ctx, const char *name, const char **atts);
@@ -184,7 +191,7 @@ protected:
 	//! current string
 	std::string m_sCurrentString;
 	//! tile properties
-	CCDictionary<int, CCStringToStringDictionary*>* m_pTileProperties;
+	CCDictionary* m_pTileProperties;
 };
 
 NS_CC_END

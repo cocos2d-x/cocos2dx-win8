@@ -234,7 +234,7 @@ namespace cocos2d {
 		/** helper contructor to create an array of spawned actions given an array */
 		static CCFiniteTimeAction* create(CCArray *actions);
 		static CCSpawn* actionsWithArrayLua(CCArray *actions);
-
+		
 		/** creates the Spawn action */
 		static CCSpawn* createWithTwoActions(CCFiniteTimeAction *pAction1, CCFiniteTimeAction *pAction2);
 
@@ -674,6 +674,7 @@ namespace cocos2d {
 	protected:
 		CCFiniteTimeAction *m_pOther;
 	};
+
 
 	class CCTexture2D;
 	/** @brief Animates a sprite given the name of an Animation */

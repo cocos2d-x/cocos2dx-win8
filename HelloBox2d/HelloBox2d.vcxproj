@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1a0d24b4-1de0-400b-bc35-92a51451477f}</ProjectGuid>
+    <RootNamespace>cocos2d</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <VCTargetsPath Condition="'$(VCTargetsPath11)' != '' and '$(VSVersion)' == '' and '$(VisualStudioVersion)' == ''">$(VCTargetsPath11)</VCTargetsPath>
+    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <XapOutputs>true</XapOutputs>
+    <XapFilename>$(ProjectName)_$(Configuration)_$(Platform).xap</XapFilename>
+    <WinMDAssembly>true</WinMDAssembly>
+    <ProjectName>HelloBox2d</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110_wp80</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" />
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(MSBuildProjectName)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <PreprocessorDefinitions>CC_UNDER_WIN8_METRO;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <AdditionalIncludeDirectories>./;../external;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib$(IntermediateOutputPath);../CocosDenshionWindowsPhone/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <CompileAsWinRT>true</CompileAsWinRT>
+      <PreprocessorDefinitions>TIXML_USE_STL;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">TurnOffAllWarnings</WarningLevel>
+      <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+      <AdditionalUsingDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>freetype.lib;dxguid.lib;xaudio2.lib;dxgi.lib;uuid.lib;d3d11.lib;zlib.lib;libjpeg.lib;libpng.lib;Cocos2dWindowsPhone.lib;Box2DWindowsPhone.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
+      <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
+      <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\$(Platform)\$(Configuration)\Cocos2dWindowsPhone;..\$(Platform)\$(Configuration)\Box2DWindowsPhone;..\$(Platform)\$(Configuration)\CocosDenshionWindowsPhone</AdditionalLibraryDirectories>
+      <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
+      <WindowsMetadataFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)$(RootNamespace).winmd</WindowsMetadataFile>
+    </Link>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Reference Include="platform.winmd">
+      <IsWinMDFile>true</IsWinMDFile>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\acorn-hd.png" />
+    <Image Include="Assets\acorn.png" />
+    <Image Include="Assets\ApplicationIcon.png" />
+    <Image Include="Assets\Author-QiMa.jpg" />
+    <Image Include="Assets\back.png" />
+    <Image Include="Assets\bg-hd.png" />
+    <Image Include="Assets\bg.png" />
+    <Image Include="Assets\brick_1-hd.png" />
+    <Image Include="Assets\brick_1.png" />
+    <Image Include="Assets\brick_2-hd.png" />
+    <Image Include="Assets\brick_2.png" />
+    <Image Include="Assets\brick_3-hd.png" />
+    <Image Include="Assets\brick_3.png" />
+    <Image Include="Assets\brick_platform-hd.png" />
+    <Image Include="Assets\brick_platform.png" />
+    <Image Include="Assets\catapult_arm-hd.png" />
+    <Image Include="Assets\catapult_arm.png" />
+    <Image Include="Assets\catapult_base_1-hd.png" />
+    <Image Include="Assets\catapult_base_1.png" />
+    <Image Include="Assets\catapult_base_2-hd.png" />
+    <Image Include="Assets\catapult_base_2.png" />
+    <Image Include="Assets\catapult_cup-hd.png" />
+    <Image Include="Assets\catapult_cup.png" />
+    <Image Include="Assets\CloseNormal.png" />
+    <Image Include="Assets\CloseSelected.png" />
+    <Image Include="Assets\fg-hd.png" />
+    <Image Include="Assets\fg.png" />
+    <Image Include="Assets\fire.png" />
+    <Image Include="Assets\head_cat-hd.png" />
+    <Image Include="Assets\head_cat.png" />
+    <Image Include="Assets\head_dog-hd.png" />
+    <Image Include="Assets\head_dog.png" />
+    <Image Include="Assets\Logo.png" />
+    <Image Include="Assets\SmallLogo.png" />
+    <Image Include="Assets\SplashScreen.png" />
+    <Image Include="Assets\squirrel_1-hd.png" />
+    <Image Include="Assets\squirrel_1.png" />
+    <Image Include="Assets\squirrel_2-hd.png" />
+    <Image Include="Assets\squirrel_2.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="SplashScreenImage.jpg" />
+    <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
+    <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
+    <Image Include="Assets\Tiles\FlipCycleTileSmall.png" />
+    <Image Include="Assets\Tiles\IconicTileMediumLarge.png" />
+    <Image Include="Assets\Tiles\IconicTileSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Classes\AppDelegate.h" />
+    <ClInclude Include=".\cocos2dorig.h" />
+    <ClInclude Include="Classes\HelloWorldScene.h" />
+    <ClInclude Include="Classes\MyContactListener.h" />
+    <ClInclude Include="include\BasicLoader.h" />
+    <ClInclude Include="include\BasicReaderWriter.h" />
+    <ClInclude Include="include\CCAccelerometer.h" />
+    <ClInclude Include="include\CCAccelerometerDelegate.h" />
+    <ClInclude Include="include\CCAccelerometer_platform.h" />
+    <ClInclude Include="include\CCAccelerometer_win8_metro.h" />
+    <ClInclude Include="include\CCAction.h" />
+    <ClInclude Include="include\CCActionCamera.h" />
+    <ClInclude Include="include\CCActionCatmullRom.h" />
+    <ClInclude Include="include\CCActionEase.h" />
+    <ClInclude Include="include\CCActionGrid.h" />
+    <ClInclude Include="include\CCActionGrid3D.h" />
+    <ClInclude Include="include\CCActionInstant.h" />
+    <ClInclude Include="include\CCActionInterval.h" />
+    <ClInclude Include="include\CCActionManager.h" />
+    <ClInclude Include="include\CCActionPageTurn3D.h" />
+    <ClInclude Include="include\CCActionProgressTimer.h" />
+    <ClInclude Include="include\CCActionTiledGrid.h" />
+    <ClInclude Include="include\CCActionTween.h" />
+    <ClInclude Include="include\CCAffineTransform.h" />
+    <ClInclude Include="include\CCAnimation.h" />
+    <ClInclude Include="include\CCAnimationCache.h" />
+    <ClInclude Include="include\CCApplication.h" />
+    <ClInclude Include="include\CCApplication_platform.h" />
+    <ClInclude Include="include\CCApplication_win8_metro.h" />
+    <ClInclude Include="include\CCArchOptimalParticleSystem.h" />
+    <ClInclude Include="include\CCArray.h" />
+    <ClInclude Include="include\CCAtlasNode.h" />
+    <ClInclude Include="include\CCAutoreleasePool.h" />
+    <ClInclude Include="include\CCBool.h" />
+    <ClInclude Include="include\CCCamera.h" />
+    <ClInclude Include="include\ccCArray.h" />
+    <ClInclude Include="include\CCCommon.h" />
+    <ClInclude Include="include\ccConfig.h" />
+    <ClInclude Include="include\CCConfiguration.h" />
+    <ClInclude Include="include\CCData.h" />
+    <ClInclude Include="include\CCDictionary.h" />
+    <ClInclude Include="include\CCDirector.h" />
+    <ClInclude Include="include\CCDouble.h" />
+    <ClInclude Include="include\CCDrawingPrimitives.h" />
+    <ClInclude Include="include\CCDrawNode.h" />
+    <ClInclude Include="include\CCEGLView.h" />
+    <ClInclude Include="include\CCEGLView_platform.h" />
+    <ClInclude Include="include\CCEGLView_win8_metro.h" />
+    <ClInclude Include="include\CCEventType.h" />
+    <ClInclude Include="include\CCFileUtils.h" />
+    <ClInclude Include="include\CCFloat.h" />
+    <ClInclude Include="include\CCGeometry.h" />
+    <ClInclude Include="include\CCGL.h" />
+    <ClInclude Include="include\CCGrabber.h" />
+    <ClInclude Include="include\CCGrid.h" />
+    <ClInclude Include="include\CCImage.h" />
+    <ClInclude Include="include\CCIMEDelegate.h" />
+    <ClInclude Include="include\CCIMEDispatcher.h" />
+    <ClInclude Include="include\CCInteger.h" />
+    <ClInclude Include="include\CCKeypadDelegate.h" />
+    <ClInclude Include="include\CCKeypadDispatcher.h" />
+    <ClInclude Include="include\CCLabelAtlas.h" />
+    <ClInclude Include="include\CCLabelBMFont.h" />
+    <ClInclude Include="include\CCLabelTTF.h" />
+    <ClInclude Include="include\CCLayer.h" />
+    <ClInclude Include="include\CCLibxml2.h" />
+    <ClInclude Include="include\ccMacros.h" />
+    <ClInclude Include="include\CCMenu.h" />
+    <ClInclude Include="include\CCMenuItem.h" />
+    <ClInclude Include="include\CCMotionStreak.h" />
+    <ClInclude Include="include\CCNode.h" />
+    <ClInclude Include="include\CCNotificationCenter.h" />
+    <ClInclude Include="include\CCNS.h" />
+    <ClInclude Include="include\CCObject.h" />
+    <ClInclude Include="include\CCParallaxNode.h" />
+    <ClInclude Include="include\CCParticleExamples.h" />
+    <ClInclude Include="include\CCParticleSystem.h" />
+    <ClInclude Include="include\CCParticleSystemPoint.h" />
+    <ClInclude Include="include\CCParticleSystemQuad.h" />
+    <ClInclude Include="include\CCPlatformConfig.h" />
+    <ClInclude Include="include\CCPlatformMacros.h" />
+    <ClInclude Include="include\CCPointExtension.h" />
+    <ClInclude Include="include\CCProgressTimer.h" />
+    <ClInclude Include="include\CCProtocols.h" />
+    <ClInclude Include="include\CCRenderTexture.h" />
+    <ClInclude Include="include\CCRibbon.h" />
+    <ClInclude Include="include\CCSAXParser.h" />
+    <ClInclude Include="include\CCScene.h" />
+    <ClInclude Include="include\CCScheduler.h" />
+    <ClInclude Include="include\CCScriptSupport.h" />
+    <ClInclude Include="include\CCSet.h" />
+    <ClInclude Include="include\CCSprite.h" />
+    <ClInclude Include="include\CCSpriteBatchNode.h" />
+    <ClInclude Include="include\CCSpriteFrame.h" />
+    <ClInclude Include="include\CCSpriteFrameCache.h" />
+    <ClInclude Include="include\CCStdC.h" />
+    <ClInclude Include="include\CCString.h" />
+    <ClInclude Include="include\CCTextFieldTTF.h" />
+    <ClInclude Include="include\CCTexture2D.h" />
+    <ClInclude Include="include\CCTextureAtlas.h" />
+    <ClInclude Include="include\CCTextureCache.h" />
+    <ClInclude Include="include\CCTexturePVR.h" />
+    <ClInclude Include="include\CCThread.h" />
+    <ClInclude Include="include\CCTileMapAtlas.h" />
+    <ClInclude Include="include\CCTMXLayer.h" />
+    <ClInclude Include="include\CCTMXObjectGroup.h" />
+    <ClInclude Include="include\CCTMXTiledMap.h" />
+    <ClInclude Include="include\CCTMXXMLParser.h" />
+    <ClInclude Include="include\CCTouch.h" />
+    <ClInclude Include="include\CCTouchDelegateProtocol.h" />
+    <ClInclude Include="include\CCTouchDispatcher.h" />
+    <ClInclude Include="include\CCTouchHandler.h" />
+    <ClInclude Include="include\CCTransition.h" />
+    <ClInclude Include="include\CCTransitionPageTurn.h" />
+    <ClInclude Include="include\CCTransitionProgress.h" />
+    <ClInclude Include="include\ccTypes.h" />
+    <ClInclude Include="include\CCUserDefault.h" />
+    <ClInclude Include="include\CCZone.h" />
+    <ClInclude Include="include\cocos2d.h" />
+    <ClInclude Include="include\corewrappers.h" />
+    <ClInclude Include="include\d3d11shader.h" />
+    <ClInclude Include="include\d3dcompiler.h" />
+    <ClInclude Include="include\DirectXHelper.h" />
+    <ClInclude Include="include\DirectXRender.h" />
+    <ClInclude Include="include\DXTextPainter.h" />
+    <ClInclude Include="include\FTTextPainter.h" />
+    <ClInclude Include="include\platform.h" />
+    <ClInclude Include="include\shcore.h" />
+    <ClInclude Include="include\SimpleAudioEngine.h" />
+    <ClInclude Include="include\uthash.h" />
+    <ClInclude Include="include\utlist.h" />
+    <ClInclude Include="include\xinput.h" />
+    <ClInclude Include="pch.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Classes\AppDelegate.cpp" />
+    <ClCompile Include=".\cocos2dorig.cpp" />
+    <ClCompile Include="Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="Classes\MyContactListener.cpp" />
+    <ClCompile Include="pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\DebugFont.spritefont" />
+    <None Include="CCDrawingPixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCDrawingVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCGridPixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCGridVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCLayerColorPixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCLayerColorVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCParticlePixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCParticleVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCProgressTimerPixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCProgressTimerVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCSpritePixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCSpriteVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCTexture2DPixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCTexture2DVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCTextureAtlasPixelShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CCTextureAtlasVertexShader.cso">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
+      <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\CocosDenshionWindowsPhone\CocosDenshionWindowsPhone.vcxproj">
+      <Project>{54d5a760-05c6-4560-bb0e-6804d248f14a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\external\Box2D\Box2DWindowsPhone.vcxproj">
+      <Project>{06ecb3ca-e6cc-4cfb-874e-6979f9dc280b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

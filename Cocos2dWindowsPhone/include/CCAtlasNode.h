@@ -63,8 +63,11 @@ protected:
 
 	CC_PROPERTY(CCTextureAtlas*, m_pTextureAtlas, TextureAtlas);
 
-	// protocol variables
-	CC_PROPERTY(bool, m_bIsOpacityModifyRGB, IsOpacityModifyRGB)
+    // protocol variables
+    bool m_bIsOpacityModifyRGB;
+    bool isOpacityModifyRGB();
+    void setOpacityModifyRGB(bool isOpacityModifyRGB);
+
 	CC_PROPERTY(ccBlendFunc, m_tBlendFunc, BlendFunc);
 	CC_PROPERTY(CCubyte, m_cOpacity, Opacity);
 	CC_PROPERTY_PASS_BY_REF(ccColor3B, m_tColor, Color);

@@ -30,54 +30,67 @@ THE SOFTWARE.
 #define __CC_ANIMATION_CACHE_H__
 
 #include "CCObject.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 
 #include <string>
 
-namespace cocos2d
+NS_CC_BEGIN
+class CCAnimation;
+
+/** Singleton that manages the Animations.
+It saves in a cache the animations. You should use this class if you want to save your animations in a cache.
+
+Before v0.99.5, the recommend way was to save them on the CCSprite. Since v0.99.5, you should use this class instead.
+
+@since v0.99.5
+*/
+class CC_DLL CCAnimationCache : public CCObject
 {
-	class CCAnimation;
+public:
+    CCAnimationCache();
+    ~CCAnimationCache();
+    /** Returns the shared instance of the Animation cache */
+    static CCAnimationCache* sharedAnimationCache(void);
 
-	/** Singleton that manages the Animations.
-	It saves in a cache the animations. You should use this class if you want to save your animations in a cache.
+    /** Purges the cache. It releases all the CCAnimation objects and the shared instance.
+    */
+    static void purgeSharedAnimationCache(void);
 
-	Before v0.99.5, the recommend way was to save them on the CCSprite. Since v0.99.5, you should use this class instead.
+    /** Adds a CCAnimation with a name.
+    */
+    void addAnimation(CCAnimation *animation, const char * name);
 
-	@since v0.99.5
-	*/
-	class CC_DLL CCAnimationCache : public CCObject
-	{
-	public:
-		~CCAnimationCache();
-		CCAnimationCache();
+    /** Deletes a CCAnimation from the cache.
+    */
+    void removeAnimationByName(const char* name);
 
-		/** Retruns ths shared instance of the Animation cache */
-		static CCAnimationCache* sharedAnimationCache(void);
+    /** Returns a CCAnimation that was previously added.
+    If the name is not found it will return nil.
+    You should retain the returned copy if you are going to use it.
+    */
+    CCAnimation* animationByName(const char* name);
 
-		/** Purges the cache. It releases all the CCAnimation objects and the shared instance.
-		*/
-		static void purgeSharedAnimationCache(void);
+    /** Adds an animation from an NSDictionary
+     Make sure that the frames were previously loaded in the CCSpriteFrameCache.
+     @since v1.1
+     */
+    void addAnimationsWithDictionary(CCDictionary* dictionary);
 
-		/** Adds a CCAnimation with a name.
-		*/
-		void addAnimation(CCAnimation *animation, const char * name);
+    /** Adds an animation from a plist file.
+     Make sure that the frames were previously loaded in the CCSpriteFrameCache.
+     @since v1.1
+     */
+    void addAnimationsWithFile(const char* plist);
 
-		/** Deletes a CCAnimation from the cache.
-		*/
-		void removeAnimationByName(const char* name);
+    bool init(void);
 
-		/** Returns a CCAnimation that was previously added.
-		If the name is not found it will return nil.
-		You should retain the returned copy if you are going to use it.
-		*/
-		CCAnimation* animationByName(const char* name);
-		void addAnimationsWithFile(const char* plist);
-		bool init(void);
-
-	private:
-		CCMutableDictionary<std::string, CCAnimation*> *m_pAnimations;
-		static CCAnimationCache *s_pSharedAnimationCache;
-	};
-}
+private:
+    void parseVersion1(CCDictionary* animations);
+    void parseVersion2(CCDictionary* animations);
+private:
+    CCDictionary* m_pAnimations;
+    static CCAnimationCache* s_pSharedAnimationCache;
+};
+NS_CC_END
 
 #endif // __CC_ANIMATION_CACHE_H__

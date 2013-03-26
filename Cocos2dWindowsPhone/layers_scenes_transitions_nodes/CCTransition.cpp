@@ -88,8 +88,9 @@ bool CCTransitionScene::initWithDuration(ccTime t, CCScene *scene)
 
 		CCAssert( m_pInScene != m_pOutScene, "Incoming scene must be different from the outgoing scene" );
 
-		// disable events while transitions
-		CCTouchDispatcher::sharedDispatcher()->setDispatchEvents(false);
+        // disable events while transitions
+        CCDirector* pDirector = CCDirector::sharedDirector();
+        pDirector->getTouchDispatcher()->setDispatchEvents(false);
 		this->sceneOrder();
 
 		return true;
@@ -150,7 +151,7 @@ void CCTransitionScene::setNewScene(ccTime dt)
 	m_bIsSendCleanupToScene = director->isSendCleanupToScene();
 	director->replaceScene(m_pInScene);
 	// enable events while transitions
-	CCTouchDispatcher::sharedDispatcher()->setDispatchEvents(true);
+    director->getTouchDispatcher()->setDispatchEvents(true);
 	// issue #267
 	m_pOutScene->setVisible(true);
 }
@@ -1214,7 +1215,7 @@ void CCTransitionTurnOffTiles::onEnter()
 	int x = (int)(12 * aspect);
 	int y = 12;
 
-	CCTurnOffTiles* toff = CCTurnOffTiles::actionWithSize( ccg(x,y), m_fDuration);
+	CCTurnOffTiles* toff = CCTurnOffTiles::actionWithSize( CCSizeMake(x,y), m_fDuration);
 	CCActionInterval* action = easeActionWithAction(toff);
 	m_pOutScene->runAction
 	(
@@ -1331,7 +1332,7 @@ void CCTransitionFadeTR::onEnter()
 	int x = (int)(12 * aspect);
 	int y = 12;
 
-	CCActionInterval* action  = actionWithSize(ccg(x,y));
+	CCActionInterval* action  = actionWithSize(CCSizeMake(x,y));
 
 	m_pOutScene->runAction
 	(
@@ -1346,7 +1347,7 @@ void CCTransitionFadeTR::onEnter()
 }
 
 
-CCActionInterval*  CCTransitionFadeTR::actionWithSize(const ccGridSize& size)
+CCActionInterval*  CCTransitionFadeTR::actionWithSize(const CCSize& size)
 {
 	return CCFadeOutTRTiles::actionWithSize(size, m_fDuration);
 }
@@ -1370,7 +1371,7 @@ CCTransitionFadeBL::~CCTransitionFadeBL()
 {
 }
 
-CCActionInterval*  CCTransitionFadeBL::actionWithSize(const ccGridSize& size)
+CCActionInterval*  CCTransitionFadeBL::actionWithSize(const CCSize& size)
 {
 	return CCFadeOutBLTiles::actionWithSize(size, m_fDuration);
 }
@@ -1387,7 +1388,7 @@ CCTransitionFadeUp::~CCTransitionFadeUp()
 {
 }
 
-CCActionInterval* CCTransitionFadeUp::actionWithSize(const ccGridSize& size)
+CCActionInterval* CCTransitionFadeUp::actionWithSize(const CCSize& size)
 {
 	return CCFadeOutUpTiles::actionWithSize(size, m_fDuration);
 }
@@ -1404,7 +1405,7 @@ CCTransitionFadeDown::~CCTransitionFadeDown()
 {
 }
 
-CCActionInterval* CCTransitionFadeDown::actionWithSize(const ccGridSize& size)
+CCActionInterval* CCTransitionFadeDown::actionWithSize(const CCSize& size)
 {
 	return CCFadeOutDownTiles::actionWithSize(size, m_fDuration);
 }

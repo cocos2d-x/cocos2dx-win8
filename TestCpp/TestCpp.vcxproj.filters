@@ -17,6 +17,21 @@
     <Filter Include="Classes\ActionsTest">
       <UniqueIdentifier>{47299f81-026d-4f61-9a3a-7f2452e2a946}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\AccelerometerTest">
+      <UniqueIdentifier>{badd737c-c437-47c3-bb89-f40589716bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ActionManagerTest">
+      <UniqueIdentifier>{14681a24-55a6-4276-860d-f9481dd5729c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ActionsEaseTest">
+      <UniqueIdentifier>{32946560-bbdb-4a27-89f7-e14b13971a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ActionsProgressTest">
+      <UniqueIdentifier>{3b64b5ef-9cda-4ce7-8623-0b2e44619a54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Box2DTest">
+      <UniqueIdentifier>{eba19c00-b07f-4f3b-b248-47113ad19f50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -43,6 +58,54 @@
     <Image Include="Assets\back.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\grossini.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathGrossini.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\b1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\b2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background1.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background3.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\blocks.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\f1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\f2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\r1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\r2.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -64,6 +127,21 @@
     </ClCompile>
     <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp">
       <Filter>Classes\ActionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\AccelerometerTest\AccelerometerTest.cpp">
+      <Filter>Classes\AccelerometerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionManagerTest\ActionManagerTest.cpp">
+      <Filter>Classes\ActionManagerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionsEaseTest\ActionsEaseTest.cpp">
+      <Filter>Classes\ActionsEaseTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionsProgressTest\ActionsProgressTest.cpp">
+      <Filter>Classes\ActionsProgressTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp">
+      <Filter>Classes\Box2DTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -273,12 +351,6 @@
     <ClInclude Include="include\CCMotionStreak.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\CCMutableArray.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CCMutableDictionary.h">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\CCNode.h">
       <Filter>include</Filter>
     </ClInclude>
@@ -482,6 +554,21 @@
     </ClInclude>
     <ClInclude Include="Classes\ActionsTest\ActionsTest.h">
       <Filter>Classes\ActionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\AccelerometerTest\AccelerometerTest.h">
+      <Filter>Classes\AccelerometerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionManagerTest\ActionManagerTest.h">
+      <Filter>Classes\ActionManagerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionsEaseTest\ActionsEaseTest.h">
+      <Filter>Classes\ActionsEaseTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionsProgressTest\ActionsProgressTest.h">
+      <Filter>Classes\ActionsProgressTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Box2DTest\Box2dTest.h">
+      <Filter>Classes\Box2DTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

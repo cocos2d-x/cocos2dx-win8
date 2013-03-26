@@ -37,6 +37,39 @@ namespace cocos2d {
 
 #define kProgressTextureCoordsCount 4
 const char kProgressTextureCoords = 0x1e;
+CCProgressTimer* CCProgressTimer::create(CCSprite* sp)
+{
+    CCProgressTimer *pProgressTimer = new CCProgressTimer();
+
+    if (pProgressTimer->initWithSprite(sp))
+    {
+        pProgressTimer->autorelease();
+    }
+    else
+    {
+        delete pProgressTimer;
+        pProgressTimer = NULL;
+    }        
+
+    return pProgressTimer;
+}
+
+bool CCProgressTimer::initWithSprite(CCSprite* sp)
+{
+    //setPercentage(0.0f);
+    //m_pVertexData = NULL;
+    //m_nVertexDataCount = 0;
+
+    //setAnchorPoint(ccp(0.5f,0.5f));
+    //m_eType = kCCProgressTimerTypeRadial;
+    //m_bReverseDirection = false;
+    //setMidpoint(ccp(0.5f, 0.5f));
+    //setBarChangeRate(ccp(1,1));
+    //setSprite(sp);
+    // shader program
+    //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
+    return this->initWithTexture(sp->getTexture());
+}
 
 CCDXProgressTimer CCProgressTimer::mDXProgressTimer;
 
@@ -139,7 +172,16 @@ void CCProgressTimer::setType(CCProgressTimerType type)
 		m_eType = type;
 	}
 }
+void CCProgressTimer::setReverseProgress(bool reverse)
+{
+    if( m_bReverseDirection != reverse ) {
+        m_bReverseDirection = reverse;
 
+        //    release all previous information
+        CC_SAFE_FREE(m_pVertexData);
+        m_nVertexDataCount = 0;
+    }
+}
 // Interval
 
 ///
@@ -215,7 +257,15 @@ void CCProgressTimer::updateProgress(void)
 		break;
 	}
 }
+CCPoint CCProgressTimer::getMidpoint(void)
+{
+    return m_tMidpoint;
+}
 
+void CCProgressTimer::setMidpoint(CCPoint midPoint)
+{
+    m_tMidpoint = ccpClamp(midPoint, CCPointZero, ccp(1,1));
+}
 ///
 //	Update does the work of mapping the texture onto the triangles
 //	It now doesn't occur the cost of free/alloc data every update cycle.

@@ -29,7 +29,7 @@ THE SOFTWARE.
 
 #include "CCNode.h"
 #include "CCProtocols.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 
 NS_CC_BEGIN
 
@@ -136,8 +136,8 @@ public:
 	virtual void setColor(const ccColor3B& color);
 	virtual const ccColor3B& getColor();
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-	virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
 protected:
 	ccColor3B	m_tColorBackup;
 	float		m_fOriginalScale;
@@ -249,8 +249,8 @@ public:
 	virtual void unselected();
 	virtual void setIsEnabled(bool bEnabled);
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-	virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
 };
 
 /** @brief CCMenuItemImage accepts images as items.
@@ -303,7 +303,7 @@ class CC_DLL CCMenuItemToggle : public CCMenuItem, public CCRGBAProtocol
 	/** CCMutableArray that contains the subitems. You can add/remove items in runtime, and you can replace the array with a new one.
 	@since v0.7.2
 	*/
-	CC_PROPERTY(CCMutableArray<CCMenuItem*>*, m_pSubItems, SubItems);
+	CC_PROPERTY(CCArray*, m_pSubItems, SubItems);
 public:
 	CCMenuItemToggle()
 		: m_cOpacity(0)
@@ -332,8 +332,8 @@ public:
 	virtual void unselected();
 	virtual void setIsEnabled(bool var);
 
-	virtual void setIsOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
-	virtual bool getIsOpacityModifyRGB(void) { return false;}
+    virtual void setOpacityModifyRGB(bool bValue) {CC_UNUSED_PARAM(bValue);}
+    virtual bool isOpacityModifyRGB(void) { return false;}
 };
 
 NS_CC_END

@@ -79,7 +79,7 @@ void CCTransitionPageTurn::onEnter()
         y=16;
 	}
 
-	CCActionInterval *action  = this->actionWithSize(ccg(x,y));
+	CCActionInterval *action  = this->actionWithSize(CCSizeMake(x,y));
 
 	if(! m_bBack )
 	{
@@ -113,7 +113,7 @@ void CCTransitionPageTurn::onEnter()
 }
 
 
-CCActionInterval* CCTransitionPageTurn:: actionWithSize(const ccGridSize& vector)
+CCActionInterval* CCTransitionPageTurn:: actionWithSize(const CCSize& vector)
 {
 	if( m_bBack )
 	{

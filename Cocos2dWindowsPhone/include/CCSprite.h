@@ -26,7 +26,7 @@
 #include "CCProtocols.h"
 #include "CCTextureAtlas.h"
 #include "ccTypes.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 #include <string>
 #include <fstream>
 
@@ -244,10 +244,18 @@ public:
 	bool isFlipY(void);
 
 	void updateColor(void);
-	// RGBAProtocol
-	/** opacity: conforms to CCRGBAProtocol protocol */
-	virtual void setIsOpacityModifyRGB(bool bValue);
-	virtual bool getIsOpacityModifyRGB(void);
+    /**
+     * Changes the premultipliedAlphaOpacity property.
+     *
+     * Textures with premultiplied alpha will have this property by default on true.
+     * Otherwise the default value is false.
+     *
+     * @param   bValue  flase then opacity will be applied as: glColor(R,G,B,opacity);
+     *                  true then opacity will be applied as: glColor(opacity, opacity, opacity, opacity);
+     */
+    virtual void setOpacityModifyRGB(bool bValue);
+    virtual bool isOpacityModifyRGB(void);
+    /// @} end of CCRGBAProtocol Inheritance
 
 	virtual CCRGBAProtocol* convertToRGBAProtocol() { return (CCRGBAProtocol *)this; }
 

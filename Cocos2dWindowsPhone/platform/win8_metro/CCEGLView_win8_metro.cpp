@@ -31,7 +31,7 @@
 #include "CCApplication.h"
 
 using namespace DirectX;
-using namespace Cocos2dWindowsPhone;
+
 NS_CC_BEGIN;
 
 static CCEGLView * s_pMainWindow;
@@ -619,8 +619,18 @@ void CCEGLView::GetClearColor(float* color)
 
 CCEGLView* CCEGLView::sharedOpenGLView()
 {
-    CC_ASSERT(s_pMainWindow);
-    return s_pMainWindow;
+    static CCEGLView* s_pEglView = NULL;
+    if (s_pEglView == NULL)
+    {
+        s_pEglView = new CCEGLView();
+		if(!s_pEglView->Create())
+		{
+			delete s_pEglView;
+			s_pEglView = NULL;
+		}
+    }
+
+    return s_pEglView;
 }
 
 void CCEGLView::OnWindowSizeChanged()
@@ -744,6 +754,16 @@ void CCEGLView::OnPointerMoved(int id, const CCPoint& point)
     pTouch->setTouchInfo(id, (point.x - m_rcViewPort.left) / m_fScreenScaleFactor / m_fWinScaleX, 
         (point.y - m_rcViewPort.top) / m_fScreenScaleFactor / m_fWinScaleY);
     m_pDelegate->touchesMoved(pSet, NULL);
+}
+
+float CCEGLView::getScaleX() const
+{
+    return m_fWinScaleX;
+}
+
+float CCEGLView::getScaleY() const
+{
+    return m_fWinScaleY;
 }
 
 NS_CC_END;

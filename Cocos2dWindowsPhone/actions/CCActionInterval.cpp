@@ -2253,7 +2253,7 @@ bool CCAnimate::initWithAnimation(CCAnimation *pAnimation, bool bRestoreOriginal
 {
 	CCAssert(pAnimation, "");
 
-	if (CCActionInterval::initWithDuration(pAnimation->getFrames()->count() * pAnimation->getDelay()))
+	if (CCActionInterval::initWithDuration(pAnimation->getFrames()->count() * pAnimation->getTotalDelayUnits()))
 	{
 		m_bRestoreOriginalFrame = bRestoreOriginalFrame;
        m_pAnimation = pAnimation;
@@ -2347,7 +2347,7 @@ void CCAnimate::stop(void)
 
 void CCAnimate::update(float time)
 {
-	CCMutableArray<CCSpriteFrame*> *pFrames = m_pAnimation->getFrames();
+	CCArray *pFrames = m_pAnimation->getFrames();
 	unsigned int numberOfFrames = pFrames->count();
 
 	unsigned int idx = (unsigned int)(time * numberOfFrames);
@@ -2358,24 +2358,35 @@ void CCAnimate::update(float time)
 	}
 
 	CCSprite *pSprite = (CCSprite*)(m_pTarget);
-	if (! pSprite->isFrameDisplayed(pFrames->getObjectAtIndex(idx)))
+	if (! pSprite->isFrameDisplayed((CCSpriteFrame*)pFrames->objectAtIndex(idx)))
 	{
-		pSprite->setDisplayFrame(pFrames->getObjectAtIndex(idx));
+		pSprite->setDisplayFrame((CCSpriteFrame*)pFrames->objectAtIndex(idx));
 	}
 }
 
 CCActionInterval* CCAnimate::reverse(void)
 {
-	CCMutableArray<CCSpriteFrame*> *pOldArray = m_pAnimation->getFrames();
-	CCMutableArray<CCSpriteFrame*> *pNewArray = new CCMutableArray<CCSpriteFrame*>(pOldArray->count());
+	CCArray *pOldArray = m_pAnimation->getFrames();
+	CCArray *pNewArray = new CCArray(pOldArray->count());
    
 	if (pOldArray->count() > 0)
 	{
 		CCSpriteFrame *pElement;
-		CCMutableArray<CCSpriteFrame*>::CCMutableArrayRevIterator iter;
-		for (iter = pOldArray->rbegin(); iter != pOldArray->rend(); iter++)
+		//CCArray::CCMutableArrayRevIterator iter;
+		//for (iter = pOldArray->rbegin(); iter != pOldArray->rend(); iter++)
+		//{
+		//	pElement = *iter;
+		//	if (! pElement)
+		//	{
+		//		break;
+		//	}
+
+		//	pNewArray->addObject((CCSpriteFrame*)(pElement->copy()->autorelease()));
+		//}
+		CCObject* pObj = NULL;
+		CCARRAY_FOREACH(pOldArray, pObj)
 		{
-			pElement = *iter;
+			pElement = (CCSpriteFrame *)pObj;
 			if (! pElement)
 			{
 				break;
@@ -2385,7 +2396,7 @@ CCActionInterval* CCAnimate::reverse(void)
 		}
 	}
 
-	CCAnimation *pNewAnim = CCAnimation::create(pNewArray, m_pAnimation->getDelay());
+	CCAnimation *pNewAnim = CCAnimation::create(pNewArray, m_pAnimation->getTotalDelayUnits());
 
 	pNewArray->release();
 

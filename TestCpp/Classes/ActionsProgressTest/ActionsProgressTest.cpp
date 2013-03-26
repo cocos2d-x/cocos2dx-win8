@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ActionsProgressTest.h"
 #include "../testResource.h"
 

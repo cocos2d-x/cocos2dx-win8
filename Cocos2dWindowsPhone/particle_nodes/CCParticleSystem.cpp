@@ -124,6 +124,10 @@ CCParticleSystem::CCParticleSystem()
 	m_tBlendFunc.src = CC_BLEND_SRC;
 	m_tBlendFunc.dst = CC_BLEND_DST;
 }
+void CCParticleSystem::setAutoRemoveOnFinish(bool var)
+{
+    m_bIsAutoRemoveOnFinish = var;
+}
 // implementation CCParticleSystem
 CCParticleSystem * CCParticleSystem::create(const char *plistFile)
 {
@@ -140,7 +144,7 @@ bool CCParticleSystem::initWithFile(const char *plistFile)
 {
 	bool bRet = false;
 	m_sPlistFile = CCFileUtils::fullPathFromRelativePath(plistFile);
-	CCDictionary<std::string, CCObject*> *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(m_sPlistFile.c_str());
+	CCDictionary *dict = CCFileUtils::dictionaryWithContentsOfFileThreadSafe(m_sPlistFile.c_str());
 
 	CCAssert( dict != NULL, "Particles: file not found");
 	bRet = this->initWithDictionary(dict);
@@ -149,7 +153,7 @@ bool CCParticleSystem::initWithFile(const char *plistFile)
 	return bRet;
 }
 
-bool CCParticleSystem::initWithDictionary(CCDictionary<std::string, CCObject*> *dictionary)
+bool CCParticleSystem::initWithDictionary(CCDictionary *dictionary)
 {
 	bool bRet = false;
 	unsigned char *buffer = NULL;
@@ -837,6 +841,28 @@ void CCParticleSystem::setEndRadiusVar(float endRadiusVar)
 {
 	CCAssert( m_nEmitterMode == kCCParticleModeRadius, "Particle Mode should be Radius");
 	modeB.endRadiusVar = endRadiusVar;
+}
+// ParticleSystem - Additive Blending
+void CCParticleSystem::setBlendAdditive(bool additive)
+{
+    if( additive )
+    {
+        m_tBlendFunc.src = CC_SRC_ALPHA;
+        m_tBlendFunc.dst = CC_ONE;
+    }
+    else
+    {
+        if( m_pTexture && ! m_pTexture->getHasPremultipliedAlpha() )
+        {
+            m_tBlendFunc.src = CC_SRC_ALPHA;
+            m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
+        } 
+        else 
+        {
+            m_tBlendFunc.src = CC_BLEND_SRC;
+            m_tBlendFunc.dst = CC_BLEND_DST;
+        }
+    }
 }
 float CCParticleSystem::getEndRadiusVar()
 {

@@ -28,7 +28,7 @@ THE SOFTWARE.
 #define __CCKEYPAD_DISPATCHER_H__
 
 #include "CCKeypadDelegate.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 
 NS_CC_BEGIN
 
@@ -86,7 +86,7 @@ public:
 
 protected:
 
-    typedef CCMutableArray<CCKeypadHandler*> KeypadDelegateArray;
+    typedef CCArray KeypadDelegateArray;
 
     KeypadDelegateArray* m_pDelegates;
     bool m_bLocked;

@@ -24,7 +24,7 @@
 #include "cocoa/CCNS.h"
 #include "CCDirector.h"
 #include "CCScene.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 #include "CCScheduler.h"
 #include "ccMacros.h"
 #include "CCTouchDispatcher.h"
@@ -89,7 +89,7 @@ bool CCDirector::init(void)
 	m_pNotificationNode = NULL;
 
 	m_dOldAnimationInterval = m_dAnimationInterval = 1.0 / kDefaultFPS;	
-	m_pobScenesStack = new CCMutableArray<CCScene*>();
+	m_pobScenesStack = new CCArray();
 
 
 	// Set default projection (3D)
@@ -120,6 +120,17 @@ bool CCDirector::init(void)
     m_fContentScaleFactor = 1;	
 	m_bIsContentScaleSupported = false;
 
+	// scheduler
+	m_pScheduler = new CCScheduler();
+	// action manager
+	m_pActionManager = new CCActionManager();
+	m_pScheduler->scheduleUpdateForTarget(m_pActionManager, kCCPrioritySystem, false);
+
+	// touchDispatcher
+    m_pTouchDispatcher = new CCTouchDispatcher();
+    m_pTouchDispatcher->init();
+
+
 	// create autorelease pool
 	CCPoolManager::sharedPoolManager()->push();
 
@@ -137,6 +148,8 @@ CCDirector::~CCDirector(void)
 	CC_SAFE_RELEASE(m_pRunningScene);
 	CC_SAFE_RELEASE(m_pNotificationNode);
 	CC_SAFE_RELEASE(m_pobScenesStack);
+	CC_SAFE_RELEASE(m_pScheduler);
+	CC_SAFE_RELEASE(m_pActionManager);
 
 	// pop the autorelease pool
 	CCPoolManager::sharedPoolManager()->pop();
@@ -181,7 +194,7 @@ void CCDirector::drawScene(void)
 	//tick before glClear: issue #533
 	if (! m_bPaused)
 	{
-		CCScheduler::sharedScheduler()->tick(m_fDeltaTime);
+		m_pScheduler->update(m_fDeltaTime);
 	}
 	
 	m_pobOpenGLView->clearRender(NULL);
@@ -304,9 +317,8 @@ void CCDirector::setOpenGLView(CC_GLVIEW *pobOpenGLView)
 			updateContentScaleFactor();
 		}
 
- 		CCTouchDispatcher *pTouchDispatcher = CCTouchDispatcher::sharedDispatcher();
- 		m_pobOpenGLView->setTouchDelegate(pTouchDispatcher);
-        pTouchDispatcher->setDispatchEvents(true);
+ 		m_pobOpenGLView->setTouchDelegate(m_pTouchDispatcher);
+        m_pTouchDispatcher->setDispatchEvents(true);
 	}
 }
 
@@ -501,6 +513,30 @@ void CCDirector::reshapeProjection(const CCSize& newWindowSize)
 	setProjection(m_eProjection);
 }
 
+CCSize CCDirector::getVisibleSize()
+{
+    if (m_pobOpenGLView)
+    {
+        return m_pobOpenGLView->getSizeInPixel();
+    }
+    else 
+    {
+        return CCSizeZero;
+    }
+}
+
+CCPoint CCDirector::getVisibleOrigin()
+{
+    //if (m_pobOpenGLView)
+    //{
+    //    return m_pobOpenGLView->getSizeInPixel();
+    //}
+    //else 
+    //{
+        return CCPointZero;
+    //}
+}
+
 // scene management
 
 void CCDirector::runWithScene(CCScene *pScene)
@@ -548,7 +584,7 @@ void CCDirector::popScene(void)
 	else
 	{
 		m_bSendCleanupToScene = true;
-		m_pNextScene = m_pobScenesStack->getObjectAtIndex(c - 1);
+		m_pNextScene = (CCScene*)m_pobScenesStack->objectAtIndex(c - 1);
 	}
 }
 
@@ -562,7 +598,7 @@ void CCDirector::resetDirector()
 {
 	// don't release the event handlers
 	// They are needed in case the director is run again
-	CCTouchDispatcher::sharedDispatcher()->removeAllDelegates();
+	m_pTouchDispatcher->removeAllDelegates();
 
     if (m_pRunningScene)
     {
@@ -589,8 +625,8 @@ void CCDirector::resetDirector()
 	// purge all managers
 	CCAnimationCache::purgeSharedAnimationCache();
  	CCSpriteFrameCache::purgeSharedSpriteFrameCache();
-	CCActionManager::sharedManager()->purgeSharedManager();
-	CCScheduler::purgeSharedScheduler();
+	//CCActionManager::sharedManager()->purgeSharedManager();
+	//CCScheduler::purgeSharedScheduler();
 	CCTextureCache::purgeSharedTextureCache();
 }
 
@@ -599,7 +635,7 @@ void CCDirector::purgeDirector()
 {
 	// don't release the event handlers
 	// They are needed in case the director is run again
-	CCTouchDispatcher::sharedDispatcher()->removeAllDelegates();
+	m_pTouchDispatcher->removeAllDelegates();
 
     if (m_pRunningScene)
     {
@@ -630,8 +666,8 @@ void CCDirector::purgeDirector()
 	// purge all managers
 	CCAnimationCache::purgeSharedAnimationCache();
  	CCSpriteFrameCache::purgeSharedSpriteFrameCache();
-	CCActionManager::sharedManager()->purgeSharedManager();
-	CCScheduler::purgeSharedScheduler();
+	//CCActionManager::sharedManager()->purgeSharedManager();
+	//CCScheduler::purgeSharedScheduler();
 	CCTextureCache::purgeSharedTextureCache();
 	
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)	
@@ -820,6 +856,7 @@ bool CCDirector::enableRetinaDisplay(bool enabled)
 
 	return true;
 }
+
 void CCDirector::setScheduler(CCScheduler* pScheduler)
 {
     if (m_pScheduler != pScheduler)
@@ -830,10 +867,12 @@ void CCDirector::setScheduler(CCScheduler* pScheduler)
     }
 }
 
+
 CCScheduler* CCDirector::getScheduler()
 {
     return m_pScheduler;
 }
+
 void CCDirector::setActionManager(CCActionManager* pActionManager)
 {
     if (m_pActionManager != pActionManager)

@@ -20,9 +20,10 @@
 #define __CC_FILEUTILS_PLATFORM_H__
 
 #include <string>
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 
 NS_CC_BEGIN;
+
 
 //! @brief  Helper class to handle file operations
 class CC_DLL CCFileUtils
@@ -121,6 +122,16 @@ public:
 	*/
 	static void setiPadRetinaDisplaySuffix(const char *suffix);
 
+
+	std::string getNewFilename(const char* pszFileName);
+    /** Dictionary used to lookup filenames based on a key.
+     It is used internally by the following methods:
+     
+     const char* fullPathForFilename(const char* )key;
+     
+     @since v2.1
+     */
+    CCDictionary* m_pFilenameLookupDict;
 	/** Returns whether or not a given filename exists with the iPad suffix.
 	Only available on iOS. Not supported on OS X.
 	@since v1.1
@@ -154,26 +165,26 @@ public:
 	@param   pFileName  The file name of *.plist file
 	@return  The CCDictionary pointer generated from the file
 	*/
-	static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFile(const char *pFileName);
+	static CCDictionary *dictionaryWithContentsOfFile(const char *pFileName);
 
 	/**
 	@brief The same meaning as dictionaryWithContentsOfFile(), but it doesn't call autorelease, so the
 	invoker should call release().
 	*/
-	static CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFileThreadSafe(const char *pFileName);
+	static CCDictionary *dictionaryWithContentsOfFileThreadSafe(const char *pFileName);
 
 	/**
 	@brief   Generate a CCMutableArray pointer by file
 	@param   pFileName  The file name of *.plist file
 	@return  The CCArray pointer generated from the file
 	*/
-	static CCMutableArray<CCObject*>* arrayWithContentsOfFile(const char* pFileName);
+	static CCArray* arrayWithContentsOfFile(const char* pFileName);
 
 	/*
 	@brief The same meaning as arrayWithContentsOfFile(), but it doesn't call autorelease, so the
 	invoker should call release().
 	*/
-	static CCMutableArray<CCObject*>* arrayWithContentsOfFileThreadSafe(const char* pFileName);
+	static CCArray* arrayWithContentsOfFileThreadSafe(const char* pFileName);
 	/**
 	@brief   Get the writeable path
 	@return  The path that can write/read file

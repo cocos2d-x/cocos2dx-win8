@@ -98,7 +98,7 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>.\libraries\$(PlatformTarget);</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\Debug\Cocos2dWindowsPhone;..\Debug\CocosDenshionWindowsPhone;..\Debug\Box2DWindowsPhone</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateDebugInformation>
     </Link>
@@ -126,8 +126,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\grossini.png" />
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathGrossini.png" />
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister1.png" />
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister2.png" />
     <Image Include="Assets\ApplicationIcon.png" />
     <Image Include="Assets\back.png" />
+    <Image Include="Assets\Images\b1.png" />
+    <Image Include="Assets\Images\b2.png" />
+    <Image Include="Assets\Images\background.png" />
+    <Image Include="Assets\Images\background1.jpg" />
+    <Image Include="Assets\Images\background1.png" />
+    <Image Include="Assets\Images\background2.png" />
+    <Image Include="Assets\Images\background3.png" />
+    <Image Include="Assets\Images\blocks.png" />
+    <Image Include="Assets\Images\f1.png" />
+    <Image Include="Assets\Images\f2.png" />
+    <Image Include="Assets\Images\r1.png" />
+    <Image Include="Assets\Images\r2.png" />
     <Image Include="SplashScreenImage.jpg" />
     <Image Include="Assets\Tiles\FlipCycleTileLarge.png" />
     <Image Include="Assets\Tiles\FlipCycleTileMedium.png" />
@@ -139,9 +155,14 @@
     <Xml Include="WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classes\AccelerometerTest\AccelerometerTest.h" />
+    <ClInclude Include="Classes\ActionManagerTest\ActionManagerTest.h" />
+    <ClInclude Include="Classes\ActionsEaseTest\ActionsEaseTest.h" />
+    <ClInclude Include="Classes\ActionsProgressTest\ActionsProgressTest.h" />
     <ClInclude Include="Classes\ActionsTest\ActionsTest.h" />
     <ClInclude Include="Classes\AppDelegate.h" />
     <ClInclude Include=".\cocos2dorig.h" />
+    <ClInclude Include="Classes\Box2DTest\Box2dTest.h" />
     <ClInclude Include="Classes\controller.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
     <ClInclude Include="Classes\testBasic.h" />
@@ -214,8 +235,6 @@
     <ClInclude Include="include\CCMenu.h" />
     <ClInclude Include="include\CCMenuItem.h" />
     <ClInclude Include="include\CCMotionStreak.h" />
-    <ClInclude Include="include\CCMutableArray.h" />
-    <ClInclude Include="include\CCMutableDictionary.h" />
     <ClInclude Include="include\CCNode.h" />
     <ClInclude Include="include\CCNotificationCenter.h" />
     <ClInclude Include="include\CCNS.h" />
@@ -281,9 +300,14 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Classes\AccelerometerTest\AccelerometerTest.cpp" />
+    <ClCompile Include="Classes\ActionManagerTest\ActionManagerTest.cpp" />
+    <ClCompile Include="Classes\ActionsEaseTest\ActionsEaseTest.cpp" />
+    <ClCompile Include="Classes\ActionsProgressTest\ActionsProgressTest.cpp" />
     <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp" />
     <ClCompile Include="Classes\AppDelegate.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
+    <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp" />
     <ClCompile Include="Classes\controller.cpp" />
     <ClCompile Include="Classes\HelloWorldScene.cpp" />
     <ClCompile Include="Classes\testBasic.cpp" />

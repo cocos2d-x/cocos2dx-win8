@@ -32,8 +32,8 @@ THE SOFTWARE.
 
 #include "CCGeometry.h"
 #include "CCString.h"
-#include "CCMutableArray.h"
-#include "CCMutableDictionary.h"
+#include "CCArray.h"
+#include "CCDictionary.h"
 
 NS_CC_BEGIN
 
@@ -45,9 +45,9 @@ class CC_DLL CCTMXObjectGroup : public CCObject
 	/** offset position of child objects */
 	CC_SYNTHESIZE_PASS_BY_REF(CCPoint, m_tPositionOffset, PositionOffset);
 	/** list of properties stored in a dictionary */
-	CC_PROPERTY(CCStringToStringDictionary*, m_pProperties, Properties);
+	CC_PROPERTY(CCDictionary*, m_pProperties, Properties);
 	/** array of the objects */
-	CC_PROPERTY(CCMutableArray<CCStringToStringDictionary*>*, m_pObjects, Objects);
+	CC_PROPERTY(CCArray*, m_pObjects, Objects);
 public:
 	CCTMXObjectGroup();
 	virtual ~CCTMXObjectGroup();
@@ -61,7 +61,7 @@ public:
 	/** return the dictionary for the specific object name.
 	It will return the 1st object found on the array for the given name.
 	*/
-	CCStringToStringDictionary *objectNamed(const char *objectName);
+	CCDictionary *objectNamed(const char *objectName);
 protected:	
 	/** name of the group */
 	std::string m_sGroupName;

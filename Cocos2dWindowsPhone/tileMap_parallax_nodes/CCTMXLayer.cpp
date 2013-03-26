@@ -71,7 +71,7 @@ bool CCTMXLayer::initWithTilesetInfo(CCTMXTilesetInfo *tilesetInfo, CCTMXLayerIn
 		m_uMinGID = layerInfo->m_uMinGID;
 		m_uMaxGID = layerInfo->m_uMaxGID;
 		m_cOpacity = layerInfo->m_cOpacity;
-		m_pProperties = CCStringToStringDictionary::dictionaryWithDictionary(layerInfo->getProperties());
+		m_pProperties = CCDictionary::createWithDictionary(layerInfo->getProperties());
 		m_fContentScaleFactor = CCDirector::sharedDirector()->getContentScaleFactor(); 
 
 		// tilesetInfo
@@ -198,7 +198,7 @@ void CCTMXLayer::setupTiles()
 // CCTMXLayer - Properties
 CCString *CCTMXLayer::propertyNamed(const char *propertyName)
 {
-	return m_pProperties->objectForKey(std::string(propertyName));
+	return (CCString *)m_pProperties->objectForKey(std::string(propertyName));
 }
 void CCTMXLayer::parseInternalProperties()
 {
@@ -544,7 +544,7 @@ CCPoint CCTMXLayer::calculateLayerOffset(const CCPoint& pos)
 			(m_tMapTileSize.height /2 ) * (-pos.x - pos.y) );
 		break;
 	case CCTMXOrientationHex:
-		CCAssert(CCPoint::CCPointEqualToPoint(pos, CCPointZero), "offset for hexagonal map not implemented yet");
+		CCAssert(pos.equals( CCPointZero), "offset for hexagonal map not implemented yet");
 		break;
 	}
 	return ret;	
@@ -637,11 +637,11 @@ void CCTMXLayer::draw()
 	}
 }
 
-CCStringToStringDictionary * CCTMXLayer::getProperties()
+CCDictionary * CCTMXLayer::getProperties()
 {
 	return m_pProperties;
 }
-void CCTMXLayer::setProperties(CCStringToStringDictionary* var)
+void CCTMXLayer::setProperties(CCDictionary* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pProperties);

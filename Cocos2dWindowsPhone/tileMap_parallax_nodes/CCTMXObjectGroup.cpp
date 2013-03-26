@@ -37,8 +37,8 @@ NS_CC_BEGIN
 	:m_tPositionOffset(CCPointZero)
 	,m_sGroupName("")		
 {
-	m_pObjects = new CCMutableArray<CCStringToStringDictionary*>();
-	m_pProperties = new CCStringToStringDictionary();
+	m_pObjects = new CCArray();
+	m_pProperties = new CCDictionary();
 }
 CCTMXObjectGroup::~CCTMXObjectGroup()
 {
@@ -46,43 +46,54 @@ CCTMXObjectGroup::~CCTMXObjectGroup()
 	CC_SAFE_RELEASE(m_pObjects);
 	CC_SAFE_RELEASE(m_pProperties);
 }
-CCStringToStringDictionary * CCTMXObjectGroup::objectNamed(const char *objectName)
+CCDictionary * CCTMXObjectGroup::objectNamed(const char *objectName)
 {
 	if (m_pObjects && m_pObjects->count() > 0)
 	{
-		CCMutableArray<CCStringToStringDictionary*>::CCMutableArrayIterator it;
-		for (it = m_pObjects->begin(); it != m_pObjects->end(); ++it)
-		{
-			CCString *name = (*it)->objectForKey(std::string("name"));
-			if (name && name->m_sString == objectName)
-			{
-				return *it;
-			}
-		}
+		//CCArray::CCMutableArrayIterator it;
+		//for (it = m_pObjects->begin(); it != m_pObjects->end(); ++it)
+		//{
+		//	CCString *name = (*it)->objectForKey(std::string("name"));
+		//	if (name && name->m_sString == objectName)
+		//	{
+		//		return *it;
+		//	}
+		//}
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH(m_pObjects, pObj)
+        {
+            CCDictionary* pDict = (CCDictionary*)pObj;
+            CCString *name = (CCString*)pDict->objectForKey("name");
+            if (name && name->m_sString == objectName)
+            {
+                return pDict;
+            }
+        }
 	}
 	// object not found
 	return NULL;	
 }
 CCString *CCTMXObjectGroup::propertyNamed(const char* propertyName)
 {
-	return m_pProperties->objectForKey(std::string(propertyName));
+	return (CCString*)m_pProperties->objectForKey(propertyName);
+	//return m_pProperties->objectForKey(std::string(propertyName));
 }
 
-CCStringToStringDictionary * CCTMXObjectGroup::getProperties()
+CCDictionary * CCTMXObjectGroup::getProperties()
 { 
 	return m_pProperties;
 }
-void CCTMXObjectGroup::setProperties(CCStringToStringDictionary * properties)
+void CCTMXObjectGroup::setProperties(CCDictionary * properties)
 {
 	CC_SAFE_RETAIN(properties);
 	CC_SAFE_RELEASE(m_pProperties);
 	m_pProperties = properties;
 }
-CCMutableArray<CCStringToStringDictionary*> *CCTMXObjectGroup::getObjects()
+CCArray *CCTMXObjectGroup::getObjects()
 {
 	return m_pObjects;
 }
-void CCTMXObjectGroup::setObjects(CCMutableArray<CCStringToStringDictionary*> * objects)
+void CCTMXObjectGroup::setObjects(CCArray * objects)
 {
 	CC_SAFE_RETAIN(objects);
 	CC_SAFE_RELEASE(m_pObjects);

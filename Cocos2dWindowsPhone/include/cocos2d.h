@@ -36,7 +36,9 @@ THE SOFTWARE.
 // all cocos2d include files
 //
 #include "ccConfig.h"	// should be included first
-
+// kazmath
+#include "kazmath/kazmath.h"
+#include "kazmath/GL/matrix.h"
 
 // actions
 // Features of 1.0
@@ -62,11 +64,11 @@ THE SOFTWARE.
 #include "CCAffineTransform.h"
 // Replace CCDictionary with CCMutableDictionary
 //#include "CCDictionary.h"
-#include "CCMutableDictionary.h"
+#include "CCDictionary.h"
 #include "CCObject.h"
 // Replace CCArray with CCMutableArray
 //#include "CCArray.h"
-#include "CCMutableArray.h"
+#include "CCArray.h"
 #include "CCGeometry.h"
 #include "CCSet.h"
 #include "CCAutoreleasePool.h"
@@ -168,9 +170,10 @@ THE SOFTWARE.
 	#include "CCStdC.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINPHONE)
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
 	#include "CCAccelerometer.h"
 	#include "CCApplication.h"
+    #include "CCApplication_win8_metro.h"
 	#include "CCStdC.h"
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_WINPHONE
 

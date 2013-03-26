@@ -40,7 +40,7 @@
 #endif
 
 NS_CC_BEGIN
-
+static int s_globalOrderOfArrival = 1;
 CCNode::CCNode(void)
 : m_nZOrder(0)
 , m_fVertexZ(0.0f)
@@ -61,7 +61,7 @@ CCNode::CCNode(void)
 , m_tAnchorPointInPixels(CCPointZero)
 , m_tContentSize(CCSizeZero)
 , m_tContentSizeInPixels(CCSizeZero)
-, m_bIsRunning(false)
+, m_bRunning(false)
 , m_pParent(NULL)
 // "whole screen" objects. like Scenes and Layers, should set isRelativeAnchorPoint to false
 , m_bIsRelativeAnchorPoint(true)
@@ -75,12 +75,22 @@ CCNode::CCNode(void)
 #endif
 , m_nScriptHandler(0)
 {
-    // nothing
+	// set default scheduler and actionManager
+    CCDirector *director = CCDirector::sharedDirector();
+    m_pActionManager = director->getActionManager();
+    m_pActionManager->retain();
+    m_pScheduler = director->getScheduler();
+    m_pScheduler->retain();
+
+
 }
+
 CCNode::~CCNode(void)
 {
 	CCLOGINFO( "cocos2d: deallocing" );
 
+	CC_SAFE_RELEASE(m_pActionManager);
+    CC_SAFE_RELEASE(m_pScheduler);
 	// attributes
 	CC_SAFE_RELEASE(m_pCamera);
 
@@ -370,17 +380,7 @@ void CCNode::setGrid(CCGridBase* pGrid)
 }
 
 
-///// isVisible getter
-//bool CCNode::getIsVisible()
-//{
-//	return m_bVisible;
-//}
-//
-///// isVisible setter
-//void CCNode::setIsVisible(bool var)
-//{
-//	m_bVisible = var;
-//}
+
 
 /// isVisible getter
 bool CCNode::isVisible()
@@ -406,7 +406,7 @@ const CCPoint& CCNode::getAnchorPoint()
 
 void CCNode::setAnchorPoint(const CCPoint& point)
 {
-	if( ! CCPoint::CCPointEqualToPoint(point, m_tAnchorPoint) ) 
+	if( ! point.equals(m_tAnchorPoint) ) 
 	{
 		m_tAnchorPoint = point;
 		m_tAnchorPointInPixels = ccp( m_tContentSizeInPixels.width * m_tAnchorPoint.x, m_tContentSizeInPixels.height * m_tAnchorPoint.y );
@@ -431,7 +431,7 @@ const CCSize& CCNode::getContentSize()
 
 void CCNode::setContentSize(const CCSize& size)
 {
-	if( ! CCSize::CCSizeEqualToSize(size, m_tContentSize) ) 
+	if( ! size.equals(m_tContentSize) ) 
 	{
 		m_tContentSize = size;
 
@@ -454,7 +454,7 @@ void CCNode::setContentSize(const CCSize& size)
 
 void CCNode::setContentSizeInPixels(const CCSize& size)
 {
-	if (! CCSize::CCSizeEqualToSize(size, m_tContentSizeInPixels))
+	if (! size.equals( m_tContentSizeInPixels))
 	{
         m_tContentSizeInPixels = size;
 
@@ -481,13 +481,10 @@ const CCSize& CCNode::getContentSizeInPixels()
 	return m_tContentSizeInPixels;
 }
 
-
-// isRunning getter
-bool CCNode::getIsRunning()
+bool CCNode::isRunning()
 {
-	return m_bIsRunning;
+    return m_bRunning;
 }
-
 
 /// parent getter
 CCNode * CCNode::getParent()
@@ -538,7 +535,15 @@ void CCNode::setUserData(void *var)
 {
 	m_pUserData = var;
 }
+unsigned int CCNode::getOrderOfArrival()
+{
+    return m_uOrderOfArrival;
+}
 
+void CCNode::setOrderOfArrival(unsigned int uOrderOfArrival)
+{
+    m_uOrderOfArrival = uOrderOfArrival;
+}
 
 CCRect CCNode::boundingBox()
 {
@@ -623,8 +628,8 @@ void CCNode::addChild(CCNode *child, int zOrder, int tag)
 	child->m_nTag = tag;
 
 	child->setParent(this);
-
-	if( m_bIsRunning )
+	child->setOrderOfArrival(s_globalOrderOfArrival++);
+	if( m_bRunning )
 	{
 		child->onEnter();
 		child->onEnterTransitionDidFinish();
@@ -696,7 +701,7 @@ void CCNode::removeAllChildrenWithCleanup(bool cleanup)
 				// IMPORTANT:
 				//  -1st do onExit
 				//  -2nd cleanup
-				if(m_bIsRunning)
+				if(m_bRunning)
 				{
 					pNode->onExit();
 				}
@@ -720,7 +725,7 @@ void CCNode::detachChild(CCNode *child, bool doCleanup)
 	// IMPORTANT:
 	//  -1st do onExit
 	//  -2nd cleanup
-	if (m_bIsRunning)
+	if (m_bRunning)
 	{
 		child->onExit();
 	}
@@ -776,7 +781,34 @@ void CCNode::reorderChild(CCNode *child, int zOrder)
 	insertChild(child, zOrder);
 	child->release();
 }
+void CCNode::sortAllChildren()
+{
+    if (m_bReorderChildDirty)
+    {
+        int i,j,length = m_pChildren->data->num;
+        CCNode ** x = (CCNode**)m_pChildren->data->arr;
+        CCNode *tempItem;
 
+        // insertion sort
+        for(i=1; i<length; i++)
+        {
+            tempItem = x[i];
+            j = i-1;
+
+            //continue moving element downwards while zOrder is smaller or when zOrder is the same but mutatedIndex is smaller
+            while(j>=0 && ( tempItem->m_nZOrder < x[j]->m_nZOrder || ( tempItem->m_nZOrder== x[j]->m_nZOrder && tempItem->m_uOrderOfArrival < x[j]->m_uOrderOfArrival ) ) )
+            {
+                x[j+1] = x[j];
+                j = j-1;
+            }
+            x[j+1] = tempItem;
+        }
+
+        //don't need to check children recursively, that's done in visit of each child
+
+        m_bReorderChildDirty = false;
+    }
+}
  void CCNode::draw()
  {
 	 //CCAssert(0);
@@ -948,11 +980,11 @@ void CCNode::onEnter()
 
 	this->resumeSchedulerAndActions();
 
-	m_bIsRunning = true;
+	m_bRunning = true;
 
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnEnter);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnEnter);
     }
 }
 
@@ -965,11 +997,11 @@ void CCNode::onExit()
 {
 	this->pauseSchedulerAndActions();
 
-	m_bIsRunning = false;
+	m_bRunning = false;
 
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, kCCNodeOnExit);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExit);
     }
 
 	arrayMakeObjectsPerformSelector(m_pChildren,onExit, CCNode*);  
@@ -986,7 +1018,7 @@ void CCNode::unregisterScriptHandler(void)
 {
     if (m_nScriptHandler)
     {
-        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nScriptHandler);
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nScriptHandler);
         LUALOG("[LUA] Remove CCNode event handler: %d", m_nScriptHandler);
         m_nScriptHandler = 0;
     }
@@ -995,35 +1027,35 @@ void CCNode::unregisterScriptHandler(void)
 CCAction * CCNode::runAction(CCAction* action)
 {
 	CCAssert( action != NULL, "Argument must be non-nil");
-	CCActionManager::sharedManager()->addAction(action, this, !m_bIsRunning);
+	m_pActionManager->addAction(action, this, !m_bRunning);
 	return action;
 }
 
 void CCNode::stopAllActions()
 {
-	CCActionManager::sharedManager()->removeAllActionsFromTarget(this);
+	m_pActionManager->removeAllActionsFromTarget(this);
 }
 
 void CCNode::stopAction(CCAction* action)
 {
-	CCActionManager::sharedManager()->removeAction(action);
+	m_pActionManager->removeAction(action);
 }
 
 void CCNode::stopActionByTag(int tag)
 {
 	CCAssert( tag != kCCActionTagInvalid, "Invalid tag");
-	CCActionManager::sharedManager()->removeActionByTag(tag, this);
+	m_pActionManager->removeActionByTag(tag, this);
 }
 
 CCAction * CCNode::getActionByTag(int tag)
 {
 	CCAssert( tag != kCCActionTagInvalid, "Invalid tag");
-	return CCActionManager::sharedManager()->getActionByTag(tag, this);
+	return m_pActionManager->getActionByTag(tag, this);
 }
 
 unsigned int CCNode::numberOfRunningActions()
 {
-	return CCActionManager::sharedManager()->numberOfRunningActionsInTarget(this);
+	return m_pActionManager->numberOfRunningActionsInTarget(this);
 }
 
 // CCNode - Callbacks
@@ -1048,12 +1080,12 @@ void CCNode::scheduleUpdate()
 
 void CCNode::scheduleUpdateWithPriority(int priority)
 {
-	CCScheduler::sharedScheduler()->scheduleUpdateForTarget(this, priority, !m_bIsRunning);
+	m_pScheduler->scheduleUpdateForTarget(this, priority, !m_bRunning);
 }
 
 void CCNode::unscheduleUpdate()
 {
-	CCScheduler::sharedScheduler()->unscheduleUpdateForTarget(this);
+	m_pScheduler->unscheduleUpdateForTarget(this);
 }
 
 void CCNode::schedule(SEL_SCHEDULE selector)
@@ -1085,24 +1117,24 @@ void CCNode::unschedule(SEL_SCHEDULE selector)
 	if (selector == 0)
 		return;
 
-	CCScheduler::sharedScheduler()->unscheduleSelector(selector, this);
+	m_pScheduler->unscheduleSelector(selector, this);
 }
 
 void CCNode::unscheduleAllSelectors()
 {
-	CCScheduler::sharedScheduler()->unscheduleAllSelectorsForTarget(this);
+    m_pScheduler->unscheduleAllForTarget(this);
 }
 
 void CCNode::resumeSchedulerAndActions()
 {
-	CCScheduler::sharedScheduler()->resumeTarget(this);
-	CCActionManager::sharedManager()->resumeTarget(this);
+    m_pScheduler->resumeTarget(this);
+    m_pActionManager->resumeTarget(this);
 }
 
 void CCNode::pauseSchedulerAndActions()
 {
-	CCScheduler::sharedScheduler()->pauseTarget(this);
-	CCActionManager::sharedManager()->pauseTarget(this);
+    m_pScheduler->pauseTarget(this);
+    m_pActionManager->pauseTarget(this);
 }
 
 CCAffineTransform CCNode::nodeToParentTransform(void)
@@ -1111,12 +1143,12 @@ CCAffineTransform CCNode::nodeToParentTransform(void)
 
 		m_tTransform = CCAffineTransformIdentity;
 
-		if( ! m_bIsRelativeAnchorPoint && ! CCPoint::CCPointEqualToPoint(m_tAnchorPointInPixels, CCPointZero) )
+		if( ! m_bIsRelativeAnchorPoint && ! m_tAnchorPointInPixels.equals(CCPointZero) )
 		{
 			m_tTransform = CCAffineTransformTranslate(m_tTransform, m_tAnchorPointInPixels.x, m_tAnchorPointInPixels.y);
 		}
 
-		if(! CCPoint::CCPointEqualToPoint(m_tPositionInPixels, CCPointZero))
+		if(! m_tPositionInPixels.equals(CCPointZero))
 		{
 			m_tTransform = CCAffineTransformTranslate(m_tTransform, m_tPositionInPixels.x, m_tPositionInPixels.y);
 		}
@@ -1139,7 +1171,7 @@ CCAffineTransform CCNode::nodeToParentTransform(void)
 			m_tTransform = CCAffineTransformScale(m_tTransform, m_fScaleX, m_fScaleY);
 		}
 
-		if(! CCPoint::CCPointEqualToPoint(m_tAnchorPointInPixels, CCPointZero))
+		if(! m_tAnchorPointInPixels.equals( CCPointZero))
 		{
 			m_tTransform = CCAffineTransformTranslate(m_tTransform, -m_tAnchorPointInPixels.x, -m_tAnchorPointInPixels.y);
 		}

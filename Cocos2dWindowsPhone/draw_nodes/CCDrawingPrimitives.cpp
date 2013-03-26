@@ -33,6 +33,8 @@
 #include "DirectXHelper.h"
 #include "BasicLoader.h"
 #include "DirectXRender.h"
+//#include "CCGLProgram.h"
+//#include "CCShaderCache.h"
 
 using namespace std;
 using namespace DirectX;
@@ -44,7 +46,30 @@ using namespace DirectX;
 NS_CC_BEGIN
 
 static CCDrawingPrimitive *pSharedDrawingPrimitive = NULL;
+static bool s_bInitialized = false;
+//static CCGLProgram* s_pShader = NULL;
+static int s_nColorLocation = -1;
+static ccColor4F s_tColor = {1.0f,1.0f,1.0f,1.0f};
+static int s_nPointSizeLocation = -1;
+//static GLfloat s_fPointSize = 1.0f;
+static void lazy_init( void )
+{
 
+    //if( ! s_bInitialized ) {
+
+        //
+        // Position and 1 color passed as a uniform (to simulate glColor4ub )
+        //
+      //  s_pShader = CCShaderCache::sharedShaderCache()->programForKey(kCCShader_Position_uColor);
+
+      //  s_nColorLocation = glGetUniformLocation( s_pShader->getProgram(), "u_color");
+    //CHECK_GL_ERROR_DEBUG();
+     //   s_nPointSizeLocation = glGetUniformLocation( s_pShader->getProgram(), "u_pointSize");
+ //   CHECK_GL_ERROR_DEBUG();
+
+     //   s_bInitialized = true;
+   // }
+}
 void ccDrawPoint(const CCPoint& point)
 {
 	ccVertex2F* vertice = new ccVertex2F[1];
@@ -176,7 +201,15 @@ void ccDrawCubicBezier(const CCPoint& origin, const CCPoint& control1, const CCP
 
 	CCDrawingPrimitive::Drawing(vertices, segments+1,DrawingPolyOpened);
 }
+void ccDrawCatmullRom( CCPointArray *points, unsigned int segments )
+{
+    ccDrawCardinalSpline( points, 0.5f, segments );
+}
 
+void ccDrawCardinalSpline( CCPointArray *config, float tension,  unsigned int segments )
+{
+   CCAssert(false,"unfinished!");
+}
 void CCDrawingPrimitive::D3DColor4f(float red, float green, float blue, float alpha)
 {
 	if (! pSharedDrawingPrimitive)
@@ -643,6 +676,13 @@ void CCDrawingPrimitive::Render3D()
 
 	// Now render the prepared buffers with the shader.
 	RenderShader();
+}
+void ccDrawColor4B( CCubyte r, CCubyte g, CCubyte b, CCubyte a )
+{
+    s_tColor.r = r/255.0f;
+    s_tColor.g = g/255.0f;
+    s_tColor.b = b/255.0f;
+    s_tColor.a = a/255.0f;
 }
 
 NS_CC_END 

@@ -20,73 +20,83 @@
 #include "CCScriptSupport.h"
 #include "CCScheduler.h"
 
+void CC_DLL cc_assert_script_compatible(bool cond, const char *msg)
+{
+    cocos2d::CCScriptEngineProtocol* pEngine = cocos2d::CCScriptEngineManager::sharedManager()->getScriptEngine();
+    if (!cond && pEngine && pEngine->executeAssert(cond, msg))
+    {
+        return;
+    }
+}
+
 NS_CC_BEGIN
 
-CCSchedulerScriptHandlerEntry* CCSchedulerScriptHandlerEntry::entryWithHandler(int nHandler, ccTime fInterval, bool bPaused)
+// #pragma mark -
+// #pragma mark CCScriptHandlerEntry
+
+CCScriptHandlerEntry* CCScriptHandlerEntry::create(int nHandler)
 {
-    CCSchedulerScriptHandlerEntry* pEntry = new CCSchedulerScriptHandlerEntry();
-    pEntry->initWithHandler(nHandler, fInterval, bPaused);
+    CCScriptHandlerEntry* entry = new CCScriptHandlerEntry(nHandler);
+    entry->autorelease();
+    return entry;
+}
+
+CCScriptHandlerEntry::~CCScriptHandlerEntry(void)
+{
+    CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nHandler);
+}
+
+// #pragma mark -
+// #pragma mark CCSchedulerScriptHandlerEntry
+
+CCSchedulerScriptHandlerEntry* CCSchedulerScriptHandlerEntry::create(int nHandler, float fInterval, bool bPaused)
+{
+    CCSchedulerScriptHandlerEntry* pEntry = new CCSchedulerScriptHandlerEntry(nHandler);
+    pEntry->init(fInterval, bPaused);
     pEntry->autorelease();
     return pEntry;
 }
 
-bool CCSchedulerScriptHandlerEntry::initWithHandler(int nHandler, ccTime fInterval, bool bPaused)
+bool CCSchedulerScriptHandlerEntry::init(float fInterval, bool bPaused)
 {
     m_pTimer = new CCTimer();
-    m_pTimer->initWithScriptHandler(nHandler, fInterval);
+    m_pTimer->initWithScriptHandler(m_nHandler, fInterval);
     m_pTimer->autorelease();
     m_pTimer->retain();
-    m_nHandler = nHandler;
     m_bPaused = bPaused;
-    LUALOG("[LUA] ADD script schedule: %d, entryID: %d", m_nHandler, m_nEntryID);
+    LUALOG("[LUA] ADD script schedule: %d, entryID: %d", m_nHandler, m_nEntryId);
     return true;
-}
-
-CCSchedulerScriptHandlerEntry::CCSchedulerScriptHandlerEntry(void)
-: m_pTimer(NULL)
-, m_nHandler(0)
-, m_bPaused(true)
-, m_bMarkedForDeletion(false)
-{
-    static int nEntryCount = 0;
-    m_nEntryID = ++nEntryCount;
 }
 
 CCSchedulerScriptHandlerEntry::~CCSchedulerScriptHandlerEntry(void)
 {
     m_pTimer->release();
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nHandler);
-    LUALOG("[LUA] DEL script schedule %d, entryID: %d", m_nHandler, m_nEntryID);
+    LUALOG("[LUA] DEL script schedule %d, entryID: %d", m_nHandler, m_nEntryId);
 }
 
-// ----------------------------
 
+// #pragma mark -
+// #pragma mark CCTouchScriptHandlerEntry
 
-CCTouchScriptHandlerEntry* CCTouchScriptHandlerEntry::entryWithHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches)
+CCTouchScriptHandlerEntry* CCTouchScriptHandlerEntry::create(int nHandler,
+                                                             bool bIsMultiTouches,
+                                                             int nPriority,
+                                                             bool bSwallowsTouches)
 {
-    CCTouchScriptHandlerEntry* pEntry = new CCTouchScriptHandlerEntry();
-    pEntry->initWithHandler(nHandler, bIsMultiTouches, nPriority, bSwallowsTouches);
+    CCTouchScriptHandlerEntry* pEntry = new CCTouchScriptHandlerEntry(nHandler);
+    pEntry->init(bIsMultiTouches, nPriority, bSwallowsTouches);
     pEntry->autorelease();
     return pEntry;
 }
 
-CCTouchScriptHandlerEntry::CCTouchScriptHandlerEntry(void)
-: m_nHandler(0)
-, m_bIsMultiTouches(false)
-, m_nPriority(0)
-, m_bSwallowsTouches(false)
-{
-}
-
 CCTouchScriptHandlerEntry::~CCTouchScriptHandlerEntry(void)
 {
-    CCScriptEngineManager::sharedManager()->getScriptEngine()->removeLuaHandler(m_nHandler);
+    CCScriptEngineManager::sharedManager()->getScriptEngine()->removeScriptHandler(m_nHandler);
     LUALOG("[LUA] Remove touch event handler: %d", m_nHandler);
 }
 
-bool CCTouchScriptHandlerEntry::initWithHandler(int nHandler, bool bIsMultiTouches, int nPriority, bool bSwallowsTouches)
+bool CCTouchScriptHandlerEntry::init(bool bIsMultiTouches, int nPriority, bool bSwallowsTouches)
 {
-    m_nHandler = nHandler;
     m_bIsMultiTouches = bIsMultiTouches;
     m_nPriority = nPriority;
     m_bSwallowsTouches = bSwallowsTouches;
@@ -94,8 +104,8 @@ bool CCTouchScriptHandlerEntry::initWithHandler(int nHandler, bool bIsMultiTouch
     return true;
 }
 
-// ----------------------------
-
+// #pragma mark -
+// #pragma mark CCScriptEngineManager
 
 static CCScriptEngineManager* s_pSharedScriptEngineManager = NULL;
 
@@ -108,15 +118,14 @@ CCScriptEngineManager::~CCScriptEngineManager(void)
 void CCScriptEngineManager::setScriptEngine(CCScriptEngineProtocol *pScriptEngine)
 {
     removeScriptEngine();
-	m_pScriptEngine = pScriptEngine;
-    m_pScriptEngine->retain();
+    m_pScriptEngine = pScriptEngine;
 }
 
 void CCScriptEngineManager::removeScriptEngine(void)
 {
     if (m_pScriptEngine)
     {
-        m_pScriptEngine->release();
+        delete m_pScriptEngine;
         m_pScriptEngine = NULL;
     }
 }
@@ -138,5 +147,4 @@ void CCScriptEngineManager::purgeSharedManager(void)
         s_pSharedScriptEngineManager = NULL;
     }
 }
-
 NS_CC_END;

@@ -37,7 +37,7 @@
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\back.png">
+    <Image Include="Assets\HelloWorld.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>
@@ -256,12 +256,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\CCMotionStreak.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CCMutableArray.h">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\CCMutableDictionary.h">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\CCNode.h">

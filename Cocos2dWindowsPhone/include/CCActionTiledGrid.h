@@ -37,7 +37,7 @@ namespace cocos2d
 	{
 	public:
 		/** initializes the action with a range, whether or not to shake Z vertices, a grid size, and duration */
-		bool initWithRange(int nRange, bool bShakeZ, const ccGridSize& gridSize,
+		bool initWithRange(int nRange, bool bShakeZ, const CCSize& gridSize,
 			ccTime duration);
 
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -45,7 +45,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with a range, whether or not to shake Z vertices, a grid size, and duration */
-		static CCShakyTiles3D* actionWithRange(int nRange, bool bShakeZ, const ccGridSize& gridSize,
+		static CCShakyTiles3D* actionWithRange(int nRange, bool bShakeZ, const CCSize& gridSize,
 			ccTime duration);
 
 	protected:
@@ -58,7 +58,7 @@ namespace cocos2d
 	{
 	public:
 		/** initializes the action with a range, whether or not to shatter Z vertices, a grid size and duration */
-        bool initWithRange(int nRange, bool bShatterZ, const ccGridSize& gridSize,
+        bool initWithRange(int nRange, bool bShatterZ, const CCSize& gridSize,
 			ccTime duration);
 
 		virtual CCObject* copyWithZone(CCZone* pZone);
@@ -66,7 +66,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with a range, whether of not to shatter Z vertices, a grid size and duration */
-		static CCShatteredTiles3D* actionWithRange(int nRange, bool bShatterZ, const ccGridSize& gridSize,
+		static CCShatteredTiles3D* actionWithRange(int nRange, bool bShatterZ, const CCSize& gridSize,
 			ccTime duration);
 
 	protected:
@@ -84,10 +84,10 @@ namespace cocos2d
 	public:
 		~CCShuffleTiles(void);
 		/** initializes the action with a random seed, the grid size and the duration */
-		bool initWithSeed(int s, const ccGridSize& gridSize, ccTime duration);
+		bool initWithSeed(int s, const CCSize& gridSize, ccTime duration);
 		void shuffle(int *pArray, unsigned int nLen);
-		ccGridSize getDelta(const ccGridSize& pos);
-		void placeTile(const ccGridSize& pos, Tile *t);
+		CCSize getDelta(const CCSize& pos);
+		void placeTile(const CCPoint& pos, Tile *t);
 
 		virtual void startWithTarget(CCNode *pTarget);
 		virtual void update(ccTime time);
@@ -95,7 +95,7 @@ namespace cocos2d
 
 	public:
 		/** creates the action with a random seed, the grid size and the duration */
-		static CCShuffleTiles* actionWithSeed(int s, const ccGridSize& gridSize, ccTime duration);
+		static CCShuffleTiles* actionWithSeed(int s, const CCSize& gridSize, ccTime duration);
 
 	protected:
 		int			 m_nSeed;
@@ -110,15 +110,15 @@ namespace cocos2d
 	class CC_DLL CCFadeOutTRTiles : public CCTiledGrid3DAction
 	{
 	public:
-		virtual float testFunc(const ccGridSize& pos, ccTime time);
-		void turnOnTile(const ccGridSize& pos);
-		void turnOffTile(const ccGridSize& pos);
-		virtual void transformTile(const ccGridSize& pos, float distance);
+		virtual float testFunc(const CCSize& pos, ccTime time);
+		void turnOnTile(const CCPoint& pos);
+		void turnOffTile(const CCPoint& pos);
+		virtual void transformTile(const CCPoint& pos, float distance);
 		virtual void update(ccTime time);
 
 	public:
 		/** creates the action with the grid size and the duration */
-		static CCFadeOutTRTiles* actionWithSize(const ccGridSize& gridSize, ccTime time);
+		static CCFadeOutTRTiles* actionWithSize(const CCSize& gridSize, ccTime time);
 	};
 
 	/** @brief CCFadeOutBLTiles action.
@@ -127,11 +127,11 @@ namespace cocos2d
 	class CC_DLL CCFadeOutBLTiles : public CCFadeOutTRTiles
 	{
 	public:
-		virtual float testFunc(const ccGridSize& pos, ccTime time);
+		virtual float testFunc(const CCSize& pos, ccTime time);
 
 	public:
 		/** creates the action with the grid size and the duration */
-        static CCFadeOutBLTiles* actionWithSize(const ccGridSize& gridSize, ccTime time);
+        static CCFadeOutBLTiles* actionWithSize(const CCSize& gridSize, ccTime time);
 	};
 
 	/** @brief CCFadeOutUpTiles action.
@@ -140,12 +140,12 @@ namespace cocos2d
 	class CC_DLL CCFadeOutUpTiles : public CCFadeOutTRTiles
 	{
 	public:
-		virtual float testFunc(const ccGridSize& pos, ccTime time);
-		virtual void transformTile(const ccGridSize& pos, float distance);
+		virtual float testFunc(const CCSize& pos, ccTime time);
+		virtual void transformTile(const CCPoint& pos, float distance);
 
 	public:
 		/** creates the action with the grid size and the duration */
-        static CCFadeOutUpTiles* actionWithSize(const ccGridSize& gridSize, ccTime time);
+        static CCFadeOutUpTiles* actionWithSize(const CCSize& gridSize, ccTime time);
 	};
 
 	/** @brief CCFadeOutDownTiles action.
@@ -154,11 +154,11 @@ namespace cocos2d
 	class CC_DLL CCFadeOutDownTiles : public CCFadeOutUpTiles
 	{
 	public:
-		virtual float testFunc(const ccGridSize& pos, ccTime time);
+		virtual float testFunc(const CCSize& pos, ccTime time);
 
 	public:
 		/** creates the action with the grid size and the duration */
-        static CCFadeOutDownTiles* actionWithSize(const ccGridSize& gridSize, ccTime time);
+        static CCFadeOutDownTiles* actionWithSize(const CCSize& gridSize, ccTime time);
 	};
 
 	/** @brief CCTurnOffTiles action.
@@ -169,10 +169,10 @@ namespace cocos2d
 	public:
 		~CCTurnOffTiles(void);
 		/** initializes the action with a random seed, the grid size and the duration */
-		bool initWithSeed(int s, const ccGridSize& gridSize, ccTime duration);
+		bool initWithSeed(int s, const CCSize& gridSize, ccTime duration);
 		void shuffle(int *pArray, unsigned int nLen);
-		void turnOnTile(const ccGridSize& pos);
-		void turnOffTile(const ccGridSize& pos);
+		void turnOnTile(const CCPoint& pos);
+		void turnOffTile(const CCPoint& pos);
 
 		virtual CCObject* copyWithZone(CCZone* pZone);
 		virtual void startWithTarget(CCNode *pTarget);
@@ -180,9 +180,9 @@ namespace cocos2d
 
 	public:
 		/** creates the action with the grid size and the duration */
-		static CCTurnOffTiles* actionWithSize(const ccGridSize& size, ccTime d);
+		static CCTurnOffTiles* actionWithSize(const CCSize& size, ccTime d);
 		/** creates the action with a random seed, the grid size and the duration */
-		static CCTurnOffTiles* actionWithSeed(int s, const ccGridSize& gridSize, ccTime duration);
+		static CCTurnOffTiles* actionWithSeed(int s, const CCSize& gridSize, ccTime duration);
 
 	protected:
 		int				m_nSeed;
@@ -203,14 +203,14 @@ namespace cocos2d
 		inline void setAmplitudeRate(float fAmplitudeRate) { m_fAmplitudeRate = fAmplitudeRate; }
 
 		/** initializes the action with a number of waves, the waves amplitude, the grid size and the duration */
-		bool initWithWaves(int wav, float amp, const ccGridSize& gridSize, ccTime duration);
+		bool initWithWaves(int wav, float amp, const CCSize& gridSize, ccTime duration);
 
 		virtual CCObject* copyWithZone(CCZone* pZone);
 		virtual void update(ccTime time);
 
 	public:
 		/** creates the action with a number of waves, the waves amplitude, the grid size and the duration */
-		static CCWavesTiles3D* actionWithWaves(int wav, float amp, const ccGridSize& gridSize, ccTime duration);
+		static CCWavesTiles3D* actionWithWaves(int wav, float amp, const CCSize& gridSize, ccTime duration);
 
 	protected:
 		int m_nWaves;
@@ -233,13 +233,13 @@ namespace cocos2d
 		inline void setAmplitudeRate(float fAmplitudeRate) { m_fAmplitudeRate = fAmplitudeRate; }
 
 		/** initializes the action with the number of jumps, the sin amplitude, the grid size and the duration */
-		bool initWithJumps(int j, float amp, const ccGridSize& gridSize, ccTime duration);
+		bool initWithJumps(int j, float amp, const CCSize& gridSize, ccTime duration);
 		virtual CCObject* copyWithZone(CCZone* pZone);
 		virtual void update(ccTime time);
 
 	public:
 		/** creates the action with the number of jumps, the sin amplitude, the grid size and the duration */
-        static CCJumpTiles3D* actionWithJumps(int j, float amp, const ccGridSize& gridSize, ccTime duration);
+        static CCJumpTiles3D* actionWithJumps(int j, float amp, const CCSize& gridSize, ccTime duration);
 
 	protected:
 		int m_nJumps;

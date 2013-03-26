@@ -24,19 +24,29 @@ NS_CC_BEGIN
 
 CCPoint::CCPoint(void)
 {
-	x = 0;
-	y = 0;
+    setPoint(0.0f, 0.0f);
 }
 
 CCPoint::CCPoint(float x, float y)
 {
-	this->x = x;
-	this->y = y;
+    setPoint(x, y);
 }
 
-bool CCPoint::CCPointEqualToPoint(const CCPoint& point1, const CCPoint& point2)
+CCPoint::CCPoint(const CCPoint& other)
 {
-	return ((point1.x == point2.x) && (point1.y == point2.y));
+    setPoint(other.x, other.y);
+}
+
+CCPoint& CCPoint::operator= (const CCPoint& other)
+{
+    setPoint(other.x, other.y);
+    return *this;
+}
+
+void CCPoint::setPoint(float x, float y)
+{
+    this->x = x;
+    this->y = y;
 }
 
 bool CCPoint::equals(const CCPoint& target) const
@@ -44,24 +54,33 @@ bool CCPoint::equals(const CCPoint& target) const
     return ((x == target.x) && (y == target.y));
 }
 
-
 // implementation of CCSize
 
 CCSize::CCSize(void)
 {
-	width = 0;
-	height = 0;
+    setSize(0.0f, 0.0f);
 }
 
 CCSize::CCSize(float width, float height)
 {
-	this->width = width;
-	this->height = height;
+    setSize(width, height);
 }
 
-bool CCSize::CCSizeEqualToSize(const CCSize& size1, const CCSize& size2)
+CCSize::CCSize(const CCSize& other)
 {
-	return ((size1.width == size2.width) && (size1.height == size2.height));
+    setSize(other.width, other.height);
+}
+
+CCSize& CCSize::operator= (const CCSize& other)
+{
+    setSize(other.width, other.height);
+    return *this;
+}
+
+void CCSize::setSize(float width, float height)
+{
+    this->width = width;
+    this->height = height;
 }
 
 bool CCSize::equals(const CCSize& target) const

@@ -109,7 +109,7 @@ void CCMenuItem::activate()
 
 		if (m_nScriptHandler)
 		{
-			CCScriptEngineManager::sharedManager()->getScriptEngine()->executeFunctionWithIntegerData(m_nScriptHandler, getTag());
+            CCScriptEngineManager::sharedManager()->getScriptEngine()->executeMenuItemEvent(this);
 		}
 	}
 }
@@ -662,13 +662,13 @@ bool CCMenuItemImage::initWithNormalImage(const char *normalImage, const char *s
 //
 // MenuItemToggle
 //
-void CCMenuItemToggle::setSubItems(CCMutableArray<CCMenuItem*>* var)
+void CCMenuItemToggle::setSubItems(CCArray* var)
 {
 	CC_SAFE_RETAIN(var);
 	CC_SAFE_RELEASE(m_pSubItems);
 	m_pSubItems = var;
 }
-CCMutableArray<CCMenuItem*> *CCMenuItemToggle::getSubItems()
+CCArray *CCMenuItemToggle::getSubItems()
 {
 	return m_pSubItems;
 }
@@ -685,7 +685,7 @@ CCMenuItemToggle * CCMenuItemToggle::create(CCObject* target, SEL_MenuHandler se
 bool CCMenuItemToggle::initWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, va_list args)
 {
 	CCMenuItem::initWithTarget(target, selector);
-	this->m_pSubItems = new CCMutableArray<CCMenuItem*>();
+	this->m_pSubItems = new CCArray();
 	int z = 0;
 	CCMenuItem *i = item;
 	while(i) 
@@ -710,7 +710,7 @@ CCMenuItemToggle* CCMenuItemToggle::itemWithItem(CCMenuItem *item)
 bool CCMenuItemToggle::initWithItem(CCMenuItem *item)
 {
 	CCMenuItem::initWithTarget(NULL, NULL);
-	this->m_pSubItems = new CCMutableArray<CCMenuItem*>();
+	this->m_pSubItems = new CCArray();
 	m_pSubItems->addObject(item);
 	m_uSelectedIndex = UINT_MAX;
 	this->setSelectedIndex(0);
@@ -732,7 +732,7 @@ void CCMenuItemToggle::setSelectedIndex(unsigned int index)
 	{
 		m_uSelectedIndex = index;
 		this->removeChildByTag(kCurrentItem, false);
-		CCMenuItem *item = m_pSubItems->getObjectAtIndex(m_uSelectedIndex);
+		CCMenuItem *item = (CCMenuItem * )m_pSubItems->objectAtIndex(m_uSelectedIndex);
 		this->addChild(item, 0, kCurrentItem);
 		const CCSize& s = item->getContentSize();
 		this->setContentSize(s);
@@ -746,12 +746,12 @@ unsigned int CCMenuItemToggle::getSelectedIndex()
 void CCMenuItemToggle::selected()
 {
 	CCMenuItem::selected();
-	m_pSubItems->getObjectAtIndex(m_uSelectedIndex)->selected();
+	((CCMenuItem * )m_pSubItems->objectAtIndex(m_uSelectedIndex))->selected();
 }
 void CCMenuItemToggle::unselected()
 {
 	CCMenuItem::unselected();
-	m_pSubItems->getObjectAtIndex(m_uSelectedIndex)->unselected();
+	((CCMenuItem * )m_pSubItems->objectAtIndex(m_uSelectedIndex))->unselected();
 }
 void CCMenuItemToggle::activate()
 {
@@ -769,16 +769,22 @@ void CCMenuItemToggle::setIsEnabled(bool enabled)
 
 	if(m_pSubItems && m_pSubItems->count() > 0)
 	{
-		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
-		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
+		//CCArray::CCMutableArrayIterator it;
+		//for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
+		//{
+		//	(*it)->setEnabled(enabled);
+		//}
+		CCObject* pObj = NULL;
+        CCARRAY_FOREACH(m_pSubItems, pObj)
 		{
-			(*it)->setEnabled(enabled);
+            CCMenuItem* pItem = (CCMenuItem*)pObj;
+            pItem->setEnabled(enabled);
 		}
 	}
 }
 CCMenuItem * CCMenuItemToggle::selectedItem()
 {
-	return m_pSubItems->getObjectAtIndex(m_uSelectedIndex);
+	return (CCMenuItem *)m_pSubItems->objectAtIndex(m_uSelectedIndex);
 }
 
 //
@@ -808,15 +814,25 @@ CCubyte CCMenuItemToggle::getOpacity()
 }
 void CCMenuItemToggle::setOpacity(CCubyte opacity)
 {
+	//m_cOpacity = opacity;
+	//if(m_pSubItems && m_pSubItems->count() > 0)
+	//{
+	//	CCArray::CCMutableArrayIterator it;
+	//	for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
+	//	{
+	//		dynamic_cast<CCRGBAProtocol*>(*it)->setOpacity(opacity);
+	//	}
+	//}
 	m_cOpacity = opacity;
-	if(m_pSubItems && m_pSubItems->count() > 0)
-	{
-		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
-		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
-		{
-			dynamic_cast<CCRGBAProtocol*>(*it)->setOpacity(opacity);
-		}
-	}
+    if(m_pSubItems && m_pSubItems->count() > 0)
+    {
+        CCObject* pObj = NULL;
+        CCARRAY_FOREACH(m_pSubItems, pObj)
+        {
+            CCMenuItem* pItem = (CCMenuItem*)pObj;
+            dynamic_cast<CCRGBAProtocol*>(pItem)->setOpacity(opacity);
+        }
+    }
 }
 const ccColor3B& CCMenuItemToggle::getColor()
 {
@@ -827,11 +843,17 @@ void CCMenuItemToggle::setColor(const ccColor3B& color)
 	m_tColor = color;
 	if(m_pSubItems && m_pSubItems->count() > 0)
 	{
-		CCMutableArray<CCMenuItem*>::CCMutableArrayIterator it;
-		for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
-		{
-			dynamic_cast<CCRGBAProtocol*>(*it)->setColor(color);
-		}
+		//CCArray::CCMutableArrayIterator it;
+		//for( it = m_pSubItems->begin(); it != m_pSubItems->end(); ++it)
+		//{
+		//	dynamic_cast<CCRGBAProtocol*>(*it)->setColor(color);
+		//}
+		CCObject* pObj = NULL;
+        CCARRAY_FOREACH(m_pSubItems, pObj)
+        {
+            CCMenuItem* pItem = (CCMenuItem*)pObj;
+            dynamic_cast<CCRGBAProtocol*>(pItem)->setColor(color);
+        }
 	}
 }
 

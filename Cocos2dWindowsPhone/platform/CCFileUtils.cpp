@@ -20,6 +20,8 @@
 
 #include "CCFileUtils.h"
 #include "CCDirector.h"
+#include "fileapi.h"
+
 
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_IOS) && (CC_TARGET_PLATFORM != CC_PLATFORM_AIRPLAY)
 
@@ -59,15 +61,15 @@ class CCDictMaker : public CCSAXDelegator
 {
 public:
     CCSAXResult m_eResultType;
-    CCMutableArray<CCObject*>* m_pRootArray;
-    CCDictionary<std::string, CCObject*> *m_pRootDict;
-    CCDictionary<std::string, CCObject*> *m_pCurDict;
-    std::stack<CCDictionary<std::string, CCObject*>*> m_tDictStack;
+    CCArray* m_pRootArray;
+    CCDictionary *m_pRootDict;
+    CCDictionary *m_pCurDict;
+    std::stack<CCDictionary*> m_tDictStack;
     std::string m_sCurKey;///< parsed key
     CCSAXState m_tState;
-    CCMutableArray<CCObject*> *m_pArray;
+    CCArray *m_pArray;
 
-    std::stack<CCMutableArray<CCObject*>*> m_tArrayStack;
+    std::stack<CCArray*> m_tArrayStack;
     std::stack<CCSAXState>  m_tStateStack;
 	
 public:
@@ -85,7 +87,7 @@ public:
     {
     }
 
-    CCDictionary<std::string, CCObject*> *dictionaryWithContentsOfFile(const char *pFileName)
+    CCDictionary *dictionaryWithContentsOfFile(const char *pFileName)
     {
         m_eResultType = SAX_RESULT_DICT;
         CCSAXParser parser;
@@ -100,7 +102,7 @@ public:
         return m_pRootDict;
     }
 
-    CCMutableArray<CCObject*>* arrayWithContentsOfFile(const char* pFileName)
+    CCArray* arrayWithContentsOfFile(const char* pFileName)
     {
         m_eResultType = SAX_RESULT_ARRAY;
         CCSAXParser parser;
@@ -122,7 +124,7 @@ public:
         std::string sName((char*)name);
         if( sName == "dict" )
         {
-            m_pCurDict = new CCDictionary<std::string, CCObject*>();
+            m_pCurDict = new CCDictionary();
             if (m_eResultType == SAX_RESULT_DICT && ! m_pRootDict)
             {
 				// Because it will call m_pCurDict->release() later, so retain here.
@@ -146,7 +148,7 @@ public:
             {
                 // add the dictionary into the pre dictionary
                 CCAssert(! m_tDictStack.empty(), "The state is wrong!");
-                CCDictionary<std::string, CCObject*>* pPreDict = m_tDictStack.top();
+                CCDictionary* pPreDict = m_tDictStack.top();
                 pPreDict->setObject(m_pCurDict, m_sCurKey);
             }
 
@@ -175,7 +177,7 @@ public:
         else if (sName == "array")
         {
             m_tState = SAX_ARRAY;
-            m_pArray = new CCMutableArray<CCObject*>();
+            m_pArray = new CCArray();
             if (m_eResultType == SAX_RESULT_ARRAY && m_pRootArray == NULL)
             {
                 m_pRootArray = m_pArray;
@@ -195,7 +197,7 @@ public:
             else if (preState == SAX_ARRAY)
             {
                 CCAssert(! m_tArrayStack.empty(), "The state is worng!");
-                CCMutableArray<CCObject*>* pPreArray = m_tArrayStack.top();
+                CCArray* pPreArray = m_tArrayStack.top();
                 pPreArray->addObject(m_pArray);
             }
             m_pArray->release();
@@ -300,11 +302,12 @@ public:
     }
 };
 
-//CCDictionary* ccFileUtils_dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
-//{
-//    CCDictMaker tMaker;
-//    return tMaker.dictionaryWithContentsOfFile(pFileName);
-//}
+CCDictionary* ccFileUtils_dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
+{
+    CCDictMaker tMaker;
+    return tMaker.dictionaryWithContentsOfFile(pFileName);
+}
+
 std::string CCFileUtils::getPathForFilename(const std::string& filename, const std::string& resourceDirectory, const std::string& searchPath)
 {
     std::string file = filename;
@@ -386,48 +389,48 @@ std::string CCFileUtils::fullPathForFilename(const char* pszFileName)
 
             fullpath = this->getPathForFilename(newFileName, *resOrderIter, *searchPathsIter);
 
-            if (GetFileAttributesA(fullpath.c_str()) != -1)
-            {
-                // Adding the full path to cache if the file was found.
-                s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
-				//CCLOG("Returning path: %s", fullpath.c_str());
-                return fullpath;
-            }
+    //        if (GetFileAttributesA(fullpath.c_str()) != -1)
+    //        {
+    //            // Adding the full path to cache if the file was found.
+    //            s_fullPathCache.insert(std::pair<std::string, std::string>(pszFileName, fullpath));
+				////CCLOG("Returning path: %s", fullpath.c_str());
+    //            return fullpath;
+    //        }
         }
     }
 
     // The file wasn't found, return the file name passed in.
     return pszFileName;
 }
-CCDictionary<std::string, CCObject*> *CCFileUtils::dictionaryWithContentsOfFile(const char *pFileName)
+CCDictionary *CCFileUtils::dictionaryWithContentsOfFile(const char *pFileName)
 {
 	//convert to full path
 	std::string fileFullPath;
 	fileFullPath = CCFileUtils::fullPathFromRelativePath(pFileName);
-	CCDictionary<std::string, CCObject*> *ret = dictionaryWithContentsOfFileThreadSafe(fileFullPath.c_str());
+	CCDictionary *ret = dictionaryWithContentsOfFileThreadSafe(fileFullPath.c_str());
 	ret->autorelease();
 
 	return ret;
 }
 
-CCDictionary<std::string, CCObject*> *CCFileUtils::dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
+CCDictionary *CCFileUtils::dictionaryWithContentsOfFileThreadSafe(const char *pFileName)
 {
 	CCDictMaker tMaker;
     return tMaker.dictionaryWithContentsOfFile(pFileName);
 }
 
-CCMutableArray<CCObject*>* CCFileUtils::arrayWithContentsOfFileThreadSafe(const char* pFileName)
+CCArray* CCFileUtils::arrayWithContentsOfFileThreadSafe(const char* pFileName)
 {
     CCDictMaker tMaker;
     return tMaker.arrayWithContentsOfFile(pFileName);
 }
 
-CCMutableArray<CCObject*>* CCFileUtils::arrayWithContentsOfFile(const char* pFileName)
+CCArray* CCFileUtils::arrayWithContentsOfFile(const char* pFileName)
 {
 	//convert to full path
 	std::string fileFullPath;
 	fileFullPath = CCFileUtils::fullPathFromRelativePath(pFileName);
-	CCMutableArray<CCObject*>* ret = arrayWithContentsOfFileThreadSafe(fileFullPath.c_str());
+	CCArray* ret = arrayWithContentsOfFileThreadSafe(fileFullPath.c_str());
     ret->autorelease();
     return ret;
 }
@@ -618,6 +621,21 @@ bool CCFileUtils::iPadRetinaDisplayFileExistsAtPath(const char *filename)
 bool CCFileUtils::iPhoneRetinaDisplayFileExistsAtPath(const char *filename)
 {
 	return false;
+}
+
+std::string CCFileUtils::getNewFilename(const char* pszFileName)
+{
+    const char* pszNewFileName = NULL;
+    // in Lookup Filename dictionary ?
+    CCString* fileNameFound = m_pFilenameLookupDict ? (CCString*)m_pFilenameLookupDict->objectForKey(pszFileName) : NULL;
+    if( NULL == fileNameFound || fileNameFound->length() == 0) {
+        pszNewFileName = pszFileName;
+    }
+    else {
+        pszNewFileName = fileNameFound->getCString();
+        //CCLOG("FOUND NEW FILE NAME: %s.", pszNewFileName);
+    }
+    return pszNewFileName;
 }
 
 //////////////////////////////////////////////////////////////////////////
