@@ -80,7 +80,7 @@ public:
 	void setPercentage(float fPercentage);
 	void setSprite(CCSprite *pSprite);
 	void setType(CCProgressTimerType type);
-
+	void setReverseProgress(bool reverse);
 	virtual void draw(void);
 
 public:

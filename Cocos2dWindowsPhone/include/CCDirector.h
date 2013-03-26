@@ -242,6 +242,16 @@ public:
 	*/
 	CCSize getWinSizeInPixels(void);
 
+	/** returns visible size of the OpenGL view in points.
+	*  the value is equal to getWinSize if don't invoke
+	*  CCEGLView::setDesignResolutionSize()
+	*/
+    CCSize getVisibleSize();
+    
+    /** returns visible origin of the OpenGL view in points.
+     */
+    CCPoint getVisibleOrigin();
+
 	/** returns the display size of the OpenGL view in pixels.
 	It doesn't take into account any possible rotation of the window.
 	*/

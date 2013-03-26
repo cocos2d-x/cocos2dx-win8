@@ -1,3 +1,4 @@
+#include"pch.h"
 #include "Box2dTest.h"
 #include "../testResource.h"
 #include "cocos-ext.h"

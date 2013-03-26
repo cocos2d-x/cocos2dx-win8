@@ -144,6 +144,11 @@ public:
     void    swapBuffers();
     bool    canSetContentScaleFactor();
     void    setContentScaleFactor(float contentScaleFactor);
+
+
+
+
+
     void    setDesignResolution(int dx, int dy);
 
 	virtual bool Create();

@@ -513,6 +513,30 @@ void CCDirector::reshapeProjection(const CCSize& newWindowSize)
 	setProjection(m_eProjection);
 }
 
+CCSize CCDirector::getVisibleSize()
+{
+    if (m_pobOpenGLView)
+    {
+        return m_pobOpenGLView->getSizeInPixel();
+    }
+    else 
+    {
+        return CCSizeZero;
+    }
+}
+
+CCPoint CCDirector::getVisibleOrigin()
+{
+    //if (m_pobOpenGLView)
+    //{
+    //    return m_pobOpenGLView->getSizeInPixel();
+    //}
+    //else 
+    //{
+        return CCPointZero;
+    //}
+}
+
 // scene management
 
 void CCDirector::runWithScene(CCScene *pScene)
