@@ -32,50 +32,71 @@ THE SOFTWARE.
 
 NS_CC_BEGIN
 
+/**
+ * @addtogroup global
+ * @{
+ */
+
+// Priority level reserved for system services.
+#define kCCPrioritySystem INT_MIN
+
+// Minimum priority level for user scheduling.
+#define kCCPriorityNonSystemMin (kCCPrioritySystem+1)
+
+class CCSet;
 //
 // CCTimer
 //
-/** @brief Light weight timer */
+/** @brief Light-weight timer */
+//
 class CC_DLL CCTimer : public CCObject
 {
 public:
-	CCTimer(void);
-
-	/** get interval in seconds */
-	inline ccTime getInterval(void) { return m_fInterval; }
-	/** set interval in seconds */
-	inline void setInterval(ccTime fInterval){ m_fInterval = fInterval; }
-
+    CCTimer(void);
+    
+    /** get interval in seconds */
+    float getInterval(void) const;
+    /** set interval in seconds */
+    void setInterval(float fInterval);
+    
+    SEL_SCHEDULE getSelector() const;
+    
     /** Initializes a timer with a target and a selector. */
-	bool initWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector);
-
-	/** Initializes a timer with a target, a selector and an interval in seconds. */
-    bool initWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector, ccTime fSeconds);
-
+    bool initWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector);
+    
+    /** Initializes a timer with a target, a selector and an interval in seconds, repeat in number of times to repeat, delay in seconds. */
+    bool initWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector, float fSeconds, unsigned int nRepeat, float fDelay);
+    
     /** Initializes a timer with a script callback function and an interval in seconds. */
-    bool initWithScriptHandler(int nHandler, ccTime fSeconds);
-
-	/** triggers the timer */
-	void update(ccTime dt);
-
+    bool initWithScriptHandler(int nHandler, float fSeconds);
+    
+    /** triggers the timer */
+    void update(float dt);
+    
 public:
-	/** Allocates a timer with a target and a selector. */
-	static CCTimer* timerWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector);
-
-	/** Allocates a timer with a target, a selector and an interval in seconds. */
-	static CCTimer* timerWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector, ccTime fSeconds);
-
+    /** Allocates a timer with a target and a selector. */
+    static CCTimer* timerWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector);
+    
+    /** Allocates a timer with a target, a selector and an interval in seconds. */
+    static CCTimer* timerWithTarget(CCObject *pTarget, SEL_SCHEDULE pfnSelector, float fSeconds);
+    
     /** Allocates a timer with a script callback function and an interval in seconds. */
-    static CCTimer* timerWithScriptHandler(int nHandler, ccTime fSeconds);
-
-public:
-	SEL_SCHEDULE m_pfnSelector;
-	ccTime m_fInterval;
+    static CCTimer* timerWithScriptHandler(int nHandler, float fSeconds);
+    
+    inline int getScriptHandler() { return m_nScriptHandler; };
 
 protected:
-	CCObject *m_pTarget;
-	ccTime m_fElapsed;
-    int m_eScriptHandler;
+    CCObject *m_pTarget;
+    float m_fElapsed;
+    bool m_bRunForever;
+    bool m_bUseDelay;
+    unsigned int m_uTimesExecuted;
+    unsigned int m_uRepeat; //0 = once, 1 is 2 x executed
+    float m_fDelay;
+    float m_fInterval;
+    SEL_SCHEDULE m_pfnSelector;
+    
+    int m_nScriptHandler;
 };
 
 //
@@ -101,131 +122,152 @@ The 'custom selectors' should be avoided when possible. It is faster, and consum
 class CC_DLL CCScheduler : public CCObject
 {
 public:
+    CCScheduler();
     ~CCScheduler(void);
 
-	inline ccTime getTimeScale(void) { return m_fTimeScale; }
-	/** Modifies the time of all scheduled callbacks.
-	You can use this property to create a 'slow motion' or 'fast forward' effect.
-	Default is 1.0. To create a 'slow motion' effect, use values below 1.0.
-	To create a 'fast forward' effect, use values higher than 1.0.
-	@since v0.8
-	@warning It will affect EVERY scheduled selector / action.
-	*/
-	inline void setTimeScale(ccTime fTimeScale) { m_fTimeScale = fTimeScale; }
+    inline float getTimeScale(void) { return m_fTimeScale; }
+    /** Modifies the time of all scheduled callbacks.
+    You can use this property to create a 'slow motion' or 'fast forward' effect.
+    Default is 1.0. To create a 'slow motion' effect, use values below 1.0.
+    To create a 'fast forward' effect, use values higher than 1.0.
+    @since v0.8
+    @warning It will affect EVERY scheduled selector / action.
+    */
+    inline void setTimeScale(float fTimeScale) { m_fTimeScale = fTimeScale; }
 
-	/** 'tick' the scheduler.
-	 You should NEVER call this method, unless you know what you are doing.
-	 */
-	void tick(ccTime dt);
+    /** 'update' the scheduler.
+     You should NEVER call this method, unless you know what you are doing.
+     */
+    void update(float dt);
 
-	/** The scheduled method will be called every 'interval' seconds.
-	 If paused is YES, then it won't be called until it is resumed.
-	 If 'interval' is 0, it will be called every frame, but if so, it recommened to use 'scheduleUpdateForTarget:' instead.
-	 If the selector is already scheduled, then only the interval parameter will be updated without re-scheduling it again.
+    /** The scheduled method will be called every 'interval' seconds.
+     If paused is YES, then it won't be called until it is resumed.
+     If 'interval' is 0, it will be called every frame, but if so, it's recommended to use 'scheduleUpdateForTarget:' instead.
+     If the selector is already scheduled, then only the interval parameter will be updated without re-scheduling it again.
+     repeat let the action be repeated repeat + 1 times, use kCCRepeatForever to let the action run continuously
+     delay is the amount of time the action will wait before it'll start
 
-	 @since v0.99.3
-	 */
-	void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget,  float fInterval, unsigned int repeat, float delay, bool bPaused);
-	void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, bool bPaused);
-	/** Schedules the 'update' selector for a given target with a given priority.
-	 The 'update' selector will be called every frame.
-	 The lower the priority, the earlier it is called.
-	 @since v0.99.3
-	 */
-	void scheduleUpdateForTarget(CCObject *pTarget, int nPriority, bool bPaused);
+     @since v0.99.3, repeat and delay added in v1.1
+     */
+    void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, unsigned int repeat, float delay, bool bPaused);
 
-	/** Unschedule a selector for a given target.
-	 If you want to unschedule the "update", use unscheudleUpdateForTarget.
-	 @since v0.99.3
-	 */
-	void unscheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget);
+    /** calls scheduleSelector with kCCRepeatForever and a 0 delay */
+    void scheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget, float fInterval, bool bPaused);
+    /** Schedules the 'update' selector for a given target with a given priority.
+     The 'update' selector will be called every frame.
+     The lower the priority, the earlier it is called.
+     @since v0.99.3
+     */
+    void scheduleUpdateForTarget(CCObject *pTarget, int nPriority, bool bPaused);
 
-	/** Unschedules the update selector for a given target
-	 @since v0.99.3
-	 */
-	void unscheduleUpdateForTarget(const CCObject *pTarget);
+    /** Unschedule a selector for a given target.
+     If you want to unschedule the "update", use unscheudleUpdateForTarget.
+     @since v0.99.3
+     */
+    void unscheduleSelector(SEL_SCHEDULE pfnSelector, CCObject *pTarget);
 
-	/** Unschedules all selectors for a given target.
-	 This also includes the "update" selector.
-	 @since v0.99.3
-	 */
-	void unscheduleAllSelectorsForTarget(CCObject *pTarget);
+    /** Unschedules the update selector for a given target
+     @since v0.99.3
+     */
+    void unscheduleUpdateForTarget(const CCObject *pTarget);
 
-	/** Unschedules all selectors from all targets.
-	 You should NEVER call this method, unless you know what you are doing.
+    /** Unschedules all selectors for a given target.
+     This also includes the "update" selector.
+     @since v0.99.3
+     */
+    void unscheduleAllForTarget(CCObject *pTarget);
 
-	 @since v0.99.3
-	 */
-	void unscheduleAllSelectors(void);
+    /** Unschedules all selectors from all targets.
+     You should NEVER call this method, unless you know what you are doing.
+
+     @since v0.99.3
+     */
+    void unscheduleAll(void);
     
+    /** Unschedules all selectors from all targets with a minimum priority.
+      You should only call this with kCCPriorityNonSystemMin or higher.
+      @since v2.0.0
+      */
+    void unscheduleAllWithMinPriority(int nMinPriority);
+
     /** The scheduled script callback will be called every 'interval' seconds.
-	 If paused is YES, then it won't be called until it is resumed.
-	 If 'interval' is 0, it will be called every frame.
+     If paused is YES, then it won't be called until it is resumed.
+     If 'interval' is 0, it will be called every frame.
      return schedule script entry ID, used for unscheduleScriptFunc().
      */
-    unsigned int scheduleScriptFunc(int nHandler, ccTime fInterval, bool bPaused);
+    unsigned int scheduleScriptFunc(unsigned int nHandler, float fInterval, bool bPaused);
     
-	/** Unschedule a script entry. */
+    /** Unschedule a script entry. */
     void unscheduleScriptEntry(unsigned int uScheduleScriptEntryID);
 
-	/** Pauses the target.
-	 All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.
-	 If the target is not present, nothing happens.
-	 @since v0.99.3
-	 */
-	void pauseTarget(CCObject *pTarget);
+    /** Pauses the target.
+     All scheduled selectors/update for a given target won't be 'ticked' until the target is resumed.
+     If the target is not present, nothing happens.
+     @since v0.99.3
+     */
+    void pauseTarget(CCObject *pTarget);
 
-	/** Resumes the target.
-	 The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
-	 If the target is not present, nothing happens.
-	 @since v0.99.3
-	 */
-	void resumeTarget(CCObject *pTarget);
+    /** Resumes the target.
+     The 'target' will be unpaused, so all schedule selectors/update will be 'ticked' again.
+     If the target is not present, nothing happens.
+     @since v0.99.3
+     */
+    void resumeTarget(CCObject *pTarget);
 
     /** Returns whether or not the target is paused
     @since v1.0.0
     */
     bool isTargetPaused(CCObject *pTarget);
 
-public:
-    /** returns a shared instance of the Scheduler */
-	static CCScheduler* sharedScheduler(void);
+    /** Pause all selectors from all targets.
+      You should NEVER call this method, unless you know what you are doing.
+     @since v2.0.0
+      */
+    CCSet* pauseAllTargets();
 
-	/** purges the shared scheduler. It releases the retained instance.
-	 @since v0.99.0
-	 */
-	static void purgeSharedScheduler(void);
+    /** Pause all selectors from all targets with a minimum priority.
+      You should only call this with kCCPriorityNonSystemMin or higher.
+      @since v2.0.0
+      */
+    CCSet* pauseAllTargetsWithMinPriority(int nMinPriority);
+
+    /** Resume selectors on a set of targets.
+     This can be useful for undoing a call to pauseAllSelectors.
+     @since v2.0.0
+      */
+    void resumeTargets(CCSet* targetsToResume);
 
 private:
-	void removeHashElement(struct _hashSelectorEntry *pElement);
-	void removeUpdateFromHash(struct _listEntry *entry);
-	CCScheduler();
-	bool init(void);
+    void removeHashElement(struct _hashSelectorEntry *pElement);
+    void removeUpdateFromHash(struct _listEntry *entry);
 
-	// update specific
+    // update specific
 
-	void priorityIn(struct _listEntry **ppList, CCObject *pTarget, int nPriority, bool bPaused);
-	void appendIn(struct _listEntry **ppList, CCObject *pTarget, bool bPaused);
+    void priorityIn(struct _listEntry **ppList, CCObject *pTarget, int nPriority, bool bPaused);
+    void appendIn(struct _listEntry **ppList, CCObject *pTarget, bool bPaused);
 
 protected:
-	ccTime m_fTimeScale;
+    float m_fTimeScale;
 
-	//
-	// "updates with priority" stuff
-	//
-	struct _listEntry *m_pUpdatesNegList;		// list of priority < 0
-	struct _listEntry *m_pUpdates0List;			// list priority == 0
-	struct _listEntry *m_pUpdatesPosList;		// list priority > 0
-	struct _hashUpdateEntry *m_pHashForUpdates; // hash used to fetch quickly the list entries for pause,delete,etc
+    //
+    // "updates with priority" stuff
+    //
+    struct _listEntry *m_pUpdatesNegList;        // list of priority < 0
+    struct _listEntry *m_pUpdates0List;            // list priority == 0
+    struct _listEntry *m_pUpdatesPosList;        // list priority > 0
+    struct _hashUpdateEntry *m_pHashForUpdates; // hash used to fetch quickly the list entries for pause,delete,etc
 
-	// Used for "selectors with interval"
-	struct _hashSelectorEntry *m_pHashForSelectors;
-	struct _hashSelectorEntry *m_pCurrentTarget;
-	bool m_bCurrentTargetSalvaged;
-	// If true unschedule will not remove anything from a hash. Elements will only be marked for deletion.
-	bool m_bUpdateHashLocked;
+    // Used for "selectors with interval"
+    struct _hashSelectorEntry *m_pHashForTimers;
+    struct _hashSelectorEntry *m_pCurrentTarget;
+    bool m_bCurrentTargetSalvaged;
+    // If true unschedule will not remove anything from a hash. Elements will only be marked for deletion.
+    bool m_bUpdateHashLocked;
     CCArray* m_pScriptHandlerEntries;
 };
+
+// end of global group
+/// @}
 NS_CC_END
 
 #endif // __CCSCHEDULER_H__

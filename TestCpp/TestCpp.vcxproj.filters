@@ -43,6 +43,54 @@
     <Image Include="Assets\back.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\grossini.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathGrossini.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\b1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\b2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background1.jpg">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\background3.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\blocks.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\f1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\f2.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\r1.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Images\r2.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

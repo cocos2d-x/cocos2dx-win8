@@ -42,6 +42,7 @@ class CCAction;
 class CCRGBAProtocol;
 class CCLabelProtocol;
 class CCScheduler;
+class CCActionManager;
 
 enum {
 	kCCNodeTagInvalid = -1,
@@ -293,6 +294,7 @@ private:
 	CCPoint convertToWindowSpace(const CCPoint& nodePoint);
 protected:
 	CCScheduler *m_pScheduler; 
+	CCActionManager *m_pActionManager;  ///< a pointer to ActionManager singleton, which is used to handle all the actions
 public:
 
 	CCNode(void);
