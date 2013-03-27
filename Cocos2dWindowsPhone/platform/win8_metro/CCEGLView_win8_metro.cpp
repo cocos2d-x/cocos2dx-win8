@@ -34,7 +34,7 @@ using namespace DirectX;
 
 NS_CC_BEGIN;
 
-static CCEGLView * s_pMainWindow;
+static CCEGLView * s_pMainWindow = NULL;
 
 CCEGLView::CCEGLView()
 : m_pDelegate(NULL)
@@ -619,18 +619,7 @@ void CCEGLView::GetClearColor(float* color)
 
 CCEGLView* CCEGLView::sharedOpenGLView()
 {
-    static CCEGLView* s_pEglView = NULL;
-    if (s_pEglView == NULL)
-    {
-        s_pEglView = new CCEGLView();
-		if(!s_pEglView->Create())
-		{
-			delete s_pEglView;
-			s_pEglView = NULL;
-		}
-    }
-
-    return s_pEglView;
+    return s_pMainWindow;
 }
 
 void CCEGLView::OnWindowSizeChanged()

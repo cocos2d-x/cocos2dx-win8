@@ -127,23 +127,6 @@ public:
     virtual bool isKeypadEnabled();
     virtual void setKeypadEnabled(bool value);
 
-	/** whether or not it will receive Touch events.
-	You can enable / disable touch events with this property.
-	Only the touches of this node will be affected. This "method" is not propagated to it's children.
-	@since v0.8.1
-	*/
-	CC_PROPERTY(bool, m_bIsTouchEnabled, IsTouchEnabled)
-	/** whether or not it will receive Accelerometer events
-	You can enable / disable accelerometer events with this property.
-	@since v0.8.1
-	*/
-	CC_PROPERTY(bool, m_bIsAccelerometerEnabled, IsAccelerometerEnabled)
-    /** whether or not it will receive keypad events
-    You can enable / disable accelerometer events with this property.
-    it's new in cocos2d-x
-    */
-    CC_PROPERTY(bool, m_bIsKeypadEnabled, IsKeypadEnabled)
-
 private:
 	 int m_nTouchPriority;
 	 ccTouchesMode m_eTouchMode;
