@@ -120,7 +120,7 @@ bool HelloWorld::init()
 			break;
 		}
 
-		this->setIsTouchEnabled(true);
+		this->setTouchEnabled(true);
 		b2Vec2 gravity;
 		gravity.Set(0.0f, -10.0f);
 
@@ -473,7 +473,7 @@ void HelloWorld::tick(ccTime dt)
 		CCParticleSun* explosion = new CCParticleSun();
 		explosion->initWithTotalParticles(200);
 		//explosion->setTotalParticles(200);
-		explosion->setIsAutoRemoveOnFinish(true);
+		explosion->setAutoRemoveOnFinish(true);
 		explosion->setStartSize(10.0f);
 		explosion->setSpeed(70.0f);
 		explosion->setAnchorPoint(ccp(0.5f,0.5f));
