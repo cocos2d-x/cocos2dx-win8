@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "CurlTest.h"
 #include "stdio.h"
 #include "stdlib.h"

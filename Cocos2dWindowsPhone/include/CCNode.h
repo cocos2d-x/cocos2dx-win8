@@ -32,7 +32,8 @@ THE SOFTWARE.
 #include "CCAffineTransform.h"
 #include "CCArray.h"
 #include "CCGL.h"
-
+#include "CCScriptSupport.h"
+#include "kazmath/kazmath.h"
 NS_CC_BEGIN
 class CCCamera;
 class CCGridBase;
@@ -46,6 +47,7 @@ class CCActionManager;
 
 enum {
 	kCCNodeTagInvalid = -1,
+	kCCNodeOnExitTransitionDidStart
 };
 
 enum {
@@ -295,6 +297,10 @@ private:
 protected:
 	CCScheduler *m_pScheduler; 
 	CCActionManager *m_pActionManager;  ///< a pointer to ActionManager singleton, which is used to handle all the actions
+	CCPoint m_obAnchorPoint;            ///< anchor point normalized (NOT in points)
+    
+    CCSize m_obContentSize;             ///< untransformed size of the node
+
 public:
 
 	CCNode(void);
@@ -329,6 +335,7 @@ public:
 	@since v0.8
 	*/
 	virtual void onEnterTransitionDidFinish();
+	virtual void onExitTransitionDidStart();
 
 	/** callback that is called every time the CCNode leaves the 'stage'.
 	If the CCNode leaves the 'stage' with a transition, this callback is called when the transition finishes.
@@ -622,7 +629,11 @@ public:
 	bool m_bReorderChildDirty;
 	bool m_bIgnoreAnchorPointForPosition; ///< true if the Anchor Point will be (0,0) when you position the CCNode, false otherwise.
 	///< Used by CCLayer and CCScene.
-	bool m_bVisible;                    ///< is this node visible
+	bool m_bVisible; 
+	///< is this node visible
+
+    
+	ccScriptType m_eScriptType; 
 
 };
 NS_CC_END

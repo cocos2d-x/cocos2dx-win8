@@ -58,7 +58,7 @@ namespace CocosDenshion {
 @class          SimpleAudioEngine
 @brief  		offer a VERY simple interface to play background music & sound effect
 */
-class SimpleAudioEngine
+class CC_DLL SimpleAudioEngine
 {
 public:
     SimpleAudioEngine();

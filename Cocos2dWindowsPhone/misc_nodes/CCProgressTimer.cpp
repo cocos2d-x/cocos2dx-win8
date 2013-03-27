@@ -172,7 +172,16 @@ void CCProgressTimer::setType(CCProgressTimerType type)
 		m_eType = type;
 	}
 }
+void CCProgressTimer::setReverseProgress(bool reverse)
+{
+    if( m_bReverseDirection != reverse ) {
+        m_bReverseDirection = reverse;
 
+        //    release all previous information
+        CC_SAFE_FREE(m_pVertexData);
+        m_nVertexDataCount = 0;
+    }
+}
 // Interval
 
 ///

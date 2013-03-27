@@ -41,7 +41,7 @@ public:
 class Box2DTestScene : public TestScene
 {
 public:
-	virtual void runThisTest(){};
+	virtual void runThisTest();
 };
 
 #endif

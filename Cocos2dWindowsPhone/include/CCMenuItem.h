@@ -176,9 +176,9 @@ public:
 	/** get the default font name */
 	static const char *fontName();
 	/** creates a menu item from a string without target/selector. To be used with CCMenuItemToggle */
-	static CCMenuItemFont * itemFromString(const char *value);
+	static CCMenuItemFont * create(const char *value);
 	/** creates a menu item from a string with a target/selector */
-	static CCMenuItemFont * itemFromString(const char *value, CCObject* target, SEL_MenuHandler selector);
+	static CCMenuItemFont * create(const char *value, CCObject* target, SEL_MenuHandler selector);
 	/** initializes a menu item from a string with a target/selector */
 	bool initFromString(const char *value, CCObject* target, SEL_MenuHandler selector);
 
@@ -312,7 +312,7 @@ public:
 	{}
 	virtual ~CCMenuItemToggle();
 	/** creates a menu item from a list of items with a target/selector */
-	static CCMenuItemToggle* create(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, ...);		
+	static CCMenuItemToggle* createWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, ...);		
 	/** initializes a menu item from a list of items with a target selector */
 	bool initWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, va_list args);
 

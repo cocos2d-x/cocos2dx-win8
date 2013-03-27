@@ -83,7 +83,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PrecompiledHeader>Use</PrecompiledHeader>
-      <AdditionalIncludeDirectories>./;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib;../CocosDenshionWindowsPhone/include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./;../external;../Cocos2dWindowsPhone/include/;../Cocos2dWindowsPhone/platform/third_party;../Cocos2dWindowsPhone/include/libpng;../Cocos2dWindowsPhone/include/libjpeg;../Cocos2dWindowsPhone/include/freetype;../Cocos2dWindowsPhone/include/zlib;../CocosDenshionWindowsPhone/include;$(IntermediateOutputPath);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <CompileAsWinRT>true</CompileAsWinRT>
       <PreprocessorDefinitions>TIXML_USE_STL;COCOS2D_DEBUG=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -98,7 +98,7 @@
       <GenerateWindowsMetadata>true</GenerateWindowsMetadata>
       <!-- TODO:Please remove below IgnoreSpecificDefaultLibraries once dev11 bug 362091 is fixed -->
       <IgnoreSpecificDefaultLibraries>ole32.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
-      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\Debug\Cocos2dWindowsPhone;..\Debug\CocosDenshionWindowsPhone;..\Debug\Box2DWindowsPhone</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Cocos2dWindowsPhone\libraries\$(PlatformTarget);..\$(Platform)\$(Configuration)\Cocos2dWindowsPhone;..\$(Platform)\$(Configuration)\Box2DWindowsPhone;..\$(Platform)\$(Configuration)\CocosDenshionWindowsPhone</AdditionalLibraryDirectories>
       <ShowProgress Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">LinkVerbose</ShowProgress>
       <GenerateDebugInformation Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</GenerateDebugInformation>
     </Link>
@@ -155,11 +155,22 @@
     <Xml Include="WMAppManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classes\AccelerometerTest\AccelerometerTest.h" />
+    <ClInclude Include="Classes\ActionManagerTest\ActionManagerTest.h" />
+    <ClInclude Include="Classes\ActionsEaseTest\ActionsEaseTest.h" />
+    <ClInclude Include="Classes\ActionsProgressTest\ActionsProgressTest.h" />
     <ClInclude Include="Classes\ActionsTest\ActionsTest.h" />
     <ClInclude Include="Classes\AppDelegate.h" />
     <ClInclude Include=".\cocos2dorig.h" />
+    <ClInclude Include="Classes\Box2DTest\Box2dTest.h" />
+    <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h" />
     <ClInclude Include="Classes\controller.h" />
+    <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
+    <ClInclude Include="Classes\LayerTest\LayerTest.h" />
+    <ClInclude Include="Classes\MenuTest\MenuTest.h" />
+    <ClInclude Include="Classes\SceneTest\SceneTest.h" />
+    <ClInclude Include="Classes\SpriteTest\SpriteTest.h" />
     <ClInclude Include="Classes\testBasic.h" />
     <ClInclude Include="Classes\testResource.h" />
     <ClInclude Include="Classes\tests.h" />
@@ -295,11 +306,22 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Classes\AccelerometerTest\AccelerometerTest.cpp" />
+    <ClCompile Include="Classes\ActionManagerTest\ActionManagerTest.cpp" />
+    <ClCompile Include="Classes\ActionsEaseTest\ActionsEaseTest.cpp" />
+    <ClCompile Include="Classes\ActionsProgressTest\ActionsProgressTest.cpp" />
     <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp" />
     <ClCompile Include="Classes\AppDelegate.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
+    <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp" />
+    <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp" />
     <ClCompile Include="Classes\controller.cpp" />
+    <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp" />
     <ClCompile Include="Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="Classes\LayerTest\LayerTest.cpp" />
+    <ClCompile Include="Classes\MenuTest\MenuTest.cpp" />
+    <ClCompile Include="Classes\SceneTest\SceneTest.cpp" />
+    <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp" />
     <ClCompile Include="Classes\testBasic.cpp" />
     <ClCompile Include="Classes\VisibleRect.cpp" />
     <ClCompile Include="pch.cpp">

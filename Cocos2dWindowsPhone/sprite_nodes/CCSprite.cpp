@@ -380,6 +380,11 @@ void CCSprite::setTextureRect(const CCRect& rect)
 	CCRect rectInPixels = CC_RECT_POINTS_TO_PIXELS(rect);
 	setTextureRectInPixels(rectInPixels, false, rectInPixels.size);
 }
+// override this method to generate "double scale" sprites
+void CCSprite::setVertexRect(const CCRect& rect)
+{
+    m_obRect = rect;
+}
 
 
 void CCSprite::setTextureRectInPixels(const CCRect& rect, bool rotated, const CCSize& size)

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ClickAndMoveTest.h"
 #include "../testResource.h"
 

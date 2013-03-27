@@ -17,6 +17,48 @@
     <Filter Include="Classes\ActionsTest">
       <UniqueIdentifier>{47299f81-026d-4f61-9a3a-7f2452e2a946}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\AccelerometerTest">
+      <UniqueIdentifier>{badd737c-c437-47c3-bb89-f40589716bd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ActionManagerTest">
+      <UniqueIdentifier>{14681a24-55a6-4276-860d-f9481dd5729c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ActionsEaseTest">
+      <UniqueIdentifier>{32946560-bbdb-4a27-89f7-e14b13971a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ActionsProgressTest">
+      <UniqueIdentifier>{3b64b5ef-9cda-4ce7-8623-0b2e44619a54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Box2DTest">
+      <UniqueIdentifier>{eba19c00-b07f-4f3b-b248-47113ad19f50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ClickAndMoveTest">
+      <UniqueIdentifier>{9d50f717-60f9-43ba-b40c-b51e7c90b18f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\CurlTest">
+      <UniqueIdentifier>{cb040ca0-bd7e-4b14-91a6-0d1855d9f502}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\CurrentLanguageTest">
+      <UniqueIdentifier>{760a4007-fd35-459e-b866-388c8f49d0b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\EffectsAdvancedTest">
+      <UniqueIdentifier>{aa921ff0-9f00-43e4-a28f-20e825ca7058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MenuTest">
+      <UniqueIdentifier>{931f659b-53ed-4416-824d-2088a76af66c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\SceneTest">
+      <UniqueIdentifier>{5dcac3be-a917-4158-ba0d-f4788c06fda7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\SpriteTest">
+      <UniqueIdentifier>{0416f874-c014-4824-92ab-c6e768027bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\LabelTest">
+      <UniqueIdentifier>{c294b170-760c-43b4-9e6b-0ea2705a97e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\LayerTest">
+      <UniqueIdentifier>{511d291a-340d-4b1e-957f-f4fbddea6e26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -112,6 +154,39 @@
     </ClCompile>
     <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp">
       <Filter>Classes\ActionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\AccelerometerTest\AccelerometerTest.cpp">
+      <Filter>Classes\AccelerometerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionManagerTest\ActionManagerTest.cpp">
+      <Filter>Classes\ActionManagerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionsEaseTest\ActionsEaseTest.cpp">
+      <Filter>Classes\ActionsEaseTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ActionsProgressTest\ActionsProgressTest.cpp">
+      <Filter>Classes\ActionsProgressTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp">
+      <Filter>Classes\Box2DTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp">
+      <Filter>Classes\ClickAndMoveTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp">
+      <Filter>Classes\CurrentLanguageTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MenuTest\MenuTest.cpp">
+      <Filter>Classes\MenuTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\SceneTest\SceneTest.cpp">
+      <Filter>Classes\SceneTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp">
+      <Filter>Classes\SpriteTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\LayerTest\LayerTest.cpp">
+      <Filter>Classes\LayerTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -524,6 +599,39 @@
     </ClInclude>
     <ClInclude Include="Classes\ActionsTest\ActionsTest.h">
       <Filter>Classes\ActionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\AccelerometerTest\AccelerometerTest.h">
+      <Filter>Classes\AccelerometerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionManagerTest\ActionManagerTest.h">
+      <Filter>Classes\ActionManagerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionsEaseTest\ActionsEaseTest.h">
+      <Filter>Classes\ActionsEaseTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ActionsProgressTest\ActionsProgressTest.h">
+      <Filter>Classes\ActionsProgressTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Box2DTest\Box2dTest.h">
+      <Filter>Classes\Box2DTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h">
+      <Filter>Classes\ClickAndMoveTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h">
+      <Filter>Classes\CurrentLanguageTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MenuTest\MenuTest.h">
+      <Filter>Classes\MenuTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\SceneTest\SceneTest.h">
+      <Filter>Classes\SceneTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\SpriteTest\SpriteTest.h">
+      <Filter>Classes\SpriteTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\LayerTest\LayerTest.h">
+      <Filter>Classes\LayerTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

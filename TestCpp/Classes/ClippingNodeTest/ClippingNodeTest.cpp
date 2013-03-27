@@ -4,7 +4,7 @@
 //
 // by Pierre-David Bélanger
 //
-
+#include"pch.h"
 #include "ClippingNodeTest.h"
 #include "../testResource.h"
 

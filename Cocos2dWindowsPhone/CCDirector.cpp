@@ -513,6 +513,30 @@ void CCDirector::reshapeProjection(const CCSize& newWindowSize)
 	setProjection(m_eProjection);
 }
 
+CCSize CCDirector::getVisibleSize()
+{
+    if (m_pobOpenGLView)
+    {
+        return m_pobOpenGLView->getSizeInPixel();
+    }
+    else 
+    {
+        return CCSizeZero;
+    }
+}
+
+CCPoint CCDirector::getVisibleOrigin()
+{
+    //if (m_pobOpenGLView)
+    //{
+    //    return m_pobOpenGLView->getSizeInPixel();
+    //}
+    //else 
+    //{
+        return CCPointZero;
+    //}
+}
+
 // scene management
 
 void CCDirector::runWithScene(CCScene *pScene)
@@ -562,6 +586,35 @@ void CCDirector::popScene(void)
 		m_bSendCleanupToScene = true;
 		m_pNextScene = (CCScene*)m_pobScenesStack->objectAtIndex(c - 1);
 	}
+}
+void CCDirector::popToRootScene(void)
+{
+    CCAssert(m_pRunningScene != NULL, "A running Scene is needed");
+    unsigned int c = m_pobScenesStack->count();
+
+    if (c == 1) 
+    {
+        m_pobScenesStack->removeLastObject();
+        this->end();
+    } 
+    else 
+    {
+        while (c > 1) 
+        {
+            CCScene *current = (CCScene*)m_pobScenesStack->lastObject();
+            if( current->isRunning() )
+            {
+                current->onExitTransitionDidStart();
+                current->onExit();
+            }
+            current->cleanup();
+
+            m_pobScenesStack->removeLastObject();
+            c--;
+        }
+        m_pNextScene = (CCScene*)m_pobScenesStack->lastObject();
+        m_bSendCleanupToScene = false;
+    }
 }
 
 void CCDirector::end()

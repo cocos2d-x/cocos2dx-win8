@@ -37,7 +37,7 @@
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\back.png">
+    <Image Include="Assets\HelloWorld.png">
       <Filter>Assets</Filter>
     </Image>
   </ItemGroup>

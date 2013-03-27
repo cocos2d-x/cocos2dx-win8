@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ActionManagerTest.h"
 #include "../testResource.h"
 #include "cocos2d.h"

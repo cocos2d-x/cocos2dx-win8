@@ -209,7 +209,7 @@ CCObject * CCFlipX::copyWithZone(CCZone *pZone) {
 //
 // FlipY
 //
-CCFlipY * CCFlipY::actionWithFlipY(bool y) {
+CCFlipY * CCFlipY::create(bool y) {
 	CCFlipY *pRet = new CCFlipY();
 
 	if (pRet && pRet->initWithFlipY(y)) {
@@ -232,7 +232,7 @@ void CCFlipY::startWithTarget(CCNode *pTarget) {
 }
 
 CCFiniteTimeAction* CCFlipY::reverse() {
-	return CCFlipY::actionWithFlipY(!m_bFlipY);
+	return CCFlipY::create(!m_bFlipY);
 }
 
 CCObject* CCFlipY::copyWithZone(CCZone *pZone) {
