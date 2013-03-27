@@ -44,7 +44,7 @@ NS_CC_BEGIN
 
 // CCLayer
 CCLayer::CCLayer()
-:m_bIsTouchEnabled(false)
+:m_bTouchEnabled(false)
 ,m_bIsAccelerometerEnabled(false)
 ,m_bIsKeypadEnabled(false)
 ,m_pScriptHandlerEntry(NULL)
@@ -66,7 +66,7 @@ bool CCLayer::init()
 		CCDirector * pDirector;
 		CC_BREAK_IF(!(pDirector = CCDirector::sharedDirector()));
 		this->setContentSize(pDirector->getWinSize());
-        m_bIsTouchEnabled = false;
+        m_bTouchEnabled = false;
         m_bIsAccelerometerEnabled = false;
 		// success
 		bRet = true;
@@ -173,10 +173,10 @@ void CCLayer::setTouchMode(ccTouchesMode mode)
     {
         m_eTouchMode = mode;
         
-		if( m_bIsTouchEnabled)
+		if( m_bTouchEnabled)
         {
-			setIsTouchEnabled(false);
-			setIsTouchEnabled(true);
+			setTouchEnabled(false);
+			setTouchEnabled(true);
 		}
     }
 }
@@ -187,10 +187,10 @@ void CCLayer::setTouchPriority(int priority)
     {
         m_nTouchPriority = priority;
         
-		if( m_bIsTouchEnabled)
+		if( m_bTouchEnabled)
         {
-			setIsTouchEnabled(false);
-			setIsTouchEnabled(true);
+			setTouchEnabled(false);
+			setTouchEnabled(true);
 		}
     }
 }
@@ -248,30 +248,29 @@ void CCLayer::setAccelerometerInterval(double interval) {
 
 
 /// isTouchEnabled getter
-bool CCLayer::getIsTouchEnabled()
+bool CCLayer::isTouchEnabled()
 {
-	return m_bIsTouchEnabled;
+    return m_bTouchEnabled;
 }
 /// isTouchEnabled setter
-void CCLayer::setIsTouchEnabled(bool enabled)
+void CCLayer::setTouchEnabled(bool enabled)
 {
-	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-	if (m_bIsTouchEnabled != enabled)
-	{
-		m_bIsTouchEnabled = enabled;
-		if (m_bRunning)
-		{
-			if (enabled)
-			{
-				this->registerWithTouchDispatcher();
-			}
-			else
-			{
-				// have problems?
-				pDispatcher->removeDelegate(this);
-			}
-		}
-	}
+    if (m_bTouchEnabled != enabled)
+    {
+        m_bTouchEnabled = enabled;
+        if (m_bRunning)
+        {
+            if (enabled)
+            {
+                this->registerWithTouchDispatcher();
+            }
+            else
+            {
+                // have problems?
+                CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+            }
+        }
+    }
 }
 
 /// isAccelerometerEnabled getter
@@ -331,7 +330,7 @@ void CCLayer::onEnter()
 {
 	// register 'parent' nodes first
 	// since events are propagated in reverse order
-	if (m_bIsTouchEnabled)
+	if (m_bTouchEnabled)
 	{
 		this->registerWithTouchDispatcher();
 	}
@@ -355,7 +354,7 @@ void CCLayer::onEnter()
 void CCLayer::onExit()
 {
 	CCTouchDispatcher* pDispatcher = CCDirector::sharedDirector()->getTouchDispatcher();
-	if( m_bIsTouchEnabled )
+	if( m_bTouchEnabled )
 	{
 		pDispatcher->removeDelegate(this);
 		unregisterScriptTouchHandler();

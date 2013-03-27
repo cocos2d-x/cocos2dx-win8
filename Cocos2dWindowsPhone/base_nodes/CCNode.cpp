@@ -47,7 +47,7 @@ CCNode::CCNode(void)
 , m_fRotation(0.0f)
 , m_fScaleX(1.0f)
 , m_fScaleY(1.0f)
-, m_tPosition(CCPointZero)
+, m_obPosition(CCPointZero)
 , m_tPositionInPixels(CCPointZero)
 , m_fSkewX(0.0)
 , m_fSkewY(0.0)
@@ -254,16 +254,16 @@ void CCNode::setScaleY(float newScaleY)
 /// position getter
 const CCPoint& CCNode::getPosition()
 {
-	return m_tPosition;
+	return m_obPosition;
 }
 
 /// position setter
 void CCNode::setPosition(const CCPoint& newPosition)
 {
-	m_tPosition = newPosition;
+	m_obPosition = newPosition;
 	if (CC_CONTENT_SCALE_FACTOR() == 1)
 	{
-		m_tPositionInPixels = m_tPosition;
+		m_tPositionInPixels = m_obPosition;
 	}
 	else
 	{
@@ -282,11 +282,11 @@ void CCNode::setPositionInPixels(const CCPoint& newPosition)
 
 	if ( CC_CONTENT_SCALE_FACTOR() == 1)
 	{
-		m_tPosition = m_tPositionInPixels;
+		m_obPosition = m_tPositionInPixels;
 	}
 	else
 	{
-		m_tPosition = ccpMult(newPosition, 1/CC_CONTENT_SCALE_FACTOR());
+		m_obPosition = ccpMult(newPosition, 1/CC_CONTENT_SCALE_FACTOR());
 	}
 
 	m_bIsTransformDirty = m_bIsInverseDirty = true;
@@ -303,33 +303,33 @@ const CCPoint& CCNode::getPositionInPixels()
 
 const CCPoint& CCNode::getPositionLua(void)
 {
-    return m_tPosition;
+    return m_obPosition;
 }
 
 void CCNode::getPosition(float* x, float* y)
 {
-    *x = m_tPosition.x;
-    *y = m_tPosition.y;
+    *x = m_obPosition.x;
+    *y = m_obPosition.y;
 }
 
 float CCNode::getPositionX(void)
 {
-    return m_tPosition.x;
+    return m_obPosition.x;
 }
 
 float CCNode::getPositionY(void)
 {
-    return  m_tPosition.y;
+    return  m_obPosition.y;
 }
 
 void CCNode::setPositionX(float x)
 {
-    setPosition(ccp(x, m_tPosition.y));
+    setPosition(ccp(x, m_obPosition.y));
 }
 
 void CCNode::setPositionY(float y)
 {
-    setPosition(ccp(m_tPosition.x, y));
+    setPosition(ccp(m_obPosition.x, y));
 }
 
 void CCNode::setPosition(float x, float y)

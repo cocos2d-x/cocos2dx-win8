@@ -771,8 +771,7 @@ bool CCLabelBMFont::initWithString(const char *theString, const char *fntFile, f
         
         m_sFntFile = fntFile;
         
-		CCAssert(false, "Not implemented!");
-        //texture = CCTextureCache::sharedTextureCache()->addImage(m_pConfiguration->getAtlasName());
+        texture = CCTextureCache::sharedTextureCache()->addImage(m_pConfiguration->getAtlasName());
     }
     else 
     {

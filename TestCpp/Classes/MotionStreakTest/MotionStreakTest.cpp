@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "MotionStreakTest.h"
 #include "../testResource.h"
 

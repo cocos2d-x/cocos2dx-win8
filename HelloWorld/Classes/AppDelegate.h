@@ -57,6 +57,7 @@ public:
     virtual void applicationWillEnterForeground();
 
 	virtual void applicationViewStateChanged(int newState, int oldState){};
+	virtual void deviceBackBttonPressed(Platform::Object^ sender, BackPressedEventArgs^ args){};
 };
 
 #endif // _APP_DELEGATE_H_

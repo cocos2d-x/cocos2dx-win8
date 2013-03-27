@@ -76,7 +76,7 @@ public:
 
     virtual void applicationViewStateChanged(int newState, int oldState) = 0;
 
-	virtual void deviceBackBttonPressed(Platform::Object^ sender, BackPressedEventArgs^ args) = 0;
+	virtual void deviceBackBttonPressed(Platform::Object^ sender, BackPressedEventArgs^ args) {};
 
     /**
     @brief	Callback by CCDirector for limit FPS.

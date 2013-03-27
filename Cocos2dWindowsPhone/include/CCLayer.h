@@ -102,8 +102,8 @@ public:
     Only the touches of this node will be affected. This "method" is not propagated to it's children.
     @since v0.8.1
     */
-    //virtual bool isTouchEnabled();
-    //virtual void setTouchEnabled(bool value);
+    virtual bool isTouchEnabled();
+    virtual void setTouchEnabled(bool value);
     
     virtual void setTouchMode(ccTouchesMode mode);
     virtual int getTouchMode();
@@ -127,12 +127,7 @@ public:
     virtual bool isKeypadEnabled();
     virtual void setKeypadEnabled(bool value);
 
-	/** whether or not it will receive Touch events.
-	You can enable / disable touch events with this property.
-	Only the touches of this node will be affected. This "method" is not propagated to it's children.
-	@since v0.8.1
-	*/
-	CC_PROPERTY(bool, m_bIsTouchEnabled, IsTouchEnabled)
+
 	/** whether or not it will receive Accelerometer events
 	You can enable / disable accelerometer events with this property.
 	@since v0.8.1
@@ -152,7 +147,7 @@ private:
     int  excuteScriptTouchHandler(int nEventType, CCTouch *pTouch);
     int  excuteScriptTouchHandler(int nEventType, CCSet *pTouches);
 protected:   
-    //bool m_bTouchEnabled;
+    bool m_bTouchEnabled;
 	bool m_bAccelerometerEnabled;
 	bool m_bKeypadEnabled;
 };

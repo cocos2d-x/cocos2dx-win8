@@ -125,37 +125,50 @@ default gl blend src function. Compatible with premultiplied alpha images.
 /****************************/
 /** RETINA DISPLAY ENABLED **/
 /****************************/
-
 /** @def CC_CONTENT_SCALE_FACTOR
 On Mac it returns 1;
 On iPhone it returns 2 if RetinaDisplay is On. Otherwise it returns 1
 */
 #define CC_CONTENT_SCALE_FACTOR() CCDirector::sharedDirector()->getContentScaleFactor()
 
-
 /** @def CC_RECT_PIXELS_TO_POINTS
-Converts a rect in pixels to points
-*/
-#define CC_RECT_PIXELS_TO_POINTS(__pixels__)																		\
-    CCRectMake( (__pixels__).origin.x / CC_CONTENT_SCALE_FACTOR(), (__pixels__).origin.y / CC_CONTENT_SCALE_FACTOR(),	\
-    (__pixels__).size.width / CC_CONTENT_SCALE_FACTOR(), (__pixels__).size.height / CC_CONTENT_SCALE_FACTOR() )
+ Converts a rect in pixels to points
+ */
+#define CC_RECT_PIXELS_TO_POINTS(__rect_in_pixels__)                                                                        \
+    CCRectMake( (__rect_in_pixels__).origin.x / CC_CONTENT_SCALE_FACTOR(), (__rect_in_pixels__).origin.y / CC_CONTENT_SCALE_FACTOR(),    \
+            (__rect_in_pixels__).size.width / CC_CONTENT_SCALE_FACTOR(), (__rect_in_pixels__).size.height / CC_CONTENT_SCALE_FACTOR() )
 
 /** @def CC_RECT_POINTS_TO_PIXELS
-Converts a rect in points to pixels
-*/
-#define CC_RECT_POINTS_TO_PIXELS(__points__)																		\
-    CCRectMake( (__points__).origin.x * CC_CONTENT_SCALE_FACTOR(), (__points__).origin.y * CC_CONTENT_SCALE_FACTOR(),	\
-    (__points__).size.width * CC_CONTENT_SCALE_FACTOR(), (__points__).size.height * CC_CONTENT_SCALE_FACTOR() )
+ Converts a rect in points to pixels
+ */
+#define CC_RECT_POINTS_TO_PIXELS(__rect_in_points_points__)                                                                        \
+    CCRectMake( (__rect_in_points_points__).origin.x * CC_CONTENT_SCALE_FACTOR(), (__rect_in_points_points__).origin.y * CC_CONTENT_SCALE_FACTOR(),    \
+            (__rect_in_points_points__).size.width * CC_CONTENT_SCALE_FACTOR(), (__rect_in_points_points__).size.height * CC_CONTENT_SCALE_FACTOR() )
+
+/** @def CC_POINT_PIXELS_TO_POINTS
+ Converts a rect in pixels to points
+ */
+#define CC_POINT_PIXELS_TO_POINTS(__pixels__)                                                                        \
+CCPointMake( (__pixels__).x / CC_CONTENT_SCALE_FACTOR(), (__pixels__).y / CC_CONTENT_SCALE_FACTOR())
+
+/** @def CC_POINT_POINTS_TO_PIXELS
+ Converts a rect in points to pixels
+ */
+#define CC_POINT_POINTS_TO_PIXELS(__points__)                                                                        \
+CCPointMake( (__points__).x * CC_CONTENT_SCALE_FACTOR(), (__points__).y * CC_CONTENT_SCALE_FACTOR())
+
 /** @def CC_POINT_PIXELS_TO_POINTS
  Converts a rect in pixels to points
  */
 #define CC_SIZE_PIXELS_TO_POINTS(__size_in_pixels__)                                                                        \
 CCSizeMake( (__size_in_pixels__).width / CC_CONTENT_SCALE_FACTOR(), (__size_in_pixels__).height / CC_CONTENT_SCALE_FACTOR())
+
 /** @def CC_POINT_POINTS_TO_PIXELS
  Converts a rect in points to pixels
  */
 #define CC_SIZE_POINTS_TO_PIXELS(__size_in_points__)                                                                        \
 CCSizeMake( (__size_in_points__).width * CC_CONTENT_SCALE_FACTOR(), (__size_in_points__).height * CC_CONTENT_SCALE_FACTOR())
+
 #else // retina disabled
 
 /*****************************/
@@ -167,6 +180,48 @@ CCSizeMake( (__size_in_points__).width * CC_CONTENT_SCALE_FACTOR(), (__size_in_p
 #define CC_RECT_POINTS_TO_PIXELS(__points__) __points__
 
 #endif
+
+/**********************/
+/** Profiling Macros **/
+/**********************/
+#if CC_ENABLE_PROFILERS
+
+#define CC_PROFILER_DISPLAY_TIMERS() CCProfiler::sharedProfiler()->displayTimers()
+#define CC_PROFILER_PURGE_ALL() CCProfiler::sharedProfiler()->releaseAllTimers()
+
+#define CC_PROFILER_START(__name__) CCProfilingBeginTimingBlock(__name__)
+#define CC_PROFILER_STOP(__name__) CCProfilingEndTimingBlock(__name__)
+#define CC_PROFILER_RESET(__name__) CCProfilingResetTimingBlock(__name__)
+
+#define CC_PROFILER_START_CATEGORY(__cat__, __name__) do{ if(__cat__) CCProfilingBeginTimingBlock(__name__); } while(0)
+#define CC_PROFILER_STOP_CATEGORY(__cat__, __name__) do{ if(__cat__) CCProfilingEndTimingBlock(__name__); } while(0)
+#define CC_PROFILER_RESET_CATEGORY(__cat__, __name__) do{ if(__cat__) CCProfilingResetTimingBlock(__name__); } while(0)
+
+#define CC_PROFILER_START_INSTANCE(__id__, __name__) do{ CCProfilingBeginTimingBlock( [NSString stringWithFormat:@"%08X - %@", __id__, __name__] ); } while(0)
+#define CC_PROFILER_STOP_INSTANCE(__id__, __name__) do{ CCProfilingEndTimingBlock(    [NSString stringWithFormat:@"%08X - %@", __id__, __name__] ); } while(0)
+#define CC_PROFILER_RESET_INSTANCE(__id__, __name__) do{ CCProfilingResetTimingBlock( [NSString stringWithFormat:@"%08X - %@", __id__, __name__] ); } while(0)
+
+
+#else
+
+#define CC_PROFILER_DISPLAY_TIMERS() do {} while (0)
+#define CC_PROFILER_PURGE_ALL() do {} while (0)
+
+#define CC_PROFILER_START(__name__)  do {} while (0)
+#define CC_PROFILER_STOP(__name__) do {} while (0)
+#define CC_PROFILER_RESET(__name__) do {} while (0)
+
+#define CC_PROFILER_START_CATEGORY(__cat__, __name__) do {} while(0)
+#define CC_PROFILER_STOP_CATEGORY(__cat__, __name__) do {} while(0)
+#define CC_PROFILER_RESET_CATEGORY(__cat__, __name__) do {} while(0)
+
+#define CC_PROFILER_START_INSTANCE(__id__, __name__) do {} while(0)
+#define CC_PROFILER_STOP_INSTANCE(__id__, __name__) do {} while(0)
+#define CC_PROFILER_RESET_INSTANCE(__id__, __name__) do {} while(0)
+
+#endif
+
+
 
 /**
 Helper marcos which converts 4-byte little/big endian 

@@ -23,7 +23,7 @@
 #include "TextInputTest/TextInputTest.h"
 #include "SpriteTest/SpriteTest.h"
 //#include "SchedulerTest/SchedulerTest.h"
-#include "RenderTextureTest/RenderTextureTest.h"
+//#include "RenderTextureTest/RenderTextureTest.h"
 //#include "Box2DTest/Box2dTest.h"
 #include "Box2DTestBed/Box2dView.h"
 #include "EffectsAdvancedTest/EffectsAdvancedTest.h"

@@ -259,13 +259,28 @@ CCSprite * CCTMXLayer::tileAt(const CCPoint& pos)
 	}
 	return tile;
 }
+
 unsigned int CCTMXLayer::tileGIDAt(const CCPoint& pos)
 {
-	CCAssert( pos.x < m_tLayerSize.width && pos.y < m_tLayerSize.height && pos.x >=0 && pos.y >=0, "TMXLayer: invalid position");
-	CCAssert( m_pTiles && m_pAtlasIndexArray, "TMXLayer: the tiles map has been released");
+    return tileGIDAt(pos, NULL);
+}
 
-	int idx = (int)(pos.x + pos.y * m_tLayerSize.width);
-	return m_pTiles[ idx ];
+unsigned int CCTMXLayer::tileGIDAt(const CCPoint& pos, ccTMXTileFlags* flags)
+{
+    CCAssert(pos.x < m_tLayerSize.width && pos.y < m_tLayerSize.height && pos.x >=0 && pos.y >=0, "TMXLayer: invalid position");
+    CCAssert(m_pTiles && m_pAtlasIndexArray, "TMXLayer: the tiles map has been released");
+
+    int idx = (int)(pos.x + pos.y * m_tLayerSize.width);
+    // Bits on the far end of the 32-bit global tile ID are used for tile flags
+    unsigned int tile = m_pTiles[idx];
+
+    // issue1264, flipped tiles can be changed dynamically
+    if (flags) 
+    {
+        *flags = (ccTMXTileFlags)(tile & kCCFlipedAll);
+    }
+    
+    return (tile & kCCFlippedMask);
 }
 
 // CCTMXLayer - adding helper methods
@@ -419,46 +434,114 @@ unsigned int CCTMXLayer::atlasIndexForNewZ(int z)
 // CCTMXLayer - adding / remove tiles
 void CCTMXLayer::setTileGID(unsigned int gid, const CCPoint& pos)
 {
-	CCAssert( pos.x < m_tLayerSize.width && pos.y < m_tLayerSize.height && pos.x >=0 && pos.y >=0, "TMXLayer: invalid position");
-	CCAssert( m_pTiles && m_pAtlasIndexArray, "TMXLayer: the tiles map has been released");
-	CCAssert( gid == 0 || gid >= m_pTileSet->m_uFirstGid, "TMXLayer: invalid gid" );
-
-	unsigned int currentGID = tileGIDAt(pos);
-
-	if( currentGID != gid ) 
-	{
-		// setting gid=0 is equal to remove the tile
-		if( gid == 0 )
-		{
-			removeTileAt(pos);
-		}
-
-		// empty tile. create a new one
-		else if( currentGID == 0 )
-		{
-			insertTileForGID(gid, pos);
-		}
-
-		// modifying an existing tile with a non-empty tile
-		else 
-		{
-			unsigned int z = (unsigned int)(pos.x + pos.y * m_tLayerSize.width);
-			CCSprite *sprite = (CCSprite*)getChildByTag(z);
-			if( sprite )
-			{
-				CCRect rect = m_pTileSet->rectForGID(gid);
-				rect = CCRectMake(rect.origin.x / m_fContentScaleFactor, rect.origin.y / m_fContentScaleFactor, rect.size.width/ m_fContentScaleFactor, rect.size.height/ m_fContentScaleFactor);
-
-				sprite->setTextureRectInPixels(rect, false, rect.size);
-				m_pTiles[z] = gid;
-			} 
-			else 
-			{
-				updateTileForGID(gid, pos);
-			}
-		}
-	}
+    setTileGID(gid, pos, (ccTMXTileFlags)0);
 }
+
+void CCTMXLayer::setTileGID(unsigned int gid, const CCPoint& pos, ccTMXTileFlags flags)
+{
+    CCAssert(pos.x < m_tLayerSize.width && pos.y < m_tLayerSize.height && pos.x >=0 && pos.y >=0, "TMXLayer: invalid position");
+    CCAssert(m_pTiles && m_pAtlasIndexArray, "TMXLayer: the tiles map has been released");
+    CCAssert(gid == 0 || gid >= m_pTileSet->m_uFirstGid, "TMXLayer: invalid gid" );
+
+    ccTMXTileFlags currentFlags;
+    unsigned int currentGID = tileGIDAt(pos, &currentFlags);
+
+    if (currentGID != gid || currentFlags != flags) 
+    {
+        unsigned gidAndFlags = gid | flags;
+
+        // setting gid=0 is equal to remove the tile
+        if (gid == 0)
+        {
+            removeTileAt(pos);
+        }
+        // empty tile. create a new one
+        else if (currentGID == 0)
+        {
+            insertTileForGID(gidAndFlags, pos);
+        }
+        // modifying an existing tile with a non-empty tile
+        else 
+        {
+            unsigned int z = (unsigned int)(pos.x + pos.y * m_tLayerSize.width);
+            CCSprite *sprite = (CCSprite*)getChildByTag(z);
+            if (sprite)
+            {
+                CCRect rect = m_pTileSet->rectForGID(gid);
+                rect = CC_RECT_PIXELS_TO_POINTS(rect);
+
+                sprite->setTextureRect(rect);
+                if (flags) 
+                {
+                    setupTileSprite(sprite, sprite->getPosition(), gidAndFlags);
+                }
+                m_pTiles[z] = gidAndFlags;
+            } 
+            else 
+            {
+                updateTileForGID(gidAndFlags, pos);
+            }
+        }
+    }
+}
+
+void CCTMXLayer::setupTileSprite(CCSprite* sprite, CCPoint pos, unsigned int gid)
+{
+    sprite->setPosition(positionAt(pos));
+    sprite->setVertexZ((float)vertexZForPos(pos));
+    sprite->setAnchorPoint(CCPointZero);
+    sprite->setOpacity(m_cOpacity);
+
+    //issue 1264, flip can be undone as well
+    sprite->setFlipX(false);
+    sprite->setFlipX(false);
+    sprite->setRotation(0.0f);
+    sprite->setAnchorPoint(ccp(0,0));
+
+    // Rotation in tiled is achieved using 3 flipped states, flipping across the horizontal, vertical, and diagonal axes of the tiles.
+    if (gid & kCCTMXTileDiagonalFlag)
+    {
+        // put the anchor in the middle for ease of rotation.
+        sprite->setAnchorPoint(ccp(0.5f,0.5f));
+        sprite->setPosition(ccp(positionAt(pos).x + sprite->getContentSize().height/2,
+           positionAt(pos).y + sprite->getContentSize().width/2 ) );
+
+        unsigned int flag = gid & (kCCTMXTileHorizontalFlag | kCCTMXTileVerticalFlag );
+
+        // handle the 4 diagonally flipped states.
+        if (flag == kCCTMXTileHorizontalFlag)
+        {
+            sprite->setRotation(90.0f);
+        }
+        else if (flag == kCCTMXTileVerticalFlag)
+        {
+            sprite->setRotation(270.0f);
+        }
+        else if (flag == (kCCTMXTileVerticalFlag | kCCTMXTileHorizontalFlag) )
+        {
+            sprite->setRotation(90.0f);
+            sprite->setFlipX(true);
+        }
+        else
+        {
+            sprite->setRotation(270.0f);
+            sprite->setFlipX(true);
+        }
+    }
+    else
+    {
+        if (gid & kCCTMXTileHorizontalFlag)
+        {
+            sprite->setFlipX(true);
+        }
+
+        if (gid & kCCTMXTileVerticalFlag)
+        {
+            sprite->setFlipY(true);
+        }
+    }
+}
+
 void CCTMXLayer::addChild(CCNode * child, int zOrder, int tag)
 {
 	CC_UNUSED_PARAM(child);

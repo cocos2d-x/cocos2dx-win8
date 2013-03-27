@@ -145,7 +145,7 @@ class CC_DLL CCNode : public CCObject
 		CC_PROPERTY(float, m_fScaleY, ScaleY)
 
 		/** Position (x,y) of the node in OpenGL coordinates. (0,0) is the left-bottom corner. */
-		CC_PROPERTY_PASS_BY_REF(CCPoint, m_tPosition, Position)
+		CC_PROPERTY_PASS_BY_REF(CCPoint, m_obPosition, Position)
 		CC_PROPERTY_PASS_BY_REF(CCPoint, m_tPositionInPixels, PositionInPixels)
 
 		/** get/set Position for Lua (pass number faster than CCPoint object)

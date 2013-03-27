@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "KeypadTest.h"
 
 KeypadTest::KeypadTest()

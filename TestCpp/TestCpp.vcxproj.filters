@@ -35,14 +35,8 @@
     <Filter Include="Classes\ClickAndMoveTest">
       <UniqueIdentifier>{9d50f717-60f9-43ba-b40c-b51e7c90b18f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\CurlTest">
-      <UniqueIdentifier>{cb040ca0-bd7e-4b14-91a6-0d1855d9f502}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\CurrentLanguageTest">
       <UniqueIdentifier>{760a4007-fd35-459e-b866-388c8f49d0b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\EffectsAdvancedTest">
-      <UniqueIdentifier>{aa921ff0-9f00-43e4-a28f-20e825ca7058}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\MenuTest">
       <UniqueIdentifier>{931f659b-53ed-4416-824d-2088a76af66c}</UniqueIdentifier>
@@ -77,11 +71,29 @@
     <Filter Include="Classes\UserDefaultTest">
       <UniqueIdentifier>{0b556458-7fb3-4ef7-b04e-c5a58be3f946}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\ExtensionsTest">
-      <UniqueIdentifier>{4d869b2b-93d8-466f-a844-58ed364c5f60}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Classes\FileUtilsTest">
       <UniqueIdentifier>{a32d4a32-1f91-49bb-a95f-166f1cd4fa2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\NodeTest">
+      <UniqueIdentifier>{91dd0383-e902-43db-9e87-3e493f2ffb38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\KeypadTest">
+      <UniqueIdentifier>{52ab47ac-9a53-4732-b1b0-81c46faccabd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MotionStreakTest">
+      <UniqueIdentifier>{0ea6a6d6-0927-4cbb-a36d-41c4cfa58c5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MutiTouchTest">
+      <UniqueIdentifier>{bc2c64c3-6ca9-451f-b387-618caf8d26ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ParallaxTest">
+      <UniqueIdentifier>{49aec0e6-335d-4461-9ee9-acb7699cf717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ParticleTest">
+      <UniqueIdentifier>{b8f13fac-fb42-43bf-a241-c1378eae18ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TileMapTest">
+      <UniqueIdentifier>{52a9f073-63ff-47e1-899b-3e5d75b66851}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -241,6 +253,27 @@
     </ClCompile>
     <ClCompile Include="Classes\LabelTest\LabelTest.cpp">
       <Filter>Classes\LabelTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\NodeTest\NodeTest.cpp">
+      <Filter>Classes\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\KeypadTest\KeypadTest.cpp">
+      <Filter>Classes\KeypadTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MotionStreakTest\MotionStreakTest.cpp">
+      <Filter>Classes\MotionStreakTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MutiTouchTest\MutiTouchTest.cpp">
+      <Filter>Classes\MutiTouchTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ParallaxTest\ParallaxTest.cpp">
+      <Filter>Classes\ParallaxTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ParticleTest\ParticleTest.cpp">
+      <Filter>Classes\ParticleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TileMapTest\TileMapTest.cpp">
+      <Filter>Classes\TileMapTest</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -716,6 +749,27 @@
     </ClInclude>
     <ClInclude Include="Classes\LabelTest\LabelTest.h">
       <Filter>Classes\LabelTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\NodeTest\NodeTest.h">
+      <Filter>Classes\NodeTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\KeypadTest\KeypadTest.h">
+      <Filter>Classes\KeypadTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MotionStreakTest\MotionStreakTest.h">
+      <Filter>Classes\MotionStreakTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MutiTouchTest\MutiTouchTest.h">
+      <Filter>Classes\MutiTouchTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ParallaxTest\ParallaxTest.h">
+      <Filter>Classes\ParallaxTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ParticleTest\ParticleTest.h">
+      <Filter>Classes\ParticleTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TileMapTest\TileMapTest.h">
+      <Filter>Classes\TileMapTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

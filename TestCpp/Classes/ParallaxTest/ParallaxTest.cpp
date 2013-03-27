@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ParallaxTest.h"
 #include "../testResource.h"
 

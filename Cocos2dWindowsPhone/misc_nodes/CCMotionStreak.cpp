@@ -34,31 +34,78 @@ namespace cocos2d {
  * is vertically aligned along the streak segemnts. 
  */
 //implementation CCMotionStreak
-
-CCMotionStreak * CCMotionStreak::streakWithFade(float fade, float seg, const char *imagePath, float width, float length, const ccColor4B& color)
+CCMotionStreak* CCMotionStreak::create(float fade, float minSeg, float stroke, ccColor3B color, const char* path)
 {
-	CCMotionStreak *pRet = new CCMotionStreak();
-	if(pRet && pRet->initWithFade(fade, seg, imagePath, width, length, color))
-	{
-		pRet->autorelease();
-		return pRet;
-	}
-	CC_SAFE_DELETE(pRet)
-	return NULL;
+    CCMotionStreak *pRet = new CCMotionStreak();
+    if (pRet && pRet->initWithFade(fade, minSeg, stroke, color, path))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+
+    CC_SAFE_DELETE(pRet);
+    return NULL;
 }
 
-bool CCMotionStreak::initWithFade(float fade, float seg, const char *imagePath, float width, float length, const ccColor4B& color)
+CCMotionStreak* CCMotionStreak::create(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D* texture)
 {
-	m_fSegThreshold = seg;
-	m_fWidth = width;
-	m_tLastLocation = CCPointZero;
-	m_pRibbon = CCRibbon::ribbonWithWidth(m_fWidth, imagePath, length, color, fade);
-	this->addChild(m_pRibbon);
+    CCMotionStreak *pRet = new CCMotionStreak();
+    if (pRet && pRet->initWithFade(fade, minSeg, stroke, color, texture))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
 
-	// update ribbon position. Use schedule:interval and not scheduleUpdated. (cocos2d-iphone)issue #1075
-	this->schedule(schedule_selector(CCMotionStreak::update), 0);
-	return true;
+    CC_SAFE_DELETE(pRet);
+    return NULL;
 }
+
+bool CCMotionStreak::initWithFade(float fade, float minSeg, float stroke, ccColor3B color, const char* path)
+{
+    CCAssert(path != NULL, "Invalid filename");
+
+    CCTexture2D *texture = CCTextureCache::sharedTextureCache()->addImage(path);
+    return initWithFade(fade, minSeg, stroke, color, texture);
+}
+
+bool CCMotionStreak::initWithFade(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D* texture)
+{
+    CCNode::setPosition(CCPointZero);
+    setAnchorPoint(CCPointZero);
+    ignoreAnchorPointForPosition(true);
+    m_bStartingPositionInitialized = false;
+
+    m_tPositionR = CCPointZero;
+    m_bFastMode = true;
+    m_fMinSeg = (minSeg == -1.0f) ? stroke/5.0f : minSeg;
+    m_fMinSeg *= m_fMinSeg;
+
+    m_fStroke = stroke;
+    m_fFadeDelta = 1.0f/fade;
+
+    m_uMaxPoints = (int)(fade*60.0f)+2;
+    m_uNuPoints = 0;
+    m_pPointState = (float *)malloc(sizeof(float) * m_uMaxPoints);
+    m_pPointVertexes = (CCPoint*)malloc(sizeof(CCPoint) * m_uMaxPoints);
+
+    m_pVertices = (ccVertex2F*)malloc(sizeof(ccVertex2F) * m_uMaxPoints * 2);
+    m_pTexCoords = (ccTex2F*)malloc(sizeof(ccTex2F) * m_uMaxPoints * 2);
+    m_pColorPointer =  (CCubyte*)malloc(sizeof(CCubyte) * m_uMaxPoints * 2 * 4);
+
+    // Set blend mode
+    m_tBlendFunc.src = CC_SRC_ALPHA;
+    m_tBlendFunc.dst = CC_ONE_MINUS_SRC_ALPHA;
+
+    // shader program
+    //setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
+
+    setTexture(texture);
+    setColor(color);
+    scheduleUpdate();
+
+    return true;
+}
+
 
 void CCMotionStreak::update(ccTime delta)
 {
@@ -99,5 +146,13 @@ CCRibbon * CCMotionStreak::getRibbon()
 {
 	return m_pRibbon;
 }
+void CCMotionStreak::setColor(const ccColor3B& color)
+{
+    m_tColor = color;
+}
 
+const ccColor3B& CCMotionStreak::getColor(void)
+{
+    return m_tColor;
+}
 }// namespace cocos2d

@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "ParticleTest.h"
 // #include "CCActionInterval.h"
 // #include "CCMenu.h"
@@ -1881,10 +1882,10 @@ void PremultipliedAlphaTest::onEnter()
     //this->emitter.blendFunc = (ccBlendFunc){ GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA };
 
     // Cocos2d "normal" blend func for premul causes alpha to be ignored (oversaturates colors)
-    ccBlendFunc tBlendFunc = { GL_ONE, GL_ONE_MINUS_SRC_ALPHA };
+    ccBlendFunc tBlendFunc = { CC_ONE, CC_ONE_MINUS_SRC_ALPHA };
     m_emitter->setBlendFunc(tBlendFunc);
 
-    CCAssert(m_emitter->getOpacityModifyRGB(), "Particle texture does not have premultiplied alpha, test is useless");
+//    CCAssert(m_emitter->getOpacityModifyRGB(), "Particle texture does not have premultiplied alpha, test is useless");
 
     // Toggle next line to see old behavior
     //	this->emitter.opacityModifyRGB = NO;

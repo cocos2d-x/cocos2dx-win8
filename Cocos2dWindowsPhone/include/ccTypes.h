@@ -124,6 +124,13 @@ static inline bool ccc4FEqual(ccColor4F a, ccColor4F b)
 {
 	return a.r == b.r && a.g == b.g && a.b == b.b && a.a == b.a;
 }
+//! helper that creates a ccColor4f type
+static inline ccColor4F 
+ccc4f(const CCfloat r, const CCfloat g, const CCfloat b, const CCfloat a)
+{
+    ccColor4F c4 = {r, g, b, a};
+    return c4;
+}
 
 /** A vertex composed of 2 floats: x, y
  @since v0.8
@@ -296,7 +303,7 @@ typedef struct _ccBlendFunc
 	//! destination blend function
 	CCenum dst;
 } ccBlendFunc;
-
+static const ccBlendFunc kCCBlendFuncDisable = {CC_ONE, CC_ZERO};
 // XXX: If any of these enums are edited and/or reordered, update CCTexture2D.m
 //! Vertical text alignment type
 typedef enum

@@ -85,7 +85,7 @@ bool HelloWorld::init()
 		//b->setPosition(ccp(0, 0));
 		//this->addChild(b);
 
-		setIsTouchEnabled(true);
+		setTouchEnabled(true);
 
 		bRet = true;
 	} while (0);

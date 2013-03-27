@@ -226,6 +226,24 @@ public:
 	virtual void setIsVisible(bool bVisible);
 	void setFlipX(bool bFlipX);
 	void setFlipY(bool bFlipY);
+	/**
+	* Returns the batch node object if this sprite is rendered by CCSpriteBatchNode
+	*
+	* @return The CCSpriteBatchNode object if this sprite is rendered by CCSpriteBatchNode,
+	*         NULL if the sprite isn't used batch node.
+	*/
+	virtual CCSpriteBatchNode* getBatchNode(void);
+	/**
+	* Sets the batch node to sprite
+	* @warning This method is not recommended for game developers. Sample code for using batch node
+	* @code
+	* CCSpriteBatchNode *batch = CCSpriteBatchNode::create("Images/grossini_dance_atlas.png", 15);
+	* CCSprite *sprite = CCSprite::createWithTexture(batch->getTexture(), CCRectMake(0, 0, 57, 57));
+	* batch->addChild(sprite);
+	* layer->addChild(batch);
+	* @endcode
+	*/
+	virtual void setBatchNode(CCSpriteBatchNode *pobSpriteBatchNode);
 	/** whether or not the sprite is flipped horizontally. 
 	It only flips the texture of the sprite, and not the texture of the sprite's children.
 	Also, flipping the texture doesn't alter the anchorPoint.
@@ -353,7 +371,8 @@ protected:
 	void updateTextureCoords(const CCRect& rect);
 	void updateBlendFunc(void);
     void getTransformValues(struct transformValues_ *tv); // optimization
-
+	CCPoint m_obOffsetPosition;
+	CCAffineTransform   m_transformToBatch;
 protected:
 	//
 	// Data used when the sprite is rendered using a CCSpriteSheet

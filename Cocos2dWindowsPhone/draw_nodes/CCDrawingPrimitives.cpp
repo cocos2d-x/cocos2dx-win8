@@ -90,6 +90,13 @@ void ccDrawPoints(const CCPoint *points, unsigned int numberOfPoints)
 	CCDrawingPrimitive::Drawing(vertices, numberOfPoints,DrawingPoints);	
 }
 
+
+void ccLineWidth( const CCfloat width )
+{
+	
+}
+
+/** draws a line given the origin and destination point measured in points */
 void ccDrawLine(const CCPoint& origin, const CCPoint& destination)
 {
 	ccVertex2F vertices[2] = 
@@ -208,8 +215,9 @@ void ccDrawCatmullRom( CCPointArray *points, unsigned int segments )
 
 void ccDrawCardinalSpline( CCPointArray *config, float tension,  unsigned int segments )
 {
-   CCAssert(false,"unfinished!");
+   CCAssert(false,"Not implemented!");
 }
+
 void CCDrawingPrimitive::D3DColor4f(float red, float green, float blue, float alpha)
 {
 	if (! pSharedDrawingPrimitive)
@@ -684,5 +692,11 @@ void ccDrawColor4B( CCubyte r, CCubyte g, CCubyte b, CCubyte a )
     s_tColor.b = b/255.0f;
     s_tColor.a = a/255.0f;
 }
+void ccPointSize( CCfloat pointSize )
+{
+    s_fPointSize = pointSize * CC_CONTENT_SCALE_FACTOR();
 
+    //TODO :glPointSize( pointSize );
+
+}
 NS_CC_END 

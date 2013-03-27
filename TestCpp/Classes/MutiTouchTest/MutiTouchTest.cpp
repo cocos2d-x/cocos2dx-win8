@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "MutiTouchTest.h"
 
 
@@ -14,16 +15,16 @@ class TouchPoint : public CCNode
 public:
     TouchPoint()
     {
-        setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
+       // setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColor));
     }
 
     virtual void draw()
     {
         ccDrawColor4B(m_TouchColor.r, m_TouchColor.g, m_TouchColor.b, 255);
-        glLineWidth(10);
+        ccLineWidth(10);
         ccDrawLine( ccp(0, m_pTouchPoint.y), ccp(getContentSize().width, m_pTouchPoint.y) );
         ccDrawLine( ccp(m_pTouchPoint.x, 0), ccp(m_pTouchPoint.x, getContentSize().height) );
-        glLineWidth(1);
+        ccLineWidth(1);
         ccPointSize(30);
         ccDrawPoint(m_pTouchPoint);
     }

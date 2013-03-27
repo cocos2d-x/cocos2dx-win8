@@ -169,40 +169,39 @@ void CCParticleBatchNode::addChild(CCNode * child, int zOrder)
 
 void CCParticleBatchNode::addChild(CCNode * child, int zOrder, int tag)
 {
-	CCAssert(false, "Not implemented."); 
-    //CCAssert( child != NULL, "Argument must be non-NULL");
-    //CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
-    //CCParticleSystem* pChild = (CCParticleSystem*)child;
-    //CCAssert( pChild->getTexture()->getName() == m_pTextureAtlas->getTexture()->getName(), "CCParticleSystem is not using the same texture id");
-    //// If this is the 1st children, then copy blending function
-    //if( m_pChildren->count() == 0 ) 
-    //{
-    //    setBlendFunc(pChild->getBlendFunc());
-    //}
+    CCAssert( child != NULL, "Argument must be non-NULL");
+    CCAssert( dynamic_cast<CCParticleSystem*>(child) != NULL, "CCParticleBatchNode only supports CCQuadParticleSystems as children");
+    CCParticleSystem* pChild = (CCParticleSystem*)child;
+    CCAssert( pChild->getTexture()->getName() == m_pTextureAtlas->getTexture()->getName(), "CCParticleSystem is not using the same texture id");
+    // If this is the 1st children, then copy blending function
+    if( m_pChildren->count() == 0 ) 
+    {
+        setBlendFunc(pChild->getBlendFunc());
+    }
 
-    //CCAssert( m_tBlendFunc.src  == pChild->getBlendFunc().src && m_tBlendFunc.dst  == pChild->getBlendFunc().dst, "Can't add a PaticleSystem that uses a different blending function");
+    CCAssert( m_tBlendFunc.src  == pChild->getBlendFunc().src && m_tBlendFunc.dst  == pChild->getBlendFunc().dst, "Can't add a PaticleSystem that uses a different blending function");
 
-    ////no lazy sorting, so don't call super addChild, call helper instead
-    //unsigned int pos = addChildHelper(pChild,zOrder,tag);
+    //no lazy sorting, so don't call super addChild, call helper instead
+    unsigned int pos = addChildHelper(pChild,zOrder,tag);
 
-    ////get new atlasIndex
-    //unsigned int atlasIndex = 0;
+    //get new atlasIndex
+    unsigned int atlasIndex = 0;
 
-    //if (pos != 0) 
-    //{
-    //    CCParticleSystem* p = (CCParticleSystem*)m_pChildren->objectAtIndex(pos-1);
-    //    atlasIndex = p->getAtlasIndex() + p->getTotalParticles();
+    if (pos != 0) 
+    {
+        CCParticleSystem* p = (CCParticleSystem*)m_pChildren->objectAtIndex(pos-1);
+        atlasIndex = p->getAtlasIndex() + p->getTotalParticles();
 
-    //}
-    //else
-    //{
-    //    atlasIndex = 0;
-    //}
+    }
+    else
+    {
+        atlasIndex = 0;
+    }
 
-    //insertChild(pChild, atlasIndex);
+    insertChild(pChild, atlasIndex);
 
-    //// update quad info
-    //pChild->setBatchNode(this);
+    // update quad info
+    pChild->setBatchNode(this);
 }
 
 // don't use lazy sorting, reordering the particle systems quads afterwards would be too complex

@@ -49,7 +49,7 @@ THE SOFTWARE.
 
 #include "CCGeometry.h"	// for CCPoint
 NS_CC_BEGIN
-
+static CCfloat s_fPointSize = 1.0f;
 /** draws a point given x and y coordinate measured in points */
 void CC_DLL ccDrawPoint( const CCPoint& point );
 
@@ -57,6 +57,9 @@ void CC_DLL ccDrawPoint( const CCPoint& point );
  @since v0.7.2
  */
 void CC_DLL ccDrawPoints( const CCPoint *points, unsigned int numberOfPoints );
+
+/** draws a line given the origin and destination point measured in points */
+void CC_DLL ccLineWidth( const CCfloat width );
 
 /** draws a line given the origin and destination point measured in points */
 void CC_DLL ccDrawLine( const CCPoint& origin, const CCPoint& destination );
@@ -85,6 +88,7 @@ void CC_DLL ccDrawQuadBezier(const CCPoint& origin, const CCPoint& control, cons
 void CC_DLL ccDrawCubicBezier(const CCPoint& origin, const CCPoint& control1, const CCPoint& control2, const CCPoint& destination, int segments);
 void CC_DLL ccDrawCatmullRom( CCPointArray *arrayOfControlPoints, unsigned int segments );
 void CC_DLL ccDrawColor4B( CCubyte r, CCubyte g, CCubyte b, CCubyte a );
+void CC_DLL ccPointSize( CCfloat pointSize );
 /** draws a Cardinal Spline path.
  @warning This function could be pretty slow. Use it only for debugging purposes.
  @since v2.0

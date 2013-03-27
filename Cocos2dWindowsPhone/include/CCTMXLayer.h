@@ -31,6 +31,7 @@ THE SOFTWARE.
 #include "CCTMXObjectGroup.h"
 #include "CCAtlasNode.h"
 #include "CCSpriteBatchNode.h"
+#include "CCTMXXMLParser.h"
 NS_CC_BEGIN
 
 class CCTMXMapInfo;
@@ -100,17 +101,31 @@ public:
 	*/
 	CCSprite* tileAt(const CCPoint& tileCoordinate);
 
-	/** returns the tile gid at a given tile coordinate.
-	if it returns 0, it means that the tile is empty.
-	This method requires the the tile map has not been previously released (eg. don't call layer->releaseMap())
-	*/
-	unsigned int  tileGIDAt(const CCPoint& tileCoordinate);
+    /** returns the tile gid at a given tile coordinate.
+    if it returns 0, it means that the tile is empty.
+    This method requires the the tile map has not been previously released (eg. don't call layer->releaseMap())
+    */
+    unsigned int  tileGIDAt(const CCPoint& tileCoordinate);
 
-	/** sets the tile gid (gid = tile global id) at a given tile coordinate.
-	The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -> Tileset Mgr +1.
-	If a tile is already placed at that position, then it will be removed.
-	*/
-	void setTileGID(unsigned int gid, const CCPoint& tileCoordinate);
+    /** returns the tile gid at a given tile coordinate. It also returns the tile flags.
+     This method requires the the tile map has not been previously released (eg. don't call [layer releaseMap])
+     */
+    unsigned int tileGIDAt(const CCPoint& tileCoordinate, ccTMXTileFlags* flags);
+
+    /** sets the tile gid (gid = tile global id) at a given tile coordinate.
+    The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -> Tileset Mgr +1.
+    If a tile is already placed at that position, then it will be removed.
+    */
+    void setTileGID(unsigned int gid, const CCPoint& tileCoordinate);
+
+    /** sets the tile gid (gid = tile global id) at a given tile coordinate.
+     The Tile GID can be obtained by using the method "tileGIDAt" or by using the TMX editor -> Tileset Mgr +1.
+     If a tile is already placed at that position, then it will be removed.
+     
+     Use withFlags if the tile flags need to be changed as well
+     */
+
+    void setTileGID(unsigned int gid, const CCPoint& tileCoordinate, ccTMXTileFlags flags);
 
 	/** removes a tile at given tile coordinate */
 	void removeTileAt(const CCPoint& tileCoordinate);
@@ -146,6 +161,7 @@ private:
 	CCSprite* insertTileForGID(unsigned int gid, const CCPoint& pos);
 	CCSprite* updateTileForGID(unsigned int gid, const CCPoint& pos);
 
+	void setupTileSprite(CCSprite* sprite, CCPoint pos, unsigned int gid);
 	/* The layer recognizes some special properties, like cc_vertez */
 	void parseInternalProperties();
 	int vertexZForPos(const CCPoint& pos);

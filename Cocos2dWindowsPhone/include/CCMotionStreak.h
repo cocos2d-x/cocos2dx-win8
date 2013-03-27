@@ -66,18 +66,55 @@ public:
 		, m_fWidth(0.0)		
 	{}
 	virtual ~CCMotionStreak(){}
-	/** creates the a MotionStreak. The image will be loaded using the TextureMgr. */
-	static CCMotionStreak * streakWithFade(float fade, float seg, const char *imagePath, float width, float length, const ccColor4B& color);
+    /** creates and initializes a motion streak with fade in seconds, minimum segments, stroke's width, color, texture filename */
+    static CCMotionStreak* create(float fade, float minSeg, float stroke, ccColor3B color, const char* path);
+    /** creates and initializes a motion streak with fade in seconds, minimum segments, stroke's width, color, texture */
+    static CCMotionStreak* create(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D* texture);
 
-	/** initializes a MotionStreak. The file will be loaded using the TextureMgr. */
-	bool initWithFade(float fade, float seg, const char *imagePath, float width, float length, const ccColor4B& color);
+    /** initializes a motion streak with fade in seconds, minimum segments, stroke's width, color and texture filename */
+    bool initWithFade(float fade, float minSeg, float stroke, ccColor3B color, const char* path);
+    /** initializes a motion streak with fade in seconds, minimum segments, stroke's width, color and texture  */
+    bool initWithFade(float fade, float minSeg, float stroke, ccColor3B color, CCTexture2D* texture);
 
 	/** polling function */
 	void update(ccTime delta);
+
+	 /** When fast mode is enabled, new points are added faster but with lower precision */
+    inline bool isFastMode() { return m_bFastMode; }
+    inline void setFastMode(bool bFastMode) { m_bFastMode = bFastMode; }
+	inline bool isStartingPositionInitialized() { return m_bStartingPositionInitialized; }
+    inline void setStartingPositionInitialized(bool bStartingPositionInitialized) 
+    { 
+        m_bStartingPositionInitialized = bStartingPositionInitialized; 
+    }
+
+	virtual void setColor(const ccColor3B& color);
+    virtual const ccColor3B& getColor(void);
 protected:
 	float		m_fSegThreshold;
 	float		m_fWidth;
 	CCPoint		m_tLastLocation;
+    bool        m_bFastMode;
+	bool m_bStartingPositionInitialized;
+private:
+    float m_fStroke;
+    float m_fFadeDelta;
+    float m_fMinSeg;
+	    /** texture used for the motion streak */
+    //CCTexture2D* m_pTexture;
+    //ccBlendFunc m_tBlendFunc;
+    CCPoint m_tPositionR;
+    ccColor3B m_tColor;
+	unsigned int m_uMaxPoints;
+    unsigned int m_uNuPoints;
+    unsigned int m_uPreviousNuPoints;
+	/** Pointers */
+    CCPoint* m_pPointVertexes;
+    float* m_pPointState;
+	ccVertex2F* m_pVertices;
+    CCubyte* m_pColorPointer;
+    ccTex2F* m_pTexCoords;
+
 };
 
 } // namespace cocos2d

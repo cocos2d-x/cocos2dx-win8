@@ -35,7 +35,7 @@ NS_CC_BEGIN;
 class CCSet;
 class CCTouch;
 class EGLTouchDelegate;
-
+#define CC_MAX_TOUCHES  5
 template<typename T, size_t TALIGN=16, size_t TBLOCK=8>
 class aligned_allocator
 {
