@@ -890,7 +890,7 @@ void CCSprite::setIsRelativeAnchorPoint(bool bRelative)
 	CCNode::setIsRelativeAnchorPoint(bRelative);
 }
 
-void CCSprite::setIsVisible(bool bVisible)
+void CCSprite::setVisible(bool bVisible)
 {
 	CCNode::setVisible(bVisible);
 	SET_DIRTY_RECURSIVELY();

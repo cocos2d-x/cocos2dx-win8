@@ -125,7 +125,7 @@ bool CCLabelTTF::initWithString(const char *string, const char *fontName, float 
 	{
 		m_tDimensions = CCSizeMake( dimensions.width * CC_CONTENT_SCALE_FACTOR(), dimensions.height * CC_CONTENT_SCALE_FACTOR() );
 		m_eAlignment = hAlignment;
-
+		m_vAlignment = vAlignment;
 		if (m_pFontName)
 		{
 			delete m_pFontName;
