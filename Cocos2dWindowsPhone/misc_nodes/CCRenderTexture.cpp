@@ -61,7 +61,7 @@ void CCRenderTexture::setSprite(CCSprite* var)
 	m_pSprite = var;
 }
 
-CCRenderTexture * CCRenderTexture::renderTextureWithWidthAndHeight(int w, int h, CCTexture2DPixelFormat eFormat)
+CCRenderTexture * CCRenderTexture::create(int w, int h, CCTexture2DPixelFormat eFormat)
 {
     CCRenderTexture *pRet = new CCRenderTexture();
 
@@ -74,7 +74,7 @@ CCRenderTexture * CCRenderTexture::renderTextureWithWidthAndHeight(int w, int h,
     return NULL;
 }
 
-CCRenderTexture * CCRenderTexture::renderTextureWithWidthAndHeight(int w, int h)
+CCRenderTexture * CCRenderTexture::create(int w, int h)
 {
 	CCRenderTexture *pRet = new CCRenderTexture();
 

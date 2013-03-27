@@ -155,14 +155,11 @@ public:
 
 	bool initWithImage(CCImage *uiImage, ccResolutionType resolution);
 
-	/**
-	Extensions to make it easy to create a CCTexture2D object from a string of text.
-	Note that the generated textures are of type A8 - use the blending mode (CC_SRC_ALPHA, CC_ONE_MINUS_SRC_ALPHA).
-	*/
-	/** Initializes a texture from a string with dimensions, alignment, font name and font size */
-	bool initWithString(const char *text, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
-	/** Initializes a texture from a string with font name and font size */
-	bool initWithString(const char *text, const char *fontName, float fontSize);
+
+    /** Initializes a texture from a string with dimensions, alignment, font name and font size */
+    bool initWithString(const char *text,  const char *fontName, float fontSize, const CCSize& dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment);
+    /** Initializes a texture from a string with font name and font size */
+    bool initWithString(const char *text, const char *fontName, float fontSize);
 
 	/** returns the content size of the texture in points */
 	CCSize getContentSize(void);

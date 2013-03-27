@@ -10,12 +10,12 @@
 #include "ParticleTest/ParticleTest.h"
 #include "ActionsEaseTest/ActionsEaseTest.h"
 #include "MotionStreakTest/MotionStreakTest.h"
-#include "DrawPrimitivesTest/DrawPrimitivesTest.h"
+//#include "DrawPrimitivesTest/DrawPrimitivesTest.h"
 #include "TouchesTest/TouchesTest.h"
 #include "MenuTest/MenuTest.h"
 #include "ActionManagerTest/ActionManagerTest.h"
 #include "LayerTest/LayerTest.h"
-#include "SceneTest/SceneTest.h"
+//#include "SceneTest/SceneTest.h"
 #include "ParallaxTest/ParallaxTest.h"
 #include "TileMapTest/TileMapTest.h"
 #include "IntervalTest/IntervalTest.h"
@@ -31,7 +31,7 @@
 #include "KeypadTest/KeypadTest.h"
 #include "PerformanceTest/PerformanceTest.h"
 #include "ZwoptexTest/ZwoptexTest.h"
-#include "CocosDenshionTest/CocosDenshionTest.h"
+//#include "CocosDenshionTest/CocosDenshionTest.h"
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_MARMALADE)
 // bada don't support libcurl
 #if (CC_TARGET_PLATFORM != CC_PLATFORM_BADA)

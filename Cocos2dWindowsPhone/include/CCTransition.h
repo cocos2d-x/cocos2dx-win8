@@ -59,7 +59,11 @@ typedef enum {
 	/// An horizontal orientation where the Left is nearer
 	kOrientationLeftOver = 0,
 	/// An horizontal orientation where the Right is nearer
+	kCCTransitionOrientationLeftOver = 0,
 	kOrientationRightOver = 1,
+	kCCTransitionOrientationRightOver = 1,
+	kCCTransitionOrientationUpOver = 0,
+	kCCTransitionOrientationDownOver = 1,
 	/// A vertical orientation where the Up is nearer
 	kOrientationUpOver = 0,
 	/// A vertical orientation where the Bottom is nearer
@@ -316,7 +320,8 @@ public:
 
 	virtual void onEnter();
 
-    static CCTransitionFlipX* transitionWithDuration(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+    static CCTransitionFlipX* create(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+	static CCTransitionFlipX* create(float t, CCScene* s);
 };
 
 /** @brief CCTransitionFlipY:
@@ -331,7 +336,8 @@ public:
 
 	virtual void onEnter();
 
-    static CCTransitionFlipY* transitionWithDuration(ccTime t, CCScene* s, tOrientation o = kOrientationUpOver);
+    static CCTransitionFlipY* create(ccTime t, CCScene* s, tOrientation o = kOrientationUpOver);
+	static CCTransitionFlipY* create(float t, CCScene* s);
 };
 
 /** @brief CCTransitionFlipAngular:
@@ -346,7 +352,8 @@ public:
 
 	virtual void onEnter();
 
-    static CCTransitionFlipAngular* transitionWithDuration(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+    static CCTransitionFlipAngular* create(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+	static CCTransitionFlipAngular* create(float t, CCScene* s);
 };
 
 /** @brief CCTransitionZoomFlipX:
@@ -361,7 +368,8 @@ public:
 
 	virtual void onEnter();
 
-    static CCTransitionZoomFlipX* transitionWithDuration(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+    static CCTransitionZoomFlipX* create(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+	static CCTransitionZoomFlipX* create(float t, CCScene* s);
 };
 
 /** @brief CCTransitionZoomFlipY:
@@ -376,7 +384,8 @@ public:
 
 	virtual void onEnter();
 
-    static CCTransitionZoomFlipY* transitionWithDuration(ccTime t, CCScene* s, tOrientation o = kOrientationUpOver);
+    static CCTransitionZoomFlipY* create(ccTime t, CCScene* s, tOrientation o = kOrientationUpOver);
+	static CCTransitionZoomFlipY* create(float t, CCScene* s);
 };
 
 /** @brief CCTransitionZoomFlipAngular:
@@ -391,7 +400,8 @@ public:
 
 	virtual void onEnter();
 
-    static CCTransitionZoomFlipAngular* transitionWithDuration(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+    static CCTransitionZoomFlipAngular* create(ccTime t, CCScene* s, tOrientation o = kOrientationRightOver);
+	static CCTransitionZoomFlipAngular* create(float t, CCScene* s);
 };
 
 /** @brief CCTransitionFade:
@@ -410,7 +420,8 @@ public:
 	/** creates the transition with a duration and with an RGB color
 	* Example: FadeTransition::transitionWithDuration(2, scene, ccc3(255,0,0); // red color
 	*/
-	static CCTransitionFade* transitionWithDuration(ccTime duration,CCScene* scene, const ccColor3B& color = ccBLACK);
+	static CCTransitionFade* create(ccTime duration,CCScene* scene, const ccColor3B& color = ccBLACK);
+	static CCTransitionFade* create(float duration,CCScene* scene);
 	/** initializes the transition with a duration and with an RGB color */
 	virtual bool initWithDuration(ccTime t, CCScene*scene ,const ccColor3B& color);
 

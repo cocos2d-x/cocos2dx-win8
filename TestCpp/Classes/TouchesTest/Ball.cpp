@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Ball.h"
 #include "Paddle.h"
 #include "../VisibleRect.h"

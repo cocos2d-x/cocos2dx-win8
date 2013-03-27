@@ -62,10 +62,10 @@ public:
 	CCRenderTexture();
 	virtual ~CCRenderTexture();
     /** creates a RenderTexture object with width and height in Points and a pixel format, only RGB and RGBA formats are valid */
-    static CCRenderTexture * renderTextureWithWidthAndHeight(int w, int h, CCTexture2DPixelFormat eFormat);
+    static CCRenderTexture * create(int w, int h, CCTexture2DPixelFormat eFormat);
 
     /** creates a RenderTexture object with width and height in Points, pixel format is RGBA8888 */
-    static CCRenderTexture * renderTextureWithWidthAndHeight(int w, int h);
+    static CCRenderTexture * create(int w, int h);
 
     /** initializes a RenderTexture object with width and height in Points and a pixel format, only RGB and RGBA formats are valid */
     bool initWithWidthAndHeight(int w, int h, CCTexture2DPixelFormat eFormat);

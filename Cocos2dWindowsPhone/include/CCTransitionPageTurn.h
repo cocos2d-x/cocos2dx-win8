@@ -56,7 +56,7 @@ public:
 	* If back is true then the effect is reversed to appear as if the incoming 
 	* scene is being turned from left over the outgoing scene.
 	*/
-	static CCTransitionPageTurn* transitionWithDuration(ccTime t,CCScene* scene,bool backwards);
+	static CCTransitionPageTurn* create(ccTime t,CCScene* scene,bool backwards);
 
 	/**
 	* Creates a base transition with duration and incoming scene.

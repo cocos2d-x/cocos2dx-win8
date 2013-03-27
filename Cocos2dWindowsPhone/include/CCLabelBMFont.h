@@ -103,6 +103,8 @@ namespace cocos2d{
 		static CCBMFontConfiguration * configurationWithFNTFile(const char *FNTfile);
 		/** initializes a BitmapFontConfiguration with a FNT file */
 		bool initWithFNTfile(const char *FNTfile);
+		inline const char* getAtlasName(){ return m_sAtlasName.c_str(); }
+		inline void setAtlasName(const char* atlasName) { m_sAtlasName = atlasName; }
 	private:
 		void parseConfigFile(const char *controlFile);
 		void parseCharacterDefinition(std::string line, ccBMFontDef *characterDefinition);
@@ -179,9 +181,17 @@ namespace cocos2d{
 		@since v0.99.3
 		*/
 		static void purgeCachedData();
-		/** creates a bitmap font altas with an initial string and the FNT file */
+		/** creates a bitmap font atlas with an initial string and the FNT file */
+		static CCLabelBMFont * create(const char *str, const char *fntFile, float width, CCTextAlignment alignment, CCPoint imageOffset);
+
+		static CCLabelBMFont * create(const char *str, const char *fntFile, float width, CCTextAlignment alignment);
+
+		static CCLabelBMFont * create(const char *str, const char *fntFile, float width);
+
 		static CCLabelBMFont * create(const char *str, const char *fntFile);
-		static CCLabelBMFont * create(const char *str, const char *fntFile, CCTextAlignment alignment, float width);
+		/** Creates an label.
+		*/
+		static CCLabelBMFont * create();
 		bool init();
 		 /** init a bitmap font atlas with an initial string and the FNT file */
     bool initWithString(const char *str, const char *fntFile, float width = kCCLabelAutomaticWidth, CCTextAlignment alignment = kCCTextAlignmentLeft, CCPoint imageOffset = CCPointZero);
@@ -205,6 +215,9 @@ namespace cocos2d{
 
 		virtual bool isOpacityModifyRGB();
 		virtual void setOpacityModifyRGB(bool isOpacityModifyRGB);
+
+		void setFntFile(const char* fntFile);
+        const char* getFntFile();
 
 #if CC_LABELBMFONT_DEBUG_DRAW
 		virtual void draw();

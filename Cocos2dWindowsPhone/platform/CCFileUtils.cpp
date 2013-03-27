@@ -540,6 +540,53 @@ unsigned char* CCFileUtils::getFileData(const char* pszFileName, const char* psz
 
     return pBuffer;
 }
+void CCFileUtils::setResourceDirectory(const char* pszResourceDirectory)
+{
+	if (pszResourceDirectory == NULL) return;
+	m_obDirectory = pszResourceDirectory;
+	std::vector<std::string> searchPaths = this->getSearchPaths();;
+	searchPaths.insert(searchPaths.begin(), pszResourceDirectory);
+	this->setSearchPaths(searchPaths);
+}
+const std::vector<std::string>& CCFileUtils::getSearchPaths()
+{
+    return m_searchPathArray;
+}
+void CCFileUtils::setSearchPaths(const std::vector<std::string>& searchPaths)
+{
+	bool bExistDefaultRootPath = false;
+
+	m_searchPathArray.clear();
+	for (std::vector<std::string>::const_iterator iter = searchPaths.begin(); iter != searchPaths.end(); ++iter)
+	{
+		std::string strPrefix;
+		std::string path;
+		if (iter->length() > 1 && (*iter)[1] != ':')
+		{ // Not an absolute path
+			if (iter->find(m_strDefaultResRootPath) != 0)
+			{ // The path contains no default resource root path, insert the root path.
+				strPrefix = m_strDefaultResRootPath;
+			}
+		}
+		path = strPrefix+(*iter);
+		if (path.length() > 0 && path[path.length()-1] != '/' && path[path.length()-1] != '\\')
+		{
+			path += "/";
+		}
+		if (!bExistDefaultRootPath && path == m_strDefaultResRootPath)
+		{
+			bExistDefaultRootPath = true;
+		}
+		m_searchPathArray.push_back(path);
+	}
+
+	if (!bExistDefaultRootPath)
+	{
+		//CCLOG("Default root path doesn't exist, adding it.");
+		m_searchPathArray.push_back(m_strDefaultResRootPath);
+	}
+}
+
 
 void CCFileUtils::purgeCachedFileData()
 {
@@ -638,6 +685,34 @@ std::string CCFileUtils::getNewFilename(const char* pszFileName)
     return pszNewFileName;
 }
 
+void CCFileUtils::setSearchResolutionsOrder(const std::vector<std::string>& searchResolutionsOrder)
+{
+    bool bExistDefault = false;
+    m_searchResolutionsOrderArray.clear();
+    for (std::vector<std::string>::const_iterator iter = searchResolutionsOrder.begin(); iter != searchResolutionsOrder.end(); ++iter)
+    {
+        if (!bExistDefault && (*iter) == "")
+        {
+            bExistDefault = true;
+        }
+        m_searchResolutionsOrderArray.push_back(*iter);
+    }
+    if (!bExistDefault)
+    {
+        m_searchResolutionsOrderArray.push_back("");
+    }
+}
+
+const std::vector<std::string>& CCFileUtils::getSearchResolutionsOrder()
+{
+    return m_searchResolutionsOrderArray;
+}
+void CCFileUtils::setFilenameLookupDictionary(CCDictionary* pFilenameLookupDict)
+{
+    CC_SAFE_RELEASE(m_pFilenameLookupDict);
+    m_pFilenameLookupDict = pFilenameLookupDict;
+    CC_SAFE_RETAIN(m_pFilenameLookupDict);
+}
 //////////////////////////////////////////////////////////////////////////
 // Notification support when getFileData from invalid file path.
 //////////////////////////////////////////////////////////////////////////
@@ -652,7 +727,21 @@ bool CCFileUtils::getIsPopupNotify()
 {
     return s_bPopupNotify;
 }
+void CCFileUtils::purgeFileUtils()
+{
+    if (s_pFileUtils != NULL)
+    {
+        s_pFileUtils->purgeCachedEntries();
+        CC_SAFE_RELEASE(s_pFileUtils->m_pFilenameLookupDict);
+    }
 
+    CC_SAFE_DELETE(s_pFileUtils);
+}
+
+void CCFileUtils::purgeCachedEntries()
+{
+    s_fullPathCache.clear();
+}
 bool CCFileUtils::init()
 {
 	m_strDefaultResRootPath = "assets/";

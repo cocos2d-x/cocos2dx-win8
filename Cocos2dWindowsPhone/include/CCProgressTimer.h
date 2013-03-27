@@ -83,6 +83,9 @@ public:
 	void setReverseProgress(bool reverse);
 	virtual void draw(void);
 
+	inline bool isReverseDirection() { return m_bReverseDirection; };
+    inline void setReverseDirection(bool value) { m_bReverseDirection = value; };
+
 public:
 	static CCProgressTimer* progressWithFile(const char *pszFileName);
 	static CCProgressTimer* progressWithTexture(CCTexture2D *pTexture);

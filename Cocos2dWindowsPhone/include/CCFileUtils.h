@@ -68,6 +68,14 @@ public:
 	*/
 	static std::string& removeSuffixFromFile(std::string& path);
 
+
+	 /** 
+     *  Sets the filenameLookup dictionary.
+     *
+     *  @param pFilenameLookupDict The dictionary for replacing filename.
+     *  @since v2.1
+     */
+    void setFilenameLookupDictionary(CCDictionary* pFilenameLookupDict);
 	/**
 	@brief   Generate the absolute path of the file.
 	@param   pszRelativePath     The relative path of the file.
@@ -149,7 +157,34 @@ public:
 	@since v1.1
 	*/
 	bool iPhoneRetinaDisplayFileExistsAtPath(const char *filename);
+	void setSearchPaths(const std::vector<std::string>& searchPaths);
 
+	 /**
+     *  Destroys the instance of CCFileUtils.
+     */
+    static void purgeFileUtils();
+        /**
+     *  Purges the file searching cache.
+     *
+     *  @note It should be invoked after the resources were updated.
+     *        For instance, in the CocosPlayer sample, every time you run application from CocosBuilder,
+     *        All the resources will be downloaded to the writable folder, before new js app launchs,
+     *        this method should be invoked to clean the file search cache.
+     */
+    void purgeCachedEntries();
+    /**
+     *  Gets the array of search paths.
+     *  
+     *  @return The array of search paths.
+     *  @see fullPathForFilename().
+     */
+    const std::vector<std::string>& getSearchPaths();
+       /**
+     @brief  Set the resource directory; we will find resources relative to this directory.
+     @param pszDirectoryName  Relative path to root.
+     @deprecated Please use setSearchPaths instead.
+    */
+    CC_DEPRECATED_ATTRIBUTE void setResourceDirectory(const char *pszDirectoryName);
 	/**
 	@brief  Set the ResourcePath,we will find resource in this path
 	@param pszResourcePath  The absolute resource path
@@ -157,6 +192,16 @@ public:
 	In android, if you want to read file other than apk, you shoud use invoke getFileData(), and pass the 
 	absolute path.
 	*/
+	void setSearchResolutionsOrder(const std::vector<std::string>& searchResolutionsOrder);
+    
+    /**
+     *  Gets the array that contains the search order of the resources.
+     *
+     *  @see setSearchResolutionsOrder(), fullPathForFilename().
+     *  @since v2.1
+     */
+    const std::vector<std::string>& getSearchResolutionsOrder();
+
 	static void setResourcePath(const char *pszResourcePath);
 	std::string fullPathForFilename(const char* pszFileName);
 	std::string getPathForFilename(const std::string& filename, const std::string& resourceDirectory, const std::string& searchPath);
@@ -213,6 +258,7 @@ public:
 	std::vector<std::string> m_searchResolutionsOrderArray;
 	std::vector<std::string> m_searchPathArray;
 	std::string m_strDefaultResRootPath;
+	std::string m_obDirectory;
 };
 
 class CCFileData

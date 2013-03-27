@@ -1,6 +1,6 @@
 // enable log
 #define COCOS2D_DEBUG 1
-
+#include "pch.h"
 #include "TextureCacheTest.h"
 
 USING_NS_CC;

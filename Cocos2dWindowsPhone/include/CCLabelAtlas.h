@@ -54,9 +54,17 @@ namespace cocos2d{
 		}
 		/** creates the CCLabelAtlas with a string, a char map file(the atlas), the width and height of each element and the starting char of the atlas */
 		static CCLabelAtlas * create(const char *label, const char *charMapFile, unsigned int itemWidth, unsigned int itemHeight, unsigned char startCharMap);
-
+		/** creates the CCLabelAtlas with a string and a configuration file
+          @since v2.0
+        */
+        static CCLabelAtlas* create(const char *string, const char *fntFile);
 		/** initializes the CCLabelAtlas with a string, a char map file(the atlas), the width and height of each element and the starting char of the atlas */
 		bool initWithString(const char *label, const char *charMapFile, unsigned int itemWidth, unsigned int itemHeight, unsigned char startCharMap);
+		/** initializes the CCLabelAtlas with a string and a configuration file
+         @since v2.0
+        */
+        bool initWithString(const char *string, const char *fntFile);
+		
 		// super methods
 		virtual void updateAtlasValues();
 		virtual void setString(const char *label);

@@ -37,7 +37,7 @@ CCTransitionPageTurn::~CCTransitionPageTurn()
 }
 
 /** creates a base transition with duration and incoming scene */
-CCTransitionPageTurn * CCTransitionPageTurn::transitionWithDuration(ccTime t, CCScene *scene, bool backwards)
+CCTransitionPageTurn * CCTransitionPageTurn::create(ccTime t, CCScene *scene, bool backwards)
 {
 	CCTransitionPageTurn * pTransition = new CCTransitionPageTurn();
 	pTransition->initWithDuration(t,scene,backwards);

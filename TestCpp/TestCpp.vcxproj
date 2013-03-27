@@ -166,7 +166,9 @@
     <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h" />
     <ClInclude Include="Classes\controller.h" />
     <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h" />
+    <ClInclude Include="Classes\FileUtilsTest\FileUtilsTest.h" />
     <ClInclude Include="Classes\HelloWorldScene.h" />
+    <ClInclude Include="Classes\LabelTest\LabelTest.h" />
     <ClInclude Include="Classes\LayerTest\LayerTest.h" />
     <ClInclude Include="Classes\MenuTest\MenuTest.h" />
     <ClInclude Include="Classes\SceneTest\SceneTest.h" />
@@ -174,6 +176,14 @@
     <ClInclude Include="Classes\testBasic.h" />
     <ClInclude Include="Classes\testResource.h" />
     <ClInclude Include="Classes\tests.h" />
+    <ClInclude Include="Classes\TextInputTest\TextInputTest.h" />
+    <ClInclude Include="Classes\Texture2dTest\Texture2dTest.h" />
+    <ClInclude Include="Classes\TextureCacheTest\TextureCacheTest.h" />
+    <ClInclude Include="Classes\TouchesTest\Ball.h" />
+    <ClInclude Include="Classes\TouchesTest\Paddle.h" />
+    <ClInclude Include="Classes\TouchesTest\TouchesTest.h" />
+    <ClInclude Include="Classes\TransitionsTest\TransitionsTest.h" />
+    <ClInclude Include="Classes\UserDefaultTest\UserDefaultTest.h" />
     <ClInclude Include="Classes\VisibleRect.h" />
     <ClInclude Include="include\BasicLoader.h" />
     <ClInclude Include="include\BasicReaderWriter.h" />
@@ -317,12 +327,22 @@
     <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp" />
     <ClCompile Include="Classes\controller.cpp" />
     <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp" />
+    <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp" />
     <ClCompile Include="Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="Classes\LabelTest\LabelTest.cpp" />
     <ClCompile Include="Classes\LayerTest\LayerTest.cpp" />
     <ClCompile Include="Classes\MenuTest\MenuTest.cpp" />
     <ClCompile Include="Classes\SceneTest\SceneTest.cpp" />
     <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp" />
     <ClCompile Include="Classes\testBasic.cpp" />
+    <ClCompile Include="Classes\TextInputTest\TextInputTest.cpp" />
+    <ClCompile Include="Classes\Texture2dTest\Texture2dTest.cpp" />
+    <ClCompile Include="Classes\TextureCacheTest\TextureCacheTest.cpp" />
+    <ClCompile Include="Classes\TouchesTest\Ball.cpp" />
+    <ClCompile Include="Classes\TouchesTest\Paddle.cpp" />
+    <ClCompile Include="Classes\TouchesTest\TouchesTest.cpp" />
+    <ClCompile Include="Classes\TransitionsTest\TransitionsTest.cpp" />
+    <ClCompile Include="Classes\UserDefaultTest\UserDefaultTest.cpp" />
     <ClCompile Include="Classes\VisibleRect.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

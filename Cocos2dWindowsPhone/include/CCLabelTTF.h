@@ -64,8 +64,8 @@ public:
     static CCLabelTTF * create(const char *string, const char *fontName, float fontSize,
                                const CCSize& dimensions, CCTextAlignment hAlignment, 
                                CCVerticalTextAlignment vAlignment);
-	///** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
-	bool initWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
+	/////** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
+	//bool initWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
 	///** initializes the CCLabelTTF with a font name and font size */
 	//bool initWithString(const char *label, const char *fontName, float fontSize);
 	/** initializes the CCLabelTTF with a font name and font size */
@@ -79,20 +79,32 @@ public:
 	bool initWithString(const char *string, const char *fontName, float fontSize,
 		const CCSize& dimensions, CCTextAlignment hAlignment, 
 		CCVerticalTextAlignment vAlignment);
-
+	/** initializes the CCLabelTTF */
+    bool init();
 	/** changes the string to render
 	* @warning Changing the string is as expensive as creating a new CCLabelTTF. To obtain better performance use CCLabelAtlas
 	*/
 	virtual void setString(const char *label);
 	virtual const char* getString(void);
+	float getFontSize();
+    void setFontSize(float fontSize);
+    
+    const char* getFontName();
+    void setFontName(const char *fontName);
 
 	virtual CCLabelProtocol* convertToLabelProtocol() { return (CCLabelProtocol*)this; }
+private:
+	bool updateTexture();
 protected:
+	 CCTextAlignment         m_hAlignment;
+    /** The vertical alignment of the label */
+    CCVerticalTextAlignment m_vAlignment;
 	CCSize m_tDimensions;
 	CCTextAlignment m_eAlignment;
 	std::string * m_pFontName;
 	float m_fFontSize;
 	std::string * m_pString;
+	std::string m_string;
 };
 
 NS_CC_END

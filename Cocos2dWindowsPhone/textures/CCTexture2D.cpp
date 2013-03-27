@@ -562,24 +562,50 @@ bool CCTexture2D::initPremultipliedATextureWithImage(CCImage *image, unsigned in
 // implementation CCTexture2D (Text)
 bool CCTexture2D::initWithString(const char *text, const char *fontName, float fontSize)
 {
-	return initWithString(text, CCSizeMake(0,0), kCCTextAlignmentCenter, fontName, fontSize);
+    return initWithString(text,  fontName, fontSize, CCSizeMake(0,0), kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
 }
-bool CCTexture2D::initWithString(const char *text, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize)
+
+bool CCTexture2D::initWithString(const char *text,  const char *fontName, float fontSize, const CCSize& dimensions, CCTextAlignment hAlignment, CCVerticalTextAlignment vAlignment)
 {
-#if CC_ENABLE_CACHE_TEXTTURE_DATA
+#if CC_ENABLE_CACHE_TEXTURE_DATA
     // cache the texture data
-    VolatileTexture::addStringTexture(this, text, dimensions, alignment, fontName, fontSize);
+    VolatileTexture::addStringTexture(this, text, dimensions, hAlignment, vAlignment, fontName, fontSize);
 #endif
 
-	CCImage image;
-	CCImage::ETextAlign eAlign = (kCCTextAlignmentCenter == alignment) ? CCImage::kAlignCenter
-		: (kCCTextAlignmentLeft == alignment) ? CCImage::kAlignLeft : CCImage::kAlignRight;
+    bool bRet = false;
+    CCImage::ETextAlign eAlign;
 
-	if (! image.initWithString(text, (int)dimensions.width, (int)dimensions.height, eAlign, fontName, (int)fontSize))
-	{
-		return false;
-	}
-	return initWithImage(&image);
+    if (kCCVerticalTextAlignmentTop == vAlignment)
+    {
+        eAlign = (kCCTextAlignmentCenter == hAlignment) ? CCImage::kAlignTop
+            : (kCCTextAlignmentLeft == hAlignment) ? CCImage::kAlignTopLeft : CCImage::kAlignTopRight;
+    }
+    else if (kCCVerticalTextAlignmentCenter == vAlignment)
+    {
+        eAlign = (kCCTextAlignmentCenter == hAlignment) ? CCImage::kAlignCenter
+            : (kCCTextAlignmentLeft == hAlignment) ? CCImage::kAlignLeft : CCImage::kAlignRight;
+    }
+    else if (kCCVerticalTextAlignmentBottom == vAlignment)
+    {
+        eAlign = (kCCTextAlignmentCenter == hAlignment) ? CCImage::kAlignBottom
+            : (kCCTextAlignmentLeft == hAlignment) ? CCImage::kAlignBottomLeft : CCImage::kAlignBottomRight;
+    }
+    else
+    {
+        CCAssert(false, "Not supported alignment format!");
+    }
+    
+    do 
+    {
+        CCImage* pImage = new CCImage();
+        CC_BREAK_IF(NULL == pImage);
+        bRet = pImage->initWithString(text, (int)dimensions.width, (int)dimensions.height, eAlign, fontName, (int)fontSize);
+        CC_BREAK_IF(!bRet);
+        bRet = initWithImage(pImage);
+        CC_SAFE_RELEASE(pImage);
+    } while (0);
+    
+    return bRet;
 }
 
 

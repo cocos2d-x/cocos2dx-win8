@@ -5,7 +5,7 @@
 //#include "cocos-ext.h"
 #include "../testBasic.h"
 
-USING_NS_CC_EXT;
+
 
 class SchedulerTestLayer : public CCLayer
 {

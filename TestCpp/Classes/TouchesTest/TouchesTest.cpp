@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "TouchesTest.h"
 #include "Ball.h"
 #include "Paddle.h"

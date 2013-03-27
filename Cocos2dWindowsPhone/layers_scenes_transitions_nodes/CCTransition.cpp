@@ -661,7 +661,7 @@ void CCTransitionFlipX::onEnter()
 	m_pOutScene->runAction(outA);
 }
 
-CCTransitionFlipX* CCTransitionFlipX::transitionWithDuration(ccTime t, CCScene* s, tOrientation o)
+CCTransitionFlipX* CCTransitionFlipX::create(ccTime t, CCScene* s, tOrientation o)
 {
     CCTransitionFlipX* pScene = new CCTransitionFlipX();
     pScene->initWithDuration(t, s, o);
@@ -669,7 +669,10 @@ CCTransitionFlipX* CCTransitionFlipX::transitionWithDuration(ccTime t, CCScene* 
 
     return pScene;
 }
-
+CCTransitionFlipX* CCTransitionFlipX::create(float t, CCScene* s)
+{
+    return CCTransitionFlipX::create(t, s, kCCTransitionOrientationRightOver);
+}
 //
 // FlipY Transition
 //
@@ -726,7 +729,7 @@ void CCTransitionFlipY::onEnter()
 
 }
 
-CCTransitionFlipY* CCTransitionFlipY::transitionWithDuration(ccTime t, CCScene* s, tOrientation o)
+CCTransitionFlipY* CCTransitionFlipY::create(ccTime t, CCScene* s, tOrientation o)
 {
     CCTransitionFlipY* pScene = new CCTransitionFlipY();
     pScene->initWithDuration(t, s, o);
@@ -734,7 +737,10 @@ CCTransitionFlipY* CCTransitionFlipY::transitionWithDuration(ccTime t, CCScene* 
 
     return pScene;
 }
-
+CCTransitionFlipY* CCTransitionFlipY::create(float t, CCScene* s)
+{
+    return CCTransitionFlipY::create(t, s, kCCTransitionOrientationUpOver);
+}
 //
 // FlipAngular Transition
 //
@@ -790,7 +796,7 @@ void CCTransitionFlipAngular::onEnter()
 	m_pOutScene->runAction(outA);
 }
 
-CCTransitionFlipAngular* CCTransitionFlipAngular::transitionWithDuration(ccTime t, CCScene* s, tOrientation o)
+CCTransitionFlipAngular* CCTransitionFlipAngular::create(ccTime t, CCScene* s, tOrientation o)
 {
     CCTransitionFlipAngular* pScene = new CCTransitionFlipAngular();
     pScene->initWithDuration(t, s, o);
@@ -798,7 +804,10 @@ CCTransitionFlipAngular* CCTransitionFlipAngular::transitionWithDuration(ccTime 
 
     return pScene;
 }
-
+CCTransitionFlipAngular* CCTransitionFlipAngular::create(float t, CCScene* s)
+{
+    return CCTransitionFlipAngular::create(t, s, kCCTransitionOrientationRightOver);
+}
 //
 // ZoomFlipX Transition
 //
@@ -863,7 +872,7 @@ void CCTransitionZoomFlipX::onEnter()
 	m_pOutScene->runAction(outA);
 }
 
-CCTransitionZoomFlipX* CCTransitionZoomFlipX::transitionWithDuration(ccTime t, CCScene* s, tOrientation o)
+CCTransitionZoomFlipX* CCTransitionZoomFlipX::create(ccTime t, CCScene* s, tOrientation o)
 {
     CCTransitionZoomFlipX* pScene = new CCTransitionZoomFlipX();
     pScene->initWithDuration(t, s, o);
@@ -872,6 +881,10 @@ CCTransitionZoomFlipX* CCTransitionZoomFlipX::transitionWithDuration(ccTime t, C
     return pScene;
 }
 
+CCTransitionZoomFlipX* CCTransitionZoomFlipX::create(float t, CCScene* s)
+{
+    return CCTransitionZoomFlipX::create(t, s, kCCTransitionOrientationRightOver);
+}
 //
 // ZoomFlipY Transition
 //
@@ -936,7 +949,7 @@ void CCTransitionZoomFlipY::onEnter()
 	m_pOutScene->runAction(outA);
 }
 
-CCTransitionZoomFlipY* CCTransitionZoomFlipY::transitionWithDuration(ccTime t, CCScene* s, tOrientation o)
+CCTransitionZoomFlipY* CCTransitionZoomFlipY::create(ccTime t, CCScene* s, tOrientation o)
 {
     CCTransitionZoomFlipY* pScene = new CCTransitionZoomFlipY();
     pScene->initWithDuration(t, s, o);
@@ -944,7 +957,10 @@ CCTransitionZoomFlipY* CCTransitionZoomFlipY::transitionWithDuration(ccTime t, C
 
     return pScene;
 }
-
+CCTransitionZoomFlipY* CCTransitionZoomFlipY::create(float t, CCScene* s)
+{
+    return CCTransitionZoomFlipY::create(t, s, kCCTransitionOrientationUpOver);
+}
 //
 // ZoomFlipAngular Transition
 //
@@ -1012,13 +1028,17 @@ void CCTransitionZoomFlipAngular::onEnter()
 	m_pOutScene->runAction(outA);
 }
 
-CCTransitionZoomFlipAngular* CCTransitionZoomFlipAngular::transitionWithDuration(ccTime t, CCScene* s, tOrientation o)
+CCTransitionZoomFlipAngular* CCTransitionZoomFlipAngular::create(ccTime t, CCScene* s, tOrientation o)
 {
     CCTransitionZoomFlipAngular* pScene = new CCTransitionZoomFlipAngular();
     pScene->initWithDuration(t, s, o);
     pScene->autorelease();
 
     return pScene;
+}
+CCTransitionZoomFlipAngular* CCTransitionZoomFlipAngular::create(float t, CCScene* s)
+{
+    return CCTransitionZoomFlipAngular::create(t, s, kCCTransitionOrientationRightOver);
 }
 
 //
@@ -1032,12 +1052,16 @@ CCTransitionFade::~CCTransitionFade()
 }
 
 
-CCTransitionFade * CCTransitionFade::transitionWithDuration(ccTime duration, CCScene *scene, const ccColor3B& color)
+CCTransitionFade * CCTransitionFade::create(ccTime duration, CCScene *scene, const ccColor3B& color)
 {
 	CCTransitionFade * pTransition = new CCTransitionFade();
 	pTransition->initWithDuration(duration, scene, color);
 	pTransition->autorelease();
 	return pTransition;
+}
+CCTransitionFade* CCTransitionFade::create(float duration,CCScene* scene)
+{
+    return CCTransitionFade::create(duration, scene, ccBLACK);
 }
 
 bool CCTransitionFade::initWithDuration(ccTime duration, CCScene *scene, const ccColor3B& color)
@@ -1112,7 +1136,7 @@ void CCTransitionCrossFade::onEnter()
 	CCLayerColor* layer = CCLayerColor::create(color);
 
 	// create the first render texture for inScene
-	CCRenderTexture* inTexture = CCRenderTexture::renderTextureWithWidthAndHeight((int)size.width, (int)size.height);
+	CCRenderTexture* inTexture = CCRenderTexture::create((int)size.width, (int)size.height);
 
 	if (NULL == inTexture)
 	{
@@ -1129,7 +1153,7 @@ void CCTransitionCrossFade::onEnter()
 	inTexture->end();
 
 	// create the second render texture for outScene
-	CCRenderTexture* outTexture = CCRenderTexture::renderTextureWithWidthAndHeight((int)size.width, (int)size.height);
+	CCRenderTexture* outTexture = CCRenderTexture::create((int)size.width, (int)size.height);
 	outTexture->getSprite()->setAnchorPoint( ccp(0.5f,0.5f) );
 	outTexture->setPosition( ccp(size.width/2, size.height/2) );
 	outTexture->setAnchorPoint( ccp(0.5f,0.5f) );

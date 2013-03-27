@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "TransitionsTest.h"
 #include "../testResource.h"
 #include "CCConfiguration.h"
@@ -228,7 +229,7 @@ CCTransitionScene* createTransition(int nIndex, float t, CCScene* s)
     case 15: return CCTransitionSplitRows::create(t, s);
     case 16: return CCTransitionSplitCols::create(t, s);
 
-    case 17: return CCTransitionFade::create(t, s);
+//    case 17: return CCTransitionFade::create(t, s);
     case 18: return FadeWhiteTransition::create(t, s);
 
     case 19: return FlipXLeftOver::create(t, s);

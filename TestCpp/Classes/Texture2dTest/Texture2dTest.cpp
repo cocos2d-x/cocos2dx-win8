@@ -1,4 +1,5 @@
 // local import
+#include "pch.h"
 #include "Texture2dTest.h"
 #include "../testResource.h"
 
@@ -305,7 +306,7 @@ void TextureMipMap::onEnter()
 
     CCTexture2D *texture0 = CCTextureCache::sharedTextureCache()->addImage("Images/grossini_dance_atlas.png");
     texture0->generateMipmap();
-    ccTexParams texParams = { GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE };    
+    ccTexParams texParams = { CC_LINEAR_MIPMAP_LINEAR, CC_LINEAR, CC_CLAMP_TO_EDGE, CC_CLAMP_TO_EDGE };    
     texture0->setTexParameters(&texParams);
 
     CCTexture2D *texture1 = CCTextureCache::sharedTextureCache()->addImage("Images/grossini_dance_atlas_nomipmap.png");
@@ -362,7 +363,7 @@ void TexturePVRMipMap::onEnter()
         addChild(imgMipMap);
 
         // support mipmap filtering
-        ccTexParams texParams = { GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE };    
+        ccTexParams texParams = { CC_LINEAR_MIPMAP_LINEAR, CC_LINEAR, CC_CLAMP_TO_EDGE, CC_CLAMP_TO_EDGE };    
         imgMipMap->getTexture()->setTexParameters(&texParams);
     }
 
@@ -409,7 +410,7 @@ void TexturePVRMipMap2::onEnter()
     addChild(imgMipMap);
     
     // support mipmap filtering
-    ccTexParams texParams = { GL_LINEAR_MIPMAP_LINEAR, GL_LINEAR, GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE };    
+    ccTexParams texParams = { CC_LINEAR_MIPMAP_LINEAR,CC_LINEAR, CC_CLAMP_TO_EDGE, CC_CLAMP_TO_EDGE };    
     imgMipMap->getTexture()->setTexParameters(&texParams);
 
     CCSprite *img = CCSprite::create("Images/test_image.png");
@@ -1464,7 +1465,7 @@ void TextureBlend::onEnter()
         CCSprite *cloud = CCSprite::create("Images/test_blend.png");
         addChild(cloud, i+1, 100+i);
         cloud->setPosition(ccp(50+25*i, 80));
-        ccBlendFunc blendFunc1 = { GL_ONE, GL_ONE_MINUS_SRC_ALPHA };
+        ccBlendFunc blendFunc1 = { CC_ONE, CC_ONE_MINUS_SRC_ALPHA };
         cloud->setBlendFunc(blendFunc1);
 
         // CENTER sprites have also alpha pre-multiplied
@@ -1472,7 +1473,7 @@ void TextureBlend::onEnter()
         cloud = CCSprite::create("Images/test_blend.png");
         addChild(cloud, i+1, 200+i);
         cloud->setPosition(ccp(50+25*i, 160));
-        ccBlendFunc blendFunc2 = { GL_ONE_MINUS_DST_COLOR, GL_ZERO };
+        ccBlendFunc blendFunc2 = { CC_ONE_MINUS_DST_COLOR, CC_ZERO };
         cloud->setBlendFunc(blendFunc2);
 
         // UPPER sprites are using custom blending function
@@ -1480,7 +1481,7 @@ void TextureBlend::onEnter()
         cloud = CCSprite::create("Images/test_blend.png");
         addChild(cloud, i+1, 200+i);
         cloud->setPosition(ccp(50+25*i, 320-80));
-        ccBlendFunc blendFunc3 = { GL_SRC_ALPHA, GL_ONE };
+        ccBlendFunc blendFunc3 = { CC_SRC_ALPHA, CC_ONE };
         cloud->setBlendFunc(blendFunc3);  // additive blending
     }
 }
@@ -1596,7 +1597,7 @@ void TextureGlClamp::onEnter()
     CCSprite *sprite = CCSprite::create("Images/pattern1.png", CCRectMake(0,0,512,256));
     addChild(sprite, -1, kTagSprite1);
     sprite->setPosition(ccp(size.width/2,size.height/2));
-    ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE};
+    ccTexParams params = {CC_LINEAR,CC_LINEAR,CC_CLAMP_TO_EDGE, CC_CLAMP_TO_EDGE};
     sprite->getTexture()->setTexParameters(&params);
 
     CCRotateBy* rotate = CCRotateBy::create(4, 360);
@@ -1633,7 +1634,7 @@ void TextureGlRepeat::onEnter()
     CCSprite *sprite = CCSprite::create("Images/pattern1.png", CCRectMake(0, 0, 4096, 4096));
     addChild(sprite, -1, kTagSprite1);
     sprite->setPosition(ccp(size.width/2,size.height/2));
-    ccTexParams params = {GL_LINEAR,GL_LINEAR,GL_REPEAT,GL_REPEAT};
+    ccTexParams params = {CC_LINEAR,CC_LINEAR,CC_REPEAT,CC_REPEAT};
     sprite->getTexture()->setTexParameters(&params);
     
     CCRotateBy* rotate = CCRotateBy::create(4, 360);
