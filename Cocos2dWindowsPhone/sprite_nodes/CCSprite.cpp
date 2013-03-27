@@ -1078,6 +1078,7 @@ void CCSprite::updateBlendFunc(void)
 
 void CCSprite::setTexture(CCTexture2D *texture)
 {
+	if (m_pobTexture == texture) return ;
 	// CCSprite: setTexture doesn't work when the sprite is rendered using a CCSpriteSheet
 	CCAssert(! m_bUsesBatchNode, "setTexture doesn't work when the sprite is rendered using a CCSpriteSheet");
 

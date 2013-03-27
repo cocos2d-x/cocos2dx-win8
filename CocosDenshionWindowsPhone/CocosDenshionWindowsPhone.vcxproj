@@ -170,6 +170,11 @@
     <ClCompile Include=".\win8_metro\MediaStreamer.cpp" />
     <ClCompile Include=".\win8_metro\SimpleAudioEngine.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cocos2dWindowsPhone\Cocos2dWindowsPhone.vcxproj">
+      <Project>{8c939c76-a430-450e-9607-56cec95dee2f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsPhone\v$(TargetPlatformVersion)\Microsoft.Cpp.WindowsPhone.$(TargetPlatformVersion).targets" />
   <ImportGroup Label="ExtensionTargets">

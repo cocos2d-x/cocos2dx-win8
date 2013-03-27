@@ -67,6 +67,10 @@ public:
         _In_ Platform::Object^ sender
         );
 
+	void OnBackButtonPressed(
+		Platform::Object^ sender, 
+		Windows::Phone::UI::Input::BackPressedEventArgs^ args
+		);
 private:
 	
     DirectXRender^ m_renderer;
@@ -102,6 +106,9 @@ void CCFrameworkView::Initialize(
 
     CoreApplication::Resuming +=
         ref new EventHandler<Platform::Object^>(this, &CCFrameworkView::OnResuming);
+
+	HardwareButtons::BackPressed += ref new EventHandler<BackPressedEventArgs^>(this, &CCFrameworkView::OnBackButtonPressed); 
+
 
     m_renderer = ref new DirectXRender();
     CCLog("CCFrameworkView::-Initialize()");
@@ -269,6 +276,17 @@ void CCFrameworkView::OnLogicalDpiChanged(
     CCLog("CCFrameworkView::+OnLogicalDpiChanged()");
     m_renderer->SetDpi(DisplayProperties::LogicalDpi);
     CCLog("CCFrameworkView::-OnLogicalDpiChanged()");
+}
+
+void CCFrameworkView::OnBackButtonPressed(Object^ sender, BackPressedEventArgs^ args)
+{	
+	if (&CCApplication::sharedApplication()) 
+	{
+		CCApplication::sharedApplication().deviceBackBttonPressed(sender, args);
+    } else 
+	{
+        // Do nothing. Leave args->Handled set to the current value, false.
+    }
 }
 
 Windows::ApplicationModel::Core::IFrameworkView^ getSharedCCApplicationFrameworkView()

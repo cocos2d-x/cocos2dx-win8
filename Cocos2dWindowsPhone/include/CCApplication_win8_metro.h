@@ -20,6 +20,8 @@
 
 #include "CCCommon.h"  
 
+using namespace Windows::Phone::UI::Input;
+
 NS_CC_BEGIN;
 
 /** ÆÁÄ»·Ö±æÂÊ */
@@ -73,6 +75,8 @@ public:
     virtual void applicationWillEnterForeground() = 0;
 
     virtual void applicationViewStateChanged(int newState, int oldState) = 0;
+
+	virtual void deviceBackBttonPressed(Platform::Object^ sender, BackPressedEventArgs^ args) = 0;
 
     /**
     @brief	Callback by CCDirector for limit FPS.

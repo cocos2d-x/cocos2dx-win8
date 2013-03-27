@@ -141,31 +141,31 @@ int CCLayer::excuteScriptTouchHandler(int nEventType, CCSet *pTouches)
 }
 
 
-/// isTouchEnabled getter
-bool CCLayer::isTouchEnabled()
-{
-    return m_bTouchEnabled;
-}
-/// isTouchEnabled setter
-void CCLayer::setTouchEnabled(bool enabled)
-{
-    if (m_bTouchEnabled != enabled)
-    {
-        m_bTouchEnabled = enabled;
-        if (m_bRunning)
-        {
-            if (enabled)
-            {
-                this->registerWithTouchDispatcher();
-            }
-            else
-            {
-                // have problems?
-              CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-            }
-        }
-    }
-}
+///// isTouchEnabled getter
+//bool CCLayer::getIsTouchEnabled()
+//{
+//    return m_bIsTouchEnabled;
+//}
+///// isTouchEnabled setter
+//void CCLayer::setIsTouchEnabled(bool enabled)
+//{
+//    if (m_bIsTouchEnabled != enabled)
+//    {
+//        m_bIsTouchEnabled = enabled;
+//        if (m_bRunning)
+//        {
+//            if (enabled)
+//            {
+//                this->registerWithTouchDispatcher();
+//            }
+//            else
+//            {
+//                // have problems?
+//              CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+//            }
+//        }
+//    }
+//}
 
 void CCLayer::setTouchMode(ccTouchesMode mode)
 {
@@ -173,10 +173,10 @@ void CCLayer::setTouchMode(ccTouchesMode mode)
     {
         m_eTouchMode = mode;
         
-		if( m_bTouchEnabled)
+		if( m_bIsTouchEnabled)
         {
-			setTouchEnabled(false);
-			setTouchEnabled(true);
+			setIsTouchEnabled(false);
+			setIsTouchEnabled(true);
 		}
     }
 }
@@ -187,10 +187,10 @@ void CCLayer::setTouchPriority(int priority)
     {
         m_nTouchPriority = priority;
         
-		if( m_bTouchEnabled)
+		if( m_bIsTouchEnabled)
         {
-			setTouchEnabled(false);
-			setTouchEnabled(true);
+			setIsTouchEnabled(false);
+			setIsTouchEnabled(true);
 		}
     }
 }

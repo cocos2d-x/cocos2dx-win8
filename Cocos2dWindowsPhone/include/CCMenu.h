@@ -69,7 +69,7 @@ public:
     CCMenu()
         : m_cOpacity(0)
         , m_pSelectedItem(NULL)
-    {}
+	{ }
     virtual ~CCMenu(){}
 
     /** creates an empty CCMenu */

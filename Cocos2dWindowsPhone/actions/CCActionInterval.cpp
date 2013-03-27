@@ -2358,9 +2358,12 @@ void CCAnimate::update(float time)
 	}
 
 	CCSprite *pSprite = (CCSprite*)(m_pTarget);
-	if (! pSprite->isFrameDisplayed((CCSpriteFrame*)pFrames->objectAtIndex(idx)))
+
+	CCSpriteFrame *currentFrame = ((CCAnimationFrame*)pFrames->objectAtIndex(idx))->getSpriteFrame();
+
+	if (! pSprite->isFrameDisplayed(currentFrame) )
 	{
-		pSprite->setDisplayFrame((CCSpriteFrame*)pFrames->objectAtIndex(idx));
+		pSprite->setDisplayFrame(currentFrame);
 	}
 }
 
