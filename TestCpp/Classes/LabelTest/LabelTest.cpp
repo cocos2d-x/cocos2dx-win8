@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "LabelTest.h"
 #include "../testResource.h"
 

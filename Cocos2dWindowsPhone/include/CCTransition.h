@@ -36,7 +36,7 @@ NS_CC_BEGIN
 //c/c++ don't support object creation of using class name
 //so, all classes need creation method.
 #define DECLEAR_TRANSITIONWITHDURATION(_Type)\
-    static _Type* transitionWithDuration(ccTime t, CCScene* scene);
+    static _Type* create(ccTime t, CCScene* scene);
 
 class CCActionInterval;
 class CCNode;

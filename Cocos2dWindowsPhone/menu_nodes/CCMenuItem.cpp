@@ -331,14 +331,14 @@ const char * CCMenuItemFont::fontName()
 {
 	return _fontName.c_str();
 }
-CCMenuItemFont * CCMenuItemFont::itemFromString(const char *value, CCObject* target, SEL_MenuHandler selector)
+CCMenuItemFont * CCMenuItemFont::create(const char *value, CCObject* target, SEL_MenuHandler selector)
 {
 	CCMenuItemFont *pRet = new CCMenuItemFont();
 	pRet->initFromString(value, target, selector);
 	pRet->autorelease();
 	return pRet;
 }
-CCMenuItemFont * CCMenuItemFont::itemFromString(const char *value)
+CCMenuItemFont * CCMenuItemFont::create(const char *value)
 {
 	CCMenuItemFont *pRet = new CCMenuItemFont();
 	pRet->initFromString(value, NULL, NULL);
@@ -672,7 +672,7 @@ CCArray *CCMenuItemToggle::getSubItems()
 {
 	return m_pSubItems;
 }
-CCMenuItemToggle * CCMenuItemToggle::create(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, ...)
+CCMenuItemToggle * CCMenuItemToggle::createWithTarget(CCObject* target, SEL_MenuHandler selector, CCMenuItem* item, ...)
 {
 	va_list args;
 	va_start(args, item);

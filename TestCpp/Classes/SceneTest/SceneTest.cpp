@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "SceneTest.h"
 #include "../testResource.h"
 
@@ -150,7 +151,7 @@ void SceneTestLayer2::onReplaceSceneTran(CCObject* pSender)
     CCScene* pScene = new SceneTestScene();
     CCLayer* pLayer = SceneTestLayer3::create();
     pScene->addChild( pLayer, 0 );
-    CCDirector::sharedDirector()->replaceScene( CCTransitionFlipX::create(2, pScene) );
+    //CCDirector::sharedDirector()->replaceScene( CCTransitionFlipX::create(2, pScene, kOrientationRightOver) );
     pScene->release();
 }
 
@@ -202,7 +203,7 @@ void SceneTestLayer3::item0Clicked(CCObject* pSender)
 {
     CCScene *newScene = CCScene::create();
     newScene->addChild(SceneTestLayer3::create());
-    CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5, newScene, ccc3(0,255,255)));
+    //CCDirector::sharedDirector()->pushScene(CCTransitionFade::create(0.5, newScene, ccc3(0,255,255)));
 }
 
 void SceneTestLayer3::item1Clicked(CCObject* pSender)

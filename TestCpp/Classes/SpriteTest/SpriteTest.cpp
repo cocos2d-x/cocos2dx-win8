@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "SpriteTest.h"
 #include "../testResource.h"
 
@@ -1005,15 +1006,15 @@ SpriteZVertex::SpriteZVertex()
     //
     // Configure shader to mimic glAlphaTest
     //
-    CCGLProgram *alphaTestShader = CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColorAlphaTest);
-    GLint alphaValueLocation = glGetUniformLocation(alphaTestShader->getProgram(), kCCUniformAlphaTestValue);
+    //CCGLProgram *alphaTestShader = CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColorAlphaTest);
+    //GLint alphaValueLocation = glGetUniformLocation(alphaTestShader->getProgram(), kCCUniformAlphaTestValue);
 
-    // set alpha test value
-    // NOTE: alpha test shader is hard-coded to use the equivalent of a glAlphaFunc(GL_GREATER) comparison
-    if (getShaderProgram())
-    {
-        getShaderProgram()->setUniformLocationWith1f(alphaValueLocation, 0.0f);
-    }
+    //// set alpha test value
+    //// NOTE: alpha test shader is hard-coded to use the equivalent of a glAlphaFunc(GL_GREATER) comparison
+    //if (getShaderProgram())
+    //{
+    //    getShaderProgram()->setUniformLocationWith1f(alphaValueLocation, 0.0f);
+    //}
     
     
     m_dir = 1;
@@ -1035,7 +1036,7 @@ SpriteZVertex::SpriteZVertex()
         CCSprite* sprite = CCSprite::create("Images/grossini_dance_atlas.png", CCRectMake(85*0, 121*1, 85, 121));
         sprite->setPosition( ccp((i+1)*step, s.height/2) );
         sprite->setVertexZ( 10 + i*40 );
-        sprite->setShaderProgram(alphaTestShader);
+        //sprite->setShaderProgram(alphaTestShader);
         node->addChild(sprite, 0);
         
     }
@@ -1045,7 +1046,7 @@ SpriteZVertex::SpriteZVertex()
         CCSprite* sprite = CCSprite::create("Images/grossini_dance_atlas.png", CCRectMake(85*1, 121*0, 85, 121));
         sprite->setPosition( ccp( (i+1)*step, s.height/2) );
         sprite->setVertexZ( 10 + (10-i)*40 );
-        sprite->setShaderProgram(alphaTestShader);
+       // sprite->setShaderProgram(alphaTestShader);
         node->addChild(sprite, 0);
     }
 
@@ -1090,15 +1091,15 @@ SpriteBatchNodeZVertex::SpriteBatchNodeZVertex()
     //
     // Configure shader to mimic glAlphaTest
     //
-    CCGLProgram *alphaTestShader = CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColorAlphaTest);
-    GLint alphaValueLocation = glGetUniformLocation(alphaTestShader->getProgram(), kCCUniformAlphaTestValue);
+    //CCGLProgram *alphaTestShader = CCShaderCache::sharedShaderCache()->programForKey(kCCShader_PositionTextureColorAlphaTest);
+    //GLint alphaValueLocation = glGetUniformLocation(alphaTestShader->getProgram(), kCCUniformAlphaTestValue);
 
-    // set alpha test value
-    // NOTE: alpha test shader is hard-coded to use the equivalent of a glAlphaFunc(GL_GREATER) comparison
-    if (getShaderProgram())
-    {
-        getShaderProgram()->setUniformLocationWith1f(alphaValueLocation, 0.0f);
-    }
+    //// set alpha test value
+    //// NOTE: alpha test shader is hard-coded to use the equivalent of a glAlphaFunc(GL_GREATER) comparison
+    //if (getShaderProgram())
+    //{
+    //    getShaderProgram()->setUniformLocationWith1f(alphaValueLocation, 0.0f);
+    //}
     
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     float step = s.width/12;
@@ -1111,7 +1112,7 @@ SpriteBatchNodeZVertex::SpriteBatchNodeZVertex()
     batch->setAnchorPoint( ccp(0.5f, 0.5f));
     batch->setPosition( ccp(s.width/2, s.height/2));
     
-    batch->setShaderProgram(alphaTestShader);
+   // batch->setShaderProgram(alphaTestShader);
     addChild(batch, 0, kTagSpriteBatchNode);        
     
     for(int i=0;i<5;i++) 

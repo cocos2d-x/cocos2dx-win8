@@ -373,7 +373,7 @@ CCStopGrid* CCStopGrid::create(void)
 
 // implementation of CCReuseGrid
 
-CCReuseGrid* CCReuseGrid::actionWithTimes(int times)
+CCReuseGrid* CCReuseGrid::create(int times)
 {
 	CCReuseGrid *pAction = new CCReuseGrid();
 	if (pAction)

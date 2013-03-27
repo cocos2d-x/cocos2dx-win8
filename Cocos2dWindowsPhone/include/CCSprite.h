@@ -320,6 +320,7 @@ public:
 	/** updates the texture rect of the CCSprite in points. */
      void setTextureRect(const CCRect& rect);
 
+	 virtual void setVertexRect(const CCRect& rect);
 	 /** updates the texture rect, rectRotated and untrimmed size of the CCSprite in pixels
 	 */
 	 void setTextureRectInPixels(const CCRect& rect, bool rotated, const CCSize& size);

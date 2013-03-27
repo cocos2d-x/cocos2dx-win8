@@ -31,6 +31,12 @@ THE SOFTWARE.
 
 #include <float.h>
 
+#ifndef snprintf
+
+#define snprintf _snprintf
+
+#endif
+
 // for math.h on win32 platform
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32 || CC_TARGET_PLATFORM == CC_PLATFORM_WIN8_METRO)
 

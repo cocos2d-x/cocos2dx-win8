@@ -992,6 +992,15 @@ void CCNode::onEnterTransitionDidFinish()
 {
 	arrayMakeObjectsPerformSelector(m_pChildren, onEnterTransitionDidFinish, CCNode*);
 }
+void CCNode::onExitTransitionDidStart()
+{
+    arrayMakeObjectsPerformSelector(m_pChildren, onExitTransitionDidStart, CCNode*);
+
+    if (m_eScriptType == kScriptTypeJavascript)
+    {
+        CCScriptEngineManager::sharedManager()->getScriptEngine()->executeNodeEvent(this, kCCNodeOnExitTransitionDidStart);
+    }
+}
 
 void CCNode::onExit()
 {

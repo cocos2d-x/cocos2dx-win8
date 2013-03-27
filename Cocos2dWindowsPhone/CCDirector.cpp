@@ -587,6 +587,35 @@ void CCDirector::popScene(void)
 		m_pNextScene = (CCScene*)m_pobScenesStack->objectAtIndex(c - 1);
 	}
 }
+void CCDirector::popToRootScene(void)
+{
+    CCAssert(m_pRunningScene != NULL, "A running Scene is needed");
+    unsigned int c = m_pobScenesStack->count();
+
+    if (c == 1) 
+    {
+        m_pobScenesStack->removeLastObject();
+        this->end();
+    } 
+    else 
+    {
+        while (c > 1) 
+        {
+            CCScene *current = (CCScene*)m_pobScenesStack->lastObject();
+            if( current->isRunning() )
+            {
+                current->onExitTransitionDidStart();
+                current->onExit();
+            }
+            current->cleanup();
+
+            m_pobScenesStack->removeLastObject();
+            c--;
+        }
+        m_pNextScene = (CCScene*)m_pobScenesStack->lastObject();
+        m_bSendCleanupToScene = false;
+    }
+}
 
 void CCDirector::end()
 {

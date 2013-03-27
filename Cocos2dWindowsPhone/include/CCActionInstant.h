@@ -30,7 +30,7 @@ THE SOFTWARE.
 #include <string>
 #include "CCAction.h"
 
-namespace cocos2d {
+NS_CC_BEGIN
 
 	/** 
 	@brief Instant actions are immediate actions. They don't have a duration like
@@ -140,7 +140,7 @@ namespace cocos2d {
 		virtual ~CCFlipY(){}
 		
 		/** create the action */
-		static CCFlipY * actionWithFlipY(bool y);
+		static CCFlipY * create(bool y);
 		/** init the action */
 		bool initWithFlipY(bool y);
 		//super methods
@@ -330,6 +330,7 @@ namespace cocos2d {
         CCObject* m_pObject;
     };
 
-}
 
-#endif //__CCINSTANT_ACTION_H__
+
+NS_CC_END
+#endif // __SPITE_NODE_CCSPRITE_H__

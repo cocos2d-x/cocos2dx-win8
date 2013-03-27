@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "LayerTest.h"
 #include "../testResource.h"
 
@@ -261,18 +262,18 @@ void LayerTestBlend::newBlend(float dt)
 {
      CCLayerColor *layer = (CCLayerColor*)getChildByTag(kTagLayer);
 
-    GLenum src;
-    GLenum dst;
+    CCenum src;
+    CCenum dst;
 
-    if( layer->getBlendFunc().dst == GL_ZERO )
+    if( layer->getBlendFunc().dst == CC_ZERO )
     {
-        src = GL_SRC_ALPHA;
-        dst = GL_ONE_MINUS_SRC_ALPHA;
+        src = CC_SRC_ALPHA;
+        dst = CC_ONE_MINUS_SRC_ALPHA;
     }
     else
     {
-        src = GL_ONE_MINUS_DST_COLOR;
-        dst = GL_ZERO;
+        src = CC_ONE_MINUS_DST_COLOR;
+        dst = CC_ZERO;
     }
 
     ccBlendFunc bf = {src, dst};
@@ -518,8 +519,8 @@ LayerExtendedBlendOpacityTest::LayerExtendedBlendOpacityTest()
     layer3->setStartOpacity(255);
     layer3->setEndOpacity(255);
     ccBlendFunc blend;
-    blend.src = GL_SRC_ALPHA;
-    blend.dst = GL_ONE_MINUS_SRC_ALPHA;
+    blend.src = CC_SRC_ALPHA;
+    blend.dst = CC_ONE_MINUS_SRC_ALPHA;
     layer3->setBlendFunc(blend);
     addChild(layer3);
 }
