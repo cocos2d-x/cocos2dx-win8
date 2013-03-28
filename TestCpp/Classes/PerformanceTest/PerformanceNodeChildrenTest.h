@@ -2,7 +2,7 @@
 #define __PERFORMANCE_NODE_CHILDREN_TEST_H__
 
 #include "PerformanceTest.h"
-#include "support/CCProfiling.h"
+#include "../support/CCProfiling.h"
 
 class NodeChildrenMenuLayer : public PerformBasicLayer
 {
@@ -115,6 +115,6 @@ public:
     virtual std::string profilerName();
 };
 
-void runNodeChildrenTest(){};
+void runNodeChildrenTest();
 
 #endif // __PERFORMANCE_NODE_CHILDREN_TEST_H__

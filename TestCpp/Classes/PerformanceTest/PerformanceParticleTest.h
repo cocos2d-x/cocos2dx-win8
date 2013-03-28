@@ -60,6 +60,6 @@ public:
     virtual void doTest();
 };
 
-void runParticleTest(){};
+void runParticleTest();
 
 #endif

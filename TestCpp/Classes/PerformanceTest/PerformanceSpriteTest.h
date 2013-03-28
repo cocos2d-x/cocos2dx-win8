@@ -102,6 +102,6 @@ public:
     virtual std::string title();
 };
 
-void runSpriteTest(){};
+void runSpriteTest();
 
 #endif

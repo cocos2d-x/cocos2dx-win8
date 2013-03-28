@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "PerformanceTest.h"
 #include "../testResource.h"
 #include "PerformanceNodeChildrenTest.h"

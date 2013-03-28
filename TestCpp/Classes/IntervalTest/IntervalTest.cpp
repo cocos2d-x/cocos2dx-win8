@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "IntervalTest.h"
 #include "../testResource.h"
 
