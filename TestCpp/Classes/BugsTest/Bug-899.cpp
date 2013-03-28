@@ -4,7 +4,7 @@
 //
 // Test coded by: JohnnyFlash
 //
-
+#include "pch.h"
 #include "Bug-899.h"
 
 bool Bug899Layer::init()

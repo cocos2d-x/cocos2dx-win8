@@ -2,7 +2,7 @@
 // Bug-886
 // http://code.google.com/p/cocos2d-iphone/issues/detail?id=886
 //
-
+#include "pch.h"
 #include "Bug-886.h"
 
 bool Bug886Layer::init()

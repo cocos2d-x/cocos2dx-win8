@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "BugsTest.h"
 #include "Bug-350.h"
 #include "Bug-422.h"

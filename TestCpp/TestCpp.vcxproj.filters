@@ -95,6 +95,18 @@
     <Filter Include="Classes\TileMapTest">
       <UniqueIdentifier>{52a9f073-63ff-47e1-899b-3e5d75b66851}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\ZwoptexTest">
+      <UniqueIdentifier>{9f3d5b17-d27a-41f3-93c5-da693b092116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\FontTest">
+      <UniqueIdentifier>{42b7579d-55a6-41f7-8a93-29794850a226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\BugsTest">
+      <UniqueIdentifier>{6799a38e-2b5a-4e2c-826b-bde9c2a04357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\BugsTest\Bug-458">
+      <UniqueIdentifier>{959691d2-dee7-42ec-88ea-413313d3a307}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\ApplicationIcon.png">
@@ -274,6 +286,45 @@
     </ClCompile>
     <ClCompile Include="Classes\TileMapTest\TileMapTest.cpp">
       <Filter>Classes\TileMapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ZwoptexTest\ZwoptexTest.cpp">
+      <Filter>Classes\ZwoptexTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\FontTest\FontTest.cpp">
+      <Filter>Classes\FontTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-350.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-422.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-624.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-886.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-899.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-914.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-1159.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-1174.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\BugsTest.cpp">
+      <Filter>Classes\BugsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-458\Bug-458.cpp">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.cpp">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -770,6 +821,45 @@
     </ClInclude>
     <ClInclude Include="Classes\TileMapTest\TileMapTest.h">
       <Filter>Classes\TileMapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ZwoptexTest\ZwoptexTest.h">
+      <Filter>Classes\ZwoptexTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\FontTest\FontTest.h">
+      <Filter>Classes\FontTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-350.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-422.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-624.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-886.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-899.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-914.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-1159.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-1174.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\BugsTest.h">
+      <Filter>Classes\BugsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-458\Bug-458.h">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.h">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

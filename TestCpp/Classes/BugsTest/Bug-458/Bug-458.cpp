@@ -2,7 +2,7 @@
 // Bug-458 test case by nedrafehi
 // http://code.google.com/p/cocos2d-iphone/issues/detail?id=458
 //
-
+#include "pch.h"
 #include "Bug-458.h"
 #include "QuestionContainerSprite.h"
 

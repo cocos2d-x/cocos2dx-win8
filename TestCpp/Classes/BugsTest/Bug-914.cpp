@@ -5,7 +5,7 @@
 //  Created by Wylan Werth on 7/5/10.
 //  Copyright BanditBear Games 2010. All rights reserved.
 //
-
+#include "pch.h"
 // Import the interfaces
 #include"Bug-914.h"
 

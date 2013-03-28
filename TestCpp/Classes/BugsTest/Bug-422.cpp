@@ -2,7 +2,7 @@
 // Bug-422 test case by lhunath
 // http://code.google.com/p/cocos2d-iphone/issues/detail?id=422
 //
-
+#include "pch.h"
 #include "Bug-422.h"
 
 bool Bug422Layer::init()

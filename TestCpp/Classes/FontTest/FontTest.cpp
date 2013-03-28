@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "FontTest.h"
 #include "../testResource.h"
 
