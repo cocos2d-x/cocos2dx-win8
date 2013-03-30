@@ -285,7 +285,7 @@ public:
 	 The rect used will be the size of the texture.
 	 The offset will be (0,0).
 	 */
-    bool initWithTexture(CCTexture2D *pTexture);
+    virtual bool initWithTexture(CCTexture2D *pTexture);
 
 	/** Initializes a sprite with just a rectangle
 	*/
@@ -294,28 +294,28 @@ public:
 	/** Initializes an sprite with a texture and a rect.
 	 The offset will be (0,0).
 	 */
-    bool initWithTexture(CCTexture2D *pTexture, const CCRect& rect);
+    virtual bool initWithTexture(CCTexture2D *pTexture, const CCRect& rect);
 
 	// Initializes an sprite with an sprite frame.
-    bool initWithSpriteFrame(CCSpriteFrame *pSpriteFrame);
+    virtual bool initWithSpriteFrame(CCSpriteFrame *pSpriteFrame);
 
 	/** Initializes an sprite with an sprite frame name.
 	 An CCSpriteFrame will be fetched from the CCSpriteFrameCache by name.
 	 If the CCSpriteFrame doesn't exist it will raise an exception.
 	 @since v0.9
 	 */
-    bool initWithSpriteFrameName(const char *pszSpriteFrameName);
+    virtual bool initWithSpriteFrameName(const char *pszSpriteFrameName);
 
 	/** Initializes an sprite with an image filename.
 	 The rect used will be the size of the image.
 	 The offset will be (0,0).
 	 */
-    bool initWithFile(const char *pszFilename);
+    virtual bool initWithFile(const char *pszFilename);
 
 	/** Initializes an sprite with an image filename, and a rect.
 	 The offset will be (0,0).
 	 */
-    bool initWithFile(const char *pszFilename, const CCRect& rect);
+    virtual bool initWithFile(const char *pszFilename, const CCRect& rect);
 
 	/** Initializes an sprite with an CCSpriteBatchNode and a rect in points */
 	bool initWithBatchNode(CCSpriteBatchNode *batchNode, const CCRect& rect);
@@ -328,7 +328,7 @@ public:
 	// BatchNode methods
 
 	/** updates the quad according the the rotation, position, scale values. */
-	void updateTransform(void);
+	virtual void updateTransform(void);
 
 	/** tell the sprite to use self-render.
 	 @since v0.99.0
@@ -336,12 +336,12 @@ public:
 	void useSelfRender(void);
 
 	/** updates the texture rect of the CCSprite in points. */
-     void setTextureRect(const CCRect& rect);
+    virtual void setTextureRect(const CCRect& rect);
 
 	 virtual void setVertexRect(const CCRect& rect);
 	 /** updates the texture rect, rectRotated and untrimmed size of the CCSprite in pixels
 	 */
-	 void setTextureRectInPixels(const CCRect& rect, bool rotated, const CCSize& size);
+	 virtual void setTextureRectInPixels(const CCRect& rect, bool rotated, const CCSize& size);
 
 	/** tell the sprite to use batch node render.
 	 @since v0.99.0

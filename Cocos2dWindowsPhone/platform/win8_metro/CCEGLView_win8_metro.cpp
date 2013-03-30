@@ -86,7 +86,7 @@ bool CCEGLView::Create()
         m_initWinWidth = (int)render->m_window->Bounds.Width;
         m_initWinHeight = (int)render->m_window->Bounds.Height;
 	    setDesignResolution(m_initWinWidth, m_initWinHeight);
-		//setDesignResolution(render->m_windowBounds.Width, render->m_windowBounds.Height);
+		setDesignResolution(render->m_windowBounds.Width, render->m_windowBounds.Height);
         SetBackBufferRenderTarget();
         m_oldViewState = 0;//int(Windows::UI::ViewManagement::ApplicationView::Value);
 		s_pMainWindow = this;
@@ -132,7 +132,41 @@ void CCEGLView::release()
     CC_SAFE_DELETE(m_pDelegate);
     DirectXRender::SharedDXRender()->CloseWindow();
 }
+const CCSize& CCEGLView::getFrameSize() const
+{
+    return m_obScreenSize;
+}
 
+void CCEGLView::setFrameSize(float width, float height)
+{
+    m_obDesignResolutionSize = m_obScreenSize = CCSizeMake(width, height);
+}
+
+
+CCSize  CCEGLView::getVisibleSize() const
+{
+    if (m_eResolutionPolicy == kResolutionNoBorder)
+    {
+        return CCSizeMake(m_obScreenSize.width/m_fWinScaleX, m_obScreenSize.height/m_fWinScaleY);
+    }
+    else 
+    {
+        return m_obDesignResolutionSize;
+    }
+}
+
+CCPoint CCEGLView::getVisibleOrigin() const
+{
+    if (m_eResolutionPolicy == kResolutionNoBorder)
+    {
+        return CCPointMake((m_obDesignResolutionSize.width - m_obScreenSize.width/m_fWinScaleX)/2, 
+                           (m_obDesignResolutionSize.height - m_obScreenSize.height/m_fWinScaleY)/2);
+    }
+    else 
+    {
+        return CCPointZero;
+    }
+}
 void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate)
 {
     m_pDelegate = pDelegate;

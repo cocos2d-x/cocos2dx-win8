@@ -22,6 +22,7 @@
 
 #include "cocos2d.h"
 #include "controller.h"
+#include "HelloWorldScene.h"
 
 #include "CCEGLView.h"
 USING_NS_CC;
@@ -83,7 +84,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	CCDirector *pDirector = CCDirector::sharedDirector();
 
 
-	CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
+	pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
 	// turn on display FPS
 	//pDirector->setDisplayFPS(false);
@@ -92,12 +93,13 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// set FPS. the default value is 1.0/60 if you don't call this
 	//pDirector->setAnimationInterval(1.0 / 60);
 
-    CCScene * pScene = CCScene::create();
-    CCLayer * pLayer = new TestController();
-    pLayer->autorelease();
+	// create a scene. it's an autorelease object
+    //CCScene * pScene = CCScene::create();
+    //CCLayer * pLayer = new TestController();
 
-    pScene->addChild(pLayer);
-    pDirector->runWithScene(pScene);
+ //   pScene->addChild(pLayer);
+//    pDirector->runWithScene(pScene);
+	pDirector->runWithScene(HelloWorld::scene());
 
 	return true;
 

@@ -54,11 +54,11 @@ class CC_DLL CCSpriteFrameCache : public CCObject
 public:
 	bool init(void);
 	~CCSpriteFrameCache(void);
-
+private:
 	/*Adds multiple Sprite Frames with a dictionary. The texture will be associated with the created sprite frames.
 	 */
 	void addSpriteFramesWithDictionary(CCDictionary *pobDictionary, CCTexture2D *pobTexture);
-
+public:
 	/** Adds multiple Sprite Frames from a plist file.
 	 * A texture will be loaded automatically. The texture name will composed by replacing the .plist suffix with .png
 	 * If you want to use another texture, you should use the addSpriteFramesWithFile:texture method.
@@ -101,12 +101,12 @@ public:
 	* @since v0.99.5
 	*/
 	void removeSpriteFramesFromFile(const char* plist);
-
+private:
 	/** Removes multiple Sprite Frames from CCDictionary.
 	* @since v0.99.5
 	*/
 	void removeSpriteFramesFromDictionary(CCDictionary *dictionary);
-
+public:
 	/** Removes all Sprite Frames associated with the specified textures.
 	* It is convinient to call this method when a specific texture needs to be removed.
 	* @since v0.995.

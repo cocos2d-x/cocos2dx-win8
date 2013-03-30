@@ -13,11 +13,11 @@ void TestScene::onEnter()
     CCScene::onEnter();
 
     //add the menu item for back to main menu
-//#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
-//    CCLabelBMFont* label = CCLabelBMFont::create("MainMenu",  "fonts/arial16.fnt");
-//#else
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_MARMALADE)
+    CCLabelBMFont* label = CCLabelBMFont::create("MainMenu",  "fonts/arial16.fnt");
+#else
     CCLabelTTF* label = CCLabelTTF::create("MainMenu", "Arial", 20);
-//#endif
+#endif
     CCMenuItemLabel* pMenuItem = CCMenuItemLabel::create(label, this, menu_selector(TestScene::MainMenuCallback));
 
     CCMenu* pMenu =CCMenu::create(pMenuItem, NULL);

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="en" />
-  <App xmlns="" ProductID="{E0ED3292-F3AB-4D5F-B42C-396BD19004DF}" Title="TestCpp" RuntimeType="Modern Native" Version="1.0.0.0" Genre="apps.normal" Author="cocos2d-x" Description="TestCpp of cocos2dx-wp" Publisher="cocos2d-x" PublisherID="{920224D6-A9D1-408F-B174-492684DE8924}">
+  <App xmlns="" ProductID="{E0ED3292-F3AB-4D6F-B42C-396BD19004DE}" Title="TestCpp" RuntimeType="Modern Native" Version="2.0.0.0" Genre="apps.normal" Author="cocos2d-x" Description="TestCpp of cocos2dx-wp" Publisher="cocos2d-x" PublisherID="{920224D6-A9D1-408F-B174-492684DE8924}">
     <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_SENSORS" />

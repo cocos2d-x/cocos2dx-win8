@@ -14,113 +14,122 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{3f5a98d3-f467-4716-89d3-d7db8b9389ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\ActionsTest">
-      <UniqueIdentifier>{47299f81-026d-4f61-9a3a-7f2452e2a946}</UniqueIdentifier>
+    <Filter Include="Assets\Images">
+      <UniqueIdentifier>{557922d5-fe87-465f-9dcc-e957a417a65f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Images\sprites_test">
+      <UniqueIdentifier>{2d1b67f9-4437-406d-8ca5-701fe4c3be52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Images\bugs">
+      <UniqueIdentifier>{8cfc509f-049b-4f53-8f96-2e974e40fa59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\fonts">
+      <UniqueIdentifier>{acac6d78-54f3-455e-a509-33a47c482333}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\AccelerometerTest">
-      <UniqueIdentifier>{badd737c-c437-47c3-bb89-f40589716bd3}</UniqueIdentifier>
+      <UniqueIdentifier>{ea9f78ed-cf89-4c79-9234-76e447a263fb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\ActionManagerTest">
-      <UniqueIdentifier>{14681a24-55a6-4276-860d-f9481dd5729c}</UniqueIdentifier>
+      <UniqueIdentifier>{5a8c62a6-d1de-48f0-a39f-ba9439a0fafa}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\ActionsEaseTest">
-      <UniqueIdentifier>{32946560-bbdb-4a27-89f7-e14b13971a58}</UniqueIdentifier>
+      <UniqueIdentifier>{4b1136aa-6b81-4d0f-a202-231f088fbf6a}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\ActionsProgressTest">
-      <UniqueIdentifier>{3b64b5ef-9cda-4ce7-8623-0b2e44619a54}</UniqueIdentifier>
+      <UniqueIdentifier>{5d612921-e249-4cc0-ae05-d8d4c8fd7a08}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\Box2DTest">
-      <UniqueIdentifier>{eba19c00-b07f-4f3b-b248-47113ad19f50}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\ClickAndMoveTest">
-      <UniqueIdentifier>{9d50f717-60f9-43ba-b40c-b51e7c90b18f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\CurrentLanguageTest">
-      <UniqueIdentifier>{760a4007-fd35-459e-b866-388c8f49d0b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\MenuTest">
-      <UniqueIdentifier>{931f659b-53ed-4416-824d-2088a76af66c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\SceneTest">
-      <UniqueIdentifier>{5dcac3be-a917-4158-ba0d-f4788c06fda7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\SpriteTest">
-      <UniqueIdentifier>{0416f874-c014-4824-92ab-c6e768027bce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\LabelTest">
-      <UniqueIdentifier>{c294b170-760c-43b4-9e6b-0ea2705a97e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\LayerTest">
-      <UniqueIdentifier>{511d291a-340d-4b1e-957f-f4fbddea6e26}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\Texture2dTest">
-      <UniqueIdentifier>{6d449d71-c694-4087-9172-6d88241dc7fd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\TextureCacheTest">
-      <UniqueIdentifier>{d513e883-b773-44ea-842d-96eb10977635}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\TouchesTest">
-      <UniqueIdentifier>{ba9e24ae-b6f5-4eb1-b11c-3c46884c6d83}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\TextInputTest">
-      <UniqueIdentifier>{44563cc8-5085-4301-8b15-fc3833f03a53}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\TransitionsTest">
-      <UniqueIdentifier>{c5297a13-8c0e-411d-b073-cd64d00fd16f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\UserDefaultTest">
-      <UniqueIdentifier>{0b556458-7fb3-4ef7-b04e-c5a58be3f946}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\FileUtilsTest">
-      <UniqueIdentifier>{a32d4a32-1f91-49bb-a95f-166f1cd4fa2b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\NodeTest">
-      <UniqueIdentifier>{91dd0383-e902-43db-9e87-3e493f2ffb38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\KeypadTest">
-      <UniqueIdentifier>{52ab47ac-9a53-4732-b1b0-81c46faccabd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\MotionStreakTest">
-      <UniqueIdentifier>{0ea6a6d6-0927-4cbb-a36d-41c4cfa58c5f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\MutiTouchTest">
-      <UniqueIdentifier>{bc2c64c3-6ca9-451f-b387-618caf8d26ce}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\ParallaxTest">
-      <UniqueIdentifier>{49aec0e6-335d-4461-9ee9-acb7699cf717}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\ParticleTest">
-      <UniqueIdentifier>{b8f13fac-fb42-43bf-a241-c1378eae18ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\TileMapTest">
-      <UniqueIdentifier>{52a9f073-63ff-47e1-899b-3e5d75b66851}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\ZwoptexTest">
-      <UniqueIdentifier>{9f3d5b17-d27a-41f3-93c5-da693b092116}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\FontTest">
-      <UniqueIdentifier>{42b7579d-55a6-41f7-8a93-29794850a226}</UniqueIdentifier>
+    <Filter Include="Classes\ActionsTest">
+      <UniqueIdentifier>{f4b0617e-c676-4a46-a1f3-4b32a657e68f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\BugsTest">
-      <UniqueIdentifier>{6799a38e-2b5a-4e2c-826b-bde9c2a04357}</UniqueIdentifier>
+      <UniqueIdentifier>{8c844954-67e5-4752-897b-8c60d14da9b4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\BugsTest\Bug-458">
-      <UniqueIdentifier>{959691d2-dee7-42ec-88ea-413313d3a307}</UniqueIdentifier>
+      <UniqueIdentifier>{cbf0fff5-7e43-4e74-9299-0e31cdeb2054}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\PerformanceTest">
-      <UniqueIdentifier>{092761c8-76e0-4d8e-9e69-f805ed9e61c3}</UniqueIdentifier>
+    <Filter Include="Classes\ClickAndMoveTest">
+      <UniqueIdentifier>{1dc15b09-c777-40ed-ac1e-4a8a44391a59}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Classes\RotateWorldTest">
-      <UniqueIdentifier>{4ed0ce3b-d298-4c3c-b079-06fcc3b1112e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\IntervalTest">
-      <UniqueIdentifier>{dfccca5b-ed6e-42f1-8532-f2af6b651bd9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Classes\EffectsTest">
-      <UniqueIdentifier>{a7e8e4ce-50fc-481c-92e0-c022fb768fed}</UniqueIdentifier>
+    <Filter Include="Classes\CurrentLanguageTest">
+      <UniqueIdentifier>{4cea18c9-b488-4416-9bed-0d9e8b2443ae}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\EffectsAdvancedTest">
-      <UniqueIdentifier>{fbe80f88-59cf-421c-ab83-e6534adfb29e}</UniqueIdentifier>
+      <UniqueIdentifier>{d99bd510-cf6b-49b0-b514-ab73549f7e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\EffectsTest">
+      <UniqueIdentifier>{b86f7ed3-b80b-46b0-8452-21736a110dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\FileUtilsTest">
+      <UniqueIdentifier>{201b6541-c13d-493d-8794-5fc1262f8a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\FontTest">
+      <UniqueIdentifier>{f019f1f0-75e2-4b82-a4c1-bfc8c26b119c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\IntervalTest">
+      <UniqueIdentifier>{b4707196-cb55-4bc7-9e46-808642f76843}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\KeypadTest">
+      <UniqueIdentifier>{fa97b9b2-d8ba-431b-9fac-79176bef1573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\LabelTest">
+      <UniqueIdentifier>{b81479db-f523-4a92-bce7-0a3442c5de9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\LayerTest">
+      <UniqueIdentifier>{c591affb-161f-4791-95f5-8d64a66b17b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MenuTest">
+      <UniqueIdentifier>{fad094df-1313-4b3d-b5f2-8e0f5cc6167e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MotionStreakTest">
+      <UniqueIdentifier>{6adf7631-6ffe-4305-99f9-f1a55c2f92f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\MutiTouchTest">
+      <UniqueIdentifier>{74cb282b-a9fa-4b04-a8b1-48ac214c5406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\NodeTest">
+      <UniqueIdentifier>{7716a29f-91f7-469b-8a2b-ee73070ae1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ParallaxTest">
+      <UniqueIdentifier>{89df0542-dfdb-4598-aafe-0224649468a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ParticleTest">
+      <UniqueIdentifier>{f6939e2d-2d3e-4425-9694-a5dd41f4497c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\PerformanceTest">
+      <UniqueIdentifier>{705ae625-1d0e-4c01-bc50-61c6d3b4b820}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\RotateWorldTest">
+      <UniqueIdentifier>{602d1a55-43c7-4dfb-b7ac-df1f8cbcf9f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\SceneTest">
+      <UniqueIdentifier>{bdb0916e-4ecd-4a2d-a3a7-6b12b2596c94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\SpriteTest">
+      <UniqueIdentifier>{a241fa21-cdaa-4b02-8671-47c26dec609f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TextInputTest">
+      <UniqueIdentifier>{89aeb836-22bc-43e5-bf0d-013a5902106d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Texture2dTest">
+      <UniqueIdentifier>{df4a1b56-853e-43bb-9321-886a45ccf6f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TextureCacheTest">
+      <UniqueIdentifier>{2a0c8ac4-6b8a-475e-9329-06dc8d3e413a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TileMapTest">
+      <UniqueIdentifier>{3b7cf725-416e-4632-b914-37e88394fc96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TouchesTest">
+      <UniqueIdentifier>{71621282-e400-4bc9-a579-ce64306e1196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\TransitionsTest">
+      <UniqueIdentifier>{d6214641-de0e-4438-b0d3-f105ea67aafd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\UserDefaultTest">
+      <UniqueIdentifier>{20a099bb-417e-4b05-8181-961968eb4f39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\ZwoptexTest">
+      <UniqueIdentifier>{4eb00927-8dcc-4c99-af21-0613df5d0fcd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -145,78 +154,549 @@
     <Image Include="Assets\Tiles\IconicTileSmall.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\back.png">
+    <Image Include="Assets\HelloWorld.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister2.png">
-      <Filter>Assets</Filter>
+    <Image Include="Assets\Images\bugs\bug886.jpg">
+      <Filter>Assets\Images\bugs</Filter>
     </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\grossini.png">
-      <Filter>Assets</Filter>
+    <Image Include="Assets\Images\bugs\bug886.png">
+      <Filter>Assets\Images\bugs</Filter>
     </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathGrossini.png">
-      <Filter>Assets</Filter>
+    <Image Include="Assets\Images\bugs\circle.png">
+      <Filter>Assets\Images\bugs</Filter>
     </Image>
-    <Image Include="..\..\..\niepeng\TestCpp添加的图片\s_pPathSister1.png">
-      <Filter>Assets</Filter>
+    <Image Include="Assets\Images\bugs\corner.png">
+      <Filter>Assets\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\edge.png">
+      <Filter>Assets\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\fill.png">
+      <Filter>Assets\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\picture.png">
+      <Filter>Assets\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\bugs\RetinaDisplay.jpg">
+      <Filter>Assets\Images\bugs</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-0-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-1-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-2-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-3-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-4-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-5-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-6-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-0.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-1.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-2.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-3.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-4.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-5.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-6.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\sprites_test\sprite-7-7.png">
+      <Filter>Assets\Images\sprites_test</Filter>
+    </Image>
+    <Image Include="Assets\Images\arrows.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\arrowsBar.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\atlastest.png">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\b1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\b2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background1.jpg">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background2.jpg">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\background3.jpg">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\background3.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\ball.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\bitmapFontTest3.png">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\blocks.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-about-normal.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-about-selected.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-normal.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-highscores-selected.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-play-normal.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\btn-play-selected.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\close.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Comet.png">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\f1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\f2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fire.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\fire-grayscale.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Fog.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_01.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_02.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_03.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_04.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_05.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_06.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_07.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_08.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_09.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_10.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_11.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_12.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_13.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_14.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas_nomipmap.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossini_dance_atlas-mono.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister1-testalpha.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\grossinis_sister2.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\HelloWorld.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\hole_effect.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\hole_stencil.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Icon.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\labelatlas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\landscape-1024x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\menuitemsprite.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\paddle.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\particles.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\pattern1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\Pea.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\piece.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\PlanetCute-1024x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\powered.png">
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\r1.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
     </Image>
     <Image Include="Assets\Images\r2.png">
-      <Filter>Assets</Filter>
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButton.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SendScoreButtonPressed.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\snow.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SpinningPeas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\SpookyPeas.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\spritesheet1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars2.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars2-grayscale.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\stars-grayscale.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\streak.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_1021x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_blend.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.jpeg">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test_image.tiff">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\test-rgba1.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture512x512.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture1024x1024.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\texture2048x2048.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\white-512x512.png">
+      <Filter>Assets\Images</Filter>
+    </Image>
+    <Image Include="Assets\fonts\arial16.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\arial-unicode-26.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontChinese.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.bmp">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest2.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest3.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest4.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\bitmapFontTest5.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\boundsTestFont.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\font-issue1343.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\font-issue1343-hd.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\futura-48.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\helvetica-geneva-32.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\konqa32.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\labelatlas.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\larabie-16.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\markerFelt.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\tuffy_bold_italic-charmap.png">
+      <Filter>Assets\fonts</Filter>
+    </Image>
+    <Image Include="Assets\fonts\west_england-64.png">
+      <Filter>Assets\fonts</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include=".\cocos2dorig.cpp" />
-    <ClCompile Include="Classes\HelloWorldScene.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\controller.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\testBasic.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\VisibleRect.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp">
-      <Filter>Classes\ActionsTest</Filter>
     </ClCompile>
     <ClCompile Include="Classes\AccelerometerTest\AccelerometerTest.cpp">
       <Filter>Classes\AccelerometerTest</Filter>
@@ -230,83 +710,14 @@
     <ClCompile Include="Classes\ActionsProgressTest\ActionsProgressTest.cpp">
       <Filter>Classes\ActionsProgressTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\Box2DTest\Box2dTest.cpp">
-      <Filter>Classes\Box2DTest</Filter>
+    <ClCompile Include="Classes\ActionsTest\ActionsTest.cpp">
+      <Filter>Classes\ActionsTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp">
-      <Filter>Classes\ClickAndMoveTest</Filter>
+    <ClCompile Include="Classes\BugsTest\Bug-458\Bug-458.cpp">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp">
-      <Filter>Classes\CurrentLanguageTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\MenuTest\MenuTest.cpp">
-      <Filter>Classes\MenuTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\SceneTest\SceneTest.cpp">
-      <Filter>Classes\SceneTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp">
-      <Filter>Classes\SpriteTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\LayerTest\LayerTest.cpp">
-      <Filter>Classes\LayerTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\Texture2dTest\Texture2dTest.cpp">
-      <Filter>Classes\Texture2dTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TextureCacheTest\TextureCacheTest.cpp">
-      <Filter>Classes\TextureCacheTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TouchesTest\Ball.cpp">
-      <Filter>Classes\TouchesTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TouchesTest\Paddle.cpp">
-      <Filter>Classes\TouchesTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TouchesTest\TouchesTest.cpp">
-      <Filter>Classes\TouchesTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TextInputTest\TextInputTest.cpp">
-      <Filter>Classes\TextInputTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TransitionsTest\TransitionsTest.cpp">
-      <Filter>Classes\TransitionsTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\UserDefaultTest\UserDefaultTest.cpp">
-      <Filter>Classes\UserDefaultTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp">
-      <Filter>Classes\FileUtilsTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\LabelTest\LabelTest.cpp">
-      <Filter>Classes\LabelTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\NodeTest\NodeTest.cpp">
-      <Filter>Classes\NodeTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\KeypadTest\KeypadTest.cpp">
-      <Filter>Classes\KeypadTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\MotionStreakTest\MotionStreakTest.cpp">
-      <Filter>Classes\MotionStreakTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\MutiTouchTest\MutiTouchTest.cpp">
-      <Filter>Classes\MutiTouchTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\ParallaxTest\ParallaxTest.cpp">
-      <Filter>Classes\ParallaxTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\ParticleTest\ParticleTest.cpp">
-      <Filter>Classes\ParticleTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\TileMapTest\TileMapTest.cpp">
-      <Filter>Classes\TileMapTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\ZwoptexTest\ZwoptexTest.cpp">
-      <Filter>Classes\ZwoptexTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\FontTest\FontTest.cpp">
-      <Filter>Classes\FontTest</Filter>
+    <ClCompile Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.cpp">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
     </ClCompile>
     <ClCompile Include="Classes\BugsTest\Bug-350.cpp">
       <Filter>Classes\BugsTest</Filter>
@@ -335,11 +746,53 @@
     <ClCompile Include="Classes\BugsTest\BugsTest.cpp">
       <Filter>Classes\BugsTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\BugsTest\Bug-458\Bug-458.cpp">
-      <Filter>Classes\BugsTest\Bug-458</Filter>
+    <ClCompile Include="Classes\ClickAndMoveTest\ClickAndMoveTest.cpp">
+      <Filter>Classes\ClickAndMoveTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.cpp">
-      <Filter>Classes\BugsTest\Bug-458</Filter>
+    <ClCompile Include="Classes\CurrentLanguageTest\CurrentLanguageTest.cpp">
+      <Filter>Classes\CurrentLanguageTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.cpp">
+      <Filter>Classes\EffectsAdvancedTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\EffectsTest\EffectsTest.cpp">
+      <Filter>Classes\EffectsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\FileUtilsTest\FileUtilsTest.cpp">
+      <Filter>Classes\FileUtilsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\FontTest\FontTest.cpp">
+      <Filter>Classes\FontTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp">
+      <Filter>Classes\IntervalTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\KeypadTest\KeypadTest.cpp">
+      <Filter>Classes\KeypadTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\LabelTest\LabelTest.cpp">
+      <Filter>Classes\LabelTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\LayerTest\LayerTest.cpp">
+      <Filter>Classes\LayerTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MenuTest\MenuTest.cpp">
+      <Filter>Classes\MenuTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MotionStreakTest\MotionStreakTest.cpp">
+      <Filter>Classes\MotionStreakTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\MutiTouchTest\MutiTouchTest.cpp">
+      <Filter>Classes\MutiTouchTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\NodeTest\NodeTest.cpp">
+      <Filter>Classes\NodeTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ParallaxTest\ParallaxTest.cpp">
+      <Filter>Classes\ParallaxTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ParticleTest\ParticleTest.cpp">
+      <Filter>Classes\ParticleTest</Filter>
     </ClCompile>
     <ClCompile Include="Classes\PerformanceTest\PerformanceNodeChildrenTest.cpp">
       <Filter>Classes\PerformanceTest</Filter>
@@ -362,21 +815,57 @@
     <ClCompile Include="Classes\RotateWorldTest\RotateWorldTest.cpp">
       <Filter>Classes\RotateWorldTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\IntervalTest\IntervalTest.cpp">
-      <Filter>Classes\IntervalTest</Filter>
+    <ClCompile Include="Classes\SceneTest\SceneTest.cpp">
+      <Filter>Classes\SceneTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\EffectsTest\EffectsTest.cpp">
-      <Filter>Classes\EffectsTest</Filter>
+    <ClCompile Include="Classes\SpriteTest\SpriteTest.cpp">
+      <Filter>Classes\SpriteTest</Filter>
     </ClCompile>
-    <ClCompile Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.cpp">
-      <Filter>Classes\EffectsAdvancedTest</Filter>
+    <ClCompile Include="Classes\TextInputTest\TextInputTest.cpp">
+      <Filter>Classes\TextInputTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\Texture2dTest\Texture2dTest.cpp">
+      <Filter>Classes\Texture2dTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TextureCacheTest\TextureCacheTest.cpp">
+      <Filter>Classes\TextureCacheTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TileMapTest\TileMapTest.cpp">
+      <Filter>Classes\TileMapTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TouchesTest\Ball.cpp">
+      <Filter>Classes\TouchesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TouchesTest\Paddle.cpp">
+      <Filter>Classes\TouchesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TouchesTest\TouchesTest.cpp">
+      <Filter>Classes\TouchesTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\TransitionsTest\TransitionsTest.cpp">
+      <Filter>Classes\TransitionsTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\UserDefaultTest\UserDefaultTest.cpp">
+      <Filter>Classes\UserDefaultTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\ZwoptexTest\ZwoptexTest.cpp">
+      <Filter>Classes\ZwoptexTest</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\controller.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\testBasic.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\VisibleRect.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Classes\HelloWorldScene.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include=".\cocos2dorig.h" />
-    <ClInclude Include="Classes\HelloWorldScene.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h" />
     <ClInclude Include="Classes\AppDelegate.h">
       <Filter>Classes</Filter>
@@ -765,24 +1254,6 @@
     <ClInclude Include="include\xinput.h">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\controller.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\testBasic.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\testResource.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\tests.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\VisibleRect.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\ActionsTest\ActionsTest.h">
-      <Filter>Classes\ActionsTest</Filter>
-    </ClInclude>
     <ClInclude Include="Classes\AccelerometerTest\AccelerometerTest.h">
       <Filter>Classes\AccelerometerTest</Filter>
     </ClInclude>
@@ -795,83 +1266,14 @@
     <ClInclude Include="Classes\ActionsProgressTest\ActionsProgressTest.h">
       <Filter>Classes\ActionsProgressTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\Box2DTest\Box2dTest.h">
-      <Filter>Classes\Box2DTest</Filter>
+    <ClInclude Include="Classes\ActionsTest\ActionsTest.h">
+      <Filter>Classes\ActionsTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h">
-      <Filter>Classes\ClickAndMoveTest</Filter>
+    <ClInclude Include="Classes\BugsTest\Bug-458\Bug-458.h">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h">
-      <Filter>Classes\CurrentLanguageTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\MenuTest\MenuTest.h">
-      <Filter>Classes\MenuTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\SceneTest\SceneTest.h">
-      <Filter>Classes\SceneTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\SpriteTest\SpriteTest.h">
-      <Filter>Classes\SpriteTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\LayerTest\LayerTest.h">
-      <Filter>Classes\LayerTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\Texture2dTest\Texture2dTest.h">
-      <Filter>Classes\Texture2dTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TextureCacheTest\TextureCacheTest.h">
-      <Filter>Classes\TextureCacheTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TouchesTest\Ball.h">
-      <Filter>Classes\TouchesTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TouchesTest\Paddle.h">
-      <Filter>Classes\TouchesTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TouchesTest\TouchesTest.h">
-      <Filter>Classes\TouchesTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TextInputTest\TextInputTest.h">
-      <Filter>Classes\TextInputTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TransitionsTest\TransitionsTest.h">
-      <Filter>Classes\TransitionsTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\UserDefaultTest\UserDefaultTest.h">
-      <Filter>Classes\UserDefaultTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\FileUtilsTest\FileUtilsTest.h">
-      <Filter>Classes\FileUtilsTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\LabelTest\LabelTest.h">
-      <Filter>Classes\LabelTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\NodeTest\NodeTest.h">
-      <Filter>Classes\NodeTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\KeypadTest\KeypadTest.h">
-      <Filter>Classes\KeypadTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\MotionStreakTest\MotionStreakTest.h">
-      <Filter>Classes\MotionStreakTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\MutiTouchTest\MutiTouchTest.h">
-      <Filter>Classes\MutiTouchTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\ParallaxTest\ParallaxTest.h">
-      <Filter>Classes\ParallaxTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\ParticleTest\ParticleTest.h">
-      <Filter>Classes\ParticleTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\TileMapTest\TileMapTest.h">
-      <Filter>Classes\TileMapTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\ZwoptexTest\ZwoptexTest.h">
-      <Filter>Classes\ZwoptexTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Classes\FontTest\FontTest.h">
-      <Filter>Classes\FontTest</Filter>
+    <ClInclude Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.h">
+      <Filter>Classes\BugsTest\Bug-458</Filter>
     </ClInclude>
     <ClInclude Include="Classes\BugsTest\Bug-350.h">
       <Filter>Classes\BugsTest</Filter>
@@ -900,11 +1302,53 @@
     <ClInclude Include="Classes\BugsTest\BugsTest.h">
       <Filter>Classes\BugsTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\BugsTest\Bug-458\Bug-458.h">
-      <Filter>Classes\BugsTest\Bug-458</Filter>
+    <ClInclude Include="Classes\ClickAndMoveTest\ClickAndMoveTest.h">
+      <Filter>Classes\ClickAndMoveTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\BugsTest\Bug-458\QuestionContainerSprite.h">
-      <Filter>Classes\BugsTest\Bug-458</Filter>
+    <ClInclude Include="Classes\CurrentLanguageTest\CurrentLanguageTest.h">
+      <Filter>Classes\CurrentLanguageTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.h">
+      <Filter>Classes\EffectsAdvancedTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\EffectsTest\EffectsTest.h">
+      <Filter>Classes\EffectsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\FileUtilsTest\FileUtilsTest.h">
+      <Filter>Classes\FileUtilsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\FontTest\FontTest.h">
+      <Filter>Classes\FontTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\IntervalTest\IntervalTest.h">
+      <Filter>Classes\IntervalTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\KeypadTest\KeypadTest.h">
+      <Filter>Classes\KeypadTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\LabelTest\LabelTest.h">
+      <Filter>Classes\LabelTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\LayerTest\LayerTest.h">
+      <Filter>Classes\LayerTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MenuTest\MenuTest.h">
+      <Filter>Classes\MenuTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MotionStreakTest\MotionStreakTest.h">
+      <Filter>Classes\MotionStreakTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\MutiTouchTest\MutiTouchTest.h">
+      <Filter>Classes\MutiTouchTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\NodeTest\NodeTest.h">
+      <Filter>Classes\NodeTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ParallaxTest\ParallaxTest.h">
+      <Filter>Classes\ParallaxTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ParticleTest\ParticleTest.h">
+      <Filter>Classes\ParticleTest</Filter>
     </ClInclude>
     <ClInclude Include="Classes\PerformanceTest\PerformanceNodeChildrenTest.h">
       <Filter>Classes\PerformanceTest</Filter>
@@ -927,18 +1371,66 @@
     <ClInclude Include="Classes\RotateWorldTest\RotateWorldTest.h">
       <Filter>Classes\RotateWorldTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\IntervalTest\IntervalTest.h">
-      <Filter>Classes\IntervalTest</Filter>
+    <ClInclude Include="Classes\SceneTest\SceneTest.h">
+      <Filter>Classes\SceneTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\EffectsTest\EffectsTest.h">
-      <Filter>Classes\EffectsTest</Filter>
+    <ClInclude Include="Classes\SpriteTest\SpriteTest.h">
+      <Filter>Classes\SpriteTest</Filter>
     </ClInclude>
-    <ClInclude Include="Classes\EffectsAdvancedTest\EffectsAdvancedTest.h">
-      <Filter>Classes\EffectsAdvancedTest</Filter>
+    <ClInclude Include="Classes\TextInputTest\TextInputTest.h">
+      <Filter>Classes\TextInputTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\Texture2dTest\Texture2dTest.h">
+      <Filter>Classes\Texture2dTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TextureCacheTest\TextureCacheTest.h">
+      <Filter>Classes\TextureCacheTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TileMapTest\TileMapTest.h">
+      <Filter>Classes\TileMapTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TouchesTest\Ball.h">
+      <Filter>Classes\TouchesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TouchesTest\Paddle.h">
+      <Filter>Classes\TouchesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TouchesTest\TouchesTest.h">
+      <Filter>Classes\TouchesTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\TransitionsTest\TransitionsTest.h">
+      <Filter>Classes\TransitionsTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\UserDefaultTest\UserDefaultTest.h">
+      <Filter>Classes\UserDefaultTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\ZwoptexTest\ZwoptexTest.h">
+      <Filter>Classes\ZwoptexTest</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\controller.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\testBasic.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\testResource.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\tests.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\VisibleRect.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Classes\HelloWorldScene.h">
+      <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="WMAppManifest.xml" />
+    <Xml Include="Assets\fonts\strings.xml">
+      <Filter>Assets\fonts</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <None Include="CCDrawingPixelShader.cso">
@@ -989,6 +1481,247 @@
     <None Include="CCTextureAtlasVertexShader.cso">
       <Filter>Shaders</Filter>
     </None>
-    <None Include="TestCpp_2013_03_11_05_59_12.sap" />
+    <None Include="Assets\Images\bugs\circle.plist">
+      <Filter>Assets\Images\bugs</Filter>
+    </None>
+    <None Include="Assets\Images\bitmapFontTest3.fnt">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\fire_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_128x256_mipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba4444.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossini_pvr_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\grossinis_sister1-testalpha.ppng">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\logo-mipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\logo-nomipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_a8.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_a8.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgb888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgb888.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba4444.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_1021x1024_rgba8888.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image.pvrraw">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_a8.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_a8_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_ai88.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_ai88_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_bgra8888_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_i8.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_i8_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc2bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtc4bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtcii2bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_pvrtcii4bpp_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb565_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgb888_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.ccz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444.pvr.gz">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_mipmap.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba4444_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba5551_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image_rgba8888_v3.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\Images\test_image-bad_encoding.pvr">
+      <Filter>Assets\Images</Filter>
+    </None>
+    <None Include="Assets\fonts\arial16.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\arial-unicode-26.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\arial-unicode-26.GlyphProject">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontChinese.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest2.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest3.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest4.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\bitmapFontTest5.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\boundsTestFont.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\font-issue1343.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\font-issue1343-hd.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\futura-48.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\geneva-32.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\helvetica-32.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\konqa32.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\larabie-16.plist">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\markerFelt.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\tuffy_bold_italic-charmap.plist">
+      <Filter>Assets\fonts</Filter>
+    </None>
+    <None Include="Assets\fonts\west_england-64.fnt">
+      <Filter>Assets\fonts</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Assets\fonts\A Damn Mess.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Abberancy.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Abduction.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\American Typewriter.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\arial.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Courier New.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Marker Felt.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Paint Boy.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Schwarzwald Regular.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Scissor Cuts.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\tahoma.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\Thonburi.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
+    <Font Include="Assets\fonts\ThonburiBold.ttf">
+      <Filter>Assets\fonts</Filter>
+    </Font>
   </ItemGroup>
 </Project>

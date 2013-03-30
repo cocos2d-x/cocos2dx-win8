@@ -320,7 +320,7 @@ void CCTextureCache::addImageAsyncCallBack(ccTime dt)
 */
 }
 
-CCTexture2D * CCTextureCache::addImage(const char * path)
+ CCTexture2D * CCTextureCache::addImage(const char * path)
 {
 	CCAssert(path != NULL, "TextureCache: fileimage MUST not be NULL");
 

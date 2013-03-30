@@ -5,7 +5,7 @@
 
 USING_NS_CC;
 
-class TestController : public CCLayer
+class TestController : public cocos2d::CCLayer
 {
 public:
     TestController();

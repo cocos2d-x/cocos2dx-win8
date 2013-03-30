@@ -239,4 +239,20 @@ It should work same as apples CFSwapInt32LittleToHost(..)
 #define CC_SWAP_INT32_BIG_TO_HOST(i)    ((CC_HOST_IS_BIG_ENDIAN == true)? (i) : CC_SWAP32(i) )
 #define CC_SWAP_INT16_BIG_TO_HOST(i)    ((CC_HOST_IS_BIG_ENDIAN == true)? (i):  CC_SWAP16(i) )
 
+
+/** @def CC_INCREMENT_GL_DRAWS_BY_ONE
+ Increments the GL Draws counts by one.
+ The number of calls per frame are displayed on the screen when the CCDirector's stats are enabled.
+ */
+extern unsigned int CC_DLL g_uNumberOfDraws;
+#define CC_INCREMENT_GL_DRAWS(__n__) g_uNumberOfDraws += __n__
+
+/*******************/
+/** Notifications **/
+/*******************/
+/** @def CCAnimationFrameDisplayedNotification
+ Notification name when a CCSpriteFrame is displayed
+ */
+#define CCAnimationFrameDisplayedNotification "CCAnimationFrameDisplayedNotification"
+
 #endif // __CCMACROS_H__

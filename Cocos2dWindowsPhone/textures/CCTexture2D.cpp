@@ -742,7 +742,7 @@ void CCTexture2D::generateMipmap()
 	CCAssert( m_uPixelsWide == ccNextPOT(m_uPixelsWide) && m_uPixelsHigh == ccNextPOT(m_uPixelsHigh), "Mimpap texture only works in POT textures");
 }
 
-void CCTexture2D::setTexParameters(ccTexParams *texParams)
+ void CCTexture2D::setTexParameters(ccTexParams *texParams)
 {
 	
 	CCAssert( (m_uPixelsWide == ccNextPOT(m_uPixelsWide) && m_uPixelsHigh == ccNextPOT(m_uPixelsHigh)) ||

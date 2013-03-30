@@ -152,9 +152,9 @@ public:
 	CCMenuItemAtlasFont(){}
 	virtual ~CCMenuItemAtlasFont(){}
 	/** creates a menu item from a string and atlas with a target/selector */
-	static CCMenuItemAtlasFont* itemFromString(const char *value, const char *charMapFile, int itemWidth, int itemHeight, char startCharMap);
+	static CCMenuItemAtlasFont* create(const char *value, const char *charMapFile, int itemWidth, int itemHeight, char startCharMap);
 	/** creates a menu item from a string and atlas. Use it with MenuItemToggle */
-	static CCMenuItemAtlasFont* itemFromString(const char *value, const char *charMapFile, int itemWidth, int itemHeight, char startCharMap, CCObject* target, SEL_MenuHandler selector);
+	static CCMenuItemAtlasFont* create(const char *value, const char *charMapFile, int itemWidth, int itemHeight, char startCharMap, CCObject* target, SEL_MenuHandler selector);
 	/** initializes a menu item from a string and atlas with a target/selector */
 	bool initFromString(const char *value, const char *charMapFile, int itemWidth, int itemHeight, char startCharMap, CCObject* target, SEL_MenuHandler selector);
 };

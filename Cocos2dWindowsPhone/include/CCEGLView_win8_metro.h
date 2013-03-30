@@ -29,6 +29,20 @@
 #include <stack>
 #include <vector>
 #include <map>
+enum ResolutionPolicy
+{
+    // The entire application is visible in the specified area without trying to preserve the original aspect ratio.
+    // Distortion can occur, and the application may appear stretched or compressed.
+    kResolutionExactFit,
+    // The entire application fills the specified area, without distortion but possibly with some cropping,
+    // while maintaining the original aspect ratio of the application.
+    kResolutionNoBorder,
+    // The entire application is visible in the specified area without distortion while maintaining the original
+    // aspect ratio of the application. Borders can appear on two sides of the application.
+    kResolutionShowAll,
+
+    kResolutionUnKnown,
+};
 
 NS_CC_BEGIN;
 
@@ -144,9 +158,28 @@ public:
     void    swapBuffers();
     bool    canSetContentScaleFactor();
     void    setContentScaleFactor(float contentScaleFactor);
+	
+    /**
+     * Get the visible area size of opengl viewport.
+     */
+    virtual CCSize getVisibleSize() const;
+
+    /**
+     * Get the visible origin point of opengl viewport.
+     */
+    virtual CCPoint getVisibleOrigin() const;
 
 
+	 /**
+     * Get the frame size of EGL view.
+     * In general, it returns the screen size since the EGL view is a fullscreen view.
+     */
+    virtual const CCSize& getFrameSize() const;
 
+    /**
+     * Set the frame size of EGL view.
+     */
+    virtual void setFrameSize(float width, float height);
 
 
     void    setDesignResolution(int dx, int dy);
@@ -211,7 +244,13 @@ public:
     float getScaleY() const;
 
 protected:
-
+	    ResolutionPolicy m_eResolutionPolicy;
+		// resolution size, it is the size appropriate for the app resources.
+		CCSize m_obDesignResolutionSize;
+		// real screen size
+		CCSize m_obScreenSize;
+		float  m_fScaleX;
+		float  m_fScaleY;
 private:
     ID3D11Device1*           m_d3dDevice;
     ID3D11DeviceContext1*    m_d3dContext;
