@@ -112,7 +112,7 @@ public:
     @brief	Get current applicaiton instance.
     @return Current application instance pointer.
     */
-    static CCApplication& sharedApplication();
+    static CCApplication* sharedApplication();
 
     /**
     @brief Get current language config

@@ -31,22 +31,26 @@ THE SOFTWARE.
 #include "CCTexture2D.h"
 
 NS_CC_BEGIN
+/**
+ * @addtogroup GUI
+ * @{
+ * @addtogroup label
+ * @{
+ */
 
-	/** @brief CCLabelTTF is a subclass of CCTextureNode that knows how to render text labels
-	*
-	* All features from CCTextureNode are valid in CCLabelTTF
-	*
-	* CCLabelTTF objects are slow. Consider using CCLabelAtlas or CCLabelBMFont instead.
-	*/
+/** @brief CCLabelTTF is a subclass of CCTextureNode that knows how to render text labels
+*
+* All features from CCTextureNode are valid in CCLabelTTF
+*
+* CCLabelTTF objects are slow. Consider using CCLabelAtlas or CCLabelBMFont instead.
+*/
 class CC_DLL CCLabelTTF : public CCSprite, public CCLabelProtocol
 {
 public:
-	CCLabelTTF();
-	virtual ~CCLabelTTF();
-	char * description();
-	/** Creates an label.
-     */
-    static CCLabelTTF * create();
+    CCLabelTTF();
+    virtual ~CCLabelTTF();
+    const char* description();    
+    
     /** creates a CCLabelTTF with a font name and font size in points
      @since v2.0.1
      */
@@ -64,48 +68,67 @@ public:
     static CCLabelTTF * create(const char *string, const char *fontName, float fontSize,
                                const CCSize& dimensions, CCTextAlignment hAlignment, 
                                CCVerticalTextAlignment vAlignment);
-	/////** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
-	//bool initWithString(const char *label, const CCSize& dimensions, CCTextAlignment alignment, const char *fontName, float fontSize);
-	///** initializes the CCLabelTTF with a font name and font size */
-	//bool initWithString(const char *label, const char *fontName, float fontSize);
-	/** initializes the CCLabelTTF with a font name and font size */
-	bool initWithString(const char *string, const char *fontName, float fontSize);
+    
+    /** initializes the CCLabelTTF with a font name and font size */
+    bool initWithString(const char *string, const char *fontName, float fontSize);
+    
+    /** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
+    bool initWithString(const char *string, const char *fontName, float fontSize,
+                        const CCSize& dimensions, CCTextAlignment hAlignment);
 
-	/** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
-	bool initWithString(const char *string, const char *fontName, float fontSize,
-		const CCSize& dimensions, CCTextAlignment hAlignment);
-
-	/** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
-	bool initWithString(const char *string, const char *fontName, float fontSize,
-		const CCSize& dimensions, CCTextAlignment hAlignment, 
-		CCVerticalTextAlignment vAlignment);
-	/** initializes the CCLabelTTF */
+    /** initializes the CCLabelTTF with a font name, alignment, dimension and font size */
+    bool initWithString(const char *string, const char *fontName, float fontSize,
+                        const CCSize& dimensions, CCTextAlignment hAlignment, 
+                        CCVerticalTextAlignment vAlignment);
+    
+    /** initializes the CCLabelTTF */
     bool init();
-	/** changes the string to render
-	* @warning Changing the string is as expensive as creating a new CCLabelTTF. To obtain better performance use CCLabelAtlas
-	*/
-	virtual void setString(const char *label);
-	virtual const char* getString(void);
-	float getFontSize();
+    /** Creates an label.
+     */
+    static CCLabelTTF * node();
+
+    /** Creates an label.
+     */
+    static CCLabelTTF * create();
+
+    /** changes the string to render
+    * @warning Changing the string is as expensive as creating a new CCLabelTTF. To obtain better performance use CCLabelAtlas
+    */
+    virtual void setString(const char *label);
+    virtual const char* getString(void);
+    
+    CCTextAlignment getHorizontalAlignment();
+    void setHorizontalAlignment(CCTextAlignment alignment);
+    
+    CCVerticalTextAlignment getVerticalAlignment();
+    void setVerticalAlignment(CCVerticalTextAlignment verticalAlignment);
+    
+    CCSize getDimensions();
+    void setDimensions(const CCSize &dim);
+    
+    float getFontSize();
     void setFontSize(float fontSize);
     
     const char* getFontName();
     void setFontName(const char *fontName);
 
-	virtual CCLabelProtocol* convertToLabelProtocol() { return (CCLabelProtocol*)this; }
 private:
-	bool updateTexture();
+    bool updateTexture();
 protected:
-	 CCTextAlignment         m_hAlignment;
+    /** Dimensions of the label in Points */
+    CCSize m_tDimensions;
+    /** The alignment of the label */
+    CCTextAlignment         m_hAlignment;
     /** The vertical alignment of the label */
     CCVerticalTextAlignment m_vAlignment;
-	CCSize m_tDimensions;
-	CCTextAlignment m_eAlignment;
-	std::string * m_pFontName;
-	float m_fFontSize;
-	std::string * m_pString;
-	std::string m_string;
+    /** Font name used in the label */
+    std::string * m_pFontName;
+    /** Font size of the label */
+    float m_fFontSize;
+    
+    std::string m_string;
 };
+
 
 NS_CC_END
 #endif //__CCLABEL_H__

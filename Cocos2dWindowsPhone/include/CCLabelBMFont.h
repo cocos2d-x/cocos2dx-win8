@@ -37,7 +37,7 @@ Use any of these editors to generate BMFonts:
 #include <map>
 #include <vector>
 
-namespace cocos2d{
+NS_CC_BEGIN
 	enum {
     kCCLabelAutomaticWidth = -1,
 };
@@ -100,7 +100,7 @@ namespace cocos2d{
 		virtual ~CCBMFontConfiguration();
 		char * description();
 		/** allocates a CCBMFontConfiguration with a FNT file */
-		static CCBMFontConfiguration * configurationWithFNTFile(const char *FNTfile);
+		static CCBMFontConfiguration * create(const char *FNTfile);
 		/** initializes a BitmapFontConfiguration with a FNT file */
 		bool initWithFNTfile(const char *FNTfile);
 		inline const char* getAtlasName(){ return m_sAtlasName.c_str(); }
@@ -234,6 +234,6 @@ namespace cocos2d{
 	/** Purges the FNT config cache
 	*/
 	CC_DLL void FNTConfigRemoveCache( void );
-}// namespace cocos2d
+NS_CC_END
 
 #endif //__CCBITMAP_FONT_ATLAS_H__

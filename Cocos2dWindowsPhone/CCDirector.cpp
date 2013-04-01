@@ -61,7 +61,7 @@ namespace  cocos2d
 {
 
 // singleton stuff
-static CCDisplayLinkDirector s_sharedDirector;
+static CCDisplayLinkDirector *s_SharedDirector= NULL;
 static bool s_bFirstRun = true;
 
 #define kDefaultFPS		60  // 60 frames per second
@@ -69,13 +69,13 @@ extern const char* cocos2dVersion(void);
 
 CCDirector* CCDirector::sharedDirector(void)
 {
-	if (s_bFirstRun)
-	{
-		s_sharedDirector.init();
-        s_bFirstRun = false;
-	}
+    if (!s_SharedDirector)
+    {
+        s_SharedDirector = new CCDisplayLinkDirector();
+        s_SharedDirector->init();
+    }
 
-	return &s_sharedDirector;
+    return s_SharedDirector;
 }
 
 bool CCDirector::init(void)
@@ -1020,7 +1020,7 @@ void CCDirector::setDeviceOrientation(ccDeviceOrientation kDeviceOrientation)
 {
 	ccDeviceOrientation eNewOrientation;
 
-	eNewOrientation = (ccDeviceOrientation)CCApplication::sharedApplication().setOrientation(
+	eNewOrientation = (ccDeviceOrientation)CCApplication::sharedApplication()->setOrientation(
         (CCApplication::Orientation)kDeviceOrientation);
 
 	if (m_eDeviceOrientation != eNewOrientation)
@@ -1054,7 +1054,7 @@ void CCDisplayLinkDirector::startAnimation(void)
 	}
 
 	m_bInvalid = false;
-	CCApplication::sharedApplication().setAnimationInterval(m_dAnimationInterval);
+	CCApplication::sharedApplication()->setAnimationInterval(m_dAnimationInterval);
 }
 
 void CCDisplayLinkDirector::mainLoop(void)

@@ -29,7 +29,7 @@ THE SOFTWARE.
 #ifndef __CCLABEL_ATLAS_H__
 #define __CCLABEL_ATLAS_H__
 #include "CCAtlasNode.h"
-namespace cocos2d{
+NS_CC_BEGIN
 
 	/** @brief CCLabelAtlas is a subclass of CCAtlasNode.
 
@@ -80,6 +80,6 @@ namespace cocos2d{
 		// the first char in the charmap
 		unsigned char m_cMapStartChar;
 	};
-}// namespace cocos2d
+NS_CC_END
 
 #endif //__CCLABEL_ATLAS_H__

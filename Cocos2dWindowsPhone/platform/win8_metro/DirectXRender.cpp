@@ -647,11 +647,11 @@ void DirectXRender::OnWindowVisibilityChanged(
 {
 	if (args->Visible)
 	{
-		CCApplication::sharedApplication().applicationWillEnterForeground();
+		CCApplication::sharedApplication()->applicationWillEnterForeground();
 	} 
 	else
 	{
-		CCApplication::sharedApplication().applicationDidEnterBackground();
+		CCApplication::sharedApplication()->applicationDidEnterBackground();
 	}
 }
 

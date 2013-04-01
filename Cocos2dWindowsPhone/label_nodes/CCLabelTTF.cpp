@@ -23,121 +23,113 @@
 #include "CCDirector.h"
 
 NS_CC_BEGIN
-	//
-	//CCLabelTTF
-	//
-	CCLabelTTF::CCLabelTTF()
-	: m_eAlignment(kCCTextAlignmentCenter)
-	, m_pFontName(NULL)
-	, m_fFontSize(0.0)
-	, m_pString(NULL)
+
+//#if CC_USE_LA88_LABELS
+//#define SHADER_PROGRAM kCCShader_PositionTextureColor
+//#else
+//#define SHADER_PROGRAM kCCShader_PositionTextureA8Color
+//#endif
+//
+//
+//CCLabelTTF
+//
+CCLabelTTF::CCLabelTTF()
+: m_hAlignment(kCCTextAlignmentCenter)
+, m_vAlignment(kCCVerticalTextAlignmentTop)
+, m_pFontName(NULL)
+, m_fFontSize(0.0)
+, m_string("")
 {
 }
 
 CCLabelTTF::~CCLabelTTF()
 {
-	CC_SAFE_DELETE(m_pFontName);
-	CC_SAFE_DELETE(m_pString);        
+    CC_SAFE_DELETE(m_pFontName);
+}
+
+CCLabelTTF * CCLabelTTF::node()
+{
+    return CCLabelTTF::create();
 }
 
 CCLabelTTF * CCLabelTTF::create()
 {
-	CCLabelTTF * pRet = new CCLabelTTF();
-	if (pRet && pRet->init())
-	{
-		pRet->autorelease();
-	}
-	else
-	{
-		CC_SAFE_DELETE(pRet);
-	}
-	return pRet;
+    CCLabelTTF * pRet = new CCLabelTTF();
+    if (pRet && pRet->init())
+    {
+        pRet->autorelease();
+    }
+    else
+    {
+        CC_SAFE_DELETE(pRet);
+    }
+    return pRet;
 }
 
 CCLabelTTF * CCLabelTTF::create(const char *string, const char *fontName, float fontSize)
 {
-	return CCLabelTTF::create(string, fontName, fontSize,
-		CCSizeZero, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
+    return CCLabelTTF::create(string, fontName, fontSize,
+                              CCSizeZero, kCCTextAlignmentCenter, kCCVerticalTextAlignmentTop);
 }
 
 CCLabelTTF * CCLabelTTF::create(const char *string, const char *fontName, float fontSize,
-								const CCSize& dimensions, CCTextAlignment hAlignment)
+                                const CCSize& dimensions, CCTextAlignment hAlignment)
 {
-	return CCLabelTTF::create(string, fontName, fontSize, dimensions, hAlignment, kCCVerticalTextAlignmentTop);
+    return CCLabelTTF::create(string, fontName, fontSize, dimensions, hAlignment, kCCVerticalTextAlignmentTop);
 }
 
 CCLabelTTF* CCLabelTTF::create(const char *string, const char *fontName, float fontSize,
-							   const CCSize &dimensions, CCTextAlignment hAlignment, 
-							   CCVerticalTextAlignment vAlignment)
+                               const CCSize &dimensions, CCTextAlignment hAlignment, 
+                               CCVerticalTextAlignment vAlignment)
 {
-	CCLabelTTF *pRet = new CCLabelTTF();
-	if(pRet && pRet->initWithString(string, fontName, fontSize, dimensions, hAlignment, vAlignment))
-	{
-		pRet->autorelease();
-		return pRet;
-	}
-	CC_SAFE_DELETE(pRet);
-	return NULL;
+    CCLabelTTF *pRet = new CCLabelTTF();
+    if(pRet && pRet->initWithString(string, fontName, fontSize, dimensions, hAlignment, vAlignment))
+    {
+        pRet->autorelease();
+        return pRet;
+    }
+    CC_SAFE_DELETE(pRet);
+    return NULL;
 }
 
-//bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize)
-//{
-//	CCAssert(label != NULL, "");
-//	if (CCSprite::init())
-//	{
-//		m_tDimensions = CCSizeZero;
-
-//           if (m_pFontName)
-//           {
-//               delete m_pFontName;
-//               m_pFontName = NULL;
-//           }
-//           m_pFontName = new std::string(fontName);
-
-//		m_fFontSize = fontSize * CC_CONTENT_SCALE_FACTOR();
-//		this->setString(label);
-//		return true;
-//	}
-//	return false;
-//}
 bool CCLabelTTF::init()
 {
     return this->initWithString("", "Helvetica", 12);
 }
+
 bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize, 
-								const CCSize& dimensions, CCTextAlignment alignment)
+                                const CCSize& dimensions, CCTextAlignment alignment)
 {
-	return this->initWithString(label, fontName, fontSize, dimensions, alignment, kCCVerticalTextAlignmentTop);
+    return this->initWithString(label, fontName, fontSize, dimensions, alignment, kCCVerticalTextAlignmentTop);
 }
 
 bool CCLabelTTF::initWithString(const char *label, const char *fontName, float fontSize)
 {
-	return this->initWithString(label, fontName, fontSize, 
-		CCSizeZero, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
+    return this->initWithString(label, fontName, fontSize, 
+                                CCSizeZero, kCCTextAlignmentLeft, kCCVerticalTextAlignmentTop);
 }
 
 bool CCLabelTTF::initWithString(const char *string, const char *fontName, float fontSize,
-								const cocos2d::CCSize &dimensions, CCTextAlignment hAlignment,
-								CCVerticalTextAlignment vAlignment)
+                                const cocos2d::CCSize &dimensions, CCTextAlignment hAlignment,
+                                CCVerticalTextAlignment vAlignment)
 {
-	CCAssert(string != NULL, "Lable can't be NULL!");
-	if (CCSprite::init())
-	{
-		m_tDimensions = CCSizeMake( dimensions.width * CC_CONTENT_SCALE_FACTOR(), dimensions.height * CC_CONTENT_SCALE_FACTOR() );
-		m_eAlignment = hAlignment;
-		m_vAlignment = vAlignment;
-		if (m_pFontName)
-		{
-			delete m_pFontName;
-			m_pFontName = NULL;
-		}
-		m_pFontName = new std::string(fontName);
-
-		m_fFontSize = fontSize * CC_CONTENT_SCALE_FACTOR();
-		this->setString(string);
-		return true;
-	}
-	return false;
+    if (CCSprite::init())
+    {
+        // shader program
+        //this->setShaderProgram(CCShaderCache::sharedShaderCache()->programForKey(SHADER_PROGRAM));
+        
+        m_tDimensions = CCSizeMake(dimensions.width, dimensions.height);
+        m_hAlignment = hAlignment;
+        m_vAlignment = vAlignment;
+        m_pFontName = new std::string(fontName);
+        m_fFontSize = fontSize;
+        
+        this->setString(string);
+        
+        return true;
+    }
+    
+    return false;
 }
 
 void CCLabelTTF::setString(const char *string)
@@ -154,14 +146,69 @@ void CCLabelTTF::setString(const char *string)
 
 const char* CCLabelTTF::getString(void)
 {
-	return m_pString->c_str();
+    return m_string.c_str();
 }
 
-char * CCLabelTTF::description()
+const char* CCLabelTTF::description()
 {
-	char *ret = new char[100] ;
-	sprintf(ret, "<CCLabelTTF | FontName = %s, FontSize = %.1f>", m_pFontName->c_str(), m_fFontSize);
-	return ret;
+    return CCString::createWithFormat("<CCLabelTTF | FontName = %s, FontSize = %.1f>", m_pFontName->c_str(), m_fFontSize)->getCString();
+}
+
+CCTextAlignment CCLabelTTF::getHorizontalAlignment()
+{
+    return m_hAlignment;
+}
+
+void CCLabelTTF::setHorizontalAlignment(CCTextAlignment alignment)
+{
+    if (alignment != m_hAlignment)
+    {
+        m_hAlignment = alignment;
+        
+        // Force update
+        if (m_string.size() > 0)
+        {
+            this->updateTexture();
+        }
+    }
+}
+
+CCVerticalTextAlignment CCLabelTTF::getVerticalAlignment()
+{
+    return m_vAlignment;
+}
+
+void CCLabelTTF::setVerticalAlignment(CCVerticalTextAlignment verticalAlignment)
+{
+    if (verticalAlignment != m_vAlignment)
+    {
+        m_vAlignment = verticalAlignment;
+        
+        // Force update
+        if (m_string.size() > 0)
+        {
+            this->updateTexture();
+        }
+    }
+}
+
+CCSize CCLabelTTF::getDimensions()
+{
+    return m_tDimensions;
+}
+
+void CCLabelTTF::setDimensions(const CCSize &dim)
+{
+    if (dim.width != m_tDimensions.width || dim.height != m_tDimensions.height)
+    {
+        m_tDimensions = dim;
+        
+        // Force update
+        if (m_string.size() > 0)
+        {
+            this->updateTexture();
+        }
+    }
 }
 
 float CCLabelTTF::getFontSize()
@@ -234,4 +281,5 @@ bool CCLabelTTF::updateTexture()
 
     return bRet;
 }
+
 NS_CC_END

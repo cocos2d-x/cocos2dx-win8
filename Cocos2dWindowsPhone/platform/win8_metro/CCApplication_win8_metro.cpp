@@ -146,13 +146,13 @@ void CCFrameworkView::SetWindow(
 				break;
 			}
 	}
-	CCApplication::sharedApplication().setDeviceResolutionInPixels(res);
+	CCApplication::sharedApplication()->setDeviceResolutionInPixels(res);
 
     DisplayProperties::LogicalDpiChanged +=
         ref new DisplayPropertiesEventHandler(this, &CCFrameworkView::OnLogicalDpiChanged);
 
     m_renderer->Initialize(window, DisplayProperties::LogicalDpi);
-    CCApplication::sharedApplication().initInstance();
+    CCApplication::sharedApplication()->initInstance();
     CCLog("CCFrameworkView::-SetWindow()");
 }
 
@@ -181,7 +181,7 @@ void CCFrameworkView::Run()
 
 		if (false == inited)
 		{
-			inited = (CCApplication::sharedApplication().applicationDidFinishLaunching());
+			inited = (CCApplication::sharedApplication()->applicationDidFinishLaunching());
 			if (false == inited)
 			{
 				// init falied
@@ -280,9 +280,9 @@ void CCFrameworkView::OnLogicalDpiChanged(
 
 void CCFrameworkView::OnBackButtonPressed(Object^ sender, BackPressedEventArgs^ args)
 {	
-	if (&CCApplication::sharedApplication()) 
+	if (CCApplication::sharedApplication()) 
 	{
-		CCApplication::sharedApplication().deviceBackBttonPressed(sender, args);
+		CCApplication::sharedApplication()->deviceBackBttonPressed(sender, args);
     } else 
 	{
         // Do nothing. Leave args->Handled set to the current value, false.
@@ -347,10 +347,10 @@ void CCApplication::statusBarFrame(CCRect * rect)
 //////////////////////////////////////////////////////////////////////////
 // static member function
 //////////////////////////////////////////////////////////////////////////
-CCApplication& CCApplication::sharedApplication()
+CCApplication* CCApplication::sharedApplication()
 {
     CC_ASSERT(s_pSharedApplication);
-    return *s_pSharedApplication;
+    return s_pSharedApplication;
 }
 
 ccLanguageType CCApplication::getCurrentLanguage()

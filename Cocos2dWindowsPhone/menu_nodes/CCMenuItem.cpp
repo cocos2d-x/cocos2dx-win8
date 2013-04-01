@@ -648,6 +648,11 @@ bool CCMenuItemImage::initWithNormalImage(const char *normalImage, const char *s
 	CCNode *selectedSprite = NULL;
 	CCNode *disabledSprite = NULL;
 
+	if(normalImage)
+	{
+		normalSprite = CCSprite::create(normalImage);
+	}
+
 	if (selectedImage)
 	{
 		selectedSprite = CCSprite::create(selectedImage);

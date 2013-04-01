@@ -361,7 +361,7 @@ CCBMFontConfiguration* FNTConfigLoadFile( const char *fntFile)
 	pRet = (CCBMFontConfiguration*)configurations->objectForKey(key);
 	if( pRet == NULL )
 	{
-		pRet = CCBMFontConfiguration::configurationWithFNTFile(fntFile);
+		pRet = CCBMFontConfiguration::create(fntFile);
 		configurations->setObject(pRet, key);
 	}
 
@@ -391,7 +391,7 @@ typedef struct _KerningHashElement
 //BitmapFontConfiguration
 //
 
-CCBMFontConfiguration * CCBMFontConfiguration::configurationWithFNTFile(const char *FNTfile)
+CCBMFontConfiguration * CCBMFontConfiguration::create(const char *FNTfile)
 {
 	CCBMFontConfiguration * pRet = new CCBMFontConfiguration();
 	if (pRet->initWithFNTfile(FNTfile))

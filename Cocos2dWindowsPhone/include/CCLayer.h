@@ -93,9 +93,9 @@ public:
 	virtual void registerWithTouchDispatcher(void);
 
     /** Register script touch events handler */
-    void registerScriptTouchHandler(int nHandler, bool bIsMultiTouches = false, int nPriority = INT_MIN, bool bSwallowsTouches = false);
+    virtual void registerScriptTouchHandler(int nHandler, bool bIsMultiTouches = false, int nPriority = INT_MIN, bool bSwallowsTouches = false);
     /** Unregister script touch events handler */
-    void unregisterScriptTouchHandler(void);
+    virtual void unregisterScriptTouchHandler(void);
 
     /** whether or not it will receive Touch events.
     You can enable / disable touch events with this property.

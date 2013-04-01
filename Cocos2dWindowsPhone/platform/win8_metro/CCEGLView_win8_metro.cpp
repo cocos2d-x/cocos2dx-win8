@@ -145,27 +145,27 @@ void CCEGLView::setFrameSize(float width, float height)
 
 CCSize  CCEGLView::getVisibleSize() const
 {
-    if (m_eResolutionPolicy == kResolutionNoBorder)
-    {
+    //if (m_eResolutionPolicy == kResolutionNoBorder)
+    //{
         return CCSizeMake(m_obScreenSize.width/m_fWinScaleX, m_obScreenSize.height/m_fWinScaleY);
-    }
-    else 
-    {
-        return m_obDesignResolutionSize;
-    }
+    //}
+    //else 
+    //{
+    //    return m_obDesignResolutionSize;
+    //}
 }
 
 CCPoint CCEGLView::getVisibleOrigin() const
 {
-    if (m_eResolutionPolicy == kResolutionNoBorder)
-    {
+    //if (m_eResolutionPolicy == kResolutionNoBorder)
+    //{
         return CCPointMake((m_obDesignResolutionSize.width - m_obScreenSize.width/m_fWinScaleX)/2, 
                            (m_obDesignResolutionSize.height - m_obScreenSize.height/m_fWinScaleY)/2);
-    }
-    else 
-    {
-        return CCPointZero;
-    }
+    //}
+    //else 
+    //{
+    //    return CCPointZero;
+    //}
 }
 void CCEGLView::setTouchDelegate(EGLTouchDelegate * pDelegate)
 {
@@ -683,7 +683,7 @@ void CCEGLView::OnWindowSizeChanged()
     CCDirector::sharedDirector()->reshapeProjection(getSize());
 
     int newState = 0;//int(Windows::UI::ViewManagement::ApplicationView::Value);
-    CCApplication::sharedApplication().applicationViewStateChanged(newState, m_oldViewState);
+    CCApplication::sharedApplication()->applicationViewStateChanged(newState, m_oldViewState);
     m_oldViewState = newState;
 }
 

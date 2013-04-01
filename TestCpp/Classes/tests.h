@@ -15,7 +15,7 @@
 #include "MenuTest/MenuTest.h"
 #include "ActionManagerTest/ActionManagerTest.h"
 #include "LayerTest/LayerTest.h"
-//#include "SceneTest/SceneTest.h"
+#include "SceneTest/SceneTest.h"
 #include "ParallaxTest/ParallaxTest.h"
 #include "TileMapTest/TileMapTest.h"
 #include "IntervalTest/IntervalTest.h"

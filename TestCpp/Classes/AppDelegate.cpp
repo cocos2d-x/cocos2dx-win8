@@ -46,8 +46,8 @@ bool AppDelegate::initInstance()
 
 	// fix bug: 16bit aligned
 	void* buff=_aligned_malloc(sizeof(CCEGLView),16);
-	CCEGLView* mainView = new (buff) CCEGLView();
-	mainView->Create();
+	CCEGLView* mainView = CCEGLView::sharedOpenGLView();
+	mainView->setFrameSize(480,800);
 	//mainView->setDesignResolution(480, 320);
 	//mainView->setDesignResolution(640, 1066);
 	CCLOG("Device Res:%d", m_deviceResolutionInPixels);
@@ -93,13 +93,21 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// set FPS. the default value is 1.0/60 if you don't call this
 	//pDirector->setAnimationInterval(1.0 / 60);
 
-	// create a scene. it's an autorelease object
-    //CCScene * pScene = CCScene::create();
-    //CCLayer * pLayer = new TestController();
+//    CCEGLView::sharedOpenGLView()->setDesignResolutionSize(designSize.width, designSize.height, kResolutionNoBorder);
 
- //   pScene->addChild(pLayer);
-//    pDirector->runWithScene(pScene);
-	pDirector->runWithScene(HelloWorld::scene());
+    // turn on display FPS
+ //   pDirector->setDisplayStats(true);
+
+    // set FPS. the default value is 1.0/60 if you don't call this
+    pDirector->setAnimationInterval(1.0 / 60);
+
+	// create a scene. it's an autorelease object
+    CCScene * pScene = CCScene::create();
+    CCLayer * pLayer = new TestController();
+	pLayer->autorelease();
+    pScene->addChild(pLayer);
+    pDirector->runWithScene(pScene);
+	//pDirector->runWithScene(HelloWorld::scene());
 
 	return true;
 
