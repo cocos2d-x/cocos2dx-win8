@@ -355,58 +355,66 @@ CCApplication& CCApplication::sharedApplication()
 
 ccLanguageType CCApplication::getCurrentLanguage()
 {
-    ccLanguageType ret = kLanguageEnglish;
+	//http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/jj244362(v=vs.105).aspx
+	ccLanguageType ret = kLanguageEnglish;
+	
+	ULONG numLanguages = 0;
+    DWORD cchLanguagesBuffer = 0;
+    BOOL hr = GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &numLanguages, NULL, &cchLanguagesBuffer);
 
-    wchar_t localeName[LOCALE_NAME_MAX_LENGTH] = {0};
+    if (hr) {
+          WCHAR* pwszLanguagesBuffer = new WCHAR[cchLanguagesBuffer];
+          hr = GetUserPreferredUILanguages(MUI_LANGUAGE_NAME, &numLanguages, pwszLanguagesBuffer, &cchLanguagesBuffer);
+          if (hr) 
+		  {
+				wchar_t* primary = NULL;
+				wchar_t* sub = NULL;
 
-    if (GetUserDefaultLocaleName(localeName, LOCALE_NAME_MAX_LENGTH))
-    {
-        wchar_t* primary = NULL;
-        wchar_t* sub = NULL;
-
-        primary = wcstok(localeName, L"-");
-        sub = wcstok(NULL, L"-");
+				primary = wcstok(pwszLanguagesBuffer, L"-");
+				sub = wcstok(NULL, L"-");
         
-        if (wcscmp(primary, L"zh") == 0)
-        {
-            //Chinese, Simplified Chinese and Traditional Chinese
-            if (wcscmp(sub, L"TW") == 0 ||
-                wcscmp(sub, L"HK") == 0 ||
-                wcscmp(sub, L"MO") == 0)
-            {
-                ret = kLanguageChinese_Traditional;
-            }
-            else
-            {
-                ret = kLanguageChinese_Simplified;
-            }
-        }
-        else if (wcscmp(primary, L"ja") == 0)
-        {
-            ret = kLanguageJapanese;
-        }
-        else if (wcscmp(primary, L"fr") == 0)
-        {
-            ret = kLanguageFrench;
-        }
-        else if (wcscmp(primary, L"it") == 0)
-        {
-            ret = kLanguageItalian;
-        }
-        else if (wcscmp(primary, L"de") == 0)
-        {
-            ret = kLanguageGerman;
-        }
-        else if (wcscmp(primary, L"es") == 0)
-        {
-            ret = kLanguageSpanish;
-        }
-        else if (wcscmp(primary, L"ru") == 0)
-        {
-            ret = kLanguageRussian;
+				if (wcscmp(primary, L"zh") == 0)
+				{
+					//Chinese, Simplified Chinese and Traditional Chinese
+					if (wcscmp(sub, L"TW") == 0 ||
+					wcscmp(sub, L"HK") == 0 ||
+					wcscmp(sub, L"MO") == 0)
+					{
+						ret = kLanguageChinese_Traditional;
+					}
+					else
+					{
+						ret = kLanguageChinese_Simplified;
+					}
+				}
+				else if (wcscmp(primary, L"ja") == 0)
+				{
+					ret = kLanguageJapanese;
+				}
+				else if (wcscmp(primary, L"fr") == 0)
+				{
+					ret = kLanguageFrench;
+				}
+				else if (wcscmp(primary, L"it") == 0)
+				{
+					ret = kLanguageItalian;
+				}
+				else if (wcscmp(primary, L"de") == 0)
+				{
+					ret = kLanguageGerman;
+				}
+				else if (wcscmp(primary, L"es") == 0)
+				{
+					ret = kLanguageSpanish;
+				}
+				else if (wcscmp(primary, L"ru") == 0)
+				{
+					ret = kLanguageRussian;
+				}               
+				delete pwszLanguagesBuffer;
         }
     }
-
+   
     return ret;
 }
 

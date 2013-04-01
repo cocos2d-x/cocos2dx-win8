@@ -43,7 +43,6 @@ using namespace D2D1;
 
 USING_NS_CC;
 
-
 static CCPoint getCCPointFromScreen(Point point)
 {
 	CCSize viewSize = cocos2d::CCEGLView::sharedOpenGLView()->getSize();
